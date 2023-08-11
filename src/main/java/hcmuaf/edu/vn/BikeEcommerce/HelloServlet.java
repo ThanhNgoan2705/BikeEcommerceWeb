@@ -1,4 +1,4 @@
-package hcmuaf.edu.vn.demo;
+package hcmuaf.edu.vn.BikeEcommerce;
 
 import java.io.*;
 import javax.servlet.http.*;
