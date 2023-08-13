@@ -1,5 +1,6 @@
 package hcmuaf.edu.vn.BikeEcommerce.db;
 
+import java.io.IOException;
 import java.util.Properties;
 
 public class DBProperties {
@@ -7,24 +8,24 @@ public class DBProperties {
     static {
         try {
             properties.load(DBProperties.class.getResourceAsStream("db.properties"));
-        } catch (Exception e) {
+        } catch ( IOException e) {
             e.printStackTrace();
         }
     }
     public static String getHost() {
-        return properties.getProperty("host");
+        return properties.get("db.host").toString();
     }
     public static String getPort() {
-        return properties.getProperty("port");
+        return properties.get("db.port").toString();
     }
     public static String getUserName() {
-        return properties.getProperty("username");
+        return properties.get("db.username").toString();
     }
     public static String getPassword() {
-        return properties.getProperty("password");
+        return properties.get("db.password").toString();
     }
     public static String getDatabaseName() {
-        return properties.getProperty("databaseName");
+        return properties.get("db.databaseName").toString();
     }
 
 }

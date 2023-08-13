@@ -15,8 +15,8 @@
   <link href="//fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,900&display=swap" rel="stylesheet">
   <!-- Template CSS -->
 	<link rel="stylesheet" href="assets/css/style-starter.css">
-	<link rel="stylesheet" href="assets/css/style.css">
-</head>
+	<link rel="stylesheet" href="assets/css/style.css">-+
+	</head>
 <body>
 <!--w3l-banner-slider-main-->
 <section class="w3l-banner-slider-main">
