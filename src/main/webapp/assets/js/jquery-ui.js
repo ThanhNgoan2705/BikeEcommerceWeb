@@ -6,7 +6,7 @@
 (function( $, undefined ) {
 
 var uuid = 0,
-	runiqueId = /^ui-id-\d+$/;
+	runiqueId = /^ui-userId-\d+$/;
 
 // prevent duplicate loading
 // this is only a problem because we proxy existing functions
@@ -108,16 +108,16 @@ $.fn.extend({
 
 	uniqueId: function() {
 		return this.each(function() {
-			if ( !this.id ) {
-				this.id = "ui-id-" + (++uuid);
+			if ( !this.userId ) {
+				this.userId = "ui-userId-" + (++uuid);
 			}
 		});
 	},
 
 	removeUniqueId: function() {
 		return this.each(function() {
-			if ( runiqueId.test( this.id ) ) {
-				$( this ).removeAttr( "id" );
+			if ( runiqueId.test( this.userId ) ) {
+				$( this ).removeAttr( "userId" );
 			}
 		});
 	}
@@ -1282,7 +1282,7 @@ $.widget("ui.draggable", $.ui.mouse, {
 	_createHelper: function(event) {
 
 		var o = this.options;
-		var helper = $.isFunction(o.helper) ? $(o.helper.apply(this.element[0], [event])) : (o.helper == 'clone' ? this.element.clone().removeAttr('id') : this.element);
+		var helper = $.isFunction(o.helper) ? $(o.helper.apply(this.element[0], [event])) : (o.helper == 'clone' ? this.element.clone().removeAttr('userId') : this.element);
 
 		if(!helper.parents('body').length)
 			helper.appendTo((o.appendTo == 'parent' ? this.element[0].parentNode : o.appendTo));
@@ -1614,7 +1614,7 @@ $.ui.plugin.add("draggable", "connectToSortable", {
 					//Now we fake the start of dragging for the sortable instance,
 					//by cloning the list group item, appending it to the sortable and using it as inst.currentItem
 					//We can then fire the start event of the sortable with our passed browser event, and our own helper (so it doesn't create a new one)
-					this.instance.currentItem = $(that).clone().removeAttr('id').appendTo(this.instance.element).data("sortable-item", true);
+					this.instance.currentItem = $(that).clone().removeAttr('userId').appendTo(this.instance.element).data("sortable-item", true);
 					this.instance.options._helper = this.instance.options.helper; //Store helper option to later restore it
 					this.instance.options.helper = function() { return ui.helper[0]; };
 
@@ -3566,7 +3566,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 		var str = []; o = o || {};
 
 		$(items).each(function() {
-			var res = ($(o.item || this).attr(o.attribute || 'id') || '').match(o.expression || (/(.+)[-=_](.+)/));
+			var res = ($(o.item || this).attr(o.attribute || 'userId') || '').match(o.expression || (/(.+)[-=_](.+)/));
 			if(res) str.push((o.key || res[1]+'[]')+'='+(o.key && o.expression ? res[1] : res[2]));
 		});
 
@@ -3583,7 +3583,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 		var items = this._getItemsAsjQuery(o && o.connected);
 		var ret = []; o = o || {};
 
-		items.each(function() { ret.push($(o.item || this).attr(o.attribute || 'id') || ''); });
+		items.each(function() { ret.push($(o.item || this).attr(o.attribute || 'userId') || ''); });
 		return ret;
 
 	},
@@ -5202,9 +5202,9 @@ $.extend( $.effects, {
 
 		// support: Firefox
 		// Firefox incorrectly exposes anonymous content
-		// https://bugzilla.mozilla.org/show_bug.cgi?id=561664
+		// https://bugzilla.mozilla.org/show_bug.cgi?userId=561664
 		try {
-			active.id;
+			active.userId;
 		} catch( e ) {
 			active = document.body;
 		}
@@ -5542,7 +5542,7 @@ $.widget( "ui.accordion", {
 
 	_create: function() {
 		var accordionId = this.accordionId = "ui-accordion-" +
-				(this.element.attr( "id" ) || ++uid),
+				(this.element.attr( "userId" ) || ++uid),
 			options = this.options;
 
 		this.prevShow = this.prevHide = $();
@@ -5582,16 +5582,16 @@ $.widget( "ui.accordion", {
 			.attr( "role", "tab" )
 			.each(function( i ) {
 				var header = $( this ),
-					headerId = header.attr( "id" ),
+					headerId = header.attr( "userId" ),
 					panel = header.next(),
-					panelId = panel.attr( "id" );
+					panelId = panel.attr( "userId" );
 				if ( !headerId ) {
 					headerId = accordionId + "-header-" + i;
-					header.attr( "id", headerId );
+					header.attr( "userId", headerId );
 				}
 				if ( !panelId ) {
 					panelId = accordionId + "-panel-" + i;
-					panel.attr( "id", panelId );
+					panel.attr( "userId", panelId );
 				}
 				header.attr( "aria-controls", panelId );
 				panel.attr( "aria-labelledby", headerId );
@@ -5675,8 +5675,8 @@ $.widget( "ui.accordion", {
 			.removeAttr( "aria-controls" )
 			.removeAttr( "tabIndex" )
 			.each(function() {
-				if ( /^ui-accordion/.test( this.id ) ) {
-					this.removeAttribute( "id" );
+				if ( /^ui-accordion/.test( this.userId ) ) {
+					this.removeAttribute( "userId" );
 				}
 			});
 		this._destroyIcons();
@@ -5690,8 +5690,8 @@ $.widget( "ui.accordion", {
 			.removeAttr( "aria-labelledby" )
 			.removeClass( "ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content ui-accordion-content-active ui-state-disabled" )
 			.each(function() {
-				if ( /^ui-accordion/.test( this.id ) ) {
-					this.removeAttribute( "id" );
+				if ( /^ui-accordion/.test( this.userId ) ) {
+					this.removeAttribute( "userId" );
 				}
 			});
 		if ( this.options.heightStyle !== "content" ) {
@@ -7033,7 +7033,7 @@ $.widget( "ui.button", {
 			// we don't search against the document in case the element
 			// is disconnected from the DOM
 			ancestor = this.element.parents().last();
-			labelSelector = "label[for='" + this.element.attr("id") + "']";
+			labelSelector = "label[for='" + this.element.attr("userId") + "']";
 			this.buttonElement = ancestor.find( labelSelector );
 			if ( !this.buttonElement.length ) {
 				ancestor = ancestor.length ? ancestor.siblings() : this.element.siblings();
@@ -7319,7 +7319,7 @@ function Datepicker() {
 		disabled: false // The initial disabled state
 	};
 	$.extend(this._defaults, this.regional['']);
-	this.dpDiv = bindHover($('<div id="' + this._mainDivId + '" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>'));
+	this.dpDiv = bindHover($('<div userId="' + this._mainDivId + '" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>'));
 }
 
 $.extend(Datepicker.prototype, {
@@ -7367,9 +7367,9 @@ $.extend(Datepicker.prototype, {
 		}
 		var nodeName = target.nodeName.toLowerCase();
 		var inline = (nodeName == 'div' || nodeName == 'span');
-		if (!target.id) {
+		if (!target.userId) {
 			this.uuid += 1;
-			target.id = 'dp' + this.uuid;
+			target.userId = 'dp' + this.uuid;
 		}
 		var inst = this._newInst($(target), inline);
 		inst.settings = $.extend({}, settings || {}, inlineSettings || {});
@@ -7382,8 +7382,8 @@ $.extend(Datepicker.prototype, {
 
 	/* Create a new instance object. */
 	_newInst: function(target, inline) {
-		var id = target[0].id.replace(/([^A-Za-z0-9_-])/g, '\\\\$1'); // escape jQuery meta chars
-		return {id: id, input: target, // associated target
+		var userId = target[0].userId.replace(/([^A-Za-z0-9_-])/g, '\\\\$1'); // escape jQuery meta chars
+		return {userId: userId, input: target, // associated target
 			selectedDay: 0, selectedMonth: 0, selectedYear: 0, // current selection
 			drawMonth: 0, drawYear: 0, // month being drawn
 			inline: inline, // is datepicker inline or not
@@ -7516,8 +7516,8 @@ $.extend(Datepicker.prototype, {
 		var inst = this._dialogInst; // internal instance
 		if (!inst) {
 			this.uuid += 1;
-			var id = 'dp' + this.uuid;
-			this._dialogInput = $('<input type="text" id="' + id +
+			var userId = 'dp' + this.uuid;
+			this._dialogInput = $('<input type="text" userId="' + userId +
 				'" style="position: absolute; top: -100px; width: 0px;"/>');
 			this._dialogInput.keydown(this._doKeyDown);
 			$('body').append(this._dialogInput);
@@ -8050,7 +8050,7 @@ $.extend(Datepicker.prototype, {
 		var $target = $(event.target),
 			inst = $.datepicker._getInst($target[0]);
 
-		if ( ( ( $target[0].id != $.datepicker._mainDivId &&
+		if ( ( ( $target[0].userId != $.datepicker._mainDivId &&
 				$target.parents('#' + $.datepicker._mainDivId).length == 0 &&
 				!$target.hasClass($.datepicker.markerClassName) &&
 				!$target.closest("." + $.datepicker._triggerClass).length &&
@@ -8060,8 +8060,8 @@ $.extend(Datepicker.prototype, {
 	},
 
 	/* Adjust one of the date sub-fields. */
-	_adjustDate: function(id, offset, period) {
-		var target = $(id);
+	_adjustDate: function(userId, offset, period) {
+		var target = $(userId);
 		var inst = this._getInst(target[0]);
 		if (this._isDisabledDatepicker(target[0])) {
 			return;
@@ -8073,8 +8073,8 @@ $.extend(Datepicker.prototype, {
 	},
 
 	/* Action for current link. */
-	_gotoToday: function(id) {
-		var target = $(id);
+	_gotoToday: function(userId) {
+		var target = $(userId);
 		var inst = this._getInst(target[0]);
 		if (this._get(inst, 'gotoCurrent') && inst.currentDay) {
 			inst.selectedDay = inst.currentDay;
@@ -8092,8 +8092,8 @@ $.extend(Datepicker.prototype, {
 	},
 
 	/* Action for selecting a new month/year. */
-	_selectMonthYear: function(id, select, period) {
-		var target = $(id);
+	_selectMonthYear: function(userId, select, period) {
+		var target = $(userId);
 		var inst = this._getInst(target[0]);
 		inst['selected' + (period == 'M' ? 'Month' : 'Year')] =
 		inst['draw' + (period == 'M' ? 'Month' : 'Year')] =
@@ -8103,8 +8103,8 @@ $.extend(Datepicker.prototype, {
 	},
 
 	/* Action for selecting a day. */
-	_selectDay: function(id, month, year, td) {
-		var target = $(id);
+	_selectDay: function(userId, month, year, td) {
+		var target = $(userId);
 		if ($(td).hasClass(this._unselectableClass) || this._isDisabledDatepicker(target[0])) {
 			return;
 		}
@@ -8112,20 +8112,20 @@ $.extend(Datepicker.prototype, {
 		inst.selectedDay = inst.currentDay = $('a', td).html();
 		inst.selectedMonth = inst.currentMonth = month;
 		inst.selectedYear = inst.currentYear = year;
-		this._selectDate(id, this._formatDate(inst,
+		this._selectDate(userId, this._formatDate(inst,
 			inst.currentDay, inst.currentMonth, inst.currentYear));
 	},
 
 	/* Erase the input field and hide the date picker. */
-	_clearDate: function(id) {
-		var target = $(id);
+	_clearDate: function(userId) {
+		var target = $(userId);
 		var inst = this._getInst(target[0]);
 		this._selectDate(target, '');
 	},
 
 	/* Update the input field with the selected date. */
-	_selectDate: function(id, dateStr) {
-		var target = $(id);
+	_selectDate: function(userId, dateStr) {
+		var target = $(userId);
 		var inst = this._getInst(target[0]);
 		dateStr = (dateStr != null ? dateStr : this._formatDate(inst));
 		if (inst.input)
@@ -8620,31 +8620,31 @@ $.extend(Datepicker.prototype, {
 	 */
 	_attachHandlers: function(inst) {
 		var stepMonths = this._get(inst, 'stepMonths');
-		var id = '#' + inst.id.replace( /\\\\/g, "\\" );
+		var userId = '#' + inst.userId.replace( /\\\\/g, "\\" );
 		inst.dpDiv.find('[data-handler]').map(function () {
 			var handler = {
 				prev: function () {
-					window['DP_jQuery_' + dpuuid].datepicker._adjustDate(id, -stepMonths, 'M');
+					window['DP_jQuery_' + dpuuid].datepicker._adjustDate(userId, -stepMonths, 'M');
 				},
 				next: function () {
-					window['DP_jQuery_' + dpuuid].datepicker._adjustDate(id, +stepMonths, 'M');
+					window['DP_jQuery_' + dpuuid].datepicker._adjustDate(userId, +stepMonths, 'M');
 				},
 				hide: function () {
 					window['DP_jQuery_' + dpuuid].datepicker._hideDatepicker();
 				},
 				today: function () {
-					window['DP_jQuery_' + dpuuid].datepicker._gotoToday(id);
+					window['DP_jQuery_' + dpuuid].datepicker._gotoToday(userId);
 				},
 				selectDay: function () {
-					window['DP_jQuery_' + dpuuid].datepicker._selectDay(id, +this.getAttribute('data-month'), +this.getAttribute('data-year'), this);
+					window['DP_jQuery_' + dpuuid].datepicker._selectDay(userId, +this.getAttribute('data-month'), +this.getAttribute('data-year'), this);
 					return false;
 				},
 				selectMonth: function () {
-					window['DP_jQuery_' + dpuuid].datepicker._selectMonthYear(id, this, 'M');
+					window['DP_jQuery_' + dpuuid].datepicker._selectMonthYear(userId, this, 'M');
 					return false;
 				},
 				selectYear: function () {
-					window['DP_jQuery_' + dpuuid].datepicker._selectMonthYear(id, this, 'Y');
+					window['DP_jQuery_' + dpuuid].datepicker._selectMonthYear(userId, this, 'Y');
 					return false;
 				}
 			};
@@ -9196,7 +9196,7 @@ $.widget("ui.dialog", {
 
 		uiDialog.attr({
 			role: "dialog",
-			"aria-labelledby": uiDialogTitle.attr( "id" )
+			"aria-labelledby": uiDialogTitle.attr( "userId" )
 		});
 
 		uiDialogTitlebar.find( "*" ).add( uiDialogTitlebar ).disableSelection();
@@ -9717,12 +9717,12 @@ $.extend($.ui.dialog, {
 	maxZ: 0,
 
 	getTitleId: function($el) {
-		var id = $el.attr( "id" );
-		if ( !id ) {
+		var userId = $el.attr( "userId" );
+		if ( !userId ) {
 			this.uuid += 1;
-			id = this.uuid;
+			userId = this.uuid;
 		}
-		return "ui-dialog-title-" + id;
+		return "ui-dialog-title-" + userId;
 	},
 
 	overlay: function( dialog ) {
@@ -11171,7 +11171,7 @@ $.widget( "ui.menu", {
 				item
 					.attr( "aria-haspopup", "true" )
 					.prepend( submenuCarat );
-				menu.attr( "aria-labelledby", item.attr( "id" ) );
+				menu.attr( "aria-labelledby", item.attr( "userId" ) );
 			});
 
 		menus = submenus.add( this.element );
@@ -11224,7 +11224,7 @@ $.widget( "ui.menu", {
 		// Only update aria-activedescendant if there's a role
 		// otherwise we assume focus is managed elsewhere
 		if ( this.options.role ) {
-			this.element.attr( "aria-activedescendant", focused.attr( "id" ) );
+			this.element.attr( "aria-activedescendant", focused.attr( "userId" ) );
 		}
 
 		// Highlight active parent menu item, if any
@@ -13557,7 +13557,7 @@ $.widget( "ui.tabs", {
 
 		this.anchors.each(function( i, anchor ) {
 			var selector, panel, panelId,
-				anchorId = $( anchor ).uniqueId().attr( "id" ),
+				anchorId = $( anchor ).uniqueId().attr( "userId" ),
 				tab = $( anchor ).closest( "li" ),
 				originalAriaControls = tab.attr( "aria-controls" );
 
@@ -13600,9 +13600,9 @@ $.widget( "ui.tabs", {
 		return this.element.find( "ol,ul" ).eq( 0 );
 	},
 
-	_createPanel: function( id ) {
+	_createPanel: function( userId ) {
 		return $( "<div>" )
-			.attr( "id", id )
+			.attr( "userId", userId )
 			.addClass( "ui-tabs-panel ui-widget-content ui-corner-bottom" )
 			.data( "ui-tabs-destroy", true );
 	},
@@ -14007,8 +14007,8 @@ $.widget( "ui.tabs", {
 	},
 
 	_getPanelForTab: function( tab ) {
-		var id = $( tab ).attr( "aria-controls" );
-		return this.element.find( this._sanitizeSelector( "#" + id ) );
+		var userId = $( tab ).attr( "aria-controls" );
+		return this.element.find( this._sanitizeSelector( "#" + userId ) );
 	}
 });
 
@@ -14188,19 +14188,19 @@ if ( $.uiBackCompat !== false ) {
 				li = $( options.tabTemplate
 					.replace( /#\{href\}/g, url )
 					.replace( /#\{label\}/g, label ) ),
-				id = !url.indexOf( "#" ) ?
+				userId = !url.indexOf( "#" ) ?
 					url.replace( "#", "" ) :
 					this._tabId( li );
 
 			li.addClass( "ui-state-default ui-corner-top" ).data( "ui-tabs-destroy", true );
-			li.attr( "aria-controls", id );
+			li.attr( "aria-controls", userId );
 
 			doInsertAfter = index >= this.tabs.length;
 
 			// try to find an existing element before creating a new one
-			panel = this.element.find( "#" + id );
+			panel = this.element.find( "#" + userId );
 			if ( !panel.length ) {
-				panel = this._createPanel( id );
+				panel = this._createPanel( userId );
 				if ( doInsertAfter ) {
 					if ( index > 0 ) {
 						panel.insertAfter( this.panels.eq( -1 ) );
@@ -14290,9 +14290,9 @@ if ( $.uiBackCompat !== false ) {
 			panelTemplate: "<div></div>"
 		},
 
-		_createPanel: function( id ) {
+		_createPanel: function( userId ) {
 			return $( this.options.panelTemplate )
-				.attr( "id", id )
+				.attr( "userId", userId )
 				.addClass( "ui-tabs-panel ui-widget-content ui-corner-bottom" )
 				.data( "ui-tabs-destroy", true );
 		}
@@ -14531,23 +14531,23 @@ if ( $.uiBackCompat !== false ) {
 
 var increments = 0;
 
-function addDescribedBy( elem, id ) {
+function addDescribedBy( elem, userId ) {
 	var describedby = (elem.attr( "aria-describedby" ) || "").split( /\s+/ );
-	describedby.push( id );
+	describedby.push( userId );
 	elem
-		.data( "ui-tooltip-id", id )
+		.data( "ui-tooltip-userId", userId )
 		.attr( "aria-describedby", $.trim( describedby.join( " " ) ) );
 }
 
 function removeDescribedBy( elem ) {
-	var id = elem.data( "ui-tooltip-id" ),
+	var userId = elem.data( "ui-tooltip-userId" ),
 		describedby = (elem.attr( "aria-describedby" ) || "").split( /\s+/ ),
-		index = $.inArray( id, describedby );
+		index = $.inArray( userId, describedby );
 	if ( index !== -1 ) {
 		describedby.splice( index, 1 );
 	}
 
-	elem.removeData( "ui-tooltip-id" );
+	elem.removeData( "ui-tooltip-userId" );
 	describedby = $.trim( describedby.join( " " ) );
 	if ( describedby ) {
 		elem.attr( "aria-describedby", describedby );
@@ -14608,7 +14608,7 @@ $.widget( "ui.tooltip", {
 		this._super( key, value );
 
 		if ( key === "content" ) {
-			$.each( this.tooltips, function( id, element ) {
+			$.each( this.tooltips, function( userId, element ) {
 				that._updateContent( element );
 			});
 		}
@@ -14618,7 +14618,7 @@ $.widget( "ui.tooltip", {
 		var that = this;
 
 		// close open tooltips
-		$.each( this.tooltips, function( id, element ) {
+		$.each( this.tooltips, function( userId, element ) {
 			var event = $.Event( "blur" );
 			event.target = event.currentTarget = element[0];
 			that.close( event, true );
@@ -14653,7 +14653,7 @@ $.widget( "ui.tooltip", {
 				.closest( this.options.items );
 
 		// No element to show a tooltip for or the tooltip is already open
-		if ( !target.length || target.data( "ui-tooltip-id" ) ) {
+		if ( !target.length || target.data( "ui-tooltip-userId" ) ) {
 			return;
 		}
 
@@ -14675,7 +14675,7 @@ $.widget( "ui.tooltip", {
 				}
 				if ( parent.attr( "title" ) ) {
 					parent.uniqueId();
-					that.parents[ this.id ] = {
+					that.parents[ this.userId ] = {
 						element: this,
 						title: parent.attr( "title" )
 					};
@@ -14753,7 +14753,7 @@ $.widget( "ui.tooltip", {
 		}
 
 		tooltip = this._tooltip( target );
-		addDescribedBy( target, tooltip.attr( "id" ) );
+		addDescribedBy( target, tooltip.attr( "userId" ) );
 		tooltip.find( ".ui-tooltip-content" ).html( content );
 
 		function position( event ) {
@@ -14845,9 +14845,9 @@ $.widget( "ui.tooltip", {
 		this._off( this.document, "mousemove" );
 
 		if ( event && event.type === "mouseleave" ) {
-			$.each( this.parents, function( id, parent ) {
+			$.each( this.parents, function( userId, parent ) {
 				$( parent.element ).attr( "title", parent.title );
-				delete that.parents[ id ];
+				delete that.parents[ userId ];
 			});
 		}
 
@@ -14857,10 +14857,10 @@ $.widget( "ui.tooltip", {
 	},
 
 	_tooltip: function( element ) {
-		var id = "ui-tooltip-" + increments++,
+		var userId = "ui-tooltip-" + increments++,
 			tooltip = $( "<div>" )
 				.attr({
-					id: id,
+					userId: userId,
 					role: "tooltip"
 				})
 				.addClass( "ui-tooltip ui-widget ui-corner-all ui-widget-content " +
@@ -14872,25 +14872,25 @@ $.widget( "ui.tooltip", {
 		if ( $.fn.bgiframe ) {
 			tooltip.bgiframe();
 		}
-		this.tooltips[ id ] = element;
+		this.tooltips[ userId ] = element;
 		return tooltip;
 	},
 
 	_find: function( target ) {
-		var id = target.data( "ui-tooltip-id" );
-		return id ? $( "#" + id ) : $();
+		var userId = target.data( "ui-tooltip-userId" );
+		return userId ? $( "#" + userId ) : $();
 	},
 
 	_removeTooltip: function( tooltip ) {
 		tooltip.remove();
-		delete this.tooltips[ tooltip.attr( "id" ) ];
+		delete this.tooltips[ tooltip.attr( "userId" ) ];
 	},
 
 	_destroy: function() {
 		var that = this;
 
 		// close open tooltips
-		$.each( this.tooltips, function( id, element ) {
+		$.each( this.tooltips, function( userId, element ) {
 			// Delegate to close method to handle common cleanup
 			var event = $.Event( "blur" );
 			event.target = event.currentTarget = element[0];
@@ -14898,7 +14898,7 @@ $.widget( "ui.tooltip", {
 
 			// Remove immediately; destroying an open tooltip doesn't use the
 			// hide animation
-			$( "#" + id ).remove();
+			$( "#" + userId ).remove();
 
 			// Restore the title
 			if ( element.data( "ui-tooltip-title" ) ) {

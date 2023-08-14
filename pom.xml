@@ -7,7 +7,7 @@
     <groupId>hcmuaf.edu.vn</groupId>
     <artifactId>BikeEcommerce</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>demo</name>
+    <userName>demo</userName>
     <packaging>war</packaging>
 
     <properties>
@@ -62,8 +62,8 @@
             <version>2.8.9</version>
         </dependency>
         <dependency>
-            <groupId>com.sun.mail</groupId>
-            <artifactId>javax.mail</artifactId>
+            <groupId>com.sun.email</groupId>
+            <artifactId>javax.email</artifactId>
             <version>1.6.2</version>
         </dependency>
 
