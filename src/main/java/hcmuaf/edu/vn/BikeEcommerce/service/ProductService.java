@@ -1,6 +1,6 @@
 package hcmuaf.edu.vn.BikeEcommerce.service;
 
-import hcmuaf.edu.vn.BikeEcommerce.dao.ProductDAO;
+import hcmuaf.edu.vn.BikeEcommerce.DAO.ProductDAO;
 import hcmuaf.edu.vn.BikeEcommerce.db.JDBIConnector;
 import hcmuaf.edu.vn.BikeEcommerce.model.*;
 import org.jdbi.v3.core.Jdbi;
@@ -45,5 +45,9 @@ public class ProductService {
 
     public int insert(Product product) {
         return jdbi.withExtension(ProductDAO.class, dao -> dao.insert(product));
+    }
+
+    public void update(Product product) {
+        jdbi.useExtension(ProductDAO.class, dao -> dao.update(product));
     }
 }
