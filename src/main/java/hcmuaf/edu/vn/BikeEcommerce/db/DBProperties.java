@@ -1,12 +1,12 @@
 package hcmuaf.edu.vn.BikeEcommerce.db;
 
+import java.io.IOException;
 import java.util.Properties;
 
 public class DBProperties {
     private static final Properties properties = new Properties();
     static {
         try {
-//            properties.load(DBProperties.class.getResourceAsStream("db.properties"));
             properties.load(DBProperties.class.getClassLoader().getResourceAsStream("db.properties"));
         } catch (Exception e) {
             e.printStackTrace();
@@ -26,6 +26,7 @@ public class DBProperties {
     }
     public static String getDatabaseName() {
         return properties.getProperty("db.databaseName");
+
     }
 
     public static void main(String[] args) {

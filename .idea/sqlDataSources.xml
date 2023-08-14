@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="d13d3641-fc43-4d7d-a811-92fde621beae" name="Bike_Ecommerce@localhost Mapping">
+      <data-sources db="cdf45373-02a0-4b8e-9b85-4790292f0d7c" ddl="1910c94d-a7dd-494c-aeb6-ef87ce2ff74f" />
+      <scope>
+        <node kind="database" negative="1" />
+      </scope>
+    </mapping>
+  </component>
+</project>
