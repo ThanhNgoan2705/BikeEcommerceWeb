@@ -21,13 +21,13 @@ public interface ProductDAO {
     List<Product> getByName(@Bind("name") String name);
 
     @SqlUpdate("Insert into `Product`(`id`, `name`,`price`,`description`,`wheelSize`,`quantity`,"+
-            "`inventory`,`material`,`warrenty`,`category_id`,`brand_id`,`discount_id`,"+
+            "`inventory`,`material`,`warranty`,`category_id`,`brand_id`,`discount_id`,"+
             "`supplier_id`)" +
             " values (:id, :name, :price, :description, :wheelSize, :quantity, :inventory, "+"" +
-            ":material, :warrenty, :category_id, :brand_id, :discount_id, :supplier_id)")
+            ":material, :warranty, :category_id, :brand_id, :discount_id, :supplier_id)")
     int insert(@BindBean Product product);
 
-    @SqlUpdate("Update `Product` set `name` = :name, `price` = :price, `description` = :description, `wheelSize` = :wheelSize, `quantity` = :quantity, `inventory` = :inventory, `material` = :material, `warrenty` = :warrenty, `category_id` = :category_id, `brand_id` = :brand_id,"+"" +
+    @SqlUpdate("Update `Product` set `name` = :name, `price` = :price, `description` = :description, `wheelSize` = :wheelSize, `quantity` = :quantity, `inventory` = :inventory, `material` = :material, `warranty` = :warranty, `category_id` = :category_id, `brand_id` = :brand_id,"+"" +
             " `discount_id` = :discount_id, `supplier_id` = :supplier_id, `updateAt` = now() where `id` = :id")
             int update(@BindBean Product product);
 
