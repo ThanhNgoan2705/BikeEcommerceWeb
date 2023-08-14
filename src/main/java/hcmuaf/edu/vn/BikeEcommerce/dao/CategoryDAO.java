@@ -19,12 +19,12 @@ public interface CategoryDAO {
     @SqlQuery("Select * from Category where name like = :name")
     List<Category> getByName(@Bind("name") String name);
 
-    @SqlUpdate("Insert into `Category`(`id`, `name`,`description`,`createAt`,`updateAt`)" +
-            " values (:id, :name, :description, now(), now())")
-    int insert(@Bind("id") String id, @Bind("name") String name, @Bind("description") String description);
+    @SqlUpdate("Insert into `Category`(`id`, `name`,`description`,`active`,`level`,`parent_id`,`createAt`,`updateAt`)" +
+            " values (:id, :name, :description,:active,:level,:parent_id, now(), now())")
+    int insert(@Bind("id") String id, @Bind("name") String name, @Bind("description") String description,@Bind("active") int active,@Bind("level") int level,@Bind("parent_id") String parent_id);
 
-    @SqlUpdate("Update `Category` set `name` = :name, `description` = :description, `updateAt` = now() where `id` = :id")
-    int update(@Bind("id") String id, @Bind("name") String name, @Bind("description") String description);
+    @SqlUpdate("Update `Category` set `name` = :name, `description` = :description,`active`=:active,`level`=:level,`parent_id`=:parent_id, `updateAt` = now() where `id` = :id")
+    int update(@Bind("id") String id, @Bind("name") String name, @Bind("description") String description,@Bind("active") int active,@Bind("level") int level,@Bind("parent_id") String parent_id);
 
     @SqlUpdate("Delete from `Category` where `id` = :id")
     int delete(@Bind("id") String id);
