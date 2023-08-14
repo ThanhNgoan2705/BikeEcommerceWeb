@@ -1,4 +1,4 @@
-package hcmuaf.edu.vn.BikeEcommerce.dao;
+package hcmuaf.edu.vn.BikeEcommerce.DAO;
 
 import hcmuaf.edu.vn.BikeEcommerce.model.Product;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
