@@ -6,7 +6,7 @@ import java.util.Objects;
 public class Category {
     private String id;
     private String name;
-    private String desc;
+    private String description;
     private String image;
     private String parentId;
     private int active;
@@ -17,10 +17,10 @@ public class Category {
     public Category() {
     }
 
-    public Category(String id, String name, String desc, String image, String parentId, int active, int level, LocalDateTime createAt, LocalDateTime updateAt) {
+    public Category(String id, String name, String description, String image, String parentId, int active, int level, LocalDateTime createAt, LocalDateTime updateAt) {
         this.id = id;
         this.name = name;
-        this.desc = desc;
+        this.description = description;
         this.image = image;
         this.parentId = parentId;
         this.active = active;
@@ -45,12 +45,12 @@ public class Category {
         this.name = name;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getImage() {
@@ -106,12 +106,12 @@ public class Category {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Category category = (Category) o;
-        return active == category.active && level == category.level && Objects.equals(id, category.id) && Objects.equals(name, category.name) && Objects.equals(desc, category.desc) && Objects.equals(image, category.image) && Objects.equals(parentId, category.parentId) && Objects.equals(createAt, category.createAt) && Objects.equals(updateAt, category.updateAt);
+        return active == category.active && level == category.level && Objects.equals(id, category.id) && Objects.equals(name, category.name) && Objects.equals(description, category.description) && Objects.equals(image, category.image) && Objects.equals(parentId, category.parentId) && Objects.equals(createAt, category.createAt) && Objects.equals(updateAt, category.updateAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, desc, image, parentId, active, level, createAt, updateAt);
+        return Objects.hash(id, name, description, image, parentId, active, level, createAt, updateAt);
     }
 
     @Override
@@ -119,7 +119,7 @@ public class Category {
         return "Category{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", desc='" + desc + '\'' +
+                ", description='" + description + '\'' +
                 ", image='" + image + '\'' +
                 ", parentId='" + parentId + '\'' +
                 ", active=" + active +
@@ -128,4 +128,5 @@ public class Category {
                 ", updateAt=" + updateAt +
                 '}';
     }
+
 }

@@ -37,4 +37,10 @@ public class JDBIConnector {
             makeConnect();
         return jdbi;
     }
+
+    public static void main(String[] args) {
+        System.out.println(getHost());
+        System.out.println(getPort());
+    }
+
 }

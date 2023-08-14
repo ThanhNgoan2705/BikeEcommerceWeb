@@ -7,7 +7,7 @@ public class DBProperties {
     private static final Properties properties = new Properties();
     static {
         try {
-            properties.load(DBProperties.class.getResourceAsStream("db.properties"));
+            properties.load(DBProperties.class.getClassLoader().getResourceAsStream("db.properties"));
         } catch ( IOException e) {
             e.printStackTrace();
         }
@@ -27,5 +27,4 @@ public class DBProperties {
     public static String getDatabaseName() {
         return properties.get("db.databaseName").toString();
     }
-
 }
