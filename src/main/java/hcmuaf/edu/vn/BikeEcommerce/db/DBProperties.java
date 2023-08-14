@@ -8,7 +8,7 @@ public class DBProperties {
     static {
         try {
             properties.load(DBProperties.class.getClassLoader().getResourceAsStream("db.properties"));
-        } catch ( IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -27,4 +27,5 @@ public class DBProperties {
     public static String getDatabaseName() {
         return properties.get("db.databaseName").toString();
     }
+
 }
