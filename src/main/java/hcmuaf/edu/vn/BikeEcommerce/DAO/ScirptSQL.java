@@ -11,4 +11,8 @@ public class ScirptSQL {
     public static final String getSaltByUserNameOrEmail = "select salt from User where user_name=:key or email=:key";
 
     public static final String isEmailOrUserNameAlreadyExists = "select :key = user_name or :key = email from user";
-}
+
+    public static final String checkVerifyCode = "select * from verify_code where code=:verifyCode and email=:email and now()-create_at<300";
+    public static final String insertVerifyCode = "INSERT INTO verify_code (code, email) " +
+            "VALUES (:verifyCode,:email);";
+}// The validity period of the code is 5 minutes.

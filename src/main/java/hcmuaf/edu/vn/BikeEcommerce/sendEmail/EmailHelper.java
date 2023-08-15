@@ -1,5 +1,7 @@
 package hcmuaf.edu.vn.BikeEcommerce.sendEmail;
 
+import hcmuaf.edu.vn.BikeEcommerce.toolSecurity.GenerateVerifyCode;
+
 import javax.mail.*;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
@@ -62,7 +64,7 @@ public class EmailHelper {
 
     public static void main(String[] args) throws MessagingException {
 //        String text = HtmlText.verifyCode;
-        String statuss = sendVerifyCode("20130166@st.hcmuaf.edu.vn","3d4gh6");
+        String statuss = sendVerifyCode("20130166@st.hcmuaf.edu.vn", GenerateVerifyCode.generateVerifyCode());
 
         System.out.println(statuss);
     }
