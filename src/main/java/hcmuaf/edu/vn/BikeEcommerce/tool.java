@@ -1,9 +1,13 @@
 package hcmuaf.edu.vn.BikeEcommerce;
 
+import hcmuaf.edu.vn.BikeEcommerce.model.Product;
+
 import java.lang.reflect.Field;
 
 public class tool {
     public static void main(String[] args) {
+        tool tool = new tool();
+        tool.genarateInsert(Product.class);
 
     }
     void genarateInsert(Class className){
@@ -27,6 +31,7 @@ public class tool {
         sb.append(")");
 
     }
+
 
 
 }

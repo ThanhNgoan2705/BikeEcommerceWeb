@@ -7,7 +7,6 @@
     <groupId>hcmuaf.edu.vn</groupId>
     <artifactId>BikeEcommerce</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <userName>demo</userName>
     <packaging>war</packaging>
 
     <properties>
@@ -61,11 +60,6 @@
             <artifactId>gson</artifactId>
             <version>2.8.9</version>
         </dependency>
-        <dependency>
-            <groupId>com.sun.email</groupId>
-            <artifactId>javax.email</artifactId>
-            <version>1.6.2</version>
-        </dependency>
 
         <dependency>
             <groupId>commons-fileupload</groupId>
@@ -76,6 +70,11 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.11.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>1.0.2</version>
         </dependency>
 
     </dependencies>

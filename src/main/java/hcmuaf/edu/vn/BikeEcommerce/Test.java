@@ -1,5 +1,6 @@
 package hcmuaf.edu.vn.BikeEcommerce;
 
+import hcmuaf.edu.vn.BikeEcommerce.model.Brand;
 import hcmuaf.edu.vn.BikeEcommerce.model.Category;
 import hcmuaf.edu.vn.BikeEcommerce.model.Product;
 import hcmuaf.edu.vn.BikeEcommerce.service.BrandService;
