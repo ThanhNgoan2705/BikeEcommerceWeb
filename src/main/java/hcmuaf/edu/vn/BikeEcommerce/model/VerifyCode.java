@@ -3,20 +3,19 @@ package hcmuaf.edu.vn.BikeEcommerce.model;
 public class VerifyCode {
     String email;
     String verifyCode;
+    int function;
+    int valid;
     String createAt;
 
     public VerifyCode() {
     }
 
-    public VerifyCode(String email, String verifyCode) {
-        this.email = email;
-        this.verifyCode = verifyCode;
-    }
 
-    public VerifyCode(String email, String verifyCode, String createAt) {
+
+    public VerifyCode(String email, String verifyCode, int function) {
         this.email = email;
         this.verifyCode = verifyCode;
-        this.createAt = createAt;
+        this.function = function;
     }
 
     @Override
@@ -24,8 +23,26 @@ public class VerifyCode {
         return "VerifyCode{" +
                 "email='" + email + '\'' +
                 ", verifyCode='" + verifyCode + '\'' +
+                ", function=" + function +
+                ", valid=" + valid +
                 ", createAt='" + createAt + '\'' +
                 '}';
+    }
+
+    public int getFunction() {
+        return function;
+    }
+
+    public void setFunction(int function) {
+        this.function = function;
+    }
+
+    public int getValid() {
+        return valid;
+    }
+
+    public void setValid(int valid) {
+        this.valid = valid;
     }
 
     public String getEmail() {
