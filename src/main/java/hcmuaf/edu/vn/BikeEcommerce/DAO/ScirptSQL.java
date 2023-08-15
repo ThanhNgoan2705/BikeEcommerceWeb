@@ -11,11 +11,15 @@ public class ScirptSQL {
     public static final String getSaltByUserNameOrEmail = "select salt from User where user_name=:key or email=:key";
 
     public static final String isEmailOrUserNameAlreadyExists = "select :key = user_name or :key = email from user";
-// VerifyCode
+    public static final String setAdmin="update User set role=2 where user_id=:userId";
+    public static final String setUser="update User set role=1 where user_id=:userId";
+    // VerifyCode
     public static final String checkVerifyCodeForRegister = "select * from verify_code where code=:verifyCode and email=:email and function = 1 and valid = 1 and now()-create_at<300";
     public static final String checkVerifyCodeForLogin = "select * from verify_code where code=:verifyCode and email=:email and function = 2 and valid = 1 and now()-create_at<300";
     public static final String checkVerifyCodeForResetPassword = "select * from verify_code where code=:verifyCode and email=:email and function = 3 and valid = 1 and now()-create_at<1440";
     public static final String insertVerifyCode = "INSERT INTO verify_code (code, email,function) " +
             "VALUES (:verifyCode,:email,:function);";
     public static final String disableVerifyCode = "update verify_code set valid=0 where code=:verifyCode and email=:email";
+
+
 }

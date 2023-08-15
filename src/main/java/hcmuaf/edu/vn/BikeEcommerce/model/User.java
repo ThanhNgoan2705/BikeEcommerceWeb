@@ -8,19 +8,11 @@ public class User {
     String salt;
     String createAt;
     String updateAt;
+    int role; // 1-user, 2-admin
 
     public User() {
     }
 
-    public User(String userId, String email, String pass, String userName, String salt, String createAt, String updateAt) {
-        this.userId = userId;
-        this.email = email;
-        this.pass = pass;
-        this.userName = userName;
-        this.salt = salt;
-        this.createAt = createAt;
-        this.updateAt = updateAt;
-    }
 
     public User(String userId, String email, String pass, String userName, String salt) {
         this.userId = userId;
@@ -28,6 +20,19 @@ public class User {
         this.pass = pass;
         this.userName = userName;
         this.salt = salt;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" + "userId='" + userId + '\'' + ", email='" + email + '\'' + ", pass='" + pass + '\'' + ", userName='" + userName + '\'' + ", salt='" + salt + '\'' + ", createAt='" + createAt + '\'' + ", updateAt='" + updateAt + '\'' + ", role=" + role + '}';
+    }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
     }
 
     public String getCreateAt() {
@@ -86,16 +91,4 @@ public class User {
         this.salt = salt;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId='" + userId + '\'' +
-                ", email='" + email + '\'' +
-                ", pass='" + pass + '\'' +
-                ", userName='" + userName + '\'' +
-                ", salt='" + salt + '\'' +
-                ", createAt='" + createAt + '\'' +
-                ", updateAt='" + updateAt + '\'' +
-                '}';
-    }
 }
