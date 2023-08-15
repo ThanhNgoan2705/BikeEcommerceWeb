@@ -1,23 +1,16 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <!-- Font Awesome -->
-    <link
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-            rel="stylesheet"
-    />
-    <!-- Google Fonts -->
-    <link
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-            rel="stylesheet"
-    />
-    <!-- MDB -->
-    <link
-            href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css"
-            rel="stylesheet"
-    />
+<head><base target="_parent">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap">
+    <link rel="stylesheet" href="https://mdbootstrap.com/api/snippets/static/download/MDB5-Pro-Advanced_6.4.1/css/mdb.min.css">
+    <link rel="stylesheet" href="https://mdbootstrap.com/api/snippets/static/download/MDB5-Pro-Advanced_6.4.1/plugins/css/all.min.css">
+    <link rel="stylesheet" href="assets\css\cart.css">
+    <style>
+        INPUT:-webkit-autofill,SELECT:-webkit-autofill,TEXTAREA:-webkit-autofill{animation-name:onautofillstart}INPUT:not(:-webkit-autofill),SELECT:not(:-webkit-autofill),TEXTAREA:not(:-webkit-autofill){animation-name:onautofillcancel}@keyframes onautofillstart{}@keyframes onautofillcancel{}
+    </style>
 </head>
 <body>
 <section class="h-100 h-custom" style="background-color: #d2c9ff;">
@@ -44,31 +37,41 @@
                                         <div class="col-md-3 col-lg-3 col-xl-3">
                                             <h6 class="text-muted">Shirt</h6>
                                             <h6 class="text-black mb-0">Cotton T-shirt</h6>
+                                            <a href="" class="text-muted "
+                                            ><small
+                                            ><i class="fas fa-heart  mt-2 me-2"></i>Move to wish
+                                                list</small
+                                            ></a
+                                            >
                                         </div>
-                                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                            <button class="btn btn-link px-2"
-                                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                                <i class="fas fa-minus"></i>
-                                            </button>
+                                        <div class="col-md-2 mb-4 mb-md-0">
+                                            <div class="form-outline mb-4">
+                                                <input
+                                                        type="number"
+                                                        id="typeNumber"
+                                                        class="form-control"
+                                                        value="1"
+                                                        min="1"
+                                                />
+                                                <label class="form-label" for="typeNumber"
+                                                >Quantity</label
+                                                >
+                                            </div>
 
-                                            <input id="form1" min="0" name="quantity" value="1" type="number"
-                                                   class="form-control form-control-sm" />
 
-                                            <button class="btn btn-link px-2"
-                                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                                <i class="fas fa-plus"></i>
-                                            </button>
                                         </div>
                                         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                                             <h6 class="mb-0">€ 44.00</h6>
+                                            <p class="text-danger"><small>You save 15%</small></p>
                                         </div>
+
+
                                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                                             <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
                                         </div>
                                     </div>
 
                                     <hr class="my-4">
-
                                     <div class="row mb-4 d-flex justify-content-between align-items-center">
                                         <div class="col-md-2 col-lg-2 col-xl-2">
                                             <img
@@ -78,31 +81,41 @@
                                         <div class="col-md-3 col-lg-3 col-xl-3">
                                             <h6 class="text-muted">Shirt</h6>
                                             <h6 class="text-black mb-0">Cotton T-shirt</h6>
+                                            <a href="" class="text-muted "
+                                            ><small
+                                            ><i class="fas fa-heart  mt-2 me-2"></i>Move to wish
+                                                list</small
+                                            ></a
+                                            >
                                         </div>
-                                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                            <button class="btn btn-link px-2"
-                                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                                <i class="fas fa-minus"></i>
-                                            </button>
+                                        <div class="col-md-2 mb-4 mb-md-0">
+                                            <div class="form-outline mb-4">
+                                                <input
+                                                        type="number"
+                                                        id="typeNumber"
+                                                        class="form-control"
+                                                        value="1"
+                                                        min="1"
+                                                />
+                                                <label class="form-label" for="typeNumber"
+                                                >Quantity</label
+                                                >
+                                            </div>
 
-                                            <input id="form1" min="0" name="quantity" value="1" type="number"
-                                                   class="form-control form-control-sm" />
 
-                                            <button class="btn btn-link px-2"
-                                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                                <i class="fas fa-plus"></i>
-                                            </button>
                                         </div>
                                         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                                             <h6 class="mb-0">€ 44.00</h6>
+                                            <p class="text-danger"><small>You save 15%</small></p>
                                         </div>
+
+
                                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                                             <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
                                         </div>
                                     </div>
 
                                     <hr class="my-4">
-
                                     <div class="row mb-4 d-flex justify-content-between align-items-center">
                                         <div class="col-md-2 col-lg-2 col-xl-2">
                                             <img
@@ -112,24 +125,35 @@
                                         <div class="col-md-3 col-lg-3 col-xl-3">
                                             <h6 class="text-muted">Shirt</h6>
                                             <h6 class="text-black mb-0">Cotton T-shirt</h6>
+                                            <a href="" class="text-muted "
+                                            ><small
+                                            ><i class="fas fa-heart  mt-2 me-2"></i>Move to wish
+                                                list</small
+                                            ></a
+                                            >
                                         </div>
-                                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                            <button class="btn btn-link px-2"
-                                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                                <i class="fas fa-minus"></i>
-                                            </button>
+                                        <div class="col-md-2 mb-4 mb-md-0">
+                                            <div class="form-outline mb-4">
+                                                <input
+                                                        type="number"
+                                                        id="typeNumber"
+                                                        class="form-control"
+                                                        value="1"
+                                                        min="1"
+                                                />
+                                                <label class="form-label" for="typeNumber"
+                                                >Quantity</label
+                                                >
+                                            </div>
 
-                                            <input id="form1" min="0" name="quantity" value="1" type="number"
-                                                   class="form-control form-control-sm" />
 
-                                            <button class="btn btn-link px-2"
-                                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                                <i class="fas fa-plus"></i>
-                                            </button>
                                         </div>
                                         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                                             <h6 class="mb-0">€ 44.00</h6>
+                                            <p class="text-danger"><small>You save 15%</small></p>
                                         </div>
+
+
                                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                                             <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
                                         </div>
@@ -192,10 +216,9 @@
         </div>
     </div>
 </section>
+<script type="text/javascript" src="https://mdbootstrap.com/api/snippets/static/download/MDB5-Pro-Advanced_6.4.1/js/mdb.min.js"></script>
+<script type="text/javascript" src="https://mdbootstrap.com/api/snippets/static/download/MDB5-Pro-Advanced_6.4.1/plugins/js/all.min.js"></script>
+<script type="text/javascript" >{}</script>
 </body>
-<!-- MDB -->
-<script
-        type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.js"
-></script>
+
 </html>
