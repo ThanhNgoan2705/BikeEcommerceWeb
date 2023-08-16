@@ -16,6 +16,9 @@ public class VerifyCodeService {
         return instance;
     }
 
+    public VerifyCodeService() {
+    }
+
     public boolean checkVerifyCodeForRegister(VerifyCode verifyCode) {
         // true if email and code are correct and time creat this code under 5 min
         VerifyCode verifyCodeResult = jdbi.withExtension(VerifyCodeDAO.class, dao -> dao.checkVerifyCodeForRegister(verifyCode));

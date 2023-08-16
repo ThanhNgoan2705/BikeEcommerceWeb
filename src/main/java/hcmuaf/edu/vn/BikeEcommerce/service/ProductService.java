@@ -18,8 +18,10 @@ public class ProductService {
         }
         return instance;
     }
+
     public ProductService() {
     }
+
     public List<Product> getAllProduct() {
         List<Product> products = jdbi.withExtension(ProductDAO.class, dao -> dao.getAll());
         return products.stream().map(product -> mapOtherBean(product)).collect(Collectors.toList());
@@ -27,13 +29,13 @@ public class ProductService {
     }
 
     private Product mapOtherBean(Product product) {
-        if (product == null){
+        if (product == null) {
             return new Product();
         }
-        Category category = jdbi.withExtension(CategoryService.class, dao -> dao.getById(product.getCategory_id()));
-        Supplier supplier = jdbi.withExtension(SupplierService.class, dao -> dao.getById(product.getSupplier_id()));
-        Brand brand = jdbi.withExtension(BrandService.class, dao -> dao.getById(product.getBrand_id()));
-        Discount discount = jdbi.withExtension(DiscountService.class, dao -> dao.getById(product.getDiscount_id()));
+        Category category = jdbi.withExtension(CategoryService.class, dao -> dao.getById(product.getCategoryId()));
+        Supplier supplier = jdbi.withExtension(SupplierService.class, dao -> dao.getById(product.getSupplierId()));
+        Brand brand = jdbi.withExtension(BrandService.class, dao -> dao.getById(product.getBrandId()));
+        Discount discount = jdbi.withExtension(DiscountService.class, dao -> dao.getById(product.getDiscountId()));
         product.setCategory(category);
         product.setSupplier(supplier);
         product.setBrand(brand);
@@ -43,11 +45,15 @@ public class ProductService {
     }
 
 
-    public int insert(Product product) {
-        return jdbi.withExtension(ProductDAO.class, dao -> dao.insert(product));
+    public void insert(Product product) {
+        jdbi.useExtension(ProductDAO.class, dao -> dao.insert(product));
     }
 
     public void update(Product product) {
         jdbi.useExtension(ProductDAO.class, dao -> dao.update(product));
+    }
+
+    public void delete(String productId) {
+        jdbi.useExtension(ProductDAO.class, dao -> dao.delete(productId));
     }
 }
