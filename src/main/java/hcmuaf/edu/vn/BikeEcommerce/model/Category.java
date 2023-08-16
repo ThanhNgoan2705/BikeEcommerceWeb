@@ -28,24 +28,12 @@ public class Category {
         this.parentId = parentId;
         this.active = active;
         this.level = level;
-
         this.shortId = shortId;
     }
 
     @Override
     public String toString() {
-        return "Category{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", image='" + image + '\'' +
-                ", parentId='" + parentId + '\'' +
-                ", active=" + active +
-                ", level=" + level +
-                ", shortId='" + shortId + '\'' +
-                ", createAt=" + createAt +
-                ", updateAt=" + updateAt +
-                '}';
+        return "Category{" + "id='" + id + '\'' + ", name='" + name + '\'' + ", description='" + description + '\'' + ", image='" + image + '\'' + ", parentId='" + parentId + '\'' + ", active=" + active + ", level=" + level + ", shortId='" + shortId + '\'' + ", createAt=" + createAt + ", updateAt=" + updateAt + '}';
     }
 
     public String getShortId() {
@@ -126,18 +114,5 @@ public class Category {
         return Objects.hash(id, name, description, image, parentId, active, level);
     }
 
-
-    @Override
-    public String toString() {
-        return "Category{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", image='" + image + '\'' +
-                ", parentId='" + parentId + '\'' +
-                ", active=" + active +
-                ", level=" + level +
-                '}';
-    }
 
 }
