@@ -44,7 +44,7 @@
 							<form action="#" method="post" class="last">
 								<input type="hidden" userName="cmd" value="_cart">
 								<input type="hidden" userName="display" value="1">
-								<a href="cartPage.jsp" class="top_transmitv_cart" type="submit" userName="submit" value="">
+								<a href="cartPage.jsp" class="top_transmitv_cart" role="button " userName="submit" value="">
 									My Cart
 									<span class="fa fa-shopping-cart"></span>
 								</a>

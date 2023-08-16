@@ -5,6 +5,7 @@ import hcmuaf.edu.vn.BikeEcommerce.DAO.BrandDAO;
 import hcmuaf.edu.vn.BikeEcommerce.db.JDBIConnector;
 import hcmuaf.edu.vn.BikeEcommerce.model.Brand;
 import hcmuaf.edu.vn.BikeEcommerce.service.BrandService;
+import hcmuaf.edu.vn.BikeEcommerce.toolSecurity.GenerateId;
 import hcmuaf.edu.vn.BikeEcommerce.utils.StringUtil;
 import org.jdbi.v3.core.Jdbi;
 
@@ -70,7 +71,7 @@ public class FakeData {
         Jdbi jdbi = JDBIConnector.get();
         for (int i = 0; i < listBrandName.size(); i++) {
             Brand brand = new Brand();
-            brand.setId(StringUtil.getIdWithLength(5));
+            brand.setId(GenerateId.generateId());
             brand.setName(listBrandName.get(i));
             brand.setLogo("https://i.imgur.com/0Q1X2oG.png");
             brand.setDescription(faker.lorem().sentence());
