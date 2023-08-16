@@ -1,6 +1,6 @@
 package hcmuaf.edu.vn.BikeEcommerce.service;
 
-import hcmuaf.edu.vn.BikeEcommerce.dao.CategoryDAO;
+import hcmuaf.edu.vn.BikeEcommerce.DAO.CategoryDAO;
 import hcmuaf.edu.vn.BikeEcommerce.db.JDBIConnector;
 import hcmuaf.edu.vn.BikeEcommerce.model.Category;
 import org.jdbi.v3.core.Jdbi;
@@ -24,10 +24,10 @@ public static CategoryService getInstance() {
    return jdbi.withExtension(CategoryDAO.class, dao -> dao.getById(categoryId));
     }
     public int insert(Category category) {
-        return jdbi.withExtension(CategoryDAO.class, dao -> dao.insert(category.getId(), category.getName(), category.getDescription()));
+        return jdbi.withExtension(CategoryDAO.class, dao -> dao.insert(category.getId(), category.getName(), category.getDescription(),category.getActive(),category.getLevel(),category.getParentId()));
     }
     public int update(Category category) {
-        return jdbi.withExtension(CategoryDAO.class, dao -> dao.update(category.getId(), category.getName(), category.getDescription()));
+        return jdbi.withExtension(CategoryDAO.class, dao -> dao.update(category.getId(), category.getName(), category.getDescription(),category.getActive(),category.getLevel(),category.getParentId()));
     }
     public int delete(String categoryId) {
         return jdbi.withExtension(CategoryDAO.class, dao -> dao.delete(categoryId));
