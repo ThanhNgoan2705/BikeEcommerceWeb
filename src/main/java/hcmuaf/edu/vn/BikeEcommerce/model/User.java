@@ -1,14 +1,24 @@
 package hcmuaf.edu.vn.BikeEcommerce.model;
 
+import org.jdbi.v3.core.mapper.reflect.ColumnName;
+
 public class User {
-    String userId;
-    String email;
-    String pass;
-    String userName;
-    String salt;
-    String createAt;
-    String updateAt;
-    int role; // 1-user, 2-admin
+    @ColumnName("user_id")
+    private String userId;
+    @ColumnName("email")
+    private String email;
+    @ColumnName("pass")
+    private String pass;
+    @ColumnName("user_name")
+    private String userName;
+    @ColumnName("salt")
+    private  String salt;
+    @ColumnName("create_at")
+    private   String createAt;
+    @ColumnName("update_at")
+    private  String updateAt;
+    @ColumnName("role")
+    private int role; // 1-user, 2-admin
 
     public User() {
     }

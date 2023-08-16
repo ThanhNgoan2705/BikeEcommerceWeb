@@ -1,11 +1,11 @@
 package hcmuaf.edu.vn.BikeEcommerce.model;
 
 public class VerifyCode {
-    String email;
-    String verifyCode;
-    int function;
-    int valid;
-    String createAt;
+    private String email;
+    private String verifyCode;
+    private int function;
+    private int valid;
+    private String createAt;
 
     public VerifyCode() {
     }

@@ -49,14 +49,14 @@ public class EmailHelper {
       return  sendEmail(to,"Veryfy email from BikeLongVu",contend);
     }
 
-    public static String sendResetPass(String to, String link) throws MessagingException {
-        String linkReplace= ":link:";
-        String contend = HtmlReader.resetPass;
-        contend = contend.replace(linkReplace,link);
+    public static String sendResetPass(String to, String code) throws MessagingException {
+        String codeReplace= ":code:";
+        String contend = HtmlReader.readFileHtml(HtmlReader.verifyCode);
+        contend = contend.replace(codeReplace,code);
         return sendEmail(to,"Reset password",contend);
     }
 
-//    public static String sendOrderConfirm(Order order) throws MessagingException{
+//    public static String sendOrderConfirm(String to,Order order) throws MessagingException{
 //        String contend = HtmlText.verifyCode;
 //
 //        return sendEmail(to,"Check your Order",contend);
