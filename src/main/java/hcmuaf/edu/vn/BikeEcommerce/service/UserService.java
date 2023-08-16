@@ -42,4 +42,11 @@ public class UserService {
         return jdbi.withExtension(UserDAO.class, dao -> dao.isEmailOrUserNameAlreadyExists(key));
     }
 
+    public void setAdmin(String userId) {
+        jdbi.useExtension(UserDAO.class, dao -> dao.setAdmin(userId));
+    }
+
+    public void setUser(String userId) {
+        jdbi.useExtension(UserDAO.class, dao -> dao.setUser(userId));
+    }
 }

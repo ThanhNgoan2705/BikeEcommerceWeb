@@ -11,11 +11,16 @@ public class Category {
     private String parentId;
     private int active;
     private int level;
+    private String shortId;
+    private LocalDateTime createAt;
+    private LocalDateTime updateAt;
 
     public Category() {
     }
 
-    public Category(String id, String name, String description, String image, String parentId, int active, int level) {
+
+    public Category(String id, String name, String description, String image, String parentId, int active, int level, String shortId) {
+
         this.id = id;
         this.name = name;
         this.description = description;
@@ -23,6 +28,33 @@ public class Category {
         this.parentId = parentId;
         this.active = active;
         this.level = level;
+
+        this.shortId = shortId;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", image='" + image + '\'' +
+                ", parentId='" + parentId + '\'' +
+                ", active=" + active +
+                ", level=" + level +
+                ", shortId='" + shortId + '\'' +
+                ", createAt=" + createAt +
+                ", updateAt=" + updateAt +
+                '}';
+    }
+
+    public String getShortId() {
+        return shortId;
+    }
+
+    public void setShortId(String shortId) {
+        this.shortId = shortId;
+
     }
 
     public String getId() {
@@ -93,6 +125,7 @@ public class Category {
     public int hashCode() {
         return Objects.hash(id, name, description, image, parentId, active, level);
     }
+
 
     @Override
     public String toString() {
