@@ -14,7 +14,7 @@ public interface CategoryDAO {
     @SqlQuery("Select * from Category ")
     List<Category> getAll();
 
-    @SqlQuery("Select * from Category where id = :id")
+    @SqlQuery("Select * from Category where category_id = :id")
     Category getById(@Bind("id") String id);
 
     @SqlQuery("Select * from Category where name like = :name")
