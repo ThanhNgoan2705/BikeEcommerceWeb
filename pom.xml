@@ -72,12 +72,6 @@
             <version>2.8.9</version>
         </dependency>
         <dependency>
-            <groupId>com.sun.email</groupId>
-            <artifactId>javax.email</artifactId>
-            <version>1.6.2</version>
-        </dependency>
-
-        <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
             <version>1.4</version>

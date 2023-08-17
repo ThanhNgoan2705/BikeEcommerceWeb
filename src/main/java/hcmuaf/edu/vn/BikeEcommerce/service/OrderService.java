@@ -14,36 +14,53 @@ import java.util.List;
 
 public class OrderService {
     Jdbi jdbi = JDBIConnector.get();
-    public List<Order> getAllOrder(){
-        return jdbi.withExtension(OrderDAO.class, dao-> dao.getAllOrder());
+    private static OrderService instance = null;
+
+
+    public static OrderService getInstance() {
+        if (instance == null) {
+            instance = new OrderService();
+        }
+        return instance;
     }
+
+    public OrderService() {
+    }
+
+    public List<Order> getAllOrder() {
+        return jdbi.withExtension(OrderDAO.class, dao -> dao.getAllOrder());
+    }
+
     public Order getOrderById(String orderId) {
-            Order order = jdbi.withExtension(OrderDAO.class, dao-> dao.getOrderById(orderId));
-            User user = jdbi.withExtension(UserDAO.class, dao-> dao.getUserByKey(order.getUserId()));
-            order.setUser(user);
+        Order order = jdbi.withExtension(OrderDAO.class, dao -> dao.getOrderById(orderId));
+        User user = jdbi.withExtension(UserDAO.class, dao -> dao.getUserByKey(order.getUserId()));
+        order.setUser(user);
         return order;
     }
+
     public void insertOrder(Order order) {
-        jdbi.useExtension(OrderDAO.class, dao-> dao.insertOrder(order));
+        jdbi.useExtension(OrderDAO.class, dao -> dao.insertOrder(order));
     }
+
     public void updateOrder(Order order) {
-        jdbi.useExtension(OrderDAO.class, dao-> dao.updateOrder(order));
+        jdbi.useExtension(OrderDAO.class, dao -> dao.updateOrder(order));
     }
+
     public void deleteOrderById(String orderId) {
-        jdbi.useExtension(OrderDAO.class, dao-> dao.deleteOrderById(orderId));
+        jdbi.useExtension(OrderDAO.class, dao -> dao.deleteOrderById(orderId));
     }
 
     public static void main(String[] args) {
         OrderService orderService = new OrderService();
         UserService userService = new UserService();
-        User user =userService.getUserByKey("h@gmail.com");
+        User user = userService.getUserByKey("h@gmail.com");
         Order order = new Order();
         order.setOrderId(GenerateId.generateIdOrder());
         order.setUserId(user.getUserId());
         order.setPrice(500);
         order.setDiscount(20);
         order.setShippingFee(5);
-        order.setTotal(order.getPrice(),order.getShippingFee(),order.getDiscount());
+        order.setTotal(order.getPrice(), order.getShippingFee(), order.getDiscount());
         order.setSendDay(Timestamp.valueOf(LocalDateTime.now()).toString());
         order.setReceiveDay(Timestamp.valueOf(LocalDateTime.now()).toString());
         order.setStatus(1);

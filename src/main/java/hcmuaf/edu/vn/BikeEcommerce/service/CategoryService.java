@@ -23,14 +23,14 @@ public static CategoryService getInstance() {
     public Category getById(String categoryId) {
    return jdbi.withExtension(CategoryDAO.class, dao -> dao.getById(categoryId));
     }
-    public int insert(Category category) {
-        return jdbi.withExtension(CategoryDAO.class, dao -> dao.insert(category.getId(), category.getName(), category.getDescription(),category.getActive(),category.getLevel(),category.getParentId()));
+    public void insert(Category category) {
+         jdbi.useExtension(CategoryDAO.class, dao -> dao.insert(category));
     }
-    public int update(Category category) {
-        return jdbi.withExtension(CategoryDAO.class, dao -> dao.update(category.getId(), category.getName(), category.getDescription(),category.getActive(),category.getLevel(),category.getParentId()));
+    public void update(Category category) {
+         jdbi.useExtension(CategoryDAO.class, dao -> dao.update(category));
     }
-    public int delete(String categoryId) {
-        return jdbi.withExtension(CategoryDAO.class, dao -> dao.delete(categoryId));
+    public void delete(String categoryId) {
+         jdbi.useExtension(CategoryDAO.class, dao -> dao.delete(categoryId));
     }
 
 }

@@ -1,11 +1,10 @@
 package hcmuaf.edu.vn.BikeEcommerce.model;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
 public class Product {
-    private String id;
+    private String productId;
     private String name;
     private double price;
     private String description;
@@ -16,10 +15,10 @@ public class Product {
     private String warranty;
     private int quantity;
     private int inventory;
-    private String discount_id;
-    private String category_id;
-    private String brand_id;
-    private String supplier_id;
+    private String discountId;
+    private String categoryId;
+    private String brandId;
+    private String supplierId;
     private int status;
     private Category category;
     private Brand brand;
@@ -30,8 +29,8 @@ public class Product {
     public Product() {
     }
 
-    public Product(String id, String name, double price, String description,String wheelSize, List<ImageProduct> image, List<Colour> colours, String material, String warranty, int quantity, int inventory, String discount_id, String category_id, String brand_id, String supplier_id, int status, Category category, Brand brand, Supplier supplier, Discount discount) {
-        this.id = id;
+    public Product(String productId, String name, double price, String description, String wheelSize, List<ImageProduct> image, List<Colour> colours, String material, String warranty, int quantity, int inventory, String discountId, String categoryId, String brandId, String supplierId, int status, Category category, Brand brand, Supplier supplier, Discount discount) {
+        this.productId = productId;
         this.name = name;
         this.price = price;
         this.description = description;
@@ -42,23 +41,23 @@ public class Product {
         this.warranty = warranty;
         this.quantity = quantity;
         this.inventory = inventory;
-        this.discount_id = discount_id;
-        this.category_id = category_id;
-        this.brand_id = brand_id;
-        this.supplier_id = supplier_id;
+        this.discountId = discountId;
+        this.categoryId = categoryId;
+        this.brandId = brandId;
+        this.supplierId = supplierId;
         this.status = status;
         this.category = category;
         this.brand = brand;
         this.supplier = supplier;
         this.discount = discount;
     }
-    public Product (String id, String name, double price){
-        this.id = id;
+    public Product (String productId, String name, double price){
+        this.productId = productId;
         this.name = name;
         this.price = price;
     }
-    public Product (String id,String name , double price, String description, String wheelSize, String material, String warranty, int quantity, int inventory, String discount_id, String category_id, String brand_id, String supplier_id, int status){
-        this.id = id;
+    public Product (String productId, String name , double price, String description, String wheelSize, String material, String warranty, int quantity, int inventory, String discountId, String categoryId, String brandId, String supplierId, int status){
+        this.productId = productId;
         this.name = name;
         this.price = price;
         this.description = description;
@@ -67,10 +66,10 @@ public class Product {
         this.warranty = warranty;
         this.quantity = quantity;
         this.inventory = inventory;
-        this.discount_id = discount_id;
-        this.category_id = category_id;
-        this.brand_id = brand_id;
-        this.supplier_id = supplier_id;
+        this.discountId = discountId;
+        this.categoryId = categoryId;
+        this.brandId = brandId;
+        this.supplierId = supplierId;
         this.status = status;
     }
 
@@ -79,20 +78,20 @@ public class Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return Double.compare(product.price, price) == 0 && quantity == product.quantity && inventory == product.inventory && status == product.status && Objects.equals(id, product.id) && Objects.equals(name, product.name) && Objects.equals(description, product.description) && Objects.equals(wheelSize, product.wheelSize) && Objects.equals(image, product.image) && Objects.equals(colours, product.colours) && Objects.equals(material, product.material) && Objects.equals(warranty, product.warranty) && Objects.equals(discount_id, product.discount_id) && Objects.equals(category_id, product.category_id) && Objects.equals(brand_id, product.brand_id) && Objects.equals(supplier_id, product.supplier_id) && Objects.equals(category, product.category) && Objects.equals(brand, product.brand) && Objects.equals(supplier, product.supplier) && Objects.equals(discount, product.discount);
+        return Double.compare(product.price, price) == 0 && quantity == product.quantity && inventory == product.inventory && status == product.status && Objects.equals(productId, product.productId) && Objects.equals(name, product.name) && Objects.equals(description, product.description) && Objects.equals(wheelSize, product.wheelSize) && Objects.equals(image, product.image) && Objects.equals(colours, product.colours) && Objects.equals(material, product.material) && Objects.equals(warranty, product.warranty) && Objects.equals(discountId, product.discountId) && Objects.equals(categoryId, product.categoryId) && Objects.equals(brandId, product.brandId) && Objects.equals(supplierId, product.supplierId) && Objects.equals(category, product.category) && Objects.equals(brand, product.brand) && Objects.equals(supplier, product.supplier) && Objects.equals(discount, product.discount);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, price, description, wheelSize, image, colours, material, warranty, quantity, inventory, discount_id, category_id, brand_id, supplier_id, status, category, brand, supplier, discount);
+        return Objects.hash(productId, name, price, description, wheelSize, image, colours, material, warranty, quantity, inventory, discountId, categoryId, brandId, supplierId, status, category, brand, supplier, discount);
     }
 
-    public String getId() {
-        return id;
+    public String getProductId() {
+        return productId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     public String getName() {
@@ -135,12 +134,12 @@ public class Product {
         this.image = image;
     }
 
-    public String getSupplier_id() {
-        return supplier_id;
+    public String getSupplierId() {
+        return supplierId;
     }
 
-    public void setSupplier_id(String supplier_id) {
-        this.supplier_id = supplier_id;
+    public void setSupplierId(String supplierId) {
+        this.supplierId = supplierId;
     }
 
     public Supplier getSupplier() {
@@ -192,28 +191,28 @@ public class Product {
         this.inventory = inventory;
     }
 
-    public String getDiscount_id() {
-        return discount_id;
+    public String getDiscountId() {
+        return discountId;
     }
 
-    public void setDiscount_id(String discount_id) {
-        this.discount_id = discount_id;
+    public void setDiscountId(String discountId) {
+        this.discountId = discountId;
     }
 
-    public String getCategory_id() {
-        return category_id;
+    public String getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory_id(String category_id) {
-        this.category_id = category_id;
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public String getBrand_id() {
-        return brand_id;
+    public String getBrandId() {
+        return brandId;
     }
 
-    public void setBrand_id(String brand_id) {
-        this.brand_id = brand_id;
+    public void setBrandId(String brandId) {
+        this.brandId = brandId;
     }
 
     public int getStatus() {
@@ -251,7 +250,7 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" +
-                "id='" + id + '\'' +
+                "id='" + productId + '\'' +
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", description='" + description + '\'' +
@@ -262,10 +261,10 @@ public class Product {
                 ", warranty=" + warranty +
                 ", quantity=" + quantity +
                 ", inventory=" + inventory +
-                ", discount_id='" + discount_id + '\'' +
-                ", category_id='" + category_id + '\'' +
-                ", brand_id='" + brand_id + '\'' +
-                ", supplier_id='" + supplier_id + '\'' +
+                ", discount_id='" + discountId + '\'' +
+                ", category_id='" + categoryId + '\'' +
+                ", brand_id='" + brandId + '\'' +
+                ", supplier_id='" + supplierId + '\'' +
                 ", status=" + status +
                 ", category=" + category +
                 ", brand=" + brand +
