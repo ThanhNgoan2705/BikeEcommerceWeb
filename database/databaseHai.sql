@@ -5,8 +5,8 @@ create table address
     home_address varchar(255)                          null,
     district     varchar(100)                          null,
     city         varchar(100)                          null,
-    create_at    timestamp default current_timestamp() null,
-    update_at    timestamp default current_timestamp() null on update current_timestamp()
+    created_at   timestamp default current_timestamp() null,
+    updated_at   timestamp default current_timestamp() null on update current_timestamp()
 );
 
 create table brand
@@ -65,7 +65,7 @@ create table discount
 
 create table imageslider
 (
-    id         varchar(64)                           not null
+    categoryId         varchar(64)                           not null
         primary key,
     link       varchar(255)                          null,
     created_at timestamp default current_timestamp() null,
@@ -134,15 +134,15 @@ create table imageproduct
 
 create table user
 (
-    user_id   varchar(64)                           not null
+    user_id    varchar(64)                           not null
         primary key,
-    email     varchar(30)                           not null comment 'email cua nguoi dung ',
-    salt      varchar(64)                           not null comment 'bao mat password bang sha2((salt+pass),256)',
-    pass      varchar(255)                          not null,
-    user_name varchar(100)                          not null comment 'ten tai khoan ',
-    create_at timestamp default current_timestamp() not null comment 'ngay tao',
-    update_at timestamp default current_timestamp() not null on update current_timestamp() comment 'ngay sua doi',
-    role      int       default 1                   not null comment '1-user, 2-admin'
+    email      varchar(30)                           not null comment 'email cua nguoi dung ',
+    salt       varchar(64)                           not null comment 'bao mat password bang sha2((salt+pass),256)',
+    pass       varchar(255)                          not null,
+    user_name  varchar(100)                          not null comment 'ten tai khoan ',
+    created_at timestamp default current_timestamp() not null comment 'ngay tao',
+    updated_at timestamp default current_timestamp() not null on update current_timestamp() comment 'ngay sua doi',
+    role       int       default 1                   not null comment '1-user, 2-admin'
 )
     comment 'user_info';
 
@@ -159,14 +159,14 @@ create table `order`
     send_day     timestamp                             null,
     receive_day  timestamp                             null,
     status       int                                   null comment '1-pending, 2-Confirmed, 3-Processing, 4-Shipped,5-Delivered,6-Cancelled,7-Returned,8-Refunded',
-    create_at    timestamp default current_timestamp() null,
-    update_at    timestamp default current_timestamp() null on update current_timestamp(),
+    created_at   timestamp default current_timestamp() null,
+    updated_at   timestamp default current_timestamp() null on update current_timestamp(),
     constraint order_address_address_id_fk
         foreign key (address_id) references address (address_id),
     constraint order_user_user_id_fk
         foreign key (user_id) references user (user_id),
     constraint chk_discount_range
-        check (`discount` between 1 and 100)
+        check (`discount` between 0 and 100)
 );
 
 create table order_item

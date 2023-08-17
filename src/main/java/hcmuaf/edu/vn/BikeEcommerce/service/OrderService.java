@@ -1,6 +1,5 @@
 package hcmuaf.edu.vn.BikeEcommerce.service;
 
-import hcmuaf.edu.vn.BikeEcommerce.DAO.AddressDAO;
 import hcmuaf.edu.vn.BikeEcommerce.DAO.OrderDAO;
 import hcmuaf.edu.vn.BikeEcommerce.DAO.UserDAO;
 import hcmuaf.edu.vn.BikeEcommerce.db.JDBIConnector;
@@ -35,7 +34,7 @@ public class OrderService {
         Order order = jdbi.withExtension(OrderDAO.class, dao -> dao.getOrderById(orderId));
         User user = jdbi.withExtension(UserDAO.class, dao -> dao.getUserByKey(order.getUserId()));
         List<OrderItem> items = OrderItemService.getInstance().getOrderItemsByOrderId(orderId);
-        Address address = jdbi.withExtension(AddressDAO.class, dao -> dao.getAddressById(order.getAddressId()));
+        Address address = AddressService.getInstance().getById(order.getAddressId());
         order.setUser(user);
         order.setOrderItemList(items);
         order.setAddress(address);
@@ -57,7 +56,7 @@ public class OrderService {
 
     public static void main(String[] args) {
         Jdbi jdbi = JDBIConnector.get();
-        String orderId ="O12345678901";
+        String orderId ="1";
         OrderService orderService = new OrderService();
         Order order = orderService.getOrderById(orderId);
         System.out.println(order);

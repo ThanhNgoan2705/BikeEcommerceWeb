@@ -40,10 +40,16 @@ public class ProductService {
         if (product == null) {
             return new Product();
         }
+
         Category category = CategoryService.getInstance().getById(product.getCategoryId());
         Supplier supplier = SupplierService.getInstance().getById(product.getSupplierId());
         Brand brand = BrandService.getInstance().getById(product.getBrandId());
         Discount discount = DiscountService.getInstance().getById(product.getDiscountId());
+        List<Color> colors = ColorService.getInstance().getColorByProductId(product.getProductId());
+        List<ImageProduct> imageProducts = ImageProductService.getInstance().getImageProductByProductId(product.getProductId());
+
+        product.setImage(imageProducts);
+        product.setColors(colors);
         product.setCategory(category);
         product.setSupplier(supplier);
         product.setBrand(brand);
@@ -67,7 +73,8 @@ public class ProductService {
 
     public static void main(String[] args) {
         ProductService productService = ProductService.getInstance();
-        List<Product> products = productService.findProductByName("Bike");
-        System.out.println(products);
+//        List<Product> products = productService.findProductByName("Bike");
+        Product product = productService.getProductById("1");
+        System.out.println(product);
     }
 }

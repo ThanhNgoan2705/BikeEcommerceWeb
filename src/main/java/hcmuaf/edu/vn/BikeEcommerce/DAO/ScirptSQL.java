@@ -23,7 +23,7 @@ public class ScirptSQL {
     // Order
     public static final String getAllOrder = "SELECT * FROM `order`";
     public static final String getOrderById = "SELECT * FROM `order` WHERE order_id=:orderId";
-    public static final String insertOrder = "INSERT INTO `order` (order_id, user_id, create_at, status, total_price) " + "VALUES (:getOrderId,:getUserId,:getCreateAt,:getStatus,:getTotalPrice);";
+    public static final String insertOrder = "INSERT INTO `order` (order_id, user_id, create_at, status, total_price) " + "VALUES (:getOrderId,:getUserId,:getCreatedAt,:getStatus,:getTotalPrice);";
     public static final String updateOrder = "UPDATE `order` " + "SET status = :getStatus, total_price = :getTotalPrice ,discount = :discount, send_day=:sendDay, receive_day=:receiveDay" + "WHERE order_id = :getOrderId;";
     public static final String deleteOrderById = "DELETE FROM `order` WHERE order_id = :orderId";
 

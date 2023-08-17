@@ -21,4 +21,10 @@ public class DiscountService {
     public Discount getById(String discountId) {
         return jdbi.withExtension(DiscountDAO.class, dao -> dao.getById(discountId));
     }
+
+    public static void main(String[] args) {
+        DiscountService discountService = new DiscountService();
+        Discount discount = discountService.getById("1");
+        System.out.println(discount);
+    }
 }

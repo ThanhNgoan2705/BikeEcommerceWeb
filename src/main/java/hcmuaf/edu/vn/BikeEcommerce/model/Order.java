@@ -25,9 +25,9 @@ public class Order {
     public static final int CANCELLED = 6;
     public static final int RETURNED = 7;
     public static final int REFUNDED = 8;
-    @ColumnName("order_id")
+
     private String orderId;
-    @ColumnName("user_id")
+
     private String userId;
     private String addressId;
     @ColumnName("price")
@@ -45,9 +45,9 @@ public class Order {
     @ColumnName("status")
     private int status;
     @ColumnName("create_at")
-    private String createAt;
+    private String createdAt;
     @ColumnName("update_at")
-    private String updateAt;
+    private String updatedAt;
     // atrribute object
     @Nested("u")
     private User user;
@@ -99,8 +99,8 @@ public class Order {
                 ", sendDay='" + sendDay + '\'' +
                 ", receiveDay='" + receiveDay + '\'' +
                 ", status=" + status +
-                ", createAt='" + createAt + '\'' +
-                ", updateAt='" + updateAt + '\'' +
+                ", createdAt='" + createdAt + '\'' +
+                ", updatedAt='" + updatedAt + '\'' +
                 ", user=" + user +
                 ", address=" + address +
                 ", orderItemList=" + orderItemList +
@@ -139,20 +139,20 @@ public class Order {
         this.user = user;
     }
 
-    public String getCreateAt() {
-        return createAt;
+    public String getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreateAt(String createAt) {
-        this.createAt = createAt;
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public String getUpdateAt() {
-        return updateAt;
+    public String getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setUpdateAt(String updateAt) {
-        this.updateAt = updateAt;
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public String getOrderId() {

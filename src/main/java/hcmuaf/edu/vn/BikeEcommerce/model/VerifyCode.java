@@ -5,7 +5,7 @@ public class VerifyCode {
     private String verifyCode;
     private int function;
     private int valid;
-    private String createAt;
+    private String createdAt;
 
     public VerifyCode() {
     }
@@ -25,7 +25,7 @@ public class VerifyCode {
                 ", verifyCode='" + verifyCode + '\'' +
                 ", function=" + function +
                 ", valid=" + valid +
-                ", createAt='" + createAt + '\'' +
+                ", createdAt='" + createdAt + '\'' +
                 '}';
     }
 
@@ -61,11 +61,11 @@ public class VerifyCode {
         this.verifyCode = verifyCode;
     }
 
-    public String getCreateAt() {
-        return createAt;
+    public String getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreateAt(String createAt) {
-        this.createAt = createAt;
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 }

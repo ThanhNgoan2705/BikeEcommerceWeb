@@ -4,7 +4,6 @@ import hcmuaf.edu.vn.BikeEcommerce.DAO.CategoryDAO;
 import hcmuaf.edu.vn.BikeEcommerce.db.JDBIConnector;
 import hcmuaf.edu.vn.BikeEcommerce.model.Category;
 import org.jdbi.v3.core.Jdbi;
-import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 
 
 public class CategoryService {
@@ -33,4 +32,9 @@ public static CategoryService getInstance() {
          jdbi.useExtension(CategoryDAO.class, dao -> dao.delete(categoryId));
     }
 
+    public static void main(String[] args) {
+        CategoryService categoryService = new CategoryService();
+        Category category = categoryService.getById("4");
+        System.out.println(category);
+    }
 }

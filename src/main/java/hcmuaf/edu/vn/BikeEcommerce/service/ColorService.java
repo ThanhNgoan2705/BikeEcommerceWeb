@@ -24,4 +24,7 @@ public class ColorService {
     public Color getColorById(String colorId) {
         return jdbi.withExtension(ColorDAO.class, dao -> dao.getColorById(colorId));
     }
+    public List<Color> getColorByProductId(String productId) {
+       return jdbi.withExtension(ColorDAO.class, dao -> dao.getColorByProductId(productId));
+    }
 }
