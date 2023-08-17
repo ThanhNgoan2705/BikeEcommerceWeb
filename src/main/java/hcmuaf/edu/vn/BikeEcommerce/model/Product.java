@@ -1,7 +1,6 @@
 package hcmuaf.edu.vn.BikeEcommerce.model;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
  * <b>Product model</b> <br>
@@ -33,8 +32,8 @@ public class Product {
     private String brandId;
     private String supplierId;
     private int status;
-    private String create_at;
-    private String update_at;
+    private String createdAt;
+    private String updatedAt;
 
     // atributos objects , don't match with database but help to get data easier
     private List<ImageProduct> image; //    get image by productId
@@ -47,6 +46,7 @@ public class Product {
 
     public Product() {
     }
+
     // constructor for fast insert, not null attributes
     public Product(String name, double price, int inventory) {
         this.name = name;
@@ -70,6 +70,7 @@ public class Product {
         this.supplierId = supplierId;
         this.status = status;
     }
+
     // constructor for insert all attributes
     public Product(String productId, String name, double price, String description, String wheelSize, String material, String warranty, int inventory, String discountId, String categoryId, String brandId, String supplierId, int status, List<ImageProduct> image, List<Color> colors, Category category, Brand brand, Supplier supplier, Discount discount) {
         this.productId = productId;
@@ -93,33 +94,55 @@ public class Product {
         this.discount = discount;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Product)) return false;
-        Product product = (Product) o;
-        return Double.compare(getPrice(), product.getPrice()) == 0 && getInventory() == product.getInventory() && getStatus() == product.getStatus() && Objects.equals(getProductId(), product.getProductId()) && Objects.equals(getName(), product.getName()) && Objects.equals(getDescription(), product.getDescription()) && Objects.equals(getWheelSize(), product.getWheelSize()) && Objects.equals(getImage(), product.getImage()) && Objects.equals(getColours(), product.getColours()) && Objects.equals(getMaterial(), product.getMaterial()) && Objects.equals(getWarranty(), product.getWarranty()) && Objects.equals(getDiscountId(), product.getDiscountId()) && Objects.equals(getCategoryId(), product.getCategoryId()) && Objects.equals(getBrandId(), product.getBrandId()) && Objects.equals(getSupplierId(), product.getSupplierId()) && Objects.equals(getCategory(), product.getCategory()) && Objects.equals(getBrand(), product.getBrand()) && Objects.equals(getSupplier(), product.getSupplier()) && Objects.equals(getDiscount(), product.getDiscount()) && Objects.equals(getCreate_at(), product.getCreate_at()) && Objects.equals(getUpdate_at(), product.getUpdate_at());
+    public Product(String productId, String name, double price, String description, String wheelSize, String material, String warranty, int inventory, String discountId, String categoryId, String brandId, String supplierId, int status, String createdAt, String updatedAt, List<ImageProduct> image, List<Color> colors, Category category, Brand brand, Supplier supplier, Discount discount) {
+        this.productId = productId;
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.wheelSize = wheelSize;
+        this.material = material;
+        this.warranty = warranty;
+        this.inventory = inventory;
+        this.discountId = discountId;
+        this.categoryId = categoryId;
+        this.brandId = brandId;
+        this.supplierId = supplierId;
+        this.status = status;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.image = image;
+        this.colors = colors;
+        this.category = category;
+        this.brand = brand;
+        this.supplier = supplier;
+        this.discount = discount;
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(getProductId(), getName(), getPrice(), getDescription(), getWheelSize(), getImage(), getColours(), getMaterial(), getWarranty(), getInventory(), getDiscountId(), getCategoryId(), getBrandId(), getSupplierId(), getStatus(), getCategory(), getBrand(), getSupplier(), getDiscount(), getCreate_at(), getUpdate_at());
-    }
-
-    public String getCreate_at() {
-        return create_at;
-    }
-
-    public void setCreate_at(String create_at) {
-        this.create_at = create_at;
-    }
-
-    public String getUpdate_at() {
-        return update_at;
-    }
-
-    public void setUpdate_at(String update_at) {
-        this.update_at = update_at;
+    public String toString() {
+        return "Product{" +
+                "productId='" + productId + '\'' +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", description='" + description + '\'' +
+                ", wheelSize='" + wheelSize + '\'' +
+                ", material='" + material + '\'' +
+                ", warranty='" + warranty + '\'' +
+                ", inventory=" + inventory +
+                ", discountId='" + discountId + '\'' +
+                ", categoryId='" + categoryId + '\'' +
+                ", brandId='" + brandId + '\'' +
+                ", supplierId='" + supplierId + '\'' +
+                ", status=" + status +
+                ", createdAt='" + createdAt + '\'' +
+                ", updatedAt='" + updatedAt + '\'' +
+                ", image=" + image +
+                ", colors=" + colors +
+                ", category=" + category +
+                ", brand=" + brand +
+                ", supplier=" + supplier +
+                ", discount=" + discount +
+                '}';
     }
 
     public String getProductId() {
@@ -162,39 +185,6 @@ public class Product {
         this.wheelSize = wheelSize;
     }
 
-    public List<ImageProduct> getImage() {
-        return image;
-    }
-
-    public void setImage(List<ImageProduct> image) {
-        this.image = image;
-    }
-
-    public String getSupplierId() {
-        return supplierId;
-    }
-
-    public void setSupplierId(String supplierId) {
-        this.supplierId = supplierId;
-    }
-
-    public Supplier getSupplier() {
-        return supplier;
-    }
-
-    public void setSupplier(Supplier supplier) {
-        this.supplier = supplier;
-    }
-
-    public List<Color> getColours() {
-        return colors;
-    }
-
-    public void setColours(List<Color> colors) {
-        this.colors = colors;
-    }
-
-
     public String getMaterial() {
         return material;
     }
@@ -210,7 +200,6 @@ public class Product {
     public void setWarranty(String warranty) {
         this.warranty = warranty;
     }
-
 
     public int getInventory() {
         return inventory;
@@ -244,12 +233,52 @@ public class Product {
         this.brandId = brandId;
     }
 
+    public String getSupplierId() {
+        return supplierId;
+    }
+
+    public void setSupplierId(String supplierId) {
+        this.supplierId = supplierId;
+    }
+
     public int getStatus() {
         return status;
     }
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public List<ImageProduct> getImage() {
+        return image;
+    }
+
+    public void setImage(List<ImageProduct> image) {
+        this.image = image;
+    }
+
+    public List<Color> getColors() {
+        return colors;
+    }
+
+    public void setColors(List<Color> colors) {
+        this.colors = colors;
     }
 
     public Category getCategory() {
@@ -268,38 +297,19 @@ public class Product {
         this.brand = brand;
     }
 
+    public Supplier getSupplier() {
+        return supplier;
+    }
+
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
+    }
+
     public Discount getDiscount() {
         return discount;
     }
 
     public void setDiscount(Discount discount) {
         this.discount = discount;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "productId='" + productId + '\'' +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", description='" + description + '\'' +
-                ", wheelSize='" + wheelSize + '\'' +
-                ", material='" + material + '\'' +
-                ", warranty='" + warranty + '\'' +
-                ", inventory=" + inventory +
-                ", discountId='" + discountId + '\'' +
-                ", categoryId='" + categoryId + '\'' +
-                ", brandId='" + brandId + '\'' +
-                ", supplierId='" + supplierId + '\'' +
-                ", status=" + status +
-                ", create_at='" + create_at + '\'' +
-                ", update_at='" + update_at + '\'' +
-                ", image=" + image +
-                ", colours=" + colors +
-                ", category=" + category +
-                ", brand=" + brand +
-                ", supplier=" + supplier +
-                ", discount=" + discount +
-                '}';
     }
 }

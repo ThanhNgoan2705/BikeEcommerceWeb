@@ -23,4 +23,10 @@ public class BrandService {
     public Brand getById(String brandId) {
         return jdbi.withExtension(BrandDAO.class, dao -> dao.getById(brandId));
     }
+
+    public static void main(String[] args) {
+        BrandService brandService = new BrandService();
+        Brand brand = brandService.getById("1");
+        System.out.println(brand);
+    }
 }

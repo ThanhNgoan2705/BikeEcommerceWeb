@@ -6,8 +6,8 @@ public class ImageProduct {
     private String imageProductId;
     private String link;
     private String productId;
-    private LocalDateTime createAt;
-    private LocalDateTime updateAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
     private Product product;
 
     public ImageProduct() {
@@ -32,8 +32,8 @@ public class ImageProduct {
                 "imageProductId='" + imageProductId + '\'' +
                 ", link='" + link + '\'' +
                 ", productId='" + productId + '\'' +
-                ", createAt=" + createAt +
-                ", updateAt=" + updateAt +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
                 ", product=" + product +
                 '}';
     }
@@ -70,19 +70,19 @@ public class ImageProduct {
         this.productId = productId;
     }
 
-    public LocalDateTime getCreateAt() {
-        return createAt;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreateAt(LocalDateTime createAt) {
-        this.createAt = createAt;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public LocalDateTime getUpdateAt() {
-        return updateAt;
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setUpdateAt(LocalDateTime updateAt) {
-        this.updateAt = updateAt;
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

@@ -20,9 +20,9 @@ public class User {
     @ColumnName("salt")
     private  String salt;
     @ColumnName("create_at")
-    private   String createAt;
+    private   String createdAt;
     @ColumnName("update_at")
-    private  String updateAt;
+    private  String updatedAt;
     @ColumnName("role")
     private int role; // 1-user, 2-admin
 
@@ -40,7 +40,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "userId='" + userId + '\'' + ", email='" + email + '\'' + ", pass='" + pass + '\'' + ", userName='" + userName + '\'' + ", salt='" + salt + '\'' + ", createAt='" + createAt + '\'' + ", updateAt='" + updateAt + '\'' + ", role=" + role + '}';
+        return "User{" + "userId='" + userId + '\'' + ", email='" + email + '\'' + ", pass='" + pass + '\'' + ", userName='" + userName + '\'' + ", salt='" + salt + '\'' + ", createdAt='" + createdAt + '\'' + ", updatedAt='" + updatedAt + '\'' + ", role=" + role + '}';
     }
 
     public int getRole() {
@@ -51,20 +51,20 @@ public class User {
         this.role = role;
     }
 
-    public String getCreateAt() {
-        return createAt;
+    public String getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreateAt(String createAt) {
-        this.createAt = createAt;
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public String getUpdateAt() {
-        return updateAt;
+    public String getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setUpdateAt(String updateAt) {
-        this.updateAt = updateAt;
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public String getUserId() {

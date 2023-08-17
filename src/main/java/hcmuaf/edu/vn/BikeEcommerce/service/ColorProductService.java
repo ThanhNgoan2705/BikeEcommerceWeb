@@ -8,6 +8,7 @@ import hcmuaf.edu.vn.BikeEcommerce.model.Product;
 import org.jdbi.v3.core.Jdbi;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ColorProductService {
     Jdbi jdbi = JDBIConnector.get();
@@ -24,14 +25,14 @@ public class ColorProductService {
         return jdbi.withExtension(ColorProductDAO.class, dao -> dao.getAll());
     }
 
-    ColorProduct getColorProductByProductId(String productId) {
-        ColorProduct colorProduct = jdbi.withExtension(ColorProductDAO.class, dao -> dao.getColorProductByProductId(productId));
-        return mapOrderColorProduct(colorProduct);
+    List<ColorProduct> getColorProductByProductId(String productId) {
+        List<ColorProduct> colorProducts = jdbi.withExtension(ColorProductDAO.class, dao -> dao.getColorProductByProductId(productId));
+        return colorProducts.stream().map(ColorProduct -> mapOrderColorProduct(ColorProduct)).collect(Collectors.toList());
     }
 
-    ColorProduct getColorProductByColorId(String colorId) {
-        ColorProduct colorProduct = jdbi.withExtension(ColorProductDAO.class, dao -> dao.getColorProductByColorId(colorId));
-        return mapOrderColorProduct(colorProduct);
+    List<ColorProduct> getColorProductByColorId(String colorId) {
+        List<ColorProduct> colorProducts = jdbi.withExtension(ColorProductDAO.class, dao -> dao.getColorProductByColorId(colorId));
+        return colorProducts.stream().map(ColorProduct -> mapOrderColorProduct(ColorProduct)).collect(Collectors.toList());
     }
 
     ColorProduct mapOrderColorProduct(ColorProduct colorProduct) {

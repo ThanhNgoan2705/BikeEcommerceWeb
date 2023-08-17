@@ -11,11 +11,13 @@ public class Address {
     public Address() {
     }
 
-    public Address(String addressId, String homeAddress, String district, String city) {
+    public Address(String addressId, String homeAddress, String district, String city, String createdAt, String updatedAt) {
         this.addressId = addressId;
         this.homeAddress = homeAddress;
         this.district = district;
         this.city = city;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     @Override
@@ -25,8 +27,8 @@ public class Address {
                 ", homeAddress='" + homeAddress + '\'' +
                 ", district='" + district + '\'' +
                 ", city='" + city + '\'' +
-                ", create_at='" + createdAt + '\'' +
-                ", update_at='" + updatedAt + '\'' +
+                ", createdAt='" + createdAt + '\'' +
+                ", updatedAt='" + updatedAt + '\'' +
                 '}';
     }
 
@@ -36,22 +38,6 @@ public class Address {
 
     public void setAddressId(String addressId) {
         this.addressId = addressId;
-    }
-
-    public String getCreate_at() {
-        return createdAt;
-    }
-
-    public void setCreate_at(String create_at) {
-        this.createdAt = create_at;
-    }
-
-    public String getUpdate_at() {
-        return updatedAt;
-    }
-
-    public void setUpdate_at(String update_at) {
-        this.updatedAt = update_at;
     }
 
     public String getHomeAddress() {
@@ -76,5 +62,21 @@ public class Address {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

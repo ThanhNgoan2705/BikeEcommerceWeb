@@ -6,26 +6,26 @@ import java.util.Objects;
 public class Brand {
     private String brandId;
     private String name;
-    private String desc;
+    private String description;
     private String logo;
     private String address;
     private String phone;
     private String email;
-    private LocalDateTime createAt;
-    private LocalDateTime updateAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     public Brand() {
     }
-    public Brand(String brandId, String name, String desc, String logo, String address, String phone, String email, LocalDateTime createAt, LocalDateTime updateAt) {
+    public Brand(String brandId, String name, String description, String logo, String address, String phone, String email, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.brandId = brandId;
         this.name = name;
-        this.desc = desc;
+        this.description = description;
         this.logo = logo;
         this.address = address;
         this.phone = phone;
         this.email = email;
-        this.createAt = createAt;
-        this.updateAt = updateAt;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     public String getBrandId() {
@@ -44,12 +44,12 @@ public class Brand {
         this.name = name;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getLogo() {
@@ -84,20 +84,20 @@ public class Brand {
         this.email = email;
     }
 
-    public LocalDateTime getCreateAt() {
-        return createAt;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreateAt(LocalDateTime createAt) {
-        this.createAt = createAt;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public LocalDateTime getUpdateAt() {
-        return updateAt;
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setUpdateAt(LocalDateTime updateAt) {
-        this.updateAt = updateAt;
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     @Override
@@ -105,12 +105,12 @@ public class Brand {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Brand brand = (Brand) o;
-        return Objects.equals(brandId, brand.brandId) && Objects.equals(name, brand.name) && Objects.equals(desc, brand.desc) && Objects.equals(logo, brand.logo) && Objects.equals(address, brand.address) && Objects.equals(phone, brand.phone) && Objects.equals(email, brand.email) && Objects.equals(createAt, brand.createAt) && Objects.equals(updateAt, brand.updateAt);
+        return Objects.equals(brandId, brand.brandId) && Objects.equals(name, brand.name) && Objects.equals(description, brand.description) && Objects.equals(logo, brand.logo) && Objects.equals(address, brand.address) && Objects.equals(phone, brand.phone) && Objects.equals(email, brand.email) && Objects.equals(createdAt, brand.createdAt) && Objects.equals(updatedAt, brand.updatedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(brandId, name, desc, logo, address, phone, email, createAt, updateAt);
+        return Objects.hash(brandId, name, description, logo, address, phone, email, createdAt, updatedAt);
     }
 
     @Override
@@ -118,13 +118,13 @@ public class Brand {
         return "Brand{" +
                 "brandId='" + brandId + '\'' +
                 ", name='" + name + '\'' +
-                ", desc='" + desc + '\'' +
+                ", description='" + description + '\'' +
                 ", logo='" + logo + '\'' +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
-                ", createAt=" + createAt +
-                ", updateAt=" + updateAt +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
                 '}';
     }
 }

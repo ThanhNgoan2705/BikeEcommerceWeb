@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Category {
-    private String id;
+    private String categoryId;
     private String name;
     private String description;
     private String image;
@@ -12,16 +12,16 @@ public class Category {
     private int active;
     private int level;
     private String shortId;
-    private LocalDateTime createAt;
-    private LocalDateTime updateAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     public Category() {
     }
 
 
-    public Category(String id, String name, String description, String image, String parentId, int active, int level, String shortId) {
+    public Category(String categoryId, String name, String description, String image, String parentId, int active, int level, String shortId) {
 
-        this.id = id;
+        this.categoryId = categoryId;
         this.name = name;
         this.description = description;
         this.image = image;
@@ -33,7 +33,34 @@ public class Category {
 
     @Override
     public String toString() {
-        return "Category{" + "id='" + id + '\'' + ", name='" + name + '\'' + ", description='" + description + '\'' + ", image='" + image + '\'' + ", parentId='" + parentId + '\'' + ", active=" + active + ", level=" + level + ", shortId='" + shortId + '\'' + ", createAt=" + createAt + ", updateAt=" + updateAt + '}';
+        return "Category{" +
+                "categoryId='" + categoryId + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", image='" + image + '\'' +
+                ", parentId='" + parentId + '\'' +
+                ", active=" + active +
+                ", level=" + level +
+                ", shortId='" + shortId + '\'' +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                '}';
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public String getShortId() {
@@ -45,12 +72,12 @@ public class Category {
 
     }
 
-    public String getId() {
-        return id;
+    public String getCategoryId() {
+        return categoryId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getName() {
@@ -106,12 +133,12 @@ public class Category {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Category category = (Category) o;
-        return active == category.active && level == category.level && Objects.equals(id, category.id) && Objects.equals(name, category.name) && Objects.equals(description, category.description) && Objects.equals(image, category.image) && Objects.equals(parentId, category.parentId);
+        return active == category.active && level == category.level && Objects.equals(categoryId, category.categoryId) && Objects.equals(name, category.name) && Objects.equals(description, category.description) && Objects.equals(image, category.image) && Objects.equals(parentId, category.parentId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, image, parentId, active, level);
+        return Objects.hash(categoryId, name, description, image, parentId, active, level);
     }
 
 

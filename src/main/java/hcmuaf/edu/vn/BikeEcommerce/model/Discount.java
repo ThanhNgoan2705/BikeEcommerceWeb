@@ -1,25 +1,29 @@
 package hcmuaf.edu.vn.BikeEcommerce.model;
 
+import org.jdbi.v3.core.mapper.reflect.ColumnName;
+
 import java.time.LocalDateTime;
 
     public class Discount {
         private String discountId;
         private String name;
-        private String desc;
+        private String description;
         private double discountPercent;
         private int active;
         private LocalDateTime startDate;
         private LocalDateTime endDate;
-        private String createAt;
-        private String updateAt;
+        @ColumnName("create_at")
+        private String createdAt;
+        @ColumnName("update_at")
+        private String updatedAt;
 
         public Discount() {
         }
 
-        public Discount(String discountId, String name, String desc, double discountPercent, int active, LocalDateTime startDate, LocalDateTime endDate) {
+        public Discount(String discountId, String name, String description, double discountPercent, int active, LocalDateTime startDate, LocalDateTime endDate) {
             this.discountId = discountId;
             this.name = name;
-            this.desc = desc;
+            this.description = description;
             this.discountPercent = discountPercent;
             this.active = active;
             this.startDate = startDate;
@@ -31,13 +35,13 @@ import java.time.LocalDateTime;
             return "Discount{" +
                     "discountId='" + discountId + '\'' +
                     ", name='" + name + '\'' +
-                    ", desc='" + desc + '\'' +
+                    ", description='" + description + '\'' +
                     ", discountPercent=" + discountPercent +
                     ", active=" + active +
                     ", startDate=" + startDate +
                     ", endDate=" + endDate +
-                    ", createAt='" + createAt + '\'' +
-                    ", updateAt='" + updateAt + '\'' +
+                    ", createdAt='" + createdAt + '\'' +
+                    ", updatedAt='" + updatedAt + '\'' +
                     '}';
         }
 
@@ -57,12 +61,12 @@ import java.time.LocalDateTime;
             this.name = name;
         }
 
-        public String getDesc() {
-            return desc;
+        public String getDescription() {
+            return description;
         }
 
-        public void setDesc(String desc) {
-            this.desc = desc;
+        public void setDescription(String description) {
+            this.description = description;
         }
 
         public double getDiscountPercent() {
@@ -97,19 +101,19 @@ import java.time.LocalDateTime;
             this.endDate = endDate;
         }
 
-        public String getCreateAt() {
-            return createAt;
+        public String getCreatedAt() {
+            return createdAt;
         }
 
-        public void setCreateAt(String createAt) {
-            this.createAt = createAt;
+        public void setCreatedAt(String createdAt) {
+            this.createdAt = createdAt;
         }
 
-        public String getUpdateAt() {
-            return updateAt;
+        public String getUpdatedAt() {
+            return updatedAt;
         }
 
-        public void setUpdateAt(String updateAt) {
-            this.updateAt = updateAt;
+        public void setUpdatedAt(String updatedAt) {
+            this.updatedAt = updatedAt;
         }
     }
