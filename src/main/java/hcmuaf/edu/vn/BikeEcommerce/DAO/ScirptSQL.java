@@ -27,5 +27,8 @@ public class ScirptSQL {
     public static final String updateOrder = "UPDATE `order` " + "SET status = :getStatus, total_price = :getTotalPrice ,discount = :discount, send_day=:sendDay, receive_day=:receiveDay" + "WHERE order_id = :getOrderId;";
     public static final String deleteOrderById = "DELETE FROM `order` WHERE order_id = :orderId";
 
-
+    //OrderItem
+    public static final String getProductsByOrderId = "SELECT * FROM order_item WHERE order_id=:orderId";
+    // Adress
+    public static final String getAddressById = "select * from address where address_id=:addressId";
 }
