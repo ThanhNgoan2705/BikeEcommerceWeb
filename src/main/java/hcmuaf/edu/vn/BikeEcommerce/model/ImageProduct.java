@@ -1,32 +1,57 @@
 package hcmuaf.edu.vn.BikeEcommerce.model;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 public class ImageProduct {
-    private String id;
+    private String imageProductId;
     private String link;
     private String productId;
     private LocalDateTime createAt;
     private LocalDateTime updateAt;
+    private Product product;
 
     public ImageProduct() {
     }
 
-    public ImageProduct(String id, String link, String productId, LocalDateTime createAt, LocalDateTime updateAt) {
-        this.id = id;
+    public ImageProduct(String imageProductId, String link, String productId) {
+        this.imageProductId = imageProductId;
         this.link = link;
         this.productId = productId;
-        this.createAt = createAt;
-        this.updateAt = updateAt;
     }
 
-    public String getId() {
-        return id;
+    public ImageProduct(String imageProductId, String link, String productId, Product product) {
+        this.imageProductId = imageProductId;
+        this.link = link;
+        this.productId = productId;
+        this.product = product;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    @Override
+    public String toString() {
+        return "ImageProduct{" +
+                "imageProductId='" + imageProductId + '\'' +
+                ", link='" + link + '\'' +
+                ", productId='" + productId + '\'' +
+                ", createAt=" + createAt +
+                ", updateAt=" + updateAt +
+                ", product=" + product +
+                '}';
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public String getImageProductId() {
+        return imageProductId;
+    }
+
+    public void setImageProductId(String imageProductId) {
+        this.imageProductId = imageProductId;
     }
 
     public String getLink() {
@@ -60,23 +85,4 @@ public class ImageProduct {
     public void setUpdateAt(LocalDateTime updateAt) {
         this.updateAt = updateAt;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ImageProduct that = (ImageProduct) o;
-        return Objects.equals(id, that.id) && Objects.equals(link, that.link) && Objects.equals(productId, that.productId) && Objects.equals(createAt, that.createAt) && Objects.equals(updateAt, that.updateAt);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, link, productId, createAt, updateAt);
-    }
-
-    @Override
-    public String toString() {
-        return "ImageProduct{" + "id='" + id + '\'' + ", link='" + link + '\'' + ", productId='" + productId + '\'' + ", createAt=" + createAt + ", updateAt=" + updateAt + '}';
-    }
-
 }

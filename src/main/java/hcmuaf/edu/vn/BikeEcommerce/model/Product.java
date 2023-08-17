@@ -38,7 +38,7 @@ public class Product {
 
     // atributos objects , don't match with database but help to get data easier
     private List<ImageProduct> image; //    get image by productId
-    private List<Colour> colours; //    get colour by productId
+    private List<Color> colors; //    get colour by productId
     private Category category; //   get category by categoryId
     private Brand brand;//   get brand by brandId
     private Supplier supplier;//    get supplier by supplierId
@@ -71,7 +71,7 @@ public class Product {
         this.status = status;
     }
     // constructor for insert all attributes
-    public Product(String productId, String name, double price, String description, String wheelSize, String material, String warranty, int inventory, String discountId, String categoryId, String brandId, String supplierId, int status, List<ImageProduct> image, List<Colour> colours, Category category, Brand brand, Supplier supplier, Discount discount) {
+    public Product(String productId, String name, double price, String description, String wheelSize, String material, String warranty, int inventory, String discountId, String categoryId, String brandId, String supplierId, int status, List<ImageProduct> image, List<Color> colors, Category category, Brand brand, Supplier supplier, Discount discount) {
         this.productId = productId;
         this.name = name;
         this.price = price;
@@ -86,7 +86,7 @@ public class Product {
         this.supplierId = supplierId;
         this.status = status;
         this.image = image;
-        this.colours = colours;
+        this.colors = colors;
         this.category = category;
         this.brand = brand;
         this.supplier = supplier;
@@ -186,12 +186,12 @@ public class Product {
         this.supplier = supplier;
     }
 
-    public List<Colour> getColours() {
-        return colours;
+    public List<Color> getColours() {
+        return colors;
     }
 
-    public void setColours(List<Colour> colours) {
-        this.colours = colours;
+    public void setColours(List<Color> colors) {
+        this.colors = colors;
     }
 
 
@@ -295,7 +295,7 @@ public class Product {
                 ", create_at='" + create_at + '\'' +
                 ", update_at='" + update_at + '\'' +
                 ", image=" + image +
-                ", colours=" + colours +
+                ", colours=" + colors +
                 ", category=" + category +
                 ", brand=" + brand +
                 ", supplier=" + supplier +
