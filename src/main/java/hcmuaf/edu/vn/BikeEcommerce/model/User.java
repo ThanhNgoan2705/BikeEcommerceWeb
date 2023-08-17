@@ -1,8 +1,14 @@
 package hcmuaf.edu.vn.BikeEcommerce.model;
 
 import org.jdbi.v3.core.mapper.reflect.ColumnName;
-
+/**
+ * Created by Admin on 05-Jun-18. <br/>
+ * <b>role:</b> 1-user, 2-admin
+ *
+ */
 public class User {
+    private static final int USER = 1;
+    private static final int ADMIN = 2;
     @ColumnName("user_id")
     private String userId;
     @ColumnName("email")

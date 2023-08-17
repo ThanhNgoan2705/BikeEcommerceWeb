@@ -1,6 +1,7 @@
 package hcmuaf.edu.vn.BikeEcommerce.DAO;
 
 import hcmuaf.edu.vn.BikeEcommerce.model.Order;
+import hcmuaf.edu.vn.BikeEcommerce.model.OrderItem;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.customizer.BindBean;
@@ -25,4 +26,6 @@ public interface OrderDAO {
 
     @SqlUpdate(ScirptSQL.deleteOrderById)
     void deleteOrderById(@Bind("orderId") String orderId);
+    @SqlQuery(ScirptSQL.getProductsByOrderId)
+    List<OrderItem> getOrderItemByOrderId(String orderId);
 }

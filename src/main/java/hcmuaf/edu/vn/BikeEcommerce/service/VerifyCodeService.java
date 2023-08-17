@@ -7,7 +7,17 @@ import hcmuaf.edu.vn.BikeEcommerce.toolSecurity.GenerateVerifyCode;
 import org.jdbi.v3.core.Jdbi;
 
 public class VerifyCodeService {
+    private static VerifyCodeService instance = null;
     Jdbi jdbi = JDBIConnector.get();
+    public static VerifyCodeService getInstance(){
+        if (instance == null) {
+            instance = new VerifyCodeService();
+        }
+        return instance;
+    }
+
+    public VerifyCodeService() {
+    }
 
     public boolean checkVerifyCodeForRegister(VerifyCode verifyCode) {
         // true if email and code are correct and time creat this code under 5 min

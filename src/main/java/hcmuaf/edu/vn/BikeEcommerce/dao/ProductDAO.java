@@ -14,22 +14,25 @@ public interface ProductDAO {
     @SqlQuery("Select * from Product ")
     List<Product> getAll();
 
-    @SqlQuery("Select * from Product where id = :id")
+    @SqlQuery("Select * from Product where product_id = :id")
     Product getById(@Bind("id") String id);
 
-    @SqlQuery ("Select * from Product where name like = :name")
+    @SqlQuery("Select * from Product where name like CONCAT('%', :name, '%') ")
     List<Product> getByName(@Bind("name") String name);
 
-    @SqlUpdate("Insert into `Product`(`id`, `name`,`price`,`description`,`wheelSize`,`quantity`,"+
-            "`inventory`,`material`,`warranty`,`category_id`,`brand_id`,`discount_id`,"+
-            "`supplier_id`)" +
-            " values (:id, :name, :price, :description, :wheelSize, :quantity, :inventory, "+"" +
-            ":material, :warranty, :category_id, :brand_id, :discount_id, :supplier_id)")
-    int insert(@BindBean Product product);
+    @SqlUpdate("INSERT INTO product (product_id, name, price, description, wheelSize, material, warranty,  inventory, discountId, categoryId, brandId, supplierId, status) " +
+            "VALUES (:productId, :name, :price, :description, :wheelSize, :material, :warranty,  :inventory, :discountId, :categoryId, :brandId, :supplierId, :status)")
+    void insert(@BindBean Product product);
 
-    @SqlUpdate("Update `Product` set `name` = :name, `price` = :price, `description` = :description, `wheelSize` = :wheelSize, `quantity` = :quantity, `inventory` = :inventory, `material` = :material, `warranty` = :warranty, `category_id` = :category_id, `brand_id` = :brand_id,"+"" +
-            " `discount_id` = :discount_id, `supplier_id` = :supplier_id, `updateAt` = now() where `id` = :id")
-            int update(@BindBean Product product);
+    @SqlUpdate("UPDATE product " +
+            "SET name = :name, price = :price, description = :description, wheelSize = :wheelSize, " +
+            "material = :material, warranty = :warranty, inventory = :inventory, " +
+            "discountId = :discountId, categoryId = :categoryId, brandId = :brandId, supplierId = :supplierId, status = :status " +
+            "WHERE productId = :productId")
+    void update(@BindBean Product product);
+
+    @SqlUpdate("DELETE FROM product WHERE productId = :productId")
+    void delete(@Bind("productId") String productId);
 
 
 }

@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Supplier {
-    private String id;
+    private String supplierId;
     private String name;
     private LocalDateTime createAt;
     private LocalDateTime updateAt;
@@ -12,19 +12,19 @@ public class Supplier {
     public Supplier() {
     }
 
-    public Supplier(String id, String name, LocalDateTime createAt, LocalDateTime updateAt) {
-        this.id = id;
+    public Supplier(String supplierId, String name, LocalDateTime createAt, LocalDateTime updateAt) {
+        this.supplierId = supplierId;
         this.name = name;
         this.createAt = createAt;
         this.updateAt = updateAt;
     }
 
-    public String getId() {
-        return id;
+    public String getSupplierId() {
+        return supplierId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setSupplierId(String supplierId) {
+        this.supplierId = supplierId;
     }
 
     public String getName() {
@@ -56,18 +56,18 @@ public class Supplier {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Supplier supplier = (Supplier) o;
-        return Objects.equals(id, supplier.id) && Objects.equals(name, supplier.name) && Objects.equals(createAt, supplier.createAt) && Objects.equals(updateAt, supplier.updateAt);
+        return Objects.equals(supplierId, supplier.supplierId) && Objects.equals(name, supplier.name) && Objects.equals(createAt, supplier.createAt) && Objects.equals(updateAt, supplier.updateAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, createAt, updateAt);
+        return Objects.hash(supplierId, name, createAt, updateAt);
     }
 
     @Override
     public String toString() {
         return "Supplier{" +
-                "id='" + id + '\'' +
+                "supplierId='" + supplierId + '\'' +
                 ", name='" + name + '\'' +
                 ", createAt=" + createAt +
                 ", updateAt=" + updateAt +

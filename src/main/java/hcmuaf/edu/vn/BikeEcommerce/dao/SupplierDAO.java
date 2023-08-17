@@ -1,31 +1,34 @@
 package hcmuaf.edu.vn.BikeEcommerce.DAO;
 
 import hcmuaf.edu.vn.BikeEcommerce.model.Supplier;
+import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
+import org.jdbi.v3.sqlobject.customizer.BindBean;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
 import java.util.List;
 
+@RegisterBeanMapper(Supplier.class)
 public interface SupplierDAO {
     @SqlQuery("Select * from Supplier ")
     List<Supplier> getAll();
 
-    @SqlQuery("Select * from Supplier where id = :id")
-    Supplier getById(@Bind("id") String id);
+    @SqlQuery("Select * from Supplier where supplier_id = :supplierId")
+    Supplier getById(@Bind("supplierId") String supplierId);
 
     @SqlQuery("Select * from Supplier where name like = :name")
     List<Supplier> getByName(@Bind("name") String name);
 
-    @SqlUpdate("Insert into `Supplier`(`id`, `name`,`description`,`createAt`,`updateAt`)" +
-            " values (:id, :name, :description, now(), now())")
-    int insert(@Bind("id") String id, @Bind("name") String name, @Bind("description") String description);
+    @SqlUpdate("Insert into `Supplier`(`supplier_id`, `name`,`description`)" +
+            " values (:supplierId, :name, :description")
+    int insert(@BindBean Supplier supplier);
 
-    @SqlUpdate("Update `Supplier` set `name` = :name, `description` = :description, `updateAt` = now() where `id` = :id")
-    int update(@Bind("id") String id, @Bind("name") String name, @Bind("description") String description);
+    @SqlUpdate("Update `Supplier` set `name` = :name, `description` = :description where `supplier_id` = :supplierId")
+    int update(@BindBean Supplier supplier);
 
-    @SqlUpdate("Delete from `Supplier` where `id` = :id")
-    int delete(@Bind("id") String id);
+    @SqlUpdate("Delete from `Supplier` where `supplier_id` = :supplierId")
+    int delete(@Bind("supplierId") String supplierId);
 
 
 }

@@ -3,37 +3,50 @@ package hcmuaf.edu.vn.BikeEcommerce.model;
 import java.time.LocalDateTime;
 
     public class Discount {
-        private String id;
+        private String discountId;
         private String name;
         private String desc;
         private double discountPercent;
         private int active;
-        private LocalDateTime startAt;
-        private LocalDateTime finishAt;
-        private LocalDateTime createAt;
-        private LocalDateTime updateAt;
+        private LocalDateTime startDate;
+        private LocalDateTime endDate;
+        private String createAt;
+        private String updateAt;
 
         public Discount() {
         }
 
-        public Discount(String id, String name, String desc, double discountPercent, int active, LocalDateTime startAt, LocalDateTime finishAt, LocalDateTime createAt, LocalDateTime updateAt) {
-            this.id = id;
+        public Discount(String discountId, String name, String desc, double discountPercent, int active, LocalDateTime startDate, LocalDateTime endDate) {
+            this.discountId = discountId;
             this.name = name;
             this.desc = desc;
             this.discountPercent = discountPercent;
             this.active = active;
-            this.startAt = startAt;
-            this.finishAt = finishAt;
-            this.createAt = createAt;
-            this.updateAt = updateAt;
+            this.startDate = startDate;
+            this.endDate = endDate;
         }
 
-        public String getId() {
-            return id;
+        @Override
+        public String toString() {
+            return "Discount{" +
+                    "discountId='" + discountId + '\'' +
+                    ", name='" + name + '\'' +
+                    ", desc='" + desc + '\'' +
+                    ", discountPercent=" + discountPercent +
+                    ", active=" + active +
+                    ", startDate=" + startDate +
+                    ", endDate=" + endDate +
+                    ", createAt='" + createAt + '\'' +
+                    ", updateAt='" + updateAt + '\'' +
+                    '}';
         }
 
-        public void setId(String id) {
-            this.id = id;
+        public String getDiscountId() {
+            return discountId;
+        }
+
+        public void setDiscountId(String discountId) {
+            this.discountId = discountId;
         }
 
         public String getName() {
@@ -68,50 +81,35 @@ import java.time.LocalDateTime;
             this.active = active;
         }
 
-        public LocalDateTime getStartAt() {
-            return startAt;
+        public LocalDateTime getStartDate() {
+            return startDate;
         }
 
-        public void setStartAt(LocalDateTime startAt) {
-            this.startAt = startAt;
+        public void setStartDate(LocalDateTime startDate) {
+            this.startDate = startDate;
         }
 
-        public LocalDateTime getFinishAt() {
-            return finishAt;
+        public LocalDateTime getEndDate() {
+            return endDate;
         }
 
-        public void setFinishAt(LocalDateTime finishAt) {
-            this.finishAt = finishAt;
+        public void setEndDate(LocalDateTime endDate) {
+            this.endDate = endDate;
         }
 
-        public LocalDateTime getCreateAt() {
+        public String getCreateAt() {
             return createAt;
         }
 
-        public void setCreateAt(LocalDateTime createAt) {
+        public void setCreateAt(String createAt) {
             this.createAt = createAt;
         }
 
-        public LocalDateTime getUpdateAt() {
+        public String getUpdateAt() {
             return updateAt;
         }
 
-        public void setUpdateAt(LocalDateTime updateAt) {
+        public void setUpdateAt(String updateAt) {
             this.updateAt = updateAt;
         }
-
-        @Override
-        public String toString() {
-            return "Discount{" +
-                    "id='" + id + '\'' +
-                    ", name='" + name + '\'' +
-                    ", desc='" + desc + '\'' +
-                    ", discountPercent=" + discountPercent +
-                    ", active=" + active +
-                    ", startAt=" + startAt +
-                    ", finishAt=" + finishAt +
-                    ", createAt=" + createAt +
-                    ", updateAt=" + updateAt +
-                    '}';
-        }
-}
+    }

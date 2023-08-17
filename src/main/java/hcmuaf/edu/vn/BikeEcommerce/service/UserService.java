@@ -9,6 +9,18 @@ import java.util.List;
 
 public class UserService {
     Jdbi jdbi = JDBIConnector.get();
+    private static UserService instance = null;
+
+
+    public static UserService getInstance(){
+        if (instance == null) {
+            instance = new UserService();
+        }
+        return instance;
+    }
+
+    public UserService() {
+    }
 
     public List<User> getAllUser() {
         return jdbi.withExtension(UserDAO.class, UserDAO::getUsers);
