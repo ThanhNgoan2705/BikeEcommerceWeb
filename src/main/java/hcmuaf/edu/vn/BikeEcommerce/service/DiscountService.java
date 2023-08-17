@@ -1,5 +1,6 @@
 package hcmuaf.edu.vn.BikeEcommerce.service;
 
+import hcmuaf.edu.vn.BikeEcommerce.DAO.DiscountDAO;
 import hcmuaf.edu.vn.BikeEcommerce.db.JDBIConnector;
 import hcmuaf.edu.vn.BikeEcommerce.model.Discount;
 import org.jdbi.v3.core.Jdbi;
@@ -18,6 +19,6 @@ public class DiscountService {
     }
 
     public Discount getById(String discountId) {
-        return jdbi.withExtension(DiscountService.class, dao -> dao.getById(discountId));
+        return jdbi.withExtension(DiscountDAO.class, dao -> dao.getById(discountId));
     }
 }
