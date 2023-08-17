@@ -27,15 +27,23 @@ public class ProductService {
         return products.stream().map(product -> mapOtherBean(product)).collect(Collectors.toList());
 
     }
+    public Product getProductById(String productId) {
+        Product product = jdbi.withExtension(ProductDAO.class, dao -> dao.getById(productId));
+        return mapOtherBean(product);
+    }
+    public List<Product> findProductByName(String productName) {
+        List<Product> products = jdbi.withExtension(ProductDAO.class, dao -> dao.getByName(productName));
+        return products.stream().map(product -> mapOtherBean(product)).collect(Collectors.toList());
+    }
 
     private Product mapOtherBean(Product product) {
         if (product == null) {
             return new Product();
         }
-        Category category = jdbi.withExtension(CategoryService.class, dao -> dao.getById(product.getCategoryId()));
-        Supplier supplier = jdbi.withExtension(SupplierService.class, dao -> dao.getById(product.getSupplierId()));
-        Brand brand = jdbi.withExtension(BrandService.class, dao -> dao.getById(product.getBrandId()));
-        Discount discount = jdbi.withExtension(DiscountService.class, dao -> dao.getById(product.getDiscountId()));
+        Category category = CategoryService.getInstance().getById(product.getCategoryId());
+        Supplier supplier = SupplierService.getInstance().getById(product.getSupplierId());
+        Brand brand = BrandService.getInstance().getById(product.getBrandId());
+        Discount discount = DiscountService.getInstance().getById(product.getDiscountId());
         product.setCategory(category);
         product.setSupplier(supplier);
         product.setBrand(brand);
@@ -55,5 +63,11 @@ public class ProductService {
 
     public void delete(String productId) {
         jdbi.useExtension(ProductDAO.class, dao -> dao.delete(productId));
+    }
+
+    public static void main(String[] args) {
+        ProductService productService = ProductService.getInstance();
+        List<Product> products = productService.findProductByName("Bike");
+        System.out.println(products);
     }
 }
