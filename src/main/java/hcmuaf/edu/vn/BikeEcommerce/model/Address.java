@@ -1,12 +1,12 @@
 package hcmuaf.edu.vn.BikeEcommerce.model;
 
 public class Address {
-    String addressId;
-    String homeAddress;
-    String district;
-    String city;
-    String create_at;
-    String update_at;
+    private String addressId;
+    private String homeAddress;
+    private String district;
+    private String city;
+    private String createdAt;
+    private String updatedAt;
 
     public Address() {
     }
@@ -25,8 +25,8 @@ public class Address {
                 ", homeAddress='" + homeAddress + '\'' +
                 ", district='" + district + '\'' +
                 ", city='" + city + '\'' +
-                ", create_at='" + create_at + '\'' +
-                ", update_at='" + update_at + '\'' +
+                ", create_at='" + createdAt + '\'' +
+                ", update_at='" + updatedAt + '\'' +
                 '}';
     }
 
@@ -39,19 +39,19 @@ public class Address {
     }
 
     public String getCreate_at() {
-        return create_at;
+        return createdAt;
     }
 
     public void setCreate_at(String create_at) {
-        this.create_at = create_at;
+        this.createdAt = create_at;
     }
 
     public String getUpdate_at() {
-        return update_at;
+        return updatedAt;
     }
 
     public void setUpdate_at(String update_at) {
-        this.update_at = update_at;
+        this.updatedAt = update_at;
     }
 
     public String getHomeAddress() {

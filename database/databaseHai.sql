@@ -39,6 +39,16 @@ create table category
     short_id    varchar(5)                            null
 );
 
+create table color
+(
+    color_id   varchar(64)                           not null
+        primary key,
+    name       varchar(255)                          null,
+    code       varchar(255)                          null,
+    created_at timestamp default current_timestamp() not null,
+    updated_at datetime  default current_timestamp() null on update current_timestamp()
+);
+
 create table discount
 (
     discount_id varchar(64)                           not null
@@ -51,6 +61,15 @@ create table discount
     end_date    date                                  not null,
     created_at  timestamp default current_timestamp() not null,
     updated_at  timestamp default current_timestamp() not null on update current_timestamp()
+);
+
+create table imageslider
+(
+    id         varchar(64)                           not null
+        primary key,
+    link       varchar(255)                          null,
+    created_at timestamp default current_timestamp() null,
+    updated_at datetime  default current_timestamp() null on update current_timestamp()
 );
 
 create table supplier
@@ -88,6 +107,29 @@ create table product
         foreign key (discount_id) references discount (discount_id),
     constraint product_supplier_supplier_id_fk
         foreign key (supplier_id) references supplier (supplier_id)
+);
+
+create table colorproduct
+(
+    product_id varchar(64) not null,
+    color_id   varchar(64) not null,
+    primary key (product_id, color_id),
+    constraint colorproduct_color_color_id_fk
+        foreign key (color_id) references color (color_id),
+    constraint colorproduct_product_product_id_fk
+        foreign key (product_id) references product (product_id)
+);
+
+create table imageproduct
+(
+    image_product_id varchar(64)                           not null
+        primary key,
+    link             varchar(255)                          null,
+    product_id       varchar(64)                           null,
+    created_at       timestamp default current_timestamp() not null,
+    updated_at       datetime  default current_timestamp() null on update current_timestamp(),
+    constraint imageproduct_product_product_id_fk
+        foreign key (product_id) references product (product_id)
 );
 
 create table user
