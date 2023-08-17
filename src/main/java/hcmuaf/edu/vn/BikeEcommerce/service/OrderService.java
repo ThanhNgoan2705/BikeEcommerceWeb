@@ -1,15 +1,15 @@
 package hcmuaf.edu.vn.BikeEcommerce.service;
 
+import hcmuaf.edu.vn.BikeEcommerce.DAO.AddressDAO;
 import hcmuaf.edu.vn.BikeEcommerce.DAO.OrderDAO;
 import hcmuaf.edu.vn.BikeEcommerce.DAO.UserDAO;
 import hcmuaf.edu.vn.BikeEcommerce.db.JDBIConnector;
+import hcmuaf.edu.vn.BikeEcommerce.model.Address;
 import hcmuaf.edu.vn.BikeEcommerce.model.Order;
+import hcmuaf.edu.vn.BikeEcommerce.model.OrderItem;
 import hcmuaf.edu.vn.BikeEcommerce.model.User;
-import hcmuaf.edu.vn.BikeEcommerce.toolSecurity.GenerateId;
 import org.jdbi.v3.core.Jdbi;
 
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.List;
 
 public class OrderService {
@@ -34,7 +34,11 @@ public class OrderService {
     public Order getOrderById(String orderId) {
         Order order = jdbi.withExtension(OrderDAO.class, dao -> dao.getOrderById(orderId));
         User user = jdbi.withExtension(UserDAO.class, dao -> dao.getUserByKey(order.getUserId()));
+        List<OrderItem> items = OrderItemService.getInstance().getOrderItemsByOrderId(orderId);
+        Address address = jdbi.withExtension(AddressDAO.class, dao -> dao.getAddressById(order.getAddressId()));
         order.setUser(user);
+        order.setOrderItemList(items);
+        order.setAddress(address);
         return order;
     }
 
@@ -50,25 +54,14 @@ public class OrderService {
         jdbi.useExtension(OrderDAO.class, dao -> dao.deleteOrderById(orderId));
     }
 
+
     public static void main(String[] args) {
+        Jdbi jdbi = JDBIConnector.get();
+        String orderId ="O12345678901";
         OrderService orderService = new OrderService();
-        UserService userService = new UserService();
-        User user = userService.getUserByKey("h@gmail.com");
-        Order order = new Order();
-        order.setOrderId(GenerateId.generateIdOrder());
-        order.setUserId(user.getUserId());
-        order.setPrice(500);
-        order.setDiscount(20);
-        order.setShippingFee(5);
-        order.setTotal(order.getPrice(), order.getShippingFee(), order.getDiscount());
-        order.setSendDay(Timestamp.valueOf(LocalDateTime.now()).toString());
-        order.setReceiveDay(Timestamp.valueOf(LocalDateTime.now()).toString());
-        order.setStatus(1);
+        Order order = orderService.getOrderById(orderId);
         System.out.println(order);
-        System.out.println(user);
-//
-        orderService.insertOrder(order);
-        Order order1 = orderService.getOrderById("230816C0C989");
-        System.out.println(order1);
+//        List<OrderItem> items = jdbi.withExtension(OrderItemDAO.class, dao -> dao.getOrderItemsByOrderId(orderId));
+//        System.out.println(items);
     }
 }
