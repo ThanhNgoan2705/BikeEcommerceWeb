@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Brand {
-    private String id;
+    private String brandId;
     private String name;
     private String desc;
     private String logo;
@@ -16,8 +16,8 @@ public class Brand {
 
     public Brand() {
     }
-    public Brand(String id, String name, String desc, String logo, String address, String phone, String email, LocalDateTime createAt, LocalDateTime updateAt) {
-        this.id = id;
+    public Brand(String brandId, String name, String desc, String logo, String address, String phone, String email, LocalDateTime createAt, LocalDateTime updateAt) {
+        this.brandId = brandId;
         this.name = name;
         this.desc = desc;
         this.logo = logo;
@@ -28,12 +28,12 @@ public class Brand {
         this.updateAt = updateAt;
     }
 
-    public String getId() {
-        return id;
+    public String getBrandId() {
+        return brandId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setBrandId(String brandId) {
+        this.brandId = brandId;
     }
 
     public String getName() {
@@ -105,18 +105,18 @@ public class Brand {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Brand brand = (Brand) o;
-        return Objects.equals(id, brand.id) && Objects.equals(name, brand.name) && Objects.equals(desc, brand.desc) && Objects.equals(logo, brand.logo) && Objects.equals(address, brand.address) && Objects.equals(phone, brand.phone) && Objects.equals(email, brand.email) && Objects.equals(createAt, brand.createAt) && Objects.equals(updateAt, brand.updateAt);
+        return Objects.equals(brandId, brand.brandId) && Objects.equals(name, brand.name) && Objects.equals(desc, brand.desc) && Objects.equals(logo, brand.logo) && Objects.equals(address, brand.address) && Objects.equals(phone, brand.phone) && Objects.equals(email, brand.email) && Objects.equals(createAt, brand.createAt) && Objects.equals(updateAt, brand.updateAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, desc, logo, address, phone, email, createAt, updateAt);
+        return Objects.hash(brandId, name, desc, logo, address, phone, email, createAt, updateAt);
     }
 
     @Override
     public String toString() {
         return "Brand{" +
-                "id='" + id + '\'' +
+                "brandId='" + brandId + '\'' +
                 ", name='" + name + '\'' +
                 ", desc='" + desc + '\'' +
                 ", logo='" + logo + '\'' +
