@@ -1,6 +1,32 @@
+create table address
+(
+    address_id   varchar(64)                           not null
+        primary key,
+    home_address varchar(255)                          null,
+    district     varchar(100)                          null,
+    city         varchar(100)                          null,
+    create_at    timestamp default current_timestamp() null,
+    update_at    timestamp default current_timestamp() null on update current_timestamp()
+);
+
+create table brand
+(
+    brand_id    varchar(64)                           not null
+        primary key,
+    name        varchar(255)                          not null,
+    description varchar(255)                          null,
+    image       varchar(255)                          null,
+    logo        varchar(255)                          null,
+    address     varchar(255)                          null,
+    email       varchar(255)                          null,
+    phone       varchar(10)                           null,
+    created_at  timestamp default current_timestamp() not null,
+    updated_at  timestamp default current_timestamp() not null on update current_timestamp()
+);
+
 create table category
 (
-    id          varchar(5)                            not null
+    category_id varchar(64)                           not null
         primary key,
     name        varchar(255)                          not null,
     description varchar(255)                          null,
@@ -13,6 +39,29 @@ create table category
     short_id    varchar(5)                            null
 );
 
+create table discount
+(
+    discount_id varchar(64)                           not null
+        primary key,
+    name        varchar(255)                          not null,
+    description varchar(255)                          null,
+    discount    double                                not null,
+    active      int                                   not null,
+    start_date  date                                  not null,
+    end_date    date                                  not null,
+    created_at  timestamp default current_timestamp() not null,
+    updated_at  timestamp default current_timestamp() not null on update current_timestamp()
+);
+
+create table supplier
+(
+    supplier_id varchar(64)                           not null
+        primary key,
+    name        varchar(255)                          null,
+    created_at  timestamp default current_timestamp() not null,
+    updated_at  timestamp default current_timestamp() not null on update current_timestamp()
+);
+
 create table product
 (
     product_id  varchar(11)                           not null
@@ -20,17 +69,25 @@ create table product
     name        varchar(255)                          not null,
     price       double                                not null,
     description varchar(255)                          null,
-    wheelSize   int                                   null,
-    quantity    int                                   not null,
+    wheelSize   varchar(10)                           null,
     inventory   int                                   not null,
-    material    varchar(255)                          not null,
+    material    varchar(255)                          null,
     warranty    varchar(50)                           null,
-    category_id varchar(255)                          null,
-    brand_id    varchar(255)                          null,
-    discount_id varchar(255)                          null,
-    supplier_id varchar(255)                          null,
-    created_at  timestamp default current_timestamp() not null,
-    updated_at  timestamp default current_timestamp() not null
+    category_id varchar(64)                           null,
+    brand_id    varchar(64)                           null,
+    discount_id varchar(64)                           null,
+    supplier_id varchar(64)                           null,
+    status      int       default 1                   null,
+    created_at  timestamp default current_timestamp() null,
+    updated_at  timestamp default current_timestamp() null on update current_timestamp(),
+    constraint product_brand_brand_id_fk
+        foreign key (brand_id) references brand (brand_id),
+    constraint product_category__category_id_fk
+        foreign key (category_id) references category (category_id),
+    constraint product_discount__discount_id_fk
+        foreign key (discount_id) references discount (discount_id),
+    constraint product_supplier_supplier_id_fk
+        foreign key (supplier_id) references supplier (supplier_id)
 );
 
 create table user
@@ -52,6 +109,7 @@ create table `order`
     order_id     varchar(12)                           not null
         primary key,
     user_id      varchar(64)                           null,
+    address_id   varchar(64)                           not null,
     price        double                                null,
     discount     int                                   null,
     shipping_fee double                                null,
@@ -61,24 +119,25 @@ create table `order`
     status       int                                   null comment '1-pending, 2-Confirmed, 3-Processing, 4-Shipped,5-Delivered,6-Cancelled,7-Returned,8-Refunded',
     create_at    timestamp default current_timestamp() null,
     update_at    timestamp default current_timestamp() null on update current_timestamp(),
+    constraint order_address_address_id_fk
+        foreign key (address_id) references address (address_id),
     constraint order_user_user_id_fk
         foreign key (user_id) references user (user_id),
     constraint chk_discount_range
         check (`discount` between 1 and 100)
 );
 
-create table order_detail
+create table order_item
 (
     order_id   varchar(12) not null,
     product_id varchar(11) not null,
     quantity   int         not null,
     primary key (order_id, product_id),
-    constraint order_detail_order_order_id_fk
+    constraint order_item_order_order_id_fk
         foreign key (order_id) references `order` (order_id),
-    constraint order_detail_product_product_id_fk
+    constraint order_item_product_product_id_fk
         foreign key (product_id) references product (product_id)
-)
-    comment 'chi tiet hoa don';
+);
 
 create index user_email_index
     on user (email);
