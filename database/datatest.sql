@@ -1,5 +1,5 @@
 -- Insert data into address table
-INSERT INTO address (address_id, home_address, district, city, createdAt, updatedAt)
+INSERT INTO address (address_id, home_address, district, city, created_at, updated_at)
 VALUES
     ('1', '123 Main St', 'District A', 'City X', NOW(), NOW()),
     ('2', '456 Elm St', 'District B', 'City Y', NOW(), NOW()),
@@ -89,7 +89,7 @@ VALUES
     ('5', 'image5.jpg', '5', NOW(), NOW());
 
 -- Insert data into user table
-INSERT INTO user (user_id, email, salt, pass, user_name, createdAt, updatedAt, role)
+INSERT INTO user (user_id, email, salt, pass, user_name, created_at, updated_at, role)
 VALUES
     ('1', 'user1@example.com', 'salt1', 'hashedpass1', 'User 1', NOW(), NOW(), 1),
     ('2', 'user2@example.com', 'salt2', 'hashedpass2', 'User 2', NOW(), NOW(), 1),
@@ -98,7 +98,7 @@ VALUES
     ('5', 'admin2@example.com', 'salt5', 'hashedpass5', 'Admin 2', NOW(), NOW(), 2);
 
 -- Insert data into order table
-INSERT INTO `order` (order_id, user_id, address_id, price, discount, shipping_fee, total, send_day, receive_day, status, createdAt, updatedAt)
+INSERT INTO `order` (order_id, user_id, address_id, price, discount, shipping_fee, total, send_day, receive_day, status, created_at, updated_at)
 VALUES
     ('1', '1', '1', 250.0, 10, 20.0, 270.0, '2023-08-10 12:00:00', '2023-08-15 14:00:00', 1, NOW(), NOW()),
     ('2', '2', '2', 180.0, 5, 15.0, 190.0, '2023-08-11 10:00:00', '2023-08-17 11:30:00', 2, NOW(), NOW()),
