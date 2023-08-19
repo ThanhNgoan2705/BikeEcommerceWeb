@@ -1,5 +1,15 @@
 package hcmuaf.edu.vn.BikeEcommerce.model;
 
+/**
+ * Created by Admin on 19-8-23.<br/>
+ * This class is used to store information of colorProduct <br/>
+ * This class is used to connect product and color <br/>
+ *
+ * @version 1.0
+ * @Author Hoang Hai
+ * @see Product
+ * @see Color
+ */
 public class ColorProduct {
 
     private String productId;

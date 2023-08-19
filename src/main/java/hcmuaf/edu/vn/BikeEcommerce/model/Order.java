@@ -6,8 +6,16 @@ import org.jdbi.v3.core.mapper.reflect.ColumnName;
 import java.util.List;
 
 /**
- * Created by Admin on 05-Jun-18.
- * <b>status:</b> 1-pending,
+ * Created by Admin on 05-Jun-18.<br/>
+ * This class is used to store information of order <br/>
+ * This class is used to map with order table in database <br/>
+ * One user have many orders    <br/>
+ * One order have many order items <br/>
+ * One order have one address <br/>
+ * One order have one user <br/>
+ *
+ * <b>status:</b>
+ * 1-pending,
  * 2-Confirmed,
  * 3-Processing,
  * 4-Shipped,
@@ -15,6 +23,12 @@ import java.util.List;
  * 6-Cancelled,
  * 7-Returned,
  * 8-Refunded
+ *
+ * @version 1.0
+ * @Author Hoang Hai
+ * @see User
+ * @see OrderItem
+ * @see Address
  */
 public class Order {
     public static final int PENDING = 1;
@@ -57,6 +71,7 @@ public class Order {
     //1-pending, 2-Confirmed, 3-Processing, 4-Shipped,5-Delivered,6-Cancelled,7-Returned,8-Refunded
     public Order() {
     }
+
     public Order(String orderId, String userId, String addressId, double price, int discount, double shippingFee, double total, String sendDay, String receiveDay, int status) {
         this.orderId = orderId;
         this.userId = userId;
@@ -88,23 +103,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" +
-                "orderId='" + orderId + '\'' +
-                ", userId='" + userId + '\'' +
-                ", addressId='" + addressId + '\'' +
-                ", price=" + price +
-                ", discount=" + discount +
-                ", shippingFee=" + shippingFee +
-                ", total=" + total +
-                ", sendDay='" + sendDay + '\'' +
-                ", receiveDay='" + receiveDay + '\'' +
-                ", status=" + status +
-                ", createdAt='" + createdAt + '\'' +
-                ", updatedAt='" + updatedAt + '\'' +
-                ", user=" + user +
-                ", address=" + address +
-                ", orderItemList=" + orderItemList +
-                '}';
+        return "Order{" + "orderId='" + orderId + '\'' + ", userId='" + userId + '\'' + ", addressId='" + addressId + '\'' + ", price=" + price + ", discount=" + discount + ", shippingFee=" + shippingFee + ", total=" + total + ", sendDay='" + sendDay + '\'' + ", receiveDay='" + receiveDay + '\'' + ", status=" + status + ", createdAt='" + createdAt + '\'' + ", updatedAt='" + updatedAt + '\'' + ", user=" + user + ", address=" + address + ", orderItemList=" + orderItemList + '}';
     }
 
     public Address getAddress() {

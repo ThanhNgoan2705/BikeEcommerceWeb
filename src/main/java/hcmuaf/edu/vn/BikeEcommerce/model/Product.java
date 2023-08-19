@@ -4,15 +4,30 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * <b>Product model</b> <br>
+ * Created by Admin on 19-8-23.<br/>
+ * This class is used to store information of product <br/>
+ * This class is used to map with product table in database <br/>
+ * One product have many images <br/>
+ * One product have one category <br/>
+ * One product have one brand <br/>
+ * One product have one supplier <br/>
+ * One product may have one discount <br/>
+ *
+ * @version 1.0 <br>
+ *
  * <b>not null attributes:</b> name, price, inventory <br>
  * <b>object Attributes:</b> image, colours, category, brand, supplier, discount <br>
- * <b>database table:</b> product <br>
  * <b>status :</b>
  * <ul>1: active</ul>
  * <ul>2: inactive</ul>
  * <ul>3: out of stock</ul>
  * <ul>4: on sale</ul>
+ * @Author Hoang Hai
+ * @see ImageProduct
+ * @see Category
+ * @see Brand
+ * @see Supplier
+ * @see Discount
  */
 public class Product {
     public static final int ACTIVE = 1;
@@ -121,29 +136,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "productId='" + productId + '\'' +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", description='" + description + '\'' +
-                ", wheelSize='" + wheelSize + '\'' +
-                ", material='" + material + '\'' +
-                ", warranty='" + warranty + '\'' +
-                ", inventory=" + inventory +
-                ", discountId='" + discountId + '\'' +
-                ", categoryId='" + categoryId + '\'' +
-                ", brandId='" + brandId + '\'' +
-                ", supplierId='" + supplierId + '\'' +
-                ", status=" + status +
-                ", createdAt='" + createdAt + '\'' +
-                ", updatedAt='" + updatedAt + '\'' +
-                ", image=" + image +
-                ", colors=" + colors +
-                ", category=" + category +
-                ", brand=" + brand +
-                ", supplier=" + supplier +
-                ", discount=" + discount +
-                '}';
+        return "Product{" + "productId='" + productId + '\'' + ", name='" + name + '\'' + ", price=" + price + ", description='" + description + '\'' + ", wheelSize='" + wheelSize + '\'' + ", material='" + material + '\'' + ", warranty='" + warranty + '\'' + ", inventory=" + inventory + ", discountId='" + discountId + '\'' + ", categoryId='" + categoryId + '\'' + ", brandId='" + brandId + '\'' + ", supplierId='" + supplierId + '\'' + ", status=" + status + ", createdAt='" + createdAt + '\'' + ", updatedAt='" + updatedAt + '\'' + ", image=" + image + ", colors=" + colors + ", category=" + category + ", brand=" + brand + ", supplier=" + supplier + ", discount=" + discount + '}';
     }
 
     @Override

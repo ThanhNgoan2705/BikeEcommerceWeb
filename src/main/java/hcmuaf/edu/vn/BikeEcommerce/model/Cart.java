@@ -1,8 +1,17 @@
 package hcmuaf.edu.vn.BikeEcommerce.model;
 
 import java.util.List;
-import java.util.Map;
-
+/**
+ * Created by Admin on 19-8-23 <br/>
+ * This class is used to store information of cart <br/>
+ * This class is used to map with cart table in database <br/>
+ * One user have one cart <br/>
+ * One cart have many cart items <br/>
+ * @see CartItem
+ * @see User
+ * @Author Hoang Hai
+ * @version 1.0
+ */
 public class Cart {
     private String cartId;
     private String userId;

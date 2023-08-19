@@ -1,5 +1,17 @@
 package hcmuaf.edu.vn.BikeEcommerce.model;
 
+/**
+ * Created by Admin on 19-8-23.<br/>
+ * This class is used to store information of cart item <br/>
+ * This class is used to map with cart item table in database <br/>
+ * One cart have many cart items <br/>
+ * One cart item have one product and quantity <br/>
+ *
+ * @see Cart
+ * @see Product
+ * @Author Hoang Hai
+ * @version 1.0
+ */
 public class CartItem {
     private String cartItemId;
     private String cartId;
@@ -26,12 +38,15 @@ public class CartItem {
 
     public CartItem() {
     }
-    public double total(){
-        return product.getPrice()*quantity;
+
+    public double total() {
+        return product.getPrice() * quantity;
     }
-    public double totalDiscount(){
-        return product.getPrice()*quantity*(1-product.getDiscount().getDiscountPercent());
+
+    public double totalDiscount() {
+        return product.getPrice() * quantity * (1 - product.getDiscount().getDiscountPercent());
     }
+
     @Override
     public String toString() {
         return "CartItem{" +

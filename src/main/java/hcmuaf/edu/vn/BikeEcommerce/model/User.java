@@ -1,10 +1,23 @@
 package hcmuaf.edu.vn.BikeEcommerce.model;
 
 import org.jdbi.v3.core.mapper.reflect.ColumnName;
+
 /**
  * Created by Admin on 05-Jun-18. <br/>
+ * This class is used to store information of User <br/>
+ * This class is used to map with User table in database <br/>
+ * One user have many orders <br/>
+ * One user have many comments <br/>
+ * One user have many addresses <br/>
+ * One user have one cart <br/>
+ *
  * <b>role:</b> 1-user, 2-admin
  *
+ * @version 1.0
+ * @Author Hoang Hai
+ * @see Address
+ * @see Order
+ * @see Cart
  */
 public class User {
     private static final int USER = 1;
@@ -18,11 +31,11 @@ public class User {
     @ColumnName("user_name")
     private String userName;
     @ColumnName("salt")
-    private  String salt;
+    private String salt;
     @ColumnName("create_at")
-    private   String createdAt;
+    private String createdAt;
     @ColumnName("update_at")
-    private  String updatedAt;
+    private String updatedAt;
     @ColumnName("role")
     private int role; // 1-user, 2-admin
 

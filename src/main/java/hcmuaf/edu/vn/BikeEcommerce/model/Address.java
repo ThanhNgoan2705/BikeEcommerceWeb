@@ -1,5 +1,14 @@
 package hcmuaf.edu.vn.BikeEcommerce.model;
 
+/**
+ * Created by Admin on 19-8-23.<br/>
+ * This class is used to store information of address <br/>
+ * This class is used to map with address table in database <br/>
+ * One user have many address <br/>
+ * @see User
+ * @Author Hoang Hai
+ * @version 1.0
+ */
 public class Address {
     private String addressId;
     private String homeAddress;

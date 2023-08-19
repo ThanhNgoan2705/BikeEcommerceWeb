@@ -11,24 +11,23 @@ import java.util.List;
 
 @RegisterBeanMapper(Supplier.class)
 public interface SupplierDAO {
-    @SqlQuery("Select * from Supplier ")
-    List<Supplier> getAll();
+    @SqlQuery(ScirptSQL.getAllSupplier)
+    List<Supplier> getAllSupplier();
 
-    @SqlQuery("Select * from Supplier where supplier_id = :supplierId")
+    @SqlQuery(ScirptSQL.getSupplierById)
     Supplier getById(@Bind("supplierId") String supplierId);
 
-    @SqlQuery("Select * from Supplier where name like = :name")
-    List<Supplier> getByName(@Bind("name") String name);
+    @SqlQuery(ScirptSQL.getSuppliersByName)
+    List<Supplier> getSuppliersByName(@Bind("supplierName") String supplierName);
 
-    @SqlUpdate("Insert into `Supplier`(`supplier_id`, `name`,`description`)" +
-            " values (:supplierId, :name, :description")
-    int insert(@BindBean Supplier supplier);
+    @SqlUpdate(ScirptSQL.insertSupplier)
+    int insertSupplier(@BindBean Supplier supplier);
 
-    @SqlUpdate("Update `Supplier` set `name` = :name, `description` = :description where `supplier_id` = :supplierId")
-    int update(@BindBean Supplier supplier);
+    @SqlUpdate(ScirptSQL.updateSupplier)
+    int updateSupplier(@BindBean Supplier supplier);
 
-    @SqlUpdate("Delete from `Supplier` where `supplier_id` = :supplierId")
-    int delete(@Bind("supplierId") String supplierId);
+    @SqlUpdate(ScirptSQL.deleteSupplier)
+    int deleteSupplier(@Bind("supplierId") String supplierId);
 
 
 }

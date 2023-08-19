@@ -11,24 +11,22 @@ import java.util.List;
 
 @RegisterBeanMapper(Discount.class)
 public interface DiscountDAO {
-    @SqlQuery("Select * from Discount ")
+    @SqlQuery(ScirptSQL.getAllDiscount)
     List<Discount> getAll();
 
-    @SqlQuery("Select * from Discount where discount_id = :discountId")
+    @SqlQuery(ScirptSQL.getDiscountById)
     Discount getById(@Bind("discountId") String discountId);
 
-    @SqlQuery("Select * from Discount where name like concat('%',:name,'%')")
+    @SqlQuery(ScirptSQL.getDiscountByName)
     List<Discount> getByName(@Bind("name") String name);
 
-    @SqlUpdate("Insert into `Discount`(`discount_id`, `name`,`description`,`discount_percent`,`start_date`,`end_date`)" +
-            " values (:discountId, :name, :description,:discountPercent,:startDate,:endDate)")
-    void insert(@BindBean Discount discount);
+    @SqlUpdate(ScirptSQL.insertDiscount)
+    void insertDiscount(@BindBean Discount discount);
 
-    @SqlUpdate("Update `Discount` set `name` = :name, `description` = :description,`discount_percent` = :discountPercent,`start_date` = :startDate,`end_date` = :endDate where `discount_id` = :discountId")
-    void update(@BindBean Discount discount);
+    @SqlUpdate(ScirptSQL.updateDiscount)
+    void updateDiscount(@BindBean Discount discount);
 
-    @SqlUpdate("Delete from `Discount` where `discountId` = :discountId")
-    void delete(@Bind("discountId") String discountId);
-
+    @SqlUpdate(ScirptSQL.deleteDiscount)
+    void deleteDiscount(@Bind("discountId") String discountId);
 
 }

@@ -11,21 +11,21 @@ import java.util.List;
 
 @RegisterBeanMapper(Brand.class)
 public interface BrandDAO {
-    @SqlQuery("Select * from Brand ")
+    @SqlQuery(ScirptSQL.getAllBrands)
     List<Brand> getAll();
 
-    @SqlQuery("Select * from Brand where brand_id = :brandId")
+    @SqlQuery(ScirptSQL.getBrandById)
     Brand getById(@Bind("brandId") String brandId);
 
-    @SqlQuery("Select * from Brand where name like concat('%',:name,'%')")
+    @SqlQuery(ScirptSQL.getBrandsByName)
     List<Brand> getByName(@Bind("name") String name);
 
-    @SqlUpdate("Insert into `Brand`(`brand_id`, `name`,`description`)" +
-            " values (:brandId, :name, :description")
+    @SqlUpdate(ScirptSQL.insertBrand)
     int insert(@BindBean Brand brand);
 
-    @SqlUpdate("Update `Brand` set `name` = :name, `description` = :description where `brand_id` = :brandId")
+    @SqlUpdate(ScirptSQL.updateBrand)
     int update(@BindBean Brand brand);
-    @SqlUpdate("Delete from `Brand` where `id` = :brandId")
+
+    @SqlUpdate(ScirptSQL.deleteBrand)
     int delete(@Bind("brandId") String brandId);
 }

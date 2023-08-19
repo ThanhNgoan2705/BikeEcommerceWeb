@@ -1,5 +1,17 @@
 package hcmuaf.edu.vn.BikeEcommerce.model;
 
+/**
+ * Created by Admin on 19-8-23.<br/>
+ * This class is used to store information of order item <br/>
+ * This class is used to map with order item table in database <br/>
+ * One order have many order items <br/>
+ * One order item have one product and quantity <br/>
+ *
+ * @version 1.0
+ * @Author Hoang Hai
+ * @see Order
+ * @see Product
+ */
 public class OrderItem {
     private String orderId;
     private String productId;

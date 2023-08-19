@@ -3,6 +3,16 @@ package hcmuaf.edu.vn.BikeEcommerce.model;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+/**
+ * Created by Admin on 19-8-23.<br/>
+ * This class is used to store information of brand <br/>
+ * This class is used to map with brand table in database <br/>
+ * One brand have many products <br/>
+ * One product have one brand <br/>
+ * @see Product
+ * @Author Hoang Hai
+ * @version 1.0
+ */
 public class Category {
     private String categoryId;
     private String name;

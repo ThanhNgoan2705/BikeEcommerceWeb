@@ -3,6 +3,16 @@ package hcmuaf.edu.vn.BikeEcommerce.model;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+/**
+ * Created by Admin on 19-8-23.<br/>
+ * This class is used to store information of brand <br/>
+ * This class is used to map with brand table in database <br/>
+ * One brand have many products <br/>
+ * One product have one brand <br/>
+ * @see Product
+ * @author Hoang Hai
+ * @version 1.0
+ */
 public class Brand {
     private String brandId;
     private String name;
@@ -16,6 +26,7 @@ public class Brand {
 
     public Brand() {
     }
+
     public Brand(String brandId, String name, String description, String logo, String address, String phone, String email, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.brandId = brandId;
         this.name = name;

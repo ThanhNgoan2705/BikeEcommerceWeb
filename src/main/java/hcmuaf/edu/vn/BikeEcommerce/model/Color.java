@@ -2,6 +2,16 @@ package hcmuaf.edu.vn.BikeEcommerce.model;
 
 import java.time.LocalDateTime;
 
+/**
+ * Created by Admin on 19-8-23.<br/>
+ * This class is used to store information of color <br/>
+ * This class is used to map with color table in database <br/>
+ * One color have many products <br/>
+ * One product have many colors <br/>
+ * @see Product
+ * @see ColorProduct
+ * @Author Hoang Hai
+ */
 public class Color {
     private String colorId;
     private String name;

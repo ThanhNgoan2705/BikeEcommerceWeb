@@ -2,6 +2,17 @@ package hcmuaf.edu.vn.BikeEcommerce.model;
 
 import java.time.LocalDateTime;
 
+/**
+ * Created by Admin on 19-8-23.<br/>
+ * This class is used to store information of image product <br/>
+ * This class is used to map with image_product table in database <br/>
+ * One image product have one product <br/>
+ * One product have many image products <br/>
+ *
+ * @version 1.0
+ * @Author Hoang Hai
+ * @see Product
+ */
 public class ImageProduct {
     private String imageProductId;
     private String link;
