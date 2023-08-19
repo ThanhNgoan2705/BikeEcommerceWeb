@@ -132,5 +132,18 @@ public class ScirptSQL {
     static final String updateColorProduct = "update color_product set color_id = :colorId, product_id = :productId where color_id = :colorId";
     static final String deleteColorProduct = "delete from color_product where color_id = :colorId and product_id = :productId";
 
-
+    //cmt
+    public static final String getAllComment ="select * from comment";
+    public static final String getCmtById ="select * from comment where comment_id = :commentId";
+    public static final String getCmtByUserId ="select * from comment where user_id = :userId";
+    public static final String getCmtByProductId ="select * from comment where product_id = :productId";
+    public static final String insertCmt ="insert into comment(comment_id, product_id, user_id, content, date) values(:commentId, :productId, :userId, :content, :date)";
+    public static final String updateCmt ="update comment set product_id = :productId, user_id = :userId, content = :content, date = :date where comment_id = :commentId";
+    public static final String deleteCmt ="delete from comment where comment_id = :commentId";
+    // favorite
+    public static final String getAllFavoriteByUserId = "select * from favorite where user_id = :userId";
+    public static final String getAllFavoriteByProductId = "select * from favorite where product_id = :productId";
+    public static final String insertFavorite = "insert into favorite(user_id, product_id) values(:userId, :productId)";
+    public static final String updateFavorite = "update favorite set user_id = :userId, product_id = :productId where user_id = :userId and product_id = :productId";
+    public static final String deleteFavorite = "delete from favorite where user_id = :userId and product_id = :productId";
 }

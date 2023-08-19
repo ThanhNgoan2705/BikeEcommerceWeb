@@ -22,6 +22,7 @@ public class VerifyCode {
     private int valid;
     private String createdAt;
 
+
     public VerifyCode() {
     }
 

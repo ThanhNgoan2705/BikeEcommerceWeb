@@ -1,6 +1,6 @@
 package hcmuaf.edu.vn.BikeEcommerce.model;
 
-import org.jdbi.v3.core.mapper.reflect.ColumnName;
+import java.util.List;
 
 /**
  * Created by Admin on 05-Jun-18. <br/>
@@ -11,7 +11,8 @@ import org.jdbi.v3.core.mapper.reflect.ColumnName;
  * One user have many addresses <br/>
  * One user have one cart <br/>
  *
- * <b>role:</b> 1-user, 2-admin
+ * <b>role:</b>  <br/>
+ * 0-pending (when register), 1-user (when login), 2-admin, 3-blocked (when user violate the rules) <br/>
  *
  * @version 1.0
  * @Author Hoang Hai
@@ -20,64 +21,64 @@ import org.jdbi.v3.core.mapper.reflect.ColumnName;
  * @see Cart
  */
 public class User {
+    private static final int PENDING = 0;
     private static final int USER = 1;
     private static final int ADMIN = 2;
-    @ColumnName("user_id")
+    private static final int BLOCKED = 3;
     private String userId;
-    @ColumnName("email")
     private String email;
-    @ColumnName("pass")
     private String pass;
-    @ColumnName("user_name")
     private String userName;
-    @ColumnName("salt")
     private String salt;
-    @ColumnName("create_at")
-    private String createdAt;
-    @ColumnName("update_at")
-    private String updatedAt;
-    @ColumnName("role")
     private int role; // 1-user, 2-admin
+    private List<Address> addresses;
+    private List<Order> orders;
+    private List<Comment> comments;
+    private List<Favorite> favorites;
+    private String createdAt;
+    private String updatedAt;
 
     public User() {
     }
 
-
-    public User(String userId, String email, String pass, String userName, String salt) {
+    public User(String userId, String email, String pass, String userName, String salt, int role) {
         this.userId = userId;
         this.email = email;
         this.pass = pass;
         this.userName = userName;
         this.salt = salt;
+        this.role = role;
+    }
+
+    public User(String userId, String email, String pass, String userName, String salt, int role, List<Address> addresses, List<Order> orders, List<Comment> comments, List<Favorite> favorites) {
+        this.userId = userId;
+        this.email = email;
+        this.pass = pass;
+        this.userName = userName;
+        this.salt = salt;
+        this.role = role;
+        this.addresses = addresses;
+        this.orders = orders;
+        this.comments = comments;
+        this.favorites = favorites;
     }
 
     @Override
     public String toString() {
-        return "User{" + "userId='" + userId + '\'' + ", email='" + email + '\'' + ", pass='" + pass + '\'' + ", userName='" + userName + '\'' + ", salt='" + salt + '\'' + ", createdAt='" + createdAt + '\'' + ", updatedAt='" + updatedAt + '\'' + ", role=" + role + '}';
-    }
-
-    public int getRole() {
-        return role;
-    }
-
-    public void setRole(int role) {
-        this.role = role;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
+        return "User{" +
+                "userId='" + userId + '\'' +
+                ", email='" + email + '\'' +
+                ", pass='" + pass + '\'' +
+                ", userName='" + userName + '\'' +
+                ", salt='" + salt + '\'' +
+                ", role=" + role +
+                ", addresses=" + addresses +
+                ", orders=" + orders +
+                ", comments=" + comments +
+                ", favorites=" + favorites +
+                ", createdAt='" + createdAt + '\'' +
+                ", updatedAt='" + updatedAt + '\'' +
+                '}';
     }
 
     public String getUserId() {
@@ -97,7 +98,7 @@ public class User {
     }
 
     public String getPass() {
-        return getSalt() + pass;
+        return pass;
     }
 
     public void setPass(String pass) {
@@ -120,4 +121,59 @@ public class User {
         this.salt = salt;
     }
 
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
+    }
+
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public List<Favorite> getFavorites() {
+        return favorites;
+    }
+
+    public void setFavorites(List<Favorite> favorites) {
+        this.favorites = favorites;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 }
