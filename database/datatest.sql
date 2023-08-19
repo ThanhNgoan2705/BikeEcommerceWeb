@@ -1,116 +1,159 @@
--- Insert data into address table
-INSERT INTO address (address_id, home_address, district, city, created_at, updated_at)
-VALUES
-    ('1', '123 Main St', 'District A', 'City X', NOW(), NOW()),
-    ('2', '456 Elm St', 'District B', 'City Y', NOW(), NOW()),
-    ('3', '789 Oak St', 'District C', 'City Z', NOW(), NOW()),
-    ('4', '111 Pine St', 'District D', 'City W', NOW(), NOW()),
-    ('5', '222 Maple St', 'District E', 'City V', NOW(), NOW());
+-- Table: address
+INSERT INTO address (address_id, home_address, district, city)
+VALUES ('1', '123 Main St', 'District 1', 'City A'),
+       ('2', '456 Elm St', 'District 2', 'City B'),
+       ('3', '789 Oak St', 'District 3', 'City C'),
+       ('4', '101 Pine St', 'District 4', 'City D'),
+       ('5', '202 Maple St', 'District 5', 'City E');
 
--- Insert data into brand table
-INSERT INTO brand (brand_id, name, description, image, logo, address, email, phone, created_at, updated_at)
-VALUES
-    ('1', 'Brand A', 'Description A', 'imageA.jpg', 'logoA.png', '123 Brand St', 'brandA@example.com', '1234567890', NOW(), NOW()),
-    ('2', 'Brand B', 'Description B', 'imageB.jpg', 'logoB.png', '456 Brand St', 'brandB@example.com', '2345678901', NOW(), NOW()),
-    ('3', 'Brand C', 'Description C', 'imageC.jpg', 'logoC.png', '789 Brand St', 'brandC@example.com', '3456789012', NOW(), NOW()),
-    ('4', 'Brand D', 'Description D', 'imageD.jpg', 'logoD.png', '111 Brand St', 'brandD@example.com', '4567890123', NOW(), NOW()),
-    ('5', 'Brand E', 'Description E', 'imageE.jpg', 'logoE.png', '222 Brand St', 'brandE@example.com', '5678901234', NOW(), NOW());
+-- Table: brand
+INSERT INTO brand (brand_id, name, description, email, phone)
+VALUES ('1', 'Brand X', 'Description for Brand X', 'contact@brandx.com', '1234567890'),
+       ('2', 'Brand Y', 'Description for Brand Y', 'contact@brandy.com', '9876543210'),
+       ('3', 'Brand Z', 'Description for Brand Z', 'contact@brandz.com', '5551234567'),
+       ('4', 'Brand A', 'Description for Brand A', 'contact@branda.com', '1112223333'),
+       ('5', 'Brand B', 'Description for Brand B', 'contact@brandb.com', '4445556666');
 
--- Insert data into category table
-INSERT INTO category (category_id, name, description, image, created_at, updated_at, parent_id, active, level, short_id)
-VALUES
-    ('1', 'Category A', 'Description A', 'imageA.jpg', NOW(), NOW(), NULL, 1, 1, 'A'),
-    ('2', 'Category B', 'Description B', 'imageB.jpg', NOW(), NOW(), NULL, 1, 1, 'B'),
-    ('3', 'Category C', 'Description C', 'imageC.jpg', NOW(), NOW(), NULL, 1, 1, 'C'),
-    ('4', 'Category D', 'Description D', 'imageD.jpg', NOW(), NOW(), NULL, 1, 1, 'D'),
-    ('5', 'Category E', 'Description E', 'imageE.jpg', NOW(), NOW(), NULL, 1, 1, 'E');
 
--- Insert data into color table
-INSERT INTO color (color_id, name, code, created_at, updated_at)
-VALUES
-    ('1', 'Red', '#FF0000', NOW(), NOW()),
-    ('2', 'Green', '#00FF00', NOW(), NOW()),
-    ('3', 'Blue', '#0000FF', NOW(), NOW()),
-    ('4', 'Yellow', '#FFFF00', NOW(), NOW()),
-    ('5', 'Purple', '#800080', NOW(), NOW());
+-- Table: category
+INSERT INTO category (category_id, name, description, parent_id, active, level, short_id)
+VALUES ('1', 'Electronics', 'Electronics Category', NULL, 1, 1, 'ELEC'),
+       ('2', 'Clothing', 'Clothing Category', NULL, 1, 1, 'CLOTH'),
+       ('3', 'Home', 'Home Category', NULL, 1, 1, 'HOME'),
+       ('4', 'Beauty', 'Beauty Category', NULL, 1, 1, 'BEAUTY'),
+       ('5', 'Sports', 'Sports Category', NULL, 1, 1, 'SPORTS');
 
--- Insert data into discount table
-INSERT INTO discount (discount_id, name, description, discount, active, start_date, end_date, created_at, updated_at)
-VALUES
-    ('1', 'Discount A', 'Description A', 10.0, 1, '2023-08-01', '2023-08-31', NOW(), NOW()),
-    ('2', 'Discount B', 'Description B', 20.0, 1, '2023-09-01', '2023-09-30', NOW(), NOW()),
-    ('3', 'Discount C', 'Description C', 15.0, 1, '2023-10-01', '2023-10-31', NOW(), NOW()),
-    ('4', 'Discount D', 'Description D', 25.0, 1, '2023-11-01', '2023-11-30', NOW(), NOW()),
-    ('5', 'Discount E', 'Description E', 30.0, 1, '2023-12-01', '2023-12-31', NOW(), NOW());
+-- Table: color
+INSERT INTO color (color_id, name, code)
+VALUES ('1', 'Red', '#FF0000'),
+       ('2', 'Green', '#00FF00'),
+       ('3', 'Blue', '#0000FF'),
+       ('4', 'Yellow', '#FFFF00'),
+       ('5', 'Purple', '#800080');
 
--- Insert data into imageslider table
-INSERT INTO imageslider (categoryId, link, created_at, updated_at)
-VALUES
-    ('1', 'slider1.jpg', NOW(), NOW()),
-    ('2', 'slider2.jpg', NOW(), NOW()),
-    ('3', 'slider3.jpg', NOW(), NOW()),
-    ('4', 'slider4.jpg', NOW(), NOW()),
-    ('5', 'slider5.jpg', NOW(), NOW());
+-- Table: discount
+INSERT INTO discount (discount_id, name, description, discount, active, start_date, end_date)
+VALUES ('1', 'Summer Sale', 'Discount for Summer Season', 20.00, 1, '2023-06-01', '2023-08-31'),
+       ('2', 'Clearance', 'Clearance Sale', 30.00, 1, '2023-09-01', '2023-09-30'),
+       ('3', 'Holiday Special', 'Discount for Holiday Season', 15.00, 1, '2023-12-01', '2023-12-25'),
+       ('4', 'Back to School', 'Discount for Back to School', 10.00, 1, '2023-08-15', '2023-09-15'),
+       ('5', 'Black Friday', 'Black Friday Sale', 50.00, 1, '2023-11-24', '2023-11-27');
 
--- Insert data into supplier table
-INSERT INTO supplier (supplier_id, name, created_at, updated_at)
-VALUES
-    ('1', 'Supplier A', NOW(), NOW()),
-    ('2', 'Supplier B', NOW(), NOW()),
-    ('3', 'Supplier C', NOW(), NOW()),
-    ('4', 'Supplier D', NOW(), NOW()),
-    ('5', 'Supplier E', NOW(), NOW());
+-- Continue the same pattern for other tables...
 
--- Insert data into product table
-INSERT INTO product (product_id, name, price, description, wheelSize, inventory, material, warranty, category_id, brand_id, discount_id, supplier_id, status, created_at, updated_at)
-VALUES
-    ('1', 'Product A', 100.0, 'Description A', '24 inches', 50, 'Aluminum', '1 year', '1', '1', '1', '1', 1, NOW(), NOW()),
-    ('2', 'Product B', 150.0, 'Description B', '26 inches', 30, 'Steel', '2 years', '2', '2', '2', '2', 1, NOW(), NOW()),
-    ('3', 'Product C', 200.0, 'Description C', '20 inches', 20, 'Carbon Fiber', '3 years', '3', '3', '3', '3', 1, NOW(), NOW()),
-    ('4', 'Product D', 120.0, 'Description D', '28 inches', 40, 'Aluminum', '1 year', '4', '4', '4', '4', 1, NOW(), NOW()),
-    ('5', 'Product E', 180.0, 'Description E', '29 inches', 25, 'Alloy', '2 years', '5', '5', '5', '5', 1, NOW(), NOW());
 
--- Insert data into colorproduct table
-INSERT INTO colorproduct (product_id, color_id)
-VALUES
-    ('1', '1'),
-    ('2', '2'),
-    ('3', '3'),
-    ('4', '4'),
-    ('5', '5');
+-- Table: supplier
+INSERT INTO supplier (supplier_id, name)
+VALUES ('1', 'Supplier X'),
+       ('2', 'Supplier Y'),
+       ('3', 'Supplier Z'),
+       ('4', 'Supplier A'),
+       ('5', 'Supplier B');
 
--- Insert data into imageproduct table
-INSERT INTO imageproduct (image_product_id, link, product_id, created_at, updated_at)
-VALUES
-    ('1', 'image1.jpg', '1', NOW(), NOW()),
-    ('2', 'image2.jpg', '2', NOW(), NOW()),
-    ('3', 'image3.jpg', '3', NOW(), NOW()),
-    ('4', 'image4.jpg', '4', NOW(), NOW()),
-    ('5', 'image5.jpg', '5', NOW(), NOW());
 
--- Insert data into user table
-INSERT INTO user (user_id, email, salt, pass, user_name, created_at, updated_at, role)
-VALUES
-    ('1', 'user1@example.com', 'salt1', 'hashedpass1', 'User 1', NOW(), NOW(), 1),
-    ('2', 'user2@example.com', 'salt2', 'hashedpass2', 'User 2', NOW(), NOW(), 1),
-    ('3', 'user3@example.com', 'salt3', 'hashedpass3', 'User 3', NOW(), NOW(), 1),
-    ('4', 'admin1@example.com', 'salt4', 'hashedpass4', 'Admin 1', NOW(), NOW(), 2),
-    ('5', 'admin2@example.com', 'salt5', 'hashedpass5', 'Admin 2', NOW(), NOW(), 2);
+-- Continue the same pattern for other tables...
 
--- Insert data into order table
-INSERT INTO `order` (order_id, user_id, address_id, price, discount, shipping_fee, total, send_day, receive_day, status, created_at, updated_at)
-VALUES
-    ('1', '1', '1', 250.0, 10, 20.0, 270.0, '2023-08-10 12:00:00', '2023-08-15 14:00:00', 1, NOW(), NOW()),
-    ('2', '2', '2', 180.0, 5, 15.0, 190.0, '2023-08-11 10:00:00', '2023-08-17 11:30:00', 2, NOW(), NOW()),
-    ('3', '3', '3', 350.0, 20, 25.0, 355.0, '2023-08-12 15:00:00', '2023-08-18 16:45:00', 3, NOW(), NOW()),
-    ('4', '4', '4', 120.0, 0, 10.0, 130.0, '2023-08-13 09:00:00', '2023-08-19 10:15:00', 4, NOW(), NOW()),
-    ('5', '5', '5', 500.0, 30, 30.0, 500.0, '2023-08-14 11:00:00', '2023-08-20 12:30:00', 5, NOW(), NOW());
+-- Table: user
+INSERT INTO user (user_id, email, salt, pass, user_name, role)
+VALUES ('user1', 'user1@example.com', 'salt1', 'hashed_pass1', 'User 1', 1),
+       ('user2', 'user2@example.com', 'salt2', 'hashed_pass2', 'User 2', 1),
+       ('user3', 'user3@example.com', 'salt3', 'hashed_pass3', 'User 3', 1),
+       ('user4', 'user4@example.com', 'salt4', 'hashed_pass4', 'User 4', 1),
+       ('user5', 'user5@example.com', 'salt5', 'hashed_pass5', 'User 5', 1);
 
--- Insert data into order_item table
+-- Table: `order`
+INSERT INTO `order` (order_id, user_id, address_id, price, discount, shipping_fee, total, send_day, receive_day, status)
+VALUES ('1', 'user1', '1', 500.00, 50, 20.00, 470.00, '2023-08-20', '2023-08-25', 2),
+       ('2', 'user2', '2', 300.00, 10, 15.00, 305.00, '2023-08-21', '2023-08-26', 2),
+       ('3', 'user3', '3', 200.00, 0, 10.00, 210.00, '2023-08-22', '2023-08-27', 1),
+       ('4', 'user4', '4', 100.00, 0, 10.00, 110.00, '2023-08-23', '2023-08-28', 1),
+       ('5', 'user5', '5', 150.00, 20, 15.00, 145.00, '2023-08-24', '2023-08-29', 2);
+
+-- Table: cart
+INSERT INTO cart (cart_id, user_id, ss_id)
+VALUES ('1', 'user1', 'session1'),
+       ('2', 'user2', 'session2'),
+       ('3', 'user3', 'session3'),
+       ('4', 'user4', 'session4'),
+       ('5', 'user5', 'session5');
+
+-- Continue the same pattern for other carts...
+
+-- Table: user_address
+INSERT INTO user_address (user_id, address_id)
+VALUES ('user1', '1'),
+       ('user2', '2'),
+       ('user3', '3'),
+       ('user4', '4'),
+       ('user5', '5');
+
+
+-- Table: product
+INSERT INTO product (product_id, name, price, description, wheelSize, inventory, material, warranty, category_id,
+                     brand_id, supplier_id, status)
+VALUES ('1', 'Product 1', 100.00, 'Description for Product 1', '16 inches', 50, 'Metal', '1 year', '1', '1', '1', 1),
+       ('2', 'Product 2', 150.00, 'Description for Product 2', '20 inches', 30, 'Plastic', '2 years', '2', '2', '2', 1),
+       ('3', 'Product 3', 200.00, 'Description for Product 3', '18 inches', 20, 'Wood', '1 year', '3', '3', '3', 1),
+       ('4', 'Product 4', 50.00, 'Description for Product 4', '14 inches', 10, 'Metal', '6 months', '1', '4', '1', 1),
+       ('5', 'Product 5', 300.00, 'Description for Product 5', '22 inches', 5, 'Plastic', '2 years', '2', '5', '2', 1);
+
+-- Continue the same pattern for other products...
+-- Table: cart_item
+INSERT INTO cart_item (cart_id, product_id, quantity)
+VALUES ('1', '1', 2),
+       ('1', '2', 3),
+       ('2', '3', 1),
+       ('3', '4', 2),
+       ('4', '5', 1);
+
+-- Continue the same pattern for other tables...
+
+-- Table: color_product
+INSERT INTO color_product (product_id, color_id)
+VALUES ('1', '1'),
+       ('1', '2'),
+       ('2', '3'),
+       ('3', '4'),
+       ('4', '5');
+
+-- Continue the same pattern for other color-product associations...
+-- Table: comment
+INSERT INTO comment (comment_id, user_id, product_id, content)
+VALUES ('1', 'user1', '1', 'This is a great product!'),
+       ('2', 'user2', '1', 'I love this product.'),
+       ('3', 'user3', '2', 'Not satisfied with this.'),
+       ('4', 'user4', '3', 'Good quality and value.'),
+       ('5', 'user5', '4', 'Could be better.');
+
+-- Table: favorite
+INSERT INTO favorite (favorite_id, user_id, product_id)
+VALUES ('1', 'user1', '1'),
+       ('2', 'user2', '3'),
+       ('3', 'user3', '5'),
+       ('4', 'user4', '2'),
+       ('5', 'user5', '4');
+
+-- Continue the same pattern for other comments and favorites...
+
+
+-- Table: image_product
+INSERT INTO image_product (image_product_id, link, product_id)
+VALUES ('1', 'image1.jpg', '1'),
+       ('2', 'image2.jpg', '1'),
+       ('3', 'image3.jpg', '2'),
+       ('4', 'image4.jpg', '3'),
+       ('5', 'image5.jpg', '4');
+
+-- Table: order_item
 INSERT INTO order_item (order_id, product_id, quantity)
-VALUES
-    ('1', '1', 2),
-    ('1', '3', 1),
-    ('2', '2', 1),
-    ('3', '4', 3),
-    ('4', '5', 1);
+VALUES ('1', '1', 2),
+       ('2', '2', 1),
+       ('3', '3', 3),
+       ('4', '4', 2),
+       ('5', '5', 1);
+
+-- Continue the same pattern for other order items...
+
+
+
+
