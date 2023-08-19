@@ -26,6 +26,10 @@ public interface OrderDAO {
 
     @SqlUpdate(ScirptSQL.deleteOrderById)
     void deleteOrderById(@Bind("orderId") String orderId);
+
     @SqlQuery(ScirptSQL.getProductsByOrderId)
     List<OrderItem> getOrderItemByOrderId(String orderId);
+
+    @SqlQuery(ScirptSQL.getAllOrderByUserId)
+    List<Order> getAllOrderByUserId(String userId);
 }

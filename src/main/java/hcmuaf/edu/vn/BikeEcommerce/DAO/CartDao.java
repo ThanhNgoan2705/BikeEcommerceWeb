@@ -4,10 +4,12 @@ import hcmuaf.edu.vn.BikeEcommerce.model.Cart;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 
+import java.util.List;
+
 @RegisterBeanMapper(Cart.class)
 public interface CartDao {
     @SqlQuery(ScirptSQL.getAllCart)
-    Cart getAllCart();
+    List<Cart> getAllCart();
 
     @SqlQuery(ScirptSQL.getCartByKey)
     Cart getCartByKey(String key);

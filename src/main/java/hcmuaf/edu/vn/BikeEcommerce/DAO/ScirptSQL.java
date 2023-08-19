@@ -27,9 +27,14 @@ public class ScirptSQL {
     public static final String insertOrder = "INSERT INTO `order` (order_id, user_id, create_at, status, total_price) " + "VALUES (:getOrderId,:getUserId,:getCreatedAt,:getStatus,:getTotalPrice);";
     public static final String updateOrder = "UPDATE `order` " + "SET status = :getStatus, total_price = :getTotalPrice ,discount = :discount, send_day=:sendDay, receive_day=:receiveDay" + "WHERE order_id = :getOrderId;";
     public static final String deleteOrderById = "DELETE FROM `order` WHERE order_id = :orderId";
-
+    public static final String getAllOrderByUserId = "SELECT * FROM `order` WHERE user_id=:userId";
     //OrderItem
     public static final String getProductsByOrderId = "SELECT * FROM order_item WHERE order_id=:orderId";
+    public static final String insertOrderItem = "INSERT INTO order_item (order_id, product_id, quantity, price) " + "VALUES (:getOrderId,:getProductId,:getQuantity,:getPrice);";
+    public static final String updateOrderItem = "UPDATE order_item " + "SET quantity = :getQuantity, price = :getPrice " + "WHERE order_id = :getOrderId and product_id=:getProductId;";
+    public static final String deleteOrderItemById = "DELETE FROM order_item WHERE order_id = :orderId and product_id=:productId";
+
+
     // Adress
     public static final String getAllAddress = "select * from address";
     public static final String getAddressByAddressId = "select * from address where address_id=:addressId";
