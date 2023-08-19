@@ -34,7 +34,7 @@ public class OrderService {
         Order order = jdbi.withExtension(OrderDAO.class, dao -> dao.getOrderById(orderId));
         User user = jdbi.withExtension(UserDAO.class, dao -> dao.getUserByKey(order.getUserId()));
         List<OrderItem> items = OrderItemService.getInstance().getOrderItemsByOrderId(orderId);
-        Address address = AddressService.getInstance().getById(order.getAddressId());
+        Address address = AddressService.getInstance().getAddressByAddressId(order.getAddressId());
         order.setUser(user);
         order.setOrderItemList(items);
         order.setAddress(address);

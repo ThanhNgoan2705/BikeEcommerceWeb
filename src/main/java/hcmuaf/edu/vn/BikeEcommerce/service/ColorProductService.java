@@ -22,7 +22,7 @@ public class ColorProductService {
     }
 
     List<ColorProduct> getAllColorProduct() {
-        return jdbi.withExtension(ColorProductDAO.class, dao -> dao.getAll());
+        return jdbi.withExtension(ColorProductDAO.class, dao -> dao.getAllColorProduct());
     }
 
     List<ColorProduct> getColorProductByProductId(String productId) {

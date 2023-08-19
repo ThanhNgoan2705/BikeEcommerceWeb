@@ -11,16 +11,21 @@ import java.util.List;
 
 @RegisterBeanMapper(ColorProduct.class)
 public interface ColorProductDAO {
-    @SqlQuery("select * from color_product")
-    public List<ColorProduct> getAll();
-    @SqlQuery("select * from color_product where  product_id = :productId")
+    @SqlQuery(ScirptSQL.getAllColorProduct)
+    public List<ColorProduct> getAllColorProduct();
+
+    @SqlQuery(ScirptSQL.getColorProductByProductId)
     List<ColorProduct> getColorProductByProductId(@Bind("productId") String productId);
-    @SqlQuery("select * from color_product where color_id = :colorId")
+
+    @SqlQuery(ScirptSQL.getColorProductByColorId)
     List<ColorProduct> getColorProductByColorId(@Bind("colorId") String colorId);
-    @SqlUpdate("insert into color_product(color_id,product_id) values(:colorId,:productId)")
+
+    @SqlUpdate(ScirptSQL.insertColorProduct)
     void insertColorProduct(@BindBean ColorProduct colorProduct);
-    @SqlUpdate("update color_product set color_id = :colorId, product_id = :productId where color_id = :colorId")
+
+    @SqlUpdate(ScirptSQL.updateColorProduct)
     void updateColorProduct(@BindBean ColorProduct colorProduct);
-    @SqlUpdate("delete from color_product where color_id = :colorId and product_id = :productId")
+
+    @SqlUpdate(ScirptSQL.deleteColorProduct)
     void deleteColorProduct(@Bind("colorId") String colorId, @Bind("productId") String productId);
 }

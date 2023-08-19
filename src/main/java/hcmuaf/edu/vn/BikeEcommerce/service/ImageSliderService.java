@@ -19,6 +19,18 @@ public class ImageSliderService {
     }
 
     List<ImageSlider> getAllImageImageSlider() {
-        return jdbi.withExtension(ImageSliderDAO.class, dao -> dao.getAll());
+        return jdbi.withExtension(ImageSliderDAO.class, dao -> dao.getAllSlider());
+    }
+    ImageSlider getImageSliderById(String id) {
+        return jdbi.withExtension(ImageSliderDAO.class, dao -> dao.getImageSliderById(id));
+    }
+    void insertImageSlider(ImageSlider imageSlider) {
+        jdbi.useExtension(ImageSliderDAO.class, dao -> dao.insertImageSlider(imageSlider));
+    }
+    void updateImageSlider(ImageSlider imageSlider) {
+        jdbi.useExtension(ImageSliderDAO.class, dao -> dao.updateImageSlider(imageSlider));
+    }
+    void  deleteImageSlider(String id) {
+        jdbi.useExtension(ImageSliderDAO.class, dao -> dao.deleteImageSlider(id));
     }
 }

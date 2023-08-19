@@ -23,16 +23,16 @@ public class ProductService {
     }
 
     public List<Product> getAllProduct() {
-        List<Product> products = jdbi.withExtension(ProductDAO.class, dao -> dao.getAll());
+        List<Product> products = jdbi.withExtension(ProductDAO.class, dao -> dao.getAllProduct());
         return products.stream().map(product -> mapOtherBean(product)).collect(Collectors.toList());
 
     }
     public Product getProductById(String productId) {
-        Product product = jdbi.withExtension(ProductDAO.class, dao -> dao.getById(productId));
+        Product product = jdbi.withExtension(ProductDAO.class, dao -> dao.getProductById(productId));
         return mapOtherBean(product);
     }
     public List<Product> findProductByName(String productName) {
-        List<Product> products = jdbi.withExtension(ProductDAO.class, dao -> dao.getByName(productName));
+        List<Product> products = jdbi.withExtension(ProductDAO.class, dao -> dao.getProductByName(productName));
         return products.stream().map(product -> mapOtherBean(product)).collect(Collectors.toList());
     }
 
@@ -60,15 +60,15 @@ public class ProductService {
 
 
     public void insert(Product product) {
-        jdbi.useExtension(ProductDAO.class, dao -> dao.insert(product));
+        jdbi.useExtension(ProductDAO.class, dao -> dao.insertProduct(product));
     }
 
     public void update(Product product) {
-        jdbi.useExtension(ProductDAO.class, dao -> dao.update(product));
+        jdbi.useExtension(ProductDAO.class, dao -> dao.updateProduct(product));
     }
 
     public void delete(String productId) {
-        jdbi.useExtension(ProductDAO.class, dao -> dao.delete(productId));
+        jdbi.useExtension(ProductDAO.class, dao -> dao.deleteProduct(productId));
     }
 
     public static void main(String[] args) {

@@ -10,14 +10,19 @@ import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 import java.util.List;
 @RegisterBeanMapper(ImageSlider.class)
 public interface ImageSliderDAO {
-    @SqlQuery("select * from image_slider")
-    List<ImageSlider> getAll();
-    @SqlQuery("select * from image_slider where id = :id")
+    @SqlQuery(ScirptSQL.getAllSlider)
+    List<ImageSlider> getAllSlider();
+
+    @SqlQuery(ScirptSQL.getSliderById)
     ImageSlider getImageSliderById(@Bind("id") String id);
-    @SqlUpdate("insert into image_slider(id,link) values(:id,:link)")
+
+    @SqlUpdate(ScirptSQL.insertImageSlider)
     void insertImageSlider(@BindBean ImageSlider imageSlider);
-    @SqlUpdate("update image_slider set link = :link where id = :id")
+
+    @SqlUpdate(ScirptSQL.updateImageSlider)
     void updateImageSlider(@BindBean ImageSlider imageSlider);
-    @SqlUpdate("delete from image_slider where id = :id")
+
+    @SqlUpdate(ScirptSQL.deleteImageSlider)
     void deleteImageSlider(@Bind("id") String id);
+
 }

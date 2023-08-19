@@ -2,7 +2,6 @@ package hcmuaf.edu.vn.BikeEcommerce.service;
 
 import hcmuaf.edu.vn.BikeEcommerce.DAO.CartItemsDao;
 import hcmuaf.edu.vn.BikeEcommerce.db.JDBIConnector;
-import hcmuaf.edu.vn.BikeEcommerce.model.Cart;
 import hcmuaf.edu.vn.BikeEcommerce.model.CartItem;
 import hcmuaf.edu.vn.BikeEcommerce.model.Product;
 import org.jdbi.v3.core.Jdbi;
@@ -21,8 +20,8 @@ public class CartItemsService {
     }
     public CartItemsService() {
     }
-    List<CartItem> getAllCartItems(){
-        return jdbi.withExtension(CartItemsDao.class, dao -> dao.getAllCartItems());
+    List<CartItem> getAllCartItem(){
+        return jdbi.withExtension(CartItemsDao.class, dao -> dao.getAllCartItem());
     }
     CartItem getCartItemById(String cartItemId){
        CartItem cartItem = jdbi.withExtension(CartItemsDao.class, dao -> dao.getCartItemById(cartItemId));

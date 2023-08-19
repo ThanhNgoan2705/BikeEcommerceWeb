@@ -20,16 +20,16 @@ public static CategoryService getInstance() {
     }
 
     public Category getById(String categoryId) {
-   return jdbi.withExtension(CategoryDAO.class, dao -> dao.getById(categoryId));
+   return jdbi.withExtension(CategoryDAO.class, dao -> dao.getCategoryById(categoryId));
     }
     public void insert(Category category) {
-         jdbi.useExtension(CategoryDAO.class, dao -> dao.insert(category));
+         jdbi.useExtension(CategoryDAO.class, dao -> dao.insertCategory(category));
     }
     public void update(Category category) {
-         jdbi.useExtension(CategoryDAO.class, dao -> dao.update(category));
+         jdbi.useExtension(CategoryDAO.class, dao -> dao.updateCategory(category));
     }
     public void delete(String categoryId) {
-         jdbi.useExtension(CategoryDAO.class, dao -> dao.delete(categoryId));
+         jdbi.useExtension(CategoryDAO.class, dao -> dao.deleteCategory(categoryId));
     }
 
     public static void main(String[] args) {
