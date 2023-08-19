@@ -8,6 +8,7 @@ import java.util.List;
  * This class is used to map with User table in database <br/>
  * One user have many orders <br/>
  * One user have many comments <br/>
+ * One user have many favorites <br/>
  * One user have many addresses <br/>
  * One user have one cart <br/>
  *
@@ -19,6 +20,8 @@ import java.util.List;
  * @see Address
  * @see Order
  * @see Cart
+ * @see Comment
+ * @see Favorite
  */
 public class User {
     private static final int PENDING = 0;

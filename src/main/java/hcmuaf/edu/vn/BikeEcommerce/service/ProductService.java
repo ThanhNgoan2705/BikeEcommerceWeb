@@ -47,7 +47,11 @@ public class ProductService {
         Discount discount = DiscountService.getInstance().getById(product.getDiscountId());
         List<Color> colors = ColorService.getInstance().getColorByProductId(product.getProductId());
         List<ImageProduct> imageProducts = ImageProductService.getInstance().getImageProductByProductId(product.getProductId());
+        List<Comment> comments = CommentService.getInstance().getCmtByProductId(product.getProductId());
+        List<Favorite> favorites = FavoriteService.getInstance().getFavoriteByProductId(product.getProductId());
 
+        product.setComments(comments);
+        product.setFavorites(favorites);
         product.setImage(imageProducts);
         product.setColors(colors);
         product.setCategory(category);

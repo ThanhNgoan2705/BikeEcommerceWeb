@@ -12,6 +12,9 @@ import java.util.Objects;
  * One product have one brand <br/>
  * One product have one supplier <br/>
  * One product may have one discount <br/>
+ * One product have many comments <br/>
+ * One product have many colors <br/>
+ * One product have many favorites <br/>
  *
  * @version 1.0 <br>
  *
@@ -23,11 +26,14 @@ import java.util.Objects;
  * <ul>3: out of stock</ul>
  * <ul>4: on sale</ul>
  * @Author Hoang Hai
+ * @see Comment
  * @see ImageProduct
  * @see Category
  * @see Brand
  * @see Supplier
  * @see Discount
+ * @see Color
+ * @see Favorite
  */
 public class Product {
     public static final int ACTIVE = 1;
@@ -52,6 +58,8 @@ public class Product {
     private String updatedAt;
 
     // atributos objects , don't match with database but help to get data easier
+    private List<Comment> comments; //    get comments by productId
+    private List<Favorite> favorites; //    get favorites by productId
     private List<ImageProduct> image; //    get image by productId
     private List<Color> colors; //    get colour by productId
     private Category category; //   get category by categoryId
@@ -88,7 +96,9 @@ public class Product {
     }
 
     // constructor for insert all attributes
-    public Product(String productId, String name, double price, String description, String wheelSize, String material, String warranty, int inventory, String discountId, String categoryId, String brandId, String supplierId, int status, List<ImageProduct> image, List<Color> colors, Category category, Brand brand, Supplier supplier, Discount discount) {
+
+
+    public Product(String productId, String name, double price, String description, String wheelSize, String material, String warranty, int inventory, String discountId, String categoryId, String brandId, String supplierId, int status, List<Comment> comments, List<Favorite> favorites, List<ImageProduct> image, List<Color> colors, Category category, Brand brand, Supplier supplier, Discount discount) {
         this.productId = productId;
         this.name = name;
         this.price = price;
@@ -102,6 +112,8 @@ public class Product {
         this.brandId = brandId;
         this.supplierId = supplierId;
         this.status = status;
+        this.comments = comments;
+        this.favorites = favorites;
         this.image = image;
         this.colors = colors;
         this.category = category;
@@ -110,34 +122,7 @@ public class Product {
         this.discount = discount;
     }
 
-    public Product(String productId, String name, double price, String description, String wheelSize, String material, String warranty, int inventory, String discountId, String categoryId, String brandId, String supplierId, int status, String createdAt, String updatedAt, List<ImageProduct> image, List<Color> colors, Category category, Brand brand, Supplier supplier, Discount discount) {
-        this.productId = productId;
-        this.name = name;
-        this.price = price;
-        this.description = description;
-        this.wheelSize = wheelSize;
-        this.material = material;
-        this.warranty = warranty;
-        this.inventory = inventory;
-        this.discountId = discountId;
-        this.categoryId = categoryId;
-        this.brandId = brandId;
-        this.supplierId = supplierId;
-        this.status = status;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.image = image;
-        this.colors = colors;
-        this.category = category;
-        this.brand = brand;
-        this.supplier = supplier;
-        this.discount = discount;
-    }
 
-    @Override
-    public String toString() {
-        return "Product{" + "productId='" + productId + '\'' + ", name='" + name + '\'' + ", price=" + price + ", description='" + description + '\'' + ", wheelSize='" + wheelSize + '\'' + ", material='" + material + '\'' + ", warranty='" + warranty + '\'' + ", inventory=" + inventory + ", discountId='" + discountId + '\'' + ", categoryId='" + categoryId + '\'' + ", brandId='" + brandId + '\'' + ", supplierId='" + supplierId + '\'' + ", status=" + status + ", createdAt='" + createdAt + '\'' + ", updatedAt='" + updatedAt + '\'' + ", image=" + image + ", colors=" + colors + ", category=" + category + ", brand=" + brand + ", supplier=" + supplier + ", discount=" + discount + '}';
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -148,8 +133,53 @@ public class Product {
     }
 
     @Override
+    public String toString() {
+        return "Product{" +
+                "productId='" + productId + '\'' +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", description='" + description + '\'' +
+                ", wheelSize='" + wheelSize + '\'' +
+                ", material='" + material + '\'' +
+                ", warranty='" + warranty + '\'' +
+                ", inventory=" + inventory +
+                ", discountId='" + discountId + '\'' +
+                ", categoryId='" + categoryId + '\'' +
+                ", brandId='" + brandId + '\'' +
+                ", supplierId='" + supplierId + '\'' +
+                ", status=" + status +
+                ", createdAt='" + createdAt + '\'' +
+                ", updatedAt='" + updatedAt + '\'' +
+                ", comments=" + comments +
+                ", favorites=" + favorites +
+                ", image=" + image +
+                ", colors=" + colors +
+                ", category=" + category +
+                ", brand=" + brand +
+                ", supplier=" + supplier +
+                ", discount=" + discount +
+                '}';
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(productId);
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public List<Favorite> getFavorites() {
+        return favorites;
+    }
+
+    public void setFavorites(List<Favorite> favorites) {
+        this.favorites = favorites;
     }
 
     public String getProductId() {
