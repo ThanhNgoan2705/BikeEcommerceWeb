@@ -63,9 +63,9 @@ create table discount
     updated_at  timestamp default current_timestamp() not null on update current_timestamp()
 );
 
-create table imageslider
+create table image_slider
 (
-    categoryId         varchar(64)                           not null
+    categoryId varchar(64)                           not null
         primary key,
     link       varchar(255)                          null,
     created_at timestamp default current_timestamp() null,
@@ -109,18 +109,18 @@ create table product
         foreign key (supplier_id) references supplier (supplier_id)
 );
 
-create table colorproduct
+create table color_product
 (
     product_id varchar(64) not null,
     color_id   varchar(64) not null,
     primary key (product_id, color_id),
-    constraint colorproduct_color_color_id_fk
+    constraint color_product_color_color_id_fk
         foreign key (color_id) references color (color_id),
-    constraint colorproduct_product_product_id_fk
+    constraint color_product_product_product_id_fk
         foreign key (product_id) references product (product_id)
 );
 
-create table imageproduct
+create table image_product
 (
     image_product_id varchar(64)                           not null
         primary key,
@@ -128,7 +128,7 @@ create table imageproduct
     product_id       varchar(64)                           null,
     created_at       timestamp default current_timestamp() not null,
     updated_at       datetime  default current_timestamp() null on update current_timestamp(),
-    constraint imageproduct_product_product_id_fk
+    constraint image_product_product_product_id_fk
         foreign key (product_id) references product (product_id)
 );
 
@@ -145,6 +145,35 @@ create table user
     role       int       default 1                   not null comment '1-user, 2-admin'
 )
     comment 'user_info';
+
+create table cart
+(
+    cart_id    varchar(64)                           not null
+        primary key,
+    user_id    varchar(64)                           null,
+    ss_id      varchar(64)                           null,
+    created_at timestamp default current_timestamp() null,
+    updated_at timestamp default current_timestamp() null on update current_timestamp(),
+    constraint cart_user_user_id_fk
+        foreign key (user_id) references user (user_id)
+);
+
+create table cart_item
+(
+    cart_item_id int auto_increment
+        primary key,
+    cart_id      varchar(64)                           null,
+    product_id   varchar(64)                           null,
+    quantity     int                                   null comment 'phai  lon  hon 0',
+    created_at   timestamp default current_timestamp() null,
+    updated_at   timestamp default current_timestamp() null on update current_timestamp(),
+    constraint cartitems_cart_cart_id_fk
+        foreign key (cart_id) references cart (cart_id),
+    constraint cartitems_product_product_id_fk
+        foreign key (product_id) references product (product_id),
+    constraint check_quantity
+        check (`quantity` > 0)
+);
 
 create table `order`
 (
