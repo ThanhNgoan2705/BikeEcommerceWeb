@@ -25,4 +25,20 @@ public class ImageProductService {
     public List<ImageProduct> getImageProductByProductId(String productId) {
         return jdbi.withExtension(ImageProductDAO.class, dao -> dao.getImageProductByProductId(productId));
     }
+
+    public ImageProduct getImageProductById(String id) {
+        return jdbi.withExtension(ImageProductDAO.class, dao -> dao.getImageProductById(id));
+    }
+
+    public void insertImageProduct(ImageProduct imageProduct) {
+        jdbi.useExtension(ImageProductDAO.class, dao -> dao.insertImageProduct(imageProduct));
+    }
+
+    public void updateImageProduct(ImageProduct imageProduct) {
+        jdbi.useExtension(ImageProductDAO.class, dao -> dao.updateImageProduct(imageProduct));
+    }
+
+    public void deleteImageProduct(String id) {
+        jdbi.useExtension(ImageProductDAO.class, dao -> dao.deleteImageProduct(id));
+    }
 }

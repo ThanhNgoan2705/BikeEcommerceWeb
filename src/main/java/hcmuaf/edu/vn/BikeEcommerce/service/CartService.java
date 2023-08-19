@@ -21,23 +21,29 @@ public class CartService {
 
     public CartService() {
     }
-    public List<Cart> getAllCart(){
+
+    public List<Cart> getAllCart() {
         return jdbi.withExtension(CartDao.class, dao -> dao.getAllCart());
     }
-    public Cart getCartByKey(String key){
+
+    public Cart getCartByKey(String key) {
         Cart cart = jdbi.withExtension(CartDao.class, dao -> dao.getCartByKey(key));
         return mapCart(cart);
     }
-    public void insertCart(Cart cart){
+
+    public void insertCart(Cart cart) {
         jdbi.useExtension(CartDao.class, dao -> dao.insertCart(cart));
     }
-    public void updateUserId(String cartId,String userId){
-        jdbi.useExtension(CartDao.class, dao -> dao.updateUserId(cartId,userId));
+
+    public void updateUserId(String cartId, String userId) {
+        jdbi.useExtension(CartDao.class, dao -> dao.updateUserIdForCart(cartId, userId));
     }
-    public void deleteCart(String cartId){
+
+    public void deleteCart(String cartId) {
         jdbi.useExtension(CartDao.class, dao -> dao.deleteCart(cartId));
     }
-    Cart mapCart(Cart cart){
+
+    Cart mapCart(Cart cart) {
         if (cart == null) return null;
         List<CartItem> cartItems = CartItemsService.getInstance().getCartItemsByCartId(cart.getCartId());
         cart.setCartItemList(cartItems);

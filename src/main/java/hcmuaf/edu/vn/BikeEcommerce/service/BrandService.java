@@ -23,7 +23,15 @@ public class BrandService {
     public Brand getById(String brandId) {
         return jdbi.withExtension(BrandDAO.class, dao -> dao.getById(brandId));
     }
-
+    public void insert(Brand brand) {
+        jdbi.useExtension(BrandDAO.class, dao -> dao.insert(brand));
+    }
+    public void update(Brand brand) {
+        jdbi.useExtension(BrandDAO.class, dao -> dao.update(brand));
+    }
+    public void delete(String brandId) {
+        jdbi.useExtension(BrandDAO.class, dao -> dao.delete(brandId));
+    }
     public static void main(String[] args) {
         BrandService brandService = new BrandService();
         Brand brand = brandService.getById("1");

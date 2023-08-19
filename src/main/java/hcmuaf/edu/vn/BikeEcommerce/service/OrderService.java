@@ -10,6 +10,7 @@ import hcmuaf.edu.vn.BikeEcommerce.model.User;
 import org.jdbi.v3.core.Jdbi;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OrderService {
     Jdbi jdbi = JDBIConnector.get();
@@ -30,10 +31,21 @@ public class OrderService {
         return jdbi.withExtension(OrderDAO.class, dao -> dao.getAllOrder());
     }
 
+    public List<Order> getAllOrderByUserId(String userId) {
+        List<Order> orders = jdbi.withExtension(OrderDAO.class, dao -> dao.getAllOrderByUserId(userId));
+        return orders.stream().map(order -> mapToOrder(order)).collect(Collectors.toList());
+    }
+
     public Order getOrderById(String orderId) {
-        Order order = jdbi.withExtension(OrderDAO.class, dao -> dao.getOrderById(orderId));
+        return mapToOrder(jdbi.withExtension(OrderDAO.class, dao -> dao.getOrderById(orderId)));
+    }
+
+    public Order mapToOrder(Order order) {
+        if (order == null) {
+            return null;
+        }
         User user = jdbi.withExtension(UserDAO.class, dao -> dao.getUserByKey(order.getUserId()));
-        List<OrderItem> items = OrderItemService.getInstance().getOrderItemsByOrderId(orderId);
+        List<OrderItem> items = OrderItemService.getInstance().getOrderItemsByOrderId(order.getOrderId());
         Address address = AddressService.getInstance().getAddressByAddressId(order.getAddressId());
         order.setUser(user);
         order.setOrderItemList(items);
@@ -56,7 +68,7 @@ public class OrderService {
 
     public static void main(String[] args) {
         Jdbi jdbi = JDBIConnector.get();
-        String orderId ="1";
+        String orderId = "1";
         OrderService orderService = new OrderService();
         Order order = orderService.getOrderById(orderId);
         System.out.println(order);

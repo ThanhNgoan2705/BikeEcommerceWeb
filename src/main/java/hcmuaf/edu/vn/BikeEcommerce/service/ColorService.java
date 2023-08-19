@@ -27,4 +27,13 @@ public class ColorService {
     public List<Color> getColorByProductId(String productId) {
        return jdbi.withExtension(ColorDAO.class, dao -> dao.getColorByProductId(productId));
     }
+    public void insertColor(Color color) {
+        jdbi.useExtension(ColorDAO.class, dao -> dao.insertColor(color));
+    }
+    public void updateColor(Color color) {
+        jdbi.useExtension(ColorDAO.class, dao -> dao.updateColor(color));
+    }
+    public void deleteColor(String id) {
+        jdbi.useExtension(ColorDAO.class, dao -> dao.deleteColor(id));
+    }
 }

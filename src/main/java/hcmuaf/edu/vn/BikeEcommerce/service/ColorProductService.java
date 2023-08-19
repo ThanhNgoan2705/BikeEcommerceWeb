@@ -45,4 +45,16 @@ public class ColorProductService {
         colorProduct.setProduct(product);
         return colorProduct;
     }
+
+    public void insertColorProduct(ColorProduct colorProduct) {
+        jdbi.useExtension(ColorProductDAO.class, dao -> dao.insertColorProduct(colorProduct));
+    }
+
+    public void updateColorProduct(ColorProduct colorProduct) {
+        jdbi.useExtension(ColorProductDAO.class, dao -> dao.updateColorProduct(colorProduct));
+    }
+
+    public void deleteColorProduct(String productId, String colorId) {
+        jdbi.useExtension(ColorProductDAO.class, dao -> dao.deleteColorProduct(productId, colorId));
+    }
 }

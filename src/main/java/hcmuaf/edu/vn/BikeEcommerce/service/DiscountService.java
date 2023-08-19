@@ -21,10 +21,13 @@ public class DiscountService {
     public Discount getById(String discountId) {
         return jdbi.withExtension(DiscountDAO.class, dao -> dao.getById(discountId));
     }
-
-    public static void main(String[] args) {
-        DiscountService discountService = new DiscountService();
-        Discount discount = discountService.getById("1");
-        System.out.println(discount);
+    public void insertDiscount(Discount discount) {
+        jdbi.useExtension(DiscountDAO.class, dao -> dao.insertDiscount(discount));
+    }
+    public void updateDiscount(Discount discount) {
+        jdbi.useExtension(DiscountDAO.class, dao -> dao.updateDiscount(discount));
+    }
+    public void deleteDiscount(String discountId) {
+        jdbi.useExtension(DiscountDAO.class, dao -> dao.deleteDiscount(discountId));
     }
 }

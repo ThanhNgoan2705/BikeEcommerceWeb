@@ -23,18 +23,31 @@ public class OrderItemService {
     }
 
     public List<OrderItem> getOrderItemsByOrderId(String orderId) {
-       List<OrderItem> items = jdbi.withExtension(OrderItemDAO.class, dao -> dao.getOrderItemsByOrderId(orderId));
-        return items.stream().map(item-> mapOrderBean(item)).collect(Collectors.toList());
+        List<OrderItem> items = jdbi.withExtension(OrderItemDAO.class, dao -> dao.getOrderItemsByOrderId(orderId));
+        return items.stream().map(item -> mapOrderBean(item)).collect(Collectors.toList());
     }
-    public OrderItem mapOrderBean(OrderItem item){
+
+    public OrderItem mapOrderBean(OrderItem item) {
         if (item == null) return null;
         item.setProduct(ProductService.getInstance().getProductById(item.getProductId()));
         return item;
     }
 
+    public void insertOrderItem(OrderItem orderItem) {
+        jdbi.useExtension(OrderItemDAO.class, dao -> dao.insertOrderItem(orderItem));
+    }
+
+    public void updateOrderItem(OrderItem orderItem) {
+        jdbi.useExtension(OrderItemDAO.class, dao -> dao.updateOrderItem(orderItem));
+    }
+
+    public void deleteOrderItem(String id) {
+        jdbi.useExtension(OrderItemDAO.class, dao -> dao.deleteOrderItem(id));
+    }
+
     public static void main(String[] args) {
         OrderItemService orderItemService = new OrderItemService();
-        String orderId ="O12345678901";
+        String orderId = "O12345678901";
         List<OrderItem> items = orderItemService.getOrderItemsByOrderId(orderId);
         System.out.println(items);
     }
