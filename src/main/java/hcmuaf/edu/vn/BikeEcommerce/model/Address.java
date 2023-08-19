@@ -1,5 +1,7 @@
 package hcmuaf.edu.vn.BikeEcommerce.model;
 
+import java.util.Objects;
+
 /**
  * Created by Admin on 19-8-23.<br/>
  * This class is used to store information of address <br/>
@@ -27,6 +29,19 @@ public class Address {
         this.city = city;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Address)) return false;
+        Address address = (Address) o;
+        return Objects.equals(getAddressId(), address.getAddressId()) && Objects.equals(getHomeAddress(), address.getHomeAddress()) && Objects.equals(getDistrict(), address.getDistrict()) && Objects.equals(getCity(), address.getCity());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getAddressId(), getHomeAddress(), getDistrict(), getCity());
     }
 
     @Override

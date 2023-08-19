@@ -146,4 +146,9 @@ public class ScirptSQL {
     public static final String insertFavorite = "insert into favorite(user_id, product_id) values(:userId, :productId)";
     public static final String updateFavorite = "update favorite set user_id = :userId, product_id = :productId where user_id = :userId and product_id = :productId";
     public static final String deleteFavorite = "delete from favorite where user_id = :userId and product_id = :productId";
+//   userAddress
+    public static final String getAllAddressByUserId = "select * from user_address where user_id = :userId";
+    public static final String getAllAddressByAddressId = "select * from user_address where address_id = :addressId";
+    public static final String insertUserAddress = "insert into user_address(address_id, user_id) values(:addressId, :userId)";
+    public static final String deleteUserAddress = "delete from user_address where address_id = :addressId and user_id = :userId";
 }
