@@ -65,7 +65,7 @@ create table discount
 
 create table image_slider
 (
-    categoryId varchar(64)                           not null
+    id         varchar(64)                           not null
         primary key,
     link       varchar(255)                          null,
     created_at timestamp default current_timestamp() null,
@@ -154,6 +154,8 @@ create table cart
     ss_id      varchar(64)                           null,
     created_at timestamp default current_timestamp() null,
     updated_at timestamp default current_timestamp() null on update current_timestamp(),
+    constraint cart_pk
+        unique (user_id),
     constraint cart_user_user_id_fk
         foreign key (user_id) references user (user_id)
 );
@@ -174,6 +176,47 @@ create table cart_item
     constraint check_quantity
         check (`quantity` > 0)
 );
+
+create table comment
+(
+    comment_id varchar(64)                           not null
+        primary key,
+    user_id    varchar(64)                           null,
+    product_id varchar(11)                           null,
+    content    text                                  null,
+    created_at timestamp default current_timestamp() null,
+    updated_at timestamp default current_timestamp() null on update current_timestamp(),
+    constraint comment_ibfk_1
+        foreign key (user_id) references user (user_id),
+    constraint comment_ibfk_2
+        foreign key (product_id) references product (product_id)
+);
+
+create index product_id
+    on comment (product_id);
+
+create index user_id
+    on comment (user_id);
+
+create table favorite
+(
+    favorite_id varchar(64)                           not null
+        primary key,
+    user_id     varchar(64)                           null,
+    product_id  varchar(11)                           null,
+    created_at  timestamp default current_timestamp() null,
+    updated_at  timestamp default current_timestamp() null on update current_timestamp(),
+    constraint favorite_ibfk_1
+        foreign key (user_id) references user (user_id),
+    constraint favorite_ibfk_2
+        foreign key (product_id) references product (product_id)
+);
+
+create index product_id
+    on favorite (product_id);
+
+create index user_id
+    on favorite (user_id);
 
 create table `order`
 (
@@ -212,6 +255,19 @@ create table order_item
 
 create index user_email_index
     on user (email);
+
+create table user_address
+(
+    user_id    varchar(64)                           not null,
+    address_id varchar(64)                           not null,
+    created_at timestamp default current_timestamp() null,
+    updated_at datetime  default current_timestamp() null on update current_timestamp(),
+    primary key (user_id, address_id),
+    constraint user_address_address_address_id_fk
+        foreign key (address_id) references address (address_id),
+    constraint user_address_user_user_id_fk
+        foreign key (user_id) references user (user_id)
+);
 
 create table verify_code
 (
