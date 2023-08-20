@@ -20,8 +20,8 @@ INSERT INTO category (category_id, name, description, parent_id, active, level, 
 VALUES ('1', 'Electronics', 'Electronics Category', NULL, 1, 1, 'ELEC'),
        ('2', 'Clothing', 'Clothing Category', NULL, 1, 1, 'CLOTH'),
        ('3', 'Home', 'Home Category', NULL, 1, 1, 'HOME'),
-       ('4', 'Beauty', 'Beauty Category', NULL, 1, 1, 'BEAUTY'),
-       ('5', 'Sports', 'Sports Category', NULL, 1, 1, 'SPORTS');
+       ('4', 'Beauty', 'Beauty Category', NULL, 1, 1, 'BEAUY'),
+       ('5', 'Sports', 'Sports Category', NULL, 1, 1, 'SPORS');
 
 -- Table: color
 INSERT INTO color (color_id, name, code)
