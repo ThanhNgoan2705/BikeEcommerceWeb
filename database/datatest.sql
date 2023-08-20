@@ -32,7 +32,7 @@ VALUES ('1', 'Red', '#FF0000'),
        ('5', 'Purple', '#800080');
 
 -- Table: discount
-INSERT INTO discount (discount_id, name, description, discount, active, start_date, end_date)
+INSERT INTO discount (discount_id, name, description, discount_percent, active, start_date, end_date)
 VALUES ('1', 'Summer Sale', 'Discount for Summer Season', 20.00, 1, '2023-06-01', '2023-08-31'),
        ('2', 'Clearance', 'Clearance Sale', 30.00, 1, '2023-09-01', '2023-09-30'),
        ('3', 'Holiday Special', 'Discount for Holiday Season', 15.00, 1, '2023-12-01', '2023-12-25'),

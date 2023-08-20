@@ -55,7 +55,7 @@ create table discount
         primary key,
     name        varchar(255)                          not null,
     description varchar(255)                          null,
-    discount    double                                not null,
+    discount_percent    double                                not null,
     active      int                                   not null,
     start_date  date                                  not null,
     end_date    date                                  not null,
