@@ -79,13 +79,7 @@ VALUES ('1', 'user1', 'session1'),
 
 -- Continue the same pattern for other carts...
 
--- Table: user_address
-INSERT INTO user_address (user_id, address_id)
-VALUES ('user1', '1'),
-       ('user2', '2'),
-       ('user3', '3'),
-       ('user4', '4'),
-       ('user5', '5');
+
 
 
 -- Table: product
