@@ -11,25 +11,23 @@ import java.util.List;
 
 @RegisterBeanMapper(Product.class)
 public interface ProductDAO {
-    @SqlQuery("Select * from Product ")
-    List<Product> getAll();
+    @SqlQuery(ScirptSQL.getAllProduct)
+    List<Product> getAllProduct();
 
-    @SqlQuery("Select * from Product where id = :id")
-    Product getById(@Bind("id") String id);
+    @SqlQuery(ScirptSQL.getProductById)
+    Product getProductById(@Bind("id") String id);
 
-    @SqlQuery ("Select * from Product where name like = :name")
-    List<Product> getByName(@Bind("name") String name);
+    @SqlQuery(ScirptSQL.getProductsByName)
+    List<Product> getProductByName(@Bind("name") String name);
 
-    @SqlUpdate("Insert into `Product`(`id`, `name`,`price`,`description`,`wheelSize`,`quantity`,"+
-            "`inventory`,`material`,`warranty`,`category_id`,`brand_id`,`discount_id`,"+
-            "`supplier_id`)" +
-            " values (:id, :name, :price, :description, :wheelSize, :quantity, :inventory, "+"" +
-            ":material, :warranty, :category_id, :brand_id, :discount_id, :supplier_id)")
-    int insert(@BindBean Product product);
+    @SqlUpdate(ScirptSQL.insertProduct)
+    void insertProduct(@BindBean Product product);
 
-    @SqlUpdate("Update `Product` set `name` = :name, `price` = :price, `description` = :description, `wheelSize` = :wheelSize, `quantity` = :quantity, `inventory` = :inventory, `material` = :material, `warranty` = :warranty, `category_id` = :category_id, `brand_id` = :brand_id,"+"" +
-            " `discount_id` = :discount_id, `supplier_id` = :supplier_id, `updateAt` = now() where `id` = :id")
-            int update(@BindBean Product product);
+    @SqlUpdate(ScirptSQL.updateProduct)
+    void updateProduct(@BindBean Product product);
+
+    @SqlUpdate(ScirptSQL.deleteProduct)
+    void deleteProduct(@Bind("productId") String productId);
 
 
 }

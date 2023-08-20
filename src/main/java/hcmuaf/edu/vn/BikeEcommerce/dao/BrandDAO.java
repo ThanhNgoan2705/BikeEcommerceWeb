@@ -1,6 +1,7 @@
 package hcmuaf.edu.vn.BikeEcommerce.DAO;
 
 import hcmuaf.edu.vn.BikeEcommerce.model.Brand;
+import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.customizer.BindBean;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
@@ -8,24 +9,23 @@ import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
 import java.util.List;
 
+@RegisterBeanMapper(Brand.class)
 public interface BrandDAO {
-    @SqlQuery("Select * from Brand ")
+    @SqlQuery(ScirptSQL.getAllBrands)
     List<Brand> getAll();
 
-    @SqlQuery("Select * from Brand where id = :id")
-    Brand getById(@Bind("id") String id);
+    @SqlQuery(ScirptSQL.getBrandById)
+    Brand getById(@Bind("brandId") String brandId);
 
-    @SqlQuery("Select * from Brand where name like = :name")
+    @SqlQuery(ScirptSQL.getBrandsByName)
     List<Brand> getByName(@Bind("name") String name);
 
-    @SqlUpdate("Insert into `Brand`(`id`, `name`,`description`)" +
-            " values (:id, :name, :description)")
+    @SqlUpdate(ScirptSQL.insertBrand)
     int insert(@BindBean Brand brand);
 
-    @SqlUpdate("Update `Brand` set `name` = :name, `description` = :description, `updateAt` = now() where `id` = :id")
-    int update(@Bind("id") String id, @Bind("name") String name, @Bind("description") String description);
+    @SqlUpdate(ScirptSQL.updateBrand)
+    int update(@BindBean Brand brand);
 
-    @SqlUpdate("Delete from `Brand` where `id` = :id")
-    int delete(@Bind("id") String id);
-
+    @SqlUpdate(ScirptSQL.deleteBrand)
+    int delete(@Bind("brandId") String brandId);
 }

@@ -3,6 +3,18 @@ package hcmuaf.edu.vn.BikeEcommerce.model;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+/**
+ * Created by Admin on 19-8-23.<br/>
+ * This class is used to store information of supplier <br/>
+ * This class is used to map with supplier table in database <br/>
+ * One supplier have many products <br/>
+ * One product have one supplier <br/>
+ *
+ * @version 1.0
+ * @Author Hoang Hai
+ * @see Product
+ */
+
 public class Supplier {
     private String id;
     private String name;

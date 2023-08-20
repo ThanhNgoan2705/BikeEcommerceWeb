@@ -1,31 +1,33 @@
 package hcmuaf.edu.vn.BikeEcommerce.DAO;
 
 import hcmuaf.edu.vn.BikeEcommerce.model.Supplier;
+import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
+import org.jdbi.v3.sqlobject.customizer.BindBean;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
 import java.util.List;
 
+@RegisterBeanMapper(Supplier.class)
 public interface SupplierDAO {
-    @SqlQuery("Select * from Supplier ")
-    List<Supplier> getAll();
+    @SqlQuery(ScirptSQL.getAllSupplier)
+    List<Supplier> getAllSupplier();
 
-    @SqlQuery("Select * from Supplier where id = :id")
-    Supplier getById(@Bind("id") String id);
+    @SqlQuery(ScirptSQL.getSupplierById)
+    Supplier getById(@Bind("supplierId") String supplierId);
 
-    @SqlQuery("Select * from Supplier where name like = :name")
-    List<Supplier> getByName(@Bind("name") String name);
+    @SqlQuery(ScirptSQL.getSuppliersByName)
+    List<Supplier> getSuppliersByName(@Bind("supplierName") String supplierName);
 
-    @SqlUpdate("Insert into `Supplier`(`id`, `name`,`description`,`createAt`,`updateAt`)" +
-            " values (:id, :name, :description, now(), now())")
-    int insert(@Bind("id") String id, @Bind("name") String name, @Bind("description") String description);
+    @SqlUpdate(ScirptSQL.insertSupplier)
+    int insertSupplier(@BindBean Supplier supplier);
 
-    @SqlUpdate("Update `Supplier` set `name` = :name, `description` = :description, `updateAt` = now() where `id` = :id")
-    int update(@Bind("id") String id, @Bind("name") String name, @Bind("description") String description);
+    @SqlUpdate(ScirptSQL.updateSupplier)
+    int updateSupplier(@BindBean Supplier supplier);
 
-    @SqlUpdate("Delete from `Supplier` where `id` = :id")
-    int delete(@Bind("id") String id);
+    @SqlUpdate(ScirptSQL.deleteSupplier)
+    int deleteSupplier(@Bind("supplierId") String supplierId);
 
 
 }

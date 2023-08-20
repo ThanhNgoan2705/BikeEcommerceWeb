@@ -4,33 +4,41 @@ import hcmuaf.edu.vn.BikeEcommerce.DAO.CategoryDAO;
 import hcmuaf.edu.vn.BikeEcommerce.db.JDBIConnector;
 import hcmuaf.edu.vn.BikeEcommerce.model.Category;
 import org.jdbi.v3.core.Jdbi;
-import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 
 
 public class CategoryService {
-    private static  CategoryService instance = null;
+    private static CategoryService instance = null;
     Jdbi jdbi = JDBIConnector.get();
 
-public static CategoryService getInstance() {
+    public static CategoryService getInstance() {
         if (instance == null) {
             instance = new CategoryService();
         }
         return instance;
     }
+
     public CategoryService() {
     }
 
     public Category getById(String categoryId) {
-   return jdbi.withExtension(CategoryDAO.class, dao -> dao.getById(categoryId));
-    }
-    public int insert(Category category) {
-        return jdbi.withExtension(CategoryDAO.class, dao -> dao.insert(category.getId(), category.getName(), category.getDescription(),category.getActive(),category.getLevel(),category.getParentId()));
-    }
-    public int update(Category category) {
-        return jdbi.withExtension(CategoryDAO.class, dao -> dao.update(category.getId(), category.getName(), category.getDescription(),category.getActive(),category.getLevel(),category.getParentId()));
-    }
-    public int delete(String categoryId) {
-        return jdbi.withExtension(CategoryDAO.class, dao -> dao.delete(categoryId));
+        return jdbi.withExtension(CategoryDAO.class, dao -> dao.getCategoryById(categoryId));
     }
 
+    public void insert(Category category) {
+        jdbi.useExtension(CategoryDAO.class, dao -> dao.insertCategory(category));
+    }
+
+    public void update(Category category) {
+        jdbi.useExtension(CategoryDAO.class, dao -> dao.updateCategory(category));
+    }
+
+    public void delete(String categoryId) {
+        jdbi.useExtension(CategoryDAO.class, dao -> dao.deleteCategory(categoryId));
+    }
+
+    public static void main(String[] args) {
+        CategoryService categoryService = new CategoryService();
+        Category category = categoryService.getById("4");
+        System.out.println(category);
+    }
 }

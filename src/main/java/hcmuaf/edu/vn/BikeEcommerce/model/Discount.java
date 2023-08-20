@@ -1,117 +1,130 @@
 package hcmuaf.edu.vn.BikeEcommerce.model;
 
+import org.jdbi.v3.core.mapper.reflect.ColumnName;
+
 import java.time.LocalDateTime;
 
-    public class Discount {
-        private String id;
-        private String name;
-        private String desc;
-        private double discountPercent;
-        private int active;
-        private LocalDateTime startAt;
-        private LocalDateTime finishAt;
-        private LocalDateTime createAt;
-        private LocalDateTime updateAt;
+/**
+ * Created by Admin on 19-8-23.<br/>
+ * This class is used to store information of discount <br/>
+ * This class is used to map with discount table in database <br/>
+ * One discount have many products <br/>
+ * One product have one discount <br/>
+ *
+ * @version 1.0
+ * @Author Hoang Hai
+ * @see Product
+ */
+public class Discount {
+    private String discountId;
+    private String name;
+    private String description;
+    private double discountPercent;
+    private int active;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
+    @ColumnName("create_at")
+    private String createdAt;
+    @ColumnName("update_at")
+    private String updatedAt;
 
-        public Discount() {
-        }
+    public Discount() {
+    }
 
-        public Discount(String id, String name, String desc, double discountPercent, int active, LocalDateTime startAt, LocalDateTime finishAt, LocalDateTime createAt, LocalDateTime updateAt) {
-            this.id = id;
-            this.name = name;
-            this.desc = desc;
-            this.discountPercent = discountPercent;
-            this.active = active;
-            this.startAt = startAt;
-            this.finishAt = finishAt;
-            this.createAt = createAt;
-            this.updateAt = updateAt;
-        }
+    public Discount(String discountId, String name, String description, double discountPercent, int active, LocalDateTime startDate, LocalDateTime endDate) {
+        this.discountId = discountId;
+        this.name = name;
+        this.description = description;
+        this.discountPercent = discountPercent;
+        this.active = active;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
 
-        public String getId() {
-            return id;
-        }
+    @Override
+    public String toString() {
+        return "Discount{" +
+                "discountId='" + discountId + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", discountPercent=" + discountPercent +
+                ", active=" + active +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", createdAt='" + createdAt + '\'' +
+                ", updatedAt='" + updatedAt + '\'' +
+                '}';
+    }
 
-        public void setId(String id) {
-            this.id = id;
-        }
+    public String getDiscountId() {
+        return discountId;
+    }
 
-        public String getName() {
-            return name;
-        }
+    public void setDiscountId(String discountId) {
+        this.discountId = discountId;
+    }
 
-        public void setName(String name) {
-            this.name = name;
-        }
+    public String getName() {
+        return name;
+    }
 
-        public String getDesc() {
-            return desc;
-        }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-        public void setDesc(String desc) {
-            this.desc = desc;
-        }
+    public String getDescription() {
+        return description;
+    }
 
-        public double getDiscountPercent() {
-            return discountPercent;
-        }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-        public void setDiscountPercent(double discountPercent) {
-            this.discountPercent = discountPercent;
-        }
+    public double getDiscountPercent() {
+        return discountPercent;
+    }
 
-        public int getActive() {
-            return active;
-        }
+    public void setDiscountPercent(double discountPercent) {
+        this.discountPercent = discountPercent;
+    }
 
-        public void setActive(int active) {
-            this.active = active;
-        }
+    public int getActive() {
+        return active;
+    }
 
-        public LocalDateTime getStartAt() {
-            return startAt;
-        }
+    public void setActive(int active) {
+        this.active = active;
+    }
 
-        public void setStartAt(LocalDateTime startAt) {
-            this.startAt = startAt;
-        }
+    public LocalDateTime getStartDate() {
+        return startDate;
+    }
 
-        public LocalDateTime getFinishAt() {
-            return finishAt;
-        }
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
+    }
 
-        public void setFinishAt(LocalDateTime finishAt) {
-            this.finishAt = finishAt;
-        }
+    public LocalDateTime getEndDate() {
+        return endDate;
+    }
 
-        public LocalDateTime getCreateAt() {
-            return createAt;
-        }
+    public void setEndDate(LocalDateTime endDate) {
+        this.endDate = endDate;
+    }
 
-        public void setCreateAt(LocalDateTime createAt) {
-            this.createAt = createAt;
-        }
+    public String getCreatedAt() {
+        return createdAt;
+    }
 
-        public LocalDateTime getUpdateAt() {
-            return updateAt;
-        }
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
 
-        public void setUpdateAt(LocalDateTime updateAt) {
-            this.updateAt = updateAt;
-        }
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
 
-        @Override
-        public String toString() {
-            return "Discount{" +
-                    "id='" + id + '\'' +
-                    ", name='" + name + '\'' +
-                    ", desc='" + desc + '\'' +
-                    ", discountPercent=" + discountPercent +
-                    ", active=" + active +
-                    ", startAt=" + startAt +
-                    ", finishAt=" + finishAt +
-                    ", createAt=" + createAt +
-                    ", updateAt=" + updateAt +
-                    '}';
-        }
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 }

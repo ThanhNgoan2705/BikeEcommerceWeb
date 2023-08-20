@@ -3,6 +3,16 @@ package hcmuaf.edu.vn.BikeEcommerce.model;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+/**
+ * Created by Admin on 19-8-23.<br/>
+ * This class is used to store information of brand <br/>
+ * This class is used to map with image_slider table in database <br/>
+ * This use to show image slider in home page <br/>
+ *
+ * @version 1.0
+ * @Author Hoang Hai
+ */
+
 public class ImageSlider {
     private String id;
     private String link;

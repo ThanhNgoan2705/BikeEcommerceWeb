@@ -1,31 +1,32 @@
 package hcmuaf.edu.vn.BikeEcommerce.DAO;
 
 import hcmuaf.edu.vn.BikeEcommerce.model.Discount;
+import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
+import org.jdbi.v3.sqlobject.customizer.BindBean;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
 import java.util.List;
 
+@RegisterBeanMapper(Discount.class)
 public interface DiscountDAO {
-    @SqlQuery("Select * from Discount ")
+    @SqlQuery(ScirptSQL.getAllDiscount)
     List<Discount> getAll();
 
-    @SqlQuery("Select * from Discount where id = :id")
-    Discount getById(@Bind("id") String id);
+    @SqlQuery(ScirptSQL.getDiscountById)
+    Discount getById(@Bind("discountId") String discountId);
 
-    @SqlQuery("Select * from Discount where name like = :name")
+    @SqlQuery(ScirptSQL.getDiscountByName)
     List<Discount> getByName(@Bind("name") String name);
 
-    @SqlUpdate("Insert into `Discount`(`id`, `name`,`description`,`createAt`,`updateAt`)" +
-            " values (:id, :name, :description, now(), now())")
-    int insert(@Bind("id") String id, @Bind("name") String name, @Bind("description") String description);
+    @SqlUpdate(ScirptSQL.insertDiscount)
+    void insertDiscount(@BindBean Discount discount);
 
-    @SqlUpdate("Update `Discount` set `name` = :name, `description` = :description, `updateAt` = now() where `id` = :id")
-    int update(@Bind("id") String id, @Bind("name") String name, @Bind("description") String description);
+    @SqlUpdate(ScirptSQL.updateDiscount)
+    void updateDiscount(@BindBean Discount discount);
 
-    @SqlUpdate("Delete from `Discount` where `id` = :id")
-    int delete(@Bind("id") String id);
-
+    @SqlUpdate(ScirptSQL.deleteDiscount)
+    void deleteDiscount(@Bind("discountId") String discountId);
 
 }
