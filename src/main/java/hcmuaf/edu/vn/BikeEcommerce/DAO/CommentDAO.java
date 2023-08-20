@@ -25,6 +25,6 @@ public interface CommentDAO {
     @SqlUpdate(ScirptSQL.updateCmt)
     void updateCmt(@BindBean Comment comment);
 
-    @SqlQuery(ScirptSQL.deleteCmt)
+    @SqlUpdate(ScirptSQL.deleteCmt)
     void deleteCmt(@Bind("commentId") String commentId);
 }

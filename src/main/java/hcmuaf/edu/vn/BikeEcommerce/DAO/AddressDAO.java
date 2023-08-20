@@ -5,6 +5,7 @@ import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.customizer.BindBean;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
+import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
 import java.util.List;
 
@@ -17,10 +18,10 @@ public interface AddressDAO {
     Address getAddressByAddressId(@Bind("addressId") String addressId);
     @SqlQuery(ScirptSQL.getAllAddress)
     List<Address> getAllAddress();
-    @SqlQuery(ScirptSQL.insertAddress)
+    @SqlUpdate(ScirptSQL.insertAddress)
     void insertAddress(@BindBean Address address);
-    @SqlQuery(ScirptSQL.updateAddress)
+    @SqlUpdate(ScirptSQL.updateAddress)
     void updateAddress(@BindBean Address address);
-    @SqlQuery(ScirptSQL.deleteAddressById)
+    @SqlUpdate(ScirptSQL.deleteAddressById)
     void deleteAddressById(@Bind("addressId") String addressId);
 }

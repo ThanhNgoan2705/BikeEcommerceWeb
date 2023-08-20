@@ -5,6 +5,7 @@ import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.customizer.BindBean;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
+import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
 import java.util.List;
 
@@ -18,10 +19,10 @@ public interface CartItemsDao {
 
     @SqlQuery(ScirptSQL.getCartItemById)
     CartItem getCartItemById(@Bind("cartItemId")String cartItemId);
-    @SqlQuery(ScirptSQL.insertCartItem)
+    @SqlUpdate(ScirptSQL.insertCartItem)
     void insertCartItem(@BindBean CartItem cartItem);
-    @SqlQuery(ScirptSQL.updateCartItem)
+    @SqlUpdate(ScirptSQL.updateCartItem)
     void updateCartItem(@BindBean CartItem cartItem);
-    @SqlQuery(ScirptSQL.deleteCartItem)
+    @SqlUpdate(ScirptSQL.deleteCartItem)
     void deleteCartItem(@Bind("cartItemId") String cartItemId);
 }
