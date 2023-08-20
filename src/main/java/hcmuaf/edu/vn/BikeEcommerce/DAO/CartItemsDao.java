@@ -18,11 +18,17 @@ public interface CartItemsDao {
     public List<CartItem> getCartItemsByCartId(@Bind("cartId") String cartId);
 
     @SqlQuery(ScirptSQL.getCartItemById)
-    CartItem getCartItemById(@Bind("cartItemId")String cartItemId);
+    CartItem getCartItemById(@Bind("cartItemId") String cartItemId);
+
     @SqlUpdate(ScirptSQL.insertCartItem)
     void insertCartItem(@BindBean CartItem cartItem);
+
     @SqlUpdate(ScirptSQL.updateCartItem)
     void updateCartItem(@BindBean CartItem cartItem);
+
     @SqlUpdate(ScirptSQL.deleteCartItem)
     void deleteCartItem(@Bind("cartItemId") String cartItemId);
+
+    @SqlUpdate(ScirptSQL.deleteCartItemByCartId)
+    void deleteCartItemByCartId(@Bind("cartId")String cartId);
 }

@@ -8,10 +8,14 @@ import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
 import java.util.List;
+
 @RegisterBeanMapper(Comment.class)
 public interface CommentDAO {
     @SqlQuery(ScirptSQL.getAllComment)
     public List<Comment> getAllComment();
+
+    @SqlQuery(ScirptSQL.getCmtById)
+    Comment getCommentById(@Bind("commentId") String commentId);
 
     @SqlQuery(ScirptSQL.getCmtByProductId)
     List<Comment> getCmtByProductId(@Bind("productId") String productId);

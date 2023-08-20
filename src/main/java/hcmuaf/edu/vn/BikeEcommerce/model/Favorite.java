@@ -26,6 +26,11 @@ public class Favorite {
         this.product = product;
     }
 
+    public Favorite(String userId, String productId) {
+        this.userId = userId;
+        this.productId = productId;
+    }
+
     @Override
     public String toString() {
         return "Favorite{" +

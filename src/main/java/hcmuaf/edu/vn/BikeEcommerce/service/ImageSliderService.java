@@ -7,6 +7,9 @@ import org.jdbi.v3.core.Jdbi;
 
 import java.util.List;
 
+/**
+ *  da test va fix by Hoang Hai 21-8-23
+ */
 public class ImageSliderService {
     Jdbi jdbi = JDBIConnector.get();
     public static ImageSliderService instance = null;
@@ -32,5 +35,9 @@ public class ImageSliderService {
     }
     void  deleteImageSlider(String id) {
         jdbi.useExtension(ImageSliderDAO.class, dao -> dao.deleteImageSlider(id));
+    }
+
+    public static void main(String[] args) {
+
     }
 }

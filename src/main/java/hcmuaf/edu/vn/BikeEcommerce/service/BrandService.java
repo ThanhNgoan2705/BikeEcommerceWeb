@@ -6,6 +6,9 @@ import hcmuaf.edu.vn.BikeEcommerce.model.Brand;
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 
+/**
+ * da test by hoang hai 20-8-23
+ */
 @RegisterBeanMapper(Brand.class)
 public class BrandService {
     public static BrandService instance = null;
@@ -33,8 +36,13 @@ public class BrandService {
         jdbi.useExtension(BrandDAO.class, dao -> dao.delete(brandId));
     }
     public static void main(String[] args) {
-        BrandService brandService = new BrandService();
-        Brand brand = brandService.getById("1");
-        System.out.println(brand);
+
+        BrandService.getInstance().insert(new Brand("6", "Honda"));
+        System.out.println(BrandService.getInstance().getById("6"));
+        BrandService.getInstance().update(new Brand("6", "yamaha"));
+        System.out.println(BrandService.getInstance().getById("6"));
+        BrandService.getInstance().delete("6");
+        System.out.println(BrandService.getInstance().getById("6"));
+
     }
 }

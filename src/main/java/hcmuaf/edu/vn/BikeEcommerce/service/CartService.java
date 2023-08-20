@@ -8,6 +8,9 @@ import org.jdbi.v3.core.Jdbi;
 
 import java.util.List;
 
+/**
+ * da test and fix by hoang hai 20-8-23
+ */
 public class CartService {
     Jdbi jdbi = JDBIConnector.get();
     static CartService cartService = null;
@@ -40,6 +43,7 @@ public class CartService {
     }
 
     public void deleteCart(String cartId) {
+        CartItemsService.getInstance().deleteCartItemByCartId(cartId);
         jdbi.useExtension(CartDao.class, dao -> dao.deleteCart(cartId));
     }
 
@@ -51,7 +55,22 @@ public class CartService {
     }
 
     public static void main(String[] args) {
-        CartService cartService = CartService.getInstance();
+
+        CartService.getInstance().insertCart(new Cart("5", "user5", "1"));
+        System.out.println(CartService.getInstance().getCartByKey("5"));
+
+        CartItem cartItem = new CartItem("6", "5", "1", 1);
+        CartItemsService.getInstance().insertCartItem(cartItem);
+        System.out.println(CartItemsService.getInstance().getCartItemById("6"));
+
+
+
+
+        CartService.getInstance().updateUserId("5", "user5");
+        System.out.println(CartService.getInstance().getCartByKey("5"));
+
+        CartService.getInstance().deleteCart("5");
+        System.out.println(CartService.getInstance().getCartByKey("5"));
 
     }
 }

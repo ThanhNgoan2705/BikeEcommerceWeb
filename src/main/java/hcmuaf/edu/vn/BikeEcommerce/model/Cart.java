@@ -1,5 +1,9 @@
 package hcmuaf.edu.vn.BikeEcommerce.model;
 
+import hcmuaf.edu.vn.BikeEcommerce.service.BrandService;
+import hcmuaf.edu.vn.BikeEcommerce.service.CartService;
+import hcmuaf.edu.vn.BikeEcommerce.service.*;
+
 import java.util.List;
 /**
  * Created by Admin on 19-8-23 <br/>
@@ -57,6 +61,7 @@ public class Cart {
         }
         return total;
     }
+
     @Override
     public String toString() {
         return "Cart{" +

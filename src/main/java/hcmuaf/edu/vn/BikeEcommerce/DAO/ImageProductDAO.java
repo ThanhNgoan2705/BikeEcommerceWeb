@@ -8,6 +8,7 @@ import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
 import java.util.List;
+
 @RegisterBeanMapper(ImageProduct.class)
 public interface ImageProductDAO {
     @SqlQuery(ScirptSQL.getAllImageProduct)
@@ -27,4 +28,7 @@ public interface ImageProductDAO {
 
     @SqlUpdate(ScirptSQL.deleteImageProduct)
     void deleteImageProduct(@Bind("imageProductId") String imageProductId);
+
+    @SqlUpdate(ScirptSQL.deleteImageProductByProductId)
+    void deleteImageProductByProductId(@Bind("productId")String productId);
 }

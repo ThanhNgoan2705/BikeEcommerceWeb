@@ -20,8 +20,8 @@ INSERT INTO category (category_id, name, description, parent_id, active, level, 
 VALUES ('1', 'Electronics', 'Electronics Category', NULL, 1, 1, 'ELEC'),
        ('2', 'Clothing', 'Clothing Category', NULL, 1, 1, 'CLOTH'),
        ('3', 'Home', 'Home Category', NULL, 1, 1, 'HOME'),
-       ('4', 'Beauty', 'Beauty Category', NULL, 1, 1, 'BEAUTY'),
-       ('5', 'Sports', 'Sports Category', NULL, 1, 1, 'SPORTS');
+       ('4', 'Beauty', 'Beauty Category', NULL, 1, 1, 'BEAUY'),
+       ('5', 'Sports', 'Sports Category', NULL, 1, 1, 'SPORS');
 
 -- Table: color
 INSERT INTO color (color_id, name, code)
@@ -32,7 +32,7 @@ VALUES ('1', 'Red', '#FF0000'),
        ('5', 'Purple', '#800080');
 
 -- Table: discount
-INSERT INTO discount (discount_id, name, description, discount, active, start_date, end_date)
+INSERT INTO discount (discount_id, name, description, discount_percent, active, start_date, end_date)
 VALUES ('1', 'Summer Sale', 'Discount for Summer Season', 20.00, 1, '2023-06-01', '2023-08-31'),
        ('2', 'Clearance', 'Clearance Sale', 30.00, 1, '2023-09-01', '2023-09-30'),
        ('3', 'Holiday Special', 'Discount for Holiday Season', 15.00, 1, '2023-12-01', '2023-12-25'),
@@ -79,13 +79,7 @@ VALUES ('1', 'user1', 'session1'),
 
 -- Continue the same pattern for other carts...
 
--- Table: user_address
-INSERT INTO user_address (user_id, address_id)
-VALUES ('user1', '1'),
-       ('user2', '2'),
-       ('user3', '3'),
-       ('user4', '4'),
-       ('user5', '5');
+
 
 
 -- Table: product

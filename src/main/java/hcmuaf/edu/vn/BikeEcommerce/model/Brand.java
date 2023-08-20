@@ -39,6 +39,11 @@ public class Brand {
         this.updatedAt = updatedAt;
     }
 
+    public Brand(String brandId, String name) {
+        this.brandId = brandId;
+        this.name = name;
+    }
+
     public String getBrandId() {
         return brandId;
     }

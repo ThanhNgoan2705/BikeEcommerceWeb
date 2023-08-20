@@ -55,7 +55,7 @@ create table discount
         primary key,
     name        varchar(255)                          not null,
     description varchar(255)                          null,
-    discount    double                                not null,
+    discount_percent    double                                not null,
     active      int                                   not null,
     start_date  date                                  not null,
     end_date    date                                  not null,
@@ -256,18 +256,7 @@ create table order_item
 create index user_email_index
     on user (email);
 
-create table user_address
-(
-    user_id    varchar(64)                           not null,
-    address_id varchar(64)                           not null,
-    created_at timestamp default current_timestamp() null,
-    updated_at datetime  default current_timestamp() null on update current_timestamp(),
-    primary key (user_id, address_id),
-    constraint user_address_address_address_id_fk
-        foreign key (address_id) references address (address_id),
-    constraint user_address_user_user_id_fk
-        foreign key (user_id) references user (user_id)
-);
+
 
 create table verify_code
 (

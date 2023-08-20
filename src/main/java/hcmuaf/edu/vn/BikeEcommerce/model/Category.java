@@ -35,8 +35,26 @@ public class Category {
         this.level = level;
     }
 
-    public String getId() {
-        return id;
+    public Category(String categoryId, String name, int active) {
+        this.categoryId = categoryId;
+        this.name = name;
+        this.active = active;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "categoryId='" + categoryId + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", image='" + image + '\'' +
+                ", parentId='" + parentId + '\'' +
+                ", active=" + active +
+                ", level=" + level +
+                ", shortId='" + shortId + '\'' +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                '}';
     }
 
     public void setId(String id) {

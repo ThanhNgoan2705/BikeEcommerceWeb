@@ -5,7 +5,11 @@ import hcmuaf.edu.vn.BikeEcommerce.db.JDBIConnector;
 import hcmuaf.edu.vn.BikeEcommerce.model.Category;
 import org.jdbi.v3.core.Jdbi;
 
+import java.util.List;
 
+/**
+ * da test by hoang hai 20-8-23
+ */
 public class CategoryService {
     private static CategoryService instance = null;
     Jdbi jdbi = JDBIConnector.get();
@@ -18,6 +22,10 @@ public class CategoryService {
     }
 
     public CategoryService() {
+    }
+
+    public List<Category> getAll() {
+        return jdbi.withExtension(CategoryDAO.class, dao -> dao.getAllCategory());
     }
 
     public Category getById(String categoryId) {
@@ -37,8 +45,15 @@ public class CategoryService {
     }
 
     public static void main(String[] args) {
-        CategoryService categoryService = new CategoryService();
-        Category category = categoryService.getById("4");
-        System.out.println(category);
+        CategoryService.getInstance().insert(new Category("6", "Honda", 1));
+        System.out.println(CategoryService.getInstance().getById("6"));
+        CategoryService.getInstance().update(new Category("6", "yamaha", 1));
+        System.out.println(CategoryService.getInstance().getById("6"));
+        CategoryService.getInstance().delete("6");
+        System.out.println(CategoryService.getInstance().getById("6"));
+        List<Category> list = CategoryService.getInstance().getAll();
+        for (Category category : list) {
+            System.out.println(category);
+        }
     }
 }

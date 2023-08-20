@@ -21,13 +21,13 @@ public interface SupplierDAO {
     List<Supplier> getSuppliersByName(@Bind("supplierName") String supplierName);
 
     @SqlUpdate(ScirptSQL.insertSupplier)
-    int insertSupplier(@BindBean Supplier supplier);
+    void insertSupplier(@BindBean Supplier supplier);
 
     @SqlUpdate(ScirptSQL.updateSupplier)
-    int updateSupplier(@BindBean Supplier supplier);
+    void updateSupplier(@BindBean Supplier supplier);
 
     @SqlUpdate(ScirptSQL.deleteSupplier)
-    int deleteSupplier(@Bind("supplierId") String supplierId);
+    void deleteSupplier(@Bind("supplierId") String supplierId);
 
 
 }

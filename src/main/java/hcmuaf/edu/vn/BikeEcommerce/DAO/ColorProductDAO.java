@@ -27,5 +27,10 @@ public interface ColorProductDAO {
     void updateColorProduct(@BindBean ColorProduct colorProduct);
 
     @SqlUpdate(ScirptSQL.deleteColorProduct)
-    void deleteColorProduct(@Bind("colorId") String colorId, @Bind("productId") String productId);
+    void deleteColorProduct( @Bind("productId") String productId,@Bind("colorId") String colorId);
+
+    @SqlUpdate(ScirptSQL.deleteColorProductByProductId)
+    void deleteColorProductByProductId(@Bind("productId") String productId);
+    @SqlUpdate(ScirptSQL.deleteColorProductByColorId)
+    void deleteColorProductByColorId(@Bind("colorId")String colorId);
 }

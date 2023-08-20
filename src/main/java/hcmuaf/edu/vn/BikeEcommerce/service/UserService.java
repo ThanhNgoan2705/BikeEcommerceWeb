@@ -50,7 +50,7 @@ public class UserService {
             return null;
         }
         List<Order> orders = OrderService.getInstance().getAllOrderByUserId(user.getUserId());
-        List<Address> addresses = AddressService.getInstance().getAddressByUserId(user.getUserId());
+        List<Address> addresses = AddressService.getInstance().getAllAddressByUserId(user.getUserId());
         user.setOrders(orders);
         user.setAddresses(addresses);
 

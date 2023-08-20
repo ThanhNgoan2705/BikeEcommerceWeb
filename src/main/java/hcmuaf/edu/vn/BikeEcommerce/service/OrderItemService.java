@@ -47,7 +47,7 @@ public class OrderItemService {
 
     public static void main(String[] args) {
         OrderItemService orderItemService = new OrderItemService();
-        String orderId = "O12345678901";
+        String orderId = "1";
         List<OrderItem> items = orderItemService.getOrderItemsByOrderId(orderId);
         System.out.println(items);
     }
