@@ -2,6 +2,8 @@ package hcmuaf.edu.vn.BikeEcommerce.DAO;
 
 import hcmuaf.edu.vn.BikeEcommerce.model.Cart;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
+import org.jdbi.v3.sqlobject.customizer.Bind;
+import org.jdbi.v3.sqlobject.customizer.BindBean;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
@@ -13,15 +15,15 @@ public interface CartDao {
     List<Cart> getAllCart();
 
     @SqlQuery(ScirptSQL.getCartByKey)
-    Cart getCartByKey(String key);
+    Cart getCartByKey(@Bind("key") String key);
 
     @SqlUpdate(ScirptSQL.insertCart)
-    void insertCart(Cart cart);
+    void insertCart(@BindBean Cart cart);
 
     @SqlUpdate(ScirptSQL.updateUserIdForCart)
-    void updateUserIdForCart(String cartId, String userId);
+    void updateUserIdForCart(@Bind("cartId")String cartId,@Bind("userId") String userId);
 
     @SqlUpdate(ScirptSQL.deleteCart)
-    void deleteCart(String cartId);
+    void deleteCart(@Bind("cartId")String cartId);
 
 }

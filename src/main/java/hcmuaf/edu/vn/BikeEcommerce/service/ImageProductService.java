@@ -7,6 +7,9 @@ import org.jdbi.v3.core.Jdbi;
 
 import java.util.List;
 
+/**
+ * da test va fix by Hoang Hai 21-8-23
+ */
 public class ImageProductService {
     Jdbi jdbi = JDBIConnector.get();
     public static ImageProductService instance = null;
@@ -40,5 +43,21 @@ public class ImageProductService {
 
     public void deleteImageProduct(String id) {
         jdbi.useExtension(ImageProductDAO.class, dao -> dao.deleteImageProduct(id));
+    }
+
+    public void deleteImageProductByProductId(String productId) {
+        jdbi.useExtension(ImageProductDAO.class, dao -> dao.deleteImageProductByProductId(productId));
+    }
+
+    public static void main(String[] args) {
+        ImageProductService.getInstance().getImageProductByProductId("1").forEach(System.out::println);
+        System.out.println(ImageProductService.getInstance().getImageProductById("1"));
+        ImageProductService.getInstance().insertImageProduct(new ImageProduct("6", "link", "1"));
+        System.out.println(ImageProductService.getInstance().getImageProductById("6"));
+        ImageProductService.getInstance().updateImageProduct(new ImageProduct("6", "link", "1"));
+        System.out.println(ImageProductService.getInstance().getImageProductById("6"));
+        ImageProductService.getInstance().deleteImageProduct("6");
+        System.out.println(ImageProductService.getInstance().getImageProductById("6"));
+
     }
 }

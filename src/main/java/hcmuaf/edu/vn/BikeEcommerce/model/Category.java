@@ -41,6 +41,12 @@ public class Category {
         this.shortId = shortId;
     }
 
+    public Category(String categoryId, String name, int active) {
+        this.categoryId = categoryId;
+        this.name = name;
+        this.active = active;
+    }
+
     @Override
     public String toString() {
         return "Category{" +

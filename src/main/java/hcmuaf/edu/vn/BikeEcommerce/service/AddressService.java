@@ -32,7 +32,9 @@ public class AddressService {
     public Address getAddressByAddressId(String addressId) {
         return jdbi.withExtension(AddressDAO.class, dao -> dao.getAddressByAddressId(addressId));
     }
-
+    public List<Address> getAllAddressByUserId(String userId) {
+        return jdbi.withExtension(AddressDAO.class, dao -> dao.getAllAddressByUserId(userId));
+    }
     public void insertAddress(Address address) {
         jdbi.useExtension(AddressDAO.class, dao -> dao.insertAddress(address));
     }

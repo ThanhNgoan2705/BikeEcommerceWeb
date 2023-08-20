@@ -15,12 +15,19 @@ public interface AddressDAO {
 
     @SqlQuery(ScirptSQL.getAddressByAddressId)
     Address getAddressByAddressId(@Bind("addressId") String addressId);
+
     @SqlQuery(ScirptSQL.getAllAddress)
     List<Address> getAllAddress();
+
     @SqlUpdate(ScirptSQL.insertAddress)
     void insertAddress(@BindMethods Address address);
+
     @SqlUpdate(ScirptSQL.updateAddress)
     void updateAddress(@BindMethods Address address);
+
     @SqlUpdate(ScirptSQL.deleteAddressById)
     void deleteAddressById(@Bind("addressId") String addressId);
+
+    @SqlQuery(ScirptSQL.getAllAddressByUserId)
+    List<Address> getAllAddressByUserId(String userId);
 }

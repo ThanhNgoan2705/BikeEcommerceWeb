@@ -2,6 +2,7 @@ package hcmuaf.edu.vn.BikeEcommerce.model;
 
 import org.jdbi.v3.core.mapper.reflect.ColumnName;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -21,8 +22,8 @@ public class Discount {
     private String description;
     private double discountPercent;
     private int active;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
     @ColumnName("create_at")
     private String createdAt;
     @ColumnName("update_at")
@@ -31,7 +32,7 @@ public class Discount {
     public Discount() {
     }
 
-    public Discount(String discountId, String name, String description, double discountPercent, int active, LocalDateTime startDate, LocalDateTime endDate) {
+    public Discount(String discountId, String name, String description, double discountPercent, int active, LocalDate startDate, LocalDate endDate) {
         this.discountId = discountId;
         this.name = name;
         this.description = description;
@@ -39,6 +40,13 @@ public class Discount {
         this.active = active;
         this.startDate = startDate;
         this.endDate = endDate;
+    }
+
+    public Discount(String discountId, String name, double discountPercent, int active) {
+        this.discountId = discountId;
+        this.name = name;
+        this.discountPercent = discountPercent;
+        this.active = active;
     }
 
     @Override
@@ -96,19 +104,19 @@ public class Discount {
         this.active = active;
     }
 
-    public LocalDateTime getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDateTime getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 

@@ -9,6 +9,9 @@ import org.jdbi.v3.core.Jdbi;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * da test and fix by hoang hai 20-8-23
+ */
 public class CartItemsService {
     Jdbi jdbi = JDBIConnector.get();
     static CartItemsService cartItemsService = null;
@@ -55,11 +58,19 @@ public class CartItemsService {
     public void deleteCartItem(String cartItemId) {
         jdbi.useExtension(CartItemsDao.class, dao -> dao.deleteCartItem(cartItemId));
     }
+    public void deleteCartItemByCartId(String cartId) {
+        jdbi.useExtension(CartItemsDao.class, dao -> dao.deleteCartItemByCartId(cartId));
+    }
 
     public static void main(String[] args) {
-        CartItemsService cartItemsService = CartItemsService.getInstance();
-        List<CartItem> cartItems = cartItemsService.getCartItemsByCartId("1");
-        System.out.println(cartItems.get(0));
-        System.out.println(cartItems.get(1));
+        CartItem cartItem = new CartItem("6", "1", "1", 1);
+        CartItemsService.getInstance().insertCartItem(cartItem);
+        System.out.println(CartItemsService.getInstance().getCartItemById("6"));
+        cartItem.setQuantity(2);
+        CartItemsService.getInstance().updateCartItem(cartItem);
+        System.out.println(CartItemsService.getInstance().getCartItemById("6"));
+        CartItemsService.getInstance().deleteCartItem("6");
+        System.out.println(CartItemsService.getInstance().getCartItemById("6"));
+
     }
 }

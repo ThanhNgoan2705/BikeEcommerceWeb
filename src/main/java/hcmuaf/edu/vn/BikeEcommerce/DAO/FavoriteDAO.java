@@ -17,6 +17,8 @@ public interface FavoriteDAO {
     @SqlQuery(ScirptSQL.getAllFavoriteByProductId)
     List<Favorite> getFavoriteByProductId(@Bind("productId")String productId);
 
+    @SqlQuery(ScirptSQL.getFavoriteById)
+    Favorite getFavoriteById(@Bind("favoriteId")String favoriteId);
     @SqlUpdate(ScirptSQL.insertFavorite)
     void insertFavorite(@BindBean Favorite favorite);
 
@@ -25,4 +27,8 @@ public interface FavoriteDAO {
 
     @SqlUpdate(ScirptSQL.deleteFavorite)
     void deleteFavorite(@Bind("favoriteId")String favoriteId);
+@SqlQuery(ScirptSQL.getAllFavorite)
+    List<Favorite> getAllFavorite();
+@SqlUpdate(ScirptSQL.deleteFavoriteByProductIdAndUserId)
+    void deleteFavoriteByProductIdAndUserId(@Bind("productId")String productId,@Bind("userId") String userId);
 }
