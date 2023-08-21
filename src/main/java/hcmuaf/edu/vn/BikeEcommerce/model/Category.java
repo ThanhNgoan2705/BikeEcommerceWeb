@@ -1,6 +1,5 @@
 package hcmuaf.edu.vn.BikeEcommerce.model;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
@@ -14,19 +13,22 @@ import java.util.Objects;
  * @version 1.0
  */
 public class Category {
-    private String id;
+    private String categoryId;
     private String name;
     private String description;
     private String image;
     private String parentId;
     private int active;
     private int level;
+    private String shortId;
+    private String createdAt;
+    private String updatedAt;
 
     public Category() {
     }
 
-    public Category(String id, String name, String description, String image, String parentId, int active, int level) {
-        this.id = id;
+    public Category(String categoryId, String name, String description, String image, String parentId, int active, int level) {
+        this.categoryId = categoryId;
         this.name = name;
         this.description = description;
         this.image = image;
@@ -57,8 +59,36 @@ public class Category {
                 '}';
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public String getShortId() {
+        return shortId;
+    }
+
+    public void setShortId(String shortId) {
+        this.shortId = shortId;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public String getName() {
@@ -112,27 +142,13 @@ public class Category {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Category)) return false;
         Category category = (Category) o;
-        return active == category.active && level == category.level && Objects.equals(id, category.id) && Objects.equals(name, category.name) && Objects.equals(description, category.description) && Objects.equals(image, category.image) && Objects.equals(parentId, category.parentId);
+        return Objects.equals(categoryId, category.categoryId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, image, parentId, active, level);
+        return Objects.hash(categoryId);
     }
-
-    @Override
-    public String toString() {
-        return "Category{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", image='" + image + '\'' +
-                ", parentId='" + parentId + '\'' +
-                ", active=" + active +
-                ", level=" + level +
-                '}';
-    }
-
 }
