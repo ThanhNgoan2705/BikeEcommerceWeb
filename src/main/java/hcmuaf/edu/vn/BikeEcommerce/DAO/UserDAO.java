@@ -34,4 +34,12 @@ public interface UserDAO {
 
     @SqlQuery(ScirptSQL.isEmailOrUserNameAlreadyExists)
     Boolean isEmailOrUserNameAlreadyExists(@Bind("key") String key);
+
+
+    @SqlUpdate(ScirptSQL.setAdmin)
+    void setAdmin(@Bind("userId") String userId);
+
+    @SqlUpdate(ScirptSQL.setUser)
+    void setUser(@Bind("userId") String userId);
 }
+
