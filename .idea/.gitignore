@@ -1,2 +1,4 @@
 dataSources
 shelf
+sqlDataSources.xml
+dataSources.local.xml
