@@ -1,5 +1,6 @@
 package hcmuaf.edu.vn.BikeEcommerce.service;
 
+import hcmuaf.edu.vn.BikeEcommerce.DAO.SupplierDAO;
 import hcmuaf.edu.vn.BikeEcommerce.db.JDBIConnector;
 import hcmuaf.edu.vn.BikeEcommerce.model.Supplier;
 import org.jdbi.v3.core.Jdbi;
