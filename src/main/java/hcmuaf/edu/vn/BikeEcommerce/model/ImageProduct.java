@@ -32,6 +32,11 @@ public class ImageProduct {
         this.updateAt = updateAt;
     }
 
+    public ImageProduct(String id, String link, String productId) {
+        this.id = id;
+        this.link = link;
+        this.productId = productId;
+    }
     public String getId() {
         return id;
     }
