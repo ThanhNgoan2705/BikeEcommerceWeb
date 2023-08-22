@@ -72,6 +72,16 @@ public class Order {
     public Order() {
     }
 
+    public Order(String orderId, String userId, String addressId, double price, int discount, double shippingFee, double total) {
+        this.orderId = orderId;
+        this.userId = userId;
+        this.addressId = addressId;
+        this.price = price;
+        this.discount = discount;
+        this.shippingFee = shippingFee;
+        this.total = total;
+    }
+
     public Order(String orderId, String userId, String addressId, double price, int discount, double shippingFee, double total, String sendDay, String receiveDay, int status) {
         this.orderId = orderId;
         this.userId = userId;
@@ -129,6 +139,7 @@ public class Order {
     public void setOrderItemList(List<OrderItem> orderItemList) {
         this.orderItemList = orderItemList;
     }
+
 
     public User getUser() {
         return user;
@@ -231,4 +242,58 @@ public class Order {
     public void setStatus(int status) {
         this.status = status;
     }
+
+    public String toStringForHash() {
+        String orderItemListToString = "";
+        if (orderItemList != null) {
+            for (OrderItem orderItem : orderItemList) {
+                orderItemListToString = orderItemListToString + orderItem.forToBytesOfOrder();
+            }
+        }
+        return (":" + orderId + ";" + userId + ";" + addressId + ";" + price + ";" + discount + ";" + shippingFee + ";" + total + ":" + orderItemListToString);
+    }
+
+//    public static Order getOrderFromBytes(byte[] bytes) {
+//        Order order = new Order();
+//        String s = new String(bytes);
+//        StringTokenizer stringTokenizer = new StringTokenizer(s, ":");
+//        String orderToken = stringTokenizer.nextToken();
+//        StringTokenizer orderTokenizer = new StringTokenizer(orderToken, ";");
+//        order.setOrderId(orderTokenizer.nextToken());
+//        order.setUserId(orderTokenizer.nextToken());
+//        order.setAddressId(orderTokenizer.nextToken());
+//        order.setPrice(Double.parseDouble(orderTokenizer.nextToken()));
+//        order.setDiscount(Integer.parseInt(orderTokenizer.nextToken()));
+//        order.setShippingFee(Double.parseDouble(orderTokenizer.nextToken()));
+//        order.setTotal(Double.parseDouble(orderTokenizer.nextToken()));
+//        String itemToken = stringTokenizer.nextToken();
+//        StringTokenizer itemTokenizer = new StringTokenizer(itemToken, "+");
+//        List<OrderItem> orderItemList = new ArrayList<>();
+//        while (itemTokenizer.hasMoreTokens()) {
+//            String item = itemTokenizer.nextToken();
+//            StringTokenizer itemToken2 = new StringTokenizer(item, "--");
+//            OrderItem orderItem = new OrderItem();
+//            orderItem.setOrderId(order.getOrderId());
+//            orderItem.setProductId(itemToken2.nextToken());
+//            orderItem.setQuantity(Integer.parseInt(itemToken2.nextToken()));
+//            orderItemList.add(orderItem);
+//        }
+//        order.setOrderItemList(orderItemList);
+//        return order;
+//    }
+
+//    public static void main(String[] args) {
+//        Order order = new Order("1", "2", "3", 2, 0, 1, 5, "8", "9", 1);
+//        List<OrderItem> orderItemList = new ArrayList<>();
+//        orderItemList.add(new OrderItem("1", "1", 1));
+//        orderItemList.add(new OrderItem("1", "2", 2));
+//        order.setOrderItemList(orderItemList);
+//        byte[] bytes = order.toBytes();
+//        Order order1 = Order.getOrderFromBytes(bytes);
+//        List<OrderItem> orderItems = order1.getOrderItemList();
+//        System.out.println(orderItems);
+//
+//    }
+
+
 }

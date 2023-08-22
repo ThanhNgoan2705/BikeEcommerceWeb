@@ -76,4 +76,8 @@ public class OrderItem {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    public String forToBytesOfOrder() {
+        return ("+" + productId + "--" + quantity);
+    }
 }
