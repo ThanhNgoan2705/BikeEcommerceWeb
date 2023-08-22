@@ -1,6 +1,5 @@
 package hcmuaf.edu.vn.BikeEcommerce.service;
 
-import hcmuaf.edu.vn.BikeEcommerce.DAO.SupplierDAO;
 import hcmuaf.edu.vn.BikeEcommerce.db.JDBIConnector;
 import hcmuaf.edu.vn.BikeEcommerce.model.Supplier;
 import org.jdbi.v3.core.Jdbi;
@@ -21,7 +20,7 @@ public class SupplierService {
         return instance;
     }
     public Supplier getById(String supplierId) {
-        return jdbi.withExtension(SupplierDAO.class, dao -> dao.getById(supplierId));
+        return jdbi.withExtension(SupplierService.class, dao -> dao.getById(supplierId));
     }
     public List<Supplier> getAllSupplier() {
         return jdbi.withExtension(SupplierDAO.class, dao -> dao.getAllSupplier());

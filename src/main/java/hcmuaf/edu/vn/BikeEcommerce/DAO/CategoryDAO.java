@@ -3,7 +3,6 @@ package hcmuaf.edu.vn.BikeEcommerce.DAO;
 import hcmuaf.edu.vn.BikeEcommerce.model.Category;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
-import org.jdbi.v3.sqlobject.customizer.BindBean;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 

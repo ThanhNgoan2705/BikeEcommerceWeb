@@ -1,5 +1,6 @@
 
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="vi">
 
@@ -7,7 +8,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta userName="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>SpryStore E-commerce Category Bootstrap Responsive Website Template | Home :: W3layouts</title>
+  <title>SpryStore </title>
   <!-- Template CSS -->
 
   <!-- Template CSS -->
@@ -43,10 +44,10 @@
 							<form action="#" method="post" class="last">
 								<input type="hidden" userName="cmd" value="_cart">
 								<input type="hidden" userName="display" value="1">
-								<button class="top_transmitv_cart" type="submit" userName="submit" value="">
+								<a href="cartPage.jsp" class="top_transmitv_cart" role="button " userName="submit" value="">
 									My Cart
 									<span class="fa fa-shopping-cart"></span>
-								</button>
+								</a>
 							</form>
 						</li>
 					</ul>

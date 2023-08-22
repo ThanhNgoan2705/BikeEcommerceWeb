@@ -1,6 +1,5 @@
 package hcmuaf.edu.vn.BikeEcommerce.model;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
@@ -22,15 +21,13 @@ public class Category {
     private int active;
     private int level;
     private String shortId;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    private String createdAt;
+    private String updatedAt;
 
     public Category() {
     }
 
-
-    public Category(String categoryId, String name, String description, String image, String parentId, int active, int level, String shortId) {
-
+    public Category(String categoryId, String name, String description, String image, String parentId, int active, int level) {
         this.categoryId = categoryId;
         this.name = name;
         this.description = description;
@@ -38,7 +35,6 @@ public class Category {
         this.parentId = parentId;
         this.active = active;
         this.level = level;
-        this.shortId = shortId;
     }
 
     public Category(String categoryId, String name, int active) {
@@ -63,20 +59,12 @@ public class Category {
                 '}';
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    public String getCategoryId() {
+        return categoryId;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getShortId() {
@@ -85,15 +73,22 @@ public class Category {
 
     public void setShortId(String shortId) {
         this.shortId = shortId;
-
     }
 
-    public String getCategoryId() {
-        return categoryId;
+    public String getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public String getName() {
@@ -147,15 +142,13 @@ public class Category {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Category)) return false;
         Category category = (Category) o;
-        return active == category.active && level == category.level && Objects.equals(categoryId, category.categoryId) && Objects.equals(name, category.name) && Objects.equals(description, category.description) && Objects.equals(image, category.image) && Objects.equals(parentId, category.parentId);
+        return Objects.equals(categoryId, category.categoryId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(categoryId, name, description, image, parentId, active, level);
+        return Objects.hash(categoryId);
     }
-
-
 }

@@ -16,27 +16,27 @@ import java.util.Objects;
  */
 
 public class Supplier {
-    private String supplierId;
+    private String id;
     private String name;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    private LocalDateTime createAt;
+    private LocalDateTime updateAt;
 
     public Supplier() {
     }
 
-    public Supplier(String supplierId, String name, LocalDateTime createdAt, LocalDateTime updatedAt) {
-        this.supplierId = supplierId;
+    public Supplier(String id, String name, LocalDateTime createAt, LocalDateTime updateAt) {
+        this.id = id;
         this.name = name;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+        this.createAt = createAt;
+        this.updateAt = updateAt;
     }
 
-    public String getSupplierId() {
-        return supplierId;
+    public String getId() {
+        return id;
     }
 
-    public void setSupplierId(String supplierId) {
-        this.supplierId = supplierId;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -47,20 +47,20 @@ public class Supplier {
         this.name = name;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    public LocalDateTime getCreateAt() {
+        return createAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setCreateAt(LocalDateTime createAt) {
+        this.createAt = createAt;
     }
 
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
+    public LocalDateTime getUpdateAt() {
+        return updateAt;
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setUpdateAt(LocalDateTime updateAt) {
+        this.updateAt = updateAt;
     }
 
     @Override
@@ -68,21 +68,21 @@ public class Supplier {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Supplier supplier = (Supplier) o;
-        return Objects.equals(supplierId, supplier.supplierId) && Objects.equals(name, supplier.name) && Objects.equals(createdAt, supplier.createdAt) && Objects.equals(updatedAt, supplier.updatedAt);
+        return Objects.equals(id, supplier.id) && Objects.equals(name, supplier.name) && Objects.equals(createAt, supplier.createAt) && Objects.equals(updateAt, supplier.updateAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(supplierId, name, createdAt, updatedAt);
+        return Objects.hash(id, name, createAt, updateAt);
     }
 
     @Override
     public String toString() {
         return "Supplier{" +
-                "supplierId='" + supplierId + '\'' +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
+                ", createAt=" + createAt +
+                ", updateAt=" + updateAt +
                 '}';
     }
 }
