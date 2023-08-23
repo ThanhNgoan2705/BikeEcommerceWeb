@@ -1,6 +1,7 @@
 package hcmuaf.edu.vn.BikeEcommerce.toolSecurity;
 
 import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 import java.security.*;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
@@ -116,6 +117,7 @@ public class RSA {
 
     /**
      * This method is used to get signature of a string <br/>
+     *
      * @param privateKey
      * @param orderCode
      * @return String signature
@@ -136,6 +138,7 @@ public class RSA {
 
     /**
      * This method is used to verify signature of a string <br/>
+     *
      * @param publicKey
      * @param orderCode
      * @param signature
@@ -159,6 +162,7 @@ public class RSA {
 
     /**
      * This method is used to package signature and order code to a string for send to server <br/>
+     *
      * @param signature
      * @param orderCode
      * @return String
@@ -175,6 +179,7 @@ public class RSA {
 
     /**
      * This method is used to encrypt a byte array with public key (byte array) <br/>
+     *
      * @param publicKey
      * @param data
      * @return byte[]
@@ -192,6 +197,7 @@ public class RSA {
 
     /**
      * This method is used to encrypt a string with public key (String) <br/>
+     *
      * @param publicKey
      * @param data
      * @return String
@@ -210,6 +216,7 @@ public class RSA {
 
     /**
      * This method is used to decrypt a byte array with private key (byte array) <br/>
+     *
      * @param privateKey
      * @param encryptedData
      * @return byte[]
@@ -227,6 +234,7 @@ public class RSA {
 
     /**
      * This method is used to decrypt a string with private key (String) <br/>
+     *
      * @param privateKey
      * @param encryptedData
      * @return String
@@ -241,6 +249,45 @@ public class RSA {
         RSAPrivateKey rsaPrivateKey = (RSAPrivateKey) keyFactory.generatePrivate(new PKCS8EncodedKeySpec(Base64.getDecoder().decode(privateKey)));
         cipher.init(Cipher.DECRYPT_MODE, rsaPrivateKey);
         return new String(cipher.doFinal(Base64.getDecoder().decode(encryptedData)));
+    }
+
+    private static final String SECRET_KEY = "bikelongvu"; // Replace with your secret key
+
+    /**
+     * This method is used to encrypt a string with AES algorithm <br/>
+     *
+     * @param plainText
+     * @return String
+     * @throws Exception
+     * @auther Hoang Hai
+     * @version 1.0
+     * @since 23-8-2023
+     */
+    public String AESencrypt(String plainText) throws Exception {
+        SecretKeySpec secretKey = new SecretKeySpec(SECRET_KEY.getBytes(), "AES");
+        Cipher cipher = Cipher.getInstance("AES");
+        cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+        byte[] encryptedBytes = cipher.doFinal(plainText.getBytes());
+        return Base64.getEncoder().encodeToString(encryptedBytes);
+    }
+
+    /**
+     * This method is used to decrypt a string with AES algorithm <br/>
+     *
+     * @param encryptedText
+     * @return String
+     * @throws Exception
+     * @auther Hoang Hai
+     * @version 1.0
+     * @since 23-8-2023
+     */
+    public String decrypt(String encryptedText) throws Exception {
+        SecretKeySpec secretKey = new SecretKeySpec(SECRET_KEY.getBytes(), "AES");
+        Cipher cipher = Cipher.getInstance("AES");
+        cipher.init(Cipher.DECRYPT_MODE, secretKey);
+        byte[] encryptedBytes = Base64.getDecoder().decode(encryptedText);
+        byte[] decryptedBytes = cipher.doFinal(encryptedBytes);
+        return new String(decryptedBytes);
     }
 
 
