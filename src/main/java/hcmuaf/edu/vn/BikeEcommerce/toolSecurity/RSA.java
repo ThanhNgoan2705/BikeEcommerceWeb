@@ -251,7 +251,7 @@ public class RSA {
         return new String(cipher.doFinal(Base64.getDecoder().decode(encryptedData)));
     }
 
-    private static final String SECRET_KEY = "bikelongvu"; // Replace with your secret key
+    private static final String SECRET_KEY = "bikelongbikelong"; // Replace with your secret key
 
     /**
      * This method is used to encrypt a string with AES algorithm <br/>
@@ -281,7 +281,7 @@ public class RSA {
      * @version 1.0
      * @since 23-8-2023
      */
-    public String decrypt(String encryptedText) throws Exception {
+    public String ASEdecrypt(String encryptedText) throws Exception {
         SecretKeySpec secretKey = new SecretKeySpec(SECRET_KEY.getBytes(), "AES");
         Cipher cipher = Cipher.getInstance("AES");
         cipher.init(Cipher.DECRYPT_MODE, secretKey);
@@ -291,8 +291,9 @@ public class RSA {
     }
 
 
-    public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeyException, SignatureException {
-
+    public static void main(String[] args) throws Exception {
+        System.out.println(RSA.getInstance().AESencrypt("hoanghailata"));
+        System.out.println(RSA.getInstance().ASEdecrypt("vJrA/pbC3A7X13COD9RqqA=="));
 
     }
 
