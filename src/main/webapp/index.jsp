@@ -34,7 +34,9 @@
                     <!--//left-->
                     <!--/right-->
                     <ul class="top-hnt-right-content col-lg-6">
-
+                        <c:if test="${requestScope.haveUser != null && requestScope.haveUser}">
+                            <li>hello, ${requestScope.userName}</li>
+                        </c:if>
                         <li class="button-log usernhy">
                             <a class="btn-open" href="#">
                                 <span class="fa fa-user" aria-hidden="true"></span>
@@ -60,12 +62,17 @@
                         <div class="wrap">
                             <h5 class="text-center mb-3">Login Now</h5>
                             <div class="login-bghny p-md-5 p-4 mx-auto mw-100">
+                                <c:if test="${requestScope.mess != null || requestScope.mess!=''}">
+                                    <p style=" color: red "> ${requestScope.mess} </p>
+                                </c:if>
+<%--                                <p style=" color: red "> mess </p>--%>
                                 <!--/login-form-->
-                                <form th:action="/login" method="post">
+                                <form action="/login" method="post">
                                     <div class="form-group">
                                         <p class="login-texthny mb-2">Email address</p>
                                         <input type="email" class="form-control" userId="exampleInputEmail1"
-                                               aria-describedby="emailHelp" placeholder="" required="" name="email">
+                                               aria-describedby="emailHelp" placeholder="" required="" name="email"
+                                                value="${requestScope.emailUser}">
                                         <small userId="emailHelp" class="form-text text-muted">We'll never share your
                                             email
                                             with anyone else.</small>
