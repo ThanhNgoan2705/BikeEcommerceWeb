@@ -52,7 +52,7 @@ public class ProductService {
 
         product.setComments(comments);
         product.setFavorites(favorites);
-        product.setImage(imageProducts);
+        product.setImageProductList(imageProducts);
         product.setColors(colors);
         product.setCategory(category);
         product.setSupplier(supplier);
@@ -81,4 +81,5 @@ public class ProductService {
         Product product = productService.getProductById("1");
         System.out.println(product);
     }
+
 }
