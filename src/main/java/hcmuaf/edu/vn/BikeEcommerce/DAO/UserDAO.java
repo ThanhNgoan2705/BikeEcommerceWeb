@@ -41,5 +41,7 @@ public interface UserDAO {
 
     @SqlUpdate(ScirptSQL.setUser)
     void setUser(@Bind("userId") String userId);
+    @SqlUpdate(ScirptSQL.updateUserRoll)
+    void updateUser(@Bind("email") String email,@Bind("role") int role);
 }
 

@@ -9,14 +9,14 @@
     <meta userName="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>SpryStore </title>
     <!-- Template CSS -->
-
+    <link href="assets/css/bootstrap.min.css">
     <!-- Template CSS -->
     <link href="//fonts.googleapis.com/css?family=Oswald:300,400,500,600&display=swap" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,900&display=swap" rel="stylesheet">
     <!-- Template CSS -->
     <link rel="stylesheet" href="assets/css/style-starter.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    -+
+
 </head>
 <body>
 <!--w3l-banner-slider-main-->
@@ -27,7 +27,7 @@
                 <div class="top-right-strip row">
                     <!--/left-->
                     <div class="top-hny-left-content col-lg-6 pl-lg-0">
-                        <h6>Upto 30% off on All styles , <a href="#" target="_blank"> Click here for <span
+                        <h6>Upto 30% off on All styles , <a href="" target="_blank"> Click here for <span
                                 class="fa fa-hand-o-right hand-icon" aria-hidden="true"></span> <span
                                 class="hignlaite">More details</span></a></h6>
                     </div>
@@ -38,10 +38,12 @@
                             <li>hello, ${requestScope.userName}</li>
                         </c:if>
                         <li class="button-log usernhy">
-                            <a class="btn-open" href="#">
+                            <a class="btn-open dropdown" href="#" >
+<%--                                click vao khi da co token thi se chuyen sang trang user--%>
                                 <span class="fa fa-user" aria-hidden="true"></span>
                             </a>
                         </li>
+
                         <li class="transmitvcart galssescart2 cart cart box_1">
                             <form action="#" method="post" class="last">
                                 <input type="hidden" userName="cmd" value="_cart">
@@ -93,8 +95,11 @@
                                         </div>
                                     </div>
                                     <button type="submit" class="submit-login btn mb-4">Sign In</button>
-                                    <button type="button" class="submit-login btn mb-4 text-primary"><a
-                                            href="signUp.html" style="color: white">Sign Up</a></button>
+                                    <a href="/register">
+                                        <button type="button" class="submit-login btn mb-4">
+                                            Sign Up
+                                        </button>
+                                    </a>
                                 </form>
                                 <!--//login-form-->
                             </div>
@@ -1097,6 +1102,12 @@
 
 <script src="assets/js/jquery-3.3.1.min.js"></script>
 <script src="assets/js/jquery-2.1.4.min.js"></script>
+<!-- //cart-js -->
+<script src="assets/js/minicart.js"></script>
+<!--pop-up-box-->
+<script src="assets/js/jquery.magnific-popup.js"></script>
+<!-- disable body scroll which navbar is in active -->
+<script src="assets/js/bootstrap.min.js"></script>
 <!--/login-->
 <script>
     $(document).ready(function () {
@@ -1119,7 +1130,6 @@
     });
 </script>
 <!-- cart-js -->
-<script src="assets/js/minicart.js"></script>
 <script>
     transmitv.render();
 
@@ -1134,9 +1144,7 @@
         }
     });
 </script>
-<!-- //cart-js -->
-<!--pop-up-box-->
-<script src="assets/js/jquery.magnific-popup.js"></script>
+
 <!--//pop-up-box-->
 <script>
     $(document).ready(function () {
@@ -1164,6 +1172,5 @@
         })
     });
 </script>
-<!-- disable body scroll which navbar is in active -->
-<script src="assets/js/bootstrap.min.js"></script>
+
 

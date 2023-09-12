@@ -50,8 +50,9 @@ public class RSA {
      * @version 1.0
      * @since 23-8-2023
      */
-    public byte[] getHashWithSHA256(String message) {
-        return messageDigest.digest(message.getBytes());
+    public String getHashWithSHA256(String message) {
+        String result = Base64.getEncoder().encodeToString(messageDigest.digest(message.getBytes()));
+        return result;
     }
 
 

@@ -76,4 +76,8 @@ public class UserService {
     public void setUser(String userId) {
         jdbi.useExtension(UserDAO.class, dao -> dao.setUser(userId));
     }
+
+    public void updateUser(String email, int role) {
+        jdbi.useExtension(UserDAO.class, dao -> dao.updateUser(email, role));
+    }
 }

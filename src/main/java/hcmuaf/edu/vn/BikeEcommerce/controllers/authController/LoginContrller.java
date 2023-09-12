@@ -40,7 +40,7 @@ public class LoginContrller extends HttpServlet {
             try {
                 String tokenValue = TokenService.getInstance().genTokenByUser(user); // tokenValue
                 Cookie cookie = new Cookie("token-bike", tokenValue);
-                cookie.setValue("tokenFake");
+//                cookie.setValue("tokenFake");
                 resp.addCookie(cookie);
                 System.out.println(cookie.getValue() + " login cookies");
                 req.setAttribute("haveUser", true);
