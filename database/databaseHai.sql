@@ -1,14 +1,3 @@
-create table address
-(
-    address_id   varchar(64)                           not null
-        primary key,
-    home_address varchar(255)                          null,
-    district     varchar(100)                          null,
-    city         varchar(100)                          null,
-    created_at   timestamp default current_timestamp() null,
-    updated_at   timestamp default current_timestamp() null on update current_timestamp()
-);
-
 create table brand
 (
     brand_id    varchar(64)                           not null
@@ -55,7 +44,7 @@ create table discount
         primary key,
     name        varchar(255)                          not null,
     description varchar(255)                          null,
-    discount_percent    double                                not null,
+    discount    double                                not null,
     active      int                                   not null,
     start_date  date                                  not null,
     end_date    date                                  not null,
@@ -145,6 +134,20 @@ create table user
     role       int       default 1                   not null comment '1-user, 2-admin'
 )
     comment 'user_info';
+
+create table address
+(
+    address_id   varchar(64)                           not null
+        primary key,
+    user_id      varchar(64)                           null,
+    home_address varchar(255)                          null,
+    district     varchar(100)                          null,
+    city         varchar(100)                          null,
+    created_at   timestamp default current_timestamp() null,
+    updated_at   timestamp default current_timestamp() null on update current_timestamp(),
+    constraint address_user_user_id_fk
+        foreign key (user_id) references user (user_id)
+);
 
 create table cart
 (
@@ -255,8 +258,6 @@ create table order_item
 
 create index user_email_index
     on user (email);
-
-
 
 create table verify_code
 (
