@@ -8,6 +8,7 @@ public class ScirptSQL {
     public static final String insertAddress = "insert into address (address_id,  home_address, city, district) " + "values (:getAddressId,:getHomeAddress,:getCity,:getDistrict);";
     public static final String updateAddress = "update address " + "set home_address = :getHomeAddress, city = :getCity, district = :getDistrict " + "where address_id = :getAddressId;";
     public static final String deleteAddressById = "delete " + "from address " + "where address_id =:addressId ";
+    public static final String updateUserRoll = "update User set role=:role where email=:email";
     //brand da test by hoang hai 20-8-23
     public static final String getAllBrands = "Select * from Brand";
     public static final String getBrandById = "Select * from Brand where brand_id = :brandId";
@@ -15,6 +16,8 @@ public class ScirptSQL {
     public static final String insertBrand = "Insert into `Brand`(`brand_id`, `name`, `description`)" + " values (:brandId, :name, :description)";
     public static final String updateBrand = "Update `Brand` set `name` = :name, `description` = :description" + " where `brand_id` = :brandId";
     public static final String deleteBrand = "Delete from `Brand` where `brand_id` = :brandId";
+
+
     //  cart  da test by hoang hai 20-8-23
     static final String getAllCart = "select * from cart";
     static final String getCartByKey = "select * from cart where ss_id = :key or cart_id = :key or user_id = :key";
@@ -93,7 +96,7 @@ public class ScirptSQL {
     // user
     public static final String getUser = "select * from User";
     public static final String getUserByKey = "select * from User where user_id = :key or email= :key or user_name=:key";
-    public static final String insertUser = "insert into User (user_id, email, salt, pass, user_name) " + "values (:getUserId,:getEmail,:getSalt,SHA2(:getPass,256),:getUserName);";
+    public static final String insertUser = "insert into User (user_id, email, salt, pass, user_name, role) " + "values (:getUserId,:getEmail,:getSalt,SHA2(:getPass,256),:getUserName,:getRole);";
     public static final String updateUser = "update User " + "set email = :getEmail, pass= SHA2(':getPass', 256) " + "where user_id = :getUserId;";
     public static final String deleteUserById = "delete " + "from User " + "where user_id =:id ";
     public static final String loginByUserNameOrEmail = "select * from User where user_name=:keyLogin or email=:keyLogin and pass=SHA2(:pass,256)";
@@ -135,6 +138,11 @@ public class ScirptSQL {
     static final String getAllProduct = "Select * from Product";
     static final String getProductById = "Select * from Product where product_id = :id";
     static final String getProductsByName = "Select * from Product where name like CONCAT('%', :name, '%')";
+    static final String getProductByCategoryId = "Select * from Product where category_id = :categoryId";
+    static final String getProductByBrandId = "Select * from Product where brand_id = :brandId";
+    static final String getProductBySupplierId = "Select * from Product where supplier_id = :supplierId";
+    static final String getProductByDiscount = "Select * from Product where discount_id is not null";
+    static final String getProductByStatus = "Select * from Product where status = :status";
     static final String insertProduct = "INSERT INTO product (product_id, name, price, description, wheelSize, material, warranty, inventory, discountId, categoryId, brandId, supplierId, status) " + "VALUES (:productId, :name, :price, :description, :wheelSize, :material, :warranty, :inventory, :discountId, :categoryId, :brandId, :supplierId, :status)";
     static final String updateProduct = "UPDATE product " + "SET name = :name, price = :price, description = :description, wheelSize = :wheelSize, " + "material = :material, warranty = :warranty, inventory = :inventory, " + "discountId = :discountId, categoryId = :categoryId, brandId = :brandId, supplierId = :supplierId, status = :status " + "WHERE productId = :productId";
     static final String deleteProduct = "DELETE FROM product WHERE productId = :productId";
@@ -144,7 +152,10 @@ public class ScirptSQL {
     static final String insertImageSlider = "insert into image_slider(id, link) values(:id, :link)";
     static final String updateImageSlider = "update image_slider set link = :link where id = :id";
     static final String deleteImageSlider = "delete from image_slider where id = :id";
+    // verify code
+    public static final String GET_VERIFY_CODE ="SELECT * FROM verify_code WHERE email = :email AND code = :code";
 
-
+    public static final String INSERT_VERIFY_CODE ="INSERT INTO verify_code (email, code, function) VALUES (:email, :code, :function)";
+    public static final String UPDATE_VERIFY_CODE ="UPDATE verify_code SET valid = 0 WHERE email = :email AND function = :code";
 
 }

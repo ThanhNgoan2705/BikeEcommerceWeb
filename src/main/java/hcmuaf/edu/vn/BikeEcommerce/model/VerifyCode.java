@@ -8,7 +8,7 @@ package hcmuaf.edu.vn.BikeEcommerce.model;
  * One verify code have one user <br/>
  * One verify code have one function <br/>
  * Function: 1: verify email (register), 2: OTP (Login), 3: reset password <br/>
- * Time to live: 5 minutes <br/>
+ * Time to live: 60 minutes <br/>
  * Valid: 1: valid, 0: invalid <br/>
  *
  * @version 1.0
@@ -17,7 +17,7 @@ package hcmuaf.edu.vn.BikeEcommerce.model;
  */
 public class VerifyCode {
     private String email;
-    private String verifyCode;
+    private String code;
     private int function;
     private int valid;
     private String createdAt;
@@ -27,15 +27,23 @@ public class VerifyCode {
     }
 
 
-    public VerifyCode(String email, String verifyCode, int function) {
+    public VerifyCode(String email, String code, int function) {
         this.email = email;
-        this.verifyCode = verifyCode;
+        this.code = code;
         this.function = function;
+    }
+
+    public VerifyCode(String email, String code, int function, int valid, String createdAt) {
+        this.email = email;
+        this.code = code;
+        this.function = function;
+        this.valid = valid;
+        this.createdAt = createdAt;
     }
 
     @Override
     public String toString() {
-        return "VerifyCode{" + "email='" + email + '\'' + ", verifyCode='" + verifyCode + '\'' + ", function=" + function + ", valid=" + valid + ", createdAt='" + createdAt + '\'' + '}';
+        return "VerifyCode{" + "email='" + email + '\'' + ", code='" + code + '\'' + ", function=" + function + ", valid=" + valid + ", createdAt='" + createdAt + '\'' + '}';
     }
 
     public int getFunction() {
@@ -62,12 +70,12 @@ public class VerifyCode {
         this.email = email;
     }
 
-    public String getVerifyCode() {
-        return verifyCode;
+    public String getCode() {
+        return code;
     }
 
-    public void setVerifyCode(String verifyCode) {
-        this.verifyCode = verifyCode;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getCreatedAt() {

@@ -29,5 +29,18 @@ public interface ProductDAO {
     @SqlUpdate(ScirptSQL.deleteProduct)
     void deleteProduct(@Bind("productId") String productId);
 
+    @SqlQuery(ScirptSQL.getProductByCategoryId)
+    List<Product> getProductByCategoryId(@Bind("categoryId")String categoryId);
 
+    @SqlQuery(ScirptSQL.getProductByBrandId)
+    List<Product> getProductByBrandId(@Bind("brandId")String brandId);
+
+    @SqlQuery(ScirptSQL.getProductBySupplierId)
+    List<Product> getProductBySupplierId(@Bind("supplierId")String supplierId);
+
+    @SqlQuery(ScirptSQL.getProductByDiscount)
+    List<Product> getProductByDiscount();
+
+    @SqlQuery(ScirptSQL.getProductByStatus)
+    List<Product> getProductByStatus(@Bind("status")String status);
 }

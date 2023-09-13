@@ -1,5 +1,6 @@
 package hcmuaf.edu.vn.BikeEcommerce.service;
 
+import com.google.gson.Gson;
 import hcmuaf.edu.vn.BikeEcommerce.DAO.ProductDAO;
 import hcmuaf.edu.vn.BikeEcommerce.db.JDBIConnector;
 import hcmuaf.edu.vn.BikeEcommerce.model.*;
@@ -27,10 +28,12 @@ public class ProductService {
         return products.stream().map(product -> mapOtherBean(product)).collect(Collectors.toList());
 
     }
+
     public Product getProductById(String productId) {
         Product product = jdbi.withExtension(ProductDAO.class, dao -> dao.getProductById(productId));
         return mapOtherBean(product);
     }
+
     public List<Product> findProductByName(String productName) {
         List<Product> products = jdbi.withExtension(ProductDAO.class, dao -> dao.getProductByName(productName));
         return products.stream().map(product -> mapOtherBean(product)).collect(Collectors.toList());
@@ -79,7 +82,29 @@ public class ProductService {
         ProductService productService = ProductService.getInstance();
 //        List<Product> products = productService.findProductByName("Bike");
         Product product = productService.getProductById("1");
-        System.out.println(product);
+        Gson gson = new Gson();
+        String json = gson.toJson(product);
+        System.out.println(json);
+    }
+
+    public List<Product> getProductByCategoryId(String categoryId) {
+        return jdbi.withExtension(ProductDAO.class, dao -> dao.getProductByCategoryId(categoryId));
+    }
+
+    public List<Product> getProductByBrandId(String brandId) {
+        return jdbi.withExtension(ProductDAO.class, dao -> dao.getProductByBrandId(brandId));
+    }
+
+    public List<Product> getProductBySupplierId(String supplierId) {
+        return jdbi.withExtension(ProductDAO.class, dao -> dao.getProductBySupplierId(supplierId));
+    }
+
+    public List<Product> getProductByDiscount() {
+        return jdbi.withExtension(ProductDAO.class, dao -> dao.getProductByDiscount());
+    }
+
+    public List<Product> getProductByStatus(String status) {
+        return jdbi.withExtension(ProductDAO.class, dao -> dao.getProductByStatus(status));
     }
 
 }

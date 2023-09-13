@@ -101,7 +101,7 @@ public class User {
     }
 
     public String getPass() {
-        return pass;
+        return salt + pass;
     }
 
     public void setPass(String pass) {
