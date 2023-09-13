@@ -138,6 +138,11 @@ public class ScirptSQL {
     static final String getAllProduct = "Select * from Product";
     static final String getProductById = "Select * from Product where product_id = :id";
     static final String getProductsByName = "Select * from Product where name like CONCAT('%', :name, '%')";
+    static final String getProductByCategoryId = "Select * from Product where category_id = :categoryId";
+    static final String getProductByBrandId = "Select * from Product where brand_id = :brandId";
+    static final String getProductBySupplierId = "Select * from Product where supplier_id = :supplierId";
+    static final String getProductByDiscount = "Select * from Product where discount_id is not null";
+    static final String getProductByStatus = "Select * from Product where status = :status";
     static final String insertProduct = "INSERT INTO product (product_id, name, price, description, wheelSize, material, warranty, inventory, discountId, categoryId, brandId, supplierId, status) " + "VALUES (:productId, :name, :price, :description, :wheelSize, :material, :warranty, :inventory, :discountId, :categoryId, :brandId, :supplierId, :status)";
     static final String updateProduct = "UPDATE product " + "SET name = :name, price = :price, description = :description, wheelSize = :wheelSize, " + "material = :material, warranty = :warranty, inventory = :inventory, " + "discountId = :discountId, categoryId = :categoryId, brandId = :brandId, supplierId = :supplierId, status = :status " + "WHERE productId = :productId";
     static final String deleteProduct = "DELETE FROM product WHERE productId = :productId";
