@@ -23,6 +23,7 @@ public class SendVerifyCode extends HttpServlet {
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
+        resp.setContentType("text/plain");
         resp.getWriter().write("success!");
 
     }
