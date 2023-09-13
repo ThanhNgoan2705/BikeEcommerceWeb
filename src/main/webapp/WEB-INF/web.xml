@@ -20,5 +20,13 @@
         <filter-name>RegisterFilter</filter-name>
         <url-pattern>/register</url-pattern>
     </filter-mapping>
+    <filter>
+        <filter-name>JsonFilter</filter-name>
+        <filter-class>hcmuaf.edu.vn.BikeEcommerce.filter.JsonFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>JsonFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
 </web-app>
