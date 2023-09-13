@@ -22,6 +22,7 @@ public class VerifyController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/plain");
         String email = req.getParameter("email");
         String type = req.getParameter("type");
         String code = (String) req.getParameter("code");
