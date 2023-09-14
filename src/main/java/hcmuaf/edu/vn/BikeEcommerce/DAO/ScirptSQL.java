@@ -4,15 +4,16 @@ public class ScirptSQL {
     // Adress da test  ok by hoang hai 20-8-23
     public static final String getAllAddress = "select * from address";
     public static final String getAddressByAddressId = "select * from address where address_id=:addressId";
-    public static final String getAllAddressByUserId="select * from address where user_id=:userId";
-    public static final String insertAddress = "insert into address (address_id,  home_address, city, district) " + "values (:getAddressId,:getHomeAddress,:getCity,:getDistrict);";
+    public static final String getAllAddressByUserId = "select * from address where user_id=:userId";
+    public static final String insertAddress = "insert into address (address_id, user_id,  home_address, city, district) " + "values (:getAddressId,:getUserId,:getHomeAddress,:getCity,:getDistrict);";
     public static final String updateAddress = "update address " + "set home_address = :getHomeAddress, city = :getCity, district = :getDistrict " + "where address_id = :getAddressId;";
     public static final String deleteAddressById = "delete " + "from address " + "where address_id =:addressId ";
-    public static final String updateUserRoll = "update User set role=:role where email=:email";
+
     //brand da test by hoang hai 20-8-23
     public static final String getAllBrands = "Select * from Brand";
     public static final String getBrandById = "Select * from Brand where brand_id = :brandId";
     public static final String getBrandsByName = "Select * from Brand where name like concat('%', :name, '%')";
+    public static final String getBrandByCategoryId =   "Select * from Brand where brand_id in (select brand_id from product where category_id = :categoryId)";
     public static final String insertBrand = "Insert into `Brand`(`brand_id`, `name`, `description`)" + " values (:brandId, :name, :description)";
     public static final String updateBrand = "Update `Brand` set `name` = :name, `description` = :description" + " where `brand_id` = :brandId";
     public static final String deleteBrand = "Delete from `Brand` where `brand_id` = :brandId";
@@ -81,7 +82,7 @@ public class ScirptSQL {
     public static final String updateFavorite = "update favorite set user_id = :userId, product_id = :productId where favorite_id = :favoriteId";
     public static final String deleteFavorite = "delete from favorite where favorite_id = :favoriteId";
     public static final String getAllFavorite = "select * from favorite";
-    public static final String deleteFavoriteByProductIdAndUserId= "delete from favorite where product_id = :productId and user_id = :userId";
+    public static final String deleteFavoriteByProductIdAndUserId = "delete from favorite where product_id = :productId and user_id = :userId";
 
     //    Image product da test va fix by Hoang Hai 21-8-23
     static final String getAllImageProduct = "select * from image_product";
@@ -100,7 +101,7 @@ public class ScirptSQL {
     public static final String updateUser = "update User " + "set email = :getEmail, pass= SHA2(':getPass', 256) " + "where user_id = :getUserId;";
     public static final String deleteUserById = "delete " + "from User " + "where user_id =:id ";
     public static final String loginByUserNameOrEmail = "select * from User where user_name=:keyLogin or email=:keyLogin and pass=SHA2(:pass,256)";
-
+    public static final String updateUserRoll = "update User set role=:role where email=:email";
     public static final String getSaltByUserNameOrEmail = "select salt from User where user_name=:key or email=:key";
 
     public static final String isEmailOrUserNameAlreadyExists = "select :key = user_name or :key = email from user";
@@ -135,6 +136,7 @@ public class ScirptSQL {
     static final String updateSupplier = "Update `Supplier` set `name` = :name where `supplier_id` = :supplierId";
     static final String deleteSupplier = "Delete from `Supplier` where `supplier_id` = :supplierId";
     // product
+    // update 14/9/2023
     static final String getAllProduct = "Select * from Product";
     static final String getProductById = "Select * from Product where product_id = :id";
     static final String getProductsByName = "Select * from Product where name like CONCAT('%', :name, '%')";
@@ -146,6 +148,8 @@ public class ScirptSQL {
     static final String insertProduct = "INSERT INTO product (product_id, name, price, description, wheelSize, material, warranty, inventory, discountId, categoryId, brandId, supplierId, status) " + "VALUES (:productId, :name, :price, :description, :wheelSize, :material, :warranty, :inventory, :discountId, :categoryId, :brandId, :supplierId, :status)";
     static final String updateProduct = "UPDATE product " + "SET name = :name, price = :price, description = :description, wheelSize = :wheelSize, " + "material = :material, warranty = :warranty, inventory = :inventory, " + "discountId = :discountId, categoryId = :categoryId, brandId = :brandId, supplierId = :supplierId, status = :status " + "WHERE productId = :productId";
     static final String deleteProduct = "DELETE FROM product WHERE productId = :productId";
+    static final String getProductByPrice = "Select * from Product where price between :minPrice and :maxPrice";
+    static final String getProductByWheelSize = "Select * from Product where wheelSize = :wheelSize";
     //    Slider  da test va fix by Hoang Hai 21-8-23
     static final String getAllSlider = "select * from image_slider";
     static final String getSliderById = "select * from image_slider where id = :id";
@@ -153,9 +157,9 @@ public class ScirptSQL {
     static final String updateImageSlider = "update image_slider set link = :link where id = :id";
     static final String deleteImageSlider = "delete from image_slider where id = :id";
     // verify code
-    public static final String GET_VERIFY_CODE ="SELECT * FROM verify_code WHERE email = :email AND code = :code";
+    public static final String GET_VERIFY_CODE = "SELECT * FROM verify_code WHERE email = :email AND code = :code";
 
-    public static final String INSERT_VERIFY_CODE ="INSERT INTO verify_code (email, code, function) VALUES (:email, :code, :function)";
-    public static final String UPDATE_VERIFY_CODE ="UPDATE verify_code SET valid = 0 WHERE email = :email AND function = :code";
+    public static final String INSERT_VERIFY_CODE = "INSERT INTO verify_code (email, code, function) VALUES (:email, :code, :function)";
+    public static final String UPDATE_VERIFY_CODE = "UPDATE verify_code SET valid = 0 WHERE email = :email AND function = :code";
 
 }
