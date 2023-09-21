@@ -1,0 +1,32 @@
+body {
+    background-color: hsl(0, 0%, 97%);
+}
+@media (min-width: 1400px) {
+    main,
+    header,
+    #main-navbar {
+        padding-left: 240px;
+    }
+}
+.gradient-custom {
+    /* fallback for old browsers */
+    background: #5f73f8;
+
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to top left, rgb(140, 167, 246), rgba(246, 243, 255, 1));
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to top left, rgb(112, 122, 248), rgba(246, 243, 255, 1))
+}
+.modal-dialog{
+    max-width: 800px !important;
+}
+.modal .modal-dialog{
+    pointer-events: unset !important;
+}
+.form-outline .form-control {
+    background: white;
+}
+.form-outline {
+    --mdb-form-outline-select-notch-border-color: #023589;
+}

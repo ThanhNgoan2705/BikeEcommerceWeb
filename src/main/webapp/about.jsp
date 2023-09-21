@@ -135,16 +135,16 @@ Author URL: http://w3layouts.com
                   <a class="nav-link" href="index.jsp">Home</a>
                 </li>
                 <li class="nav-item active">
-                  <a class="nav-link" href="about.html">About</a>
+                  <a class="nav-link" href="about.jsp">About</a>
                 </li>
                
                 <li class="nav-item">
-                  <a class="nav-link" href="about.html">What We Offer</a>
+                  <a class="nav-link" href="about.jsp">What We Offer</a>
                 </li>
                
 
                 <li class="nav-item">
-                  <a class="nav-link" href="contact.html">Contact</a>
+                  <a class="nav-link" href="contact.jsp">Contact</a>
                 </li>
               </ul>
 
@@ -444,15 +444,15 @@ Author URL: http://w3layouts.com
                               <div class="footer-hny-ul">
                                   <ul>
                                       <li><a href="index.jsp">Home</a></li>
-                                      <li><a href="about.html">About</a></li>
+                                      <li><a href="about.jsp">About</a></li>
                                       <li><a href="#">Blog</a></li>
-                                      <li><a href="contact.html">Contact</a></li>
+                                      <li><a href="contact.jsp">Contact</a></li>
                                   </ul>
                                   <ul>
                                       <li><a href="#">Careers</a></li>
                                       <li><a href="#">Privacy Policy</a></li>
                                       <li><a href="#">Terms and Conditions</a></li>
-                                      <li><a href="contact.html">Support</a></li>
+                                      <li><a href="contact.jsp">Support</a></li>
                                   </ul>
                               </div>
 
@@ -485,7 +485,7 @@ Author URL: http://w3layouts.com
                       <ul class="jst-link">
                           <li><a href="#">Privacy Policy </a> </li>
                           <li><a href="#">Term of Service</a></li>
-                          <li><a href="contact.html">Customer Care</a> </li>
+                          <li><a href="contact.jsp">Customer Care</a> </li>
                       </ul>
                   </div>
                   <div class="columns col-lg-6 text-lg-right">
