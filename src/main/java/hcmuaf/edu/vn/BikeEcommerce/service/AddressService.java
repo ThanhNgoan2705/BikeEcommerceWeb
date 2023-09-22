@@ -48,19 +48,19 @@ public class AddressService {
     }
 
     public static void main(String[] args) {
-        AddressService.getInstance().insertAddress(new Address("6","user1", "1", "1", "1", "1", "1"));
-        System.out.println("da tao :" + AddressService.getInstance().getAddressByAddressId("6"));
-        AddressService.getInstance().updateAddress(new Address("6","user1", "2", "2", "2", "2", "2"));
-        System.out.println("da sua :" + AddressService.getInstance().getAddressByAddressId("6"));
-        AddressService.getInstance().deleteAddressById("6");
-        System.out.println(AddressService.getInstance().getAddressByAddressId("6"));
-
-
-        List<Address> addressList = AddressService.getInstance().getAllAddress();
-        for (Address address : addressList) {
-            System.out.println(address);
-        }
-
+//        AddressService.getInstance().insertAddress(new Address("5","user1", "1", "1", "1", "1", "1"));
+//        System.out.println("da tao :" + AddressService.getInstance().getAddressByAddressId("6"));
+//        AddressService.getInstance().updateAddress(new Address("6","user1", "2", "2", "2", "2", "2"));
+//        System.out.println("da sua :" + AddressService.getInstance().getAddressByAddressId("6"));
+//        AddressService.getInstance().deleteAddressById("6");
+//        System.out.println(AddressService.getInstance().getAddressByAddressId("6"));
+//
+//
+//        List<Address> addressList = AddressService.getInstance().getAllAddress();
+//        for (Address address : addressList) {
+//            System.out.println(address);
+//        }
+        System.out.println("helo");
     }
 
 }
