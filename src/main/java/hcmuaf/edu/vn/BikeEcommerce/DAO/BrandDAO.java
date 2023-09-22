@@ -28,4 +28,7 @@ public interface BrandDAO {
 
     @SqlUpdate(ScirptSQL.deleteBrand)
     int delete(@Bind("brandId") String brandId);
+
+    @SqlQuery(ScirptSQL.getBrandByCategoryId)
+    List<Brand> getBrandByCategoryId(@Bind("categoryId")String categoryId);
 }
