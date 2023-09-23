@@ -136,7 +136,7 @@ public class ScirptSQL {
     static final String updateSupplier = "Update `Supplier` set `name` = :name where `supplier_id` = :supplierId";
     static final String deleteSupplier = "Delete from `Supplier` where `supplier_id` = :supplierId";
     // product
-    // update 14/9/2023
+    // update 14/9/2023 -- update 24/9/2023
     static final String getAllProduct = "Select * from Product";
     static final String getProductById = "Select * from Product where product_id = :id";
     static final String getProductsByName = "Select * from Product where name like CONCAT('%', :name, '%')";
