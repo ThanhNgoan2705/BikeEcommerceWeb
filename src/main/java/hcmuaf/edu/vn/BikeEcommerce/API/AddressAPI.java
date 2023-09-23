@@ -117,22 +117,26 @@ public class AddressAPI extends HttpServlet {
         Token token = (Token) req.getAttribute("token");
 
         String addressId = req.getPathInfo();
-        if (addressId.startsWith("/")) {
-            addressId = addressId.substring(1);
-        }
-        // Xu lí token nếu addressId là của user khác thì không xóa được
-        //
-        //
-        //
-
-
-        try {
-            AddressService.getInstance().deleteAddressById(addressId);
-            resp.getWriter().write("success");
-        } catch (Exception e) {
-            resp.getWriter().write("fail");
+        if (addressId != null) {
+            if (addressId.startsWith("/")) {
+                addressId = addressId.substring(1);
+            }
+            // Xu lí token nếu addressId là của user khác thì không xóa được
+            //
+            //
+            //
+            try {
+                AddressService.getInstance().deleteAddressById(addressId);
+                resp.getWriter().write("success");
+            } catch (Exception e) {
+                resp.getWriter().write("fail");
 //            chuyen trang 404
+            }
         }
+
+
+
+
     }
 
 

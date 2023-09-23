@@ -105,28 +105,29 @@ public class BrandAPI extends HttpServlet {
 
     /**
      * phải có token của admin thì mới làm được chức năng này.
-     * @param req   the {@link HttpServletRequest} object that
-     *                  contains the request the client made of
-     *                  the servlet
      *
-     * @param resp  the {@link HttpServletResponse} object that
-     *                  contains the response the servlet returns
-     *                  to the client
-     *
+     * @param req  the {@link HttpServletRequest} object that
+     *             contains the request the client made of
+     *             the servlet
+     * @param resp the {@link HttpServletResponse} object that
+     *             contains the response the servlet returns
+     *             to the client
      * @throws ServletException
      * @throws IOException
      */
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String brandId = req.getPathInfo();
-        if (brandId.startsWith("/")) {
-            brandId = brandId.substring(1);
-        }
-        try {
-            BrandService.getInstance().delete(brandId);
-            resp.getWriter().write("success");
-        } catch (Exception e) {
-            resp.getWriter().write("fail");
+        if (brandId != null) {
+            if (brandId.startsWith("/")) {
+                brandId = brandId.substring(1);
+            }
+            try {
+                BrandService.getInstance().delete(brandId);
+                resp.getWriter().write("success");
+            } catch (Exception e) {
+                resp.getWriter().write("fail");
+            }
         }
     }
 }
