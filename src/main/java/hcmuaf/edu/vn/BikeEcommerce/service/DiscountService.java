@@ -6,9 +6,7 @@ import hcmuaf.edu.vn.BikeEcommerce.model.Discount;
 import org.jdbi.v3.core.Jdbi;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Locale;
 
 /**
  *  da test va fix by Hoang Hai 20-8-23
@@ -55,9 +53,9 @@ public class DiscountService {
         DiscountService discountService = new DiscountService();
 //        List<Discount> discounts = discountService.getAll();
 //        System.out.println(discounts);
-        discountService.insertDiscount(new Discount("D0001", "Discount 1", "d1", 0.1, 1, LocalDate.parse("2020-01-01"), LocalDate.parse("2020-01-31")));
+        discountService.insertDiscount(new Discount("D0001", "Discount 1", "d1", 0.1, 1, LocalDate.parse("2020-01-01").toString(), LocalDate.parse("2020-01-31").toString()));
         System.out.println(discountService.getById("D0001"));
-        discountService.updateDiscount(new Discount("D0001", "Discount 1", "d1", 0.2, 1, LocalDate.parse("2020-01-01"), LocalDate.parse("2020-01-31")));
+        discountService.updateDiscount(new Discount("D0001", "Discount 1", "d1", 0.2, 1, LocalDate.parse("2020-01-01").toString(), LocalDate.parse("2020-01-31").toString()));
         System.out.println(discountService.getById("D0001"));
         discountService.deleteDiscount("D0001");
         System.out.println(discountService.getById("D0001"));
