@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
 @WebServlet("/login")
 
@@ -49,6 +50,8 @@ public class LoginContrller extends HttpServlet {
             } catch (NoSuchAlgorithmException e) {
                 printWriter.println("<script>\n" + "    alert(\"Login failed\");\n" + "</script>");
                 System.out.println("Login failed");
+            } catch (InvalidKeySpecException e) {
+                throw new RuntimeException(e);
             }
         } else {
             System.out.println("Login failed");
