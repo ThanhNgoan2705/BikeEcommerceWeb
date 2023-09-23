@@ -13,7 +13,7 @@ public class ScirptSQL {
     public static final String getAllBrands = "Select * from Brand";
     public static final String getBrandById = "Select * from Brand where brand_id = :brandId";
     public static final String getBrandsByName = "Select * from Brand where name like concat('%', :name, '%')";
-    public static final String getBrandByCategoryId =   "Select * from Brand where brand_id in (select brand_id from product where category_id = :categoryId)";
+    public static final String getBrandByCategoryId = "Select * from Brand where brand_id in (select brand_id from product where category_id = :categoryId)";
     public static final String insertBrand = "Insert into `Brand`(`brand_id`, `name`, `description`)" + " values (:brandId, :name, :description)";
     public static final String updateBrand = "Update `Brand` set `name` = :name, `description` = :description" + " where `brand_id` = :brandId";
     public static final String deleteBrand = "Delete from `Brand` where `brand_id` = :brandId";
@@ -98,7 +98,8 @@ public class ScirptSQL {
     public static final String getUser = "select * from User";
     public static final String getUserByKey = "select * from User where user_id = :key or email= :key or user_name=:key";
     public static final String insertUser = "insert into User (user_id, email, salt, pass, user_name, role) " + "values (:getUserId,:getEmail,:getSalt,SHA2(:getPass,256),:getUserName,:getRole);";
-    public static final String updateUser = "update User " + "set email = :getEmail, pass= SHA2(':getPass', 256) " + "where user_id = :getUserId;";
+    public static final String updateUser = "update User " + "set email = :getEmail " + "where user_id = :getUserId;";
+    public static final String updateUserPassword = "update User " + "set pass = SHA2(:getPass,256) " + "where user_id = :getUserId;";
     public static final String deleteUserById = "delete " + "from User " + "where user_id =:id ";
     public static final String loginByUserNameOrEmail = "select * from User where user_name=:keyLogin or email=:keyLogin and pass=SHA2(:pass,256)";
     public static final String updateUserRoll = "update User set role=:role where email=:email";
