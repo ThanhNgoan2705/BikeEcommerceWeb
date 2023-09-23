@@ -42,15 +42,15 @@ public class Product {
     public static final int ON_SALE = 4;
     // normal attributes match with database
     private String productId;
-    private String name;
-    private double price;
+    private String name;//not null
+    private double price;//not null
     private String description;
     private String wheelSize;
     private String material;
     private String warranty;
-    private int inventory;
+    private int inventory;//not null
     private String discountId;
-    private String categoryId;
+    private String categoryId;//not null
     private String brandId;
     private String supplierId;
     private int status;
