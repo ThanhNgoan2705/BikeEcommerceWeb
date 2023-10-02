@@ -81,7 +81,7 @@ create table product
     inventory   int                                   not null,
     material    varchar(255)                          null,
     warranty    varchar(50)                           null,
-    category_id varchar(64)                           null,
+    category_id varchar(64)                           not null,
     brand_id    varchar(64)                           null,
     discount_id varchar(64)                           null,
     supplier_id varchar(64)                           null,
@@ -203,12 +203,13 @@ create index user_id
 
 create table favorite
 (
-    favorite_id varchar(64)                           not null
-        primary key,
-    user_id     varchar(64)                           null,
-    product_id  varchar(11)                           null,
-    created_at  timestamp default current_timestamp() null,
-    updated_at  timestamp default current_timestamp() null on update current_timestamp(),
+    user_id    varchar(64)                           not null,
+    product_id varchar(11)                           not null,
+    created_at timestamp default current_timestamp() null,
+    updated_at timestamp default current_timestamp() null on update current_timestamp(),
+    primary key (product_id, user_id),
+    constraint favorite_pk
+        unique (user_id, product_id),
     constraint favorite_ibfk_1
         foreign key (user_id) references user (user_id),
     constraint favorite_ibfk_2
