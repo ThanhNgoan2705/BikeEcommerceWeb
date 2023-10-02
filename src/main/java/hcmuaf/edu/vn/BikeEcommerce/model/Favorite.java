@@ -1,7 +1,6 @@
 package hcmuaf.edu.vn.BikeEcommerce.model;
 
 public class Favorite {
-    private String favoriteId;
     private String userId;
     private String productId;
     private User user;
@@ -12,14 +11,8 @@ public class Favorite {
     public Favorite() {
     }
 
-    public Favorite(String favoriteId, String userId, String productId) {
-        this.favoriteId = favoriteId;
-        this.userId = userId;
-        this.productId = productId;
-    }
 
-    public Favorite(String favoriteId, String userId, String productId, User user, Product product) {
-        this.favoriteId = favoriteId;
+    public Favorite(String userId, String productId, User user, Product product) {
         this.userId = userId;
         this.productId = productId;
         this.user = user;
@@ -34,22 +27,13 @@ public class Favorite {
     @Override
     public String toString() {
         return "Favorite{" +
-                "favoriteId='" + favoriteId + '\'' +
-                ", userId='" + userId + '\'' +
+                "userId='" + userId + '\'' +
                 ", productId='" + productId + '\'' +
                 ", user=" + user +
                 ", product=" + product +
                 ", createdAt='" + createdAt + '\'' +
                 ", updatedAt='" + updatedAt + '\'' +
                 '}';
-    }
-
-    public String getFavoriteId() {
-        return favoriteId;
-    }
-
-    public void setFavoriteId(String favoriteId) {
-        this.favoriteId = favoriteId;
     }
 
     public String getUserId() {
