@@ -77,13 +77,10 @@ public class ScirptSQL {
     // favorite da test by hoang hai 20-8-23
     public static final String getAllFavoriteByUserId = "select * from favorite where user_id = :userId";
     public static final String getAllFavoriteByProductId = "select * from favorite where product_id = :productId";
-    public static final String getFavoriteById = "select * from favorite where favorite_id = :favoriteId";
-    public static final String insertFavorite = "insert into favorite(favorite_id, user_id, product_id) values(:favoriteId, :userId, :productId)";
-    public static final String updateFavorite = "update favorite set user_id = :userId, product_id = :productId where favorite_id = :favoriteId";
-    public static final String deleteFavorite = "delete from favorite where favorite_id = :favoriteId";
+    public static final String insertFavorite = "insert into favorite( user_id, product_id) values( :userId, :productId)";
+    public static final String deleteFavorite = "delete from favorite where product_id = :productId and user_id = :userId";
     public static final String getAllFavorite = "select * from favorite";
-    public static final String deleteFavoriteByProductIdAndUserId = "delete from favorite where product_id = :productId and user_id = :userId";
-
+    public static final String hasFavoriteByUserIdAndProductId= "SELECT COUNT(*) > 0 FROM favorite WHERE user_id = :userId AND product_id = :productId";
     //    Image product da test va fix by Hoang Hai 21-8-23
     static final String getAllImageProduct = "select * from image_product";
     static final String getImageProductById = "select * from image_product where image_product_id = :imageProductId";
@@ -105,7 +102,7 @@ public class ScirptSQL {
     public static final String updateUserRoll = "update User set role=:role where email=:email";
     public static final String getSaltByUserNameOrEmail = "select salt from User where user_name=:key or email=:key";
 
-    public static final String isEmailOrUserNameAlreadyExists = "select :key = user_name or :key = email from user";
+    public static final String isEmailOrUserNameAlreadyExists = "select count(*) from user where email= :key or user_name=:key";
     public static final String setAdmin = "update User set role=2 where user_id=:userId";
     public static final String setUser = "update User set role=1 where user_id=:userId";
     // VerifyCode
@@ -162,5 +159,6 @@ public class ScirptSQL {
 
     public static final String INSERT_VERIFY_CODE = "INSERT INTO verify_code (email, code, function) VALUES (:email, :code, :function)";
     public static final String UPDATE_VERIFY_CODE = "UPDATE verify_code SET valid = 0 WHERE email = :email AND function = :code";
+
 
 }

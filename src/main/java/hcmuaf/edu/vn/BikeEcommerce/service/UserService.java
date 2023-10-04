@@ -85,7 +85,7 @@ public class UserService {
     }
 
     public static void main(String[] args) {
-        System.out.println(UserService.getInstance().loginByUserNameOrEmail("hai", "hai"));
-
+//        System.out.println(UserService.getInstance().loginByUserNameOrEmail("hai", "hai"));
+        System.out.println(UserService.getInstance().isEmailOrUserNameAlreadyExists("admin@gmail.com"));
     }
 }

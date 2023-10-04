@@ -45,7 +45,25 @@ public class TokenService {
 
     public TokenService() throws NoSuchAlgorithmException, InvalidKeySpecException {
     }
-
+    public String genTokenResetPass(String email) {
+        // token được tạo với 1 atribute là email
+        String token = JWT.create()
+                .withClaim("email", email)
+                .withExpiresAt(new Date(System.currentTimeMillis() + 1000 * 60 * 15))
+                .sign(algorithm);
+        return token;
+    }
+    public String getEmailFromTokenResetPass(String tokenData){
+        DecodedJWT jwt;
+        try {
+            jwt = JWT.require(algorithm)
+                    .build()
+                    .verify(tokenData);
+        } catch (Exception e) {
+            return null;
+        }
+        return jwt.getClaim("email").asString();
+    }
     public String genTokenByUser(User user) {
         String token = JWT.create()
                 .withClaim("UserId", user.getUserId())
