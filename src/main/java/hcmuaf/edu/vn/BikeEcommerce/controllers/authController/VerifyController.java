@@ -31,8 +31,9 @@ public class VerifyController extends HttpServlet {
         gson = new Gson();
         verifyCodeService = VerifyCodeService.getInstance();
         userService = UserService.getInstance();
-        jsonObject = new JsonObject();
         status = "fail";
+        jsonObject = new JsonObject();
+        jsonObject.addProperty("status", status);
         try {
             tokenService = TokenService.getInstance();
             rsa = RSA.getInstance();
@@ -65,6 +66,7 @@ public class VerifyController extends HttpServlet {
             System.out.println(email);
             check = verifyCodeService.isCorrectVerifyCode(email, code, Integer.parseInt(type));
         } catch (Exception e) {
+            System.out.println("loi o dong 68");
             throw new RuntimeException(e);
         }
         System.out.println(code + "---" + email + "----" + type);
@@ -85,13 +87,9 @@ public class VerifyController extends HttpServlet {
                 jsonObject.addProperty("status", status);
                 jsonObject.addProperty("token", token);
                 resp.getWriter().write(jsonObject.toString());
-
-                // sau do chuyen den trang reset pass
-//                req.getRequestDispatcher("/forgotPass/ResetPass.jsp").forward(req, resp);
-//                resp.sendRedirect(req.getContextPath() + "/resetPass?token=" + token);
             }
         } else {
-            resp.getWriter().write(status);
+            resp.getWriter().write(jsonObject.toString());
         }
         System.out.println(check);
     }
