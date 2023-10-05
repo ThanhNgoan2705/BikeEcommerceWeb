@@ -46,6 +46,9 @@ public class LoginContrller extends HttpServlet {
                 System.out.println(cookie.getValue() + " login cookies");
                 req.setAttribute("haveUser", true);
                 req.setAttribute("userName", email);
+
+                req.getSession(true).setAttribute("user", user.getUserId());
+
                 req.getRequestDispatcher("/").forward(req, resp);
             } catch (NoSuchAlgorithmException e) {
                 printWriter.println("<script>\n" + "    alert(\"Login failed\");\n" + "</script>");
