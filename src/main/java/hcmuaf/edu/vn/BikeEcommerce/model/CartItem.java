@@ -36,6 +36,11 @@ public class CartItem {
         this.quantity = quantity;
     }
 
+    public CartItem(String productId, int quantity) {
+        this.productId = productId;
+        this.quantity = quantity;
+    }
+
     public CartItem() {
     }
 
