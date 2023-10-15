@@ -1,20 +1,20 @@
 package hcmuaf.edu.vn.BikeEcommerce.model;
 
-import hcmuaf.edu.vn.BikeEcommerce.service.BrandService;
-import hcmuaf.edu.vn.BikeEcommerce.service.CartService;
-import hcmuaf.edu.vn.BikeEcommerce.service.*;
+import hcmuaf.edu.vn.BikeEcommerce.service.CartItemsService;
 
 import java.util.List;
+
 /**
  * Created by Admin on 19-8-23 <br/>
  * This class is used to store information of cart <br/>
  * This class is used to map with cart table in database <br/>
  * One user have one cart <br/>
  * One cart have many cart items <br/>
+ *
+ * @version 1.0
+ * @Author Hoang Hai
  * @see CartItem
  * @see User
- * @Author Hoang Hai
- * @version 1.0
  */
 public class Cart {
     private String cartId;
@@ -24,6 +24,7 @@ public class Cart {
     private String updatedAt;
     private List<CartItem> cartItemList;
 
+    CartItemsService cartItemsService = CartItemsService.getInstance();
 
     public Cart() {
     }
@@ -40,24 +41,27 @@ public class Cart {
         this.userId = userId;
         this.ssId = ssId;
     }
-    public double total(){
+
+    public double total() {
         double total = 0;
-        for (CartItem cartItem:cartItemList){
-            total+=cartItem.total();
+        for (CartItem cartItem : cartItemList) {
+            total += cartItem.total();
         }
         return total;
     }
-    public double totalDiscount(){
+
+    public double totalDiscount() {
         double total = 0;
-        for (CartItem cartItem:cartItemList){
-            total+=cartItem.totalDiscount();
+        for (CartItem cartItem : cartItemList) {
+            total += cartItem.totalDiscount();
         }
         return total;
     }
-    public double total(List<CartItem> cartItemList){
+
+    public double total(List<CartItem> cartItemList) {
         double total = 0;
-        for (CartItem cartItem:cartItemList){
-            total+=cartItem.total();
+        for (CartItem cartItem : cartItemList) {
+            total += cartItem.total();
         }
         return total;
     }
@@ -120,5 +124,33 @@ public class Cart {
 
     public void setCartItemList(List<CartItem> cartItemList) {
         this.cartItemList = cartItemList;
+    }
+
+    public boolean addOrUpdateItemToCart(CartItem cartItem) {
+        cartItem.setCartId(this.cartId);
+        try {
+
+            for (CartItem item : cartItemList) {
+                if (item.getProductId().equals(cartItem.getProductId())) {
+                    item.setQuantity(item.getQuantity() + cartItem.getQuantity());
+                    cartItemsService.updateCartItem(cartItem);
+                } else {
+                    cartItemsService.insertCartItem(cartItem);
+                }
+            }
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean removeItem(String cartItemId) {
+        try {
+            cartItemsService.deleteCartItem(cartItemId);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+
     }
 }
