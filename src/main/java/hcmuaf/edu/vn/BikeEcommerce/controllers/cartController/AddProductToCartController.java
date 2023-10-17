@@ -43,9 +43,12 @@ public class AddProductToCartController extends HttpServlet {
             return;
         }
         Cart cart = cartService.getCartByKey(token.getUserId());
+        System.out.println(cart);
         CartItem i1 = new CartItem();
         i1.setProductId(productId);
         i1.setQuantity(Integer.parseInt(quantity));
         cart.addOrUpdateItemToCart(i1);
+        System.out.println("da them 1 san pham");
+        resp.getWriter().write("success");
     }
 }

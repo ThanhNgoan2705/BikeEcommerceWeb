@@ -1,6 +1,7 @@
 package hcmuaf.edu.vn.BikeEcommerce.model;
 
 import hcmuaf.edu.vn.BikeEcommerce.service.CartItemsService;
+import hcmuaf.edu.vn.BikeEcommerce.service.CartService;
 
 import java.util.List;
 
@@ -129,7 +130,10 @@ public class Cart {
     public boolean addOrUpdateItemToCart(CartItem cartItem) {
         cartItem.setCartId(this.cartId);
         try {
-
+            if (cartItemList.size() == 0) {
+                cartItemsService.insertCartItem(cartItem);
+                return true;
+            }
             for (CartItem item : cartItemList) {
                 if (item.getProductId().equals(cartItem.getProductId())) {
                     item.setQuantity(item.getQuantity() + cartItem.getQuantity());
@@ -144,13 +148,20 @@ public class Cart {
         }
     }
 
-    public boolean removeItem(String cartItemId) {
+    public boolean removeItem( String productId) {
         try {
-            cartItemsService.deleteCartItem(cartItemId);
+            cartItemsService.deleteCartItem(this.cartId, productId);
             return true;
         } catch (Exception e) {
             return false;
         }
+
+    }
+
+    public static void main(String[] args) {
+        Cart cart = CartService.getInstance().getCartByKey("61996187-ddb5-4dab-abf6-4da2beffc24f");
+        cart.addOrUpdateItemToCart(new CartItem("1", 2));
+        System.out.println(cart);
 
     }
 }

@@ -7,13 +7,13 @@ package hcmuaf.edu.vn.BikeEcommerce.model;
  * One cart have many cart items <br/>
  * One cart item have one product and quantity <br/>
  *
+ * @version 1.0
+ * @Author Hoang Hai
  * @see Cart
  * @see Product
- * @Author Hoang Hai
- * @version 1.0
  */
 public class CartItem {
-    private String cartItemId;
+
     private String cartId;
     private String productId;
     private int quantity;
@@ -21,16 +21,14 @@ public class CartItem {
     private String updatedAt;
     private Product product;
 
-    public CartItem(String cartItemId, String cartId, String productId, int quantity, Product product) {
-        this.cartItemId = cartItemId;
+    public CartItem(String cartId, String productId, int quantity, Product product) {
         this.cartId = cartId;
         this.productId = productId;
         this.quantity = quantity;
         this.product = product;
     }
 
-    public CartItem(String cartItemId, String cartId, String productId, int quantity) {
-        this.cartItemId = cartItemId;
+    public CartItem(String cartId, String productId, int quantity) {
         this.cartId = cartId;
         this.productId = productId;
         this.quantity = quantity;
@@ -55,7 +53,6 @@ public class CartItem {
     @Override
     public String toString() {
         return "CartItem{" +
-                "cartItemId='" + cartItemId + '\'' +
                 ", cartId='" + cartId + '\'' +
                 ", productId='" + productId + '\'' +
                 ", quantity='" + quantity + '\'' +
@@ -73,13 +70,6 @@ public class CartItem {
         this.product = product;
     }
 
-    public String getCartItemId() {
-        return cartItemId;
-    }
-
-    public void setCartItemId(String cartItemId) {
-        this.cartItemId = cartItemId;
-    }
 
     public String getCartId() {
         return cartId;

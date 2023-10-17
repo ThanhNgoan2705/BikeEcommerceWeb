@@ -3,6 +3,7 @@ package hcmuaf.edu.vn.BikeEcommerce.controllers.cartController;
 import com.google.gson.Gson;
 import hcmuaf.edu.vn.BikeEcommerce.model.Cart;
 import hcmuaf.edu.vn.BikeEcommerce.model.CartItem;
+import hcmuaf.edu.vn.BikeEcommerce.model.sercurity.Token;
 import hcmuaf.edu.vn.BikeEcommerce.service.CartService;
 import hcmuaf.edu.vn.BikeEcommerce.service.ProductService;
 
@@ -14,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/getCart")
+@WebServlet("/user/getCart")
 public class GetCartController extends HttpServlet {
     CartService cartService;
     ProductService productService;
@@ -28,9 +29,9 @@ public class GetCartController extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String userId = req.getParameter("userId");
-        Cart cart = cartService.getCartByKey(userId);
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Token token = (Token) req.getAttribute("token");
+        Cart cart = cartService.getCartByKey(token.getUserId());
         if (cart == null) {
             return;
         } else {

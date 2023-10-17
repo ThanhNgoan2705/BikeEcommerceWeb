@@ -30,10 +30,10 @@ public class ScirptSQL {
     //  cartItem da test and fix by hoang hai 20-8-23
     static final String getAllCartItem = "select * from cart_item";
     static final String getCartItemsByCartId = "select * from cart_item where cart_id = :cartId";
-    static final String getCartItemById = "select * from cart_item where cart_item_id = :cartItemId";
-    static final String insertCartItem = "insert into cart_item(cart_item_id,cart_id,product_id,quantity) values(:cartItemId,:cartId,:productId,:quantity)";
+    static final String getCartItemByCartIdAndProductId = "select * from cart_item where cart_id = :cartId and product_id = :productId";
+    static final String insertCartItem = "insert into cart_item(cart_id,product_id,quantity) values(:cartId,:productId,:quantity)";
     static final String updateCartItem = "update cart_item set quantity = :quantity where cart_id = :cartId and product_id = :productId";
-    static final String deleteCartItem = "delete from cart_item where cart_item_id = :cartItemId ";
+    static final String deleteCartItem = "delete from cart_item where cart_id = :cartId and product_id = :productId";
     static final String deleteCartItemByCartId = "delete from cart_item where cart_id = :cartId";
     // category da test by hoang hai 20-8-23
     static final String getAllCategory = "Select * from Category";

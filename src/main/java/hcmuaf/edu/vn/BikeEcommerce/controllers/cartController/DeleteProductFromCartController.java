@@ -25,8 +25,12 @@ public class DeleteProductFromCartController extends HttpServlet {
         Token token = (Token) req.getAttribute("token");
         String productId = req.getParameter("productId");
         System.out.println(productId);
-//        HashMap<String, Integer> cart = (HashMap<String, Integer>) req.getSession().getAttribute("cart");
         Cart cart = cartService.getCartByKey(token.getUserId());
-        cart.removeItem(productId);
+        try {
+            cart.removeItem(productId);
+            resp.getWriter().write("success");
+        } catch (Exception e) {
+            resp.getWriter().write("fail");
+        }
     }
 }
