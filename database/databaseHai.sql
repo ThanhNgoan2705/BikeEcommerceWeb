@@ -165,13 +165,12 @@ create table cart
 
 create table cart_item
 (
-    cart_item_id int auto_increment
-        primary key,
-    cart_id      varchar(64)                           null,
-    product_id   varchar(64)                           null,
-    quantity     int                                   null comment 'phai  lon  hon 0',
-    created_at   timestamp default current_timestamp() null,
-    updated_at   timestamp default current_timestamp() null on update current_timestamp(),
+    cart_id    varchar(64)                           not null,
+    product_id varchar(64)                           not null,
+    quantity   int                                   null comment 'phai  lon  hon 0',
+    created_at timestamp default current_timestamp() null,
+    updated_at timestamp default current_timestamp() null on update current_timestamp(),
+    primary key (cart_id, product_id),
     constraint cartitems_cart_cart_id_fk
         foreign key (cart_id) references cart (cart_id),
     constraint cartitems_product_product_id_fk
