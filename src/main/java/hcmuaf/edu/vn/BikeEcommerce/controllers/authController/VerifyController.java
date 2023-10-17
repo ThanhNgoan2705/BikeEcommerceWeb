@@ -2,8 +2,12 @@ package hcmuaf.edu.vn.BikeEcommerce.controllers.authController;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import hcmuaf.edu.vn.BikeEcommerce.model.Cart;
+import hcmuaf.edu.vn.BikeEcommerce.model.User;
+import hcmuaf.edu.vn.BikeEcommerce.service.CartService;
 import hcmuaf.edu.vn.BikeEcommerce.service.UserService;
 import hcmuaf.edu.vn.BikeEcommerce.service.VerifyCodeService;
+import hcmuaf.edu.vn.BikeEcommerce.toolSecurity.GenerateId;
 import hcmuaf.edu.vn.BikeEcommerce.toolSecurity.RSA;
 import hcmuaf.edu.vn.BikeEcommerce.toolSecurity.TokenService;
 
@@ -20,6 +24,7 @@ import java.security.spec.InvalidKeySpecException;
 public class VerifyController extends HttpServlet {
     Gson gson;
     VerifyCodeService verifyCodeService;
+    CartService cartService;
     RSA rsa;
     UserService userService;
     TokenService tokenService;
@@ -30,6 +35,7 @@ public class VerifyController extends HttpServlet {
     public void init() throws ServletException {
         gson = new Gson();
         verifyCodeService = VerifyCodeService.getInstance();
+        cartService = CartService.getInstance();
         userService = UserService.getInstance();
         status = "fail";
         jsonObject = new JsonObject();
@@ -72,8 +78,10 @@ public class VerifyController extends HttpServlet {
         System.out.println(code + "---" + email + "----" + type);
         if (check) {//kiem tra chinh xac code
             if (Integer.parseInt(type) == 1) {//verify email
-                userService.updateUser(email, Integer.parseInt(type));
+                userService.updateUser(email, 1);
                 verifyCodeService.updateVerifyCode(email, code);
+                User user = userService.getUserByKey(email);
+                cartService.insertCart(new Cart(GenerateId.generateId(),user.getUserId(),null));
                 status = "verify email Success";
                 jsonObject.addProperty("status", status);
                 resp.getWriter().write(jsonObject.toString());
