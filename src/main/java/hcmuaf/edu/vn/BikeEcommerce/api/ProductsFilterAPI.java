@@ -1,4 +1,4 @@
-package hcmuaf.edu.vn.BikeEcommerce.API;
+package hcmuaf.edu.vn.BikeEcommerce.api;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
