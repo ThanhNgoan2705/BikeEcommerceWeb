@@ -306,7 +306,7 @@ public class Product {
         return image;
     }
 
-    public void setImage(List<ImageProduct> image) {
+    public void setImageProductList(List<ImageProduct> image) {
         this.image = image;
     }
 
