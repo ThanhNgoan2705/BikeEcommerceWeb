@@ -41,6 +41,9 @@ public class UserService {
         jdbi.useExtension(UserDAO.class, dao -> dao.updateUser(user));
     }
 
+    public void updateUserPassword(User user) {// da test
+        jdbi.useExtension(UserDAO.class, dao -> dao.updateUserPassword(user));
+    }
     public void deleteUserById(String id) {// da test
         jdbi.useExtension(UserDAO.class, dao -> dao.deleteUserById(id));
     }
@@ -79,5 +82,10 @@ public class UserService {
 
     public void updateUser(String email, int role) {
         jdbi.useExtension(UserDAO.class, dao -> dao.updateUser(email, role));
+    }
+
+    public static void main(String[] args) {
+//        System.out.println(UserService.getInstance().loginByUserNameOrEmail("hai", "hai"));
+        System.out.println(UserService.getInstance().isEmailOrUserNameAlreadyExists("admin@gmail.com"));
     }
 }

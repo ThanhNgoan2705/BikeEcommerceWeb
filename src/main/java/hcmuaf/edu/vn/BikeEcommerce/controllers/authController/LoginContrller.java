@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
 @WebServlet("/login")
 
@@ -45,10 +46,15 @@ public class LoginContrller extends HttpServlet {
                 System.out.println(cookie.getValue() + " login cookies");
                 req.setAttribute("haveUser", true);
                 req.setAttribute("userName", email);
+
+                req.getSession(true).setAttribute("user", user.getUserId());
+
                 req.getRequestDispatcher("/").forward(req, resp);
             } catch (NoSuchAlgorithmException e) {
                 printWriter.println("<script>\n" + "    alert(\"Login failed\");\n" + "</script>");
                 System.out.println("Login failed");
+            } catch (InvalidKeySpecException e) {
+                throw new RuntimeException(e);
             }
         } else {
             System.out.println("Login failed");

@@ -1,4 +1,4 @@
-package hcmuaf.edu.vn.BikeEcommerce.API.productAPI;
+package hcmuaf.edu.vn.BikeEcommerce.API;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,17 +26,28 @@ import java.util.Set;
     - status
  */
 @WebServlet("/products_filter")
-public class ProductsFilter extends HttpServlet {
+public class ProductsFilterAPI extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
     }
 
-    /*
-    Nhận vào 1 json có các node: category, brand, supplier, discount, status.
-    Mỗi node là 1 array chứa các id của category, brand, supplier, status.
-    Hàm xử lí và lấy tất cả các sản phẩm thỏa mãn các điều kiện trên.
-    Trả về 1 json chứa các sản phẩm thỏa mãn.
+    /**
+     * -Nhận vào 1 json có các node: "category", "brand", "supplier", "discount", "status","wheelSize".
+     * <p>- Mỗi node là 1 array chứa các id của category, brand, supplier, status,...
+     * <p>- Hàm xử lí và lấy tất cả các sản phẩm thỏa mãn các điều kiện trên.
+     * <p>- Trả về 1 json chứa các sản phẩm thỏa mãn.
+     * <p>
+     * <p>ex input json:
+     * <p>
+     * <p>{
+     * <p>"category": [1, 2, 3],       // Danh sách ID của các danh mục sản phẩm
+     * <p>"brand": [4, 5],             // Danh sách ID của các thương hiệu
+     * <p>"supplier": [6, 7, 8],       // Danh sách ID của các nhà cung cấp
+     * <p>"discount": [9, 10],         // Danh sách ID của các khuyến mãi
+     * <p>"status": [1],               // Danh sách ID của trạng thái
+     * <p>"wheelSize": [18, 19, 20]    // Danh sách kích thước bánh xe
+     * <p>}
      */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -49,6 +60,9 @@ public class ProductsFilter extends HttpServlet {
             JsonNode supplierNode = jsonNode.get("supplier");
             JsonNode discountNode = jsonNode.get("discount");
             JsonNode statusNode = jsonNode.get("status");
+            JsonNode minPriceNode = jsonNode.get("minPrice");
+            JsonNode maxPriceNode = jsonNode.get("maxPrice");
+            JsonNode wheelSizeNode = jsonNode.get("wheelSize");
 
             List<String> categoryList = new ArrayList<>();
             List<String> brandList = new ArrayList<>();
@@ -80,12 +94,28 @@ public class ProductsFilter extends HttpServlet {
                     statusList.add(element.asText());
                 }
             }
+            int minPrice = -1;
+            if (minPriceNode != null) {
+                minPrice = minPriceNode.asInt();
+            }
+            int maxPrice = 0;
+            if (maxPriceNode != null) {
+                maxPrice = maxPriceNode.asInt();
+            }
+            String wheelSize = null;
+            if (wheelSizeNode != null) {
+                wheelSize = wheelSizeNode.asText();
+            }
 
             System.out.println("categoryList: " + categoryList);
             System.out.println("supplierList: " + supplierList);
             System.out.println("brandList: " + brandList);
             System.out.println("isDiscount: " + isDiscount);
             System.out.println("statusList: " + statusList);
+            System.out.println("minPrice: " + minPriceNode);
+            System.out.println("maxPrice: " + maxPriceNode);
+            System.out.println("wheelSize: " + wheelSizeNode);
+
 
             Set<Product> productSet = new HashSet<>(ProductService.getInstance().getAllProduct());
             if (categoryList.size() > 0) {
@@ -116,6 +146,18 @@ public class ProductsFilter extends HttpServlet {
                     productSet.retainAll(productsByStatus);
                 }
             }
+
+            if (minPrice != -1 && maxPrice != 0) {
+                List<Product> productsByPrice = ProductService.getInstance().getProductByPrice(minPrice, maxPrice);
+                productSet.retainAll(productsByPrice);
+            }
+
+            if (wheelSize != null) {
+                List<Product> productsByWheelSize = ProductService.getInstance().getProductByWheelSize(wheelSize);
+                productSet.retainAll(productsByWheelSize);
+            }
+
+
             Gson gson = new Gson();
             String data = gson.toJson(productSet);
             resp.getWriter().write(data);

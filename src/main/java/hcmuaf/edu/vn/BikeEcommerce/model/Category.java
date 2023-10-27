@@ -8,19 +8,21 @@ import java.util.Objects;
  * This class is used to map with brand table in database <br/>
  * One brand have many products <br/>
  * One product have one brand <br/>
- * @see Product
- * @Author Hoang Hai
+ *
  * @version 1.0
+ * @Author Hoang Hai
+ * @see Product
  */
 public class Category {
     private String categoryId;
-    private String name;
+    private String name;//not null
     private String description;
     private String image;
     private String parentId;
+    // active 0-disable, 1-enable
     private int active;
     private int level;
-    private String shortId;
+    private String shortId;//not null, must 5 character
     private String createdAt;
     private String updatedAt;
 

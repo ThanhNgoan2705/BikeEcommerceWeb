@@ -13,6 +13,7 @@ import java.util.Objects;
  */
 public class Address {
     private String addressId;
+    private String userId;
     private String homeAddress;
     private String district;
     private String city;
@@ -22,8 +23,9 @@ public class Address {
     public Address() {
     }
 
-    public Address(String addressId, String homeAddress, String district, String city, String createdAt, String updatedAt) {
+    public Address(String addressId, String userId, String homeAddress, String district, String city, String createdAt, String updatedAt) {
         this.addressId = addressId;
+        this.userId = userId;
         this.homeAddress = homeAddress;
         this.district = district;
         this.city = city;
@@ -32,28 +34,37 @@ public class Address {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Address)) return false;
-        Address address = (Address) o;
-        return Objects.equals(getAddressId(), address.getAddressId()) && Objects.equals(getHomeAddress(), address.getHomeAddress()) && Objects.equals(getDistrict(), address.getDistrict()) && Objects.equals(getCity(), address.getCity());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getAddressId(), getHomeAddress(), getDistrict(), getCity());
-    }
-
-    @Override
     public String toString() {
         return "Address{" +
                 "addressId='" + addressId + '\'' +
+                ", userId='" + userId + '\'' +
                 ", homeAddress='" + homeAddress + '\'' +
                 ", district='" + district + '\'' +
                 ", city='" + city + '\'' +
                 ", createdAt='" + createdAt + '\'' +
                 ", updatedAt='" + updatedAt + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Address)) return false;
+        Address address = (Address) o;
+        return Objects.equals(getAddressId(), address.getAddressId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getAddressId());
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getAddressId() {

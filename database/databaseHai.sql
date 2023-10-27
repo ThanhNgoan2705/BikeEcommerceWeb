@@ -23,9 +23,9 @@ create table category
     created_at  timestamp default current_timestamp() not null,
     updated_at  timestamp default current_timestamp() not null,
     parent_id   varchar(5)                            null,
-    active      int                                   not null,
+    active      int       default 1                   not null,
     level       int                                   null,
-    short_id    varchar(5)                            null
+    short_id    varchar(5)                            not null comment 'dung để them vao dau id product'
 );
 
 create table color
@@ -40,16 +40,16 @@ create table color
 
 create table discount
 (
-    discount_id varchar(64)                           not null
+    discount_id      varchar(64)                           not null
         primary key,
-    name        varchar(255)                          not null,
-    description varchar(255)                          null,
-    discount    double                                not null,
-    active      int                                   not null,
-    start_date  date                                  not null,
-    end_date    date                                  not null,
-    created_at  timestamp default current_timestamp() not null,
-    updated_at  timestamp default current_timestamp() not null on update current_timestamp()
+    name             varchar(255)                          not null,
+    description      varchar(255)                          null,
+    discount_percent double                                not null,
+    active           int       default 1                   not null,
+    start_date       varchar(10)                           not null,
+    end_date         varchar(10)                           not null,
+    created_at       timestamp default current_timestamp() not null,
+    updated_at       timestamp default current_timestamp() not null on update current_timestamp()
 );
 
 create table image_slider
@@ -72,7 +72,7 @@ create table supplier
 
 create table product
 (
-    product_id  varchar(11)                           not null
+    product_id  varchar(11)                           not null comment '5 kí tự đầu là của shortId category, 6 kí tự sau random'
         primary key,
     name        varchar(255)                          not null,
     price       double                                not null,
@@ -81,7 +81,7 @@ create table product
     inventory   int                                   not null,
     material    varchar(255)                          null,
     warranty    varchar(50)                           null,
-    category_id varchar(64)                           null,
+    category_id varchar(64)                           not null,
     brand_id    varchar(64)                           null,
     discount_id varchar(64)                           null,
     supplier_id varchar(64)                           null,
@@ -131,7 +131,7 @@ create table user
     user_name  varchar(100)                          not null comment 'ten tai khoan ',
     created_at timestamp default current_timestamp() not null comment 'ngay tao',
     updated_at timestamp default current_timestamp() not null on update current_timestamp() comment 'ngay sua doi',
-    role       int       default 1                   not null comment '1-user, 2-admin'
+    role       int       default 0                   not null comment '1-user, 2-admin'
 )
     comment 'user_info';
 
@@ -165,13 +165,12 @@ create table cart
 
 create table cart_item
 (
-    cart_item_id int auto_increment
-        primary key,
-    cart_id      varchar(64)                           null,
-    product_id   varchar(64)                           null,
-    quantity     int                                   null comment 'phai  lon  hon 0',
-    created_at   timestamp default current_timestamp() null,
-    updated_at   timestamp default current_timestamp() null on update current_timestamp(),
+    cart_id    varchar(64)                           not null,
+    product_id varchar(64)                           not null,
+    quantity   int                                   null comment 'phai  lon  hon 0',
+    created_at timestamp default current_timestamp() null,
+    updated_at timestamp default current_timestamp() null on update current_timestamp(),
+    primary key (cart_id, product_id),
     constraint cartitems_cart_cart_id_fk
         foreign key (cart_id) references cart (cart_id),
     constraint cartitems_product_product_id_fk
@@ -203,12 +202,13 @@ create index user_id
 
 create table favorite
 (
-    favorite_id varchar(64)                           not null
-        primary key,
-    user_id     varchar(64)                           null,
-    product_id  varchar(11)                           null,
-    created_at  timestamp default current_timestamp() null,
-    updated_at  timestamp default current_timestamp() null on update current_timestamp(),
+    user_id    varchar(64)                           not null,
+    product_id varchar(11)                           not null,
+    created_at timestamp default current_timestamp() null,
+    updated_at timestamp default current_timestamp() null on update current_timestamp(),
+    primary key (product_id, user_id),
+    constraint favorite_pk
+        unique (user_id, product_id),
     constraint favorite_ibfk_1
         foreign key (user_id) references user (user_id),
     constraint favorite_ibfk_2
@@ -223,7 +223,7 @@ create index user_id
 
 create table `order`
 (
-    order_id     varchar(12)                           not null
+    order_id     varchar(12)                           not null comment '6 kí tự đầu là ngay thang nam, 6 ki tu sau random'
         primary key,
     user_id      varchar(64)                           null,
     address_id   varchar(64)                           not null,
@@ -261,11 +261,11 @@ create index user_email_index
 
 create table verify_code
 (
-    code      varchar(6)                            not null,
-    email     varchar(30)                           not null comment 'email cua nguoi dung ',
-    create_at timestamp default current_timestamp() not null,
-    function  int                                   not null comment '1-register, 2-login(otp), 3-resetPassword',
-    valid     int       default 1                   not null comment '0-No longer valid, 1- still valid',
+    code       varchar(6)                            not null,
+    email      varchar(30)                           not null comment 'email cua nguoi dung ',
+    created_at timestamp default current_timestamp() not null,
+    function   int                                   not null comment '1-register, 2-login(otp), 3-resetPassword',
+    valid      int       default 1                   not null comment '0-No longer valid, 1- still valid',
     primary key (code, email)
 );
 
