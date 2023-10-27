@@ -1,8 +1,8 @@
-package hcmuaf.edu.vn.BikeEcommerce.API;
+package hcmuaf.edu.vn.BikeEcommerce.api;
 
 import com.google.gson.Gson;
-import hcmuaf.edu.vn.BikeEcommerce.model.Category;
-import hcmuaf.edu.vn.BikeEcommerce.service.CategoryService;
+import hcmuaf.edu.vn.BikeEcommerce.model.Brand;
+import hcmuaf.edu.vn.BikeEcommerce.service.BrandService;
 import hcmuaf.edu.vn.BikeEcommerce.toolSecurity.GenerateId;
 import org.apache.commons.beanutils.BeanUtils;
 
@@ -15,50 +15,62 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-@WebServlet("/api/category/*")
-public class CategoryAPI extends HttpServlet {
+@WebServlet("/api/brand/*")
+public class BrandAPI extends HttpServlet {
     Gson gson;
-    CategoryService categoryService;
+    BrandService brandService;
 
     @Override
     public void init() throws ServletException {
         gson = new Gson();
-        categoryService = CategoryService.getInstance();
-
+        brandService = BrandService.getInstance();
     }
 
     /**
      * Lấy danh sách thương hiệu theo category
-     * URL: /api/category/{categoryId}
+     * URL: /api/brand?categoryId={categoryId}
      * Method: GET
-     * Nếu {categoryId} null thì sẽ trả về tất cả
+     * <p>
+     * Lấy ra 1 brand
+     * URL: /api/brand/{brandId}
+     * Method: GET
+     * <p>
+     * Lấy ra toàn bộ brand nếu không có param
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String categoryId = req.getPathInfo();
-        // nếu có categoryId thì trả về giá trị của category đó
+
+        String categoryId = req.getParameter("categoryId");
+
         if (categoryId != null) {
-            if (categoryId.startsWith("/")) {
-                categoryId = categoryId.substring(1);
-            }
-            Category category = CategoryService.getInstance().getById(categoryId);
-            String data = gson.toJson(category);
-            resp.getWriter().write(data);
+            // lấy ra danh sách brand theo category
+            List<Brand> brandList = brandService.getBrandByCategoryId(categoryId);
+            String json = gson.toJson(brandList);
+            resp.getWriter().write(json);
         } else {
-            // nếu k có thì gửi toàn bộ category
-            System.out.println("k có category id");
-            List<Category> categoryList = categoryService.getAll();
-            String data = gson.toJson(categoryList);
-            resp.getWriter().write(data);
+            // lấy ra brand theo brandId
+            String brandId = req.getPathInfo();
+            System.out.println("Brand Code: " + brandId);
+            if (brandId != null) {
+                if (brandId.startsWith("/")) {
+                    brandId = brandId.substring(1);
+                }
+                Brand brand = brandService.getById(brandId);
+                System.out.println(brand);
+                String data = gson.toJson(brand);
+                resp.getWriter().write(data);
+            } else {
+                // lấy ra toàn bộ brand
+                List<Brand> brandList = brandService.getAll();
+                String data = gson.toJson(brandList);
+                resp.getWriter().write(data);
+            }
         }
     }
 
     /**
-     * Thêm mới 1 category
-     * URL: /api/category
-     * Method: POST
-     * <p>
-     * Chỉ có admin mới thêm được
+     * Bắt buộc phải có token của admin mới làm được chức năng thêm brand
+     * Thêm 1 brand mới
      *
      * @param req  an {@link HttpServletRequest} object that
      *             contains the request the client has made
@@ -71,20 +83,17 @@ public class CategoryAPI extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //check token admin
-        //
-        //
-
-        Category category = new Category();
-
+        Brand brand = new Brand();
         try {
-            BeanUtils.populate(category, req.getParameterMap());
-            if (category.getCategoryId() == null) {
-                category.setCategoryId(GenerateId.generateId());
-                categoryService.insert(category);
+            BeanUtils.populate(brand, req.getParameterMap());
+            // nếu khong có id thì là insert
+            if (brand.getBrandId() == null) {
+                brand.setBrandId(GenerateId.generateId());
+                brandService.insert(brand);
                 resp.getWriter().write("insert success");
             } else {
-                categoryService.update(category);
+                // nếu có id thì là update
+                brandService.update(brand);
                 resp.getWriter().write("update success");
             }
         } catch (IllegalAccessException e) {
@@ -92,12 +101,10 @@ public class CategoryAPI extends HttpServlet {
         } catch (InvocationTargetException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 
     /**
-     * Phải có token admin mới xóa được
+     * phải có token của admin thì mới làm được chức năng này.
      *
      * @param req  the {@link HttpServletRequest} object that
      *             contains the request the client made of
@@ -110,19 +117,17 @@ public class CategoryAPI extends HttpServlet {
      */
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String categoryId = req.getPathInfo();
-        if (categoryId != null) {
-            if (categoryId.startsWith("/")) {
-                categoryId = categoryId.substring(1);
+        String brandId = req.getPathInfo();
+        if (brandId != null) {
+            if (brandId.startsWith("/")) {
+                brandId = brandId.substring(1);
             }
-
             try {
-                categoryService.delete(categoryId);
+                BrandService.getInstance().delete(brandId);
                 resp.getWriter().write("success");
             } catch (Exception e) {
                 resp.getWriter().write("fail");
             }
-
         }
     }
 }
