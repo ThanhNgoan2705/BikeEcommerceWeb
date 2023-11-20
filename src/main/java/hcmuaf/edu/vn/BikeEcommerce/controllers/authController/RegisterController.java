@@ -7,6 +7,7 @@ import hcmuaf.edu.vn.BikeEcommerce.service.UserService;
 import hcmuaf.edu.vn.BikeEcommerce.toolSecurity.GenerateId;
 import hcmuaf.edu.vn.BikeEcommerce.toolSecurity.GenerateSalt;
 import hcmuaf.edu.vn.BikeEcommerce.toolSecurity.GenerateVerifyCode;
+import hcmuaf.edu.vn.BikeEcommerce.toolSecurity.RSA;
 
 import javax.mail.MessagingException;
 import javax.servlet.ServletException;
@@ -15,9 +16,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.security.NoSuchAlgorithmException;
 
 @WebServlet("/register")
 public class RegisterController extends HttpServlet {
+    UserService userService;
+    RSA rsa;
+
+    @Override
+    public void init() throws ServletException {
+        userService = UserService.getInstance();
+        try {
+            rsa = RSA.getInstance();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("signUp/Register.jsp").forward(req, resp);
@@ -44,7 +60,11 @@ public class RegisterController extends HttpServlet {
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
-        resp.sendRedirect(req.getContextPath() + "/verify" + "?email=" + email + "&type=1");
+        try {
+            resp.sendRedirect(req.getContextPath() + "/verify" + "?email=" + URLEncoder.encode(rsa.AESencrypt(email)) + "&type=1");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

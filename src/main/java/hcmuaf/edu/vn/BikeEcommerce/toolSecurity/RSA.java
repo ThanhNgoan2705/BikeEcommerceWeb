@@ -295,6 +295,9 @@ public class RSA {
     public static void main(String[] args) throws Exception {
         System.out.println(RSA.getInstance().AESencrypt("hoanghailata"));
         System.out.println(RSA.getInstance().ASEdecrypt("vJrA/pbC3A7X13COD9RqqA=="));
+        System.out.println(RSA.getInstance().ASEdecrypt("DHECF8IEtMJsLw0n0kmY21rV87m7V+AymFM+9uzOsRI="));
+        System.out.println(RSA.getInstance().ASEdecrypt("JQncMB8vZnsva0+yPHHc86Bz5Ak1HlK8/gWYNyxcHEI"));
+
 
     }
 

@@ -1,498 +1,859 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: Chan
+  Date: 10/5/2023
+  Time: 10:08 AM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html; charset=UTF-8"  language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html lang="en">
-<head><base target="_parent">
+<!doctype html>
+<html lang="vie">
+<head>
+    <meta charset="UTF-8">
+    <title>Xe Điện Long Vũ</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%--    fontAwesome--%>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="stylesheet" href="assets/css/cart.css">
-    <link rel="stylesheet" href="assets/css/style-starter.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap">
-    <link rel="stylesheet" href="https://mdbootstrap.com/api/snippets/static/download/MDB5-Pro-Advanced_6.4.1/css/mdb.min.css">
-    <link rel="stylesheet" href="https://mdbootstrap.com/api/snippets/static/download/MDB5-Pro-Advanced_6.4.1/plugins/css/all.min.css">
-
-    <style>
-        INPUT:-webkit-autofill,SELECT:-webkit-autofill,TEXTAREA:-webkit-autofill{animation-name:onautofillstart}INPUT:not(:-webkit-autofill),SELECT:not(:-webkit-autofill),TEXTAREA:not(:-webkit-autofill){animation-name:onautofillcancel}@keyframes onautofillstart{}@keyframes onautofillcancel{}
-    </style>
+    <link
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+            rel="stylesheet"
+    />
+    <%--    MDB CSS--%>
+    <style>INPUT:-webkit-autofill,SELECT:-webkit-autofill,TEXTAREA:-webkit-autofill{animation-name:onautofillstart}INPUT:not(:-webkit-autofill),SELECT:not(:-webkit-autofill),TEXTAREA:not(:-webkit-autofill){animation-name:onautofillcancel}@keyframes onautofillstart{}@keyframes onautofillcancel{}</style>
+    <link href="mdb/css/bootstrap.min.css" rel="stylesheet">
+    <link href="mdb/css/mdb.min.css" rel="stylesheet">
+    <link href="mdb/css/addons/compiled-addons-4.20.0.min.css">
+    <link href="mdb/css/style.css" rel="stylesheet">
+    <link href="mdb/css/default.css" rel="stylesheet">
 
 </head>
-<body>
-<!--Main Navigation-->
-<jsp:include page="common/header.jsp"/>
-<!-- sidebar + content -->
-<section class="">
-    <div class="container">
-        <div class="row">
-            <!-- sidebar -->
-            <div class="col-lg-3">
-                <!-- Toggle button -->
-                <button
-                        class="btn btn-outline-secondary mb-3 w-100 d-lg-none"
-                        type="button"
-                        data-mdb-toggle="collapse"
-                        data-mdb-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
-                >
-                    <span>Show filter</span>
-                </button>
-                <!-- Collapsible wrapper -->
-                <div class="collapse card d-lg-block mb-5" id="navbarSupportedContent">
-                    <div class="accordion" id="accordionPanelsStayOpenExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button
-                                        class="accordion-button text-dark bg-light"
-                                        type="button"
-                                        data-mdb-toggle="collapse"
-                                        data-mdb-target="#panelsStayOpen-collapseOne"
-                                        aria-expanded="true"
-                                        aria-controls="panelsStayOpen-collapseOne"
-                                >
-                                    Related items
-                                </button>
-                            </h2>
-                            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
-                                <div class="accordion-body">
-                                    <ul class="list-unstyled">
-                                        <li><a href="#" class="text-dark">Electronics </a></li>
-                                        <li><a href="#" class="text-dark">Home items </a></li>
-                                        <li><a href="#" class="text-dark">Books, Magazines </a></li>
-                                        <li><a href="#" class="text-dark">Men's clothing </a></li>
-                                        <li><a href="#" class="text-dark">Interiors items </a></li>
-                                        <li><a href="#" class="text-dark">Underwears </a></li>
-                                        <li><a href="#" class="text-dark">Shoes for men </a></li>
-                                        <li><a href="#" class="text-dark">Accessories </a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingTwo">
-                                <button
-                                        class="accordion-button text-dark bg-light"
-                                        type="button"
-                                        data-mdb-toggle="collapse"
-                                        data-mdb-target="#panelsStayOpen-collapseTwo"
-                                        aria-expanded="true"
-                                        aria-controls="panelsStayOpen-collapseTwo"
-                                >
-                                    Brands
-                                </button>
-                            </h2>
-                            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo">
-                                <div class="accordion-body">
-                                    <div>
-                                        <!-- Checked checkbox -->
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked1" checked />
-                                            <label class="form-check-label" for="flexCheckChecked1">Mercedes</label>
-                                            <span class="badge badge-secondary float-end">120</span>
-                                        </div>
-                                        <!-- Checked checkbox -->
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked2" checked />
-                                            <label class="form-check-label" for="flexCheckChecked2">Toyota</label>
-                                            <span class="badge badge-secondary float-end">15</span>
-                                        </div>
-                                        <!-- Checked checkbox -->
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked3" checked />
-                                            <label class="form-check-label" for="flexCheckChecked3">Mitsubishi</label>
-                                            <span class="badge badge-secondary float-end">35</span>
-                                        </div>
-                                        <!-- Checked checkbox -->
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked4" checked />
-                                            <label class="form-check-label" for="flexCheckChecked4">Nissan</label>
-                                            <span class="badge badge-secondary float-end">89</span>
-                                        </div>
-                                        <!-- Default checkbox -->
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault5" />
-                                            <label class="form-check-label" for="flexCheckDefault5">Honda</label>
-                                            <span class="badge badge-secondary float-end">30</span>
-                                        </div>
-                                        <!-- Default checkbox -->
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault6" />
-                                            <label class="form-check-label" for="flexCheckDefault6">Suzuki</label>
-                                            <span class="badge badge-secondary float-end">30</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingThree">
-                                <button
-                                        class="accordion-button text-dark bg-light"
-                                        type="button"
-                                        data-mdb-toggle="collapse"
-                                        data-mdb-target="#panelsStayOpen-collapseThree"
-                                        aria-expanded="false"
-                                        aria-controls="panelsStayOpen-collapseThree"
-                                >
-                                    Price
-                                </button>
-                            </h2>
-                            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree">
-                                <div class="accordion-body">
-                                    <div class="range">
-                                        <input type="range" class="form-range" id="customRange1" />
-                                    </div>
-                                    <div class="row mb-3">
-                                        <div class="col-6">
-                                            <p class="mb-0">
-                                                Min
-                                            </p>
-                                            <div class="form-outline">
-                                                <input type="number" id="typeNumber" class="form-control" />
-                                                <label class="form-label" for="typeNumber">$0</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <p class="mb-0">
-                                                Max
-                                            </p>
-                                            <div class="form-outline">
-                                                <input type="number" id="typeNumber" class="form-control" />
-                                                <label class="form-label" for="typeNumber">$1,0000</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button type="button" class="btn btn-white w-100 border border-secondary">apply</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingThree">
-                                <button
-                                        class="accordion-button text-dark bg-light"
-                                        type="button"
-                                        data-mdb-toggle="collapse"
-                                        data-mdb-target="#panelsStayOpen-collapseFour"
-                                        aria-expanded="false"
-                                        aria-controls="panelsStayOpen-collapseFour"
-                                >
-                                    Size
-                                </button>
-                            </h2>
-                            <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingThree">
-                                <div class="accordion-body">
-                                    <input type="checkbox" class="btn-check border justify-content-center" id="btn-check1" checked autocomplete="off" />
-                                    <label class="btn btn-white mb-1 px-1" style="width: 60px;" for="btn-check1">XS</label>
-                                    <input type="checkbox" class="btn-check border justify-content-center" id="btn-check2" checked autocomplete="off" />
-                                    <label class="btn btn-white mb-1 px-1" style="width: 60px;" for="btn-check2">SM</label>
-                                    <input type="checkbox" class="btn-check border justify-content-center" id="btn-check3" checked autocomplete="off" />
-                                    <label class="btn btn-white mb-1 px-1" style="width: 60px;" for="btn-check3">LG</label>
-                                    <input type="checkbox" class="btn-check border justify-content-center" id="btn-check4" checked autocomplete="off" />
-                                    <label class="btn btn-white mb-1 px-1" style="width: 60px;" for="btn-check4">XXL</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingThree">
-                                <button
-                                        class="accordion-button text-dark bg-light"
-                                        type="button"
-                                        data-mdb-toggle="collapse"
-                                        data-mdb-target="#panelsStayOpen-collapseFive"
-                                        aria-expanded="false"
-                                        aria-controls="panelsStayOpen-collapseFive"
-                                >
-                                    Ratings
-                                </button>
-                            </h2>
-                            <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingThree">
-                                <div class="accordion-body">
-                                    <!-- Default checkbox -->
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked />
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i>
-                                            <i class="fas fa-star text-warning"></i>
-                                        </label>
-                                    </div>
-                                    <!-- Default checkbox -->
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked />
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i>
-                                            <i class="fas fa-star text-secondary"></i>
-                                        </label>
-                                    </div>
-                                    <!-- Default checkbox -->
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked />
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-secondary"></i>
-                                            <i class="fas fa-star text-secondary"></i>
-                                        </label>
-                                    </div>
-                                    <!-- Default checkbox -->
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked />
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-secondary"></i><i class="fas fa-star text-secondary"></i>
-                                            <i class="fas fa-star text-secondary"></i>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- sidebar -->
-            <!-- content -->
-            <div class="col-lg-9">
-                <header class="d-sm-flex align-items-center border-bottom mb-4 pb-3">
-                    <strong class="d-block py-2">32 Items found </strong>
-                    <div class="ms-auto">
-                        <select class="form-select d-inline-block w-auto border pt-1">
-                            <option value="0">Best match</option>
-                            <option value="1">Recommended</option>
-                            <option value="2">High rated</option>
-                            <option value="3">Randomly</option>
-                        </select>
-                        <div class="btn-group shadow-0 border">
-                            <a href="#" class="btn btn-light" title="List view">
-                                <i class="fa fa-bars fa-lg"></i>
-                            </a>
-                            <a href="#" class="btn btn-light active" title="Grid view">
-                                <i class="fa fa-th fa-lg"></i>
-                            </a>
-                        </div>
-                    </div>
-                </header>
+<body class="category-v2 hidden-sn white-skin animated">
 
+<!-- Navigation -->
+<%@ include file="default/header.jsp"%>
+<!-- Navigation -->
+
+<!-- Mega menu -->
+<%@include file="default/menu.jsp"%>
+<!-- Mega menu -->
+
+<!-- Main Container-->
+<div class="container mt-5 pt-3">
+    <div class="row pt-4">
+
+        <!-- Content-->
+        <div class="col-lg-9">
+
+            <!-- Filter Area-->
+            <div class="row">
+
+                <div class="col-md-4 mt-3">
+
+                    <!-- Sort by-->
+                    <select class="mdb-select grey-text md-form" multiple>
+
+                        <option value="" disabled selected>Choose your option</option>
+
+                        <option value="1">Option 1</option>
+
+                        <option value="2">Option 2</option>
+
+                        <option value="3">Option 3</option>
+
+                    </select>
+
+                    <label class="mdb-main-label">Example label</label>
+
+                    <button class="btn-save btn btn-primary btn-sm">Save</button>
+
+                    <!-- Sort by-->
+                </div>
+
+                <div class="col-8 col-md-8 text-right">
+
+                    <!-- View Switcher-->
+                    <a class="btn blue darken-3 btn-sm"><i class="fas fa-th mr-2" aria-hidden="true"></i><strong>
+                        Grid</strong></a>
+
+                    <a class="btn blue darken-3 btn-sm"><i class="fas fa-th-list mr-2" aria-hidden="true"></i><strong>
+
+                        List</strong></a>
+                    <!-- View Switcher-->
+                </div>
+
+            </div>
+            <!-- Filter Area-->
+
+            <!-- Section: Products -->
+            <section>
+
+                <!-- Grid row -->
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6 d-flex">
-                        <div class="card w-100 my-2 shadow-2-strong">
-                            <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/10.webp" class="card-img-top" />
-                            <div class="card-body d-flex flex-column">
-                                <div class="d-flex flex-row">
-                                    <h5 class="mb-1 me-1">$34,50</h5>
-                                    <span class="text-danger"><s>$49.99</s></span>
+
+                    <!-- Grid column -->
+                    <div class="col-12">
+
+                        <!-- Grid row -->
+                        <div class="row">
+
+                            <!-- Grid column -->
+                            <div class="col-lg-4 col-md-12 mb-4">
+
+                                <!-- Card -->
+                                <div class="card card-ecommerce">
+
+                                    <!-- Card image -->
+                                    <div class="view overlay">
+
+                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg"
+                                             class="img-fluid" alt="">
+
+                                        <a>
+
+                                            <div class="mask rgba-white-slight"></div>
+
+                                        </a>
+
+                                    </div>
+                                    <!-- Card image -->
+
+                                    <!-- Card content -->
+                                    <div class="card-body">
+
+                                        <!-- Category & Title -->
+                                        <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Asus CT-567</a></strong>
+                                        </h5>
+
+                                        <span class="badge badge-danger mb-2">bestseller</span>
+
+                                        <!-- Rating -->
+                                        <ul class="rating">
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                        </ul>
+
+                                        <!-- Card footer -->
+                                        <div class="card-footer pb-0">
+
+                                            <div class="row mb-0">
+
+                                                <span class="float-left"><strong>1439$</strong></span>
+
+                                                <span class="float-right">
+
+                            <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
+                                    class="fas fa-shopping-cart ml-3"></i></a>
+
+                          </span>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- Card content -->
+
                                 </div>
-                                <p class="card-text">T-shirts with multiple colors, for men and lady</p>
-                                <div class="card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto">
-                                    <a href="#!" class="btn btn-primary shadow-0 me-1">Add to cart</a>
-                                    <a href="#!" class="btn btn-light border icon-hover px-2 pt-2"><i class="fas fa-heart fa-lg text-secondary px-1"></i></a>
-                                </div>
+                                <!-- Card -->
+
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 d-flex">
-                        <div class="card w-100 my-2 shadow-2-strong">
-                            <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/11.webp" class="card-img-top" />
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">$120.00</h5>
-                                <p class="card-text">Winter Jacket for Men and Women, All sizes</p>
-                                <div class="card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto">
-                                    <a href="#!" class="btn btn-primary shadow-0 me-1">Add to cart</a>
-                                    <a href="#!" class="btn btn-light border icon-hover px-2 pt-2"><i class="fas fa-heart fa-lg text-secondary px-1"></i></a>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-lg-4 col-md-6 mb-4">
+
+                                <!-- Card -->
+                                <div class="card card-ecommerce">
+
+                                    <!-- Card image -->
+                                    <div class="view overlay">
+
+                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/1.jpg"
+                                             class="img-fluid" alt="">
+
+                                        <a>
+
+                                            <div class="mask rgba-white-slight"></div>
+
+                                        </a>
+
+                                    </div>
+                                    <!-- Card image -->
+
+                                    <!-- Card content -->
+                                    <div class="card-body">
+
+                                        <!-- Category & Title -->
+                                        <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">iPad PRO</a></strong></h5>
+
+                                        <span class="badge badge-danger mb-2">bestseller</span>
+
+                                        <span class="badge badge-success mb-2 ml-2">SALE</span>
+
+                                        <!-- Rating -->
+                                        <ul class="rating">
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star grey-text"></i></li>
+
+                                        </ul>
+
+                                        <!-- Card footer -->
+                                        <div class="card-footer pb-0">
+
+                                            <div class="row mb-0">
+
+                                                <h5 class="mb-0 pb-0 mt-1 font-weight-bold"><span
+                                                        class="red-text"><strong>$699</strong></span>
+
+                                                    <span class="grey-text"><small><s>$920</s></small></span>
+
+                                                </h5>
+
+                                                <span class="float-right">
+
+                            <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
+                                    class="fas fa-shopping-cart ml-3"></i></a>
+
+                          </span>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- Card content -->
+
                                 </div>
+                                <!-- Card -->
+
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 d-flex">
-                        <div class="card w-100 my-2 shadow-2-strong">
-                            <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/12.webp" class="card-img-top" />
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">$120.00</h5>
-                                <p class="card-text">T-shirts with multiple colors, for men and lady</p>
-                                <div class="card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto">
-                                    <a href="#!" class="btn btn-primary shadow-0 me-1">Add to cart</a>
-                                    <a href="#!" class="btn btn-light border icon-hover px-2 pt-2"><i class="fas fa-heart fa-lg text-secondary px-1"></i></a>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-lg-4 col-md-6 mb-4">
+
+                                <!-- Card -->
+                                <div class="card card-ecommerce">
+
+                                    <!-- Card image -->
+                                    <div class="view overlay">
+
+                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/6.jpg"
+                                             class="img-fluid" alt="">
+
+                                        <a>
+
+                                            <div class="mask rgba-white-slight"></div>
+
+                                        </a>
+
+                                    </div>
+                                    <!-- Card image -->
+
+                                    <!-- Card content -->
+                                    <div class="card-body">
+
+                                        <!-- Category & Title -->
+                                        <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Dell V-964i</a></strong>
+                                        </h5>
+
+                                        <span class="badge badge-danger mb-2">bestseller</span><span
+                                            class="badge badge-info mb-2 ml-2">new</span>
+
+                                        <!-- Rating -->
+                                        <ul class="rating">
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                        </ul>
+
+                                        <!-- Card footer -->
+                                        <div class="card-footer pb-0">
+
+                                            <div class="row mb-0">
+
+                                                <span class="float-left"><strong>1439$</strong></span>
+
+                                                <span class="float-right">
+
+                            <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
+                                    class="fas fa-shopping-cart ml-3"></i></a>
+
+                          </span>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- Card content -->
+
                                 </div>
+                                <!-- Card -->
+
                             </div>
+                            <!-- Grid column -->
+
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 d-flex">
-                        <div class="card w-100 my-2 shadow-2-strong">
-                            <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/13.webp" class="card-img-top" style="aspect-ratio: 1 / 1"/>
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">$120.00</h5>
-                                <p class="card-text">Blazer Suit Dress Jacket for Men, Blue color</p>
-                                <div class="card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto">
-                                    <a href="#!" class="btn btn-primary shadow-0 me-1">Add to cart</a>
-                                    <a href="#!" class="btn btn-light border icon-hover px-2 pt-2"><i class="fas fa-heart fa-lg text-secondary px-1"></i></a>
+                        <!-- Grid row -->
+
+                        <!-- Grid row -->
+                        <div class="row mb-3">
+
+                            <!-- Grid column -->
+                            <div class="col-lg-4 col-md-12 mb-4">
+
+                                <!-- Card -->
+                                <div class="card card-ecommerce">
+
+                                    <!-- Card image -->
+                                    <div class="view overlay">
+
+                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg"
+                                             class="img-fluid" alt="">
+
+                                        <a>
+
+                                            <div class="mask rgba-white-slight"></div>
+
+                                        </a>
+
+                                    </div>
+                                    <!-- Card image -->
+
+                                    <!-- Card content -->
+                                    <div class="card-body">
+
+                                        <!-- Category & Title -->
+                                        <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Samsung V54</a></strong>
+                                        </h5>
+
+                                        <span class="badge grey mb-2">best rated</span>
+
+                                        <!-- Rating -->
+                                        <ul class="rating">
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                        </ul>
+
+                                        <!-- Card footer -->
+                                        <div class="card-footer pb-0">
+
+                                            <div class="row mb-0">
+
+                                                <span class="float-left"><strong>1439$</strong></span>
+
+                                                <span class="float-right">
+
+                            <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
+                                    class="fas fa-shopping-cart ml-3"></i></a>
+
+                          </span>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- Card content -->
+
                                 </div>
+                                <!-- Card -->
+
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 d-flex">
-                        <div class="card w-100 my-2 shadow-2-strong">
-                            <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/14.webp" class="card-img-top" style="aspect-ratio: 1 / 1" />
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">$510.00</h5>
-                                <p class="card-text">Slim sleeve wallet Italian leather - multiple colors</p>
-                                <div class="card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto">
-                                    <a href="#!" class="btn btn-primary shadow-0 me-1">Add to cart</a>
-                                    <a href="#!" class="btn btn-light border icon-hover px-2 pt-2"><i class="fas fa-heart fa-lg text-secondary px-1"></i></a>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-lg-4 col-md-6 mb-4">
+
+                                <!-- Card -->
+                                <div class="card card-ecommerce">
+
+                                    <!-- Card image -->
+                                    <div class="view overlay">
+
+                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/7.jpg"
+                                             class="img-fluid" alt="">
+
+                                        <a>
+
+                                            <div class="mask rgba-white-slight"></div>
+
+                                        </a>
+
+                                    </div>
+                                    <!-- Card image -->
+
+                                    <!-- Card content -->
+                                    <div class="card-body">
+
+                                        <!-- Category & Title -->
+                                        <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Dell 786i</a></strong></h5>
+
+                                        <span class="badge badge-info mb-2">new</span>
+
+                                        <!-- Rating -->
+                                        <ul class="rating">
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star grey-text"></i></li>
+
+                                        </ul>
+
+                                        <!-- Card footer -->
+                                        <div class="card-footer pb-0">
+
+                                            <div class="row mb-0">
+
+                                                <span class="float-left"><strong>1439$</strong></span>
+
+                                                <span class="float-right">
+
+                            <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
+                                    class="fas fa-shopping-cart ml-3"></i></a>
+
+                          </span>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- Card content -->
+
                                 </div>
+                                <!-- Card -->
+
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 d-flex">
-                        <div class="card w-100 my-2 shadow-2-strong">
-                            <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/10.webp" class="card-img-top" />
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">$79.99</h5>
-                                <p class="card-text">T-shirts with multiple colors, for men and lady</p>
-                                <div class="card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto">
-                                    <a href="#!" class="btn btn-primary shadow-0 me-1">Add to cart</a>
-                                    <a href="#!" class="btn btn-light border icon-hover px-2 pt-2"><i class="fas fa-heart fa-lg text-secondary px-1"></i></a>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-lg-4 col-md-6 mb-4">
+
+                                <!-- Card -->
+                                <div class="card card-ecommerce">
+
+                                    <!-- Card image -->
+                                    <div class="view overlay">
+
+                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/9.jpg"
+                                             class="img-fluid" alt="">
+
+                                        <a>
+
+                                            <div class="mask rgba-white-slight"></div>
+
+                                        </a>
+
+                                    </div>
+                                    <!-- Card image -->
+
+                                    <!-- Card content -->
+                                    <div class="card-body">
+
+                                        <!-- Category & Title -->
+                                        <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Canon 675-D</a></strong>
+                                        </h5>
+
+                                        <span class="badge badge-info mb-2">new</span>
+
+                                        <span class="badge badge-success mb-2 ml-2">SALE</span>
+
+                                        <!-- Rating -->
+                                        <ul class="rating">
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                        </ul>
+
+                                        <!-- Card footer -->
+                                        <div class="card-footer pb-0">
+
+                                            <div class="row mb-0">
+
+                                                <h5 class="mb-0 pb-0 mt-1 font-weight-bold"><span
+                                                        class="red-text"><strong>$1199</strong></span>
+
+                                                    <span class="grey-text"><small><s>$1520</s></small></span>
+
+                                                </h5>
+
+                                                <span class="float-right">
+
+                            <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
+                                    class="fas fa-shopping-cart ml-3"></i></a>
+
+                          </span>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- Card content -->
+
                                 </div>
+                                <!-- Card -->
+
                             </div>
+                            <!-- Grid column -->
+
                         </div>
+                        <!-- Grid row -->
+
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 d-flex">
-                        <div class="card w-100 my-2 shadow-2-strong">
-                            <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/11.webp" class="card-img-top" />
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">$120.00</h5>
-                                <p class="card-text">Winter Jacket for Men and Women, All sizes</p>
-                                <div class="card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto">
-                                    <a href="#!" class="btn btn-primary shadow-0 me-1">Add to cart</a>
-                                    <a href="#!" class="btn btn-light border icon-hover px-2 pt-2"><i class="fas fa-heart fa-lg text-secondary px-1"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 d-flex">
-                        <div class="card w-100 my-2 shadow-2-strong">
-                            <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/12.webp" class="card-img-top" />
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">$120.00</h5>
-                                <p class="card-text">T-shirts with multiple colors, for men and lady</p>
-                                <div class="card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto">
-                                    <a href="#!" class="btn btn-primary shadow-0 me-1">Add to cart</a>
-                                    <a href="#!" class="btn btn-light border icon-hover px-2 pt-2"><i class="fas fa-heart fa-lg text-secondary px-1"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 d-flex">
-                        <div class="card w-100 my-2 shadow-2-strong">
-                            <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/9.webp" class="card-img-top" />
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">$43.50</h5>
-                                <p class="card-text">Summer New Men's Denim Jeans Shorts</p>
-                                <div class="card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto">
-                                    <a href="#!" class="btn btn-primary shadow-0 me-1">Add to cart</a>
-                                    <a href="#!" class="btn btn-light border icon-hover px-2 pt-2"><i class="fas fa-heart fa-lg text-secondary px-1"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
+                <!-- Grid row -->
 
-                <hr />
+            </section>
+            <!-- Section: Products -->
 
-                <!-- Pagination -->
-                <nav aria-label="Page navigation example" class="d-flex justify-content-center mt-3">
-                    <ul class="pagination">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#">5</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- Pagination -->
-            </div>
         </div>
+        <!-- Content-->
+
+        <!-- Sidebar-->
+        <div class="col-lg-3">
+
+            <div class="">
+
+                <!-- Grid row-->
+                <div class="row">
+
+                    <div class="col-md-6 col-lg-12 mb-5">
+
+                        <!-- Panel-->
+                        <h5 class="font-weight-bold dark-grey-text"><strong>Order By</strong></h5>
+
+                            <div class="divider"></div>
+
+                            <p class="blue-text"><a>Default</a></p>
+
+                            <p class="dark-grey-text"><a>Popularity</a></p>
+
+                            <p class="dark-grey-text"><a>Average rating</a></p>
+
+                            <p class="dark-grey-text"><a>Price: low to high</a></p>
+
+                            <p class="dark-grey-text"><a>Price: high to low</a></p>
+
+                    </div>
+
+                    <!-- Filter by category-->
+                    <div class="col-md-6 col-lg-12 mb-5">
+
+                        <h5 class="font-weight-bold dark-grey-text"><strong>Category</strong></h5>
+
+                            <div class="divider"></div>
+
+                            <!-- Radio group-->
+                            <div class="form-group ">
+
+                                <input class="form-check-input" name="group100" type="radio" id="radio100">
+
+                                <label for="radio100" class="form-check-label dark-grey-text">All</label>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <input class="form-check-input" name="group100" type="radio" id="radio101" checked>
+
+                                <label for="radio101" class="form-check-label dark-grey-text">Laptop</label>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <input class="form-check-input" name="group100" type="radio" id="radio102">
+
+                                <label for="radio102" class="form-check-label dark-grey-text">Smartphone</label>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <input class="form-check-input" name="group100" type="radio" id="radio103">
+
+                                <label for="radio103" class="form-check-label dark-grey-text">Tablet</label>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <input class="form-check-input" name="group100" type="radio" id="radio104">
+
+                                <label for="radio104" class="form-check-label dark-grey-text">Headphones</label>
+
+                            </div>
+                            <!-- Radio group-->
+
+                    </div>
+                    <!-- Filter by category-->
+
+                </div>
+                <!-- Grid row-->
+
+                <!-- Grid row-->
+                <div class="row">
+
+                    <!-- Filter by price-->
+                    <div class="col-md-6 col-lg-12 mb-5">
+
+                        <h5 class="font-weight-bold dark-grey-text"><strong>Price</strong></h5>
+
+                            <div class="divider"></div>
+
+                            <form class="range-field mt-3">
+
+                                <input id="calculatorSlider" class="no-border" type="range" value="0" min="0" max="30" />
+
+                            </form>
+
+                            <!-- Grid row-->
+                            <div class="row justify-content-center">
+
+                                <!-- Grid column-->
+                                <div class="col-md-6 text-left">
+
+                                    <p class="dark-grey-text"><strong id="resellerEarnings">0$</strong></p>
+
+                                </div>
+                                <!-- Grid column-->
+
+                                <!-- Grid column-->
+                                <div class="col-md-6 text-right">
+
+                                    <p class="dark-grey-text"><strong id="clientPrice">319$</strong></p>
+
+                                </div>
+                                <!-- Grid column-->
+
+                            </div>
+                            <!-- Grid row-->
+
+                    </div>
+                    <!-- Filter by price-->
+
+                    <!-- Filter by rating-->
+                    <div class="col-md-6 col-lg-12 mb-5">
+
+                        <h5 class="font-weight-bold dark-grey-text"><strong>Rating</strong></h5>
+
+                            <div class="divider"></div>
+
+                            <div class="row ml-1">
+
+                                <!-- Rating-->
+                                <ul class="rating mb-0">
+
+                                    <li><i class="fas fa-star blue-text"></i></li>
+
+                                    <li><i class="fas fa-star blue-text"></i></li>
+
+                                    <li><i class="fas fa-star blue-text"></i></li>
+
+                                    <li><i class="fas fa-star blue-text"></i></li>
+
+                                    <li><i class="fas fa-star blue-text"></i></li>
+
+                                    <li>
+
+                                        <p class="ml-3 dark-grey-text"><a>4 and more</a></p>
+
+                                    </li>
+
+                                </ul>
+
+                            </div>
+
+                            <div class="row ml-1">
+
+                                <!-- Rating-->
+                                <ul class="rating mb-0">
+
+                                    <li><i class="fas fa-star blue-text"></i></li>
+
+                                    <li><i class="fas fa-star blue-text"></i></li>
+
+                                    <li><i class="fas fa-star blue-text"></i></li>
+
+                                    <li><i class="fas fa-star blue-text"></i></li>
+
+                                    <li><i class="fas fa-star grey-text"></i></li>
+
+                                    <li>
+
+                                        <p class="ml-3 dark-grey-text"><a>3 - 3,99</a></p>
+
+                                    </li>
+
+                                </ul>
+
+                            </div>
+
+                            <div class="row ml-1">
+
+                                <!-- Rating-->
+                                <ul class="rating">
+
+                                    <li><i class="fas fa-star blue-text"></i></li>
+
+                                    <li><i class="fas fa-star blue-text"></i></li>
+
+                                    <li><i class="fas fa-star blue-text"></i></li>
+
+                                    <li><i class="fas fa-star grey-text"></i></li>
+
+                                    <li><i class="fas fa-star grey-text"></i></li>
+
+                                    <li>
+
+                                        <p class="ml-3 dark-grey-text"><a>3.00 and less</a></p>
+
+                                    </li>
+
+                                </ul>
+
+                            </div>
+
+                    </div>
+                    <!-- Filter by rating-->
+
+                </div>
+                <!-- Grid row-->
+
+            </div>
+
+        </div>
+        <!-- Sidebar-->
+
     </div>
-</section>
-<!-- sidebar + content -->
-<!--footer-->
-<jsp:include page="common/footer.jsp"/>
 
+</div>
+<!-- Main Container-->
 
-<script type="text/javascript" src="https://mdbootstrap.com/api/snippets/static/download/MDB5-Pro-Advanced_6.4.1/js/mdb.min.js"></script>
-<script src="assets/js/jquery-2.1.4.min.js"></script>
-<!--/login-->
-<script>
-    $(document).ready(function () {
-        $(".button-log a").click(function () {
-            $(".overlay-login").fadeToggle(200);
-            $(this).toggleClass('btn-open').toggleClass('btn-close');
-        });
-    });
-    $('.overlay-close1').on('click', function () {
-        $(".overlay-login").fadeToggle(200);
-        $(".button-log a").toggleClass('btn-open').toggleClass('btn-close');
-        open = false;
-    });
-</script>
-<!--//login-->
-<script>
-    // optional
-    $('#customerhnyCarousel').carousel({
-        interval: 5000
-    });
-</script>
-<!-- cart-js -->
-<script src="assets/js/minicart.js"></script>
-<script>
-    transmitv.render();
+<!--onTop-->
+<%@include file="default/ontopButton.jsp"%>
+<!--onTop-->
 
-    transmitv.cart.on('transmitv_checkout', function (evt) {
-        var items, len, i;
-
-        if (this.subtotal() > 0) {
-            items = this.items();
-
-            for (i = 0, len = items.length; i < len; i++) {}
-        }
-    });
-</script>
-<!-- //cart-js -->
-<!--pop-up-box-->
-<script src="assets/js/jquery.magnific-popup.js"></script>
-<!--//pop-up-box-->
-<script>
-    $(document).ready(function () {
-        $('.popup-with-zoom-anim').magnificPopup({
-            type: 'inline',
-            fixedContentPos: false,
-            fixedBgPos: true,
-            overflowY: 'auto',
-            closeBtnInside: true,
-            preloader: false,
-            midClick: true,
-            removalDelay: 300,
-            mainClass: 'my-mfp-zoom-in'
-        });
-
-    });
-</script>
-<!--//search-bar-->
-<!-- disable body scroll which navbar is in active -->
-
-<script>
+<!-- Footer -->
+<%@include file="default/footer.jsp"%>
+<!-- Footer -->
+<script src="mdb/js/jquery.min.js"></script>
+<script src="mdb/js/bootstrap.min.js"></script>
+<script src="mdb/js/mdb.min.js"></script>
+<script type="text/javascript">
+    /* WOW.js init */
+    new WOW().init();
+    // Tooltips Initialization
     $(function () {
-        $('.navbar-toggler').click(function () {
-            $('body').toggleClass('noscroll');
-        })
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+
+    let slider = $("#calculatorSlider");
+    let reseller = $("#resellerEarnings");
+    let client = $("#clientPrice");
+    let percentageBonus = 30; // = 30%
+
+    let license = {
+        corpo: {
+            active: true,
+            price: 319,
+        },
+        dev: {
+            active: false,
+            price: 149,
+        },
+        priv: {
+            active: false,
+            price: 79,
+        }
+    };
+
+    const calculate = (price, value) => {
+
+        client.text((Math.round((price - (value / 100 * price)))) + '$');
+        reseller.text((Math.round(((percentageBonus - value) / 100 * price))) + '$')
+    }
+
+
+    slider.on('input change', e => {
+
+        if (license.priv.active) {
+
+            calculate(license.priv.price, $(e.target).val());
+        } else if (license.corpo.active) {
+
+            calculate(license.corpo.price, $(e.target).val());
+        } else if (license.dev.active) {
+
+            calculate(license.dev.price, $(e.target).val());
+        }
+    })
+
+    // Material Select Initialization
+    $(document).ready(function () {
+
+        $('.mdb-select').material_select();
     });
+
+    // SideNav Initialization
+    $(".button-collapse").sideNav();
+
 </script>
-<!-- disable body scroll which navbar is in active -->
-<script src="assets/js/bootstrap.min.js"></script>
-<script type="text/javascript" >{}</script>
+<script src="mdb/js/default.js"></script>
+
 </body>
 </html>

@@ -30,14 +30,13 @@ public class CartItemsService {
         return jdbi.withExtension(CartItemsDao.class, dao -> dao.getAllCartItem());
     }
 
-    CartItem getCartItemById(String cartItemId) {
-        CartItem cartItem = jdbi.withExtension(CartItemsDao.class, dao -> dao.getCartItemById(cartItemId));
-        return mapCartItem(cartItem);
-    }
 
     List<CartItem> getCartItemsByCartId(String cartId) {
         List<CartItem> cartItems = jdbi.withExtension(CartItemsDao.class, dao -> dao.getCartItemsByCartId(cartId));
         return cartItems.stream().map(cartItem -> mapCartItem(cartItem)).collect(Collectors.toList());
+    }
+    CartItem getCartItemByCartIdAndProductId(String cartId,String productId) {
+        return  jdbi.withExtension(CartItemsDao.class, dao -> dao.getCartItemByCartIdAndProductId(cartId,productId));
     }
 
     CartItem mapCartItem(CartItem cartItem) {
@@ -55,22 +54,20 @@ public class CartItemsService {
         jdbi.useExtension(CartItemsDao.class, dao -> dao.updateCartItem(cartItem));
     }
 
-    public void deleteCartItem(String cartItemId) {
-        jdbi.useExtension(CartItemsDao.class, dao -> dao.deleteCartItem(cartItemId));
+    public void deleteCartItem(String cartId,String productId) {
+        jdbi.useExtension(CartItemsDao.class, dao -> dao.deleteCartItem(cartId,productId));
     }
     public void deleteCartItemByCartId(String cartId) {
         jdbi.useExtension(CartItemsDao.class, dao -> dao.deleteCartItemByCartId(cartId));
     }
 
     public static void main(String[] args) {
-        CartItem cartItem = new CartItem("6", "1", "1", 1);
-        CartItemsService.getInstance().insertCartItem(cartItem);
-        System.out.println(CartItemsService.getInstance().getCartItemById("6"));
-        cartItem.setQuantity(2);
-        CartItemsService.getInstance().updateCartItem(cartItem);
-        System.out.println(CartItemsService.getInstance().getCartItemById("6"));
-        CartItemsService.getInstance().deleteCartItem("6");
-        System.out.println(CartItemsService.getInstance().getCartItemById("6"));
+        CartItem cartItem = new CartItem( "1", "1", 1);
+        CartItemsService cartItemsService = CartItemsService.getInstance();
+//        cartItemsService.insertCartItem(cartItem);
+        cartItem.setQuantity(10);
+        System.out.println(cartItem);
+        cartItemsService.updateCartItem(cartItem);
 
     }
 }

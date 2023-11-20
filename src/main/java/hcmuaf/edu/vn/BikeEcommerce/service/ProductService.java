@@ -1,6 +1,5 @@
 package hcmuaf.edu.vn.BikeEcommerce.service;
 
-import com.google.gson.Gson;
 import hcmuaf.edu.vn.BikeEcommerce.DAO.ProductDAO;
 import hcmuaf.edu.vn.BikeEcommerce.db.JDBIConnector;
 import hcmuaf.edu.vn.BikeEcommerce.model.*;
@@ -78,14 +77,6 @@ public class ProductService {
         jdbi.useExtension(ProductDAO.class, dao -> dao.deleteProduct(productId));
     }
 
-    public static void main(String[] args) {
-        ProductService productService = ProductService.getInstance();
-//        List<Product> products = productService.findProductByName("Bike");
-        Product product = productService.getProductById("1");
-        Gson gson = new Gson();
-        String json = gson.toJson(product);
-        System.out.println(json);
-    }
 
     public List<Product> getProductByCategoryId(String categoryId) {
         return jdbi.withExtension(ProductDAO.class, dao -> dao.getProductByCategoryId(categoryId));
@@ -107,4 +98,21 @@ public class ProductService {
         return jdbi.withExtension(ProductDAO.class, dao -> dao.getProductByStatus(status));
     }
 
+    public List<Product> getProductByPrice(int minPrice, int maxPrice) {
+        return jdbi.withExtension(ProductDAO.class, dao -> dao.getProductByPrice(minPrice, maxPrice));
+    }
+
+    public List<Product> getProductByWheelSize(String wheelSize) {
+        return jdbi.withExtension(ProductDAO.class, dao -> dao.getProductByWheelSize(wheelSize));
+    }
+    public static void main(String[] args) {
+//        ELECe37922
+        ProductService productService = ProductService.getInstance();
+//        List<Product> products = productService.findProductByName("Bike");
+//        Product product = productService.getProductById("1");
+//        Gson gson = new Gson();
+//        String json = gson.toJson(product);
+//        System.out.println(json);
+        productService.delete("ELECe37922");
+    }
 }

@@ -22,6 +22,8 @@ public interface UserDAO {
 
     @SqlUpdate(ScirptSQL.updateUser)
     void updateUser(@BindMethods User user);
+    @SqlUpdate(ScirptSQL.updateUserPassword)
+    void updateUserPassword(@BindMethods User user);
 
     @SqlUpdate(ScirptSQL.deleteUserById)
     void deleteUserById(@Bind("id") String id);

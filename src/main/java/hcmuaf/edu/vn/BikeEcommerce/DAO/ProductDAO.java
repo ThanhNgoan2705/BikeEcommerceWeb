@@ -30,17 +30,23 @@ public interface ProductDAO {
     void deleteProduct(@Bind("productId") String productId);
 
     @SqlQuery(ScirptSQL.getProductByCategoryId)
-    List<Product> getProductByCategoryId(@Bind("categoryId")String categoryId);
+    List<Product> getProductByCategoryId(@Bind("categoryId") String categoryId);
 
     @SqlQuery(ScirptSQL.getProductByBrandId)
-    List<Product> getProductByBrandId(@Bind("brandId")String brandId);
+    List<Product> getProductByBrandId(@Bind("brandId") String brandId);
 
     @SqlQuery(ScirptSQL.getProductBySupplierId)
-    List<Product> getProductBySupplierId(@Bind("supplierId")String supplierId);
+    List<Product> getProductBySupplierId(@Bind("supplierId") String supplierId);
 
     @SqlQuery(ScirptSQL.getProductByDiscount)
     List<Product> getProductByDiscount();
 
     @SqlQuery(ScirptSQL.getProductByStatus)
-    List<Product> getProductByStatus(@Bind("status")String status);
+    List<Product> getProductByStatus(@Bind("status") String status);
+
+    @SqlQuery(ScirptSQL.getProductByPrice)
+    List<Product> getProductByPrice(@Bind("minPrice") int minPrice, @Bind("maxPrice") int maxPrice);
+
+    @SqlQuery(ScirptSQL.getProductByWheelSize)
+    List<Product> getProductByWheelSize(@Bind("wheelSize") String wheelSize);
 }

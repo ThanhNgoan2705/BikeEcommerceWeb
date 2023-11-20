@@ -3,7 +3,7 @@ package hcmuaf.edu.vn.BikeEcommerce.model;
 import org.jdbi.v3.core.mapper.reflect.ColumnName;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Created by Admin on 19-8-23.<br/>
@@ -17,13 +17,15 @@ import java.time.LocalDateTime;
  * @see Product
  */
 public class Discount {
+    // dinh dang ngay thang nam
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private String discountId;
-    private String name;
+    private String name;//not null
     private String description;
-    private double discountPercent;
-    private int active;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private double discountPercent;//not null
+    private int active; //defause 1
+    private String startDate;//not null
+    private String endDate;//not null
     @ColumnName("create_at")
     private String createdAt;
     @ColumnName("update_at")
@@ -32,7 +34,7 @@ public class Discount {
     public Discount() {
     }
 
-    public Discount(String discountId, String name, String description, double discountPercent, int active, LocalDate startDate, LocalDate endDate) {
+    public Discount(String discountId, String name, String description, double discountPercent, int active, String startDate, String endDate) {
         this.discountId = discountId;
         this.name = name;
         this.description = description;
@@ -104,19 +106,19 @@ public class Discount {
         this.active = active;
     }
 
-    public LocalDate getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDate getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
@@ -134,5 +136,12 @@ public class Discount {
 
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public static void main(String[] args) {
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate localDate = LocalDate.parse("01/10/2023",formatter);
+        System.out.println(localDate.format(formatter));
     }
 }

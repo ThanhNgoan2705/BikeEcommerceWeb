@@ -12,23 +12,20 @@ import java.util.List;
 @RegisterBeanMapper(Favorite.class)
 public interface FavoriteDAO {
     @SqlQuery(ScirptSQL.getAllFavoriteByUserId)
-    List<Favorite> getFavoriteByUserId(@Bind("userId")String userId);
+    List<Favorite> getFavoriteByUserId(@Bind("userId") String userId);
 
     @SqlQuery(ScirptSQL.getAllFavoriteByProductId)
-    List<Favorite> getFavoriteByProductId(@Bind("productId")String productId);
+    List<Favorite> getFavoriteByProductId(@Bind("productId") String productId);
 
-    @SqlQuery(ScirptSQL.getFavoriteById)
-    Favorite getFavoriteById(@Bind("favoriteId")String favoriteId);
     @SqlUpdate(ScirptSQL.insertFavorite)
     void insertFavorite(@BindBean Favorite favorite);
 
-    @SqlUpdate(ScirptSQL.updateFavorite)
-    void updateFavorite(@BindBean Favorite favorite);
-
     @SqlUpdate(ScirptSQL.deleteFavorite)
-    void deleteFavorite(@Bind("favoriteId")String favoriteId);
-@SqlQuery(ScirptSQL.getAllFavorite)
+    void deleteFavorite(@BindBean Favorite favorite);
+
+    @SqlQuery(ScirptSQL.getAllFavorite)
     List<Favorite> getAllFavorite();
-@SqlUpdate(ScirptSQL.deleteFavoriteByProductIdAndUserId)
-    void deleteFavoriteByProductIdAndUserId(@Bind("productId")String productId,@Bind("userId") String userId);
+
+    @SqlQuery(ScirptSQL.hasFavoriteByUserIdAndProductId)
+    Boolean hasFavoriteByUserIdAndProductId(@Bind("userId") String userId, @Bind("productId") String productId);
 }

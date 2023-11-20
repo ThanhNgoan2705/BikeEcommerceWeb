@@ -1,401 +1,508 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
--->
-<!doctype html>
-<html lang="zxx">
+<%--
+  Created by IntelliJ IDEA.
+  User: Chan
+  Date: 10/5/2023
+  Time: 10:09 AM
+  To change this template use File | Settings | File Templates.
+--%>
 
+<%@ page contentType="text/html; charset=UTF-8"  language="java" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!doctype html>
+<html lang="vie">
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta userName="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>SpryStore E-commerce Category Bootstrap Responsive Website Template | Contact :: W3layouts</title>
-  <!-- Template CSS -->
-  <link rel="stylesheet" href="assets/css/style-starter.css">
-  <!-- Template CSS -->
-  <link href="//fonts.googleapis.com/css?family=Oswald:300,400,500,600&display=swap" rel="stylesheet">
-  <link href="//fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,900&display=swap" rel="stylesheet">
-  <!-- Template CSS -->
+    <meta charset="UTF-8">
+    <title>Xe Điện Long Vũ</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%--    fontAwesome--%>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+            rel="stylesheet"
+    />
+    <%--    MDB CSS--%>
+    <style>INPUT:-webkit-autofill,SELECT:-webkit-autofill,TEXTAREA:-webkit-autofill{animation-name:onautofillstart}INPUT:not(:-webkit-autofill),SELECT:not(:-webkit-autofill),TEXTAREA:not(:-webkit-autofill){animation-name:onautofillcancel}@keyframes onautofillstart{}@keyframes onautofillcancel{}</style>
+    <link href="mdb/css/bootstrap.min.css" rel="stylesheet">
+    <link href="mdb/css/mdb.min.css" rel="stylesheet">
+    <link href="mdb/css/addons/compiled-addons-4.20.0.min.css">
+    <link href="mdb/css/style.css" rel="stylesheet">
+    <link href="mdb/css/default.css" rel="stylesheet">
 
 </head>
-<body>
-<section class="w3l-banner-slider-main inner-pagehny">
-  <div class="breadcrumb-infhny">
+<body class="homepage-v2 hidden-sn white-skin animated">
 
-    <div class="top-header-content">
+<!-- Navigation -->
+<%@ include file="default/header.jsp"%>
+<!-- Navigation -->
 
-      <header class="tophny-header">
-        <div class="container-fluid">
-          <div class="top-right-strip row">
-            <!--/left-->
-            <div class="top-hny-left-content col-lg-6 pl-lg-0">
-              <h6>Upto 30% off on All styles , <a href="#" target="_blank"> Click here for <span
-                    class="fa fa-hand-o-right hand-icon" aria-hidden="true"></span> <span class="hignlaite">More
-                    details</span></a></h6>
-            </div>
-            <!--//left-->
-            <!--/right-->
-            <ul class="top-hnt-right-content col-lg-6">
+<!-- Mega menu -->
+<div class="container mt-lg-5 pt-5">
 
-              <li class="button-log usernhy">
-                <a class="btn-open" href="#">
-                  <span class="fa fa-user" aria-hidden="true"></span>
-                </a>
-              </li>
-              <li class="transmitvcart galssescart2 cart cart box_1">
-                <form action="#" method="post" class="last">
-                  <input type="hidden" userName="cmd" value="_cart">
-                  <input type="hidden" userName="display" value="1">
-                  <button class="top_transmitv_cart" type="submit" userName="submit" value="">
-                    My Cart
-                    <span class="fa fa-shopping-cart"></span>
-                  </button>
-                </form>
-              </li>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark primary-color mt-5">
+
+        <!-- Navbar brand -->
+        <a class="font-weight-bold white-text mr-4" href="#">Categories</a>
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
+                aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span
+                class="navbar-toggler-icon"></span></button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item dropdown mega-dropdown active">
+
+                    <a class="nav-link dropdown-toggle  no-caret" id="navbarCategories" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">Laptop</a>
+
+                    <div class="dropdown-menu mega-menu v-2 row z-depth-1 white" aria-labelledby="navbarCategories">
+
+                        <div class="row mx-md-4 mx-1">
+
+                            <div class="col-md-6 col-xl-3 sub-menu my-xl-5 mt-5 mb-4">
+
+                                <h6 class="sub-title text-uppercase font-weight-bold blue-text">Brand</h6>
+
+                                <ul class="caret-style pl-0">
+
+                                    <li class=""><a class="menu-item mb-0" href="">Sony</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Lenovo</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Apple</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Dell</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Asus</a></li>
+
+                                </ul>
+
+                            </div>
+
+                            <div class="col-md-6 col-xl-3 sub-menu my-xl-5 mt-md-5 mt-4 mb-4">
+
+                                <h6 class="sub-title text-uppercase font-weight-bold blue-text">Sales</h6>
+
+                                <ul class="caret-style pl-0">
+
+                                    <li class=""><a class="menu-item" href="">Laptops Up to 50% Off </a></li>
+
+                                    <li class=""><a class="menu-item" href="">Laptops under $399</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Laptops Up to 50% Off</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Laptops for designers</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Laptops for developers</a></li>
+
+                                </ul>
+
+                            </div>
+
+                            <div class="col-md-6 col-xl-3 sub-menu my-xl-5 mt-4 mb-4">
+
+                                <h6 class="sub-title text-uppercase font-weight-bold blue-text">Processor Type</h6>
+
+                                <ul class="caret-style pl-0">
+
+                                    <li class=""><a class="menu-item" href="">Intel Core i5 4th Gen.</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Intel Core i5 5th Gen.</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Intel Core i5 3th Gen.</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Intel Core i5 6th Gen.</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Intel Core i5 7th Gen.</a></li>
+
+                                </ul>
+
+                            </div>
+
+                            <div class="col-md-6 col-xl-3 sub-menu my-xl-5 mt-4 mb-5">
+
+                                <h6 class="sub-title text-uppercase font-weight-bold blue-text">Customers opinions</h6>
+
+                                <ul class="caret-style pl-0">
+
+                                    <li class=""><a class="menu-item" href="">Totam rem aperiam eaque</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Beatae vitae dicta sun</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Quae ab illo inventore</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Nemo enim ipsam</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Neque porro quisquam est</a></li>
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </li>
+
+                <li class="nav-item dropdown mega-dropdown">
+
+                    <a class="nav-link dropdown-toggle no-caret" id="navbarFeature" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">Cameras</a>
+
+                    <div class="dropdown-menu mega-menu v-2 row z-depth-1 white" aria-labelledby="navbarFeature">
+
+                        <div class="row mx-md-4 mx-1">
+
+                            <div class="col-md-12 col-lg-4 sub-menu my-lg-5 mt-5 mb-4">
+
+                                <h6 class="sub-title text-uppercase font-weight-bold blue-text">Featured</h6>
+
+                                <!-- Featured image -->
+                                <div class="view overlay mb-3 z-depth-1">
+
+                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/9.jpg" class="img-fluid"
+                                         alt="First sample image">
+
+                                    <div class="mask flex-center rgba-white-slight">
+
+                                        <p></p>
+
+                                    </div>
+
+                                </div>
+
+                                <h4 class="mb-2"><a class="news-title-2 pl-0" href="">Lorem ipsum dolor sit</a></h4>
+
+                            </div>
+
+                            <div class="col-md-6 col-lg-4 sub-menu my-lg-5 my-4">
+
+                                <h6 class="sub-title text-uppercase font-weight-bold blue-text">Brands</h6>
+
+                                <ul class="caret-style pl-0">
+
+                                    <li class=""><a class="menu-item" href="">Canon</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Nikon</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Sony</a></li>
+
+                                    <li class=""><a class="menu-item" href="">GoPro</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Samsung</a></li>
+
+                                </ul>
+
+                            </div>
+
+                            <div class="col-md-6 col-lg-4 sub-menu my-lg-5 my-4">
+
+                                <h6 class="sub-title text-uppercase font-weight-bold blue-text">Accesories</h6>
+
+                                <ul class="caret-style pl-0">
+
+                                    <li class=""><a class="menu-item" href="">Excepteur sint</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Sunt in culpa</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Sed ut perspiciatis</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Mollit anim id est</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Accusantium doloremque</a></li>
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </li>
+
+                <li class="nav-item dropdown mega-dropdown">
+
+                    <a class="nav-link dropdown-toggle no-caret" id="navbarDropdownMenuLink1" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">Accesories</a>
+
+                    <div class="dropdown-menu mega-menu v-2 row z-depth-1 white" aria-labelledby="navbarDropdownMenuLink1">
+
+                        <div class="row mx-md-4 mx-1">
+
+                            <div class="col-md-6 col-xl-3 sub-menu my-xl-5 mt-5 mb-4">
+
+                                <h6 class="sub-title text-uppercase font-weight-bold blue-text">Featured</h6>
+
+                                <ul class="caret-style pl-0">
+
+                                    <li class=""><a class="menu-item mb-0" href="">Mouse</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Printer</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Laptop bags</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Software</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Headphones</a></li>
+
+                                </ul>
+
+                            </div>
+
+                            <div class="col-md-6 col-xl-3 sub-menu my-xl-5 mt-md-5 mt-4 mb-4">
+
+                                <h6 class="sub-title text-uppercase font-weight-bold blue-text">Related</h6>
+
+                                <!-- Featured image -->
+                                <div class="view overlay mb-3 z-depth-1">
+
+                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/Work/6-col/img%20(43).jpg" class="img-fluid"
+                                         alt="First sample image">
+
+                                    <div class="mask flex-center rgba-white-slight">
+
+                                        <p></p>
+
+                                    </div>
+
+                                </div>
+
+                                <h4 class="mb-2"><a class="news-title-2 pl-0" href="">Lorem ipsum dolor sit</a></h4>
+
+                                <p class="font-small text-uppercase dark-grey-text"><i class="far fa-clock-o pr-2"
+                                                                                       aria-hidden="true"></i>July 17, 2017 / <i class="far fa-comments px-1" aria-hidden="true"></i> 20
+                                </p>
+
+                            </div>
+
+                            <div class="col-md-6 col-xl-3 sub-menu my-xl-5 mt-4 mb-4">
+
+                                <h6 class="sub-title text-uppercase font-weight-bold blue-text">Bestseller</h6>
+
+                                <!-- Featured image -->
+                                <div class="view overlay mb-3 z-depth-1">
+
+                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/6.jpg" class="img-fluid"
+                                         alt="First sample image">
+
+                                    <div class="mask flex-center rgba-white-slight">
+
+                                        <p></p>
+
+                                    </div>
+
+                                </div>
+
+                                <h4 class="mb-2"><a class="news-title-2 pl-0" href="">Ut labore et dolore magna</a></h4>
+
+                                <p class="font-small text-uppercase dark-grey-text"><i class="far fa-clock-o pr-2"
+                                                                                       aria-hidden="true"></i>July 16, 2017 / <i class="far fa-comments px-1" aria-hidden="true"></i> 25
+                                </p>
+
+                            </div>
+
+                            <div class="col-md-6 col-xl-3 sub-menu my-xl-5 mt-4 mb-5">
+
+                                <h6 class="sub-title text-uppercase font-weight-bold blue-text">
+
+                                    Customers opinion</h6>
+
+                                <ul class="caret-style pl-0">
+
+                                    <li class=""><a class="menu-item" href="">Totam rem aperiam eaque</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Beatae vitae dicta sun</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Quae ab illo inventore</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Nemo enim ipsam</a></li>
+
+                                    <li class=""><a class="menu-item" href="">Neque porro quisquam est</a></li>
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </li>
+
             </ul>
-            <!--//right-->
-            <div class="overlay-login text-left">
-              <button type="button" class="overlay-close1">
-                <i class="fa fa-times" aria-hidden="true"></i>
-              </button>
-              <div class="wrap">
-                <h5 class="text-center mb-4">Login Now</h5>
-                <div class="login-bghny p-md-5 p-4 mx-auto mw-100">
-                  <!--/login-form-->
-                  <form action="#" method="post">
-                    <div class="form-group">
-                      <p class="login-texthny mb-2">Email address</p>
-                      <input type="email" class="form-control" userId="exampleInputEmail1" aria-describedby="emailHelp"
-                        placeholder="" required="">
-                      <small userId="emailHelp" class="form-text text-muted">We'll never share your email
-                        with anyone else.</small>
-                    </div>
-                    <div class="form-group">
-                      <p class="login-texthny mb-2">Password</p>
-                      <input type="password" class="form-control" userId="exampleInputPassword1" placeholder="" required="">
-                    </div>
-                    <div class="form-check mb-2">
-                      <div class="userhny-check">
-                        <label class="check-remember container">
-                          <input type="checkbox" class="form-check"> <span class="checkmark"></span>
-                          <p class="privacy-policy">Remember me</p>
-                        </label>
-                        <div class="clearfix"></div>
-                      </div>
-                    </div>
-                    <button type="submit" class="submit-login btn mb-4">Sign In</button>
+            <!-- Links -->
 
-                  </form>
-                  <!--//login-form-->
-                </div>
-                <!---->
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--/nav-->
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <div class="container-fluid serarc-fluid">
-            <a class="navbar-brand" href="index.jsp">
-              Spry<span class="lohny">S</span>tore</a>
-            <!-- if logo is image enable this   
-                    <a class="navbar-brand" href="#index.jsp">
-                      <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
-                    </a> -->
-            <!--/search-right-->
-            <div class="search-right">
+            <!-- Search form -->
+            <form class="search-form" role="search">
 
-              <a href="#search" title="search"><span class="fa fa-search mr-2" aria-hidden="true"></span>
-                <span class="search-text">Search here</span></a>
-              <!-- search popup -->
+                <div class="form-group md-form my-0 waves-light">
 
-
-              <div userId="search" class="pop-overlay">
-                <div class="popup">
-
-                  <form action="#" method="post" class="search-box">
-                    <input type="search" placeholder="Keyword" userName="search" required="required" autofocus="">
-                    <button type="submit" class="btn">Search</button>
-                  </form>
+                    <input type="text" class="form-control" placeholder="Search">
 
                 </div>
 
-                <a class="close" href="#">×</a>
-              </div>
-              <!-- /search popup -->
-            </div>
-            <!--//search-right-->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon fa fa-bars"> </span>
-            </button>
-
-            <div class="collapse navbar-collapse" userId="navbarSupportedContent">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="index.jsp">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="about.jsp">About</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="about.jsp">What We Offer</a>
-                </li>
-
-                <li class="nav-item active">
-                  <a class="nav-link" href="contact.jsp">Contact</a>
-                </li>
-              </ul>
-
-            </div>
-          </div>
-        </nav>
-        <!--//nav-->
-      </header>
-      <div class="breadcrumb-contentnhy">
-        <div class="container">
-          <nav aria-label="breadcrumb">
-            <h2 class="hny-title text-center">Contact Us</h2>
-            <ol class="breadcrumb mb-0">
-              <li><a href="index.jsp">Home</a>
-                <span class="fa fa-angle-double-right"></span></li>
-              <li class="active">Contact</li>
-            </ol>
-          </nav>
-        </div>
-      </div>
-    </div>
-</section>
- <!-- contacts -->
- <section class="w3l-contacts-8">
-    <div class="contacts-9 section-gap py-5">
-      <div class="container py-lg-5">
-        <div class="row top-map">
-          <div class="col-lg-6 partners">
-            <div class="cont-details">
-              <h3 class="hny-title mb-0">Get in <span>touch</span></h5>
-              <p class="mb-5">We're ready to lead you into the future with Business Services</p>
-              <p class="margin-top"><span class="texthny">Call Us : </span> <a href="tel:+(21) 255 999 8899">+(21)
-                  255 999 8899</a></p>
-              <p> <span class="texthny">Email : </span> <a href="mailto:info@example.com">
-                  info@example.com</a></p>
-              <p class="margin-top"> 433 California St, Suite 300
-                San Francisco, CA 94104, USA </p>
-            </div>
-            <div class="hours">
-              <h3 class="hny-title">Working <span>Hours</span></h5>
-              <h6>Business Service:</h6>
-              <p> Monday to Friday 8.00 am - 6.00 pm</p>
-              <p> Saturday and Sunday - Closed</p>
-              <h6 class="margin-top">Customer support:</h6>
-              <p> Monday to Friday 8.00 am - 6.00 pm</p>
-              <p> Saturday 10.00 am - 4.00 pm</p>
-              <p> Sunday - Closed</p>
-            </div>
-          </div>
-          <div class="col-lg-6 map">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.2895687731!2d-74.26055986835598!3d40.697668402590374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sin!4v1562582305883!5m2!1sen!2sin"
-              frameborder="0" style="border:0" allowfullscreen=""></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="map-content-9 form-bg-img">
-      <div class="layer section-gap py-5">
-        <div class="container py-lg-5">
-          <div class="form">
-            <h3 class="hny-title two text-center">Fill out the form.</h3>
-            <form action="https://sendmail.w3layouts.com/submitForm"class="mt-md-5 mt-4" method="post">
-              <div class="input-grids">
-                <input type="text" userName="w3lName" userId="w3lName" placeholder="Name">
-                <input type="email" userName="w3lSender" userId="w3lSender" placeholder="Email" required="" />
-                <input type="subject" userName="w3lSubject" userId="w3lSubject" placeholder="Subject" required="">
-              </div>
-              <div class="input-textarea">
-                <textarea userName="w3lMessage" userId="w3lMessage" placeholder="Message" required=""></textarea>
-              </div>
-              <button type="submit" class="btn">Send</button>
             </form>
-          </div>
+
         </div>
-      </div>
-    </div>
-  </section>
-  <!-- //contacts -->
+        <!-- Collapsible content -->
+
+    </nav>
+    <!-- Navbar -->
+
+</div>
+<!-- Mega menu -->
+
+<div class="container mt-5">
 
 
-  <section class="w3l-footer-22">
-      <!-- footer-22 -->
-      <div class="footer-hny py-5">
-          <div class="container py-lg-5">
-              <div class="text-txt row">
-                  <div class="left-side col-lg-4">
-                      <h3><a class="logo-footer" href="index.jsp">
-                            Spry<span class="lohny">S</span>tore</a></h3>
-                      <!-- if logo is image enable this   
-                                    <a class="navbar-brand" href="#index.jsp">
-                                        <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
-                                    </a> -->
-                      <p>Lorem ipsum dolor sit amet,Ea consequuntur illum facere aperiam sequi optio consectetur.Vivamus
-                          a ligula quam. Ut blandit eu leo non suscipit. </p>
-                      <ul class="social-footerhny mt-lg-5 mt-4">
+    <!--Section: Content-->
+    <section class="dark-grey-text mb-5">
 
-                          <li><a class="facebook" href="#"><span class="fa fa-facebook" aria-hidden="true"></span></a>
-                          </li>
-                          <li><a class="twitter" href="#"><span class="fa fa-twitter" aria-hidden="true"></span></a>
-                          </li>
-                          <li><a class="google" href="#"><span class="fa fa-google-plus" aria-hidden="true"></span></a>
-                          </li>
-                          <li><a class="instagram" href="#"><span class="fa fa-instagram" aria-hidden="true"></span></a>
-                          </li>
-                      </ul>
-                  </div>
+        <style>
+            .map-container-section {
+                overflow:hidden;
+                padding-bottom:56.25%;
+                position:relative;
+                height:0;
+            }
+            .map-container-section iframe {
+                left:0;
+                top:0;
+                height:100%;
+                width:100%;
+                position:absolute;
+            }
+        </style>
 
-                  <div class="right-side col-lg-8 pl-lg-5">
-                      <h4>Women's Day Special Offer
-                        All Branded Sandals are Flat 50% Discount</h4>
-                      <div class="sub-columns">
-                          <div class="sub-one-left">
-                              <h6>Useful Links</h6>
-                              <div class="footer-hny-ul">
-                                  <ul>
-                                      <li><a href="index.jsp">Home</a></li>
-                                      <li><a href="about.jsp">About</a></li>
-                                      <li><a href="#">Blog</a></li>
-                                      <li><a href="contact.jsp">Contact</a></li>
-                                  </ul>
-                                  <ul>
-                                      <li><a href="#">Careers</a></li>
-                                      <li><a href="#">Privacy Policy</a></li>
-                                      <li><a href="#">Terms and Conditions</a></li>
-                                      <li><a href="contact.jsp">Support</a></li>
-                                  </ul>
-                              </div>
+        <!-- Section heading -->
+        <h3 class="font-weight-bold text-center mb-4">Contact Us</h3>
+        <!-- Section description -->
+        <p class="text-center w-responsive mx-auto pb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam
+            eum porro a pariatur veniam.</p>
 
-                          </div>
-                          <div class="sub-two-right">
-                              <h6>Our Store</h6>
-                              <p class="mb-5">49436 Broaddus Honey Court Avenue, Madisonville KY 95020, United States of America</p>
+        <!-- Grid row -->
+        <div class="row">
 
-                              <h6>We accept:</h6>
-                              <ul>
-                                  <li><a class="pay-method" href="#"><span class="fa fa-cc-visa"
-                                              aria-hidden="true"></span></a>
-                                  </li>
-                                  <li><a class="pay-method" href="#"><span class="fa fa-cc-mastercard"
-                                              aria-hidden="true"></span></a>
-                                  </li>
-                                  <li><a class="pay-method" href="#"><span class="fa fa-cc-paypal"
-                                              aria-hidden="true"></span></a>
-                                  </li>
-                                  <li><a class="pay-method" href="#"><span class="fa fa-cc-amex"
-                                              aria-hidden="true"></span></a>
-                                  </li>
-                              </ul>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="below-section row">
-                  <div class="columns col-lg-6">
-                      <ul class="jst-link">
-                          <li><a href="#">Privacy Policy </a> </li>
-                          <li><a href="#">Term of Service</a></li>
-                          <li><a href="contact.jsp">Customer Care</a> </li>
-                      </ul>
-                  </div>
-                  <div class="columns col-lg-6 text-lg-right">
-                      <p>© 2020 SpryStore. All rights reserved. Design by <a href="https://w3layouts.com/" target="_blank">
-                              W3Layouts</a>
-                      </p>
-                  </div>
-                  <button onclick="topFunction()" userId="movetop" title="Go to top">
-                      <span class="fa fa-angle-double-up"></span>
-                  </button>
-              </div>
-          </div>
-      </div>
-      <!-- //titels-5 -->
-      <!-- move top -->
+            <!-- Grid column -->
+            <div class="col-lg-5 mb-lg-0 pb-lg-3 mb-4">
 
-      <script>
-          // When the user scrolls down 20px from the top of the document, show the button
-          window.onscroll = function () {
-              scrollFunction()
-          };
+                <!-- Form with header -->
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Header -->
+                        <div class="form-header blue accent-1">
+                            <h3 class="mt-2"><i class="fas fa-envelope"></i> Write to us:</h3>
+                        </div>
+                        <p class="dark-grey-text">We'll write rarely, but only the best content.</p>
+                        <!-- Body -->
+                        <div class="md-form">
+                            <i class="fas fa-user prefix grey-text"></i>
+                            <input type="text" id="form-name" class="form-control">
+                            <label for="form-name">Your name</label>
+                        </div>
+                        <div class="md-form">
+                            <i class="fas fa-envelope prefix grey-text"></i>
+                            <input type="text" id="form-email" class="form-control">
+                            <label for="form-email">Your email</label>
+                        </div>
+                        <div class="md-form">
+                            <i class="fas fa-tag prefix grey-text"></i>
+                            <input type="text" id="form-Subject" class="form-control">
+                            <label for="form-Subject">Subject</label>
+                        </div>
+                        <div class="md-form">
+                            <i class="fas fa-pencil-alt prefix grey-text"></i>
+                            <textarea id="form-text" class="form-control md-textarea" rows="3"></textarea>
+                            <label for="form-text">Send message</label>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-light-blue">Submit</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Form with header -->
 
-          function scrollFunction() {
-              if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                  document.getElementById("movetop").style.display = "block";
-              } else {
-                  document.getElementById("movetop").style.display = "none";
-              }
-          }
+            </div>
+            <!-- Grid column -->
 
-          // When the user clicks on the button, scroll to the top of the document
-          function topFunction() {
-              document.body.scrollTop = 0;
-              document.documentElement.scrollTop = 0;
-          }
-      </script>
-      <!-- /move top -->
-  </section>
+            <!-- Grid column -->
+            <div class="col-lg-7">
+
+                <!--Google map-->
+                <div id="map-container-section" class="z-depth-1-half map-container-section mb-4" style="height: 400px">
+                    <iframe src="https://maps.google.com/maps?q=Manhatan&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0"
+                            style="border:0" allowfullscreen></iframe>
+                </div>
+                <!-- Buttons-->
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <a class="btn-floating blue accent-1">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </a>
+                        <p>New York, 94126</p>
+                        <p class="mb-md-0">United States</p>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="btn-floating blue accent-1">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <p>+ 01 234 567 89</p>
+                        <p class="mb-md-0">Mon - Fri, 8:00-22:00</p>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="btn-floating blue accent-1">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <p>info@gmail.com</p>
+                        <p class="mb-0">sale@gmail.com</p>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+
+    </section>
+    <!--Section: Content-->
 
 
-  </body>
+</div>
+<!-- Footer -->
+<%@include file="default/footer.jsp"%>
+<!-- Footer -->
+<script src="mdb/js/jquery.min.js"></script>
+<script src="mdb/js/bootstrap.min.js"></script>
+<script src="mdb/js/mdb.min.js"></script>
+<script type="text/javascript">
+    /* WOW.js init */
+    new WOW().init();
 
-  </html>
-
-<script src="assets/js/jquery-3.3.1.min.js"></script>
-<script src="assets/js/jquery-2.1.4.min.js"></script>
-<!--/login-->
-<script>
-		$(document).ready(function () {
-			$(".button-log a").click(function () {
-				$(".overlay-login").fadeToggle(200);
-				$(this).toggleClass('btn-open').toggleClass('btn-close');
-			});
-		});
-		$('.overlay-close1').on('click', function () {
-			$(".overlay-login").fadeToggle(200);
-			$(".button-log a").toggleClass('btn-open').toggleClass('btn-close');
-			open = false;
-		});
-  </script>
-<!--//login-->
-<script>
-// optional
-		$('#customerhnyCarousel').carousel({
-				interval: 5000
-    });
-  </script>
- <!-- cart-js -->
- <script src="assets/js/minicart.js"></script>
- <script>
-     transmitv.render();
-
-     transmitv.cart.on('transmitv_checkout', function (evt) {
-         var items, len, i;
-
-         if (this.subtotal() > 0) {
-             items = this.items();
-
-             for (i = 0, len = items.length; i < len; i++) {}
-         }
-     });
- </script>
- <!-- //cart-js -->
-
-<!-- disable body scroll which navbar is in active -->
-
-<script>
-  $(function () {
-    $('.navbar-toggler').click(function () {
-      $('body').toggleClass('noscroll');
+    // Tooltips Initialization
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
     })
-  });
+
+    // Material Select Initialization
+    $(document).ready(function () {
+
+        $('.mdb-select').material_select();
+    });
+
+    // SideNav Initialization
+    $(".button-collapse").sideNav();
+
 </script>
-<!-- disable body scroll which navbar is in active -->
-<script src="assets/js/bootstrap.min.js"></script>
+</body>
+</html>
 
