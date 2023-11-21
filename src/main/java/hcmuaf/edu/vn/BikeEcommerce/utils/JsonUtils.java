@@ -7,7 +7,5 @@ import hcmuaf.edu.vn.BikeEcommerce.model.Product;
 public class JsonUtils {
 private GsonBuilder gsonBuilder;
 private Gson gson;
-    public boolean toJson(Product product) {
-        gsonBuilder = new GsonBuilder().registerTypeAdapter();
-    }
+
 }

@@ -17,13 +17,13 @@ import java.security.spec.InvalidKeySpecException;
 
 @WebServlet("/login")
 
-public class LoginContrller extends HttpServlet {
+public class LoginController extends HttpServlet {
 
     PrintWriter printWriter = null;
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        response.sendRedirect(request.getContextPath() +"/dev/Login.jsp");
-        request.getRequestDispatcher("/dev/Login.jsp").forward(request, response);
+        request.getRequestDispatcher("/logIn.jsp").forward(request, response);
 
 
     }

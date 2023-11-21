@@ -55,7 +55,7 @@ public class VerifyController extends HttpServlet {
         String email = req.getParameter("email");
         String type = req.getParameter("type");
         System.out.println(email + "---" + type + "form do get verift controller");
-        req.getRequestDispatcher("/signUp/Verify.jsp").forward(req, resp);
+        req.getRequestDispatcher("/verifyCode.jsp").forward(req, resp);
     }
 
     @Override
@@ -65,6 +65,7 @@ public class VerifyController extends HttpServlet {
         String email = req.getParameter("email");
         String type = req.getParameter("type");
         String code = (String) req.getParameter("code");
+
         boolean check = false;
         System.out.println(email);
         try {
@@ -94,10 +95,12 @@ public class VerifyController extends HttpServlet {
                 status = "verify forgot pass Success";
                 jsonObject.addProperty("status", status);
                 jsonObject.addProperty("token", token);
+                System.out.println(jsonObject.toString());
                 resp.getWriter().write(jsonObject.toString());
             }
         } else {
             resp.getWriter().write(jsonObject.toString());
+//            System.out.println(jsonObject.toString());
         }
         System.out.println(check);
     }

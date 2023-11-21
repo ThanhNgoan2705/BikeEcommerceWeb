@@ -32,7 +32,7 @@ public class ForgotPassController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // gui den trang forgot pass
-        req.getRequestDispatcher("/forgotPass/ForgotPass.jsp").forward(req, resp);
+        req.getRequestDispatcher("/forgotPassword.jsp").forward(req, resp);
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -42,6 +42,7 @@ public class ForgotPassController extends HttpServlet {
         // neu khong thi bao loi
         // dan den trang verify code
         String email = req.getParameter("email");
+        System.out.println(email);
         boolean check = userService.isEmailOrUserNameAlreadyExists(email);
         if (check) {
             // gui code qua mail cho nguoi dung
@@ -60,7 +61,7 @@ public class ForgotPassController extends HttpServlet {
             // bao loi
             resp.getWriter().write("email is not exists");
             req.setAttribute("error", "Email is not exists");
-            req.getRequestDispatcher("/forgotPass/ForgotPass.jsp").forward(req, resp);
+            req.getRequestDispatcher("/forgotPassword.jsp").forward(req, resp);
         }
         //resp.sendRedirect(req.getContextPath() + "/verify" + "?email=" + <nho ma hoa email>email + "&type=3");
 
