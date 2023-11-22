@@ -122,7 +122,7 @@
                 success: function (data) {
                     var status = data.status;
                     if (status == "verify email Success") {
-                        window.location.href = "/index.jsp";
+                        window.location.href = "/home";
                     } else {
                         if (status =="verify forgot pass Success"){
                             var token = data.token;
