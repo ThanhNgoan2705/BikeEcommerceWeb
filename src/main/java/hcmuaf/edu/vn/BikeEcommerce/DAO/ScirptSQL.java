@@ -38,10 +38,11 @@ public class ScirptSQL {
     // category da test by hoang hai 20-8-23
     static final String getAllCategory = "Select * from Category";
     static final String getCategoryById = "Select * from Category where category_id = :categoryId";
-    static final String getCategoryByName = "Select * from Category where name like = concat('%', :name, '%')";
+    static final String getCategoryByName = "Select * from Category where name like concat('%', :name, '%')";
     static final String insertCategory = "INSERT INTO category (category_id, name, description, image, parent_id, active, level, short_id) " + "VALUES (:categoryId, :name, :description, :image, :parentId, :active, :level, :shortId)";
     static final String updateCategory = "UPDATE category " + "SET name = :name, description = :description, image = :image, parent_id = :parentId, " + "active = :active, level = :level, short_id = :shortId " + "WHERE category_id = :categoryId";
     static final String deleteCategory = "DELETE FROM category WHERE category_id = :categoryId";
+    public final static String getAllCategoryName = "select name from category";
     // color da test by hoang hai 20-8-23
     static final String getAllColor = "select * from color";
     static final String getColorById = "select * from color where color_id = :colorId";
@@ -147,6 +148,7 @@ public class ScirptSQL {
     static final String updateProduct = "UPDATE product " + "SET name = :name, price = :price, description = :description, wheelSize = :wheelSize, " + "material = :material, warranty = :warranty, inventory = :inventory, " + "discount_id = :discountId, category_id = :categoryId, brand_id = :brandId, supplier_id = :supplierId, status = :status " + "WHERE productId = :productId";
     static final String deleteProduct = "DELETE FROM product WHERE product_id = :productId";
     static final String getProductByPrice = "Select * from Product where price between :minPrice and :maxPrice";
+     static final String getProductByCategoryName="select * from product where category_id in (select category_id from category where name like concat('%', :name, '%'))";
     static final String getProductByWheelSize = "Select * from Product where wheelSize = :wheelSize";
     //    Slider  da test va fix by Hoang Hai 21-8-23
     static final String getAllSlider = "select * from image_slider";
@@ -161,4 +163,6 @@ public class ScirptSQL {
     public static final String UPDATE_VERIFY_CODE = "UPDATE verify_code SET valid = 0 WHERE email = :email AND function = :code";
 
 
+    public static final String getTop1Product = "select * from (select * , row_number() over (partition by category_id order by category_id) as row from product) as t where row = 1";
+    public static final String getTop1ImageProductByProductId = "select * from (select * , row_number() over (partition by product_id order by product_id) as row from image_product) as t where row = 1 and product_id = :productId";
 }

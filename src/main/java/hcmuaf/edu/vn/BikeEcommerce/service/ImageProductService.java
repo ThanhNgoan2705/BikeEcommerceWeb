@@ -60,4 +60,8 @@ public class ImageProductService {
         System.out.println(ImageProductService.getInstance().getImageProductById("6"));
 
     }
+
+    public List<ImageProduct> getTop1ImageProductByProductId(String productId) {
+        return jdbi.withExtension(ImageProductDAO.class, dao -> dao.getTop1ImageProductByProductId(productId));
+    }
 }

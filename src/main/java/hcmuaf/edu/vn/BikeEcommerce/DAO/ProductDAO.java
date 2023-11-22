@@ -49,4 +49,8 @@ public interface ProductDAO {
 
     @SqlQuery(ScirptSQL.getProductByWheelSize)
     List<Product> getProductByWheelSize(@Bind("wheelSize") String wheelSize);
+    @SqlQuery(ScirptSQL.getProductByCategoryName)
+    List<Product> getProductByCategoryName(@Bind("name") String name);
+    @SqlQuery(ScirptSQL.getTop1Product)
+    List<Product> getTop1Product();
 }

@@ -41,7 +41,7 @@ public class UserController extends HttpServlet {
             req.setAttribute("orderList", orderList);
             req.setAttribute("user", user);
         }
-        req.getRequestDispatcher("/user/User.jsp").forward(req, resp);
+        req.getRequestDispatcher("UserProfile.jsp").forward(req, resp);
     }
 
     @Override
