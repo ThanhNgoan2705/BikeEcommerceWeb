@@ -80,8 +80,6 @@ VALUES ('1', 'user1', 'session1'),
 -- Continue the same pattern for other carts...
 
 
-
-
 -- Table: product
 INSERT INTO product (product_id, name, price, description, wheelSize, inventory, material, warranty, category_id,
                      brand_id, supplier_id, status)
@@ -120,12 +118,12 @@ VALUES ('1', 'user1', '1', 'This is a great product!'),
        ('5', 'user5', '4', 'Could be better.');
 
 -- Table: favorite
-INSERT INTO favorite (favorite_id, user_id, product_id)
-VALUES ('1', 'user1', '1'),
-       ('2', 'user2', '3'),
-       ('3', 'user3', '5'),
-       ('4', 'user4', '2'),
-       ('5', 'user5', '4');
+INSERT INTO favorite (user_id, product_id)
+VALUES ('user1', '1'),
+       ('user2', '3'),
+       ('user3', '5'),
+       ('user4', '2'),
+       ('user5', '4');
 
 -- Continue the same pattern for other comments and favorites...
 
