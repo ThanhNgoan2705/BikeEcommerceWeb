@@ -81,6 +81,9 @@ public class ProductService {
     public List<Product> getProductByCategoryId(String categoryId) {
         return jdbi.withExtension(ProductDAO.class, dao -> dao.getProductByCategoryId(categoryId));
     }
+    public List<Product> getProductByCategoryName(String  categoryName) {
+        return jdbi.withExtension(ProductDAO.class, dao -> dao.getProductByCategoryName(categoryName));
+    }
 
     public List<Product> getProductByBrandId(String brandId) {
         return jdbi.withExtension(ProductDAO.class, dao -> dao.getProductByBrandId(brandId));
@@ -113,6 +116,23 @@ public class ProductService {
 //        Gson gson = new Gson();
 //        String json = gson.toJson(product);
 //        System.out.println(json);
-        productService.delete("ELECe37922");
+//        productService.delete("ELECe37922");
+        List<Product> products = productService.getTop1Product();
+//        List<String> categoryNames = CategoryService.getInstance().getAllCategoryName();
+//        for (String categoryName : categoryNames) {
+//           products.addAll(productService.getProductByCategoryName(categoryName));
+//        }
+        for (Product product : products) {
+            System.out.println(product);
+        }
+
+
     }
+    public List<Product> getProductByName(String name){
+        return jdbi.withExtension(ProductDAO.class, dao -> dao.getProductByName(name));
+    }
+    public List<Product> getTop1Product(){
+        return jdbi.withExtension(ProductDAO.class, dao -> dao.getTop1Product());
+    }
+
 }

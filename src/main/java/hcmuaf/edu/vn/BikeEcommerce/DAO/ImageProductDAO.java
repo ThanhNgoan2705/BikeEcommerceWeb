@@ -31,4 +31,6 @@ public interface ImageProductDAO {
 
     @SqlUpdate(ScirptSQL.deleteImageProductByProductId)
     void deleteImageProductByProductId(@Bind("productId")String productId);
+    @SqlQuery(ScirptSQL.getTop1ImageProductByProductId)
+    List<ImageProduct> getTop1ImageProductByProductId(@Bind("productId")String productId);
 }

@@ -28,5 +28,6 @@ public interface CategoryDAO {
 
     @SqlUpdate(ScirptSQL.deleteCategory)
     void deleteCategory(@Bind("categoryId") String categoryId);
-
+    @SqlQuery(ScirptSQL.getAllCategoryName)
+    List<String> getAllCategoryName();
 }

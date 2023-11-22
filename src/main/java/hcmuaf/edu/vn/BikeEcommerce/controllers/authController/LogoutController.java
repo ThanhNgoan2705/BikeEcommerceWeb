@@ -11,7 +11,15 @@ import java.io.IOException;
 public class LogoutController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession().removeAttribute("user");
-        resp.sendRedirect(req.getContextPath() + "/");
+        logout(req, resp);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        logout(req, resp);
+    }
+    private void logout(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        req.getSession().invalidate();
+        resp.sendRedirect("home");
     }
 }
