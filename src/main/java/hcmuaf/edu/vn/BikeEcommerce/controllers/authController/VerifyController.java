@@ -79,13 +79,16 @@ public class VerifyController extends HttpServlet {
         System.out.println(code + "---" + email + "----" + type);
         if (check) {//kiem tra chinh xac code
             if (Integer.parseInt(type) == 1) {//verify email
+                System.out.println(check);
                 userService.updateUser(email, 1);
-                verifyCodeService.updateVerifyCode(email, code);
+                verifyCodeService.updateVerifyCode(email, "1");
                 User user = userService.getUserByKey(email);
+                System.out.println(user.getUserName());
                 cartService.insertCart(new Cart(GenerateId.generateId(),user.getUserId(),null));
                 status = "verify email Success";
                 jsonObject.addProperty("status", status);
                 resp.getWriter().write(jsonObject.toString());
+                System.out.println("gui json");
             }
             if (Integer.parseInt(type) == 3) {//verify forgot pass
                 // cap cho 1 token de doi mk theo email

@@ -79,7 +79,7 @@
                     <button class="btn btn-info btn-block"  id="verify">submit</button>
                     <button  id="sendCodeAgain">Send code again</button>
                     <br/>
-                    <div id="result"> aaa </div>
+                    <div id="result"></div>
                     <div id="countdownTimer"></div>
 
 

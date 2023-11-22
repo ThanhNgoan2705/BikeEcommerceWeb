@@ -29,17 +29,17 @@ public class RegisterFilter implements Filter {
         Boolean checkUserName = UserService.getInstance().isEmailOrUserNameAlreadyExists(userName);
         if (checkEmail) {
             request.setAttribute("mess", "Email already exists");
-            request.getRequestDispatcher("/signUp/Register.jsp").forward(request, response);
+            request.getRequestDispatcher("/register.jsp").forward(request, response);
             return;
         }
         if (checkUserName) {
             request.setAttribute("mess", "User name already exists");
-            request.getRequestDispatcher("/signUp/Register.jsp").forward(request, response);
+            request.getRequestDispatcher("/register.jsp").forward(request, response);
             return;
         }
         if (!pass.equals(rePass)) {
             request.setAttribute("mess", "Password and re-password are not the same");
-            request.getRequestDispatcher("/signUp/Register.jsp").forward(request, response);
+            request.getRequestDispatcher("/register.jsp").forward(request, response);
             return;
         }
 

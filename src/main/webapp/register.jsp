@@ -48,44 +48,33 @@
             <div class="col-md-6">
 
                 <!-- Default form register -->
-                <form class="text-center" action="#!">
+                <form class="text-center" action="/register" method="post">
 
                     <p class="h4 mb-4">Sign up</p>
 
                     <div class="form-row mb-4">
                         <div class="col">
-                            <!-- First name -->
-                            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name">
-                        </div>
-                        <div class="col">
-                            <!-- Last name -->
-                            <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name">
+                            <!--  name -->
+                            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="user name" name="userName">
                         </div>
                     </div>
 
                     <!-- E-mail -->
-                    <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail">
+                    <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail" name="email">
 
                     <!-- Password -->
                     <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password"
-                           aria-describedby="defaultRegisterFormPasswordHelpBlock">
+                           aria-describedby="defaultRegisterFormPasswordHelpBlock" name="pass" >
                     <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
                         At least 8 characters and 1 digit
                     </small>
 
-                    <!-- Phone number -->
-                    <input type="number" id="defaultRegisterPhonePassword" class="form-control" placeholder="Phone number"
-                           aria-describedby="defaultRegisterFormPhoneHelpBlock">
-                    <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
-                        Optional - for two step authentication
-                    </small>
 
-                    <!-- Newsletter -->
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="defaultRegisterFormNewsletter">
-                        <label class="custom-control-label" for="defaultRegisterFormNewsletter">Subscribe to our
-                            newsletter</label>
-                    </div>
+                    <input type="password" id="rePassword" class="form-control" placeholder="rePassword"
+                           aria-describedby="defaultRegisterFormPasswordHelpBlock" name="rePass" >
+                    <small id="mess" class="form-text text-muted mb-4">
+                        <p style="color: red">${mess} </p>
+                    </small>
 
                     <!-- Sign up button -->
                     <button class="btn btn-info my-4 btn-block" type="submit">Sign Up</button>
