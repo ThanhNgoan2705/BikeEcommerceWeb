@@ -36,7 +36,7 @@ public class RegisterController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("signUp/Register.jsp").forward(req, resp);
+        req.getRequestDispatcher("register.jsp").forward(req, resp);
     }
 
     @Override
@@ -44,7 +44,8 @@ public class RegisterController extends HttpServlet {
         String email = req.getParameter("email");
         String userName = req.getParameter("userName");
         String pass = req.getParameter("pass");
-        String rePass = req.getParameter("rePass");
+//        String rePass = req.getParameter("rePass");
+        System.out.println(email + "---" + userName + "---" + pass + "---" + "form do post register controller");
         User user = new User();
         user.setEmail(email);
         user.setUserName(userName);

@@ -1,6 +1,7 @@
 package hcmuaf.edu.vn.BikeEcommerce.controllers.authController;
 
 import hcmuaf.edu.vn.BikeEcommerce.model.User;
+import hcmuaf.edu.vn.BikeEcommerce.model.sercurity.Token;
 import hcmuaf.edu.vn.BikeEcommerce.service.UserService;
 import hcmuaf.edu.vn.BikeEcommerce.toolSecurity.TokenService;
 
@@ -14,16 +15,45 @@ import java.security.spec.InvalidKeySpecException;
 
 @WebServlet("/login")
 
-public class LoginContrller extends HttpServlet {
+public class LoginController extends HttpServlet {
 
     PrintWriter printWriter = null;
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        response.sendRedirect(request.getContextPath() +"/dev/Login.jsp");
+        Token token = null;
+        Cookie[] cookieArr = request.getCookies();
+        Cookie cookie = null;
+
+        for (Cookie c : cookieArr) {
+            if (c.getName().equals("token-bike")) {
+                cookie = c;
+            }
+        }
+
+        System.out.println(cookie.getValue() + " filter cookies");
+
+        String dataToken = cookie.getValue();
+
+        try {
+            token = TokenService.getInstance().getTokenFromHeader(dataToken);// tao token tu du lieu
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+            throw new RuntimeException(e);
+        }
+
+        if (token != null) {
+            HttpSession session = request.getSession(true);
+//            session.setAttribute("user", user);
+            session.setAttribute("userId", token.getUserId());
+            session.setAttribute("haveUser", true);
+            session.setAttribute("userName", token.getUserName());
+            System.out.println("Login success");
+            response.sendRedirect("home");
+            return;
+        }
+
         request.getRequestDispatcher("logIn.jsp").forward(request, response);
-
-
     }
+
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -53,8 +83,7 @@ public class LoginContrller extends HttpServlet {
             } catch (InvalidKeySpecException e) {
                 throw new RuntimeException(e);
             }
-        }
-        else {
+        } else {
             System.out.println("Login failed");
             req.setAttribute("emailUser", email);
             req.setAttribute("mess", "wrong info");

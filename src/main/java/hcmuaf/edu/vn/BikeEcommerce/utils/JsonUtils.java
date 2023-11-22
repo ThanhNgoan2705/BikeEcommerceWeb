@@ -18,4 +18,5 @@ private Gson gson;
     public String toJson(Object object){
         return gson.toJson(object);
     }
+
 }

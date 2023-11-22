@@ -55,7 +55,7 @@ public class VerifyController extends HttpServlet {
         String email = req.getParameter("email");
         String type = req.getParameter("type");
         System.out.println(email + "---" + type + "form do get verift controller");
-        req.getRequestDispatcher("/signUp/Verify.jsp").forward(req, resp);
+        req.getRequestDispatcher("/verifyCode.jsp").forward(req, resp);
     }
 
     @Override
@@ -65,6 +65,7 @@ public class VerifyController extends HttpServlet {
         String email = req.getParameter("email");
         String type = req.getParameter("type");
         String code = (String) req.getParameter("code");
+
         boolean check = false;
         System.out.println(email);
         try {
@@ -78,13 +79,16 @@ public class VerifyController extends HttpServlet {
         System.out.println(code + "---" + email + "----" + type);
         if (check) {//kiem tra chinh xac code
             if (Integer.parseInt(type) == 1) {//verify email
+                System.out.println(check);
                 userService.updateUser(email, 1);
-                verifyCodeService.updateVerifyCode(email, code);
+                verifyCodeService.updateVerifyCode(email, "1");
                 User user = userService.getUserByKey(email);
+                System.out.println(user.getUserName());
                 cartService.insertCart(new Cart(GenerateId.generateId(),user.getUserId(),null));
                 status = "verify email Success";
                 jsonObject.addProperty("status", status);
                 resp.getWriter().write(jsonObject.toString());
+                System.out.println("gui json");
             }
             if (Integer.parseInt(type) == 3) {//verify forgot pass
                 // cap cho 1 token de doi mk theo email
@@ -94,10 +98,12 @@ public class VerifyController extends HttpServlet {
                 status = "verify forgot pass Success";
                 jsonObject.addProperty("status", status);
                 jsonObject.addProperty("token", token);
+                System.out.println(jsonObject.toString());
                 resp.getWriter().write(jsonObject.toString());
             }
         } else {
             resp.getWriter().write(jsonObject.toString());
+//            System.out.println(jsonObject.toString());
         }
         System.out.println(check);
     }

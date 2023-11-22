@@ -62,25 +62,28 @@
             <div class="col-md-6">
 
                 <!-- Default form subscription -->
-                <form class="text-center" id="inputCode" action="">
+
 
                     <p class="h4 mb-4">Verify Code</p>
 
                     <h3>Please enter the 6-digit verification code we sent via Email:</h3>
                     <span>(we want to make sure it's you before we contact our movers)</span>
-
+<%--                    &lt;%&ndash;Email&ndash;%&gt;--%>
+<%--                    <input id="email" type="text" name="email" value="<% request.getParameter("email"); %>" hidden=""/>--%>
+<%--                    &lt;%&ndash;Type&ndash;%&gt;--%>
+<%--                    <input id="type" type="text"  name="type" value="<% request.getParameter("type"); %>" hidden=""/>--%>
                     <!-- Name -->
-                    <input id="data" type="text" maxLength="6" size="6" name="data"/>
+                    <input id="data" type="text" maxLength="6" size="6" name="code"/>
 
                     <!-- Sign in button -->
-                    <button class="btn btn-info btn-block" type="submit" id="verify">submit</button>
-                    <a class="btn btn-info btn-block" role="button" type="submit" id="sendCodeAgain">Send code again</a>
+                    <button class="btn btn-info btn-block"  id="verify">submit</button>
+                    <button  id="sendCodeAgain">Send code again</button>
                     <br/>
                     <div id="result"></div>
                     <div id="countdownTimer"></div>
 
 
-                </form>
+
                 <!-- Default form subscription -->
 
             </div>
@@ -103,25 +106,7 @@
 <script src="mdb/js/jquery.min.js"></script>
 <script src="mdb/js/bootstrap.min.js"></script>
 <script src="mdb/js/mdb.min.js"></script>
-<script type="text/javascript">
-    /* WOW.js init */
-    new WOW().init();
 
-    // Tooltips Initialization
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    })
-
-    // Material Select Initialization
-    $(document).ready(function () {
-
-        $('.mdb-select').material_select();
-    });
-
-    // SideNav Initialization
-    $(".button-collapse").sideNav();
-
-</script>
 <script>
     $(document).ready(function () {
         $("#verify").click(function () {
@@ -135,10 +120,16 @@
                 url: "/verify", // Đường dẫn đến Servlet
                 data: data,
                 success: function (data) {
-                    $("#result").html(data); // Hiển thị phản hồi từ máy chủ
-                    if (data == "Success") {
-                        window.location.href = "/index.jsp";
+                    var status = data.status;
+                    if (status == "verify email Success") {
+                        window.location.href = "/home";
+                    } else {
+                        if (status =="verify forgot pass Success"){
+                            var token = data.token;
+                            window.location.href = "/resetPass"+"?token="+token;
+                        }
                     }
+                    $("#result").html(status); // Hiển thị phản hồi từ máy chủ
                 },
                 error: function () {
                     $("#result").html("Có lỗi xảy ra khi gọi máy chủ.");

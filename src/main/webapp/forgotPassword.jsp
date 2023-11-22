@@ -56,7 +56,7 @@
             <div class="col-md-7 mb-lg-0 mb-4">
 
                 <!-- Form -->
-                <form class="" action="">
+                <form class="" action="/forgotPass" method="post">
 
                     <!-- Section heading -->
                     <h3 class="font-weight-bold my-3">Enter Your Email</h3>
@@ -64,14 +64,14 @@
                     <p class="text-muted mb-4 pb-2">Please enter the email associated with your registered account. We will send a verification code. </p>
 
                     <div class="input-group">
-                        <input type="email" class="form-control" placeholder="Enter your email address" aria-label="Enter your email address"
-                               aria-describedby="button-addon2">
+                        <input type="text" class="form-control" placeholder="Enter your email address" aria-label="Enter your email address"
+                               aria-describedby="button-addon2" name="email">
                         <div class="input-group-append">
-                            <button class="btn btn-md btn-primary rounded-right m-0 px-3 py-2 z-depth-0 waves-effect" type="submit" id="button-addon2">Button</button>
+                            <button class="btn btn-md btn-primary rounded-right m-0 px-3 py-2 z-depth-0 waves-effect" type="submit" id="button-addon2">send</button>
                         </div>
                     </div>
                     <small class="form-text black-text"><strong>* Leave your email address </strong></small>
-
+                    <small class="form-text black-text" ><p style="color: red">${error}</p> </small>
                 </form>
                 <!-- Form -->
 
