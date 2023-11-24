@@ -18,7 +18,7 @@ import java.time.format.DateTimeFormatter;
  */
 public class Discount {
     // dinh dang ngay thang nam
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+//    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private String discountId;
     private String name;//not null
     private String description;

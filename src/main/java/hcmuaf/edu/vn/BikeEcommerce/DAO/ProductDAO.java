@@ -39,7 +39,7 @@ public interface ProductDAO {
     List<Product> getProductBySupplierId(@Bind("supplierId") String supplierId);
 
     @SqlQuery(ScirptSQL.getProductByDiscount)
-    List<Product> getProductByDiscount();
+    List<Product> getProductByDiscount(@Bind("discountId") String discountId);
 
     @SqlQuery(ScirptSQL.getProductByStatus)
     List<Product> getProductByStatus(@Bind("status") String status);

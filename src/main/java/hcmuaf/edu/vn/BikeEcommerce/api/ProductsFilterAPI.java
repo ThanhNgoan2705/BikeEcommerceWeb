@@ -67,7 +67,7 @@ public class ProductsFilterAPI extends HttpServlet {
             List<String> categoryList = new ArrayList<>();
             List<String> brandList = new ArrayList<>();
             List<String> supplierList = new ArrayList<>();
-            boolean isDiscount = false;
+            List<String> discountList = new ArrayList<>();
             List<String> statusList = new ArrayList<>();
 
             if (categoryNode != null && categoryNode.isArray()) {
@@ -86,8 +86,10 @@ public class ProductsFilterAPI extends HttpServlet {
                     supplierList.add(element.asText());
                 }
             }
-            if (discountNode != null) {
-                isDiscount = discountNode.asBoolean();
+            if (discountNode != null && discountNode.isArray()) {
+                for (JsonNode element : discountNode) {
+                    discountList.add(element.asText());
+                }
             }
             if (statusNode != null && statusNode.isArray()) {
                 for (JsonNode element : statusNode) {
@@ -110,51 +112,53 @@ public class ProductsFilterAPI extends HttpServlet {
             System.out.println("categoryList: " + categoryList);
             System.out.println("supplierList: " + supplierList);
             System.out.println("brandList: " + brandList);
-            System.out.println("isDiscount: " + isDiscount);
+            System.out.println("isDiscount: " + discountList);
             System.out.println("statusList: " + statusList);
             System.out.println("minPrice: " + minPriceNode);
             System.out.println("maxPrice: " + maxPriceNode);
             System.out.println("wheelSize: " + wheelSizeNode);
 
 
-            Set<Product> productSet = new HashSet<>(ProductService.getInstance().getAllProduct());
+            Set<Product> productSet = new HashSet<>();
             if (categoryList.size() > 0) {
                 for (String categoryId : categoryList) {
                     List<Product> productsBycategory = ProductService.getInstance().getProductByCategoryId(categoryId);
-                    productSet.retainAll(productsBycategory);
+                    productSet.addAll(productsBycategory);
                 }
             }
             if (brandList.size() > 0) {
                 for (String brandId : brandList) {
                     List<Product> productsByBrand = ProductService.getInstance().getProductByBrandId(brandId);
-                    productSet.retainAll(productsByBrand);
+                    productSet.addAll(productsByBrand);
                 }
             }
             if (supplierList.size() > 0) {
                 for (String supplierId : supplierList) {
                     List<Product> productsBySupplier = ProductService.getInstance().getProductBySupplierId(supplierId);
-                    productSet.retainAll(productsBySupplier);
+                    productSet.addAll(productsBySupplier);
                 }
             }
-            if (isDiscount) {
-                List<Product> productsByDiscount = ProductService.getInstance().getProductByDiscount();
-                productSet.retainAll(productsByDiscount);
+            if (discountList.size() > 0) {
+                for (String discountId : discountList) {
+                    List<Product> productsByDiscount = ProductService.getInstance().getProductByDiscount(discountId);
+                    productSet.addAll(productsByDiscount);
+                }
             }
             if (statusList.size() > 0) {
                 for (String status : statusList) {
                     List<Product> productsByStatus = ProductService.getInstance().getProductByStatus(status);
-                    productSet.retainAll(productsByStatus);
+                    productSet.addAll(productsByStatus);
                 }
             }
 
             if (minPrice != -1 && maxPrice != 0) {
                 List<Product> productsByPrice = ProductService.getInstance().getProductByPrice(minPrice, maxPrice);
-                productSet.retainAll(productsByPrice);
+                productSet.addAll(productsByPrice);
             }
 
             if (wheelSize != null) {
                 List<Product> productsByWheelSize = ProductService.getInstance().getProductByWheelSize(wheelSize);
-                productSet.retainAll(productsByWheelSize);
+                productSet.addAll(productsByWheelSize);
             }
 
 
