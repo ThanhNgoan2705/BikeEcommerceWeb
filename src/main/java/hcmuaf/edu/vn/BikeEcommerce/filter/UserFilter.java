@@ -7,6 +7,7 @@ import hcmuaf.edu.vn.BikeEcommerce.toolSecurity.TokenService;
 import javax.servlet.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -28,7 +29,13 @@ public class UserFilter implements Filter {
                 cookie = c;
             }
         }
-        System.out.println(cookie.getValue() + " filter cookies");
+
+        if (cookie == null) {
+            ((HttpServletResponse) servletResponse).sendRedirect("/errorPage.jsp");
+            return;
+        }
+
+//        System.out.println(cookie.getValue() + " filter cookies");
         String dataToken = cookie.getValue();
         try {
             token = TokenService.getInstance().getTokenFromHeader(dataToken);

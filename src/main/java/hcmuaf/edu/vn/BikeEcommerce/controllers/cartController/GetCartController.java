@@ -29,6 +29,19 @@ public class GetCartController extends HttpServlet {
     }
 
     @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Token token = (Token) req.getAttribute("token");
+        Cart cart = cartService.getCartByKey(token.getUserId());
+        if (cart == null) {
+            return;
+        } else {
+            List<CartItem> itemList = cart.getCartItemList();
+            req.setAttribute("itemList", itemList);
+        }
+        req.getRequestDispatcher("/cart.jsp").forward(req, resp);
+    }
+
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Token token = (Token) req.getAttribute("token");
         Cart cart = cartService.getCartByKey(token.getUserId());

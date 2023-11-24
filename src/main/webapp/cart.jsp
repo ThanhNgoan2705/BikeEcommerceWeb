@@ -5,7 +5,7 @@
   Time: 11:52 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html; charset=UTF-8"  language="java" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="vie">
@@ -14,32 +14,46 @@
     <title>Xe Điện Long Vũ</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%--    fontAwesome--%>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
     <link
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
             rel="stylesheet"
     />
     <%--    MDB CSS--%>
-    <style>INPUT:-webkit-autofill,SELECT:-webkit-autofill,TEXTAREA:-webkit-autofill{animation-name:onautofillstart}INPUT:not(:-webkit-autofill),SELECT:not(:-webkit-autofill),TEXTAREA:not(:-webkit-autofill){animation-name:onautofillcancel}@keyframes onautofillstart{}@keyframes onautofillcancel{}</style>
-    <link href="mdb/css/bootstrap.min.css" rel="stylesheet">
-    <link href="mdb/css/mdb.min.css" rel="stylesheet">
-    <link href="mdb/css/addons/compiled-addons-4.20.0.min.css">
-    <link href="mdb/css/style.css" rel="stylesheet">
-    <link href="mdb/css/default.css" rel="stylesheet">
+    <style>INPUT:-webkit-autofill, SELECT:-webkit-autofill, TEXTAREA:-webkit-autofill {
+        animation-name: onautofillstart
+    }
+
+    INPUT:not(:-webkit-autofill), SELECT:not(:-webkit-autofill), TEXTAREA:not(:-webkit-autofill) {
+        animation-name: onautofillcancel
+    }
+
+    @keyframes onautofillstart {
+    }
+
+    @keyframes onautofillcancel {
+    }</style>
+    <link href="/mdb/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/mdb/css/mdb.min.css" rel="stylesheet">
+    <link href="/mdb/css/addons/compiled-addons-4.20.0.min.css">
+    <link href="/mdb/css/style.css" rel="stylesheet">
+    <link href="/mdb/css/default.css" rel="stylesheet">
 
 </head>
 <body class="cart-v2 hidden-sn white-skin animated">
 <!--onTop-->
-<%@include file="default/ontopButton.jsp"%>
+<%@include file="default/ontopButton.jsp" %>
 <!--onTop-->
 
 <!-- Navigation -->
-<%@ include file="default/header.jsp"%>
+<%@ include file="default/header.jsp" %>
 <!-- Navigation -->
 
 <!-- Mega menu -->
-<%@include file="default/menu.jsp"%>
+<%@include file="default/menu.jsp" %>
 <!-- Mega menu -->
 
 
@@ -106,16 +120,17 @@
 
                             </thead>
                             <!-- Table head -->
-
+                            <c:forEach var="item" items="${itemList}">
                             <!-- Table body -->
                             <tbody>
 
                             <!-- First row -->
-                            <tr>
+                            <tr id="tr-${item.cartId}-${item.productId}">
 
                                 <th scope="row">
 
-                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg" alt=""
+                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg"
+                                         alt=""
                                          class="img-fluid z-depth-0">
 
                                 </th>
@@ -124,48 +139,54 @@
 
                                     <h5 class="mt-3">
 
-                                        <strong>iPhone</strong>
+                                        <strong>${item.product.name}</strong>
 
                                     </h5>
 
-                                    <p class="text-muted">Apple</p>
+                                    <p class="text-muted">${item.product.brand.name}</p>
 
                                 </td>
 
-                                <td>White</td>
+                                <td> white</td>
 
                                 <td></td>
 
-                                <td>$800</td>
+                                <td>${item.product.price}</td>
 
                                 <td class="text-center text-md-left">
 
-                                    <span class="qty">1 </span>
+                                    <span class="qty"></span>
 
                                     <div class="def-number-input number-input safari_only">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-                                        <input class="quantity" min="0" name="quantity" value="1" type="number">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown();updateQuantityAndTotal('${item.cartId}','${item.productId}',this.parentNode.querySelector('input[type=number]').value,${item.product.price} ) "
+                                                class="minus"></button>
+                                        <input class="quantity" min="1" name="quantity" value="${item.quantity}"
+                                               type="number"
+                                               oninput="updateQuantityAndTotal('${item.cartId}','${item.productId}',this.value,${item.product.price})">
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp();updateQuantityAndTotal('${item.cartId}','${item.productId}',this.parentNode.querySelector('input[type=number]').value,${item.product.price} )"
+                                                class="plus"></button>
                                     </div>
 
                                 </td>
 
                                 <td class="font-weight-bold">
 
-                                    <strong>$800</strong>
+                                    <strong id="total-for-one-item-${item.cartId}-${item.productId}">${item.product.price *item.quantity} </strong>
 
                                 </td>
 
                                 <td>
 
-                                    <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top"
-                                            title="Remove item">X
-
+                                    <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="Remove item"
+                                            onclick="removeItem('tr-${item.cartId}-${item.productId}',${item.productId})">X
                                     </button>
 
                                 </td>
 
                             </tr>
+                            </c:forEach>
                             <!-- First row -->
 
                             <!-- Second row -->
@@ -173,7 +194,8 @@
 
                                 <th scope="row">
 
-                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/6.jpg" alt=""
+                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/6.jpg"
+                                         alt=""
                                          class="img-fluid z-depth-0">
 
                                 </th>
@@ -201,9 +223,11 @@
                                     <span class="qty">3 </span>
 
                                     <div class="def-number-input number-input safari_only">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                                                class="minus"></button>
                                         <input class="quantity" min="0" name="quantity" value="1" type="number">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                                class="plus"></button>
                                     </div>
 
                                 </td>
@@ -216,7 +240,8 @@
 
                                 <td>
 
-                                    <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top"
+                                    <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip"
+                                            data-placement="top"
                                             title="Remove item">X
 
                                     </button>
@@ -231,7 +256,8 @@
 
                                 <th scope="row">
 
-                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/1.jpg" alt=""
+                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/1.jpg"
+                                         alt=""
                                          class="img-fluid z-depth-0">
 
                                 </th>
@@ -256,9 +282,11 @@
 
                                 <td class="text-center text-md-left">
                                     <div class="def-number-input number-input safari_only">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                                                class="minus"></button>
                                         <input class="quantity" min="0" name="quantity" value="1" type="number">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                                class="plus"></button>
                                     </div>
 
                                 </td>
@@ -271,7 +299,8 @@
 
                                 <td>
 
-                                    <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top"
+                                    <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip"
+                                            data-placement="top"
                                             title="Remove item">X
 
                                     </button>
@@ -308,7 +337,8 @@
 
                                 <td colspan="3" class="text-right">
 
-                                    <a type="button" class="btn btn-primary btn-rounded" role="button" href="checkOut.jsp">Complete purchase
+                                    <a type="button" class="btn btn-primary btn-rounded" role="button"
+                                       href="checkOut.jsp">Complete purchase
 
                                         <i class="fas fa-angle-right right"></i>
 
@@ -357,7 +387,8 @@
                         <!-- Card image -->
                         <div class="view overlay">
 
-                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg" class="img-fluid"
+                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg"
+                                 class="img-fluid"
                                  alt="">
 
                             <a>
@@ -463,7 +494,8 @@
                         <!-- Card image -->
                         <div class="view overlay">
 
-                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/8.jpg" class="img-fluid"
+                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/8.jpg"
+                                 class="img-fluid"
                                  alt="">
 
                             <a>
@@ -569,7 +601,8 @@
                         <!-- Card image -->
                         <div class="view overlay">
 
-                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/7.jpg" class="img-fluid"
+                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/7.jpg"
+                                 class="img-fluid"
                                  alt="">
 
                             <a>
@@ -675,7 +708,8 @@
                         <!-- Card image -->
                         <div class="view overlay">
 
-                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/9.jpg" class="img-fluid"
+                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/9.jpg"
+                                 class="img-fluid"
                                  alt="">
 
                             <a>
@@ -815,7 +849,8 @@
                                 <!-- Card image -->
                                 <div class="view overlay">
 
-                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/3.jpg" class="img-fluid"
+                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/3.jpg"
+                                         class="img-fluid"
                                          alt="">
 
                                     <a>
@@ -921,7 +956,8 @@
                                 <!-- Card image -->
                                 <div class="view overlay">
 
-                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/5.jpg" class="img-fluid"
+                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/5.jpg"
+                                         class="img-fluid"
                                          alt="">
 
                                     <a>
@@ -1027,7 +1063,8 @@
                                 <!-- Card image -->
                                 <div class="view overlay">
 
-                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/2.jpg" class="img-fluid"
+                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/2.jpg"
+                                         class="img-fluid"
                                          alt="">
 
                                     <a>
@@ -1149,7 +1186,8 @@
                                 <!-- Card image -->
                                 <div class="view overlay">
 
-                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/4.jpg" class="img-fluid"
+                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/4.jpg"
+                                         class="img-fluid"
                                          alt="">
 
                                     <a>
@@ -1264,11 +1302,11 @@
 <!-- Main Layout -->
 
 <!-- Footer -->
-<%@include file="default/footer.jsp"%>
+<%@include file="default/footer.jsp" %>
 <!-- Footer -->
-<script src="mdb/js/jquery.min.js"></script>
-<script src="mdb/js/bootstrap.min.js"></script>
-<script src="mdb/js/mdb.min.js"></script>
+<script src="/mdb/js/jquery.min.js"></script>
+<script src="/mdb/js/bootstrap.min.js"></script>
+<script src="/mdb/js/mdb.min.js"></script>
 <script type="text/javascript">
     /* WOW.js init */
     new WOW().init();
@@ -1289,6 +1327,106 @@
 
 </script>
 <script src="mdb/js/default.js"></script>
+<script> function updateQuantity(cartId, productId, quantity, callback) {
+    // Đường dẫn của servlet
+    var servletUrl = '/user/updateCartItem';
+
+    // Dữ liệu gửi đi
+    var data = {
+        cartId: cartId,
+        productId: productId,
+        quantity: quantity
+    };
+    console.log(data);
+    // Thực hiện yêu cầu AJAX bằng jQuery
+    $.ajax({
+        type: 'POST',
+        url: servletUrl,
+        data: data,
+        success: function (response) {
+            console.log('Request succeeded:', response);
+            // Xử lý dữ liệu nhận được từ servlet (nếu cần)
+            callback(true);
+
+        },
+        error: function (xhr, status, error) {
+            console.error('Request failed:', status, error);
+            callback(false);
+        }
+    });
+}
+
+function updateQuantityAndTotal(cartId, productId, quantity, price) {
+    if (price == null) {
+        price = 0;
+    } else {
+        price = parseInt(price);
+    }
+    updateQuantity(cartId, productId, quantity, function (callback) {
+        console.log(callback);
+        var totalElement = document.querySelector(`#total-for-one-item-` + cartId + `-` + productId);
+        if (callback) {
+            console.log(cartId, productId, quantity, price);
+            console.log(totalElement);
+            totalElement.textContent = price * quantity;
+        } else {
+            totalElement.textContent = "out of inventory";
+        }
+    });
+
+
+}
+
+function deleteItem(productId, callback) {
+    // Đường dẫn của servlet
+    var servletUrl = '/user/deleteProductFromCart';
+
+    // Dữ liệu gửi đi
+    var data = {
+
+        productId: productId
+    };
+    console.log(data);
+    // Thực hiện yêu cầu AJAX bằng jQuery
+    $.ajax({
+        type: 'POST',
+        url: servletUrl,
+        data: data,
+        success: function (response) {
+            console.log('Request succeeded:', response);
+            // Xử lý dữ liệu nhận được từ servlet (nếu cần)
+            callback(true);
+
+        },
+        error: function (xhr, status, error) {
+            console.error('Request failed:', status, error);
+            callback(false);
+        }
+    });
+
+}
+
+function removeItem(rowId,productId) {
+    var isConfirmed = confirm('Bạn chắc chắn muốn xóa item này?');
+    if (isConfirmed) {
+        var rowToRemove = document.getElementById(rowId);
+        if (rowToRemove) {
+            rowToRemove.remove();
+            deleteItem( productId, function (callback) {
+                if (callback) {
+                    console.log('delete success');
+                } else {
+                    console.log('delete fail');
+                }
+            });
+        } else {
+            console.error('Row not found:', rowId);
+        }
+    }else {
+        console.log('User cancelled');
+    }
+}
+</script>
 </body>
 </html>
 

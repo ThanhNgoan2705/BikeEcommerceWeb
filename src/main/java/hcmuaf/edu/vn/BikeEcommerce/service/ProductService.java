@@ -81,7 +81,8 @@ public class ProductService {
     public List<Product> getProductByCategoryId(String categoryId) {
         return jdbi.withExtension(ProductDAO.class, dao -> dao.getProductByCategoryId(categoryId));
     }
-    public List<Product> getProductByCategoryName(String  categoryName) {
+
+    public List<Product> getProductByCategoryName(String categoryName) {
         return jdbi.withExtension(ProductDAO.class, dao -> dao.getProductByCategoryName(categoryName));
     }
 
@@ -108,6 +109,19 @@ public class ProductService {
     public List<Product> getProductByWheelSize(String wheelSize) {
         return jdbi.withExtension(ProductDAO.class, dao -> dao.getProductByWheelSize(wheelSize));
     }
+
+    public List<Product> getProductByName(String name) {
+        return jdbi.withExtension(ProductDAO.class, dao -> dao.getProductByName(name));
+    }
+
+    public List<Product> getTop1Product() {
+        return jdbi.withExtension(ProductDAO.class, dao -> dao.getTop1Product());
+    }
+
+    public boolean checkProductQuantity(String productId, int quantity) {
+        return jdbi.withExtension(ProductDAO.class, dao -> dao.checkProductQuantity(productId, quantity));
+    }
+
     public static void main(String[] args) {
 //        ELECe37922
         ProductService productService = ProductService.getInstance();
@@ -117,22 +131,16 @@ public class ProductService {
 //        String json = gson.toJson(product);
 //        System.out.println(json);
 //        productService.delete("ELECe37922");
-        List<Product> products = productService.getTop1Product();
+//        List<Product> products = productService.getTop1Product();
 //        List<String> categoryNames = CategoryService.getInstance().getAllCategoryName();
 //        for (String categoryName : categoryNames) {
 //           products.addAll(productService.getProductByCategoryName(categoryName));
 //        }
-        for (Product product : products) {
-            System.out.println(product);
-        }
+//        for (Product product : products) {
+//            System.out.println(product);
+//        }
+        System.out.println(productService.checkProductQuantity("1", 51));
 
 
     }
-    public List<Product> getProductByName(String name){
-        return jdbi.withExtension(ProductDAO.class, dao -> dao.getProductByName(name));
-    }
-    public List<Product> getTop1Product(){
-        return jdbi.withExtension(ProductDAO.class, dao -> dao.getTop1Product());
-    }
-
 }

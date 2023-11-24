@@ -35,7 +35,7 @@ public class CartItemsService {
         List<CartItem> cartItems = jdbi.withExtension(CartItemsDao.class, dao -> dao.getCartItemsByCartId(cartId));
         return cartItems.stream().map(cartItem -> mapCartItem(cartItem)).collect(Collectors.toList());
     }
-    CartItem getCartItemByCartIdAndProductId(String cartId,String productId) {
+    public CartItem getCartItemByCartIdAndProductId(String cartId, String productId) {
         return  jdbi.withExtension(CartItemsDao.class, dao -> dao.getCartItemByCartIdAndProductId(cartId,productId));
     }
 

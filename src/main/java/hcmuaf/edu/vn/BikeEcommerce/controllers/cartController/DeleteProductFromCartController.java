@@ -30,7 +30,7 @@ public class DeleteProductFromCartController extends HttpServlet {
             cart.removeItem(productId);
             resp.getWriter().write("success");
         } catch (Exception e) {
-            resp.getWriter().write("fail");
+            resp.setStatus(400);
         }
     }
 }
