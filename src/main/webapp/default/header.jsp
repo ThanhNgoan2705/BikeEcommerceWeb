@@ -33,7 +33,7 @@
 
                     <li class="nav-item ml-3">
 
-                        <a class="nav-link dark-grey-text font-weight-bold" href="#"><i
+                        <a class="nav-link dark-grey-text font-weight-bold" href="/user/getCart"><i
                                 class="fas fa-shopping-cart blue-text"></i>
                             Cart</a>
 

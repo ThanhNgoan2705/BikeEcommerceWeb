@@ -641,7 +641,7 @@
         <div class="container-lg modal-dialog">
             <div class="h-100 gradient-custom">
                 <div class="container py-5 h-100">
-                    <form class="row g-3 needs-validation" novalidate>
+                    <form class="row g-3 needs-validation" novalidate enctype="multipart/form-data">
                         <div class="modal-title">
                             <h2 class="text-start text-black w-50">Add Product</h2>
                         </div>

@@ -150,6 +150,7 @@ public class ScirptSQL {
     static final String getProductByPrice = "Select * from Product where price between :minPrice and :maxPrice";
      static final String getProductByCategoryName="select * from product where category_id in (select category_id from category where name like concat('%', :name, '%'))";
     static final String getProductByWheelSize = "Select * from Product where wheelSize = :wheelSize";
+    public static final String checkProductQuantity ="select inventory >= :quantity from product where product_id = :productId";
     //    Slider  da test va fix by Hoang Hai 21-8-23
     static final String getAllSlider = "select * from image_slider";
     static final String getSliderById = "select * from image_slider where id = :id";
@@ -165,4 +166,5 @@ public class ScirptSQL {
 
     public static final String getTop1Product = "select * from (select * , row_number() over (partition by category_id order by category_id) as row from product) as t where row = 1";
     public static final String getTop1ImageProductByProductId = "select * from (select * , row_number() over (partition by product_id order by product_id) as row from image_product) as t where row = 1 and product_id = :productId";
+
 }

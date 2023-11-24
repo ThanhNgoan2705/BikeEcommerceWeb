@@ -21,24 +21,27 @@ public class LoginController extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Token token = null;
-        Cookie[] cookieArr = request.getCookies();
-        Cookie cookie = null;
-
-        for (Cookie c : cookieArr) {
-            if (c.getName().equals("token-bike")) {
-                cookie = c;
-            }
-        }
-
-        System.out.println(cookie.getValue() + " filter cookies");
-
-        String dataToken = cookie.getValue();
-
         try {
+            Cookie[] cookieArr = request.getCookies();
+            Cookie cookie = null;
+
+            for (Cookie c : cookieArr) {
+                if (c.getName().equals("token-bike")) {
+                    cookie = c;
+                }
+            }
+            if (cookie == null) {
+                request.getRequestDispatcher("logIn.jsp").forward(request, response);
+                return;
+            }
+            System.out.println(cookie.getValue() + " filter cookies");
+            String dataToken = cookie.getValue();
             token = TokenService.getInstance().getTokenFromHeader(dataToken);// tao token tu du lieu
+
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
             throw new RuntimeException(e);
         }
+
 
         if (token != null) {
             HttpSession session = request.getSession(true);
