@@ -94,8 +94,8 @@ public class ProductService {
         return jdbi.withExtension(ProductDAO.class, dao -> dao.getProductBySupplierId(supplierId));
     }
 
-    public List<Product> getProductByDiscount() {
-        return jdbi.withExtension(ProductDAO.class, dao -> dao.getProductByDiscount());
+    public List<Product> getProductByDiscount(String discountId) {
+        return jdbi.withExtension(ProductDAO.class, dao -> dao.getProductByDiscount(discountId));
     }
 
     public List<Product> getProductByStatus(String status) {
@@ -131,15 +131,15 @@ public class ProductService {
 //        String json = gson.toJson(product);
 //        System.out.println(json);
 //        productService.delete("ELECe37922");
-//        List<Product> products = productService.getTop1Product();
+        List<Product> products = productService.getTop1Product();
 //        List<String> categoryNames = CategoryService.getInstance().getAllCategoryName();
 //        for (String categoryName : categoryNames) {
 //           products.addAll(productService.getProductByCategoryName(categoryName));
 //        }
-//        for (Product product : products) {
-//            System.out.println(product);
-//        }
-        System.out.println(productService.checkProductQuantity("1", 51));
+        for (Product product : products) {
+            System.out.println(product);
+        }
+//        System.out.println(productService.checkProductQuantity("1", 51));
 
 
     }
