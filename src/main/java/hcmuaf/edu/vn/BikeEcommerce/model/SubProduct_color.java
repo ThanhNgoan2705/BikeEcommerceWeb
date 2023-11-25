@@ -18,7 +18,7 @@ public class SubProduct_color {
     private String colorId;
     private int inventory;
     private double price;
-    private String image;
+    private String imageProductId;
     private String createdAt;
     private String updatedAt;
     private Product product;
@@ -29,7 +29,7 @@ public class SubProduct_color {
         this.colorId = colorId;
         this.inventory = inventory;
         this.price = price;
-        this.image = image;
+        this.imageProductId = image;
     }
 
     public SubProduct_color() {
@@ -42,7 +42,7 @@ public class SubProduct_color {
                 ", colorId='" + colorId + '\'' +
                 ", inventory=" + inventory +
                 ", price=" + price +
-                ", image='" + image + '\'' +
+                ", image='" + imageProductId + '\'' +
                 ", createdAt='" + createdAt + '\'' +
                 ", updatedAt='" + updatedAt + '\'' +
                 ", product=" + product +
@@ -95,12 +95,12 @@ public class SubProduct_color {
         this.price = price;
     }
 
-    public String getImage() {
-        return image;
+    public String getImageProductId() {
+        return imageProductId;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImageProductId(String imageProductId) {
+        this.imageProductId = imageProductId;
     }
 
     public String getCreatedAt() {

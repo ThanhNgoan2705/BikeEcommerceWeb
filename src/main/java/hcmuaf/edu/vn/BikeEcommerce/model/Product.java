@@ -48,7 +48,7 @@ public class Product {
     private String wheelSize;
     private String material;
     private String warranty;
-    private int inventory;//not null
+    private int inventory;// lay  tu bang subproduct_color
     private String discountId;
     private String categoryId;//not null
     private String brandId;
@@ -71,12 +71,6 @@ public class Product {
     public Product() {
     }
 
-    // constructor for fast insert, not null attributes
-    public Product(String name, double price, int inventory) {
-        this.name = name;
-        this.price = price;
-        this.inventory = inventory;
-    }
 
     // constructor for insert normal attributes
     public Product(String productId, String name, double price, String description, String wheelSize, String material, String warranty, int inventory, String discountId, String categoryId, String brandId, String supplierId, int status) {
@@ -121,7 +115,6 @@ public class Product {
         this.supplier = supplier;
         this.discount = discount;
     }
-
 
 
     @Override

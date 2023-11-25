@@ -35,7 +35,7 @@ public class UpdateCartItem extends HttpServlet {
         if (c == null) {
             return;
         }
-        boolean check = productService.checkProductQuantity(productId, quantity);
+        boolean check = productService.getProductById(productId).getInventory() >= quantity;
         if (check) {
             c.setQuantity(quantity);
             cartItemService.updateCartItem(c);
