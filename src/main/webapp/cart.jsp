@@ -121,109 +121,111 @@
                             </thead>
                             <!-- Table head -->
                             <c:forEach var="item" items="${itemList}">
-                            <!-- Table body -->
-                            <tbody>
+                                <!-- Table body -->
+                                <tbody>
 
-                            <!-- First row -->
-                            <tr id="tr-${item.cartId}-${item.productId}">
+                                <!-- First row -->
+                                <tr id="tr-${item.cartId}-${item.productId}">
 
-                                <th scope="row">
+                                    <th scope="row">
 
-                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg"
-                                         alt=""
-                                         class="img-fluid z-depth-0">
+                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg"
+                                             alt=""
+                                             class="img-fluid z-depth-0">
 
-                                </th>
+                                    </th>
 
-                                <td>
+                                    <td>
 
-                                    <h5 class="mt-3">
+                                        <h5 class="mt-3">
 
-                                        <strong>${item.product.name}</strong>
+                                            <strong>${item.product.name}</strong>
 
-                                    </h5>
+                                        </h5>
 
-                                    <p class="text-muted">${item.product.brand.name}</p>
+                                        <p class="text-muted">${item.product.brand.name}</p>
 
-                                </td>
+                                    </td>
 
-                                <td> white</td>
+                                    <td> white</td>
 
-                                <td></td>
+                                    <td></td>
 
-                                <td>${item.product.price}</td>
+                                    <td>${item.product.price}</td>
 
-                                <td class="text-center text-md-left">
+                                    <td class="text-center text-md-left">
 
-                                    <span class="qty"></span>
+                                        <span class="qty"></span>
 
-                                    <div class="def-number-input number-input safari_only">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown();updateQuantityAndTotal('${item.cartId}','${item.productId}',this.parentNode.querySelector('input[type=number]').value,${item.product.price} ) "
-                                                class="minus"></button>
-                                        <input class="quantity" min="1" name="quantity" value="${item.quantity}"
-                                               type="number"
-                                               oninput="updateQuantityAndTotal('${item.cartId}','${item.productId}',this.value,${item.product.price})">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp();updateQuantityAndTotal('${item.cartId}','${item.productId}',this.parentNode.querySelector('input[type=number]').value,${item.product.price} )"
-                                                class="plus"></button>
-                                    </div>
+                                        <div class="def-number-input number-input safari_only">
+                                            <button onclick="this.parentNode.querySelector('input[type=number]').stepDown();updateQuantityAndTotal('${item.cartId}','${item.productId}',this.parentNode.querySelector('input[type=number]').value,${item.product.price} ) "
+                                                    class="minus"></button>
+                                            <input class="quantity" min="1" name="quantity" value="${item.quantity}"
+                                                   type="number"
+                                                   oninput="updateQuantityAndTotal('${item.cartId}','${item.productId}',this.value,${item.product.price})">
+                                            <button onclick="this.parentNode.querySelector('input[type=number]').stepUp();updateQuantityAndTotal('${item.cartId}','${item.productId}',this.parentNode.querySelector('input[type=number]').value,${item.product.price} )"
+                                                    class="plus"></button>
+                                        </div>
 
-                                </td>
+                                    </td>
 
-                                <td class="font-weight-bold">
+                                    <td class="font-weight-bold item">
 
-                                    <strong id="total-for-one-item-${item.cartId}-${item.productId}">${item.product.price *item.quantity} </strong>
+                                        <strong id="total-for-one-item-${item.cartId}-${item.productId}">${item.product.price *item.quantity} </strong>
 
-                                </td>
+                                    </td>
 
-                                <td>
+                                    <td>
 
-                                    <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip"
-                                            data-placement="top"
-                                            title="Remove item"
-                                            onclick="removeItem('tr-${item.cartId}-${item.productId}',${item.productId})">X
-                                    </button>
+                                        <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="Remove item"
+                                                onclick="removeItem('tr-${item.cartId}-${item.productId}',${item.productId})">
+                                            X
+                                        </button>
 
-                                </td>
+                                    </td>
 
-                            </tr>
-                            </c:forEach>
-                            <!-- First row -->
-                            <tr>
+                                </tr>
+                                </c:forEach>
+                                <!-- First row -->
+                                <tr>
 
-                                <td colspan="3"></td>
+                                    <td colspan="3"></td>
 
-                                <td>
+                                    <td>
 
-                                    <h4 class="mt-2">
+                                        <h4 class="mt-2">
 
-                                        <strong>Total</strong>
+                                            <strong>Total</strong>
 
-                                    </h4>
+                                        </h4>
 
-                                </td>
-                            <td class="text-right">
+                                    </td>
+                                    <td class="text-right">
 
-                                <h4 class="mt-2">
+                                        <h4 class="mt-2">
 
-                                    <strong>$2600</strong>
+                                            <strong id="total-all"></strong>
 
-                                </h4>
+                                        </h4>
 
-                            </td>
+                                    </td>
 
-                            <td colspan="3" class="text-right">
+                                    <td colspan="3" class="text-right">
 
-                                <a type="button" class="btn btn-primary btn-rounded" role="button"
-                                   href="checkOut.jsp">Complete purchase
+                                        <a type="button" class="btn btn-primary btn-rounded" role="button"
+                                           href="/checkOut.jsp">Complete purchase
 
-                                    <i class="fas fa-angle-right right"></i>
+                                            <i class="fas fa-angle-right right"></i>
 
-                                </a>
+                                        </a>
 
-                            </td>
-                            </tr>
+                                    </td>
+                                </tr>
 
-                            </tbody>
+                                </tbody>
+
                             <!-- Table body -->
 
                         </table>
@@ -1243,6 +1245,9 @@ function updateQuantityAndTotal(cartId, productId, quantity, price) {
             console.log(cartId, productId, quantity, price);
             console.log(totalElement);
             totalElement.textContent = price * quantity;
+            var totalAll = document.getElementById('total-all');
+
+            updateTotalAll();
         } else {
             totalElement.textContent = "out of inventory";
         }
@@ -1280,15 +1285,16 @@ function deleteItem(productId, callback) {
 
 }
 
-function removeItem(rowId,productId) {
+function removeItem(rowId, productId) {
     var isConfirmed = confirm('Bạn chắc chắn muốn xóa item này?');
     if (isConfirmed) {
         var rowToRemove = document.getElementById(rowId);
         if (rowToRemove) {
             rowToRemove.remove();
-            deleteItem( productId, function (callback) {
+            deleteItem(productId, function (callback) {
                 if (callback) {
                     console.log('delete success');
+                    updateTotalAll();
                 } else {
                     console.log('delete fail');
                 }
@@ -1296,10 +1302,28 @@ function removeItem(rowId,productId) {
         } else {
             console.error('Row not found:', rowId);
         }
-    }else {
+    } else {
         console.log('User cancelled');
     }
 }
+
+function updateTotalAll() {
+    var totalAll = 0;
+
+    // Lặp qua tất cả các phần tử có class "font-weight-bold" trong tbody
+    var itemTotalElements = document.querySelectorAll('tbody .item');
+    itemTotalElements.forEach(function(element) {
+        // Trích xuất giá trị tổng từ phần tử và chuyển đổi thành số
+        var itemTotal = parseFloat(element.textContent.trim());
+
+        // Thêm giá trị tổng của sản phẩm vào tổng chung
+        totalAll += itemTotal;
+    });
+
+    // Cập nhật nội dung của phần tử có id "total-all"
+    document.getElementById('total-all').textContent = totalAll.toFixed(2) ;
+}
+window.onload = updateTotalAll;
 </script>
 </body>
 </html>
