@@ -136,12 +136,13 @@ public class Cart {
             }
             for (CartItem item : cartItemList) {
                 if (item.getProductId().equals(cartItem.getProductId())) {
+//                    System.out.println("update");
                     item.setQuantity(item.getQuantity() + cartItem.getQuantity());
-                    cartItemsService.updateCartItem(cartItem);
-                } else {
-                    cartItemsService.insertCartItem(cartItem);
+                    cartItemsService.updateCartItem(item);
+                    return true;
                 }
             }
+            cartItemsService.insertCartItem(cartItem);
             return true;
         } catch (Exception e) {
             return false;
@@ -159,8 +160,8 @@ public class Cart {
     }
 
     public static void main(String[] args) {
-        Cart cart = CartService.getInstance().getCartByKey("61996187-ddb5-4dab-abf6-4da2beffc24f");
-        cart.addOrUpdateItemToCart(new CartItem("1", 2));
+        Cart cart = CartService.getInstance().getCartByKey("5");
+        cart.addOrUpdateItemToCart(new CartItem("1", 1));
         System.out.println(cart);
 
     }

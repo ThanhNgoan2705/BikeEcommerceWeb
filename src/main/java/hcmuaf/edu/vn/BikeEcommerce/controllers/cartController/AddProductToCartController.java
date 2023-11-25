@@ -48,6 +48,7 @@ public class AddProductToCartController extends HttpServlet {
         i1.setProductId(productId);
         i1.setQuantity(Integer.parseInt(quantity));
         cart.addOrUpdateItemToCart(i1);
+        System.out.println(cart);
         System.out.println("da them 1 san pham");
         resp.getWriter().write("success");
     }
