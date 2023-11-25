@@ -149,9 +149,9 @@ public class Cart {
         }
     }
 
-    public boolean removeItem( String productId) {
+    public boolean removeItem(String cartItemId) {
         try {
-            cartItemsService.deleteCartItem(this.cartId, productId);
+            cartItemsService.deleteCartItem(cartItemId);
             return true;
         } catch (Exception e) {
             return false;
@@ -160,9 +160,18 @@ public class Cart {
     }
 
     public static void main(String[] args) {
+        CartItemsService cartItemsService = new CartItemsService();
+        CartService cartService = new CartService();
         Cart cart = CartService.getInstance().getCartByKey("5");
-        cart.addOrUpdateItemToCart(new CartItem("1", 1));
-        System.out.println(cart);
+        CartItem cartItem = new CartItem();
+        cartItem.setCartItemId("1");
+        cartItem.setCartId(cart.getCartId());
+        cartItem.setProductId("1");
+        cartItem.setColorId("1");
+        cartItem.setQuantity(1);
+        cartItemsService.insertCartItem(cartItem);
+        cart.addOrUpdateItemToCart(cartItem);
+        System.out.println(cartService.getCartByKey("5"));
 
     }
 }

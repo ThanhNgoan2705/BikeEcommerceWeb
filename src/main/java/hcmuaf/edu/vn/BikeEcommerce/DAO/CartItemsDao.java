@@ -19,7 +19,8 @@ public interface CartItemsDao {
 
     @SqlQuery(ScirptSQL.getCartItemByCartIdAndProductId)
     CartItem getCartItemByCartIdAndProductId(@Bind("cartId") String cartId,@Bind("productId") String productId);
-
+    @SqlQuery(ScirptSQL.getCartItemByCartItemId)
+    CartItem getCartItemByCartItemId(@Bind("cartItemId")String cartItemId);
     @SqlUpdate(ScirptSQL.insertCartItem)
     void insertCartItem(@BindBean CartItem cartItem);
 
@@ -27,8 +28,10 @@ public interface CartItemsDao {
     void updateCartItem(@BindBean CartItem cartItem);
 
     @SqlUpdate(ScirptSQL.deleteCartItem)
-    void deleteCartItem(@Bind("cartId") String cartId, @Bind("productId") String productId);
+    void deleteCartItem(@Bind("cartItemId") String cartItemId);
 
     @SqlUpdate(ScirptSQL.deleteCartItemByCartId)
     void deleteCartItemByCartId(@Bind("cartId")String cartId);
+
+
 }
