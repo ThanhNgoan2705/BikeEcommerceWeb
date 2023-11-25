@@ -49,17 +49,17 @@ public class ScirptSQL {
     static final String insertColor = "insert into color(color_id,name, code) values(:colorId,:name, :code)";
     static final String updateColor = "update color set name = :name, code = :code where color_id = :colorId";
     static final String deleteColor = "delete from color where color_id = :colorId";
-    static final String getColorByProductId = "select * from color where color_id in (select color_id from color_product where product_id = :productId)";
+    static final String getColorByProductId = "select * from color where color_id in (select color_id from sub_product_color where product_id = :productId)";
 
     // color product da test by hoang hai 20-8-23
-    static final String getAllColorProduct = "select * from color_product";
-    static final String getColorProductByProductId = "select * from color_product where product_id = :productId";
-    static final String getColorProductByColorId = "select * from color_product where color_id = :colorId";
-    static final String insertColorProduct = "insert into color_product(color_id, product_id) values(:colorId, :productId)";
-    static final String updateColorProduct = "update color_product set color_id = :colorId, product_id = :productId where color_id = :colorId";
-    static final String deleteColorProduct = "delete from color_product where color_id = :colorId and product_id = :productId";
-    public static final String deleteColorProductByProductId = "delete from color_product where product_id = :productId";
-    public static final String deleteColorProductByColorId = "delete from color_product where color_id = :colorId";
+    static final String getAllColorProduct = "select * from sub_product_color";
+    static final String getColorProductByProductId = "select * from sub_product_color where product_id = :productId";
+    static final String getColorProductByColorId = "select * from sub_product_color where color_id = :colorId";
+    static final String insertColorProduct = "insert into sub_product_color(color_id, product_id,inventory,price,image) values(:colorId, :productId,:inventory,:price,:image)";
+    static final String updateColorProduct = "update sub_product_color set  inventory = :inventory, price = :price, image = :image where color_id = :colorId and product_id = :productId";
+    static final String deleteColorProduct = "delete from sub_product_color where color_id = :colorId and product_id = :productId";
+    public static final String deleteColorProductByProductId = "delete from sub_product_color where product_id = :productId";
+    public static final String deleteColorProductByColorId = "delete from sub_product_color where color_id = :colorId";
     //cmt da test va fix by Hoang hai 20-8-23
     public static final String getAllComment = "select * from comment";
     public static final String getCmtById = "select * from comment where comment_id = :commentId";

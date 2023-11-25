@@ -1,6 +1,6 @@
 package hcmuaf.edu.vn.BikeEcommerce.DAO;
 
-import hcmuaf.edu.vn.BikeEcommerce.model.ColorProduct;
+import hcmuaf.edu.vn.BikeEcommerce.model.SubProduct_color;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.customizer.BindBean;
@@ -9,22 +9,22 @@ import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
 import java.util.List;
 
-@RegisterBeanMapper(ColorProduct.class)
-public interface ColorProductDAO {
+@RegisterBeanMapper(SubProduct_color.class)
+public interface SubProduct_colorDAO {
     @SqlQuery(ScirptSQL.getAllColorProduct)
-    public List<ColorProduct> getAllColorProduct();
+    public List<SubProduct_color> getAllColorProduct();
 
     @SqlQuery(ScirptSQL.getColorProductByProductId)
-    List<ColorProduct> getColorProductByProductId(@Bind("productId") String productId);
+    List<SubProduct_color> getColorProductByProductId(@Bind("productId") String productId);
 
     @SqlQuery(ScirptSQL.getColorProductByColorId)
-    List<ColorProduct> getColorProductByColorId(@Bind("colorId") String colorId);
+    List<SubProduct_color> getColorProductByColorId(@Bind("colorId") String colorId);
 
     @SqlUpdate(ScirptSQL.insertColorProduct)
-    void insertColorProduct(@BindBean ColorProduct colorProduct);
+    void insertColorProduct(@BindBean SubProduct_color subProductColor);
 
     @SqlUpdate(ScirptSQL.updateColorProduct)
-    void updateColorProduct(@BindBean ColorProduct colorProduct);
+    void updateColorProduct(@BindBean SubProduct_color subProductColor);
 
     @SqlUpdate(ScirptSQL.deleteColorProduct)
     void deleteColorProduct( @Bind("productId") String productId,@Bind("colorId") String colorId);
