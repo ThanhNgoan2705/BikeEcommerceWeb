@@ -29,7 +29,8 @@ public class UpdateCartItem extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String cartItemId = req.getParameter("cartItemId");
         int quantity = Integer.parseInt(req.getParameter("quantity"));
-        System.out.println(cartItemId + "---" + quantity);
+        String colorId = req.getParameter("colorId");
+        System.out.println(cartItemId + "---" + quantity + "---" + colorId);
         CartItem c = cartItemService.getCartItemByCartItemId(cartItemId);
         if (c == null) {
             return;
@@ -37,6 +38,7 @@ public class UpdateCartItem extends HttpServlet {
         boolean check = productService.getProductById(c.getProductId()).getInventory() >= quantity;
         if (check) {
             c.setQuantity(quantity);
+            c.setColorId(colorId);
             cartItemService.updateCartItem(c);
             resp.getWriter().write("success");
         } else {
