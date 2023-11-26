@@ -135,7 +135,7 @@ public class Cart {
                 return true;
             }
             for (CartItem item : cartItemList) {
-                if (item.getProductId().equals(cartItem.getProductId())) {
+                if (item.getCartItemId().equals(cartItem.getCartItemId())) {
 //                    System.out.println("update");
                     item.setQuantity(item.getQuantity() + cartItem.getQuantity());
                     cartItemsService.updateCartItem(item);

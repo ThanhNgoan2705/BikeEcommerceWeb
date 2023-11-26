@@ -125,7 +125,7 @@
                                 <tbody>
 
                                 <!-- First row -->
-                                <tr id="tr-${item.cartId}-${item.productId}">
+                                <tr id="${item.cartItemId}">
 
                                     <th scope="row">
 
@@ -158,12 +158,12 @@
                                         <span class="qty"></span>
 
                                         <div class="def-number-input number-input safari_only">
-                                            <button onclick="this.parentNode.querySelector('input[type=number]').stepDown();updateQuantityAndTotal('${item.cartId}','${item.productId}',this.parentNode.querySelector('input[type=number]').value,${item.product.price} ) "
+                                            <button onclick="this.parentNode.querySelector('input[type=number]').stepDown();updateQuantityAndTotal('${item.cartItemId}',this.parentNode.querySelector('input[type=number]').value,${item.product.price} ) "
                                                     class="minus"></button>
                                             <input class="quantity" min="1" name="quantity" value="${item.quantity}"
                                                    type="number"
-                                                   oninput="updateQuantityAndTotal('${item.cartId}','${item.productId}',this.value,${item.product.price})">
-                                            <button onclick="this.parentNode.querySelector('input[type=number]').stepUp();updateQuantityAndTotal('${item.cartId}','${item.productId}',this.parentNode.querySelector('input[type=number]').value,${item.product.price} )"
+                                                   oninput="updateQuantityAndTotal('${item.cartItemId}',this.value,${item.product.price})">
+                                            <button onclick="this.parentNode.querySelector('input[type=number]').stepUp();updateQuantityAndTotal('${item.cartItemId}',this.parentNode.querySelector('input[type=number]').value,${item.product.price} )"
                                                     class="plus"></button>
                                         </div>
 
@@ -171,7 +171,7 @@
 
                                     <td class="font-weight-bold item">
 
-                                        <strong id="total-for-one-item-${item.cartId}-${item.productId}">${item.product.price *item.quantity} </strong>
+                                        <strong id="total-for-one-item-${item.cartItemId}">${item.product.price *item.quantity} </strong>
 
                                     </td>
 
@@ -180,7 +180,7 @@
                                         <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip"
                                                 data-placement="top"
                                                 title="Remove item"
-                                                onclick="removeItem('tr-${item.cartId}-${item.productId}',${item.productId})">
+                                                onclick="removeItem('${item.cartItemId}','${item.cartItemId}')">
                                             X
                                         </button>
 
@@ -1203,14 +1203,13 @@
 
 </script>
 <script src="mdb/js/default.js"></script>
-<script> function updateQuantity(cartId, productId, quantity, callback) {
+<script> function updateQuantity(cartItemId, quantity, callback) {
     // Đường dẫn của servlet
     var servletUrl = '/user/updateCartItem';
 
     // Dữ liệu gửi đi
     var data = {
-        cartId: cartId,
-        productId: productId,
+        cartItemId: cartItemId,
         quantity: quantity
     };
     console.log(data);
@@ -1232,17 +1231,17 @@
     });
 }
 
-function updateQuantityAndTotal(cartId, productId, quantity, price) {
+function updateQuantityAndTotal(cartItemId, quantity, price) {
     if (price == null) {
         price = 0;
     } else {
         price = parseInt(price);
     }
-    updateQuantity(cartId, productId, quantity, function (callback) {
+    updateQuantity(cartItemId, quantity, function (callback) {
         console.log(callback);
-        var totalElement = document.querySelector(`#total-for-one-item-` + cartId + `-` + productId);
+        var totalElement = document.querySelector(`#total-for-one-item-` + cartItemId);
         if (callback) {
-            console.log(cartId, productId, quantity, price);
+            console.log(cartItemId, quantity, price);
             console.log(totalElement);
             totalElement.textContent = price * quantity;
             var totalAll = document.getElementById('total-all');
@@ -1250,20 +1249,20 @@ function updateQuantityAndTotal(cartId, productId, quantity, price) {
             updateTotalAll();
         } else {
             totalElement.textContent = "out of inventory";
+            updateTotalAll();
         }
     });
 
 
 }
 
-function deleteItem(productId, callback) {
+function deleteItem(cartItemId, callback) {
     // Đường dẫn của servlet
     var servletUrl = '/user/deleteProductFromCart';
 
     // Dữ liệu gửi đi
     var data = {
-
-        productId: productId
+        cartItemId: cartItemId
     };
     console.log(data);
     // Thực hiện yêu cầu AJAX bằng jQuery
@@ -1285,13 +1284,14 @@ function deleteItem(productId, callback) {
 
 }
 
-function removeItem(rowId, productId) {
+function removeItem(rowId, cartItemId) {
     var isConfirmed = confirm('Bạn chắc chắn muốn xóa item này?');
     if (isConfirmed) {
         var rowToRemove = document.getElementById(rowId);
+        console.log(rowToRemove);
         if (rowToRemove) {
             rowToRemove.remove();
-            deleteItem(productId, function (callback) {
+            deleteItem(cartItemId, function (callback) {
                 if (callback) {
                     console.log('delete success');
                     updateTotalAll();
@@ -1318,6 +1318,7 @@ function updateTotalAll() {
 
         // Thêm giá trị tổng của sản phẩm vào tổng chung
         totalAll += itemTotal;
+        console.log(itemTotal);
     });
 
     // Cập nhật nội dung của phần tử có id "total-all"

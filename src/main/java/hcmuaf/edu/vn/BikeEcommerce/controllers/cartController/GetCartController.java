@@ -36,6 +36,7 @@ public class GetCartController extends HttpServlet {
             return;
         } else {
             List<CartItem> itemList = cart.getCartItemList();
+            System.out.println(itemList.size());
             req.setAttribute("itemList", itemList);
         }
         req.getRequestDispatcher("/cart.jsp").forward(req, resp);

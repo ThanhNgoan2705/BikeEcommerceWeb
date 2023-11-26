@@ -27,15 +27,14 @@ public class UpdateCartItem extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String cartId = req.getParameter("cartId");
-        String productId = req.getParameter("productId");
+        String cartItemId = req.getParameter("cartItemId");
         int quantity = Integer.parseInt(req.getParameter("quantity"));
-        System.out.println(productId + "---" + quantity);
-        CartItem c = cartItemService.getCartItemByCartIdAndProductId(cartId, productId);
+        System.out.println(cartItemId + "---" + quantity);
+        CartItem c = cartItemService.getCartItemByCartItemId(cartItemId);
         if (c == null) {
             return;
         }
-        boolean check = productService.getProductById(productId).getInventory() >= quantity;
+        boolean check = productService.getProductById(c.getProductId()).getInventory() >= quantity;
         if (check) {
             c.setQuantity(quantity);
             cartItemService.updateCartItem(c);
