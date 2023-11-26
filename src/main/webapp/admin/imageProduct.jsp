@@ -88,7 +88,7 @@
                     <i class="fas fa-plus fa-fw me-3"></i><span>Color</span></a>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="colorProduct.jsp">
+                <a class="sidenav-link" href="subProductColor.jsp">
                     <i class="fas fa-plus fa-fw me-3"></i><span>Color Product Image</span></a>
             </li>
             <li class="sidenav-item">

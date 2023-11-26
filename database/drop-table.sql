@@ -1,35 +1,36 @@
-drop table cart_item;
+drop table if exists cart_item cascade;
 
-drop table cart;
+drop table if exists cart cascade;
 
-drop table color_product;
+drop table if exists comment cascade;
 
-drop table color;
+drop table if exists favorite cascade;
 
-drop table comment;
+drop table if exists image_slider cascade;
 
-drop table favorite;
+drop table if exists order_item cascade;
 
-drop table image_product;
+drop table if exists `order` cascade;
 
-drop table image_slider;
+drop table if exists address cascade;
 
-drop table order_item;
+drop table if exists sub_product_color cascade;
 
-drop table `order`;
+drop table if exists color cascade;
 
-drop table address;
+drop table if exists image_product cascade;
 
-drop table product;
+drop table if exists product cascade;
 
-drop table brand;
+drop table if exists brand cascade;
 
-drop table category;
+drop table if exists category cascade;
 
-drop table discount;
+drop table if exists discount cascade;
 
-drop table supplier;
+drop table if exists supplier cascade;
 
-drop table user;
+drop table if exists user cascade;
 
-drop table verify_code;
+drop table if exists verify_code cascade;
+
