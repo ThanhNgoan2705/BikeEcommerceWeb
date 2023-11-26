@@ -1,8 +1,7 @@
 package hcmuaf.edu.vn.BikeEcommerce.controllers.cartController;
 
-import hcmuaf.edu.vn.BikeEcommerce.model.Cart;
 import hcmuaf.edu.vn.BikeEcommerce.model.sercurity.Token;
-import hcmuaf.edu.vn.BikeEcommerce.service.CartService;
+import hcmuaf.edu.vn.BikeEcommerce.service.CartItemsService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,21 +12,23 @@ import java.io.IOException;
 
 @WebServlet("/user/deleteProductFromCart")
 public class DeleteProductFromCartController extends HttpServlet {
-    CartService cartService;
+
+    CartItemsService cartItemsService;
 
     @Override
     public void init() throws ServletException {
-        cartService = CartService.getInstance();
+
+        cartItemsService = CartItemsService.getInstance();
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Token token = (Token) req.getAttribute("token");
-        String productId = req.getParameter("productId");
-        System.out.println(productId);
-        Cart cart = cartService.getCartByKey(token.getUserId());
+        String cartItemId = req.getParameter("cartItemId");
+        System.out.println(cartItemId);
+
         try {
-            cart.removeItem(productId);
+            cartItemsService.deleteCartItem(cartItemId);
             resp.getWriter().write("success");
         } catch (Exception e) {
             resp.setStatus(400);

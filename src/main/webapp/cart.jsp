@@ -121,235 +121,111 @@
                             </thead>
                             <!-- Table head -->
                             <c:forEach var="item" items="${itemList}">
-                            <!-- Table body -->
-                            <tbody>
+                                <!-- Table body -->
+                                <tbody>
 
-                            <!-- First row -->
-                            <tr id="tr-${item.cartId}-${item.productId}">
+                                <!-- First row -->
+                                <tr id="${item.cartItemId}">
 
-                                <th scope="row">
+                                    <th scope="row">
 
-                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg"
-                                         alt=""
-                                         class="img-fluid z-depth-0">
+                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg"
+                                             alt=""
+                                             class="img-fluid z-depth-0">
 
-                                </th>
+                                    </th>
 
-                                <td>
+                                    <td>
 
-                                    <h5 class="mt-3">
+                                        <h5 class="mt-3">
 
-                                        <strong>${item.product.name}</strong>
+                                            <strong>${item.product.name}</strong>
 
-                                    </h5>
+                                        </h5>
 
-                                    <p class="text-muted">${item.product.brand.name}</p>
+                                        <p class="text-muted">${item.product.brand.name}</p>
 
-                                </td>
+                                    </td>
 
-                                <td> white</td>
+                                    <td> white</td>
 
-                                <td></td>
+                                    <td></td>
 
-                                <td>${item.product.price}</td>
+                                    <td>${item.product.price}</td>
 
-                                <td class="text-center text-md-left">
+                                    <td class="text-center text-md-left">
 
-                                    <span class="qty"></span>
+                                        <span class="qty"></span>
 
-                                    <div class="def-number-input number-input safari_only">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown();updateQuantityAndTotal('${item.cartId}','${item.productId}',this.parentNode.querySelector('input[type=number]').value,${item.product.price} ) "
-                                                class="minus"></button>
-                                        <input class="quantity" min="1" name="quantity" value="${item.quantity}"
-                                               type="number"
-                                               oninput="updateQuantityAndTotal('${item.cartId}','${item.productId}',this.value,${item.product.price})">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp();updateQuantityAndTotal('${item.cartId}','${item.productId}',this.parentNode.querySelector('input[type=number]').value,${item.product.price} )"
-                                                class="plus"></button>
-                                    </div>
+                                        <div class="def-number-input number-input safari_only">
+                                            <button onclick="this.parentNode.querySelector('input[type=number]').stepDown();updateQuantityAndTotal('${item.cartItemId}',this.parentNode.querySelector('input[type=number]').value,${item.product.price} ) "
+                                                    class="minus"></button>
+                                            <input class="quantity" min="1" name="quantity" value="${item.quantity}"
+                                                   type="number"
+                                                   oninput="updateQuantityAndTotal('${item.cartItemId}',this.value,${item.product.price})">
+                                            <button onclick="this.parentNode.querySelector('input[type=number]').stepUp();updateQuantityAndTotal('${item.cartItemId}',this.parentNode.querySelector('input[type=number]').value,${item.product.price} )"
+                                                    class="plus"></button>
+                                        </div>
 
-                                </td>
+                                    </td>
 
-                                <td class="font-weight-bold">
+                                    <td class="font-weight-bold item">
 
-                                    <strong id="total-for-one-item-${item.cartId}-${item.productId}">${item.product.price *item.quantity} </strong>
+                                        <strong id="total-for-one-item-${item.cartItemId}">${item.product.price *item.quantity} </strong>
 
-                                </td>
+                                    </td>
 
-                                <td>
+                                    <td>
 
-                                    <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip"
-                                            data-placement="top"
-                                            title="Remove item"
-                                            onclick="removeItem('tr-${item.cartId}-${item.productId}',${item.productId})">X
-                                    </button>
+                                        <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="Remove item"
+                                                onclick="removeItem('${item.cartItemId}','${item.cartItemId}')">
+                                            X
+                                        </button>
 
-                                </td>
+                                    </td>
 
-                            </tr>
-                            </c:forEach>
-                            <!-- First row -->
+                                </tr>
+                                </c:forEach>
+                                <!-- First row -->
+                                <tr>
 
-                            <!-- Second row -->
-                            <tr>
+                                    <td colspan="3"></td>
 
-                                <th scope="row">
+                                    <td>
 
-                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/6.jpg"
-                                         alt=""
-                                         class="img-fluid z-depth-0">
+                                        <h4 class="mt-2">
 
-                                </th>
+                                            <strong>Total</strong>
 
-                                <td>
+                                        </h4>
 
-                                    <h5 class="mt-3">
+                                    </td>
+                                    <td class="text-right">
 
-                                        <strong>Headphones</strong>
+                                        <h4 class="mt-2">
 
-                                    </h5>
+                                            <strong id="total-all"></strong>
 
-                                    <p class="text-muted">Sony</p>
+                                        </h4>
 
-                                </td>
+                                    </td>
 
-                                <td>Red</td>
+                                    <td colspan="3" class="text-right">
 
-                                <td></td>
+                                        <a type="button" class="btn btn-primary btn-rounded" role="button"
+                                           href="/checkOut.jsp">Complete purchase
 
-                                <td>$200</td>
+                                            <i class="fas fa-angle-right right"></i>
 
-                                <td class="text-center text-md-left">
+                                        </a>
 
-                                    <span class="qty">3 </span>
+                                    </td>
+                                </tr>
 
-                                    <div class="def-number-input number-input safari_only">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                                                class="minus"></button>
-                                        <input class="quantity" min="0" name="quantity" value="1" type="number">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                                                class="plus"></button>
-                                    </div>
+                                </tbody>
 
-                                </td>
-
-                                <td class="font-weight-bold">
-
-                                    <strong>$600</strong>
-
-                                </td>
-
-                                <td>
-
-                                    <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip"
-                                            data-placement="top"
-                                            title="Remove item">X
-
-                                    </button>
-
-                                </td>
-
-                            </tr>
-                            <!-- Second row -->
-
-                            <!-- Third row -->
-                            <tr>
-
-                                <th scope="row">
-
-                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/1.jpg"
-                                         alt=""
-                                         class="img-fluid z-depth-0">
-
-                                </th>
-
-                                <td>
-
-                                    <h5 class="mt-3">
-
-                                        <strong>iPad Pro</strong>
-
-                                    </h5>
-
-                                    <p class="text-muted">Apple</p>
-
-                                </td>
-
-                                <td>Gold</td>
-
-                                <td></td>
-
-                                <td>$600</td>
-
-                                <td class="text-center text-md-left">
-                                    <div class="def-number-input number-input safari_only">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                                                class="minus"></button>
-                                        <input class="quantity" min="0" name="quantity" value="1" type="number">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                                                class="plus"></button>
-                                    </div>
-
-                                </td>
-
-                                <td class="font-weight-bold">
-
-                                    <strong>$1200</strong>
-
-                                </td>
-
-                                <td>
-
-                                    <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip"
-                                            data-placement="top"
-                                            title="Remove item">X
-
-                                    </button>
-
-                                </td>
-
-                            </tr>
-                            <!-- Third row -->
-
-                            <!-- Fourth row -->
-                            <tr>
-
-                                <td colspan="3"></td>
-
-                                <td>
-
-                                    <h4 class="mt-2">
-
-                                        <strong>Total</strong>
-
-                                    </h4>
-
-                                </td>
-
-                                <td class="text-right">
-
-                                    <h4 class="mt-2">
-
-                                        <strong>$2600</strong>
-
-                                    </h4>
-
-                                </td>
-
-                                <td colspan="3" class="text-right">
-
-                                    <a type="button" class="btn btn-primary btn-rounded" role="button"
-                                       href="checkOut.jsp">Complete purchase
-
-                                        <i class="fas fa-angle-right right"></i>
-
-                                    </a>
-
-                                </td>
-
-                            </tr>
-                            <!-- Fourth row -->
-
-                            </tbody>
                             <!-- Table body -->
 
                         </table>
@@ -1327,14 +1203,13 @@
 
 </script>
 <script src="mdb/js/default.js"></script>
-<script> function updateQuantity(cartId, productId, quantity, callback) {
+<script> function updateQuantity(cartItemId, quantity, callback) {
     // Đường dẫn của servlet
     var servletUrl = '/user/updateCartItem';
 
     // Dữ liệu gửi đi
     var data = {
-        cartId: cartId,
-        productId: productId,
+        cartItemId: cartItemId,
         quantity: quantity
     };
     console.log(data);
@@ -1356,35 +1231,38 @@
     });
 }
 
-function updateQuantityAndTotal(cartId, productId, quantity, price) {
+function updateQuantityAndTotal(cartItemId, quantity, price) {
     if (price == null) {
         price = 0;
     } else {
         price = parseInt(price);
     }
-    updateQuantity(cartId, productId, quantity, function (callback) {
+    updateQuantity(cartItemId, quantity, function (callback) {
         console.log(callback);
-        var totalElement = document.querySelector(`#total-for-one-item-` + cartId + `-` + productId);
+        var totalElement = document.querySelector(`#total-for-one-item-` + cartItemId);
         if (callback) {
-            console.log(cartId, productId, quantity, price);
+            console.log(cartItemId, quantity, price);
             console.log(totalElement);
             totalElement.textContent = price * quantity;
+            var totalAll = document.getElementById('total-all');
+
+            updateTotalAll();
         } else {
             totalElement.textContent = "out of inventory";
+            updateTotalAll();
         }
     });
 
 
 }
 
-function deleteItem(productId, callback) {
+function deleteItem(cartItemId, callback) {
     // Đường dẫn của servlet
     var servletUrl = '/user/deleteProductFromCart';
 
     // Dữ liệu gửi đi
     var data = {
-
-        productId: productId
+        cartItemId: cartItemId
     };
     console.log(data);
     // Thực hiện yêu cầu AJAX bằng jQuery
@@ -1406,15 +1284,17 @@ function deleteItem(productId, callback) {
 
 }
 
-function removeItem(rowId,productId) {
+function removeItem(rowId, cartItemId) {
     var isConfirmed = confirm('Bạn chắc chắn muốn xóa item này?');
     if (isConfirmed) {
         var rowToRemove = document.getElementById(rowId);
+        console.log(rowToRemove);
         if (rowToRemove) {
             rowToRemove.remove();
-            deleteItem( productId, function (callback) {
+            deleteItem(cartItemId, function (callback) {
                 if (callback) {
                     console.log('delete success');
+                    updateTotalAll();
                 } else {
                     console.log('delete fail');
                 }
@@ -1422,10 +1302,29 @@ function removeItem(rowId,productId) {
         } else {
             console.error('Row not found:', rowId);
         }
-    }else {
+    } else {
         console.log('User cancelled');
     }
 }
+
+function updateTotalAll() {
+    var totalAll = 0;
+
+    // Lặp qua tất cả các phần tử có class "font-weight-bold" trong tbody
+    var itemTotalElements = document.querySelectorAll('tbody .item');
+    itemTotalElements.forEach(function(element) {
+        // Trích xuất giá trị tổng từ phần tử và chuyển đổi thành số
+        var itemTotal = parseFloat(element.textContent.trim());
+
+        // Thêm giá trị tổng của sản phẩm vào tổng chung
+        totalAll += itemTotal;
+        console.log(itemTotal);
+    });
+
+    // Cập nhật nội dung của phần tử có id "total-all"
+    document.getElementById('total-all').textContent = totalAll.toFixed(2) ;
+}
+window.onload = updateTotalAll;
 </script>
 </body>
 </html>

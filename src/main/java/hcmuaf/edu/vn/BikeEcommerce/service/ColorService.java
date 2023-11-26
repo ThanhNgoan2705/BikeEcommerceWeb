@@ -3,7 +3,6 @@ package hcmuaf.edu.vn.BikeEcommerce.service;
 import hcmuaf.edu.vn.BikeEcommerce.DAO.ColorDAO;
 import hcmuaf.edu.vn.BikeEcommerce.db.JDBIConnector;
 import hcmuaf.edu.vn.BikeEcommerce.model.Color;
-import hcmuaf.edu.vn.BikeEcommerce.model.ColorProduct;
 import org.jdbi.v3.core.Jdbi;
 
 import java.util.List;
@@ -44,7 +43,7 @@ public class ColorService {
     }
 
     public void deleteColor(String id) {
-        ColorProductService.getInstance().deleteColorProductByColorId(id);
+        SubProduct_colorService.getInstance().deleteSubProduct_colorByColorId(id);
         jdbi.useExtension(ColorDAO.class, dao -> dao.deleteColor(id));
     }
 

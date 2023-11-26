@@ -156,7 +156,7 @@
                     <!-- Grid column -->
 
                     <!-- Grid column -->
-                    <div class="col-lg-4 col-md-12 mb-4">
+                    <div class="col-lg-4 col-md-12 mb-4"> b
 
                         <!-- Section: Categories -->
                         <section class="section">
@@ -204,7 +204,7 @@
                         <!-- Grid row -->
                         <div class="row">
                             <c:forEach items="${top1Products}" var="product">
-                                <c:forEach items="${imageProduct}" var="image">
+<%--                                <c:forEach items="${imageProduct}" var="image">--%>
                                     <!-- Grid column -->
                                     <div class="col-lg-4 col-md-12 mb-4">
 
@@ -258,7 +258,7 @@
                                                         <span class="float-right">
 
                             <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
-                                    class="fas fa-shopping-cart ml-3"></i></a>
+                                    class="fas fa-shopping-cart ml-3" onclick="addTocart(${product.productId})"></i></a>
 
                           </span>
 
@@ -274,7 +274,7 @@
 
                                     </div>
                                     <!-- Grid column -->
-                                </c:forEach>
+<%--                                </c:forEach>--%>
                             </c:forEach>
                         </div>
                         <!-- Grid row -->
@@ -1453,6 +1453,25 @@
     // SideNav Initialization
     $(".button-collapse").sideNav();
 
+</script>
+<script>
+    function addTocart(productId) {
+        $.ajax({
+            url: "/user/addProductToCart",
+            type: "POST",
+            data: {
+                productId: productId,
+                quantity: 1
+            },
+            success: function (data) {
+               console.log(data);
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+
+    }
 </script>
 <script src="mdb/js/default.js"></script>
 </body>

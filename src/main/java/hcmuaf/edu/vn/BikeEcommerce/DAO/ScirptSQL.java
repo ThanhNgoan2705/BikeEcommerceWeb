@@ -30,10 +30,11 @@ public class ScirptSQL {
     //  cartItem da test and fix by hoang hai 20-8-23
     static final String getAllCartItem = "select * from cart_item";
     static final String getCartItemsByCartId = "select * from cart_item where cart_id = :cartId";
+    public static final String getCartItemByCartItemId = "select * from cart_item where cart_item_id = :cartItemId";
     static final String getCartItemByCartIdAndProductId = "select * from cart_item where cart_id = :cartId and product_id = :productId";
-    static final String insertCartItem = "insert into cart_item(cart_id,product_id,quantity) values(:cartId,:productId,:quantity)";
-    static final String updateCartItem = "update cart_item set quantity = :quantity where cart_id = :cartId and product_id = :productId";
-    static final String deleteCartItem = "delete from cart_item where cart_id = :cartId and product_id = :productId";
+    static final String insertCartItem = "insert into cart_item(cart_item_id, cart_id, product_id, quantity, color_id) values(:cartItemId, :cartId, :productId, :quantity, :colorId)";
+    static final String updateCartItem = "update cart_item set quantity = :quantity ,color_id = :colorId where cart_item_id = :cartItemId";
+    static final String deleteCartItem = "delete from cart_item where cart_item_id = :cartItemId ";
     static final String deleteCartItemByCartId = "delete from cart_item where cart_id = :cartId";
     // category da test by hoang hai 20-8-23
     static final String getAllCategory = "Select * from Category";
@@ -49,17 +50,19 @@ public class ScirptSQL {
     static final String insertColor = "insert into color(color_id,name, code) values(:colorId,:name, :code)";
     static final String updateColor = "update color set name = :name, code = :code where color_id = :colorId";
     static final String deleteColor = "delete from color where color_id = :colorId";
-    static final String getColorByProductId = "select * from color where color_id in (select color_id from color_product where product_id = :productId)";
+    static final String getColorByProductId = "select * from color where color_id in (select color_id from sub_product_color where product_id = :productId)";
 
-    // color product da test by hoang hai 20-8-23
-    static final String getAllColorProduct = "select * from color_product";
-    static final String getColorProductByProductId = "select * from color_product where product_id = :productId";
-    static final String getColorProductByColorId = "select * from color_product where color_id = :colorId";
-    static final String insertColorProduct = "insert into color_product(color_id, product_id) values(:colorId, :productId)";
-    static final String updateColorProduct = "update color_product set color_id = :colorId, product_id = :productId where color_id = :colorId";
-    static final String deleteColorProduct = "delete from color_product where color_id = :colorId and product_id = :productId";
-    public static final String deleteColorProductByProductId = "delete from color_product where product_id = :productId";
-    public static final String deleteColorProductByColorId = "delete from color_product where color_id = :colorId";
+    // sub_product_color da test by hoang hai 20-8-23 update 26/11/2023
+    static final String getAllColorProduct = "select * from sub_product_color";
+    public static final String getColorProductByProductIdAndColorId = "select * from sub_product_color where product_id = :productId and color_id = :colorId";
+    static final String getColorProductByProductId = "select * from sub_product_color where product_id = :productId";
+    static final String getColorProductByColorId = "select * from sub_product_color where color_id = :colorId";
+    static final String insertColorProduct = "insert into sub_product_color(color_id, product_id,inventory,price,image_product_id) values(:colorId, :productId,:inventory,:price,:imageProductId)";
+    static final String updateColorProduct = "update sub_product_color set  inventory = :inventory, price = :price, image_product_id = :imageProductId where color_id = :colorId and product_id = :productId";
+    static final String deleteColorProduct = "delete from sub_product_color where color_id = :colorId and product_id = :productId";
+    public static final String deleteColorProductByProductId = "delete from sub_product_color where product_id = :productId";
+    public static final String deleteColorProductByColorId = "delete from sub_product_color where color_id = :colorId";
+    public static final String getPriceByProductIdAndColorId = "select price from sub_product_color where product_id = :productId and color_id = :colorId";
     //cmt da test va fix by Hoang hai 20-8-23
     public static final String getAllComment = "select * from comment";
     public static final String getCmtById = "select * from comment where comment_id = :commentId";
@@ -81,7 +84,7 @@ public class ScirptSQL {
     public static final String insertFavorite = "insert into favorite( user_id, product_id) values( :userId, :productId)";
     public static final String deleteFavorite = "delete from favorite where product_id = :productId and user_id = :userId";
     public static final String getAllFavorite = "select * from favorite";
-    public static final String hasFavoriteByUserIdAndProductId= "SELECT COUNT(*) > 0 FROM favorite WHERE user_id = :userId AND product_id = :productId";
+    public static final String hasFavoriteByUserIdAndProductId = "SELECT COUNT(*) > 0 FROM favorite WHERE user_id = :userId AND product_id = :productId";
     //    Image product da test va fix by Hoang Hai 21-8-23
     static final String getAllImageProduct = "select * from image_product";
     static final String getImageProductById = "select * from image_product where image_product_id = :imageProductId";
@@ -135,7 +138,7 @@ public class ScirptSQL {
     static final String updateSupplier = "Update `Supplier` set `name` = :name where `supplier_id` = :supplierId";
     static final String deleteSupplier = "Delete from `Supplier` where `supplier_id` = :supplierId";
     // product
-    // update 14/9/2023 -- update 24/9/2023
+    // update 14/9/2023 -- update 24/9/2023-- update 26/11/2023
     static final String getAllProduct = "Select * from Product";
     static final String getProductById = "Select * from Product where product_id = :id";
     static final String getProductsByName = "Select * from Product where name like CONCAT('%', :name, '%')";
@@ -144,13 +147,19 @@ public class ScirptSQL {
     static final String getProductBySupplierId = "Select * from Product where supplier_id = :supplierId";
     static final String getProductByDiscount = "Select * from Product where discount_id = :discountId";
     static final String getProductByStatus = "Select * from Product where status = :status";
-    static final String insertProduct = "INSERT INTO product (product_id, name, price, description, wheelSize, material, warranty, inventory, discount_id, category_id, brand_id, supplier_id, status) " + "VALUES (:productId, :name, :price, :description, :wheelSize, :material, :warranty, :inventory, :discountId, :categoryId, :brandId, :supplierId, :status)";
-    static final String updateProduct = "UPDATE product " + "SET name = :name, price = :price, description = :description, wheelSize = :wheelSize, " + "material = :material, warranty = :warranty, inventory = :inventory, " + "discount_id = :discountId, category_id = :categoryId, brand_id = :brandId, supplier_id = :supplierId, status = :status " + "WHERE productId = :productId";
+    static final String insertProduct = "INSERT INTO product (product_id, name,  description, wheelSize, material, warranty, discount_id, category_id, brand_id, supplier_id, status) " + "VALUES (:productId, :name, :description, :wheelSize, :material, :warranty, :discountId, :categoryId, :brandId, :supplierId, :status)";
+    static final String updateProduct = "UPDATE product " + "SET name = :name,  description = :description, wheelSize = :wheelSize, " + "material = :material, warranty = :warranty, " + "discount_id = :discountId, category_id = :categoryId, brand_id = :brandId, supplier_id = :supplierId, status = :status " + "WHERE product_id = :productId";
     static final String deleteProduct = "DELETE FROM product WHERE product_id = :productId";
-    static final String getProductByPrice = "Select * from Product where price between :minPrice and :maxPrice";
-     static final String getProductByCategoryName="select * from product where category_id in (select category_id from category where name like concat('%', :name, '%'))";
+    static final String getProductByPrice = "Select * from Product where product_id in (select product_id from sub_product_color where price between :minPrice and :maxPrice)";
+    static final String getProductByCategoryName = "select * from product where category_id in (select category_id from category where name like concat('%', :name, '%'))";
     static final String getProductByWheelSize = "Select * from Product where wheelSize = :wheelSize";
-    public static final String checkProductQuantity ="select inventory >= :quantity from product where product_id = :productId";
+
+    public static final String getInventory = "SELECT SUM(sub_product_color.inventory) AS total_inventory\n" +
+            "FROM product JOIN sub_product_color ON product.product_id =sub_product_color.product_id\n" +
+            "WHERE product.product_id = :productId\n" +
+            "GROUP BY  product.product_id,product.name;";
+
+
     //    Slider  da test va fix by Hoang Hai 21-8-23
     static final String getAllSlider = "select * from image_slider";
     static final String getSliderById = "select * from image_slider where id = :id";
@@ -166,5 +175,6 @@ public class ScirptSQL {
 
     public static final String getTop1Product = "select * from (select * , row_number() over (partition by category_id order by category_id) as row from product) as t where row = 1";
     public static final String getTop1ImageProductByProductId = "select * from (select * , row_number() over (partition by product_id order by product_id) as row from image_product) as t where row = 1 and product_id = :productId";
+
 
 }

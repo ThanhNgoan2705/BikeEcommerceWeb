@@ -56,6 +56,9 @@ public interface ProductDAO {
     @SqlQuery(ScirptSQL.getTop1Product)
     List<Product> getTop1Product();
 
-    @SqlQuery(ScirptSQL.checkProductQuantity)
-    Boolean checkProductQuantity(@Bind("productId") String productId,@Bind("quantity") int quantity);
+
+    @SqlQuery(ScirptSQL.getInventory)
+    Integer getInventory(@Bind("productId") String productId);
+
+
 }

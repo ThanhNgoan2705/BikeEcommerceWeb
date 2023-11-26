@@ -135,22 +135,23 @@ public class Cart {
                 return true;
             }
             for (CartItem item : cartItemList) {
-                if (item.getProductId().equals(cartItem.getProductId())) {
+                if (item.getCartItemId().equals(cartItem.getCartItemId())) {
+//                    System.out.println("update");
                     item.setQuantity(item.getQuantity() + cartItem.getQuantity());
-                    cartItemsService.updateCartItem(cartItem);
-                } else {
-                    cartItemsService.insertCartItem(cartItem);
+                    cartItemsService.updateCartItem(item);
+                    return true;
                 }
             }
+            cartItemsService.insertCartItem(cartItem);
             return true;
         } catch (Exception e) {
             return false;
         }
     }
 
-    public boolean removeItem( String productId) {
+    public boolean removeItem(String cartItemId) {
         try {
-            cartItemsService.deleteCartItem(this.cartId, productId);
+            cartItemsService.deleteCartItem(cartItemId);
             return true;
         } catch (Exception e) {
             return false;
@@ -159,9 +160,18 @@ public class Cart {
     }
 
     public static void main(String[] args) {
-        Cart cart = CartService.getInstance().getCartByKey("61996187-ddb5-4dab-abf6-4da2beffc24f");
-        cart.addOrUpdateItemToCart(new CartItem("1", 2));
-        System.out.println(cart);
+        CartItemsService cartItemsService = new CartItemsService();
+        CartService cartService = new CartService();
+        Cart cart = CartService.getInstance().getCartByKey("5");
+        CartItem cartItem = new CartItem();
+        cartItem.setCartItemId("1");
+        cartItem.setCartId(cart.getCartId());
+        cartItem.setProductId("1");
+        cartItem.setColorId("1");
+        cartItem.setQuantity(1);
+        cartItemsService.insertCartItem(cartItem);
+        cart.addOrUpdateItemToCart(cartItem);
+        System.out.println(cartService.getCartByKey("5"));
 
     }
 }

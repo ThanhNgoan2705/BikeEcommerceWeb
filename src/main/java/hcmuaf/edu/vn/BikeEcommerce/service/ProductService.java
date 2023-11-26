@@ -52,6 +52,10 @@ public class ProductService {
         List<Comment> comments = CommentService.getInstance().getCmtByProductId(product.getProductId());
         List<Favorite> favorites = FavoriteService.getInstance().getFavoriteByProductId(product.getProductId());
 
+
+        product.setPrice(SubProduct_colorService.getInstance().getPriceByProductIdAndColorId(product.getProductId(), colors.get(0).getColorId()));
+        product.setInventory(ProductService.getInstance().getInventory(product.getProductId()));
+
         product.setComments(comments);
         product.setFavorites(favorites);
         product.setImageProductList(imageProducts);
@@ -65,15 +69,30 @@ public class ProductService {
     }
 
 
-    public void insert(Product product) {
+    public void insert(Product product, String colorId, String imageId) {
         jdbi.useExtension(ProductDAO.class, dao -> dao.insertProduct(product));
+        SubProduct_color subProduct_color = new SubProduct_color();
+        subProduct_color.setProductId(product.getProductId());
+        subProduct_color.setColorId(colorId);
+        subProduct_color.setPrice(product.getPrice());
+        subProduct_color.setInventory(product.getInventory());
+        subProduct_color.setImageProductId(imageId);
+        SubProduct_colorService.getInstance().insertColorProduct(subProduct_color);
+
     }
 
-    public void update(Product product) {
+    public void update(Product product, String colorId, String imageId) {
         jdbi.useExtension(ProductDAO.class, dao -> dao.updateProduct(product));
+        SubProduct_color subProduct_color = SubProduct_colorService.getInstance().getColorProductByProductIdAndColorId(product.getProductId(), colorId);
+        subProduct_color.setPrice(product.getPrice());
+        subProduct_color.setInventory(product.getInventory());
+        subProduct_color.setImageProductId(imageId);
+        SubProduct_colorService.getInstance().updateColorProduct(subProduct_color);
+
     }
 
     public void delete(String productId) {
+        SubProduct_colorService.getInstance().deleteColorProductByProductId(productId);
         jdbi.useExtension(ProductDAO.class, dao -> dao.deleteProduct(productId));
     }
 
@@ -118,28 +137,24 @@ public class ProductService {
         return jdbi.withExtension(ProductDAO.class, dao -> dao.getTop1Product());
     }
 
-    public boolean checkProductQuantity(String productId, int quantity) {
-        return jdbi.withExtension(ProductDAO.class, dao -> dao.checkProductQuantity(productId, quantity));
+
+    public int getInventory(String productId) {
+        return jdbi.withExtension(ProductDAO.class, dao -> dao.getInventory(productId));
+    }
+
+    public double getPrice(String productId, String colorId) {
+        return SubProduct_colorService.getInstance().getPriceByProductIdAndColorId(productId, colorId);
     }
 
     public static void main(String[] args) {
-//        ELECe37922
         ProductService productService = ProductService.getInstance();
-//        List<Product> products = productService.findProductByName("Bike");
-//        Product product = productService.getProductById("1");
-//        Gson gson = new Gson();
-//        String json = gson.toJson(product);
-//        System.out.println(json);
-//        productService.delete("ELECe37922");
-        List<Product> products = productService.getTop1Product();
-//        List<String> categoryNames = CategoryService.getInstance().getAllCategoryName();
-//        for (String categoryName : categoryNames) {
-//           products.addAll(productService.getProductByCategoryName(categoryName));
-//        }
-        for (Product product : products) {
-            System.out.println(product);
-        }
-//        System.out.println(productService.checkProductQuantity("1", 51));
+//        System.out.println(productService.getProductByCategoryId("1"));
+//        Product product = productService.getProductById("6");
+//        product.setPrice(1000000);
+//        product.setInventory(10);
+//        productService.update(product, "1", null);
+        productService.delete("6");
+//        System.out.println(product);
 
 
     }

@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
  * One color have many products <br/>
  * One product have many colors <br/>
  * @see Product
- * @see ColorProduct
+ * @see SubProduct_color
  * @Author Hoang Hai
  */
 public class Color {

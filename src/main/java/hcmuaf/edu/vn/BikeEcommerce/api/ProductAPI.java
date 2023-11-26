@@ -55,10 +55,10 @@ public class ProductAPI extends HttpServlet {
             BeanUtils.populate(product, req.getParameterMap());
             if (product.getProductId() == null) {
                 product.setProductId(GenerateId.generateProductId(product.getCategoryId()));
-                productService.insert(product);
+//                productService.insert(product);
                 resp.getWriter().write("insert success");
             } else {
-                productService.update(product);
+//                productService.update(product);
                 resp.getWriter().write("update success");
             }
         } catch (IllegalAccessException e) {

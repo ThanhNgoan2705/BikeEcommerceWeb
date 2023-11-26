@@ -35,8 +35,16 @@ public class CartItemsService {
         List<CartItem> cartItems = jdbi.withExtension(CartItemsDao.class, dao -> dao.getCartItemsByCartId(cartId));
         return cartItems.stream().map(cartItem -> mapCartItem(cartItem)).collect(Collectors.toList());
     }
+
     public CartItem getCartItemByCartIdAndProductId(String cartId, String productId) {
-        return  jdbi.withExtension(CartItemsDao.class, dao -> dao.getCartItemByCartIdAndProductId(cartId,productId));
+        CartItem c = jdbi.withExtension(CartItemsDao.class, dao -> dao.getCartItemByCartIdAndProductId(cartId, productId));
+        return mapCartItem(c);
+    }
+
+    public CartItem getCartItemByCartItemId(String cartItemId) {
+        CartItem c = jdbi.withExtension(CartItemsDao.class, dao -> dao.getCartItemByCartItemId(cartItemId));
+
+        return mapCartItem(c);
     }
 
     CartItem mapCartItem(CartItem cartItem) {
@@ -54,20 +62,30 @@ public class CartItemsService {
         jdbi.useExtension(CartItemsDao.class, dao -> dao.updateCartItem(cartItem));
     }
 
-    public void deleteCartItem(String cartId,String productId) {
-        jdbi.useExtension(CartItemsDao.class, dao -> dao.deleteCartItem(cartId,productId));
+    public void deleteCartItem(String cartItemId) {
+        jdbi.useExtension(CartItemsDao.class, dao -> dao.deleteCartItem(cartItemId));
     }
+
     public void deleteCartItemByCartId(String cartId) {
         jdbi.useExtension(CartItemsDao.class, dao -> dao.deleteCartItemByCartId(cartId));
     }
 
     public static void main(String[] args) {
-        CartItem cartItem = new CartItem( "1", "1", 1);
-        CartItemsService cartItemsService = CartItemsService.getInstance();
-//        cartItemsService.insertCartItem(cartItem);
-        cartItem.setQuantity(10);
-        System.out.println(cartItem);
+        CartItemsService cartItemsService = new CartItemsService();
+        CartItem cartItem = new CartItem();
+        cartItem.setCartItemId("1");
+        cartItem.setCartId("1");
+        cartItem.setProductId("1");
+        cartItem.setColorId("1");
+        cartItem.setQuantity(1);
+        cartItemsService.insertCartItem(cartItem);
+        System.out.println(cartItemsService.getCartItemsByCartId("1"));
+        cartItem.setQuantity(2);
         cartItemsService.updateCartItem(cartItem);
+        System.out.println(cartItemsService.getCartItemByCartItemId("1"));
+        cartItemsService.deleteCartItem("1");
+        System.out.println(cartItemsService.getCartItemsByCartId("1"));
+
 
     }
 }

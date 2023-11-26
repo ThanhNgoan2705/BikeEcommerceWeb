@@ -6,6 +6,7 @@ import hcmuaf.edu.vn.BikeEcommerce.model.Product;
 import hcmuaf.edu.vn.BikeEcommerce.model.sercurity.Token;
 import hcmuaf.edu.vn.BikeEcommerce.service.CartService;
 import hcmuaf.edu.vn.BikeEcommerce.service.ProductService;
+import hcmuaf.edu.vn.BikeEcommerce.toolSecurity.GenerateId;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,9 +46,13 @@ public class AddProductToCartController extends HttpServlet {
         Cart cart = cartService.getCartByKey(token.getUserId());
         System.out.println(cart);
         CartItem i1 = new CartItem();
+        i1.setCartItemId(GenerateId.generateId());
         i1.setProductId(productId);
+        i1.setColorId(product.getColors().get(0).getColorId());
         i1.setQuantity(Integer.parseInt(quantity));
         cart.addOrUpdateItemToCart(i1);
+        System.out.println(i1);
+        System.out.println(cart);
         System.out.println("da them 1 san pham");
         resp.getWriter().write("success");
     }

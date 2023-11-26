@@ -59,7 +59,7 @@ public class CartService {
         CartService.getInstance().insertCart(new Cart("5", "user5", "1"));
         System.out.println(CartService.getInstance().getCartByKey("5"));
 
-        CartItem cartItem = new CartItem( "5", "1", 1);
+        CartItem cartItem = new CartItem( "2", "5", "1","1", 1);
         CartItemsService.getInstance().insertCartItem(cartItem);
 
 
