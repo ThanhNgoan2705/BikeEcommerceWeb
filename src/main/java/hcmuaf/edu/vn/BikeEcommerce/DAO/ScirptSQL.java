@@ -177,4 +177,5 @@ public class ScirptSQL {
     public static final String getTop1ImageProductByProductId = "select * from (select * , row_number() over (partition by product_id order by product_id) as row from image_product) as t where row = 1 and product_id = :productId";
 
 
+
 }

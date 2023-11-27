@@ -1,10 +1,7 @@
-package hcmuaf.edu.vn.BikeEcommerce.controllers;
+package hcmuaf.edu.vn.BikeEcommerce.controllers.publicControllers;
 
-import hcmuaf.edu.vn.BikeEcommerce.model.ImageProduct;
-import hcmuaf.edu.vn.BikeEcommerce.model.Product;
-import hcmuaf.edu.vn.BikeEcommerce.service.CategoryService;
-import hcmuaf.edu.vn.BikeEcommerce.service.ImageProductService;
-import hcmuaf.edu.vn.BikeEcommerce.service.ProductService;
+import hcmuaf.edu.vn.BikeEcommerce.model.*;
+import hcmuaf.edu.vn.BikeEcommerce.service.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,22 +19,26 @@ public class HomeController extends HttpServlet {
         CategoryService categoryService = CategoryService.getInstance();
         request.setAttribute("categories", categoryService.getAll());
         ProductService productService = ProductService.getInstance();
-        request.setAttribute("products", productService.getAllProduct());
 
-        Map<String, Integer> quantityByCategory = new HashMap<>();
-        for (String categoryName : categoryService.getAllCategoryName()) {
-            quantityByCategory.put(categoryName, productService.getProductByCategoryName(categoryName).size());
+        Map<Category,Integer> quantityByCategory = new HashMap<>();
+        for (Category category : categoryService.getAll()) {
+            List<Product> products = productService.getProductByCategoryId(category.getCategoryId());
+            quantityByCategory.put(category,products.size() );
         }
         request.setAttribute("quantityByCategory", quantityByCategory);
 
         List<Product> top1Products = productService.getTop1Product();
         request.setAttribute("top1Products", top1Products);
+
         ImageProductService imageProductService = ImageProductService.getInstance();
-        List<ImageProduct> imageProduct = new ArrayList<>();
-        for (Product top1Product : top1Products) {
-            imageProduct.addAll(imageProductService.getTop1ImageProductByProductId(top1Product.getProductId()));
-        }
+        List<ImageProduct> imageProduct = imageProductService.getTop1ImageProductByProductId(top1Products.get(0).getProductId());
         request.setAttribute("imageProduct", imageProduct);
+
+        List<Brand> brands = BrandService.getInstance().getAll();
+        request.setAttribute("brands", brands);
+
+        List<Discount> discounts = DiscountService.getInstance().getAll();
+        request.setAttribute("discounts", discounts);
 
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }

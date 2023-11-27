@@ -121,110 +121,118 @@
                             </thead>
                             <!-- Table head -->
                             <c:forEach var="item" items="${itemList}">
-                                <!-- Table body -->
-                                <tbody>
+                            <!-- Table body -->
+                            <tbody>
 
-                                <!-- First row -->
-                                <tr id="${item.cartItemId}">
+                            <!-- First row -->
+                            <tr id="${item.cartItemId}">
 
-                                    <th scope="row">
+                                <th scope="row">
 
-                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg"
-                                             alt=""
-                                             class="img-fluid z-depth-0">
+                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg"
+                                         alt=""
+                                         class="img-fluid z-depth-0">
 
-                                    </th>
+                                </th>
 
-                                    <td>
+                                <td>
 
-                                        <h5 class="mt-3">
+                                    <h5 class="mt-3">
 
-                                            <strong>${item.product.name}</strong>
+                                        <strong>${item.product.name}</strong>
 
-                                        </h5>
+                                    </h5>
 
-                                        <p class="text-muted">${item.product.brand.name}</p>
+                                    <p class="text-muted">${item.product.brand.name}</p>
 
-                                    </td>
+                                </td>
 
-                                    <td> white</td>
+                                <td>
+                                    <a class="nav-link dropdown-toggle dark-grey-text font-weight-bold"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                                            class="fas fa-user blue-text"></i> Profile </a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-cyan" aria-labelledby="userAccount">
+                                        <a class="dropdown-item waves-effect waves-light" href="/login">Log In</a>
+                                        <a class="dropdown-item waves-effect waves-light" href="/register">Sign Up</a>
+                                    </div>
+                                </td>
 
-                                    <td></td>
+                                <td></td>
 
-                                    <td>${item.product.price}</td>
+                                <td>${item.product.price}</td>
 
-                                    <td class="text-center text-md-left">
+                                <td class="text-center text-md-left">
 
-                                        <span class="qty"></span>
+                                    <span class="qty"></span>
 
-                                        <div class="def-number-input number-input safari_only">
-                                            <button onclick="this.parentNode.querySelector('input[type=number]').stepDown();updateQuantityAndTotal('${item.cartItemId}',this.parentNode.querySelector('input[type=number]').value,${item.product.price} ) "
-                                                    class="minus"></button>
-                                            <input class="quantity" min="1" name="quantity" value="${item.quantity}"
-                                                   type="number"
-                                                   oninput="updateQuantityAndTotal('${item.cartItemId}',this.value,${item.product.price})">
-                                            <button onclick="this.parentNode.querySelector('input[type=number]').stepUp();updateQuantityAndTotal('${item.cartItemId}',this.parentNode.querySelector('input[type=number]').value,${item.product.price} )"
-                                                    class="plus"></button>
-                                        </div>
+                                    <div class="def-number-input number-input safari_only">
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown();updateQuantityAndTotal('${item.cartItemId}',this.parentNode.querySelector('input[type=number]').value,${item.product.price} ) "
+                                                class="minus"></button>
+                                        <input class="quantity" min="1" name="quantity" value="${item.quantity}"
+                                               type="number"
+                                               oninput="updateQuantityAndTotal('${item.cartItemId}',this.value,${item.product.price})">
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp();updateQuantityAndTotal('${item.cartItemId}',this.parentNode.querySelector('input[type=number]').value,${item.product.price} )"
+                                                class="plus"></button>
+                                    </div>
 
-                                    </td>
+                                </td>
 
-                                    <td class="font-weight-bold item">
+                                <td class="font-weight-bold item">
 
-                                        <strong id="total-for-one-item-${item.cartItemId}">${item.product.price *item.quantity} </strong>
+                                    <strong id="total-for-one-item-${item.cartItemId}">${item.product.price *item.quantity} </strong>
 
-                                    </td>
+                                </td>
 
-                                    <td>
+                                <td>
 
-                                        <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip"
-                                                data-placement="top"
-                                                title="Remove item"
-                                                onclick="removeItem('${item.cartItemId}','${item.cartItemId}')">
-                                            X
-                                        </button>
+                                    <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="Remove item"
+                                            onclick="removeItem('${item.cartItemId}','${item.cartItemId}')">
+                                        X
+                                    </button>
 
-                                    </td>
+                                </td>
 
-                                </tr>
-                                </c:forEach>
-                                <!-- First row -->
-                                <tr>
+                            </tr>
+                            </c:forEach>
+                            <!-- First row -->
+                            <tr>
 
-                                    <td colspan="3"></td>
+                                <td colspan="3"></td>
 
-                                    <td>
+                                <td>
 
-                                        <h4 class="mt-2">
+                                    <h4 class="mt-2">
 
-                                            <strong>Total</strong>
+                                        <strong>Total</strong>
 
-                                        </h4>
+                                    </h4>
 
-                                    </td>
-                                    <td class="text-right">
+                                </td>
+                                <td class="text-right">
 
-                                        <h4 class="mt-2">
+                                    <h4 class="mt-2">
 
-                                            <strong id="total-all"></strong>
+                                        <strong id="total-all"></strong>
 
-                                        </h4>
+                                    </h4>
 
-                                    </td>
+                                </td>
 
-                                    <td colspan="3" class="text-right">
+                                <td colspan="3" class="text-right">
 
-                                        <a type="button" class="btn btn-primary btn-rounded" role="button"
-                                           href="/checkOut.jsp">Complete purchase
+                                    <a type="button" class="btn btn-primary btn-rounded" role="button"
+                                       href="/checkOut.jsp">Complete purchase
 
-                                            <i class="fas fa-angle-right right"></i>
+                                        <i class="fas fa-angle-right right"></i>
 
-                                        </a>
+                                    </a>
 
-                                    </td>
-                                </tr>
+                                </td>
+                            </tr>
 
-                                </tbody>
+                            </tbody>
 
                             <!-- Table body -->
 
@@ -1180,6 +1188,8 @@
 <!-- Footer -->
 <%@include file="default/footer.jsp" %>
 <!-- Footer -->
+
+<script src="/mdb/js/popper.min.js"></script>
 <script src="/mdb/js/jquery.min.js"></script>
 <script src="/mdb/js/bootstrap.min.js"></script>
 <script src="/mdb/js/mdb.min.js"></script>
@@ -1312,7 +1322,7 @@ function updateTotalAll() {
 
     // Lặp qua tất cả các phần tử có class "font-weight-bold" trong tbody
     var itemTotalElements = document.querySelectorAll('tbody .item');
-    itemTotalElements.forEach(function(element) {
+    itemTotalElements.forEach(function (element) {
         // Trích xuất giá trị tổng từ phần tử và chuyển đổi thành số
         var itemTotal = parseFloat(element.textContent.trim());
 
@@ -1322,8 +1332,9 @@ function updateTotalAll() {
     });
 
     // Cập nhật nội dung của phần tử có id "total-all"
-    document.getElementById('total-all').textContent = totalAll.toFixed(2) ;
+    document.getElementById('total-all').textContent = totalAll.toFixed(2);
 }
+
 window.onload = updateTotalAll;
 </script>
 </body>

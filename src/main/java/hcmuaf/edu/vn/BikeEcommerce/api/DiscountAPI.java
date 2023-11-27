@@ -1,4 +1,4 @@
-package hcmuaf.edu.vn.BikeEcommerce.api;
+package hcmuaf.edu.vn.BikeEcommerce.API;
 
 import com.google.gson.Gson;
 import hcmuaf.edu.vn.BikeEcommerce.model.Discount;
