@@ -32,7 +32,11 @@ public class GetCartController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Token token = (Token) req.getAttribute("token");
         Cart cart = cartService.getCartByKey(token.getUserId());
+        req.getSession().setAttribute("haveUser", true);
+        req.getSession().setAttribute("userName", token.getUserName());
+
         if (cart == null) {
+            System.out.println("cart null");
             return;
         } else {
             List<CartItem> itemList = cart.getCartItemList();
@@ -50,6 +54,9 @@ public class GetCartController extends HttpServlet {
             return;
         } else {
             List<CartItem> itemList = cart.getCartItemList();
+            for (CartItem item : itemList) {
+                System.out.println(item.getProduct().getName());
+            }
             req.setAttribute("itemList", itemList);
             System.out.println(gson.toJson(itemList));
             resp.getWriter().write(gson.toJson(itemList));

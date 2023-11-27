@@ -148,6 +148,7 @@
                                 </td>
 
                                 <td>
+
                                     <select id="colors-${item.cartItemId}" name="colors"
                                             onchange="updateColorAndQuantity('${item.cartItemId}',document.querySelector('#quantity-${item.cartItemId}').value, this.value);updatePriceByColorOnItemId('${item.cartItemId}',this.value)">
                                         <c:forEach var="color" items="${item.product.colors}">
@@ -156,17 +157,21 @@
                                             </option>
                                         </c:forEach>
                                     </select>
+
                                 </td>
 
                                 <td></td>
 
+
                                 <td id="price-${item.cartItemId}">${item.price}</td>
+
 
                                 <td class="text-center text-md-left">
 
                                     <span class="qty"></span>
 
                                     <div class="def-number-input number-input safari_only">
+
                                         <button onclick="this.parentNode.querySelector('input[type=number]').stepDown();updateQuantityAndTotal('${item.cartItemId}',this.parentNode.querySelector('input[type=number]').value,document.getElementById('colors-${item.cartItemId}').value ) "
                                                 class="minus"></button>
                                         <input class="quantity" min="1" name="quantity" value="${item.quantity}"
@@ -174,6 +179,7 @@
                                                type="number"
                                                oninput="updateQuantityAndTotal('${item.cartItemId}',this.value,document.getElementById('colors-${item.cartItemId}').value)">
                                         <button onclick="this.parentNode.querySelector('input[type=number]').stepUp();updateColorAndQuantity('${item.cartItemId}',this.parentNode.querySelector('input[type=number]').value,document.getElementById('colors-${item.cartItemId}').value )"
+
                                                 class="plus"></button>
                                     </div>
 
@@ -181,7 +187,9 @@
 
                                 <td class="font-weight-bold item">
 
+
                                     <strong id="total-for-one-item-${item.cartItemId}">${item.price * item.quantity} </strong>
+
 
                                 </td>
 
@@ -1190,6 +1198,7 @@
 <!-- Footer -->
 <%@include file="default/footer.jsp" %>
 <!-- Footer -->
+
 <script src="/mdb/js/popper.min.js"></script>
 <script src="/mdb/js/jquery.min.js"></script>
 <script src="/mdb/js/bootstrap.min.js"></script>
@@ -1337,11 +1346,13 @@
     function updateTotalAll() {
         var totalAll = 0;
 
+
         // Lặp qua tất cả các phần tử có class "font-weight-bold" trong tbody
         var itemTotalElements = document.querySelectorAll('tbody .item');
         itemTotalElements.forEach(function (element) {
             // Trích xuất giá trị tổng từ phần tử và chuyển đổi thành số
             var itemTotal = parseFloat(element.textContent.trim());
+
 
             // Thêm giá trị tổng của sản phẩm vào tổng chung
             totalAll += itemTotal;
@@ -1353,7 +1364,9 @@
     }
 
 
+
     window.onload = updateTotalAll;
+
 </script>
 
 </body>

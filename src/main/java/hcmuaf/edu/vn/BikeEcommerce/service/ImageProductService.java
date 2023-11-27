@@ -29,8 +29,8 @@ public class ImageProductService {
         return jdbi.withExtension(ImageProductDAO.class, dao -> dao.getImageProductByProductId(productId));
     }
 
-    public ImageProduct getImageProductById(String id) {
-        return jdbi.withExtension(ImageProductDAO.class, dao -> dao.getImageProductById(id));
+    public List<ImageProduct> getImageProductById(String id) {
+        return jdbi.withExtension(ImageProductDAO.class, dao -> dao.getListImageProductById(id));
     }
 
     public void insertImageProduct(ImageProduct imageProduct) {

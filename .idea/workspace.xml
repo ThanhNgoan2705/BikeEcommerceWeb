@@ -2,20 +2,61 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="BikeEcommerce:war" />
+      <artifact name="BikeEcommerce:war exploded" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a759932-6c3e-472a-96e3-72bf4ea509d1" name="Changes" comment="product filter">
-      <change afterPath="$PROJECT_DIR$/database/drop-table.sql" afterDir="false" />
+    <list default="true" id="1a759932-6c3e-472a-96e3-72bf4ea509d1" name="Changes" comment="update datatest">
+      <change afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/ProductDetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/admin/assert/css/all.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/admin/assert/font-awesome/all.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/admin/assert/font-awesome/font-awesome.all.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/admin/assert/js/all.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/admin/assert/js/jquery.maskMoney.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/admin/default/header.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/admin/listSubProduct.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/mdb/js/dropdownActive.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/productsByFilter.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/controllers/cartController/AddProductToCartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/controllers/cartController/AddProductToCartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/model/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/model/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/DAO/ImageProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/DAO/ImageProductDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/DAO/ScirptSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/DAO/ScirptSQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/AddressAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/AddressAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/BrandAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/BrandAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/CategoryAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/CategoryAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/CommentAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/CommentAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/DiscountAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/DiscountAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/FavoriteAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/FavoriteAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/ProductAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/ProductAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/ProductController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/UserAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/UserAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/controllers/publicControllers/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/controllers/cartController/GetCartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/controllers/cartController/GetCartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/service/ColorProductService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/service/ImageProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/service/ImageProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/address.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/address.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/assert/css/mdb.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/assert/css/mdb.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/assert/js/mdb.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/assert/js/mdb.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/brand.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/brand.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/category.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/category.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/color.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/color.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/colorProduct.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/colorProduct.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/discount.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/discount.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home_dashboard.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home_dashboard.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/imageProduct.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/imageProduct.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/invoice.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/invoice.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/order.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/order.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/slider.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/slider.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/supplier.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/supplier.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/user.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/cart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/cart.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/default/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/default/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/default/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/default/menu.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/product.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,8 +70,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Jsp File" />
         <option value="Class" />
+        <option value="JavaScript File" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -41,6 +83,16 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="ThanhNgoan" />
+      </list>
+    </option>
+  </component>
+  <component name="JspContextManager">
+    <jsp-to-context jsp-file="file://$PROJECT_DIR$/src/main/webapp/default/header.jsp" context-file="file://$PROJECT_DIR$/src/main/webapp/aboutUs.jsp" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -60,48 +112,56 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;HoangHai&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/bike/dia&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.45747125&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "ThanhNgoan",
+    "last_opened_file_path": "C:/Users/Chan Chan/BikeEcommerceWeb/src/main/webapp/admin/assert/js",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.45747125",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="hcmuaf.edu.vn.BikeEcommerce.DAO" />
       <recent name="hcmuaf.edu.vn.BikeEcommerce.model" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Chan Chan\BikeEcommerceWeb\src\main\webapp\admin\assert\js" />
+      <recent name="C:\Users\Chan Chan\BikeEcommerceWeb\src\main\webapp\admin\assert\font-awesome" />
+      <recent name="C:\Users\Chan Chan\BikeEcommerceWeb\src\main\webapp\admin\assert\css" />
+      <recent name="C:\Users\Chan Chan\BikeEcommerceWeb\src\main\webapp\admin\assert\mdb" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Chan Chan\BikeEcommerceWeb\src\main\webapp\admin\assert\font-awesome" />
+      <recent name="C:\Users\Chan Chan\BikeEcommerceWeb\src\main\webapp\admin\assert\js" />
       <recent name="I:\bike\BikeEcommerceWeb\src\main\webapp" />
       <recent name="I:\bike\BikeEcommerceWeb\src\main\webapp\user" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.78">
-    <configuration name="Cart" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="hcmuaf.edu.vn.BikeEcommerce.model.Cart" />
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.79">
+    <configuration name="CategoryService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="hcmuaf.edu.vn.BikeEcommerce.service.CategoryService" />
       <module name="BikeEcommerce" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="hcmuaf.edu.vn.BikeEcommerce.model.*" />
+          <option name="PATTERN" value="hcmuaf.edu.vn.BikeEcommerce.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -109,8 +169,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CategoryService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="hcmuaf.edu.vn.BikeEcommerce.service.CategoryService" />
+    <configuration name="OrderService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="hcmuaf.edu.vn.BikeEcommerce.service.OrderService" />
       <module name="BikeEcommerce" />
       <extension name="coverage">
         <pattern>
@@ -148,30 +208,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VerifyCodeService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="hcmuaf.edu.vn.BikeEcommerce.service.VerifyCodeService" />
-      <module name="BikeEcommerce" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="hcmuaf.edu.vn.BikeEcommerce.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="product.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8081/admin/product.jsp">
+      <method v="2" />
     </configuration>
-    <configuration name="Tomcat 9.0.78" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.78" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+    <configuration name="Tomcat 9.0.79" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.79" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
-        <artifact name="BikeEcommerce:war">
+        <artifact name="BikeEcommerce:war exploded">
           <settings>
             <option name="CONTEXT_PATH" value="/" />
           </settings>
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="4daccd8c-aa89-4aa6-b4da-437c345d52d5" />
+        <option name="BASE_DIRECTORY_NAME" value="c6a6d1f5-ba21-4a56-945f-7219323cbe18" />
+        <option name="HTTP_PORT" value="8081" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -179,7 +230,7 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="57990" />
+        <option name="DEBUG_PORT" value="53456" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -244,25 +295,25 @@
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="BikeEcommerce:war" />
+          <artifact name="BikeEcommerce:war exploded" />
         </option>
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Cart" />
-      <item itemvalue="Application.VerifyCodeService" />
       <item itemvalue="Application.ProductService" />
       <item itemvalue="Application.UserService" />
+      <item itemvalue="Application.OrderService" />
       <item itemvalue="Application.CategoryService" />
-      <item itemvalue="Tomcat Server.Tomcat 9.0.78" />
+      <item itemvalue="JavaScript Debug.product.jsp" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.79" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Cart" />
-        <item itemvalue="Application.ProductService" />
-        <item itemvalue="Application.VerifyCodeService" />
+        <item itemvalue="JavaScript Debug.product.jsp" />
         <item itemvalue="Application.CategoryService" />
+        <item itemvalue="Application.OrderService" />
         <item itemvalue="Application.UserService" />
+        <item itemvalue="Application.ProductService" />
       </list>
     </recent_temporary>
   </component>
@@ -290,6 +341,10 @@
       <workItem from="1700629068910" duration="11284000" />
       <workItem from="1700664495516" duration="9792000" />
       <workItem from="1700739150821" duration="19480000" />
+      <workItem from="1701012852313" duration="5033000" />
+      <workItem from="1701053836561" duration="3263000" />
+      <workItem from="1701070393134" duration="1551000" />
+      <workItem from="1701097141347" duration="10048000" />
     </task>
     <task id="LOCAL-00001" summary="update databaseHai.sql">
       <option name="closed" value="true" />
@@ -563,15 +618,7 @@
       <option name="project" value="LOCAL" />
       <updated>1700687039782</updated>
     </task>
-    <task id="LOCAL-00035" summary="product filter">
-      <option name="closed" value="true" />
-      <created>1700817833341</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1700817833341</updated>
-    </task>
-    <option name="localTasksCounter" value="36" />
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -600,6 +647,8 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="them java doc" />
+    <MESSAGE value="sua loi cua tat ca cac lop DAO" />
     <MESSAGE value="ide" />
     <MESSAGE value="sua lai giao dien gui mail xac nhan order" />
     <MESSAGE value="them cac service, DAO, thuoc tinh cua cac lop Color,ImageProduct, ImageSlider," />
@@ -623,9 +672,18 @@
     <MESSAGE value="merge main to hoanghai" />
     <MESSAGE value="auto login khi token còn hiệu lực" />
     <MESSAGE value="update datatest" />
-    <MESSAGE value="register" />
-    <MESSAGE value="product filter" />
-    <option name="LAST_COMMIT_MESSAGE" value="product filter" />
+    <option name="LAST_COMMIT_MESSAGE" value="update datatest" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/index.jsp</url>
+          <line>177</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

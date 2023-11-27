@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Chan Chan
+  Date: 11/27/2023
+  Time: 11:28 PM
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
@@ -11,11 +18,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
           integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
-
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap">
     <link rel="stylesheet" href="/admin/assert/css/all.min.css">
     <link rel="stylesheet" href="/admin/assert/css/mdb.min.css">
-    <link rel="stylesheet" href="/admin/assert/css/home.css">
+    <style>body {
+        background-color: hsl(0, 0%, 97%);
+    }
+
+    @media (min-width: 1400px) {
+        main,
+        header,
+        #main-navbar {
+            padding-left: 240px;
+        }
+    }</style>
+    <style>INPUT:-webkit-autofill, SELECT:-webkit-autofill, TEXTAREA:-webkit-autofill {
+        animation-name: onautofillstart
+    }
+
+    INPUT:not(:-webkit-autofill), SELECT:not(:-webkit-autofill), TEXTAREA:not(:-webkit-autofill) {
+        animation-name: onautofillcancel
+    }
+
+    @keyframes onautofillstart {
+    }
+
+    @keyframes onautofillcancel {
+    }</style>
+    <link rel="stylesheet" href="assert/css/home.css">
 
 </head>
 <body>
@@ -29,10 +59,10 @@
         <section class="">
             <div class="card shadow-0 text-center">
                 <div class="card-header py-3 justify-content-center ">
-                    <p class="mb-0 float-md-start">Product Lists</p>
+                    <p class="mb-0 float-md-start">Sub Product Lists</p>
                     <button type="button" class="btn float-md-end" data-mdb-toggle="modal"
                             data-mdb-target="#addProductForm">
-                        <i class="fa-solid fa-plus"> Add Product</i>
+                        <i class="fa-solid fa-plus"> Add Sub Product</i>
                     </button>
                 </div>
                 <div class="card-body">
@@ -43,9 +73,10 @@
                         <table class="table text-nowrap table-borderless table-striped table-hover align-middle mb-0 bg-white">
                             <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Status</th>
-                                <th>Sold</th>
+                                <th>Color</th>
+                                <th>Price</th>
+                                <th>inventory</th>
+                                <th>Image</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
@@ -63,12 +94,15 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <span class="text-success"><span> active</span></span>
+                                    <p class="fw-normal mb-0">$62,456.24</p>
+                                </td>
+                                <td>
+                    <span class="text-success"><i class="fas fa-caret-up fa-sm"></i>
+                      <span> 150</span></span>
                                 </td>
                                 <td>
                                     <p class="fw-normal mb-1">123</p>
                                 </td>
-
                                 <td class="align-content-center">
                                     <!-- Button trigger modal -->
                                     <button type="button" class="btn alert-success" data-mdb-toggle="modal"
@@ -78,9 +112,9 @@
                                     <button type="button" class="btn alert-danger" data-mdb-toggle="modal">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
-                                    <a type="button" class="btn alert-primary" data-mdb-toggle="modal" href="listSubProduct.jsp">
+                                    <button type="button" class="btn alert-primary" data-mdb-toggle="modal">
                                         <i class="fa-solid fa-eye"></i>
-                                    </a>
+                                    </button>
                                 </td>
                             </tr>
                             <tr>
@@ -95,7 +129,11 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <span class="text-danger"><span> inActive</span></span>
+                                    <p class="fw-normal mb-0">$3,346.45</p>
+                                </td>
+                                <td>
+                    <span class="text-danger"><i class="fas fa-caret-down fa-sm"></i>
+                      <span> 150</span></span>
                                 </td>
                                 <td>
                                     <p class="fw-normal mb-1">123</p>
@@ -109,17 +147,17 @@
                                     <button type="button" class="btn alert-danger" data-mdb-toggle="modal">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
-                                    <a type="button" class="btn alert-primary" data-mdb-toggle="modal" href="listSubProduct.jsp">
+                                    <button type="button" class="btn alert-primary" data-mdb-toggle="modal">
                                         <i class="fa-solid fa-eye"></i>
-                                    </a>
+                                    </button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <div class="d-flex align-items-center">
-                                        <img src="https://mdbootstrap.com/img/Photos/dashboard/crypto/bitcoin.png"
-                                             alt=""
-                                             style="width: 45px; height: 45px" class="rounded-circle"/>
+                                        <img src="https://mdbootstrap.com/img/Photos/dashboard/crypto/fantom.png"
+                                             class="rounded-circle"
+                                             alt="" style="width: 45px; height: 45px"/>
                                         <div class="ms-3">
                                             <p class="fw-bold mb-1">productName</p>
                                             <p class="text-muted mb-0">Brand</p>
@@ -127,12 +165,16 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <span class="text-success"><span> active</span></span>
+                                    <p class="fw-normal mb-0">$1.24</p>
+                                </td>
+                                <td>
+
+                    <span class="text-success"><i class="fas fa-caret-up fa-sm"></i>
+                      <span> 150</span></span>
                                 </td>
                                 <td>
                                     <p class="fw-normal mb-1">123</p>
                                 </td>
-
                                 <td class="align-content-center">
                                     <!-- Button trigger modal -->
                                     <button type="button" class="btn alert-success" data-mdb-toggle="modal"
@@ -142,15 +184,16 @@
                                     <button type="button" class="btn alert-danger" data-mdb-toggle="modal">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
-                                    <a type="button" class="btn alert-primary" data-mdb-toggle="modal" href="listSubProduct.jsp">
+                                    <button type="button" class="btn alert-primary" data-mdb-toggle="modal">
                                         <i class="fa-solid fa-eye"></i>
-                                    </a>
+                                    </button>
+
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <div class="d-flex align-items-center">
-                                        <img src="https://mdbootstrap.com/img/Photos/dashboard/crypto/ethereum.png"
+                                        <img src="https://mdbootstrap.com/img/Photos/dashboard/crypto/avalanche.png"
                                              class="rounded-circle" alt="" style="width: 45px; height: 45px"/>
                                         <div class="ms-3">
                                             <p class="fw-bold mb-1">productName</p>
@@ -159,7 +202,12 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <span class="text-success"><span>active</span></span>
+                                    <p class="fw-normal mb-0">$54.45</p>
+                                </td>
+                                <td>
+
+                    <span class="text-success"><i class="fas fa-caret-up fa-sm"></i>
+                      <span> 120</span></span>
                                 </td>
                                 <td>
                                     <p class="fw-normal mb-1">123</p>
@@ -173,9 +221,47 @@
                                     <button type="button" class="btn alert-danger" data-mdb-toggle="modal">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
-                                    <a type="button" class="btn alert-primary" data-mdb-toggle="modal" href="listSubProduct.jsp">
+                                    <button type="button" class="btn alert-primary" data-mdb-toggle="modal">
                                         <i class="fa-solid fa-eye"></i>
-                                    </a>
+                                    </button>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="https://mdbootstrap.com/img/Photos/dashboard/crypto/solana.png"
+                                             class="rounded-circle"
+                                             alt="" style="width: 45px; height: 45px"/>
+                                        <div class="ms-3">
+                                            <p class="fw-bold mb-1">productName</p>
+                                            <p class="text-muted mb-0">Brand</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p class="fw-normal mb-0">$52.429</p>
+                                </td>
+                                <td>
+
+                    <span class="text-danger"><i class="fas fa-caret-down fa-sm"></i>
+                      <span> 124</span></span>
+                                </td>
+                                <td>
+                                    <p class="fw-normal mb-1">123</p>
+                                </td>
+                                <td class="align-content-center">
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn alert-success" data-mdb-toggle="modal"
+                                            data-mdb-target="#editProductForm">
+                                        <i class="fa-solid fa-pencil"></i>
+                                    </button>
+                                    <button type="button" class="btn alert-danger" data-mdb-toggle="modal">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                    <button type="button" class="btn alert-primary" data-mdb-toggle="modal">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
                                 </td>
                             </tr>
                             </tbody>
@@ -207,82 +293,58 @@
     </div>
 
     <!--section pagination-->
-    <!--    edit product form-->
+    <!--    edit sub product form-->
     <div class="modal fade" id="editProductForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="container-lg modal-dialog">
             <div class="h-100 gradient-custom">
                 <div class="container py-5 h-100">
                     <form class="row g-3 needs-validation" novalidate>
                         <div class="modal-title">
-                            <h2 class="text-start text-black w-50">Edit Product</h2>
+                            <h2 class="text-start text-black w-50">Edit Sub Product</h2>
                         </div>
                         <div class="col-md-12">
-                            <label for="editNameProduct" class="form-label">Product Name</label>
-                            <input type="text" class="form-control" id="editNameProduct" value="Mark" required>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
+                            <label for="nameDisableEdit" class="form-label">Product Name</label>
+                            <input  type="text" class="form-control" id="nameDisableEdit" value="Pega" placeholder="Disable input" disabled>
                         </div>
-                        <!--                        list category-->
+                        <!--list color-->
                         <div class="col-md-6">
-                            <label for="editCategoryname" class="form-label">Category</label>
+                            <label for="editCategoryname" class="form-label">Color</label>
                             <select class="form-select" id="editCategoryname" required>
-                                <option selected disabled value="">Xe Điện</option>
-                                <option>Xe Máy Điện</option>
-                                <option>Xe Đạp Điện</option>
-                                <option>Xe Đạp Thể Thao</option>
+                                <option selected disabled value="">Black</option>
+                                <option>Red</option>
+                                <option>Blue</option>
+                                <option>Green</option>
                             </select>
                             <div class="invalid-feedback">
                                 Please select a valid state.
                             </div>
                         </div>
-                        <!--                        list suppliers-->
+<%--                        edit price--%>
                         <div class="col-md-6">
-                            <label for="editSupplierName" class="form-label">Supplier</label>
-                            <select class="form-select" id="editSupplierName" required>
-                                <option selected disabled value="">Việt Nam</option>
-                                <option>Trung Quốc</option>
-                                <option>Thái Lan</option>
-                                <option>Đài Loan</option>
-                                <option>Nhật Bản</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please select a valid state.
-                            </div>
+                            <label for="moneyInput" class="form-label">Price</label>
+                            <input type="text" class="form-control" id="moneyInput">
                         </div>
+<%--                        edit inventory--%>
                         <div class="col-md-6">
-                            <label for="editBrandName" class="form-label">Brand</label>
-                            <select class="form-select" id="editBrandName" required>
-                                <option selected disabled value="">Pega</option>
-                                <option>JVC</option>
-                                <option>Galaxy</option>
-                                <option>Yadea</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please select a valid state.
-                            </div>
+                            <label for="editInventory" class="form-label">Inventory</label>
+                            <input type="number" class="form-control" id="editInventory">
                         </div>
+                        <!--Image-->
                         <div class="col-md-6">
-                            <div class="form-outline">
-                                <textarea class="form-control" id="editDescription" rows="4"></textarea>
-                                <label class="form-label" for="editDescription">Description</label>
+                            <!--Image-->
+                            <div>
+                                <div class="mb-4 d-flex justify-content-center">
+                                    <img src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg"
+                                         alt="example placeholder" style="width: 250px;"/>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <div class="btn btn-primary btn-rounded">
+                                        <label class="form-label text-white m-1" for="editImage">Choose file</label>
+                                        <input type="file" class="form-control d-none" id="editImage"/>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-3 float-end">
-                            <label for="editWheelSize" class="form-label">Wheel Size</label>
-                            <input type="text" class="form-control"
-                                   id="editWheelSize" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid zip.
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="editMaterial" class="form-label">Material</label>
-                            <input type="text" class="form-control" id="editMaterial">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="editWarranty" class="form-label">Warranty</label>
-                            <input type="text" class="form-control" id="editWarranty">
+
                         </div>
                         <button class="btn btn-secondary w-25" type="submit">Edit Product</button>
                     </form>
@@ -291,9 +353,8 @@
             </div>
         </div>
     </div>
-    <!--    end edit product form-->
-
-    <!--    add product form-->
+    <!--    end edit sub product form-->
+    <!--    add sub product form-->
     <div class="modal fade" id="addProductForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="container-lg modal-dialog">
             <div class="h-100 gradient-custom">
@@ -303,78 +364,48 @@
                             <h2 class="text-start text-black w-50">Add Product</h2>
                         </div>
                         <div class="col-md-12">
-                            <label for="nameProduct" class="form-label">Product Name</label>
-                            <input type="text" class="form-control" id="nameProduct" value="Mark" required>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
+                            <label for="nameDisableAdd" class="form-label">Product Name</label>
+                            <input  type="text" class="form-control" id="nameDisableAdd" value="Pega" placeholder="Disable input" disabled>
                         </div>
-                        <!--list category-->
+                        <!--list color-->
                         <div class="col-md-6">
-                            <label for="categoryName" class="form-label">Category</label>
-                            <select class="form-select" id="categoryname" required>
-                                <option selected disabled value="">Xe Điện</option>
-                                <option>Xe Máy Điện</option>
-                                <option>Xe Đạp Điện</option>
-                                <option>Xe Đạp Thể Thao</option>
+                            <label for="addCategoryname" class="form-label">Color</label>
+                            <select class="form-select" id="addCategoryname" required>
+                                <option selected disabled value="">Black</option>
+                                <option>Red</option>
+                                <option>Blue</option>
+                                <option>Green</option>
                             </select>
                             <div class="invalid-feedback">
                                 Please select a valid state.
                             </div>
                         </div>
-                        <!--list suppliers-->
+                        <%--                        add price--%>
                         <div class="col-md-6">
-                            <label for="supplierName" class="form-label">Supplier</label>
-                            <select class="form-select" id="supplierName" required>
-                                <option selected disabled value="">Việt Nam</option>
-                                <option>Trung Quốc</option>
-                                <option>Thái Lan</option>
-                                <option>Đài Loan</option>
-                                <option>Nhật Bản</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please select a valid state.
-                            </div>
+                            <label for="addPrice" class="form-label">Price</label>
+                            <input type="text" class="form-control" id="addPrice">
                         </div>
-                        <!--list brand-->
+                        <%--                        add inventory--%>
                         <div class="col-md-6">
-                            <label for="brandName" class="form-label">Brand</label>
-                            <select class="form-select" id="brandName" required>
-                                <option selected disabled value="">Pega</option>
-                                <option>JVC</option>
-                                <option>Galaxy</option>
-                                <option>Yadea</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please select a valid state.
-                            </div>
+                            <label for="addInventory" class="form-label">Inventory</label>
+                            <input type="text" class="form-control" id="addInventory">
                         </div>
-                        <!--description-->
+                        <!--Image-->
                         <div class="col-md-6">
-                            <div class="form-outline">
-                                <textarea class="form-control" id="description" rows="4"></textarea>
-                                <label class="form-label" for="description">Description</label>
+                            <!--Image-->
+                            <div>
+                                <div class="mb-4 d-flex justify-content-center">
+                                    <img src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg"
+                                         alt="example placeholder" style="width: 250px;"/>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <div class="btn btn-primary btn-rounded">
+                                        <label class="form-label text-white m-1" for="addImage">Choose file</label>
+                                        <input type="file" class="form-control d-none" id="addImage"/>
+                                    </div>
+                                </div>
                             </div>
 
-                        </div>
-                        <%-- wheel size--%>
-                        <div class="col-md-3 float-end">
-                            <label for="validationCustom12" class="form-label">Wheel Size</label>
-                            <input type="text" class="form-control"
-                                   id="validationCustom12" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid zip.
-                            </div>
-                        </div>
-                        <%--material--%>
-                        <div class="col-md-3">
-                            <label for="material" class="form-label">Material</label>
-                            <input type="text" class="form-control" id="material">
-                        </div>
-                        <%--warranty--%>
-                        <div class="col-md-6">
-                            <label for="Warranty" class="form-label">Warranty</label>
-                            <input type="text" class="form-control" id="Warranty">
                         </div>
                         <button class="btn btn-secondary w-25" type="submit">Add Product</button>
                     </form>
@@ -382,16 +413,21 @@
             </div>
         </div>
     </div>
-    <!--    end add product form-->
-
 </main>
 <!--Footer-->
 <footer></footer>
 <!--Footer-->
 
+
 <script src="/admin/assert/js/mdb.min.js"></script>
 <script src="/admin/assert/js/all.min.js"></script>
 <script src="/admin/assert/js/chart.min.js"></script>
+<script src="/admin/assert/js/jquery.maskMoney.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#moneyInput').maskMoney({prefix: 'VND ', allowNegative: true, thousands: '.', decimal: ',', affixesStay: false});
+    });
+</script>
 
 </body>
 </html>

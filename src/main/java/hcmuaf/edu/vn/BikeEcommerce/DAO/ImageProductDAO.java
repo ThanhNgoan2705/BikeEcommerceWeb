@@ -33,4 +33,6 @@ public interface ImageProductDAO {
     void deleteImageProductByProductId(@Bind("productId")String productId);
     @SqlQuery(ScirptSQL.getTop1ImageProductByProductId)
     List<ImageProduct> getTop1ImageProductByProductId(@Bind("productId")String productId);
+    @SqlQuery(ScirptSQL.getImageProductById)
+    List<ImageProduct> getListImageProductById(@Bind("productId")String productId);
 }
