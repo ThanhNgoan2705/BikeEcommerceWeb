@@ -28,7 +28,7 @@ public class SubProduct_colorService {
         return jdbi.withExtension(SubProduct_colorDAO.class, dao -> dao.getAllColorProduct());
     }
 
-    SubProduct_color getColorProductByProductIdAndColorId(String productId, String colorId) {
+    public SubProduct_color getColorProductByProductIdAndColorId(String productId, String colorId) {
         return jdbi.withExtension(SubProduct_colorDAO.class, dao -> dao.getColorProductByProductIdAndColorId(productId, colorId));
     }
 

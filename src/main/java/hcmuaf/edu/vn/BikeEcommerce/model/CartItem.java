@@ -23,6 +23,7 @@ public class CartItem {
     private String createdAt;
     private String updatedAt;
     private Product product;
+    private double price;
 
 
     public CartItem() {
@@ -47,7 +48,16 @@ public class CartItem {
                 ", createdAt='" + createdAt + '\'' +
                 ", updatedAt='" + updatedAt + '\'' +
                 ", product=" + product +
+                ", price=" + price +
                 '}';
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     @Override
