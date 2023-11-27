@@ -43,13 +43,13 @@ public class CartItemsService {
 
     public CartItem getCartItemByCartItemId(String cartItemId) {
         CartItem c = jdbi.withExtension(CartItemsDao.class, dao -> dao.getCartItemByCartItemId(cartItemId));
-
         return mapCartItem(c);
     }
 
     CartItem mapCartItem(CartItem cartItem) {
         if (cartItem == null) return null;
         Product product = ProductService.getInstance().getProductById(cartItem.getProductId());
+        cartItem.setPrice(SubProduct_colorService.getInstance().getPriceByProductIdAndColorId(cartItem.getProductId(), cartItem.getColorId()));
         cartItem.setProduct(product);
         return cartItem;
     }

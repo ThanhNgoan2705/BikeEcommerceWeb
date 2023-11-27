@@ -148,30 +148,38 @@
                                 </td>
 
                                 <td>
-                                    <a class="nav-link dropdown-toggle dark-grey-text font-weight-bold"
-                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
-                                            class="fas fa-user blue-text"></i> Profile </a>
-                                    <div class="dropdown-menu dropdown-menu-right dropdown-cyan" aria-labelledby="userAccount">
-                                        <a class="dropdown-item waves-effect waves-light" href="/login">Log In</a>
-                                        <a class="dropdown-item waves-effect waves-light" href="/register">Sign Up</a>
-                                    </div>
+
+                                    <select id="colors-${item.cartItemId}" name="colors"
+                                            onchange="updateColorAndQuantity('${item.cartItemId}',document.querySelector('#quantity-${item.cartItemId}').value, this.value);updatePriceByColorOnItemId('${item.cartItemId}',this.value)">
+                                        <c:forEach var="color" items="${item.product.colors}">
+                                            <option value="${color.colorId}">
+                                                    ${color.name}
+                                            </option>
+                                        </c:forEach>
+                                    </select>
+
                                 </td>
 
                                 <td></td>
 
-                                <td>${item.product.price}</td>
+
+                                <td id="price-${item.cartItemId}">${item.price}</td>
+
 
                                 <td class="text-center text-md-left">
 
                                     <span class="qty"></span>
 
                                     <div class="def-number-input number-input safari_only">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown();updateQuantityAndTotal('${item.cartItemId}',this.parentNode.querySelector('input[type=number]').value,${item.product.price} ) "
+
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown();updateQuantityAndTotal('${item.cartItemId}',this.parentNode.querySelector('input[type=number]').value,document.getElementById('colors-${item.cartItemId}').value ) "
                                                 class="minus"></button>
                                         <input class="quantity" min="1" name="quantity" value="${item.quantity}"
+                                               id="quantity-${item.cartItemId}"
                                                type="number"
-                                               oninput="updateQuantityAndTotal('${item.cartItemId}',this.value,${item.product.price})">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp();updateQuantityAndTotal('${item.cartItemId}',this.parentNode.querySelector('input[type=number]').value,${item.product.price} )"
+                                               oninput="updateQuantityAndTotal('${item.cartItemId}',this.value,document.getElementById('colors-${item.cartItemId}').value)">
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp();updateColorAndQuantity('${item.cartItemId}',this.parentNode.querySelector('input[type=number]').value,document.getElementById('colors-${item.cartItemId}').value )"
+
                                                 class="plus"></button>
                                     </div>
 
@@ -179,7 +187,9 @@
 
                                 <td class="font-weight-bold item">
 
-                                    <strong id="total-for-one-item-${item.cartItemId}">${item.product.price *item.quantity} </strong>
+
+                                    <strong id="total-for-one-item-${item.cartItemId}">${item.price * item.quantity} </strong>
+
 
                                 </td>
 
@@ -242,8 +252,8 @@
                     <!-- Shopping Cart table -->
 
                 </div>
-
             </div>
+
 
         </section>
         <!-- Section cart -->
@@ -1213,130 +1223,153 @@
 
 </script>
 <script src="mdb/js/default.js"></script>
-<script> function updateQuantity(cartItemId, quantity, callback) {
-    // Đường dẫn của servlet
-    var servletUrl = '/user/updateCartItem';
 
-    // Dữ liệu gửi đi
-    var data = {
-        cartItemId: cartItemId,
-        quantity: quantity
-    };
-    console.log(data);
-    // Thực hiện yêu cầu AJAX bằng jQuery
-    $.ajax({
-        type: 'POST',
-        url: servletUrl,
-        data: data,
-        success: function (response) {
-            console.log('Request succeeded:', response);
-            // Xử lý dữ liệu nhận được từ servlet (nếu cần)
-            callback(true);
 
-        },
-        error: function (xhr, status, error) {
-            console.error('Request failed:', status, error);
-            callback(false);
-        }
-    });
-}
+<script>
 
-function updateQuantityAndTotal(cartItemId, quantity, price) {
-    if (price == null) {
-        price = 0;
-    } else {
-        price = parseInt(price);
+    function updateColorAndQuantity(cartItemId, quantity, colorId) {
+        // Đường dẫn của servlet
+        var servletUrl = '/user/updateCartItem';
+
+        // Dữ liệu gửi đi
+        var data = {
+            cartItemId: cartItemId,
+            colorId: colorId,
+            quantity: quantity
+        };
+        console.log(data);
+        // Thực hiện yêu cầu AJAX bằng jQuery
+        $.ajax({
+            type: 'POST',
+            url: servletUrl,
+            data: data,
+            success: function (response) {
+                console.log('Request succeeded:', response);
+                // Xử lý dữ liệu nhận được từ servlet (nếu cần)
+                updatePriceByColorOnItemId(cartItemId, colorId);
+                updateTotal(cartItemId, quantity, document.getElementById('price-' + cartItemId).textContent);
+            },
+            error: function (xhr, status, error) {
+                console.error('Request failed:', status, error);
+            }
+        });
     }
-    updateQuantity(cartItemId, quantity, function (callback) {
-        console.log(callback);
-        var totalElement = document.querySelector(`#total-for-one-item-` + cartItemId);
-        if (callback) {
-            console.log(cartItemId, quantity, price);
-            console.log(totalElement);
-            totalElement.textContent = price * quantity;
-            var totalAll = document.getElementById('total-all');
 
-            updateTotalAll();
+    function updateTotal(cartItemId, quantity, price) {
+        if (price == null) {
+            price = 0;
         } else {
-            totalElement.textContent = "out of inventory";
-            updateTotalAll();
+            price = parseInt(price);
         }
-    });
-
-
-}
-
-function deleteItem(cartItemId, callback) {
-    // Đường dẫn của servlet
-    var servletUrl = '/user/deleteProductFromCart';
-
-    // Dữ liệu gửi đi
-    var data = {
-        cartItemId: cartItemId
-    };
-    console.log(data);
-    // Thực hiện yêu cầu AJAX bằng jQuery
-    $.ajax({
-        type: 'POST',
-        url: servletUrl,
-        data: data,
-        success: function (response) {
-            console.log('Request succeeded:', response);
-            // Xử lý dữ liệu nhận được từ servlet (nếu cần)
-            callback(true);
-
-        },
-        error: function (xhr, status, error) {
-            console.error('Request failed:', status, error);
-            callback(false);
-        }
-    });
-
-}
-
-function removeItem(rowId, cartItemId) {
-    var isConfirmed = confirm('Bạn chắc chắn muốn xóa item này?');
-    if (isConfirmed) {
-        var rowToRemove = document.getElementById(rowId);
-        console.log(rowToRemove);
-        if (rowToRemove) {
-            rowToRemove.remove();
-            deleteItem(cartItemId, function (callback) {
-                if (callback) {
-                    console.log('delete success');
-                    updateTotalAll();
-                } else {
-                    console.log('delete fail');
-                }
-            });
-        } else {
-            console.error('Row not found:', rowId);
-        }
-    } else {
-        console.log('User cancelled');
+        var total = quantity * price;
+        document.querySelector(`#total-for-one-item-` + cartItemId).textContent = total;
+        updateTotalAll();
     }
-}
 
-function updateTotalAll() {
-    var totalAll = 0;
+    function updatePriceByColorOnItemId(cartItemId, colorId) {
+        var servletUrl = '/getPriceByColorAndProductId';
+        var data = {
+            cartItemId: cartItemId,
+            colorId: colorId
+        };
+        $.ajax({
+            type: 'POST',
+            url: servletUrl,
+            data: data,
+            success: function (response) {
+                console.log('Request succeeded:', response);
+                // Xử lý dữ liệu nhận được từ servlet (nếu cần)
+                var priceElement = document.getElementById(`price-` + cartItemId);
+                console.log(priceElement);
+                priceElement.textContent = response;
 
-    // Lặp qua tất cả các phần tử có class "font-weight-bold" trong tbody
-    var itemTotalElements = document.querySelectorAll('tbody .item');
-    itemTotalElements.forEach(function (element) {
-        // Trích xuất giá trị tổng từ phần tử và chuyển đổi thành số
-        var itemTotal = parseFloat(element.textContent.trim());
 
-        // Thêm giá trị tổng của sản phẩm vào tổng chung
-        totalAll += itemTotal;
-        console.log(itemTotal);
-    });
+            },
+            error: function (xhr, status, error) {
+                console.error('Request failed:', status, error);
 
-    // Cập nhật nội dung của phần tử có id "total-all"
-    document.getElementById('total-all').textContent = totalAll.toFixed(2);
-}
+            }
+        });
+    }
 
-window.onload = updateTotalAll;
+    function deleteItem(cartItemId, callback) {
+        // Đường dẫn của servlet
+        var servletUrl = '/user/deleteProductFromCart';
+
+        // Dữ liệu gửi đi
+        var data = {
+            cartItemId: cartItemId
+        };
+        console.log(data);
+        // Thực hiện yêu cầu AJAX bằng jQuery
+        $.ajax({
+            type: 'POST',
+            url: servletUrl,
+            data: data,
+            success: function (response) {
+                console.log('Request succeeded:', response);
+                // Xử lý dữ liệu nhận được từ servlet (nếu cần)
+                callback(true);
+
+            },
+            error: function (xhr, status, error) {
+                console.error('Request failed:', status, error);
+                callback(false);
+            }
+        });
+
+    }
+
+    function removeItem(rowId, cartItemId) {
+        var isConfirmed = confirm('Bạn chắc chắn muốn xóa item này?');
+        if (isConfirmed) {
+            var rowToRemove = document.getElementById(rowId);
+            console.log(rowToRemove);
+            if (rowToRemove) {
+                rowToRemove.remove();
+                deleteItem(cartItemId, function (callback) {
+                    if (callback) {
+                        console.log('delete success');
+                        updateTotalAll();
+                    } else {
+                        console.log('delete fail');
+                    }
+                });
+            } else {
+                console.error('Row not found:', rowId);
+            }
+        } else {
+            console.log('User cancelled');
+        }
+    }
+
+    function updateTotalAll() {
+        var totalAll = 0;
+
+
+        // Lặp qua tất cả các phần tử có class "font-weight-bold" trong tbody
+        var itemTotalElements = document.querySelectorAll('tbody .item');
+        itemTotalElements.forEach(function (element) {
+            // Trích xuất giá trị tổng từ phần tử và chuyển đổi thành số
+            var itemTotal = parseFloat(element.textContent.trim());
+
+
+            // Thêm giá trị tổng của sản phẩm vào tổng chung
+            totalAll += itemTotal;
+            console.log(itemTotal);
+        });
+
+        // Cập nhật nội dung của phần tử có id "total-all"
+        document.getElementById('total-all').textContent = totalAll.toFixed(2);
+    }
+
+
+
+    window.onload = updateTotalAll;
+
 </script>
+
 </body>
+
 </html>
 
