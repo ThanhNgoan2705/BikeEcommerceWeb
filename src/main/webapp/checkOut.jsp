@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<%@ page contentType="text/html; charset=UTF-8"  language="java" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="vie">
@@ -15,14 +15,28 @@
     <title>Xe Điện Long Vũ</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%--    fontAwesome--%>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
     <link
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
             rel="stylesheet"
     />
     <%--    MDB CSS--%>
-    <style>INPUT:-webkit-autofill,SELECT:-webkit-autofill,TEXTAREA:-webkit-autofill{animation-name:onautofillstart}INPUT:not(:-webkit-autofill),SELECT:not(:-webkit-autofill),TEXTAREA:not(:-webkit-autofill){animation-name:onautofillcancel}@keyframes onautofillstart{}@keyframes onautofillcancel{}</style>
+    <style>INPUT:-webkit-autofill, SELECT:-webkit-autofill, TEXTAREA:-webkit-autofill {
+        animation-name: onautofillstart
+    }
+
+    INPUT:not(:-webkit-autofill), SELECT:not(:-webkit-autofill), TEXTAREA:not(:-webkit-autofill) {
+        animation-name: onautofillcancel
+    }
+
+    @keyframes onautofillstart {
+    }
+
+    @keyframes onautofillcancel {
+    }</style>
     <link href="mdb/css/bootstrap.min.css" rel="stylesheet">
     <link href="mdb/css/mdb.min.css" rel="stylesheet">
     <link href="mdb/css/addons/compiled-addons-4.20.0.min.css">
@@ -33,15 +47,15 @@
 <body class="product-v2 hidden-sn white-skin animated">
 
 <!--onTop-->
-<%@include file="default/ontopButton.jsp"%>
+<%@include file="default/ontopButton.jsp" %>
 <!--onTop-->
 
 <!-- Navigation -->
-<%@ include file="default/header.jsp"%>
+<%@ include file="default/header.jsp" %>
 <!-- Navigation -->
 
 <!-- Mega menu -->
-<%@include file="default/menu.jsp"%>
+<%@include file="default/menu.jsp" %>
 <!-- Mega menu -->
 
 <!-- Main Container -->
@@ -57,7 +71,8 @@
                 <!-- Pills navs -->
                 <ul class="nav md-pills nav-justified pills-primary font-weight-bold">
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#tabCheckoutBilling123" role="tab">1. Billing</a>
+                        <a class="nav-link active" data-toggle="tab" href="#tabCheckoutBilling123" role="tab">1.
+                            Billing</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#tabCheckoutAddons123" role="tab">2. Addons</a>
@@ -76,102 +91,66 @@
                         <!--Card content-->
                         <form>
 
-                            <!--Grid row-->
+
+                            <!--Grid column-->
                             <div class="row">
-
-                                <!--Grid column-->
-                                <div class="col-md-6 mb-4">
-
-                                    <!--firstName-->
-                                    <label for="firstName" class="">First name</label>
-                                    <input type="text" id="firstName" class="form-control">
-
-                                </div>
-                                <!--Grid column-->
-
-                                <!--Grid column-->
-                                <div class="col-md-6 mb-2">
-
-                                    <!--lastName-->
-                                    <label for="lastName" class="">Last name</label>
-                                    <input type="text" id="lastName" class="form-control">
-
-                                </div>
-                                <!--Grid column-->
-
-                            </div>
-                            <!--Grid row-->
-
-                            <!--email-->
-                            <label for="email" class="">Email (optional)</label>
-                            <input type="text" id="email" class="form-control mb-4" placeholder="youremail@example.com">
-
-                            <!--address-->
-                            <label for="address" class="">Address</label>
-                            <input type="text" id="address" class="form-control mb-4" placeholder="1234 Main St">
-
-                            <!--Grid row-->
-                            <div class="row">
-
-                                <!--Grid column-->
-                                <div class="col-lg-4 col-md-12 mb-4">
-
-                                    <label for="country">Country</label>
-                                    <select class="custom-select d-block w-100" id="country" required>
+                                <div class="col">
+                                    <label for="chooseAddress">Select Address</label>
+                                    <select class="custom-select d-block w-100" id="chooseAddress" required>
                                         <option value="">Choose...</option>
                                         <option>United States</option>
+
                                     </select>
                                     <div class="invalid-feedback">
                                         Please select a valid country.
                                     </div>
-
                                 </div>
-                                <!--Grid column-->
+                            </div>
+                            <!--Grid column-->
+                            <form  class="display" action="checkout" method="post">
+                                <!--address-->
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="address" class="">Address</label>
+                                        <input type="text" id="address" class="form-control mb-4"
+                                               placeholder="1234 Main St">
+                                    </div>
+                                </div>
 
-                                <!--Grid column-->
-                                <div class="col-lg-4 col-md-6 mb-4">
 
-                                    <label for="state">State</label>
-                                    <select class="custom-select d-block w-100" id="state" required>
-                                        <option value="">Choose...</option>
-                                        <option>California</option>
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        Please provide a valid state.
+                                <!--Country-->
+                                <!--Grid row-->
+                                <div class="row">
+
+                                    <!--Grid column-->
+                                    <div class="col">
+
+                                        <label for="country">Country</label>
+                                        <input type="text" id="country" class="form-control mb-4"
+                                               placeholder="1234 Main St">
+
+
+                                    </div>
+                                </div>
+                                <!--Grid row-->
+
+
+                                <!--State-->
+                                <!--Grid row-->
+                                <div class="row">
+
+                                    <div class="col">
+
+                                        <label for="state">State</label>
+                                        <input type="text" id="state" class="form-control mb-4"
+                                               placeholder="1234 Main St">
+
                                     </div>
 
                                 </div>
-                                <!--Grid column-->
-
-                                <!--Grid column-->
-                                <div class="col-lg-4 col-md-6 mb-4">
-
-                                    <label for="zip">Zip</label>
-                                    <input type="text" class="form-control" id="zip" placeholder="" required>
-                                    <div class="invalid-feedback">
-                                        Zip code required.
-                                    </div>
-
-                                </div>
-                                <!--Grid column-->
-
-                            </div>
-                            <!--Grid row-->
-
-                            <hr>
-
-                            <div class="mb-1">
-                                <input type="checkbox" class="form-check-input filled-in" id="chekboxRules">
-                                <label class="form-check-label" for="chekboxRules">I accept the terms and conditions</label>
-                            </div>
-                            <div class="mb-1">
-                                <input type="checkbox" class="form-check-input filled-in" id="safeTheInfo">
-                                <label class="form-check-label" for="safeTheInfo">Save this information for next time</label>
-                            </div>
-                            <div class="mb-1">
-                                <input type="checkbox" class="form-check-input filled-in" id="subscribeNewsletter">
-                                <label class="form-check-label" for="subscribeNewsletter">Subscribe to our newsletter</label>
-                            </div>
+                                <!--Grid row-->
+                                <button class="btn btn-primary " type="submit">add</button>
+                            </form>
 
                             <hr>
 
@@ -191,7 +170,8 @@
                             <!--Grid column-->
                             <div class="col-md-5 mb-4">
 
-                                <img src="https://mdbootstrap.com/img/Photos/Others/images/43.webp" class="img-fluid z-depth-1-half"
+                                <img src="https://mdbootstrap.com/img/Photos/Others/images/43.webp"
+                                     class="img-fluid z-depth-1-half"
                                      alt="Second sample image">
 
                             </div>
@@ -202,7 +182,8 @@
 
                                 <h5 class="mb-3 h5">Additional premium support</h5>
 
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, ea ut aperiam corrupti,
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, ea ut aperiam
+                                    corrupti,
                                     dolorem.</p>
 
                                 <!--Name-->
@@ -214,7 +195,8 @@
                                     <option value="4">+24 months: 1200$</option>
                                 </select>
 
-                                <button type="button" class="btn btn-primary btn-md">Add premium support to the cart</button>
+                                <button type="button" class="btn btn-primary btn-md">Add premium support to the cart
+                                </button>
 
                             </div>
                             <!--Grid column-->
@@ -230,7 +212,8 @@
                             <!--Grid column-->
                             <div class="col-md-5 mb-4">
 
-                                <img src="https://mdbootstrap.com/img/Photos/Others/images/44.webp" class="img-fluid z-depth-1-half"
+                                <img src="https://mdbootstrap.com/img/Photos/Others/images/44.webp"
+                                     class="img-fluid z-depth-1-half"
                                      alt="Second sample image">
 
                             </div>
@@ -241,7 +224,8 @@
 
                                 <h5 class="mb-3 h5">MDB Membership</h5>
 
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, ea ut aperiam corrupti,
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, ea ut aperiam
+                                    corrupti,
                                     dolorem.</p>
 
                                 <!--Name-->
@@ -253,7 +237,8 @@
                                     <option value="4">+24 months: 1200$</option>
                                 </select>
 
-                                <button type="button" class="btn btn-primary btn-md">Add MDB Membership to the cart</button>
+                                <button type="button" class="btn btn-primary btn-md">Add MDB Membership to the cart
+                                </button>
 
                             </div>
                             <!--Grid column-->
@@ -273,7 +258,8 @@
 
                         <div class="d-block my-3">
                             <div class="mb-2">
-                                <input name="group2" type="radio" class="form-check-input with-gap" id="radioWithGap4" checked
+                                <input name="group2" type="radio" class="form-check-input with-gap" id="radioWithGap4"
+                                       checked
                                        required>
                                 <label class="form-check-label" for="radioWithGap4">Credit card</label>
                             </div>
@@ -283,7 +269,8 @@
                                 <label class="form-check-label" for="radioWithGap5">Debit card</label>
                             </div>
                             <div class="mb-2">
-                                <input name="group2" type="radio" class="form-check-input with-gap" id="radioWithGap6" required>
+                                <input name="group2" type="radio" class="form-check-input with-gap" id="radioWithGap6"
+                                       required>
                                 <label class="form-check-label" for="radioWithGap6">Paypal</label>
                             </div>
                         </div>
@@ -405,7 +392,7 @@
 
 
 <!-- Footer -->
-<%@include file="default/footer.jsp"%>
+<%@include file="default/footer.jsp" %>
 <!-- Footer -->
 <script src="mdb/js/jquery.min.js"></script>
 <script src="mdb/js/bootstrap.min.js"></script>
