@@ -74,11 +74,18 @@ public class CartItem {
     }
 
     public double total() {
-        return product.getPrice() * quantity;
+        return price * quantity;
     }
 
     public double totalDiscount() {
-        return product.getPrice() * quantity * (1 - product.getDiscount().getDiscountPercent());
+        Discount discount = product.getDiscount();
+        if (discount == null) {
+            return 0;
+        }
+        if (discount.getActive() == 0) {
+            return 0;
+        }
+        return (price *  (discount.getDiscountPercent()/100)) * quantity;
     }
 
     public String getColorId() {

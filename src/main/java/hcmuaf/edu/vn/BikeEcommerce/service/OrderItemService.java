@@ -30,6 +30,7 @@ public class OrderItemService {
     public OrderItem mapOrderBean(OrderItem item) {
         if (item == null) return null;
         item.setProduct(ProductService.getInstance().getProductById(item.getProductId()));
+        item.setColor(ColorService.getInstance().getColorById(item.getColorId()));
         return item;
     }
 

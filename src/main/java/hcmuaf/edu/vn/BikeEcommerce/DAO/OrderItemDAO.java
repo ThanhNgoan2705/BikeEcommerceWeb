@@ -3,7 +3,7 @@ package hcmuaf.edu.vn.BikeEcommerce.DAO;
 import hcmuaf.edu.vn.BikeEcommerce.model.OrderItem;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
-import org.jdbi.v3.sqlobject.customizer.BindBean;
+import org.jdbi.v3.sqlobject.customizer.BindMethods;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
@@ -16,11 +16,11 @@ public interface OrderItemDAO {
     public List<OrderItem> getOrderItemsByOrderId(@Bind("orderId") String orderId);
 
     @SqlUpdate(ScirptSQL.insertOrderItem)
-    void insertOrderItem(@BindBean OrderItem orderItem);
+    void insertOrderItem(@BindMethods OrderItem orderItem);
 
     @SqlUpdate(ScirptSQL.updateOrderItem)
-    void updateOrderItem(@BindBean OrderItem orderItem);
+    void updateOrderItem(@BindMethods OrderItem orderItem);
 
     @SqlUpdate(ScirptSQL.deleteOrderItemById)
-    void deleteOrderItem(@Bind("id") String id);
+    void deleteOrderItem(@Bind("orderItemId") String orderItemId);
 }

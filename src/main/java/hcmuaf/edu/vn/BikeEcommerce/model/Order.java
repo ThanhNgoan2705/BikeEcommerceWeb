@@ -43,11 +43,11 @@ public class Order {
     private String orderId;
 
     private String userId;
-    private String addressId;
+    private String fullAddress;
     @ColumnName("price")
     private double price;
     @ColumnName("discount")
-    private int discount;
+    private double discount;
     @ColumnName("shipping_fee")
     private double shippingFee;
     @ColumnName("total")
@@ -65,27 +65,16 @@ public class Order {
     // atrribute object
     @Nested("u")
     private User user;
-    private Address address;
     private List<OrderItem> orderItemList;
 
     //1-pending, 2-Confirmed, 3-Processing, 4-Shipped,5-Delivered,6-Cancelled,7-Returned,8-Refunded
     public Order() {
     }
 
-    public Order(String orderId, String userId, String addressId, double price, int discount, double shippingFee, double total) {
+    public Order(String orderId, String userId, String fullAddress, double price, double discount, double shippingFee, double total, String sendDay, String receiveDay, int status, String createdAt, String updatedAt) {
         this.orderId = orderId;
         this.userId = userId;
-        this.addressId = addressId;
-        this.price = price;
-        this.discount = discount;
-        this.shippingFee = shippingFee;
-        this.total = total;
-    }
-
-    public Order(String orderId, String userId, String addressId, double price, int discount, double shippingFee, double total, String sendDay, String receiveDay, int status) {
-        this.orderId = orderId;
-        this.userId = userId;
-        this.addressId = addressId;
+        this.fullAddress = fullAddress;
         this.price = price;
         this.discount = discount;
         this.shippingFee = shippingFee;
@@ -93,43 +82,36 @@ public class Order {
         this.sendDay = sendDay;
         this.receiveDay = receiveDay;
         this.status = status;
-    }
-
-    public Order(String orderId, String userId, String addressId, double price, int discount, double shippingFee, double total, String sendDay, String receiveDay, int status, User user, Address address, List<OrderItem> orderItemList) {
-        this.orderId = orderId;
-        this.userId = userId;
-        this.addressId = addressId;
-        this.price = price;
-        this.discount = discount;
-        this.shippingFee = shippingFee;
-        this.total = total;
-        this.sendDay = sendDay;
-        this.receiveDay = receiveDay;
-        this.status = status;
-        this.user = user;
-        this.address = address;
-        this.orderItemList = orderItemList;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     @Override
     public String toString() {
-        return "Order{" + "orderId='" + orderId + '\'' + ", userId='" + userId + '\'' + ", addressId='" + addressId + '\'' + ", price=" + price + ", discount=" + discount + ", shippingFee=" + shippingFee + ", total=" + total + ", sendDay='" + sendDay + '\'' + ", receiveDay='" + receiveDay + '\'' + ", status=" + status + ", createdAt='" + createdAt + '\'' + ", updatedAt='" + updatedAt + '\'' + ", user=" + user + ", address=" + address + ", orderItemList=" + orderItemList + '}';
+        return "Order{" +
+                "orderId='" + orderId + '\'' +
+                ", userId='" + userId + '\'' +
+                ", fullAddress='" + fullAddress + '\'' +
+                ", price=" + price +
+                ", discount=" + discount +
+                ", shippingFee=" + shippingFee +
+                ", total=" + total +
+                ", sendDay='" + sendDay + '\'' +
+                ", receiveDay='" + receiveDay + '\'' +
+                ", status=" + status +
+                ", createdAt='" + createdAt + '\'' +
+                ", updatedAt='" + updatedAt + '\'' +
+                ", user=" + user +
+                ", orderItemList=" + orderItemList +
+                '}';
     }
 
-    public Address getAddress() {
-        return address;
+    public String getFullAddress() {
+        return fullAddress;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public String getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(String addressId) {
-        this.addressId = addressId;
+    public void setFullAddress(String fullAddress) {
+        this.fullAddress = fullAddress;
     }
 
     public List<OrderItem> getOrderItemList() {
@@ -189,11 +171,11 @@ public class Order {
         this.price = price;
     }
 
-    public int getDiscount() {
+    public double getDiscount() {
         return discount;
     }
 
-    public void setDiscount(int discount) {
+    public void setDiscount(double discount) {
         this.discount = discount;
     }
 
@@ -214,10 +196,9 @@ public class Order {
     }
 
     public void setTotal(double price, double shippingFee, double discount) {
-        double sum = price + shippingFee;
-        double discountMoney = price * discount / 100;
-        this.total = sum - discountMoney;
+        this.total = price + shippingFee - discount;
     }
+
 
     public String getSendDay() {
         return sendDay;
@@ -250,8 +231,9 @@ public class Order {
                 orderItemListToString = orderItemListToString + orderItem.forToBytesOfOrder();
             }
         }
-        return (":" + orderId + ";" + userId + ";" + addressId + ";" + price + ";" + discount + ";" + shippingFee + ";" + total + ":" + orderItemListToString);
+        return (":" + orderId + ";" + userId + ";" + fullAddress + ";" + price + ";" + discount + ";" + shippingFee + ";" + total + ":" + orderItemListToString);
     }
+
 
 //    public static Order getOrderFromBytes(byte[] bytes) {
 //        Order order = new Order();
