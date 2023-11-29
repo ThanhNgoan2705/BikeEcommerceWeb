@@ -119,15 +119,15 @@ public class ScirptSQL {
     // Order
     public static final String getAllOrder = "SELECT * FROM `order`";
     public static final String getOrderById = "SELECT * FROM `order` WHERE order_id=:orderId";
-    public static final String insertOrder = "INSERT INTO `order` (order_id, user_id, create_at, status, total_price) " + "VALUES (:getOrderId,:getUserId,:getCreatedAt,:getStatus,:getTotalPrice);";
-    public static final String updateOrder = "UPDATE `order` " + "SET status = :getStatus, total_price = :getTotalPrice ,discount = :discount, send_day=:sendDay, receive_day=:receiveDay" + "WHERE order_id = :getOrderId;";
+    public static final String insertOrder = "INSERT INTO `order` (order_id, user_id, full_address, price, discount, shipping_fee, total, send_day, receive_day, status) " + "VALUES (:orderId, :userId, :fullAddress, :price, :discount, :shippingFee, :total, :sendDay, :receiveDay, :status);";
+    public static final String updateOrder = "UPDATE `order` " + "SET user_id = :userId, full_address = :fullAddress, price = :price, discount = :discount, shipping_fee = :shippingFee, total = :total, send_day = :sendDay, receive_day = :receiveDay, status = :status " + "WHERE order_id = :orderId;";
     public static final String deleteOrderById = "DELETE FROM `order` WHERE order_id = :orderId";
     public static final String getAllOrderByUserId = "SELECT * FROM `order` WHERE user_id=:userId";
     //OrderItem
     public static final String getProductsByOrderId = "SELECT * FROM order_item WHERE order_id=:orderId";
-    public static final String insertOrderItem = "INSERT INTO order_item (order_id, product_id, quantity, price) " + "VALUES (:getOrderId,:getProductId,:getQuantity,:getPrice);";
-    public static final String updateOrderItem = "UPDATE order_item " + "SET quantity = :getQuantity, price = :getPrice " + "WHERE order_id = :getOrderId and product_id=:getProductId;";
-    public static final String deleteOrderItemById = "DELETE FROM order_item WHERE order_id = :orderId and product_id=:productId";
+    public static final String insertOrderItem = "INSERT INTO order_item (order_item_id, order_id, product_id, quantity, color_id, price)   " + "VALUES (:getOrderItemId,:getOrderId,:getProductId,:getQuantity,:getColorId,:getPrice);";
+    public static final String updateOrderItem = "UPDATE order_item " + "SET quantity = :getQuantity, color_id = :getColorId, price = :getPrice " + "WHERE order_item_id = :getOrderItemId;";
+    public static final String deleteOrderItemById = "DELETE FROM order_item WHERE order_item_id = :orderItemId";
 
 
     // Supplier da test va fix by Hoang Hai 21-8-23
@@ -175,7 +175,6 @@ public class ScirptSQL {
 
     public static final String getTop1Product = "select * from (select * , row_number() over (partition by category_id order by category_id) as row from product) as t where row = 1";
     public static final String getTop1ImageProductByProductId = "select * from (select * , row_number() over (partition by product_id order by product_id) as row from image_product) as t where row = 1 and product_id = :productId";
-
 
 
 }

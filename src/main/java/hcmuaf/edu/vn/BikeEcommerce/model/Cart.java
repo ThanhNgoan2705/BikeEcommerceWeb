@@ -44,11 +44,7 @@ public class Cart {
     }
 
     public double total() {
-        double total = 0;
-        for (CartItem cartItem : cartItemList) {
-            total += cartItem.total();
-        }
-        return total;
+        return total(cartItemList);
     }
 
     public double totalDiscount() {
@@ -158,6 +154,7 @@ public class Cart {
         }
 
     }
+
 
     public static void main(String[] args) {
         CartItemsService cartItemsService = new CartItemsService();

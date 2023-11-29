@@ -114,4 +114,8 @@ public class Address {
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+    public String getFullAddress() {
+        return homeAddress + ", " + district + ", " + city;
+    }
 }
