@@ -1199,9 +1199,10 @@
 <!-- Footer -->
 <%@include file="default/footer.jsp" %>
 <!-- Footer -->
-<script src="mdb/js/jquery.min.js"></script>
-<script src="mdb/js/bootstrap.min.js"></script>
-<script src="mdb/js/mdb.min.js"></script>
+<script src="/mdb/js/popper.min.js"></script>
+<script src="/mdb/js/jquery.min.js"></script>
+<script src="/mdb/js/bootstrap.min.js"></script>
+<script src="/mdb/js/mdb.min.js"></script>
 <script type="text/javascript">
     /* WOW.js init */
     new WOW().init();

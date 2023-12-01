@@ -23,25 +23,11 @@
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
             rel="stylesheet"
     />
-    <%--    MDB CSS--%>
-    <style>INPUT:-webkit-autofill, SELECT:-webkit-autofill, TEXTAREA:-webkit-autofill {
-        animation-name: onautofillstart
-    }
-
-    INPUT:not(:-webkit-autofill), SELECT:not(:-webkit-autofill), TEXTAREA:not(:-webkit-autofill) {
-        animation-name: onautofillcancel
-    }
-
-    @keyframes onautofillstart {
-    }
-
-    @keyframes onautofillcancel {
-    }</style>
-    <link href="mdb/css/bootstrap.min.css" rel="stylesheet">
-    <link href="mdb/css/mdb.min.css" rel="stylesheet">
-    <link href="mdb/css/addons/compiled-addons-4.20.0.min.css">
-    <link href="mdb/css/style.css" rel="stylesheet">
-    <link href="mdb/css/default.css" rel="stylesheet">
+    <link href="/mdb/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/mdb/css/mdb.min.css" rel="stylesheet">
+    <link href="/mdb/css/addons/compiled-addons-4.20.0.min.css">
+    <link href="/mdb/css/style.css" rel="stylesheet">
+    <link href="/mdb/css/default.css" rel="stylesheet">
 
 </head>
 <body class="product-v2 hidden-sn white-skin animated">
@@ -61,65 +47,57 @@
 <!-- Main Container -->
 <div class="card">
     <div class="card-body">
-
         <!--Grid row-->
         <div class="row">
-
             <!--Grid column-->
             <div class="col-lg-8 mb-4">
-
-                <!-- Pills navs -->
-                <ul class="nav md-pills nav-justified pills-primary font-weight-bold">
-                    <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#tabCheckoutBilling123" role="tab">1.
-                            Billing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#tabCheckoutAddons123" role="tab">2. Addons</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#tabCheckoutPayment123" role="tab">3. Payment</a>
-                    </li>
-                </ul>
-
+                <a class="nav-link active" data-toggle="tab" href="#tabCheckoutBilling123" role="tab">1.
+                    Billing</a>
                 <!-- Pills panels -->
                 <div class="tab-content pt-4">
-
                     <!--Panel 1-->
                     <div class="tab-pane fade in show active" id="tabCheckoutBilling123" role="tabpanel">
-
                         <!--Card content-->
-                        <form>
-
-
+                        <form id="listAddress">
                             <!--Grid column-->
-                            <div class="row">
-                                <div class="col">
-                                    <label for="chooseAddress">Select Address</label>
-                                    <select class="custom-select d-block w-100" id="chooseAddress" required>
-                                        <option value="">Choose...</option>
-                                        <option>United States</option>
+                            <fieldset>
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="chooseAddress">Select Address</label>
+                                        <select class=" custom-select md-form  d-block w-100" id="chooseAddress"
+                                                required>
+                                            <option value="" disabled selected>Choose...</option>
+                                            <option value="2"
+                                                    data-secondary-text="Tran phu, Tay đo, hung ha, thai binh ">Chan
+                                                chan - 097733548
+                                            </option>
+                                            <option value="2"
+                                                    data-secondary-text="Tran phu, Tay đo, hung ha, thai binh ">Chan
+                                                chan - 097733548
+                                            </option>
+                                            <option value="addNewAddress">Thêm địa chỉ mới</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Please select a valid country.
+                                        </div>
 
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        Please select a valid country.
                                     </div>
                                 </div>
-                            </div>
-                            <!--Grid column-->
-                            <form  class="display" action="checkout" method="post">
-                                <!--address-->
+                                <hr>
+                            </fieldset>
+                        </form>
+                        <form style="display: none" id="newAddress" action="checkout" method="post">
+                            <!--address-->
+                            <fieldset>
                                 <div class="row">
                                     <div class="col">
                                         <label for="address" class="">Address</label>
                                         <input type="text" id="address" class="form-control mb-4"
                                                placeholder="1234 Main St">
                                     </div>
+
                                 </div>
-
-
                                 <!--Country-->
-                                <!--Grid row-->
                                 <div class="row">
 
                                     <!--Grid column-->
@@ -132,11 +110,7 @@
 
                                     </div>
                                 </div>
-                                <!--Grid row-->
 
-
-                                <!--State-->
-                                <!--Grid row-->
                                 <div class="row">
 
                                     <div class="col">
@@ -148,184 +122,43 @@
                                     </div>
 
                                 </div>
-                                <!--Grid row-->
-                                <button class="btn btn-primary " type="submit">add</button>
-                            </form>
 
-                            <hr>
-
-                            <button class="btn btn-primary btn-lg btn-block" type="submit">Next step</button>
-
+                                <button class="btn btn-primary " type="submit">Add New Address</button>
+                            </fieldset>
                         </form>
-
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label>Cash on Delivery</label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label for="code">Code</label>
+                                <input type="text" class="form-control" id="code" placeholder="" required>
+                                <button class="btn btn-primary " type="submit">Copy Code</button>
+                                <small class="text-muted">Get the code to sign, please </small>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label for="signature">Your Signature</label>
+                                <input type="text" class="form-control" id="signature" placeholder="" required>
+                                <small class="text-muted">Input your signature to verify </small>
+                                <div class="invalid-feedback">
+                                    Signature is required
+                                </div>
+                            </div>
+                        </div>
+                        <!--/.Panel 1-->
                     </div>
-                    <!--/.Panel 1-->
-
-                    <!--Panel 2-->
-                    <div class="tab-pane fade" id="tabCheckoutAddons123" role="tabpanel">
-
-                        <!--Grid row-->
-                        <div class="row">
-
-                            <!--Grid column-->
-                            <div class="col-md-5 mb-4">
-
-                                <img src="https://mdbootstrap.com/img/Photos/Others/images/43.webp"
-                                     class="img-fluid z-depth-1-half"
-                                     alt="Second sample image">
-
-                            </div>
-                            <!--Grid column-->
-
-                            <!--Grid column-->
-                            <div class="col-md-7 mb-4">
-
-                                <h5 class="mb-3 h5">Additional premium support</h5>
-
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, ea ut aperiam
-                                    corrupti,
-                                    dolorem.</p>
-
-                                <!--Name-->
-                                <select class="mdb-select colorful-select dropdown-info">
-                                    <option value="" disabled>Choose a period of time</option>
-                                    <option value="1" selected>+6 months : 200$</option>
-                                    <option value="2">+12 months: 400$</option>
-                                    <option value="3">+18 months: 800$</option>
-                                    <option value="4">+24 months: 1200$</option>
-                                </select>
-
-                                <button type="button" class="btn btn-primary btn-md">Add premium support to the cart
-                                </button>
-
-                            </div>
-                            <!--Grid column-->
-
-                        </div>
-                        <!--Grid row-->
-
-                        <hr class="mb-5">
-
-                        <!--Grid row-->
-                        <div class="row">
-
-                            <!--Grid column-->
-                            <div class="col-md-5 mb-4">
-
-                                <img src="https://mdbootstrap.com/img/Photos/Others/images/44.webp"
-                                     class="img-fluid z-depth-1-half"
-                                     alt="Second sample image">
-
-                            </div>
-                            <!--Grid column-->
-
-                            <!--Grid column-->
-                            <div class="col-md-7 mb-4">
-
-                                <h5 class="mb-3 h5">MDB Membership</h5>
-
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, ea ut aperiam
-                                    corrupti,
-                                    dolorem.</p>
-
-                                <!--Name-->
-                                <select class="mdb-select colorful-select dropdown-info">
-                                    <option value="" disabled>Choose a period of time</option>
-                                    <option value="1" selected>+6 months : 200$</option>
-                                    <option value="2">+12 months: 400$</option>
-                                    <option value="3">+18 months: 800$</option>
-                                    <option value="4">+24 months: 1200$</option>
-                                </select>
-
-                                <button type="button" class="btn btn-primary btn-md">Add MDB Membership to the cart
-                                </button>
-
-                            </div>
-                            <!--Grid column-->
-
-                        </div>
-                        <!--Grid row-->
-
-                        <hr class="mb-4">
-
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Next step</button>
-
-                    </div>
-                    <!--/.Panel 2-->
-
-                    <!--Panel 3-->
-                    <div class="tab-pane fade" id="tabCheckoutPayment123" role="tabpanel">
-
-                        <div class="d-block my-3">
-                            <div class="mb-2">
-                                <input name="group2" type="radio" class="form-check-input with-gap" id="radioWithGap4"
-                                       checked
-                                       required>
-                                <label class="form-check-label" for="radioWithGap4">Credit card</label>
-                            </div>
-                            <div class="mb-2">
-                                <input iname="group2" type="radio" class="form-check-input with-gap" id="radioWithGap5"
-                                       required>
-                                <label class="form-check-label" for="radioWithGap5">Debit card</label>
-                            </div>
-                            <div class="mb-2">
-                                <input name="group2" type="radio" class="form-check-input with-gap" id="radioWithGap6"
-                                       required>
-                                <label class="form-check-label" for="radioWithGap6">Paypal</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="cc-name123">Name on card</label>
-                                <input type="text" class="form-control" id="cc-name123" placeholder="" required>
-                                <small class="text-muted">Full name as displayed on card</small>
-                                <div class="invalid-feedback">
-                                    Name on card is required
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="cc-number123">Credit card number</label>
-                                <input type="text" class="form-control" id="cc-number123" placeholder="" required>
-                                <div class="invalid-feedback">
-                                    Credit card number is required
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3 mb-3">
-                                <label for="cc-expiration123">Expiration</label>
-                                <input type="text" class="form-control" id="cc-expiration123" placeholder="" required>
-                                <div class="invalid-feedback">
-                                    Expiration date required
-                                </div>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <label for="cc-cvv123">CVV</label>
-                                <input type="text" class="form-control" id="cc-cvv123" placeholder="" required>
-                                <div class="invalid-feedback">
-                                    Security code required
-                                </div>
-                            </div>
-                        </div>
-                        <hr class="mb-4">
-
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Place order</button>
-
-                    </div>
-                    <!--/.Panel 3-->
-
+                    <!-- Pills panels -->
                 </div>
-                <!-- Pills panels -->
-
-
             </div>
             <!--Grid column-->
 
             <!--Grid column-->
             <div class="col-lg-4 mb-4">
-
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Place order</button>
-
                 <!--Card-->
                 <div class="card">
 
@@ -380,12 +213,11 @@
 
                 </div>
                 <!--/.Card-->
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Place order</button>
             </div>
             <!--Grid column-->
-
         </div>
         <!--Grid row-->
-
     </div>
 </div>
 <!-- Main Container -->
@@ -394,9 +226,22 @@
 <!-- Footer -->
 <%@include file="default/footer.jsp" %>
 <!-- Footer -->
-<script src="mdb/js/jquery.min.js"></script>
-<script src="mdb/js/bootstrap.min.js"></script>
-<script src="mdb/js/mdb.min.js"></script>
+<script>// show form add new address when chose option add new address
+document.getElementById("chooseAddress").addEventListener("change", showForm);
+
+function showForm() {
+    var x = document.getElementById("chooseAddress").value;
+    if (x === "addNewAddress") {
+        document.getElementById("newAddress").style.display = "block";
+    } else {
+        document.getElementById("newAddress").style.display = "none";
+    }
+}
+</script>
+<script src="/mdb/js/popper.min.js"></script>
+<script src="/mdb/js/jquery.min.js"></script>
+<script src="/mdb/js/bootstrap.min.js"></script>
+<script src="/mdb/js/mdb.min.js"></script>
 <script type="text/javascript">
     /* WOW.js init */
     new WOW().init();
@@ -406,17 +251,16 @@
         $('[data-toggle="tooltip"]').tooltip()
     })
 
-    // Material Select Initialization
     $(document).ready(function () {
-
-        $('.mdb-select').material_select();
+        // Initially hide the form
+        $('.custom-select').material_select();
     });
 
     // SideNav Initialization
     $(".button-collapse").sideNav();
 
 </script>
-<script src="mdb/js/default.js"></script>
+<script src="/mdb/js/default.js"></script>
 </body>
 </html>
 
