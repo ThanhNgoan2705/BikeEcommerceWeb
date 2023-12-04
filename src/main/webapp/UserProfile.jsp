@@ -67,7 +67,7 @@
                         <a class="nav-link" data-toggle="tab" href="#tabOrderHistory" role="tab">Order History</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#tabListFavourite" role="tab">Favourite List</a>
+                        <a class="nav-link" data-toggle="tab" href="#tabKeyManagement" role="tab">Key Management</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#tabChangePassWord" role="tab">Change Password</a>
@@ -337,8 +337,83 @@
 
                     </div>
                     <!--/.Panel 3-->
+                    <!--Panel 4-->
+                    <div class="tab-pane fade" id="tabKeyManagement" role="tabpanel">
+                        <button class="btn btn-primary btn-lg btn-block" style="width: 250px ; height: 50px; font-size: 15px"  type="submit">Create Key</button>
+                        <hr class="mb-4">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="table-wrap">
+                                    <table class="table table-dark">
+                                        <thead>
+                                        <tr class="bg-dark">
+                                            <th>Invoce</th>
+                                            <th>Customer</th>
+                                            <th>Ship</th>
+                                            <th>Price</th>
+                                            <th>Pruchased Price</th>
+                                            <th>&nbsp;</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr class="bg-primary">
+                                            <th scope="row">1001</th>
+                                            <td>Mark Otto</td>
+                                            <td>Japan</td>
+                                            <td>$3000</td>
+                                            <td>$1200</td>
+                                            <td><a href="#"><i class="fa fa-lock" aria-hidden="true"></i></a></td>
+                                        </tr>
+
+                                        <tr class="bg-success">
+                                            <th scope="row">1001</th>
+                                            <td>Mark Otto</td>
+                                            <td>Japan</td>
+                                            <td>$3000</td>
+                                            <td>$1200</td>
+                                            <td><a href="#"><i class="fa fa-lock" aria-hidden="true"></i></a></td>
+                                        </tr>
+
+                                        <tr class="bg-warning">
+                                            <th scope="row">1001</th>
+                                            <td>Mark Otto</td>
+                                            <td>Japan</td>
+                                            <td>$3000</td>
+                                            <td>$1200</td>
+                                            <td><a href="#"><i class="fa fa-lock" aria-hidden="true"></i></a></td>
+                                        </tr>
+
+                                        <tr class="bg-danger">
+                                            <th scope="row">1001</th>
+                                            <td>Mark Otto</td>
+                                            <td>Japan</td>
+                                            <td>$3000</td>
+                                            <td>$1200</td>
+                                            <td><a href="#"><i class="fa fa-lock" aria-hidden="true"></i></a></td>
+                                        </tr>
+
+                                        <tr class="bg-info">
+                                            <th scope="row">1001</th>
+                                            <td>Mark Otto</td>
+                                            <td>Japan</td>
+                                            <td>$3000</td>
+                                            <td>$1200</td>
+                                            <td><a href="#"><i class="fa fa-lock" aria-hidden="true"></i></a></td>
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <!--/.Panel 4-->
 
                 </div>
+
                 <!-- Pills panels -->
 
 
