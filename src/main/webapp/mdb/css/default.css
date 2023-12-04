@@ -171,3 +171,27 @@ h1.title{
         }
     }
 }
+.shopping-cart{
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+.number{
+    color: #ef0707;
+    margin-right: 5px;
+    position: relative;
+}
+.fly-number{
+    color: #cb6767;
+    font-size: 20px;
+    animation: fly 1s forwards;
+}
+@keyframes fly {
+    0%{
+        transform: translate(0,0);
+        opacity: 1;
+    }
+    100%{
+        transform: translate(-50%, -100%);
+        opacity: 0;
+    }
+}

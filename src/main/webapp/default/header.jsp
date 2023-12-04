@@ -30,12 +30,13 @@
             <div class="g-col-2 collapse navbar-collapse" id="navbarSupportedContent-4">
                 <ul class="navbar-nav ml-auto">
                     <c:if test='${not haveUser}'>
-                    <li class="nav-item ml-3">
-                            <a class="nav-link dark-grey-text font-weight-bold waves-effect waves-light" href="/login">
-                                <span  class="badge rounded-pill bg-danger">0</span>
+                        <li class="shopping-cart nav-item ml-3">
+                            <a id="cart-quantity"
+                               class="nav-link dark-grey-text font-weight-bold waves-effect waves-light" href="/login">
+                                <span class=" number badge rounded-pill bg-danger">0</span>
                                 <i class="fas fa-shopping-cart blue-text"></i>
                                 Cart</a>
-                    </li>
+                        </li>
                         <li class="nav-item dropdown ml-3">
                             <a class="nav-link dropdown-toggle dark-grey-text font-weight-bold"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
@@ -46,25 +47,27 @@
                             </div>
                         </li>
                     </c:if>
-                        <c:if test='${haveUser}'>
-                    <li class="nav-item ml-3">
-                            <a class="nav-link dark-grey-text font-weight-bold waves-effect waves-light" href="/user/getCart">
-                                <span id="cart-quantity" class="badge rounded-pill bg-danger">${cartTotal}</span>
+                    <c:if test='${haveUser}'>
+                        <li class="shopping-cart nav-item ml-3">
+                            <a id="cart-quantity"
+                               class="nav-link dark-grey-text font-weight-bold waves-effect waves-light"
+                               href="/user/getCart">
+                                <span class="badge rounded-pill bg-danger">${cartTotal}</span>
                                 <i class="fas fa-shopping-cart blue-text"></i>
                                 Cart</a>
-                    </li>
-                            <li class="nav-item dropdown ml-3">
-                                <a class="nav-link dropdown-toggle dark-grey-text font-weight-bold" id="userAccount"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
-                                        class="fas fa-user blue-text"></i>
-                                    Welcome,
-                                        ${userName}! </a>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-cyan" aria-labelledby="userAccount">
-                                    <a class="dropdown-item waves-effect waves-light" href="/user">Profile</a>
-                                    <a class="dropdown-item waves-effect waves-light" href="/logout">Log Out</a>
-                                </div>
-                            </li>
-                        </c:if>
+                        </li>
+                        <li class="nav-item dropdown ml-3">
+                            <a class="nav-link dropdown-toggle dark-grey-text font-weight-bold" id="userAccount"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                                    class="fas fa-user blue-text"></i>
+                                Welcome,
+                                    ${userName}! </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-cyan" aria-labelledby="userAccount">
+                                <a class="dropdown-item waves-effect waves-light" href="/user">Profile</a>
+                                <a class="dropdown-item waves-effect waves-light" href="/logout">Log Out</a>
+                            </div>
+                        </li>
+                    </c:if>
                 </ul>
             </div>
         </div>
