@@ -57,12 +57,14 @@ public class CartService {
         return cart;
     }
 
-    public boolean saveCartItemIntoOrder(String cartId, String addressId, double shippingFee) {
+    public String saveCartItemIntoOrder(String userId, String addressId, double shippingFee) {
+        String orderId;
         try {
-            Cart cart = getCartByKey(cartId);
+            Cart cart = getCartByKey(userId);
 
             Order order = new Order();
-            order.setOrderId(GenerateId.generateOrderId());//tu tao
+            orderId = GenerateId.generateId();
+            order.setOrderId(orderId);//tu tao
             order.setUserId(cart.getUserId());
             order.setFullAddress(AddressService.getInstance().getAddressByAddressId(addressId).getFullAddress());
             order.setPrice(cart.total());//tong tien
@@ -87,9 +89,9 @@ public class CartService {
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            return false;
+            return null;
         }
-        return true;
+        return orderId;
     }
 
     public static void main(String[] args) {
