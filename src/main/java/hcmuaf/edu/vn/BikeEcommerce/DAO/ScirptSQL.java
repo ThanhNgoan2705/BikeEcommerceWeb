@@ -176,5 +176,25 @@ public class ScirptSQL {
     public static final String getTop1Product = "select * from (select * , row_number() over (partition by category_id order by category_id) as row from product) as t where row = 1";
     public static final String getTop1ImageProductByProductId = "select * from (select * , row_number() over (partition by product_id order by product_id) as row from image_product) as t where row = 1 and product_id = :productId";
 
+    // Cert
+    public static final String getAllCert = "select * from cert";
+    public static final String getCertBySeri = "select * from cert where seri = :seri";
+    public static final String insertCert = "insert into cert(seri,public_key,cert_value) values(:seri,:publicKey,:certValue)";
+    // UserCert
+    public static final String getAllSeriOfUser = "select * from user_seri where user_id = :userId";
+    public static final String checkSeriAndUser = "select count(*) > 0 from user_seri where user_id = :userId and seri = :seri";
+    public static final String insertUserSeri = "insert into user_seri(user_id,seri) values(:userId,:seri)";
 
+    // revoke
+    public static final String getAllRevocationCert = "select * from revocation_cert";
+    public static final String getRevocationCertBySeri = "select * from revocation_cert where seri = :seri";
+    public static final String insertRevocationCert = "insert into revocation_cert(seri,revoked_at) values(:seri,:revokedAt)";
+    public static final String updateRevocationCert = "update revocation_cert set revoked_at = :revokedAt where seri = :seri";
+    public static final String deleteRevocationCert = "delete from revocation_cert where seri = :seri";
+    //OrderSig
+    public static final String getSigByOrderId = "select * from order_sig where order_id = :orderId";
+    public static final String insertOrderSig = "insert into order_sig(order_id,sig) values(:orderId,:sig)";
+    public static final String deleteOrderSig = "delete from order_sig where order_id = :orderId";
+
+    //
 }
