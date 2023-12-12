@@ -50,7 +50,7 @@
         <!--Grid row-->
         <div class="row">
             <!--Grid column-->
-            <div class="col-lg-8 mb-4">
+            <div class="col-lg-6 mb-4">
                 <a class="nav-link active" data-toggle="tab" href="#tabCheckoutBilling123" role="tab">1.
                     Billing</a>
                 <!-- Pills panels -->
@@ -58,99 +58,72 @@
                     <!--Panel 1-->
                     <div class="tab-pane fade in show active" id="tabCheckoutBilling123" role="tabpanel">
                         <!--Card content-->
-                        <form id="listAddress">
+                        <form id="listAddress" method="post" action="/user/checkout">
                             <!--Grid column-->
                             <fieldset>
                                 <div class="row">
                                     <div class="col">
                                         <label for="chooseAddress">Select Address</label>
-                                        <select class=" custom-select md-form  d-block w-100" id="chooseAddress"
+
+                                        <select class=" custom-select md-form  d-block w-100" id="chooseAddress" name="addressId"
                                                 required>
-                                            <option value="" disabled selected>Choose...</option>
-                                            <option value="2"
-                                                    data-secondary-text="Tran phu, Tay đo, hung ha, thai binh ">Chan
-                                                chan - 097733548
-                                            </option>
-                                            <option value="2"
-                                                    data-secondary-text="Tran phu, Tay đo, hung ha, thai binh ">Chan
-                                                chan - 097733548
-                                            </option>
+                                            <c:forEach items="${addressList}" var="address">
+                                                <option value="${address.addressId}">${address.homeAddress} - ${address.district}-${address.city}</option>
+                                            </c:forEach>
                                             <option value="addNewAddress">Thêm địa chỉ mới</option>
                                         </select>
+                                        <input hidden="hidden" value=  >
                                         <div class="invalid-feedback">
                                             Please select a valid country.
                                         </div>
-
                                     </div>
                                 </div>
                                 <hr>
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="shipping-fee">Shipping fee</label>
+                                        <input type="text" id="shipping-fee" class="form-control mb-4"
+                                               placeholder="1234 Main St">
+                                    </div>
+                                </div>
+                                <hr>
+                                <button id="continueButton" class="btn btn-primary" type="submit" >Continue to
+                                    checkout
+                                </button>
                             </fieldset>
+
                         </form>
-                        <form style="display: none" id="newAddress" action="checkout" method="post">
+                        <form style="display: none" id="newAddress" >
                             <!--address-->
                             <fieldset>
                                 <div class="row">
                                     <div class="col">
-                                        <label for="address" class="">Address</label>
-                                        <input type="text" id="address" class="form-control mb-4"
+                                        <label for="city" class="">city</label>
+                                        <input type="text" id="city" class="form-control mb-4" name="city"
                                                placeholder="1234 Main St">
                                     </div>
-
                                 </div>
                                 <!--Country-->
                                 <div class="row">
-
                                     <!--Grid column-->
                                     <div class="col">
 
-                                        <label for="country">Country</label>
-                                        <input type="text" id="country" class="form-control mb-4"
+                                        <label for="district">District</label>
+                                        <input type="text" id="district" class="form-control mb-4" name="district"
                                                placeholder="1234 Main St">
-
-
                                     </div>
                                 </div>
-
                                 <div class="row">
-
                                     <div class="col">
 
-                                        <label for="state">State</label>
-                                        <input type="text" id="state" class="form-control mb-4"
+                                        <label for="homeAddress">Home address</label>
+                                        <input type="text" id="homeAddress" class="form-control mb-4" name="homeAddress"
                                                placeholder="1234 Main St">
-
                                     </div>
-
                                 </div>
-
-                                <button class="btn btn-primary " type="submit">Add New Address</button>
+                                <button id="addnew" class="btn btn-primary " onclick="addNewAddress()">Add New Address</button>
                             </fieldset>
                         </form>
-                        <div class="row">
-                            <div class="col-md-12 mb-3">
-                                <label>Cash on Delivery</label>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-12 mb-3">
-                                <label for="code">Code</label>
-                                <input type="text" class="form-control" id="code" placeholder="" required>
-                                <button class="btn btn-primary " type="submit">Copy Code</button>
-                                <small class="text-muted">Get the code to sign, please </small>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 mb-3">
-                                <label for="signature">Your Signature</label>
-                                <input type="text" class="form-control" id="signature" placeholder="" required>
-                                <small class="text-muted">Input your signature to verify </small>
-                                <div class="invalid-feedback">
-                                    Signature is required
-                                </div>
-                            </div>
-                        </div>
-                        <!--/.Panel 1-->
                     </div>
                     <!-- Pills panels -->
                 </div>
@@ -158,62 +131,47 @@
             <!--Grid column-->
 
             <!--Grid column-->
-            <div class="col-lg-4 mb-4">
+            <div class="col-lg-6 mb-4">
                 <!--Card-->
                 <div class="card">
 
                     <!--Card content-->
                     <div class="card-body">
                         <h4 class="mb-4 mt-1 h5 text-center font-weight-bold">Summary</h4>
-
                         <hr>
-
+                        <c:forEach items="${itemList}" var="cartItem">
+                            <dl class="row">
+                                <dd class="col-sm-4">
+                                        ${cartItem.product.name}
+                                </dd>
+                                <dd class="col-sm-2" >
+                                        ${cartItem.quantity}
+                                </dd>
+                                <dd class="col-sm-3" >${cartItem.product.price}</dd>
+                                <dd class="col-sm-3 price">
+                                        ${cartItem.product.price * cartItem.quantity}
+                                </dd>
+                            </dl>
+                        </c:forEach>
                         <dl class="row">
-                            <dd class="col-sm-8">
-                                MDBootstrap UI KIT (jQuery version) - License 6-10 people + unlimited projects
+                            <dd class="col-sm-7">
+                                <h6 class="mb-0">Total</h6>
                             </dd>
-                            <dd class="col-sm-4">
-                                $ 2000
+                            <dd class="col-sm-5">
+                                <h6 class="mb-0"> <strong id="total-all">${totalPrice}</strong></h6>
                             </dd>
                         </dl>
-
                         <hr>
-
-                        <dl class="row">
-                            <dd class="col-sm-8">
-                                Premium support - 2 years
-                            </dd>
-                            <dd class="col-sm-4">
-                                $ 2000
-                            </dd>
-                        </dl>
-
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label>Cash on Delivery</label>
+                            </div>
+                        </div>
                         <hr>
-
-                        <dl class="row">
-                            <dd class="col-sm-8">
-                                MDB Membership - 2 years
-                            </dd>
-                            <dd class="col-sm-4">
-                                $ 2000
-                            </dd>
-                        </dl>
-
-                        <hr>
-
-                        <dl class="row">
-                            <dt class="col-sm-8">
-                                Total
-                            </dt>
-                            <dt class="col-sm-4">
-                                $ 2000
-                            </dt>
-                        </dl>
                     </div>
 
                 </div>
                 <!--/.Card-->
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Place order</button>
             </div>
             <!--Grid column-->
         </div>
@@ -233,8 +191,10 @@ function showForm() {
     var x = document.getElementById("chooseAddress").value;
     if (x === "addNewAddress") {
         document.getElementById("newAddress").style.display = "block";
+        document.getElementById("continueButton").style.display = "none";
     } else {
         document.getElementById("newAddress").style.display = "none";
+        document.getElementById("continueButton").style.display = "block";
     }
 }
 </script>
@@ -242,24 +202,93 @@ function showForm() {
 <script src="/mdb/js/jquery.min.js"></script>
 <script src="/mdb/js/bootstrap.min.js"></script>
 <script src="/mdb/js/mdb.min.js"></script>
-<script type="text/javascript">
-    /* WOW.js init */
-    new WOW().init();
+<%--<script type="text/javascript">--%>
+<%--    /* WOW.js init */--%>
+<%--    new WOW().init();--%>
 
-    // Tooltips Initialization
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    })
+<%--    // Tooltips Initialization--%>
+<%--    $(function () {--%>
+<%--        $('[data-toggle="tooltip"]').tooltip()--%>
+<%--    })--%>
 
-    $(document).ready(function () {
-        // Initially hide the form
-        $('.custom-select').material_select();
-    });
+<%--    // Material Select Initialization--%>
+<%--    $(document).ready(function () {--%>
 
-    // SideNav Initialization
-    $(".button-collapse").sideNav();
+<%--        $('.mdb-select').material_select();--%>
+<%--    });--%>
+
+<%--    // SideNav Initialization--%>
+<%--    $(".button-collapse").sideNav();--%>
+
+<%--</script>--%>
+<script>
+    function addTocart(productId) {
+        // cộng thêm 1 vào giỏ hàng
+        $.ajax({
+            url: "/user/addProductToCart",
+            type: "POST",
+            data: {
+                productId: productId,
+                quantity: 1
+            },
+            success: function (data) {
+                var itemCount = parseInt($(".number").text());
+                var flyNumber = $('<span class="fly-number">' + (itemCount + 1) + '</span>');
+                // get button add position
+                var position = $('.addToCart').offset();
+                // set the animation's start position
+                flyNumber.css({
+                    top: position.top,
+                    left: position.left
+                });
+                $('.shopping-cart').append(flyNumber);
+                setTimeout(function () {
+                    $('.number').text(itemCount + 1);
+                    flyNumber.remove();
+                }, 1000);
+                console.log(data);
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+
+    }
+</script>
+<script>
+    function addNewAddress() {
+        var city = document.getElementById("city").value;
+        var district = document.getElementById("district").value;
+        var homeAddress = document.getElementById("homeAddress").value;
+
+        $.ajax({
+            url: "/user/api/address",
+            type: "POST",
+            data: {
+                city: city,
+                district: district,
+                homeAddress: homeAddress
+            },
+            success: function (data) {
+                if (data === "insert success") {
+                    alert("Thêm địa chỉ thành công");
+                    location.reload();
+                } else {
+                    alert("Thêm địa chỉ thất bại");
+                }
+                console.log(data);
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+
+    }
+</script>
+<script>
 
 </script>
+
 <script src="/mdb/js/default.js"></script>
 </body>
 </html>

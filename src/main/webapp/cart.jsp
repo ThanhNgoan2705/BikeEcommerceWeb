@@ -233,7 +233,7 @@
                                 <td colspan="3" class="text-right">
 
                                     <a type="button" class="btn btn-primary btn-rounded" role="button"
-                                       href="/checkOut.jsp">Complete purchase
+                                       href="/user/checkout">Complete purchase
 
                                         <i class="fas fa-angle-right right"></i>
 
@@ -1222,9 +1222,42 @@
     $(".button-collapse").sideNav();
 
 </script>
-<script src="mdb/js/default.js"></script>
+<script src="/mdb/js/default.js"></script>
 
+<script>
+    function addTocart(productId) {
+        // cộng thêm 1 vào giỏ hàng
+        $.ajax({
+            url: "/user/addProductToCart",
+            type: "POST",
+            data: {
+                productId: productId,
+                quantity: 1
+            },
+            success: function (data) {
+                var itemCount = parseInt($(".number").text());
+                var flyNumber = $('<span class="fly-number">'+(itemCount+1)+'</span>');
+                // get button add position
+                var position = $('.addToCart').offset();
+                // set the animation's start position
+                flyNumber.css({
+                    top: position.top ,
+                    left: position.left
+                });
+                $('.shopping-cart').append(flyNumber);
+                setTimeout(function () {
+                    $('.number').text(itemCount+1);
+                    flyNumber.remove();
+                },1000);
+                console.log(data);
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
 
+    }
+</script>
 <script>
 
     function updateColorAndQuantity(cartItemId, quantity, colorId) {
@@ -1307,6 +1340,7 @@
             url: servletUrl,
             data: data,
             success: function (response) {
+
                 console.log('Request succeeded:', response);
                 // Xử lý dữ liệu nhận được từ servlet (nếu cần)
                 callback(true);
@@ -1322,6 +1356,7 @@
 
     function removeItem(rowId, cartItemId) {
         var isConfirmed = confirm('Bạn chắc chắn muốn xóa item này?');
+        var itemCount = parseInt($(".number").text());
         if (isConfirmed) {
             var rowToRemove = document.getElementById(rowId);
             console.log(rowToRemove);
@@ -1329,6 +1364,7 @@
                 rowToRemove.remove();
                 deleteItem(cartItemId, function (callback) {
                     if (callback) {
+                        $('.number').text(itemCount-1);
                         console.log('delete success');
                         updateTotalAll();
                     } else {
@@ -1345,15 +1381,11 @@
 
     function updateTotalAll() {
         var totalAll = 0;
-
-
         // Lặp qua tất cả các phần tử có class "font-weight-bold" trong tbody
         var itemTotalElements = document.querySelectorAll('tbody .item');
         itemTotalElements.forEach(function (element) {
             // Trích xuất giá trị tổng từ phần tử và chuyển đổi thành số
             var itemTotal = parseFloat(element.textContent.trim());
-
-
             // Thêm giá trị tổng của sản phẩm vào tổng chung
             totalAll += itemTotal;
             console.log(itemTotal);
