@@ -1,5 +1,7 @@
 package hcmuaf.edu.vn.BikeEcommerce.model.digitSig;
 
+import vn.edu.atbmmodel.key.KeyGen;
+
 import java.security.PublicKey;
 import java.security.cert.Certificate;
 
@@ -55,6 +57,8 @@ public class Cert {
     }
 
     public Certificate getCertificate() {
+        byte[] certBytes = certValue.getBytes();
+        certificate = KeyGen.getInstance().getCertificateFormBytes(certBytes);
         return certificate;
     }
 
@@ -63,6 +67,8 @@ public class Cert {
     }
 
     public PublicKey getKey() {
+        byte[] keyBytes = publicKey.getBytes();
+        Key = KeyGen.getInstance().getPublicKeyformBytes(keyBytes);
         return Key;
     }
 
