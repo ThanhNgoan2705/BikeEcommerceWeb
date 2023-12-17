@@ -28,7 +28,91 @@
     <link href="mdb/css/addons/compiled-addons-4.20.0.min.css">
     <link href="mdb/css/style.css" rel="stylesheet">
     <link href="mdb/css/default.css" rel="stylesheet">
+    <style>
+        /* CSS nền hiển thị Modal */
+        .nenmodal .nenmodal2 {
+            position:fixed;
+            top:0px;
+            left:0px;
+            width:100vw;
+            height:100vh;
+            background:rgba(0,0,0,0.7);
+            z-index:1;
+            display:none;
+        }
+        /* CSS bảng nội dung Modal */
+        .nenmodal .ndmodal {
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%) scale(0);
+            background:#fff;
+            width:600px;
+            z-index:2;
+            text-align:center;
+            padding:20px;
+            box-sizing:border-box;
+            font-family:"Open Sans",sans-serif;
+            border-radius:20px;
+            display: block;
+            position: fixed;
+            box-shadow:0px 0px 10px #111;
+        }
+        @media (max-width: 700px) {
+            .nenmodal .ndmodal {width:90%;}
+        }
+        /* CSS bao bọc của nút tắt Modal */
+        .nenmodal .closemodal {
+            text-align:center;
+            margin-top:-40px;
+            margin-bottom:10px;
+        }
+        /* CSS tieu de của Modal */
+        .titlemodal{
+            font-weight:bold;
+            font-size:20px;
+            margin-bottom:10px;
+        }
+        /* CSS nút tắt modal */
+        .closemodal button{
+            width:40px;
+            height:40px;
+            font-size:30px;
+            padding:0px;
+            border-radius:100%;
+            background:#333;
+            color:#fff;
+            border:none;
+        }
+        .nenmodal.active .nenmodal2 {
+            display:block;
+        }
+        /* CSS hiệu ứng hiển thị Modal */
+        .nenmodal.active .ndmodal {
+            transition:all 300ms ease-in-out;
+            transform:translate(-50%,-50%) scale(1);
 
+        }
+        .col {
+            position: relative;
+            width: 150px;
+            padding-right: 15px;
+            padding-left: 15px; }
+        .group {
+            margin-bottom: 5px;
+        }
+        .contactForm .label1 {
+            color: #000;
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: 600; }
+        .btnblock{
+            width: 200px;
+            height: 35px;
+            background-color: #0d0d0d;
+            color: #f1f1f1;
+        }
+    </style>
 </head>
 
 <body class="homepage-v1 hidden-sn white-skin animated">
@@ -339,7 +423,7 @@
                     <!--/.Panel 3-->
                     <!--Panel 4-->
                     <div class="tab-pane fade" id="tabKeyManagement" role="tabpanel">
-                        <button class="btn btn-primary btn-lg btn-block" style="width: 250px ; height: 50px; font-size: 15px"  type="submit">Create Key</button>
+                        <button class="btn btn-primary btn-lg btn-block" onclick="momodal()"  >Create Key</button>
                         <hr class="mb-4">
                         <div class="row">
                             <div class="col-md-12">
@@ -408,7 +492,43 @@
                         </div>
 
 
+                    </div>
+                    <div class="nenmodal" id="nenmodal-1">
+                        <div class="nenmodal2"></div>
+                        <div class="ndmodal">
+                            <div class="closemodal"><button onclick="momodal()">×</button></div>
 
+
+                            <div method="POST" id="contactForm" name="contactForm" class="contactForm">
+                                <button class="btnblock" type="submit" >Create Key</button>
+                                <div class="row">
+
+                                    <div class="col">
+
+                                        <div class="group">
+                                            <label class="label1" >Private Key</label>
+                                            <input type="text" class="form-control" >
+                                            <i class="fa fa-download" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="group">
+                                            <label class="label1">Public Key</label>
+                                            <input type="text" class="form-control" >
+                                            <i class="fa fa-download" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="group">
+                                            <label class="label1" >Seri</label>
+                                            <input type="text" class="form-control" >
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!--/.Panel 4-->
 
@@ -525,6 +645,11 @@
     }
     var promise=axios(Parameter);
 
+</script>
+<script>
+    function momodal(){
+        document.getElementById("nenmodal-1").classList.toggle("active");
+    }
 </script>
 </body>
 </html>
