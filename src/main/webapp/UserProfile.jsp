@@ -431,59 +431,22 @@
                                     <table class="table table-dark">
                                         <thead>
                                         <tr class="bg-dark">
-                                            <th>Invoce</th>
-                                            <th>Customer</th>
-                                            <th>Ship</th>
-                                            <th>Price</th>
-                                            <th>Pruchased Price</th>
+                                            <th>STT</th>
+                                            <th>PublicKey</th>
+                                            <th>Seri</th>
                                             <th>&nbsp;</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr class="bg-primary">
-                                            <th scope="row">1001</th>
+                                            <th scope="row">1</th>
                                             <td>Mark Otto</td>
-                                            <td>Japan</td>
-                                            <td>$3000</td>
-                                            <td>$1200</td>
+                                            <td>cfss678</td>
+
                                             <td><a href="#"><i class="fa fa-lock" aria-hidden="true"></i></a></td>
                                         </tr>
 
-                                        <tr class="bg-success">
-                                            <th scope="row">1001</th>
-                                            <td>Mark Otto</td>
-                                            <td>Japan</td>
-                                            <td>$3000</td>
-                                            <td>$1200</td>
-                                            <td><a href="#"><i class="fa fa-lock" aria-hidden="true"></i></a></td>
-                                        </tr>
 
-                                        <tr class="bg-warning">
-                                            <th scope="row">1001</th>
-                                            <td>Mark Otto</td>
-                                            <td>Japan</td>
-                                            <td>$3000</td>
-                                            <td>$1200</td>
-                                            <td><a href="#"><i class="fa fa-lock" aria-hidden="true"></i></a></td>
-                                        </tr>
-
-                                        <tr class="bg-danger">
-                                            <th scope="row">1001</th>
-                                            <td>Mark Otto</td>
-                                            <td>Japan</td>
-                                            <td>$3000</td>
-                                            <td>$1200</td>
-                                            <td><a href="#"><i class="fa fa-lock" aria-hidden="true"></i></a></td>
-                                        </tr>
-
-                                        <tr class="bg-info">
-                                            <th scope="row">1001</th>
-                                            <td>Mark Otto</td>
-                                            <td>Japan</td>
-                                            <td>$3000</td>
-                                            <td>$1200</td>
-                                            <td><a href="#"><i class="fa fa-lock" aria-hidden="true"></i></a></td>
-                                        </tr>
 
                                         </tbody>
                                     </table>

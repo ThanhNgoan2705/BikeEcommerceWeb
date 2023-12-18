@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.security.*;
+import java.util.Base64;
 
 @WebServlet("/user/userKey")
 public class UserKey {
@@ -22,10 +23,21 @@ public class UserKey {
         publicKey = keyPair.getPublic();
         privateKey = keyPair.getPrivate();
     }
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-    }
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doGet(req, resp);
+        try {
+            String pubString= Base64.getEncoder().encodeToString(publicKey.getEncoded());
+            byte[] bytes= Base64.getDecoder().decode(pubString);
+            PublicKey publicKey1= keyGen.getPublicKeyformBytes(bytes);
+            System.out.println(publicKey1.equals(publicKey));
+
+            resp.setContentType("text/plain");
+            resp.getWriter().write("Public Key: " + publicKey + "\n");
+            resp.getWriter().write("Private Key: " + privateKey);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }
