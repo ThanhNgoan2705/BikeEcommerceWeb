@@ -121,10 +121,11 @@
                 data: data,
                 success: function (data) {
                     var status = data.status;
-                    if (status == "verify email Success") {
+                    console.log(status);
+                    if (status === "verify email Success") {
                         window.location.href = "/home";
                     } else {
-                        if (status =="verify forgot pass Success"){
+                        if (status ==="verify forgot pass Success"){
                             var token = data.token;
                             window.location.href = "/resetPass"+"?token="+token;
                         }
