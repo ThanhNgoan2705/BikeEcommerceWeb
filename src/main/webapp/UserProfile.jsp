@@ -8,6 +8,7 @@
 --%>
 <%@ page contentType="text/html; charset=UTF-8"  language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!doctype html>
 <html lang="vie">
 <head>
@@ -463,28 +464,28 @@
 
 
                             <div method="POST" id="contactForm" name="contactForm" class="contactForm">
-                                <button class="btnblock" type="submit" >Create Key</button>
+                                <button class="btnblock" id="createKeyButton" type="submit" >Create Key</button>
                                 <div class="row">
-
+                                    <div id="keyDisplayArea"></div>
                                     <div class="col">
 
                                         <div class="group">
                                             <label class="label1" >Private Key</label>
-                                            <input type="text" class="form-control" >
+                                            <input type="text" name="privateKey" class="form-control" >
                                             <i class="fa fa-download" aria-hidden="true"></i>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="group">
-                                            <label class="label1">Public Key</label>
-                                            <input type="text" class="form-control" >
+                                            <label class="label1" >Public Key</label>
+                                            <input type="text" name="publicKey" class="form-control" >
                                             <i class="fa fa-download" aria-hidden="true"></i>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="group">
                                             <label class="label1" >Seri</label>
-                                            <input type="text" class="form-control" >
+                                            <input type="text" name="seri" class="form-control" >
 
                                         </div>
                                     </div>
