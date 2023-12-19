@@ -15,38 +15,23 @@
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
             rel="stylesheet"
     />
-    <%--    MDB CSS--%>
-    <style>INPUT:-webkit-autofill, SELECT:-webkit-autofill, TEXTAREA:-webkit-autofill {
-        animation-name: onautofillstart
-    }
-
-    INPUT:not(:-webkit-autofill), SELECT:not(:-webkit-autofill), TEXTAREA:not(:-webkit-autofill) {
-        animation-name: onautofillcancel
-    }
-
-    @keyframes onautofillstart {
-    }
-
-    @keyframes onautofillcancel {
-    }</style>
-    <link href="mdb/css/bootstrap.min.css" rel="stylesheet">
-    <link href="mdb/css/mdb.min.css" rel="stylesheet">
-    <link href="mdb/css/addons/compiled-addons-4.20.0.min.css">
-    <link href="mdb/css/style.css" rel="stylesheet">
-    <link href="mdb/css/default.css" rel="stylesheet">
-
+    <link href="/mdb/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/mdb/css/mdb.min.css" rel="stylesheet">
+    <link href="/mdb/css/addons/compiled-addons-4.20.0.min.css" rel="stylesheet">
+    <link href="/mdb/css/style.css" rel="stylesheet">
+    <link href="/mdb/css/default.css" rel="stylesheet">
 </head>
 <body class="homepage-v2 hidden-sn white-skin animated">
 <!--onTop-->
-<%@include file="default/ontopButton.jsp" %>
+<%@include file="/default/ontopButton.jsp" %>
 <!--onTop-->
 
 <!-- Navigation -->
-<%@ include file="default/header.jsp" %>
+<%@ include file="/default/header.jsp" %>
 <!-- Navigation -->
 
 <!-- Mega menu -->
-<%@include file="default/menu.jsp" %>
+<%@include file="/default/menu.jsp" %>
 <!-- Mega menu -->
 
 
@@ -163,7 +148,6 @@
                             <c:forEach items="${categories}" var="cate">
                                 <ul class="list-group z-depth-1">
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
-
                                         <a class="dark-grey-text font-small"><i
                                                 class="fas fa-laptop dark-grey-text mr-2"
                                                 aria-hidden="true"></i>${cate.name}</a>
@@ -1197,31 +1181,31 @@
 
 
 <!-- Footer -->
-<%@include file="default/footer.jsp" %>
+<%@include file="/default/footer.jsp" %>
 <!-- Footer -->
 <script src="/mdb/js/popper.min.js"></script>
 <script src="/mdb/js/jquery.min.js"></script>
 <script src="/mdb/js/bootstrap.min.js"></script>
 <script src="/mdb/js/mdb.min.js"></script>
-<script type="text/javascript">
-    /* WOW.js init */
-    new WOW().init();
+<%--<script type="text/javascript">--%>
+<%--    /* WOW.js init */--%>
+<%--    new WOW().init();--%>
 
-    // Tooltips Initialization
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    })
+<%--    // Tooltips Initialization--%>
+<%--    $(function () {--%>
+<%--        $('[data-toggle="tooltip"]').tooltip()--%>
+<%--    })--%>
 
-    // Material Select Initialization
-    $(document).ready(function () {
+<%--    // Material Select Initialization--%>
+<%--    $(document).ready(function () {--%>
 
-        $('.mdb-select').material_select();
-    });
+<%--        $('.mdb-select').material_select();--%>
+<%--    });--%>
 
-    // SideNav Initialization
-    $(".button-collapse").sideNav();
+<%--    // SideNav Initialization--%>
+<%--    $(".button-collapse").sideNav();--%>
 
-</script>
+<%--</script>--%>
 <script>
     function addTocart(productId) {
         // cộng thêm 1 vào giỏ hàng
@@ -1242,7 +1226,7 @@
                     top: position.top ,
                     left: position.left
                 });
-               $('.shopping-cart').append(flyNumber);
+               $('.shopping-cart.nav-item').append(flyNumber);
                setTimeout(function () {
                    $('.number').text(itemCount+1);
                    flyNumber.remove();
@@ -1256,6 +1240,6 @@
 
     }
 </script>
-<script src="mdb/js/default.js"></script>
+<script src="/mdb/js/default.js"></script>
 </body>
 </html>

@@ -40,6 +40,9 @@ public class UserService {
     public void updateUser(User user) {// da test
         jdbi.useExtension(UserDAO.class, dao -> dao.updateUser(user));
     }
+    public void updateUserName(User user) {// da test
+        jdbi.useExtension(UserDAO.class, dao -> dao.updateUserName(user));
+    }
 
     public void updateUserPassword(User user) {// da test
         jdbi.useExtension(UserDAO.class, dao -> dao.updateUserPassword(user));
@@ -83,11 +86,14 @@ public class UserService {
     public void updateUser(String email, int role) {
         jdbi.useExtension(UserDAO.class, dao -> dao.updateUser(email, role));
     }
-
     public static void main(String[] args) {
 //        System.out.println(UserService.getInstance().loginByUserNameOrEmail("hai", "hai"));
 //        System.out.println(UserService.getInstance().isEmailOrUserNameAlreadyExists("thanhngoan2ktd@gmail.com"));
-        System.out.println(UserService.getInstance().loginByUserNameOrEmail("admin@gmail.com","chan"));
+        System.out.println(UserService.getInstance().loginByUserNameOrEmail("admin@123gmail.com","111"));
+    }
 
+
+    public void updateUserEmail(User user) {
+        jdbi.useExtension(UserDAO.class, dao -> dao.updateUserEmail(user.getUserId(),user.getEmail()));
     }
 }

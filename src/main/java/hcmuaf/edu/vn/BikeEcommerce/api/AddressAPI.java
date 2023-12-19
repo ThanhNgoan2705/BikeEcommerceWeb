@@ -78,7 +78,6 @@ public class AddressAPI extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Token token = (Token) req.getAttribute("token");
-
         Address address = new Address();
 
         try {
@@ -91,6 +90,7 @@ public class AddressAPI extends HttpServlet {
             if (address.getAddressId() == null) {
                 // nếu address null thì xác định là insert
                 address.setAddressId(GenerateId.generateId());
+                address.setUserId(token.getUserId());
                 addressService.insertAddress(address);
                 resp.getWriter().write("insert success");
                 System.out.println("insert success");

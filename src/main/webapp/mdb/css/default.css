@@ -171,8 +171,11 @@ h1.title{
         }
     }
 }
-.shopping-cart{
-    position: absolute;
+.navbar-nav{
+    display: flex;
+    justify-content: space-between;
+}
+.nav-item.shopping-cart{
     transform: translate(-50%, -50%);
 }
 .number{

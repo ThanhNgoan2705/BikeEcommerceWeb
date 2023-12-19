@@ -100,12 +100,13 @@ public class ScirptSQL {
     public static final String getUserByKey = "select * from User where user_id = :key or email= :key or user_name=:key";
     public static final String insertUser = "insert into User (user_id, email, salt, pass, user_name, role) " + "values (:getUserId,:getEmail,:getSalt,SHA2(:getPass,256),:getUserName,:getRole);";
     public static final String updateUser = "update User " + "set email = :getEmail " + "where user_id = :getUserId;";
+    public static final String updateUserName = "update User " + "set user_name = :getUserName " + "where user_id = :getUserId;";
     public static final String updateUserPassword = "update User " + "set pass = SHA2(:getPass,256) " + "where user_id = :getUserId;";
     public static final String deleteUserById = "delete " + "from User " + "where user_id =:id ";
-    public static final String loginByUserNameOrEmail = "select * from User where user_name=:keyLogin or email=:keyLogin and pass=SHA2(:pass,256)";
+    public static final String loginByUserNameOrEmail = "select * from User where (user_name=:keyLogin or email=:keyLogin) and pass=SHA2(:pass,256)";
     public static final String updateUserRoll = "update User set role=:role where email=:email";
-    public static final String getSaltByUserNameOrEmail = "select salt from User where user_name=:key or email=:key";
-
+    public static final String updateUserEmail = "update User set email=:email where user_id=:userId";
+    public static final String getSaltByUserNameOrEmail = "select salt from User where (user_name=:key or email=:key)";
     public static final String isEmailOrUserNameAlreadyExists = "select count(*) from user where email= :key or user_name=:key";
     public static final String setAdmin = "update User set role=2 where user_id=:userId";
     public static final String setUser = "update User set role=1 where user_id=:userId";
@@ -175,6 +176,7 @@ public class ScirptSQL {
 
     public static final String getTop1Product = "select * from (select * , row_number() over (partition by category_id order by category_id) as row from product) as t where row = 1";
     public static final String getTop1ImageProductByProductId = "select * from (select * , row_number() over (partition by product_id order by product_id) as row from image_product) as t where row = 1 and product_id = :productId";
+
 
 
 }
