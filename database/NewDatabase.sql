@@ -1,7 +1,7 @@
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `address`
+-- Table structure for table `address`
 --
 
 CREATE TABLE `address` (
@@ -15,24 +15,24 @@ CREATE TABLE `address` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `address`
+-- Dumping data for table `address`
 --
 
 INSERT INTO `address` (`address_id`, `user_id`, `home_address`, `district`, `city`, `created_at`, `updated_at`) VALUES
-                                                                                                                    ('1', 'user2', '123 Main St', 'District 1', 'City A', '2023-11-22 13:49:49', '2023-12-04 15:59:51'),
-                                                                                                                    ('2', 'user3', '456 Elm St', 'District 2', 'City B', '2023-11-22 13:49:49', '2023-12-04 15:59:51'),
-                                                                                                                    ('3', 'user3', '789 Oak St', 'District 3', 'City C', '2023-11-22 13:49:49', '2023-12-04 15:59:51'),
-                                                                                                                    ('4', 'user2', '101 Pine St', 'District 4', 'City D', '2023-11-22 13:49:49', '2023-12-04 15:59:51'),
-                                                                                                                    ('5', 'user4', '202 Maple St', 'District 5', 'City E', '2023-11-22 13:49:49', '2023-12-04 15:59:51'),
-                                                                                                                    ('5ee3f9eb-9654-4fa7-a355-fb5827f6d55a', NULL, 'binh din', 'cut bo', 'dduy hai', '2023-12-11 03:52:19', '2023-12-11 03:52:19'),
-                                                                                                                    ('6', '94face32-ca88-4729-b3de-b34a0e390e48', 'tran phu', 'tay do', 'hung ha', '2023-12-08 07:42:24', '2023-12-08 07:42:24'),
-                                                                                                                    ('7', '94face32-ca88-4729-b3de-b34a0e390e48', 'thon song', 'binh luc', 'ha nam', '2023-12-08 07:43:20', '2023-12-08 07:43:20'),
-                                                                                                                    ('79a92dca-fc3a-455a-8502-8e92535c6539', '94face32-ca88-4729-b3de-b34a0e390e48', 'chan ', 'cut cho', 'duy hai', '2023-12-11 03:58:38', '2023-12-11 03:58:38');
+                                                                                                                    ('1', 'user2', '123 Main St', 'District 1', 'City A', '2023-11-22 06:49:49', '2023-12-04 08:59:51'),
+                                                                                                                    ('2', 'user3', '456 Elm St', 'District 2', 'City B', '2023-11-22 06:49:49', '2023-12-04 08:59:51'),
+                                                                                                                    ('3', 'user3', '789 Oak St', 'District 3', 'City C', '2023-11-22 06:49:49', '2023-12-04 08:59:51'),
+                                                                                                                    ('4', 'user2', '101 Pine St', 'District 4', 'City D', '2023-11-22 06:49:49', '2023-12-04 08:59:51'),
+                                                                                                                    ('5', 'user4', '202 Maple St', 'District 5', 'City E', '2023-11-22 06:49:49', '2023-12-04 08:59:51'),
+                                                                                                                    ('5ee3f9eb-9654-4fa7-a355-fb5827f6d55a', NULL, 'binh din', 'cut bo', 'dduy hai', '2023-12-10 20:52:19', '2023-12-10 20:52:19'),
+                                                                                                                    ('6', '94face32-ca88-4729-b3de-b34a0e390e48', 'tran phu', 'tay do', 'hung ha', '2023-12-08 00:42:24', '2023-12-08 00:42:24'),
+                                                                                                                    ('7', '94face32-ca88-4729-b3de-b34a0e390e48', 'thon song', 'binh luc', 'ha nam', '2023-12-08 00:43:20', '2023-12-08 00:43:20'),
+                                                                                                                    ('79a92dca-fc3a-455a-8502-8e92535c6539', '94face32-ca88-4729-b3de-b34a0e390e48', 'chan ', 'cut cho', 'duy hai', '2023-12-10 20:58:38', '2023-12-10 20:58:38');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `brand`
+-- Table structure for table `brand`
 --
 
 CREATE TABLE `brand` (
@@ -49,20 +49,20 @@ CREATE TABLE `brand` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `brand`
+-- Dumping data for table `brand`
 --
 
 INSERT INTO `brand` (`brand_id`, `name`, `description`, `image`, `logo`, `address`, `email`, `phone`, `created_at`, `updated_at`) VALUES
-                                                                                                                                      ('1', 'Brand X', 'Description for Brand X', NULL, NULL, NULL, 'contact@brandx.com', '1234567890', '2023-11-22 13:49:49', '2023-11-22 13:49:49'),
-                                                                                                                                      ('2', 'Brand Y', 'Description for Brand Y', NULL, NULL, NULL, 'contact@brandy.com', '9876543210', '2023-11-22 13:49:49', '2023-11-22 13:49:49'),
-                                                                                                                                      ('3', 'Brand Z', 'Description for Brand Z', NULL, NULL, NULL, 'contact@brandz.com', '5551234567', '2023-11-22 13:49:49', '2023-11-22 13:49:49'),
-                                                                                                                                      ('4', 'Brand A', 'Description for Brand A', NULL, NULL, NULL, 'contact@branda.com', '1112223333', '2023-11-22 13:49:49', '2023-11-22 13:49:49'),
-                                                                                                                                      ('5', 'Brand B', 'Description for Brand B', NULL, NULL, NULL, 'contact@brandb.com', '4445556666', '2023-11-22 13:49:49', '2023-11-22 13:49:49');
+                                                                                                                                      ('1', 'Brand X', 'Description for Brand X', NULL, NULL, NULL, 'contact@brandx.com', '1234567890', '2023-11-22 06:49:49', '2023-11-22 06:49:49'),
+                                                                                                                                      ('2', 'Brand Y', 'Description for Brand Y', NULL, NULL, NULL, 'contact@brandy.com', '9876543210', '2023-11-22 06:49:49', '2023-11-22 06:49:49'),
+                                                                                                                                      ('3', 'Brand Z', 'Description for Brand Z', NULL, NULL, NULL, 'contact@brandz.com', '5551234567', '2023-11-22 06:49:49', '2023-11-22 06:49:49'),
+                                                                                                                                      ('4', 'Brand A', 'Description for Brand A', NULL, NULL, NULL, 'contact@branda.com', '1112223333', '2023-11-22 06:49:49', '2023-11-22 06:49:49'),
+                                                                                                                                      ('5', 'Brand B', 'Description for Brand B', NULL, NULL, NULL, 'contact@brandb.com', '4445556666', '2023-11-22 06:49:49', '2023-11-22 06:49:49');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `cart`
+-- Table structure for table `cart`
 --
 
 CREATE TABLE `cart` (
@@ -74,20 +74,20 @@ CREATE TABLE `cart` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `cart`
+-- Dumping data for table `cart`
 --
 
 INSERT INTO `cart` (`cart_id`, `user_id`, `ss_id`, `created_at`, `updated_at`) VALUES
-                                                                                   ('1', 'user1', 'session1', '2023-11-22 13:49:49', '2023-11-22 13:49:49'),
-                                                                                   ('2', 'user2', 'session2', '2023-11-22 13:49:49', '2023-11-22 13:49:49'),
-                                                                                   ('2db4ba63-9561-4a57-82c0-d9faf20e43e0', '94face32-ca88-4729-b3de-b34a0e390e48', NULL, '2023-11-22 13:52:32', '2023-11-22 13:52:32'),
-                                                                                   ('3', 'user3', 'session3', '2023-11-22 13:49:49', '2023-11-22 13:49:49'),
-                                                                                   ('4', 'user4', 'session4', '2023-11-22 13:49:49', '2023-11-22 13:49:49');
+                                                                                   ('1', 'user1', 'session1', '2023-11-22 06:49:49', '2023-11-22 06:49:49'),
+                                                                                   ('2', 'user2', 'session2', '2023-11-22 06:49:49', '2023-11-22 06:49:49'),
+                                                                                   ('2db4ba63-9561-4a57-82c0-d9faf20e43e0', '94face32-ca88-4729-b3de-b34a0e390e48', NULL, '2023-11-22 06:52:32', '2023-11-22 06:52:32'),
+                                                                                   ('3', 'user3', 'session3', '2023-11-22 06:49:49', '2023-11-22 06:49:49'),
+                                                                                   ('4', 'user4', 'session4', '2023-11-22 06:49:49', '2023-11-22 06:49:49');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `cart_item`
+-- Table structure for table `cart_item`
 --
 
 CREATE TABLE `cart_item` (
@@ -101,17 +101,17 @@ CREATE TABLE `cart_item` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `cart_item`
+-- Dumping data for table `cart_item`
 --
 
 INSERT INTO `cart_item` (`cart_item_id`, `cart_id`, `product_id`, `color_id`, `quantity`, `created_at`, `updated_at`) VALUES
-                                                                                                                          ('31a565c6-3512-4aff-b71c-3320d490e3b9', '2db4ba63-9561-4a57-82c0-d9faf20e43e0', '3', '4', 1, '2023-12-05 04:18:05', '2023-12-05 04:18:05'),
-                                                                                                                          ('808d6353-a54f-4dfc-a1a9-cf35acdd46b8', '2db4ba63-9561-4a57-82c0-d9faf20e43e0', '5', '1', 4, '2023-12-01 03:18:29', '2023-12-01 03:18:49');
+                                                                                                                          ('31a565c6-3512-4aff-b71c-3320d490e3b9', '2db4ba63-9561-4a57-82c0-d9faf20e43e0', '3', '4', 1, '2023-12-04 21:18:05', '2023-12-04 21:18:05'),
+                                                                                                                          ('808d6353-a54f-4dfc-a1a9-cf35acdd46b8', '2db4ba63-9561-4a57-82c0-d9faf20e43e0', '5', '1', 4, '2023-11-30 20:18:29', '2023-11-30 20:18:49');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `category`
+-- Table structure for table `category`
 --
 
 CREATE TABLE `category` (
@@ -128,20 +128,40 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `category`
+-- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`category_id`, `name`, `description`, `image`, `created_at`, `updated_at`, `parent_id`, `active`, `level`, `short_id`) VALUES
-                                                                                                                                                   ('1', 'Electronics', 'Electronics Category', NULL, '2023-11-22 13:49:49', '2023-11-22 13:49:49', NULL, 1, 1, 'ELEC'),
-                                                                                                                                                   ('2', 'Clothing', 'Clothing Category', NULL, '2023-11-22 13:49:49', '2023-11-22 13:49:49', NULL, 1, 1, 'CLOTH'),
-                                                                                                                                                   ('3', 'Home', 'Home Category', NULL, '2023-11-22 13:49:49', '2023-11-22 13:49:49', NULL, 1, 1, 'HOME'),
-                                                                                                                                                   ('4', 'Beauty', 'Beauty Category', NULL, '2023-11-22 13:49:49', '2023-11-22 13:49:49', NULL, 1, 1, 'BEAUY'),
-                                                                                                                                                   ('5', 'Sports', 'Sports Category', NULL, '2023-11-22 13:49:49', '2023-11-22 13:49:49', NULL, 1, 1, 'SPORS');
+                                                                                                                                                   ('1', 'Electronics', 'Electronics Category', NULL, '2023-11-22 06:49:49', '2023-11-22 06:49:49', NULL, 1, 1, 'ELEC'),
+                                                                                                                                                   ('2', 'Clothing', 'Clothing Category', NULL, '2023-11-22 06:49:49', '2023-11-22 06:49:49', NULL, 1, 1, 'CLOTH'),
+                                                                                                                                                   ('3', 'Home', 'Home Category', NULL, '2023-11-22 06:49:49', '2023-11-22 06:49:49', NULL, 1, 1, 'HOME'),
+                                                                                                                                                   ('4', 'Beauty', 'Beauty Category', NULL, '2023-11-22 06:49:49', '2023-11-22 06:49:49', NULL, 1, 1, 'BEAUY'),
+                                                                                                                                                   ('5', 'Sports', 'Sports Category', NULL, '2023-11-22 06:49:49', '2023-11-22 06:49:49', NULL, 1, 1, 'SPORS');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `color`
+-- Table structure for table `cert`
+--
+
+CREATE TABLE `cert` (
+                        `seri` varchar(64) NOT NULL,
+                        `public_key` text NOT NULL COMMENT 'base64 ',
+                        `cert_value` text NOT NULL COMMENT 'base64',
+                        `created_at` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cert`
+--
+
+INSERT INTO `cert` (`seri`, `public_key`, `cert_value`, `created_at`) VALUES
+    ('123', '123', '123', '2023-12-12 07:31:04');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `color`
 --
 
 CREATE TABLE `color` (
@@ -153,20 +173,20 @@ CREATE TABLE `color` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `color`
+-- Dumping data for table `color`
 --
 
 INSERT INTO `color` (`color_id`, `name`, `code`, `created_at`, `updated_at`) VALUES
-                                                                                 ('1', 'Red', '#FF0000', '2023-11-22 13:49:49', '2023-11-23 03:49:49'),
-                                                                                 ('2', 'Green', '#00FF00', '2023-11-22 13:49:49', '2023-11-23 03:49:49'),
-                                                                                 ('3', 'Blue', '#0000FF', '2023-11-22 13:49:49', '2023-11-23 03:49:49'),
-                                                                                 ('4', 'Yellow', '#FFFF00', '2023-11-22 13:49:49', '2023-11-23 03:49:49'),
-                                                                                 ('5', 'Purple', '#800080', '2023-11-22 13:49:49', '2023-11-23 03:49:49');
+                                                                                 ('1', 'Red', '#FF0000', '2023-11-22 06:49:49', '2023-11-23 03:49:49'),
+                                                                                 ('2', 'Green', '#00FF00', '2023-11-22 06:49:49', '2023-11-23 03:49:49'),
+                                                                                 ('3', 'Blue', '#0000FF', '2023-11-22 06:49:49', '2023-11-23 03:49:49'),
+                                                                                 ('4', 'Yellow', '#FFFF00', '2023-11-22 06:49:49', '2023-11-23 03:49:49'),
+                                                                                 ('5', 'Purple', '#800080', '2023-11-22 06:49:49', '2023-11-23 03:49:49');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `comment`
+-- Table structure for table `comment`
 --
 
 CREATE TABLE `comment` (
@@ -179,20 +199,20 @@ CREATE TABLE `comment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `comment`
+-- Dumping data for table `comment`
 --
 
 INSERT INTO `comment` (`comment_id`, `user_id`, `product_id`, `content`, `created_at`, `updated_at`) VALUES
-                                                                                                         ('1', 'user1', '1', 'This is a great product!', '2023-11-22 13:49:49', '2023-11-22 13:49:49'),
-                                                                                                         ('2', 'user2', '1', 'I love this product.', '2023-11-22 13:49:49', '2023-11-22 13:49:49'),
-                                                                                                         ('3', 'user3', '2', 'Not satisfied with this.', '2023-11-22 13:49:49', '2023-11-22 13:49:49'),
-                                                                                                         ('4', 'user4', '3', 'Good quality and value.', '2023-11-22 13:49:49', '2023-11-22 13:49:49'),
-                                                                                                         ('5', 'user5', '4', 'Could be better.', '2023-11-22 13:49:49', '2023-11-22 13:49:49');
+                                                                                                         ('1', 'user1', '1', 'This is a great product!', '2023-11-22 06:49:49', '2023-11-22 06:49:49'),
+                                                                                                         ('2', 'user2', '1', 'I love this product.', '2023-11-22 06:49:49', '2023-11-22 06:49:49'),
+                                                                                                         ('3', 'user3', '2', 'Not satisfied with this.', '2023-11-22 06:49:49', '2023-11-22 06:49:49'),
+                                                                                                         ('4', 'user4', '3', 'Good quality and value.', '2023-11-22 06:49:49', '2023-11-22 06:49:49'),
+                                                                                                         ('5', 'user5', '4', 'Could be better.', '2023-11-22 06:49:49', '2023-11-22 06:49:49');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `discount`
+-- Table structure for table `discount`
 --
 
 CREATE TABLE `discount` (
@@ -208,20 +228,20 @@ CREATE TABLE `discount` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `discount`
+-- Dumping data for table `discount`
 --
 
 INSERT INTO `discount` (`discount_id`, `name`, `description`, `discount_percent`, `active`, `start_date`, `end_date`, `created_at`, `updated_at`) VALUES
-                                                                                                                                                      ('1', 'Summer Sale', 'Discount for Summer Season', 20, 1, '2023-06-01', '2023-08-31', '2023-11-22 13:49:49', '2023-11-22 13:49:49'),
-                                                                                                                                                      ('2', 'Clearance', 'Clearance Sale', 30, 1, '2023-09-01', '2023-09-30', '2023-11-22 13:49:49', '2023-11-22 13:49:49'),
-                                                                                                                                                      ('3', 'Holiday Special', 'Discount for Holiday Season', 15, 1, '2023-12-01', '2023-12-25', '2023-11-22 13:49:49', '2023-11-22 13:49:49'),
-                                                                                                                                                      ('4', 'Back to School', 'Discount for Back to School', 10, 1, '2023-08-15', '2023-09-15', '2023-11-22 13:49:49', '2023-11-22 13:49:49'),
-                                                                                                                                                      ('5', 'Black Friday', 'Black Friday Sale', 50, 1, '2023-11-24', '2023-11-27', '2023-11-22 13:49:49', '2023-11-22 13:49:49');
+                                                                                                                                                      ('1', 'Summer Sale', 'Discount for Summer Season', 20, 1, '2023-06-01', '2023-08-31', '2023-11-22 06:49:49', '2023-11-22 06:49:49'),
+                                                                                                                                                      ('2', 'Clearance', 'Clearance Sale', 30, 1, '2023-09-01', '2023-09-30', '2023-11-22 06:49:49', '2023-11-22 06:49:49'),
+                                                                                                                                                      ('3', 'Holiday Special', 'Discount for Holiday Season', 15, 1, '2023-12-01', '2023-12-25', '2023-11-22 06:49:49', '2023-11-22 06:49:49'),
+                                                                                                                                                      ('4', 'Back to School', 'Discount for Back to School', 10, 1, '2023-08-15', '2023-09-15', '2023-11-22 06:49:49', '2023-11-22 06:49:49'),
+                                                                                                                                                      ('5', 'Black Friday', 'Black Friday Sale', 50, 1, '2023-11-24', '2023-11-27', '2023-11-22 06:49:49', '2023-11-22 06:49:49');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `favorite`
+-- Table structure for table `favorite`
 --
 
 CREATE TABLE `favorite` (
@@ -232,20 +252,20 @@ CREATE TABLE `favorite` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `favorite`
+-- Dumping data for table `favorite`
 --
 
 INSERT INTO `favorite` (`user_id`, `product_id`, `created_at`, `updated_at`) VALUES
-                                                                                 ('user1', '1', '2023-11-22 13:51:11', '2023-11-22 13:51:11'),
-                                                                                 ('user4', '2', '2023-11-22 13:51:11', '2023-11-22 13:51:11'),
-                                                                                 ('user2', '3', '2023-11-22 13:51:11', '2023-11-22 13:51:11'),
-                                                                                 ('user5', '4', '2023-11-22 13:51:11', '2023-11-22 13:51:11'),
-                                                                                 ('user3', '5', '2023-11-22 13:51:11', '2023-11-22 13:51:11');
+                                                                                 ('user1', '1', '2023-11-22 06:51:11', '2023-11-22 06:51:11'),
+                                                                                 ('user4', '2', '2023-11-22 06:51:11', '2023-11-22 06:51:11'),
+                                                                                 ('user2', '3', '2023-11-22 06:51:11', '2023-11-22 06:51:11'),
+                                                                                 ('user5', '4', '2023-11-22 06:51:11', '2023-11-22 06:51:11'),
+                                                                                 ('user3', '5', '2023-11-22 06:51:11', '2023-11-22 06:51:11');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `image_product`
+-- Table structure for table `image_product`
 --
 
 CREATE TABLE `image_product` (
@@ -257,20 +277,20 @@ CREATE TABLE `image_product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `image_product`
+-- Dumping data for table `image_product`
 --
 
 INSERT INTO `image_product` (`image_product_id`, `link`, `product_id`, `created_at`, `updated_at`) VALUES
-                                                                                                       ('1', 'image1.jpg', '1', '2023-11-22 13:51:11', '2023-11-23 03:51:11'),
-                                                                                                       ('2', 'image2.jpg', '1', '2023-11-22 13:51:11', '2023-11-23 03:51:11'),
-                                                                                                       ('3', 'image3.jpg', '2', '2023-11-22 13:51:11', '2023-11-23 03:51:11'),
-                                                                                                       ('4', 'image4.jpg', '3', '2023-11-22 13:51:11', '2023-11-23 03:51:11'),
-                                                                                                       ('5', 'image5.jpg', '4', '2023-11-22 13:51:11', '2023-11-23 03:51:11');
+                                                                                                       ('1', 'image1.jpg', '1', '2023-11-22 06:51:11', '2023-11-23 03:51:11'),
+                                                                                                       ('2', 'image2.jpg', '1', '2023-11-22 06:51:11', '2023-11-23 03:51:11'),
+                                                                                                       ('3', 'image3.jpg', '2', '2023-11-22 06:51:11', '2023-11-23 03:51:11'),
+                                                                                                       ('4', 'image4.jpg', '3', '2023-11-22 06:51:11', '2023-11-23 03:51:11'),
+                                                                                                       ('5', 'image5.jpg', '4', '2023-11-22 06:51:11', '2023-11-23 03:51:11');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `image_slider`
+-- Table structure for table `image_slider`
 --
 
 CREATE TABLE `image_slider` (
@@ -283,7 +303,7 @@ CREATE TABLE `image_slider` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `order`
+-- Table structure for table `order`
 --
 
 CREATE TABLE `order` (
@@ -302,23 +322,23 @@ CREATE TABLE `order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `order`
+-- Dumping data for table `order`
 --
 
 INSERT INTO `order` (`order_id`, `user_id`, `full_address`, `price`, `discount`, `shipping_fee`, `total`, `send_day`, `receive_day`, `status`, `created_at`, `updated_at`) VALUES
-                                                                                                                                                                               ('1', 'user1', '1', 500, 50, 20, 470, '2023-08-19 10:00:00', '2023-08-24 10:00:00', 2, '2023-11-22 13:49:49', '2023-11-22 13:49:49'),
-                                                                                                                                                                               ('2', 'user2', '2', 300, 10, 15, 305, '2023-08-20 10:00:00', '2023-08-25 10:00:00', 2, '2023-11-22 13:49:49', '2023-11-22 13:49:49'),
-                                                                                                                                                                               ('231211208d6f', '94face32-ca88-4729-b3de-b34a0e390e48', 'tran phu, tay do, hung ha', 179998, 0, 100000, 279998, NULL, NULL, 0, '2023-12-11 04:56:32', '2023-12-11 04:56:32'),
-                                                                                                                                                                               ('2312116ad5a5', '94face32-ca88-4729-b3de-b34a0e390e48', 'tran phu, tay do, hung ha', 179998, 0, 100000, 279998, NULL, NULL, 0, '2023-12-11 04:33:18', '2023-12-11 04:33:18'),
-                                                                                                                                                                               ('231211cb6626', '94face32-ca88-4729-b3de-b34a0e390e48', 'tran phu, tay do, hung ha', 179998, 0, 100000, 279998, NULL, NULL, 0, '2023-12-11 04:57:31', '2023-12-11 04:57:31'),
-                                                                                                                                                                               ('3', 'user3', '3', 200, 0, 10, 210, '2023-08-21 10:00:00', '2023-08-26 10:00:00', 1, '2023-11-22 13:49:49', '2023-11-22 13:49:49'),
-                                                                                                                                                                               ('4', 'user4', '4', 100, 0, 10, 110, '2023-08-22 10:00:00', '2023-08-27 10:00:00', 1, '2023-11-22 13:49:49', '2023-11-22 13:49:49'),
-                                                                                                                                                                               ('5', 'user5', '5', 150, 20, 15, 145, '2023-08-23 10:00:00', '2023-08-28 10:00:00', 2, '2023-11-22 13:49:49', '2023-11-22 13:49:49');
+                                                                                                                                                                               ('1', 'user1', '1', 500, 50, 20, 470, '2023-08-19 03:00:00', '2023-08-24 03:00:00', 2, '2023-11-22 06:49:49', '2023-11-22 06:49:49'),
+                                                                                                                                                                               ('2', 'user2', '2', 300, 10, 15, 305, '2023-08-20 03:00:00', '2023-08-25 03:00:00', 2, '2023-11-22 06:49:49', '2023-11-22 06:49:49'),
+                                                                                                                                                                               ('231211208d6f', '94face32-ca88-4729-b3de-b34a0e390e48', 'tran phu, tay do, hung ha', 179998, 0, 100000, 279998, NULL, NULL, 0, '2023-12-10 21:56:32', '2023-12-10 21:56:32'),
+                                                                                                                                                                               ('2312116ad5a5', '94face32-ca88-4729-b3de-b34a0e390e48', 'tran phu, tay do, hung ha', 179998, 0, 100000, 279998, NULL, NULL, 0, '2023-12-10 21:33:18', '2023-12-10 21:33:18'),
+                                                                                                                                                                               ('231211cb6626', '94face32-ca88-4729-b3de-b34a0e390e48', 'tran phu, tay do, hung ha', 179998, 0, 100000, 279998, NULL, NULL, 0, '2023-12-10 21:57:31', '2023-12-10 21:57:31'),
+                                                                                                                                                                               ('3', 'user3', '3', 200, 0, 10, 210, '2023-08-21 03:00:00', '2023-08-26 03:00:00', 1, '2023-11-22 06:49:49', '2023-11-22 06:49:49'),
+                                                                                                                                                                               ('4', 'user4', '4', 100, 0, 10, 110, '2023-08-22 03:00:00', '2023-08-27 03:00:00', 1, '2023-11-22 06:49:49', '2023-11-22 06:49:49'),
+                                                                                                                                                                               ('5', 'user5', '5', 150, 20, 15, 145, '2023-08-23 03:00:00', '2023-08-28 03:00:00', 2, '2023-11-22 06:49:49', '2023-11-22 06:49:49');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `order_item`
+-- Table structure for table `order_item`
 --
 
 CREATE TABLE `order_item` (
@@ -333,17 +353,29 @@ CREATE TABLE `order_item` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `order_item`
+-- Dumping data for table `order_item`
 --
 
 INSERT INTO `order_item` (`order_item_id`, `order_id`, `product_id`, `quantity`, `color_id`, `price`, `created_at`, `updated_at`) VALUES
-                                                                                                                                      ('3b8831fd-9596-4f27-a88f-423de6b1823d', '231211cb6626', '3', 1, '4', 2222, '2023-12-11 04:57:31', '2023-12-11 04:57:31'),
-                                                                                                                                      ('7dc1f493-571b-45d4-9c91-f0de390b1b75', '231211cb6626', '5', 4, '1', 44444, '2023-12-11 04:57:31', '2023-12-11 04:57:31');
+                                                                                                                                      ('3b8831fd-9596-4f27-a88f-423de6b1823d', '231211cb6626', '3', 1, '4', 2222, '2023-12-10 21:57:31', '2023-12-10 21:57:31'),
+                                                                                                                                      ('7dc1f493-571b-45d4-9c91-f0de390b1b75', '231211cb6626', '5', 4, '1', 44444, '2023-12-10 21:57:31', '2023-12-10 21:57:31');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `product`
+-- Table structure for table `order_sig`
+--
+
+CREATE TABLE `order_sig` (
+                             `order_id` varchar(12) NOT NULL,
+                             `sig` text DEFAULT NULL,
+                             `created_at` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product`
 --
 
 CREATE TABLE `product` (
@@ -363,20 +395,33 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `product`
+-- Dumping data for table `product`
 --
 
 INSERT INTO `product` (`product_id`, `name`, `description`, `wheelSize`, `material`, `warranty`, `category_id`, `brand_id`, `discount_id`, `supplier_id`, `status`, `created_at`, `updated_at`) VALUES
-                                                                                                                                                                                                    ('1', 'Product 1', 'Description for Product 1', '16 inches', 'Metal', '1 year', '1', '1', NULL, '1', 1, '2023-11-22 13:49:49', '2023-11-22 13:49:49'),
-                                                                                                                                                                                                    ('2', 'Product 2', 'Description for Product 2', '20 inches', 'Plastic', '2 years', '2', '2', NULL, '2', 1, '2023-11-22 13:49:49', '2023-11-22 13:49:49'),
-                                                                                                                                                                                                    ('3', 'Product 3', 'Description for Product 3', '18 inches', 'Wood', '1 year', '3', '3', NULL, '3', 1, '2023-11-22 13:49:49', '2023-11-22 13:49:49'),
-                                                                                                                                                                                                    ('4', 'Product 4', 'Description for Product 4', '14 inches', 'Metal', '6 months', '1', '4', NULL, '1', 1, '2023-11-22 13:49:49', '2023-11-22 13:49:49'),
-                                                                                                                                                                                                    ('5', 'Product 5', 'Description for Product 5', '22 inches', 'Plastic', '2 years', '2', '5', NULL, '2', 1, '2023-11-22 13:49:49', '2023-11-22 13:49:49');
+                                                                                                                                                                                                    ('1', 'Product 1', 'Description for Product 1', '16 inches', 'Metal', '1 year', '1', '1', NULL, '1', 1, '2023-11-22 06:49:49', '2023-11-22 06:49:49'),
+                                                                                                                                                                                                    ('2', 'Product 2', 'Description for Product 2', '20 inches', 'Plastic', '2 years', '2', '2', NULL, '2', 1, '2023-11-22 06:49:49', '2023-11-22 06:49:49'),
+                                                                                                                                                                                                    ('3', 'Product 3', 'Description for Product 3', '18 inches', 'Wood', '1 year', '3', '3', NULL, '3', 1, '2023-11-22 06:49:49', '2023-11-22 06:49:49'),
+                                                                                                                                                                                                    ('4', 'Product 4', 'Description for Product 4', '14 inches', 'Metal', '6 months', '1', '4', NULL, '1', 1, '2023-11-22 06:49:49', '2023-11-22 06:49:49'),
+                                                                                                                                                                                                    ('5', 'Product 5', 'Description for Product 5', '22 inches', 'Plastic', '2 years', '2', '5', NULL, '2', 1, '2023-11-22 06:49:49', '2023-11-22 06:49:49');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `sub_product_color`
+-- Table structure for table `revocation_cert`
+--
+
+CREATE TABLE `revocation_cert` (
+                                   `seri` varchar(64) NOT NULL,
+                                   `revoked_at` bigint(20) DEFAULT NULL,
+                                   `created_at` timestamp NULL DEFAULT current_timestamp(),
+                                   `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sub_product_color`
 --
 
 CREATE TABLE `sub_product_color` (
@@ -390,21 +435,21 @@ CREATE TABLE `sub_product_color` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `sub_product_color`
+-- Dumping data for table `sub_product_color`
 --
 
 INSERT INTO `sub_product_color` (`product_id`, `color_id`, `inventory`, `price`, `image_product_id`, `created_at`, `updated_at`) VALUES
-                                                                                                                                     ('1', '1', 100, 1, NULL, '2023-11-25 12:28:33', '2023-11-25 14:35:54'),
-                                                                                                                                     ('1', '2', 1000, 11, NULL, '2023-11-25 12:28:33', '2023-11-25 14:35:54'),
-                                                                                                                                     ('2', '3', 1, 111, NULL, '2023-11-25 12:28:33', '2023-11-25 14:59:28'),
-                                                                                                                                     ('3', '4', 2, 2222, NULL, '2023-11-25 12:28:33', '2023-11-25 14:59:28'),
-                                                                                                                                     ('4', '5', 3, 33333, NULL, '2023-11-25 12:28:33', '2023-11-25 14:59:28'),
-                                                                                                                                     ('5', '1', 4, 44444, NULL, '2023-11-25 12:43:56', '2023-11-25 14:59:28');
+                                                                                                                                     ('1', '1', 100, 1, NULL, '2023-11-25 05:28:33', '2023-11-25 07:35:54'),
+                                                                                                                                     ('1', '2', 1000, 11, NULL, '2023-11-25 05:28:33', '2023-11-25 07:35:54'),
+                                                                                                                                     ('2', '3', 1, 111, NULL, '2023-11-25 05:28:33', '2023-11-25 07:59:28'),
+                                                                                                                                     ('3', '4', 2, 2222, NULL, '2023-11-25 05:28:33', '2023-11-25 07:59:28'),
+                                                                                                                                     ('4', '5', 3, 33333, NULL, '2023-11-25 05:28:33', '2023-11-25 07:59:28'),
+                                                                                                                                     ('5', '1', 4, 44444, NULL, '2023-11-25 05:43:56', '2023-11-25 07:59:28');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `supplier`
+-- Table structure for table `supplier`
 --
 
 CREATE TABLE `supplier` (
@@ -415,20 +460,20 @@ CREATE TABLE `supplier` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `supplier`
+-- Dumping data for table `supplier`
 --
 
 INSERT INTO `supplier` (`supplier_id`, `name`, `created_at`, `updated_at`) VALUES
-                                                                               ('1', 'Supplier X', '2023-11-22 13:49:49', '2023-11-22 13:49:49'),
-                                                                               ('2', 'Supplier Y', '2023-11-22 13:49:49', '2023-11-22 13:49:49'),
-                                                                               ('3', 'Supplier Z', '2023-11-22 13:49:49', '2023-11-22 13:49:49'),
-                                                                               ('4', 'Supplier A', '2023-11-22 13:49:49', '2023-11-22 13:49:49'),
-                                                                               ('5', 'Supplier B', '2023-11-22 13:49:49', '2023-11-22 13:49:49');
+                                                                               ('1', 'Supplier X', '2023-11-22 06:49:49', '2023-11-22 06:49:49'),
+                                                                               ('2', 'Supplier Y', '2023-11-22 06:49:49', '2023-11-22 06:49:49'),
+                                                                               ('3', 'Supplier Z', '2023-11-22 06:49:49', '2023-11-22 06:49:49'),
+                                                                               ('4', 'Supplier A', '2023-11-22 06:49:49', '2023-11-22 06:49:49'),
+                                                                               ('5', 'Supplier B', '2023-11-22 06:49:49', '2023-11-22 06:49:49');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -443,21 +488,40 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='user_info';
 
 --
--- Đang đổ dữ liệu cho bảng `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`user_id`, `email`, `salt`, `pass`, `user_name`, `created_at`, `updated_at`, `role`) VALUES
-                                                                                                             ('94face32-ca88-4729-b3de-b34a0e390e48', 'admin@gmail.com', '8a316e582ae2898b941eb2f82d3ef209', 'f72633c729b73b342cfb5da6910fa7800599d0a52ab211e11bc575f328fc5cff', 'hai', '2023-11-22 13:52:14', '2023-11-22 13:52:32', 1),
-                                                                                                             ('user1', 'user1@example.com', 'salt1', 'hashed_pass1', 'User 1', '2023-11-22 13:49:49', '2023-11-22 13:49:49', 1),
-                                                                                                             ('user2', 'user2@example.com', 'salt2', 'hashed_pass2', 'User 2', '2023-11-22 13:49:49', '2023-11-22 13:49:49', 1),
-                                                                                                             ('user3', 'user3@example.com', 'salt3', 'hashed_pass3', 'User 3', '2023-11-22 13:49:49', '2023-11-22 13:49:49', 1),
-                                                                                                             ('user4', 'user4@example.com', 'salt4', 'hashed_pass4', 'User 4', '2023-11-22 13:49:49', '2023-11-22 13:49:49', 1),
-                                                                                                             ('user5', 'user5@example.com', 'salt5', 'hashed_pass5', 'User 5', '2023-11-22 13:49:49', '2023-11-22 13:49:49', 1);
+                                                                                                             ('94face32-ca88-4729-b3de-b34a0e390e48', 'admin@gmail.com', '8a316e582ae2898b941eb2f82d3ef209', 'f72633c729b73b342cfb5da6910fa7800599d0a52ab211e11bc575f328fc5cff', 'hai', '2023-11-22 06:52:14', '2023-11-22 06:52:32', 1),
+                                                                                                             ('user1', 'user1@example.com', 'salt1', 'hashed_pass1', 'User 1', '2023-11-22 06:49:49', '2023-11-22 06:49:49', 1),
+                                                                                                             ('user2', 'user2@example.com', 'salt2', 'hashed_pass2', 'User 2', '2023-11-22 06:49:49', '2023-11-22 06:49:49', 1),
+                                                                                                             ('user3', 'user3@example.com', 'salt3', 'hashed_pass3', 'User 3', '2023-11-22 06:49:49', '2023-11-22 06:49:49', 1),
+                                                                                                             ('user4', 'user4@example.com', 'salt4', 'hashed_pass4', 'User 4', '2023-11-22 06:49:49', '2023-11-22 06:49:49', 1),
+                                                                                                             ('user5', 'user5@example.com', 'salt5', 'hashed_pass5', 'User 5', '2023-11-22 06:49:49', '2023-11-22 06:49:49', 1);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `verify_code`
+-- Table structure for table `user_seri`
+--
+
+CREATE TABLE `user_seri` (
+                             `user_id` varchar(64) NOT NULL,
+                             `seri` varchar(64) NOT NULL,
+                             `created_at` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_seri`
+--
+
+INSERT INTO `user_seri` (`user_id`, `seri`, `created_at`) VALUES
+    ('1', '123', '2023-12-12 08:02:38');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `verify_code`
 --
 
 CREATE TABLE `verify_code` (
@@ -469,220 +533,263 @@ CREATE TABLE `verify_code` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `verify_code`
+-- Dumping data for table `verify_code`
 --
 
 INSERT INTO `verify_code` (`code`, `email`, `created_at`, `function`, `valid`) VALUES
-    ('5aadf6', 'admin@gmail.com', '2023-11-22 13:52:14', 1, 0);
+    ('5aadf6', 'admin@gmail.com', '2023-11-22 06:52:14', 1, 0);
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `address`
+-- Indexes for table `address`
 --
 ALTER TABLE `address`
     ADD PRIMARY KEY (`address_id`),
-  ADD KEY `address_user_user_id_fk` (`user_id`);
+    ADD KEY `address_user_user_id_fk` (`user_id`);
 
 --
--- Chỉ mục cho bảng `brand`
+-- Indexes for table `brand`
 --
 ALTER TABLE `brand`
     ADD PRIMARY KEY (`brand_id`);
 
 --
--- Chỉ mục cho bảng `cart`
+-- Indexes for table `cart`
 --
 ALTER TABLE `cart`
     ADD PRIMARY KEY (`cart_id`),
-  ADD UNIQUE KEY `cart_pk` (`user_id`);
+    ADD UNIQUE KEY `cart_pk` (`user_id`);
 
 --
--- Chỉ mục cho bảng `cart_item`
+-- Indexes for table `cart_item`
 --
 ALTER TABLE `cart_item`
     ADD PRIMARY KEY (`cart_item_id`),
-  ADD KEY `cart_item_cart_cart_id_fk` (`cart_id`),
-  ADD KEY `cart_item_product_product_id_fk` (`product_id`),
-  ADD KEY `cart_item_color_color_id_fk` (`color_id`);
+    ADD KEY `cart_item_cart_cart_id_fk` (`cart_id`),
+    ADD KEY `cart_item_product_product_id_fk` (`product_id`),
+    ADD KEY `cart_item_color_color_id_fk` (`color_id`);
 
 --
--- Chỉ mục cho bảng `category`
+-- Indexes for table `category`
 --
 ALTER TABLE `category`
     ADD PRIMARY KEY (`category_id`);
 
 --
--- Chỉ mục cho bảng `color`
+-- Indexes for table `cert`
+--
+ALTER TABLE `cert`
+    ADD PRIMARY KEY (`seri`);
+
+--
+-- Indexes for table `color`
 --
 ALTER TABLE `color`
     ADD PRIMARY KEY (`color_id`);
 
 --
--- Chỉ mục cho bảng `comment`
+-- Indexes for table `comment`
 --
 ALTER TABLE `comment`
     ADD PRIMARY KEY (`comment_id`),
-  ADD KEY `product_id` (`product_id`),
-  ADD KEY `user_id` (`user_id`);
+    ADD KEY `product_id` (`product_id`),
+    ADD KEY `user_id` (`user_id`);
 
 --
--- Chỉ mục cho bảng `discount`
+-- Indexes for table `discount`
 --
 ALTER TABLE `discount`
     ADD PRIMARY KEY (`discount_id`);
 
 --
--- Chỉ mục cho bảng `favorite`
+-- Indexes for table `favorite`
 --
 ALTER TABLE `favorite`
     ADD PRIMARY KEY (`product_id`,`user_id`),
-  ADD UNIQUE KEY `favorite_pk` (`user_id`,`product_id`),
-  ADD KEY `product_id` (`product_id`),
-  ADD KEY `user_id` (`user_id`);
+    ADD UNIQUE KEY `favorite_pk` (`user_id`,`product_id`),
+    ADD KEY `product_id` (`product_id`),
+    ADD KEY `user_id` (`user_id`);
 
 --
--- Chỉ mục cho bảng `image_product`
+-- Indexes for table `image_product`
 --
 ALTER TABLE `image_product`
     ADD PRIMARY KEY (`image_product_id`),
-  ADD KEY `sub_product_color_product_product_id_fk` (`product_id`);
+    ADD KEY `sub_product_color_product_product_id_fk` (`product_id`);
 
 --
--- Chỉ mục cho bảng `image_slider`
+-- Indexes for table `image_slider`
 --
 ALTER TABLE `image_slider`
     ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `order`
+-- Indexes for table `order`
 --
 ALTER TABLE `order`
     ADD PRIMARY KEY (`order_id`),
-  ADD KEY `order_address_address_id_fk` (`full_address`),
-  ADD KEY `order_user_user_id_fk` (`user_id`);
+    ADD KEY `order_address_address_id_fk` (`full_address`),
+    ADD KEY `order_user_user_id_fk` (`user_id`);
 
 --
--- Chỉ mục cho bảng `order_item`
+-- Indexes for table `order_item`
 --
 ALTER TABLE `order_item`
     ADD PRIMARY KEY (`order_item_id`),
-  ADD KEY `order_item_order_order_id_fk` (`order_id`),
-  ADD KEY `order_item_product_product_id_fk` (`product_id`),
-  ADD KEY `order_item_color_color_id_fk` (`color_id`);
+    ADD KEY `order_item_order_order_id_fk` (`order_id`),
+    ADD KEY `order_item_product_product_id_fk` (`product_id`),
+    ADD KEY `order_item_color_color_id_fk` (`color_id`);
 
 --
--- Chỉ mục cho bảng `product`
+-- Indexes for table `order_sig`
+--
+ALTER TABLE `order_sig`
+    ADD PRIMARY KEY (`order_id`);
+
+--
+-- Indexes for table `product`
 --
 ALTER TABLE `product`
     ADD PRIMARY KEY (`product_id`),
-  ADD KEY `product_brand_brand_id_fk` (`brand_id`),
-  ADD KEY `product_category__category_id_fk` (`category_id`),
-  ADD KEY `product_discount__discount_id_fk` (`discount_id`),
-  ADD KEY `product_supplier_supplier_id_fk` (`supplier_id`);
+    ADD KEY `product_brand_brand_id_fk` (`brand_id`),
+    ADD KEY `product_category__category_id_fk` (`category_id`),
+    ADD KEY `product_discount__discount_id_fk` (`discount_id`),
+    ADD KEY `product_supplier_supplier_id_fk` (`supplier_id`);
 
 --
--- Chỉ mục cho bảng `sub_product_color`
+-- Indexes for table `revocation_cert`
+--
+ALTER TABLE `revocation_cert`
+    ADD PRIMARY KEY (`seri`);
+
+--
+-- Indexes for table `sub_product_color`
 --
 ALTER TABLE `sub_product_color`
     ADD PRIMARY KEY (`product_id`,`color_id`),
-  ADD KEY `color_product_color_color_id_fk` (`color_id`),
-  ADD KEY `sub_product_color_image_product_image_product_id_fk` (`image_product_id`);
+    ADD KEY `color_product_color_color_id_fk` (`color_id`),
+    ADD KEY `sub_product_color_image_product_image_product_id_fk` (`image_product_id`);
 
 --
--- Chỉ mục cho bảng `supplier`
+-- Indexes for table `supplier`
 --
 ALTER TABLE `supplier`
     ADD PRIMARY KEY (`supplier_id`);
 
 --
--- Chỉ mục cho bảng `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
     ADD PRIMARY KEY (`user_id`),
-  ADD KEY `user_email_index` (`email`);
+    ADD KEY `user_email_index` (`email`);
 
 --
--- Chỉ mục cho bảng `verify_code`
+-- Indexes for table `user_seri`
+--
+ALTER TABLE `user_seri`
+    ADD PRIMARY KEY (`seri`,`user_id`),
+    ADD UNIQUE KEY `user_seri_pk` (`seri`);
+
+--
+-- Indexes for table `verify_code`
 --
 ALTER TABLE `verify_code`
     ADD PRIMARY KEY (`code`,`email`),
-  ADD KEY `verify_code_email_index` (`email`);
+    ADD KEY `verify_code_email_index` (`email`);
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `address`
+-- Constraints for table `address`
 --
 ALTER TABLE `address`
     ADD CONSTRAINT `address_user_user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
--- Các ràng buộc cho bảng `cart`
+-- Constraints for table `cart`
 --
 ALTER TABLE `cart`
     ADD CONSTRAINT `cart_user_user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
--- Các ràng buộc cho bảng `cart_item`
+-- Constraints for table `cart_item`
 --
 ALTER TABLE `cart_item`
     ADD CONSTRAINT `cart_item_cart_cart_id_fk` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`cart_id`),
-  ADD CONSTRAINT `cart_item_color_color_id_fk` FOREIGN KEY (`color_id`) REFERENCES `color` (`color_id`),
-  ADD CONSTRAINT `cart_item_product_product_id_fk` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
+    ADD CONSTRAINT `cart_item_color_color_id_fk` FOREIGN KEY (`color_id`) REFERENCES `color` (`color_id`),
+    ADD CONSTRAINT `cart_item_product_product_id_fk` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
 
 --
--- Các ràng buộc cho bảng `comment`
+-- Constraints for table `comment`
 --
 ALTER TABLE `comment`
     ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
-  ADD CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
+    ADD CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
 
 --
--- Các ràng buộc cho bảng `favorite`
+-- Constraints for table `favorite`
 --
 ALTER TABLE `favorite`
     ADD CONSTRAINT `favorite_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
-  ADD CONSTRAINT `favorite_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
+    ADD CONSTRAINT `favorite_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
 
 --
--- Các ràng buộc cho bảng `image_product`
+-- Constraints for table `image_product`
 --
 ALTER TABLE `image_product`
     ADD CONSTRAINT `sub_product_color_product_product_id_fk` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
 
 --
--- Các ràng buộc cho bảng `order`
+-- Constraints for table `order`
 --
 ALTER TABLE `order`
     ADD CONSTRAINT `order_user_user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
--- Các ràng buộc cho bảng `order_item`
+-- Constraints for table `order_item`
 --
 ALTER TABLE `order_item`
     ADD CONSTRAINT `order_item_color_color_id_fk` FOREIGN KEY (`color_id`) REFERENCES `color` (`color_id`),
-  ADD CONSTRAINT `order_item_order_order_id_fk` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`),
-  ADD CONSTRAINT `order_item_product_product_id_fk` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
+    ADD CONSTRAINT `order_item_order_order_id_fk` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`),
+    ADD CONSTRAINT `order_item_product_product_id_fk` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
 
 --
--- Các ràng buộc cho bảng `product`
+-- Constraints for table `order_sig`
+--
+ALTER TABLE `order_sig`
+    ADD CONSTRAINT `order_sig_order_order_id_fk` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`);
+
+--
+-- Constraints for table `product`
 --
 ALTER TABLE `product`
     ADD CONSTRAINT `product_brand_brand_id_fk` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`brand_id`),
-  ADD CONSTRAINT `product_category__category_id_fk` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`),
-  ADD CONSTRAINT `product_discount__discount_id_fk` FOREIGN KEY (`discount_id`) REFERENCES `discount` (`discount_id`),
-  ADD CONSTRAINT `product_supplier_supplier_id_fk` FOREIGN KEY (`supplier_id`) REFERENCES `supplier` (`supplier_id`);
+    ADD CONSTRAINT `product_category__category_id_fk` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`),
+    ADD CONSTRAINT `product_discount__discount_id_fk` FOREIGN KEY (`discount_id`) REFERENCES `discount` (`discount_id`),
+    ADD CONSTRAINT `product_supplier_supplier_id_fk` FOREIGN KEY (`supplier_id`) REFERENCES `supplier` (`supplier_id`);
 
 --
--- Các ràng buộc cho bảng `sub_product_color`
+-- Constraints for table `revocation_cert`
+--
+ALTER TABLE `revocation_cert`
+    ADD CONSTRAINT `revocation_cert_cert_seri_fk` FOREIGN KEY (`seri`) REFERENCES `cert` (`seri`);
+
+--
+-- Constraints for table `sub_product_color`
 --
 ALTER TABLE `sub_product_color`
     ADD CONSTRAINT `color_product_color_color_id_fk` FOREIGN KEY (`color_id`) REFERENCES `color` (`color_id`),
-  ADD CONSTRAINT `color_product_product_product_id_fk` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`),
-  ADD CONSTRAINT `sub_product_color_image_product_image_product_id_fk` FOREIGN KEY (`image_product_id`) REFERENCES `image_product` (`image_product_id`);
+    ADD CONSTRAINT `color_product_product_product_id_fk` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`),
+    ADD CONSTRAINT `sub_product_color_image_product_image_product_id_fk` FOREIGN KEY (`image_product_id`) REFERENCES `image_product` (`image_product_id`);
+
+--
+-- Constraints for table `user_seri`
+--
+ALTER TABLE `user_seri`
+    ADD CONSTRAINT `user_seri_cert_seri_fk` FOREIGN KEY (`seri`) REFERENCES `cert` (`seri`);
 COMMIT;
