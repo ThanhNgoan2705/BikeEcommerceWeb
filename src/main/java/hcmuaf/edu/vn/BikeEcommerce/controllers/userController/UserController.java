@@ -29,17 +29,22 @@ public class UserController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Token token = (Token) req.getAttribute("token");
-
         if (token != null) {
 
             User user = UserService.getInstance().getUserByKey(token.getUserId());
             List<Address> addressList = AddressService.getInstance().getAllAddressByUserId(token.getUserId());
             List<Order> orderList = OrderService.getInstance().getAllOrderByUserId(token.getUserId());
             List<Favorite> favoriteList = FavoriteService.getInstance().getFavoriteByUserId(token.getUserId());
+            String email = user.getEmail();
+            String[] emailSplit = email.split("@");
+            String emailShow = emailSplit[0].substring(0, 3) + "****" + emailSplit[0].substring(emailSplit[0].length() - 3) + "@" + emailSplit[1];
+            String name = user.getUserName();
             req.setAttribute("favoriteList", favoriteList);
             req.setAttribute("addressList", addressList);
             req.setAttribute("orderList", orderList);
             req.setAttribute("user", user);
+            req.setAttribute("emailShow", emailShow);
+            req.setAttribute("name", name);
         }
         req.getRequestDispatcher("UserProfile.jsp").forward(req, resp);
     }

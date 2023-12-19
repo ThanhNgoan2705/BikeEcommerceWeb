@@ -41,8 +41,6 @@ public class LoginController extends HttpServlet {
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
             throw new RuntimeException(e);
         }
-
-
         if (token != null) {
             HttpSession session = request.getSession(true);
 //            session.setAttribute("user", user);
@@ -53,21 +51,21 @@ public class LoginController extends HttpServlet {
             response.sendRedirect("home");
             return;
         }
-
         request.getRequestDispatcher("logIn.jsp").forward(request, response);
     }
 
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/plain");
         printWriter = resp.getWriter();
         String email = (String) req.getParameter("email");
         String pass = (String) req.getParameter("pass");
+        System.out.println("abc");
         System.out.println(email + " ------- " + pass);
         User user = UserService.getInstance().loginByUserNameOrEmail(email, pass);
         System.out.println(user + " user login controller");
         if (user != null) {
-//        if (true) {
             try {
                 String tokenValue = TokenService.getInstance().genTokenByUser(user); // tokenValue
                 Cookie cookie = new Cookie("token-bike", tokenValue);
@@ -79,19 +77,22 @@ public class LoginController extends HttpServlet {
                 session.setAttribute("haveUser", true);
                 session.setAttribute("userName", user.getUserName());
                 System.out.println("Login success");
+                System.out.println("user: " + user);
                 resp.sendRedirect("home");
+
             } catch (NoSuchAlgorithmException e) {
                 printWriter.println("<script>\n" + "    alert(\"Login failed\");\n" + "</script>");
-                System.out.println("Login failed");
+                System.out.println("a");
             } catch (InvalidKeySpecException e) {
+                System.out.println("b");
                 throw new RuntimeException(e);
             }
-        } else {
-            System.out.println("Login failed");
+        }
+        else {
+            System.out.println("c");
             req.setAttribute("emailUser", email);
             req.setAttribute("mess", "wrong info");
-            req.getRequestDispatcher("login.jsp").forward(req, resp);
-//            resp.sendRedirect(req.getContextPath() + "/login");
+            req.getRequestDispatcher("/logIn.jsp").forward(req, resp);
         }
 
 

@@ -92,14 +92,15 @@ public class UserAPI extends HttpServlet {
             return;
         }
         String oldPass = req.getParameter("oldPass");
-        String userId = token.getUserId();
-        User user = userService.loginByUserNameOrEmail("hai", oldPass);
+        User user = userService.loginByUserNameOrEmail(token.getUserName(), oldPass);
+        System.out.println("oldPass: " + oldPass);
+        System.out.println("user: " + user);
         if (user != null) {
             user.setPass(newPass);
             userService.updateUserPassword(user);
             resp.getWriter().write("changePass success");
+            System.out.println("changePass success");
         } else resp.getWriter().write("changePass fail");
-
     }
 
     // thay doi role cua user (admin moi co the lam duoc)
@@ -110,8 +111,8 @@ public class UserAPI extends HttpServlet {
             String userId = req.getParameter("userId");
             String role = req.getParameter("role");
             User user = userService.getUserByKey(userId);
-            userService.updateUser(user.getEmail(),Integer.parseInt(role));
-            resp.getWriter().write("update role success "+ role);
+            userService.updateUser(user.getEmail(), Integer.parseInt(role));
+            resp.getWriter().write("update role success " + role);
         } else resp.getWriter().write("update role fail");
     }
 }

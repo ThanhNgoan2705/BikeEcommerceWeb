@@ -15,18 +15,12 @@
     <%--    fontAwesome--%>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-            rel="stylesheet"
-    />
     <%--    MDB CSS--%>
-    <style>INPUT:-webkit-autofill,SELECT:-webkit-autofill,TEXTAREA:-webkit-autofill{animation-name:onautofillstart}INPUT:not(:-webkit-autofill),SELECT:not(:-webkit-autofill),TEXTAREA:not(:-webkit-autofill){animation-name:onautofillcancel}@keyframes onautofillstart{}@keyframes onautofillcancel{}</style>
-    <link href="mdb/css/bootstrap.min.css" rel="stylesheet">
-    <link href="mdb/css/mdb.min.css" rel="stylesheet">
-    <link href="mdb/css/addons/compiled-addons-4.20.0.min.css">
-    <link href="mdb/css/style.css" rel="stylesheet">
-    <link href="mdb/css/default.css" rel="stylesheet">
-
+    <link href="/mdb/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/mdb/css/mdb.min.css" rel="stylesheet">
+    <link href="/mdb/css/addons/compiled-addons-4.20.0.min.css">
+    <link href="/mdb/css/style.css" rel="stylesheet">
+    <link href="/mdb/css/default.css" rel="stylesheet">
 </head>
 <body class="homepage-v2 hidden-sn white-skin animated">
 <!-- Navigation -->
@@ -45,15 +39,15 @@
             <div class="col-md-6">
 
                 <!-- Default form login -->
-                <form class="text-center" action="login" method="post">
+                <form class="text-center" method="post" action="/login">
 
                     <p class="h4 mb-4">Log in</p>
 
                     <!-- Email -->
-                    <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail" name="email">
+                    <input type="email" id="email" class="form-control mb-4" placeholder="E-mail" name="email">
 
                     <!-- Password -->
-                    <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password" name="pass">
+                    <input type="password" id="password" class="form-control mb-4" placeholder="Password" name="pass">
 
                     <div class="d-flex justify-content-around">
                         <div>
@@ -65,7 +59,7 @@
                         </div>
                         <div>
                             <!-- Forgot password -->
-                            <a href="forgotPassword.jsp">Forgot password?</a>
+                            <a href="/forgotPass">Forgot password?</a>
                         </div>
                     </div>
 
@@ -74,7 +68,7 @@
 
                     <!-- Register -->
                     <p>Not a member?
-                        <a href="register.jsp">Register</a>
+                        <a href="/register">Register</a>
                     </p>
 
                     <!-- Social login -->
@@ -101,27 +95,56 @@
 <!-- Footer -->
 <%@include file="default/footer.jsp"%>
 <!-- Footer -->
-<script src="mdb/js/jquery.min.js"></script>
-<script src="mdb/js/bootstrap.min.js"></script>
-<script src="mdb/js/mdb.min.js"></script>
-<script type="text/javascript">
-    /* WOW.js init */
-    new WOW().init();
+<script src="/mdb/js/jquery.min.js"></script>
+<script src="/mdb/js/bootstrap.min.js"></script>
+<script src="/mdb/js/mdb.min.js"></script>
+<%--<script type="text/javascript">--%>
+<%--    /* WOW.js init */--%>
+<%--    new WOW().init();--%>
 
-    // Tooltips Initialization
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    })
+<%--    // Tooltips Initialization--%>
+<%--    $(function () {--%>
+<%--        $('[data-toggle="tooltip"]').tooltip()--%>
+<%--    })--%>
 
-    // Material Select Initialization
-    $(document).ready(function () {
+<%--    // Material Select Initialization--%>
+<%--    $(document).ready(function () {--%>
 
-        $('.mdb-select').material_select();
-    });
+<%--        $('.mdb-select').material_select();--%>
+<%--    });--%>
 
-    // SideNav Initialization
-    $(".button-collapse").sideNav();
+<%--    // SideNav Initialization--%>
+<%--    $(".button-collapse").sideNav();--%>
 
+<%--</script>--%>
+<script>
+    function logIn(){
+        console.log("login");
+        var email = document.getElementById("email").value;
+        var pass = document.getElementById("password").value;
+        if (email === "" || pass === ""){
+            alert("Vui lòng nhập đầy đủ thông tin");
+            return;
+        }
+        $.ajax({
+            url: "/login",
+            type: "POST",
+            dataType: "text",
+            data:{
+                email:email,
+                pass:pass
+            },
+            success: function (value) {
+                console.log(value);
+                if(value === "login success"){
+                    console.log("login success");
+                    window.location.href = "/home";
+                }else {
+                    alert("Sai tài khoản hoặc mật khẩu");
+                }
+            }
+        })
+    }
 </script>
 </body>
 </html>
