@@ -38,26 +38,6 @@ public class UserKey extends HttpServlet {
 //        String publicKey = req.getParameter("publicKey");
 //        String seri = req.getParameter("seri");
 
-        response.setContentType("application/json;charset=UTF-8");
-
-        try (PrintWriter out = response.getWriter()) {
-            // Tạo đôi khóa RSA
-
-
-            // Lưu khóa trong HttpSession
-            HttpSession session = request.getSession();
-            session.setAttribute("publicKey", keyPair.getPublic());
-            session.setAttribute("privateKey", keyPair.getPrivate());
-
-            // Gửi đối tượng JSON chứa khóa về client
-            out.print("{");
-            out.print("\"publicKey\":\"" + keyPair.getPublic().toString() + "\",");
-            out.print("\"privateKey\":\"" + keyPair.getPrivate().toString() + "\"");
-            out.print("}");
-        } catch (Exception e) {
-            e.printStackTrace();
-            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-        }
 //        resp.getWriter().write("publicKey" + publicKey + "\n");
 //        resp.getWriter().write("privateKey: " + privateKey);
 //        resp.getWriter().write("Seri: " + seri);
@@ -66,12 +46,29 @@ public class UserKey extends HttpServlet {
 //        byte[] bytes= Base64.getDecoder().decode(pubString);
 //        PublicKey publicKey1= keyGen.getPublicKeyformBytes(bytes);
 //        System.out.println(publicKey1.equals(publicKey));
+        response.setContentType("text/plain");
+        PrintWriter out = response.getWriter();
+
+        String privateKey= request.getParameter("privateKey");
+        String publicKey = request.getParameter("publicKey");
+        String seri = request.getParameter("seri");
+
+
+
+        response.getWriter().write("publicKey" + publicKey + "\n");
+        response.getWriter().write("privateKey: " + privateKey);
+        response.getWriter().write("Seri: " + seri);
+
 
 
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+
+    }
+
+    public static void main(String[] args) {
 
     }
 }
