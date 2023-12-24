@@ -9,20 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a759932-6c3e-472a-96e3-72bf4ea509d1" name="Changes" comment="update datatest">
-      <change afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/ProductDetail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/admin/assert/css/all.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/admin/assert/font-awesome/all.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/admin/assert/font-awesome/font-awesome.all.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/admin/assert/js/all.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/admin/assert/js/jquery.maskMoney.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/admin/default/header.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/admin/listSubProduct.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/mdb/js/dropdownActive.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/productsByFilter.jsp" afterDir="false" />
+    <list default="true" id="1a759932-6c3e-472a-96e3-72bf4ea509d1" name="Changes" comment="import digital RSA helper">
+      <change afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/UploadProductImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/upload.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/showImage.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/DAO/ImageProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/DAO/ImageProductDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/DAO/ScirptSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/DAO/ScirptSQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/HelloServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/HelloServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/AddressAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/AddressAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/BrandAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/BrandAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/CategoryAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/CategoryAPI.java" afterDir="false" />
@@ -30,33 +24,11 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/DiscountAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/DiscountAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/FavoriteAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/FavoriteAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/ProductAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/ProductAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/ProductController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/UserAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/UserAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/controllers/publicControllers/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/controllers/cartController/GetCartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/controllers/cartController/GetCartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/service/ColorProductService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/ProductDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/ProductDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/SubProductAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/GetPriceByColorAndProductId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/model/ImageProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/model/ImageProduct.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/service/ImageProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/service/ImageProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/address.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/address.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/assert/css/mdb.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/assert/css/mdb.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/assert/js/mdb.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/assert/js/mdb.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/brand.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/brand.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/category.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/category.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/color.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/color.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/colorProduct.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/colorProduct.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/discount.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/discount.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home_dashboard.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home_dashboard.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/imageProduct.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/imageProduct.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/invoice.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/invoice.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/order.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/order.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/product.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/slider.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/slider.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/supplier.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/supplier.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/user.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/cart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/cart.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/default/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/default/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/default/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/default/menu.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/test.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/test.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,8 +42,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="JavaScript File" />
+        <option value="Class" />
         <option value="Jsp File" />
       </list>
     </option>
@@ -83,13 +55,6 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GithubProjectSettings">
-    <option name="branchProtectionPatterns">
-      <list>
-        <option value="ThanhNgoan" />
-      </list>
-    </option>
   </component>
   <component name="JspContextManager">
     <jsp-to-context jsp-file="file://$PROJECT_DIR$/src/main/webapp/default/header.jsp" context-file="file://$PROJECT_DIR$/src/main/webapp/aboutUs.jsp" />
@@ -112,31 +77,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "ThanhNgoan",
-    "last_opened_file_path": "C:/Users/Chan Chan/BikeEcommerceWeb/src/main/webapp/admin/assert/js",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.45747125",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;HoangHai&quot;,
+    &quot;last_opened_file_path&quot;: &quot;I:/bike/BikeEcommerceWeb/src/main/lib/ATBMModel.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.45747125&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="hcmuaf.edu.vn.BikeEcommerce.DAO" />
@@ -149,6 +118,7 @@
       <recent name="C:\Users\Chan Chan\BikeEcommerceWeb\src\main\webapp\admin\assert\mdb" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="I:\bike\BikeEcommerceWeb\src\main\lib" />
       <recent name="C:\Users\Chan Chan\BikeEcommerceWeb\src\main\webapp\admin\assert\font-awesome" />
       <recent name="C:\Users\Chan Chan\BikeEcommerceWeb\src\main\webapp\admin\assert\js" />
       <recent name="I:\bike\BikeEcommerceWeb\src\main\webapp" />
@@ -169,6 +139,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="HelloServlet" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="hcmuaf.edu.vn.BikeEcommerce.HelloServlet" />
+      <module name="BikeEcommerce" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hcmuaf.edu.vn.BikeEcommerce.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="OrderService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="hcmuaf.edu.vn.BikeEcommerce.service.OrderService" />
       <module name="BikeEcommerce" />
@@ -182,25 +165,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProductService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="hcmuaf.edu.vn.BikeEcommerce.service.ProductService" />
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="hcmuaf.edu.vn.BikeEcommerce.test" />
       <module name="BikeEcommerce" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="hcmuaf.edu.vn.BikeEcommerce.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="hcmuaf.edu.vn.BikeEcommerce.service.UserService" />
-      <module name="BikeEcommerce" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="hcmuaf.edu.vn.BikeEcommerce.service.*" />
+          <option name="PATTERN" value="hcmuaf.edu.vn.BikeEcommerce.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -210,6 +180,17 @@
     </configuration>
     <configuration name="product.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8081/admin/product.jsp">
       <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="Tomcat 9.0.79" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.79" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
@@ -300,8 +281,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.ProductService" />
-      <item itemvalue="Application.UserService" />
+      <item itemvalue="Application.test" />
+      <item itemvalue="Application.HelloServlet" />
       <item itemvalue="Application.OrderService" />
       <item itemvalue="Application.CategoryService" />
       <item itemvalue="JavaScript Debug.product.jsp" />
@@ -309,11 +290,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.test" />
+        <item itemvalue="Application.HelloServlet" />
         <item itemvalue="JavaScript Debug.product.jsp" />
         <item itemvalue="Application.CategoryService" />
         <item itemvalue="Application.OrderService" />
-        <item itemvalue="Application.UserService" />
-        <item itemvalue="Application.ProductService" />
       </list>
     </recent_temporary>
   </component>
@@ -345,6 +326,14 @@
       <workItem from="1701053836561" duration="3263000" />
       <workItem from="1701070393134" duration="1551000" />
       <workItem from="1701097141347" duration="10048000" />
+      <workItem from="1701312318520" duration="8000" />
+      <workItem from="1701373101754" duration="3321000" />
+      <workItem from="1701773645942" duration="1923000" />
+      <workItem from="1702113474151" duration="1284000" />
+      <workItem from="1702521339615" duration="3017000" />
+      <workItem from="1702916529646" duration="10618000" />
+      <workItem from="1702962561723" duration="13564000" />
+      <workItem from="1703104255037" duration="8416000" />
     </task>
     <task id="LOCAL-00001" summary="update databaseHai.sql">
       <option name="closed" value="true" />
@@ -618,11 +607,26 @@
       <option name="project" value="LOCAL" />
       <updated>1700687039782</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="import digital RSA helper">
+      <option name="closed" value="true" />
+      <created>1701398609474</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1701398609475</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="executable:docker" />
+    <option featureType="dependencySupport" implementationName="java:com.google.protobuf:protobuf-java" />
+    <option featureType="dependencySupport" implementationName="executable:kubectl" />
+    <option featureType="dependencySupport" implementationName="java:org.jdbi:jdbi3-core" />
+    <option featureType="dependencySupport" implementationName="maven-packaging:war" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ID_ORDER">
@@ -647,7 +651,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="them java doc" />
     <MESSAGE value="sua loi cua tat ca cac lop DAO" />
     <MESSAGE value="ide" />
     <MESSAGE value="sua lai giao dien gui mail xac nhan order" />
@@ -672,7 +675,8 @@
     <MESSAGE value="merge main to hoanghai" />
     <MESSAGE value="auto login khi token còn hiệu lực" />
     <MESSAGE value="update datatest" />
-    <option name="LAST_COMMIT_MESSAGE" value="update datatest" />
+    <MESSAGE value="import digital RSA helper" />
+    <option name="LAST_COMMIT_MESSAGE" value="import digital RSA helper" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

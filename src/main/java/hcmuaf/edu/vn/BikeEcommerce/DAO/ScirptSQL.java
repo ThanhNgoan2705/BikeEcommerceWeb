@@ -85,12 +85,13 @@ public class ScirptSQL {
     public static final String deleteFavorite = "delete from favorite where product_id = :productId and user_id = :userId";
     public static final String getAllFavorite = "select * from favorite";
     public static final String hasFavoriteByUserIdAndProductId = "SELECT COUNT(*) > 0 FROM favorite WHERE user_id = :userId AND product_id = :productId";
+
     //    Image product da test va fix by Hoang Hai 21-8-23
     static final String getAllImageProduct = "select * from image_product";
     static final String getImageProductById = "select * from image_product where image_product_id = :imageProductId";
     static final String getImageProductByProductId = "select * from image_product where product_id = :productId";
-    static final String insertImageProduct = "insert into image_product(image_product_id, link, product_id) values(:imageProductId, :link, :productId)";
-    static final String updateImageProduct = "update image_product set link = :link, product_id = :productId where image_product_id = :imageProductId";
+    static final String insertImageProduct = "insert into image_product(image_product_id, link, product_id,color_id) values(:imageProductId, :link, :productId, :colorId)";
+    static final String updateImageProduct = "update image_product set link = :link, product_id = :productId ,color_id =:colorId where image_product_id = :imageProductId";
     static final String deleteImageProduct = "delete from image_product where image_product_id = :imageProductId";
     public static final String deleteImageProductByProductId = "delete from image_product where product_id = :productId";
 

@@ -11,101 +11,55 @@
     <title>Title</title>
 </head>
 <body>
-<form class="row g-3 needs-validation" novalidate enctype="multipart/form-data">
-    <div class="modal-title">
-        <h2 class="text-start text-black w-50">Add Product</h2>
-    </div>
-    <div class="col-md-12">
-        <label for="nameProduct" class="form-label">Product Name</label>
-        <input type="text" class="form-control" id="nameProduct" value="Mark" required>
-        <div class="valid-feedback">
-            Looks good!
-        </div>
-    </div>
-    <!--                        list category-->
-    <div class="col-md-6">
-        <label for="categoryName" class="form-label">Category</label>
-        <select class="form-select" id="categoryname" required>
-            <option selected disabled value="">Xe Điện</option>
-            <option>Xe Máy Điện</option>
-            <option>Xe Đạp Điện</option>
-            <option>Xe Đạp Thể Thao</option>
-        </select>
-        <div class="invalid-feedback">
-            Please select a valid state.
-        </div>
-    </div>
-    <!--                        list suppliers-->
-    <div class="col-md-6">
-        <label for="supplierName" class="form-label">Supplier</label>
-        <select class="form-select" id="supplierName" required>
-            <option selected disabled value="">Việt Nam</option>
-            <option>Trung Quốc</option>
-            <option>Thái Lan</option>
-            <option>Đài Loan</option>
-            <option>Nhật Bản</option>
-        </select>
-        <div class="invalid-feedback">
-            Please select a valid state.
-        </div>
-    </div>
-    <div class="col-md-6">
-        <label for="brandName" class="form-label">Brand</label>
-        <select class="form-select" id="brandName" required>
-            <option selected disabled value="">Pega</option>
-            <option>JVC</option>
-            <option>Galaxy</option>
-            <option>Yadea</option>
-        </select>
-        <div class="invalid-feedback">
-            Please select a valid state.
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-outline">
-            <textarea class="form-control" id="description" rows="4"></textarea>
-            <label class="form-label" for="description">Description</label>
-        </div>
 
-    </div>
-    <div class="col-md-6">
-        <label for="colorKind" class="form-label">Color</label>
-        <input type="text" class="form-control"
-               id="colorKind">
-    </div>
-    <div class="col-md-3 float-end">
-        <label for="validationCustom12" class="form-label">Wheel Size</label>
-        <input type="text" class="form-control"
-               id="validationCustom12" required>
-        <div class="invalid-feedback">
-            Please provide a valid zip.
-        </div>
-    </div>
-    <div class="col-md-3">
-        <label for="material" class="form-label">Material</label>
-        <input type="text" class="form-control" id="material">
-    </div>
-    <div class="col-md-6">
-        <label for="Warranty" class="form-label">Warranty</label>
-        <input type="text" class="form-control" id="Warranty">
-    </div>
-    <div class="col-md-6">
-        <!--Image-->
-        <div>
-            <div class="mb-4 d-flex justify-content-center">
-                <img src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg"
-                     alt="example placeholder" style="width: 250px;"/>
-            </div>
-            <div class="d-flex justify-content-center">
-                <div class="btn btn-primary btn-rounded">
-                    <label class="form-label text-white m-1" for="customFile1">Choose file</label>
-                    <input type="file" class="form-control d-none" id="customFile1" multiple/>
-                </div>
-            </div>
-        </div>
+<form>
+    <input type="text" name="productId">
+    <input type="text" name="colorId">
 
-    </div>
-    <button class="btn btn-secondary w-25" type="submit">Add Product</button>
+    <button id="uploadButton" class="btn btn-secondary w-25" type="button">Add Product</button>
 </form>
+<form id="myDropzone" class="dropzone" enctype="multipart/form-data" action="/UploadProductImage" method="post">
+    <input type="text" name="productId" hidden="" value="${}">
+    <input type="text" name="colorId" hidden="">
+</form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/min/dropzone.min.js"
+        integrity="sha512-Vu7eB5W0sz+V2rhQan7P2uW9LCJolvnqGgoBf9Y7yUXG0ZU1M/f8Sb+KkrPwSrpPy7K2hvvIpZ+8c7H8Q3Ri/Q=="
+        crossorigin="anonymous"></script>
+<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css"/>
+<script>
+
+    // Initialize Dropzone without any options
+    var myDropzone = new Dropzone("#myDropzone", {
+        autoProcessQueue: false,
+        parallelUploads: 10,
+        uploadMultiple: true,
+        acceptedFiles: ".jpeg,.jpg,.png,.gif",
+        addRemoveLinks: true,
+        init: function () {
+            var submitButton = document.querySelector("#uploadButton");
+            myDropzone = this; // closure
+
+            submitButton.addEventListener("click", function () {
+                myDropzone.processQueue(); // Tell Dropzone to process all queued files.
+            });
+
+            // You might want to show the submit button only when
+            // files are dropped here:
+            this.on("addedfile", function () {
+                // Show submit button here and/or inform user to click it.
+            });
+
+        }
+    });
+
+
+    // Custom button to initiate the upload
+    document.getElementById('uploadButton').addEventListener('click', function () {
+        myDropzone.processQueue(); // Bắt đầu quá trình tải lên khi nhấn nút
+    });
+</script>
+
 </body>
 </html>
