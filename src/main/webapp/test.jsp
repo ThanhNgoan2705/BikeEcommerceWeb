@@ -19,7 +19,7 @@
     <button id="uploadButton" class="btn btn-secondary w-25" type="button">Add Product</button>
 </form>
 <form id="myDropzone" class="dropzone" enctype="multipart/form-data" action="/UploadProductImage" method="post">
-    <input type="text" name="productId" hidden="" value="${}">
+<%--    <input type="text" name="productId" hidden="" value="${}">--%>
     <input type="text" name="colorId" hidden="">
 </form>
 
