@@ -145,24 +145,18 @@
 
                         <!-- Section: Categories -->
                         <section class="section">
-                            <c:forEach items="${categories}" var="cate">
+                            <c:forEach items="${quantityByCategory}" var="map">
                                 <ul class="list-group z-depth-1">
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <a class="dark-grey-text font-small"><i
                                                 class="fas fa-laptop dark-grey-text mr-2"
-                                                aria-hidden="true"></i>${cate.name}</a>
-                                        <c:forEach items="${quantityByCategory}" var="TotalQuantity">
-                                                <c:if test="${TotalQuantity.key == cate}">
-                                                    <span class="badge badge-danger badge-pill">${TotalQuantity.value}</span></a>
-                                                </c:if>
-                                        </c:forEach>
+                                                aria-hidden="true"></i>${map.key.name}</a>
+                                        <span class="badge badge-danger badge-pill">${map.value}</span></a>
                                     </li>
                                 </ul>
                             </c:forEach>
                         </section>
-
                         <!-- Section: Categories -->
-
                     </div>
                     <!-- Grid column -->
 
@@ -183,79 +177,126 @@
 
                         <!-- Grid row -->
                         <div class="row">
-                            <c:forEach items="${top1Products}" var="product">
-                                <c:forEach items="${imageProduct}" var="image">
-                                    <!-- Grid column -->
-                                    <div class="col-lg-4 col-md-12 mb-4">
+                            <c:forEach items="${data}" var="prod">
+                                <!-- Grid column -->
+                                <div class="productList col-lg-4 col-md-12 mb-4">
 
-                                        <!-- Card -->
-                                        <div class="card card-ecommerce">
+                                    <!-- Card -->
+                                    <div class="card card-ecommerce">
 
-                                            <!-- Card image -->
-                                            <div class="view overlay">
+                                        <!-- Card image -->
+                                        <div class="view overlay">
 
-                                                <img src="${image.link}" class="img-fluid" alt="">
-                                                <a>
-                                                    <div class="mask rgba-white-slight"></div>
-                                                </a>
+                                            <img src="" class="img-fluid" alt="">
+                                            <a>
+                                                <div class="mask rgba-white-slight"></div>
+                                            </a>
 
-                                            </div>
-                                            <!-- Card image -->
+                                        </div>
+                                        <!-- Card image -->
 
-                                            <!-- Card content -->
-                                            <div class="card-body">
+                                        <!-- Card content -->
+                                        <div class="card-body">
 
-                                                <!-- Category & Title -->
-                                                <h5 class="card-title mb-1"><strong><a href=""
-                                                                                       class="dark-grey-text">${product.name}</a></strong>
-                                                </h5>
+                                            <!-- Category & Title -->
+                                            <h5 class="card-title mb-1"><strong><a href=""
+                                                                                   class="dark-grey-text">${prod.name}</a></strong>
+                                            </h5>
 
-                                                <span class="badge badge-danger mb-2">bestseller</span>
+                                            <span class="badge badge-danger mb-2">bestseller</span>
 
-                                                <!-- Rating -->
-                                                <ul class="rating">
+                                            <!-- Rating -->
+                                            <ul class="rating">
 
-                                                    <li><i class="fas fa-star blue-text"></i></li>
+                                                <li><i class="fas fa-star blue-text"></i></li>
 
-                                                    <li><i class="fas fa-star blue-text"></i></li>
+                                                <li><i class="fas fa-star blue-text"></i></li>
 
-                                                    <li><i class="fas fa-star blue-text"></i></li>
+                                                <li><i class="fas fa-star blue-text"></i></li>
 
-                                                    <li><i class="fas fa-star blue-text"></i></li>
+                                                <li><i class="fas fa-star blue-text"></i></li>
 
-                                                    <li><i class="fas fa-star blue-text"></i></li>
+                                                <li><i class="fas fa-star blue-text"></i></li>
 
-                                                </ul>
+                                            </ul>
 
-                                                <!-- Card footer -->
-                                                <div class="card-footer pb-0">
+                                            <!-- Card footer -->
+                                            <div class="card-footer pb-0">
 
-                                                    <div class="row mb-0">
+                                                <div class="row mb-0">
 
-                                                        <span class="float-left"><strong>${product.price}</strong></span>
+                                                    <span class="float-left"><strong>${prod.price}</strong></span>
 
-                                                        <span class="float-right">
+                                                    <span class="float-right">
 
-                            <a   class="addToCart" role="button" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
-                                    class="fas fa-shopping-cart ml-3" onclick="addTocart(${product.productId})"></i></a>
+                            <a class="addToCart" role="button" data-toggle="tooltip" data-placement="top"
+                               title="Add to Cart"><i
+                                    class="fas fa-shopping-cart ml-3" onclick="addTocart(${prod.productId})"></i></a>
 
                           </span>
-
-                                                    </div>
-
                                                 </div>
 
                                             </div>
-                                            <!-- Card content -->
 
                                         </div>
-                                        <!-- Card -->
+                                        <!-- Card content -->
 
                                     </div>
-                                    <!-- Grid column -->
-                            </c:forEach>
+                                    <!-- Card -->
+
+                                </div>
+                                <!-- Grid column -->
                             </c:forEach>
                         </div>
+                        <!-- Grid row -->
+                        <!-- Grid row -->
+                        <div class="row justify-content-center mb-4">
+
+                            <!-- Pagination -->
+                            <nav class="mb-4">
+
+                                <ul class="pagination pagination-circle pg-blue mb-0">
+
+                                    <!-- First -->
+                                    <li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
+                                        <a class="page-link waves-effect waves-effect">First</a>
+                                    </li>
+
+                                    <!-- Arrow left -->
+                                    <li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
+                                        <a class="page-link waves-effect waves-effect"
+                                           aria-label="Previous">
+                                            <span aria-hidden="true">«</span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                    </li>
+
+                                    <!-- Numbers -->
+                                    <c:forEach var="i" begin="1" end="${totalPage}">
+                                        <li class="page-item ${i == currentPage ? 'active' : ''}">
+                                            <a class="page-link waves-effect waves-effect"
+                                            >${i}</a>
+                                        </li>
+                                    </c:forEach>
+                                    <!-- Arrow right -->
+                                    <li class="page-item ${currentPage == totalPage ? 'disabled' : ''}">
+                                        <a class="page-link waves-effect waves-effect"
+                                           aria-label="Next">
+                                            <span aria-hidden="true">»</span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </li>
+
+                                    <!-- Last -->
+                                    <li class="page-item ${currentPage == totalPage ? 'disabled' : ''}">
+                                        <a class="page-link waves-effect waves-effect">Last</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <!-- Pagination -->
+
+                        </div>
+                        <!-- Grid row -->
 
                     </div>
 
@@ -807,365 +848,481 @@
                 <h4 class="font-weight-bold mt-4 dark-grey-text"><strong>LAST ITEMS</strong></h4>
 
                 <hr class="mb-5">
+                <div id="carousel-example-multi" class="carousel slide carousel-multi-item v-2" data-ride="carousel">
 
-                <!-- Grid row -->
-                <div class="row">
+                    <!--Controls-->
+                    <div class="controls-top justify-content-between">
+                        <a class="btn-floating float-left" href="#carousel-example-multi" data-slide="prev"><i
+                                class="fas fa-chevron-left"></i></a>
+                        <a class="btn-floating float-right" href="#carousel-example-multi" data-slide="next"><i
+                                class="fas fa-chevron-right"></i></a>
+                    </div>
+                    <!--/.Controls-->
 
-                    <!-- Grid column -->
-                    <div class="col-lg-3 col-md-6 mb-4">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-multi" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-multi" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-multi" data-slide-to="2"></li>
+                        <li data-target="#carousel-example-multi" data-slide-to="3"></li>
+                        <li data-target="#carousel-example-multi" data-slide-to="4"></li>
+                        <li data-target="#carousel-example-multi" data-slide-to="5"></li>
+                    </ol>
+                    <!--/.Indicators-->
 
-                        <!-- Card -->
-                        <div class="card card-ecommerce">
+                    <div class="carousel-inner v-2" role="listbox">
 
-                            <!-- Card image -->
-                            <div class="view overlay">
+                        <div class="carousel-item active">
+                            <!-- Grid column -->
+                            <div class="col-12 col-md-4">
 
-                                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg"
-                                     class="img-fluid"
-                                     alt="">
+                                <!-- Card -->
+                                <div class="card card-ecommerce">
 
-                                <a>
+                                    <!-- Card image -->
+                                    <div class="view overlay">
 
-                                    <div class="mask rgba-white-slight"></div>
+                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg"
+                                             class="img-fluid"
+                                             alt="">
 
-                                </a>
+                                        <a>
 
-                            </div>
-                            <!-- Card image -->
+                                            <div class="mask rgba-white-slight"></div>
 
-                            <!-- Card content -->
-                            <div class="card-body">
+                                        </a>
 
-                                <!-- Category & Title -->
-                                <h5 class="card-title mb-1"><strong><a href=""
-                                                                       class="dark-grey-text">Headphones</a></strong>
-                                </h5>
-                                <span class="badge badge-danger mb-2">bestseller</span>
+                                    </div>
+                                    <!-- Card image -->
 
-                                <!-- Rating -->
-                                <ul class="rating">
+                                    <!-- Card content -->
+                                    <div class="card-body">
 
-                                    <li><i class="fas fa-star blue-text"></i></li>
+                                        <!-- Category & Title -->
+                                        <h5 class="card-title mb-1"><strong><a href=""
+                                                                               class="dark-grey-text">Headphones</a></strong>
+                                        </h5>
+                                        <span class="badge badge-danger mb-2">bestseller</span>
 
-                                    <li><i class="fas fa-star blue-text"></i></li>
+                                        <!-- Rating -->
+                                        <ul class="rating">
 
-                                    <li><i class="fas fa-star blue-text"></i></li>
+                                            <li><i class="fas fa-star blue-text"></i></li>
 
-                                    <li><i class="fas fa-star blue-text"></i></li>
+                                            <li><i class="fas fa-star blue-text"></i></li>
 
-                                    <li><i class="fas fa-star blue-text"></i></li>
+                                            <li><i class="fas fa-star blue-text"></i></li>
 
-                                </ul>
+                                            <li><i class="fas fa-star blue-text"></i></li>
 
-                                <!-- Card footer -->
-                                <div class="card-footer pb-0">
+                                            <li><i class="fas fa-star blue-text"></i></li>
 
-                                    <div class="row mb-0">
+                                        </ul>
 
-                                        <span class="float-left"><strong>1439$</strong></span>
+                                        <!-- Card footer -->
+                                        <div class="card-footer pb-0">
 
-                                        <span class="float-right">
+                                            <div class="row mb-0">
+
+                                                <span class="float-left"><strong>1439$</strong></span>
+
+                                                <span class="float-right">
 
                         <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
                                 class="fas fa-shopping-cart ml-3"></i></a>
 
                       </span>
 
+                                            </div>
+
+                                        </div>
+
                                     </div>
+                                    <!-- Card content -->
 
                                 </div>
+                                <!-- Card -->
 
                             </div>
-                            <!-- Card content -->
-
+                            <!-- Grid column -->
                         </div>
-                        <!-- Card -->
+                        <div class="carousel-item">
+                            <!-- Grid column -->
+                            <div class="col-12 col-md-4">
 
-                    </div>
-                    <!-- Grid column -->
+                                <!-- Card -->
+                                <div class="card card-ecommerce">
 
-                    <!-- Grid column -->
-                    <div class="col-lg-3 col-md-6 mb-4">
+                                    <!-- Card image -->
+                                    <div class="view overlay">
 
-                        <!-- Card -->
-                        <div class="card card-ecommerce">
+                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/16.jpg"
+                                             class="img-fluid"
+                                             alt="">
 
-                            <!-- Card image -->
-                            <div class="view overlay">
+                                        <a>
 
-                                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/16.jpg"
-                                     class="img-fluid"
-                                     alt="">
+                                            <div class="mask rgba-white-slight"></div>
 
-                                <a>
+                                        </a>
 
-                                    <div class="mask rgba-white-slight"></div>
+                                    </div>
+                                    <!-- Card image -->
 
-                                </a>
+                                    <!-- Card content -->
+                                    <div class="card-body">
 
-                            </div>
-                            <!-- Card image -->
+                                        <!-- Category & Title -->
+                                        <h5 class="card-title mb-1"><strong><a href=""
+                                                                               class="dark-grey-text">Headphones</a></strong>
+                                        </h5>
+                                        <span class="badge badge-danger mb-2">bestseller</span>
 
-                            <!-- Card content -->
-                            <div class="card-body">
+                                        <!-- Rating -->
+                                        <ul class="rating">
 
-                                <!-- Category & Title -->
-                                <h5 class="card-title mb-1"><strong><a href=""
-                                                                       class="dark-grey-text">Headphones</a></strong>
-                                </h5>
-                                <span class="badge badge-danger mb-2">bestseller</span>
+                                            <li><i class="fas fa-star blue-text"></i></li>
 
-                                <!-- Rating -->
-                                <ul class="rating">
+                                            <li><i class="fas fa-star blue-text"></i></li>
 
-                                    <li><i class="fas fa-star blue-text"></i></li>
+                                            <li><i class="fas fa-star blue-text"></i></li>
 
-                                    <li><i class="fas fa-star blue-text"></i></li>
+                                            <li><i class="fas fa-star blue-text"></i></li>
 
-                                    <li><i class="fas fa-star blue-text"></i></li>
+                                            <li><i class="fas fa-star blue-text"></i></li>
 
-                                    <li><i class="fas fa-star blue-text"></i></li>
+                                        </ul>
 
-                                    <li><i class="fas fa-star blue-text"></i></li>
+                                        <!-- Card footer -->
+                                        <div class="card-footer pb-0">
 
-                                </ul>
+                                            <div class="row mb-0">
 
-                                <!-- Card footer -->
-                                <div class="card-footer pb-0">
+                                                <span class="float-left"><strong>1439$</strong></span>
 
-                                    <div class="row mb-0">
-
-                                        <span class="float-left"><strong>1439$</strong></span>
-
-                                        <span class="float-right">
+                                                <span class="float-right">
 
                         <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
                                 class="fas fa-shopping-cart ml-3"></i></a>
 
                       </span>
 
+                                            </div>
+
+                                        </div>
+
                                     </div>
+                                    <!-- Card content -->
 
                                 </div>
+                                <!-- Card -->
 
                             </div>
-                            <!-- Card content -->
-
+                            <!-- Grid column -->
                         </div>
-                        <!-- Card -->
+                        <div class="carousel-item">
+                            <!-- Grid column -->
+                            <div class="col-12 col-md-4">
 
-                    </div>
-                    <!-- Grid column -->
+                                <!-- Card -->
+                                <div class="card card-ecommerce">
 
-                    <!-- Grid column -->
-                    <div class="col-lg-3 col-md-6 mb-4">
+                                    <!-- Card image -->
+                                    <div class="view overlay">
 
-                        <!-- Card -->
-                        <div class="card card-ecommerce">
+                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg"
+                                             class="img-fluid"
+                                             alt="">
 
-                            <!-- Card image -->
-                            <div class="view overlay">
+                                        <a>
 
-                                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg"
-                                     class="img-fluid"
-                                     alt="">
+                                            <div class="mask rgba-white-slight"></div>
 
-                                <a>
+                                        </a>
 
-                                    <div class="mask rgba-white-slight"></div>
+                                    </div>
+                                    <!-- Card image -->
 
-                                </a>
+                                    <!-- Card content -->
+                                    <div class="card-body">
 
-                            </div>
-                            <!-- Card image -->
+                                        <!-- Category & Title -->
+                                        <h5 class="card-title mb-1"><strong><a href=""
+                                                                               class="dark-grey-text">iPhone</a></strong>
+                                        </h5>
+                                        <span
+                                                class="badge badge-info mb-2">new</span>
 
-                            <!-- Card content -->
-                            <div class="card-body">
+                                        <!-- Rating -->
+                                        <ul class="rating">
 
-                                <!-- Category & Title -->
-                                <h5 class="card-title mb-1"><strong><a href=""
-                                                                       class="dark-grey-text">iPhone</a></strong></h5>
-                                <span
-                                        class="badge badge-info mb-2">new</span>
+                                            <li><i class="fas fa-star blue-text"></i></li>
 
-                                <!-- Rating -->
-                                <ul class="rating">
+                                            <li><i class="fas fa-star blue-text"></i></li>
 
-                                    <li><i class="fas fa-star blue-text"></i></li>
+                                            <li><i class="fas fa-star blue-text"></i></li>
 
-                                    <li><i class="fas fa-star blue-text"></i></li>
+                                            <li><i class="fas fa-star blue-text"></i></li>
 
-                                    <li><i class="fas fa-star blue-text"></i></li>
+                                            <li><i class="fas fa-star blue-text"></i></li>
 
-                                    <li><i class="fas fa-star blue-text"></i></li>
+                                        </ul>
 
-                                    <li><i class="fas fa-star blue-text"></i></li>
+                                        <!-- Card footer -->
+                                        <div class="card-footer pb-0">
 
-                                </ul>
+                                            <div class="row mb-0">
 
-                                <!-- Card footer -->
-                                <div class="card-footer pb-0">
+                                                <span class="float-left"><strong>1439$</strong></span>
 
-                                    <div class="row mb-0">
-
-                                        <span class="float-left"><strong>1439$</strong></span>
-
-                                        <span class="float-right">
+                                                <span class="float-right">
 
                         <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
                                 class="fas fa-shopping-cart ml-3"></i></a>
 
                       </span>
 
+                                            </div>
+
+                                        </div>
+
                                     </div>
+                                    <!-- Card content -->
 
                                 </div>
+                                <!-- Card -->
 
                             </div>
-                            <!-- Card content -->
+                            <!-- Grid column -->
 
                         </div>
-                        <!-- Card -->
+                        <div class="carousel-item">
+                            <!-- Grid column -->
+                            <div class="col-12 col-md-4">
 
-                    </div>
-                    <!-- Grid column -->
+                                <!-- Card -->
+                                <div class="card card-ecommerce">
 
-                    <!-- Grid column -->
-                    <div class="col-lg-3 col-md-6 mb-4">
+                                    <!-- Card image -->
+                                    <div class="view overlay">
 
-                        <!-- Card -->
-                        <div class="card card-ecommerce">
+                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/3.jpg"
+                                             class="img-fluid"
+                                             alt="">
 
-                            <!-- Card image -->
-                            <div class="view overlay">
+                                        <a>
 
-                                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/3.jpg"
-                                     class="img-fluid"
-                                     alt="">
+                                            <div class="mask rgba-white-slight"></div>
 
-                                <a>
+                                        </a>
 
-                                    <div class="mask rgba-white-slight"></div>
+                                    </div>
+                                    <!-- Card image -->
 
-                                </a>
+                                    <!-- Card content -->
+                                    <div class="card-body">
 
-                            </div>
-                            <!-- Card image -->
+                                        <!-- Category & Title -->
+                                        <h5 class="card-title mb-1"><strong><a href=""
+                                                                               class="dark-grey-text">iMac</a></strong>
+                                        </h5><span
+                                            class="badge badge-danger mb-2">bestseller</span>
 
-                            <!-- Card content -->
-                            <div class="card-body">
+                                        <!-- Rating -->
+                                        <ul class="rating">
 
-                                <!-- Category & Title -->
-                                <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">iMac</a></strong>
-                                </h5><span
-                                    class="badge badge-danger mb-2">bestseller</span>
+                                            <li><i class="fas fa-star blue-text"></i></li>
 
-                                <!-- Rating -->
-                                <ul class="rating">
+                                            <li><i class="fas fa-star blue-text"></i></li>
 
-                                    <li><i class="fas fa-star blue-text"></i></li>
+                                            <li><i class="fas fa-star blue-text"></i></li>
 
-                                    <li><i class="fas fa-star blue-text"></i></li>
+                                            <li><i class="fas fa-star blue-text"></i></li>
 
-                                    <li><i class="fas fa-star blue-text"></i></li>
+                                            <li><i class="fas fa-star grey-text"></i></li>
 
-                                    <li><i class="fas fa-star blue-text"></i></li>
+                                        </ul>
 
-                                    <li><i class="fas fa-star grey-text"></i></li>
+                                        <!-- Card footer -->
+                                        <div class="card-footer pb-0">
 
-                                </ul>
+                                            <div class="row mb-0">
 
-                                <!-- Card footer -->
-                                <div class="card-footer pb-0">
+                                                <span class="float-left"><strong>1439$</strong></span>
 
-                                    <div class="row mb-0">
-
-                                        <span class="float-left"><strong>1439$</strong></span>
-
-                                        <span class="float-right">
+                                                <span class="float-right">
 
                         <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
                                 class="fas fa-shopping-cart ml-3"></i></a>
 
                       </span>
 
+                                            </div>
+
+                                        </div>
+
                                     </div>
+                                    <!-- Card content -->
 
                                 </div>
+                                <!-- Card -->
 
                             </div>
-                            <!-- Card content -->
-
+                            <!-- Grid column -->
                         </div>
-                        <!-- Card -->
+                        <div class="carousel-item">
+                            <!-- Grid column -->
+                            <div class="col-12 col-md-4  ">
+
+                                <!-- Card -->
+                                <div class="card card-ecommerce mb-2">
+
+                                    <!-- Card image -->
+                                    <div class="view overlay">
+
+                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/16.jpg"
+                                             class="img-fluid"
+                                             alt="">
+
+                                        <a>
+
+                                            <div class="mask rgba-white-slight"></div>
+
+                                        </a>
+
+                                    </div>
+                                    <!-- Card image -->
+
+                                    <!-- Card content -->
+                                    <div class="card-body">
+
+                                        <!-- Category & Title -->
+                                        <h5 class="card-title mb-1"><strong><a href=""
+                                                                               class="dark-grey-text">Headphones</a></strong>
+                                        </h5>
+                                        <span class="badge badge-danger mb-2">bestseller</span>
+
+                                        <!-- Rating -->
+                                        <ul class="rating">
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                        </ul>
+
+                                        <!-- Card footer -->
+                                        <div class="card-footer pb-0">
+
+                                            <div class="row mb-0">
+
+                                                <span class="float-left"><strong>1439$</strong></span>
+
+                                                <span class="float-right">
+
+                        <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
+                                class="fas fa-shopping-cart ml-3"></i></a>
+
+                      </span>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- Card content -->
+
+                                </div>
+                                <!-- Card -->
+
+                            </div>
+                            <!-- Grid column -->
+                        </div>
+                        <div class="carousel-item">
+                            <!-- Grid column -->
+                            <div class="col-12 col-md-4">
+
+                                <!-- Card -->
+                                <div class="card card-ecommerce mb-2">
+
+                                    <!-- Card image -->
+                                    <div class="view overlay">
+
+                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg"
+                                             class="img-fluid"
+                                             alt="">
+
+                                        <a>
+
+                                            <div class="mask rgba-white-slight"></div>
+
+                                        </a>
+
+                                    </div>
+                                    <!-- Card image -->
+
+                                    <!-- Card content -->
+                                    <div class="card-body">
+
+                                        <!-- Category & Title -->
+                                        <h5 class="card-title mb-1"><strong><a href=""
+                                                                               class="dark-grey-text">Headphones</a></strong>
+                                        </h5>
+                                        <span class="badge badge-danger mb-2">bestseller</span>
+
+                                        <!-- Rating -->
+                                        <ul class="rating">
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                        </ul>
+
+                                        <!-- Card footer -->
+                                        <div class="card-footer pb-0">
+
+                                            <div class="row mb-0">
+
+                                                <span class="float-left"><strong>1439$</strong></span>
+
+                                                <span class="float-right">
+
+                        <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
+                                class="fas fa-shopping-cart ml-3"></i></a>
+
+                      </span>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- Card content -->
+
+                                </div>
+                                <!-- Card -->
+
+                            </div>
+                            <!-- Grid column -->
+                        </div>
 
                     </div>
-                    <!-- Grid column -->
 
                 </div>
-                <!-- Grid row -->
 
-                <!-- Grid row -->
-                <div class="row justify-content-center mb-4">
-
-                    <!-- Pagination -->
-                    <nav class="mb-4">
-
-                        <ul class="pagination pagination-circle pg-blue mb-0">
-
-                            <!-- First -->
-                            <li class="page-item disabled clearfix d-none d-md-block"><a
-                                    class="page-link waves-effect waves-effect">First</a></li>
-
-                            <!-- Arrow left -->
-                            <li class="page-item disabled">
-
-                                <a class="page-link waves-effect waves-effect" aria-label="Previous">
-
-                                    <span aria-hidden="true">«</span>
-
-                                    <span class="sr-only">Previous</span>
-
-                                </a>
-
-                            </li>
-
-                            <!-- Numbers -->
-                            <li class="page-item active"><a class="page-link waves-effect waves-effect">1</a></li>
-
-                            <li class="page-item"><a class="page-link waves-effect waves-effect">2</a></li>
-
-                            <li class="page-item"><a class="page-link waves-effect waves-effect">3</a></li>
-
-                            <li class="page-item"><a class="page-link waves-effect waves-effect">4</a></li>
-
-                            <li class="page-item"><a class="page-link waves-effect waves-effect">5</a></li>
-
-                            <!-- Arrow right -->
-                            <li class="page-item">
-
-                                <a class="page-link waves-effect waves-effect" aria-label="Next">
-
-                                    <span aria-hidden="true">»</span>
-
-                                    <span class="sr-only">Next</span>
-
-                                </a>
-
-                            </li>
-
-                            <!-- First -->
-                            <li class="page-item clearfix d-none d-md-block"><a
-                                    class="page-link waves-effect waves-effect">Last</a>
-                            </li>
-
-                        </ul>
-
-                    </nav>
-                    <!-- Pagination -->
-
-                </div>
-                <!-- Grid row -->
 
             </section>
             <!-- Section: Last items -->
@@ -1178,8 +1335,6 @@
 
 </div>
 <!-- Main Container -->
-
-
 <!-- Footer -->
 <%@include file="/default/footer.jsp" %>
 <!-- Footer -->
@@ -1187,25 +1342,7 @@
 <script src="/mdb/js/jquery.min.js"></script>
 <script src="/mdb/js/bootstrap.min.js"></script>
 <script src="/mdb/js/mdb.min.js"></script>
-<%--<script type="text/javascript">--%>
-<%--    /* WOW.js init */--%>
-<%--    new WOW().init();--%>
 
-<%--    // Tooltips Initialization--%>
-<%--    $(function () {--%>
-<%--        $('[data-toggle="tooltip"]').tooltip()--%>
-<%--    })--%>
-
-<%--    // Material Select Initialization--%>
-<%--    $(document).ready(function () {--%>
-
-<%--        $('.mdb-select').material_select();--%>
-<%--    });--%>
-
-<%--    // SideNav Initialization--%>
-<%--    $(".button-collapse").sideNav();--%>
-
-<%--</script>--%>
 <script>
     function addTocart(productId) {
         // cộng thêm 1 vào giỏ hàng
@@ -1217,21 +1354,21 @@
                 quantity: 1
             },
             success: function (data) {
-               var itemCount = parseInt($(".number").text());
-               var flyNumber = $('<span class="fly-number">'+(itemCount+1)+'</span>');
-               // get button add position
+                var itemCount = parseInt($(".number").text());
+                var flyNumber = $('<span class="fly-number">' + (itemCount + 1) + '</span>');
+                // get button add position
                 var position = $('.addToCart').offset();
                 // set the animation's start position
                 flyNumber.css({
-                    top: position.top ,
+                    top: position.top,
                     left: position.left
                 });
-               $('.shopping-cart.nav-item').append(flyNumber);
-               setTimeout(function () {
-                   $('.number').text(itemCount+1);
-                   flyNumber.remove();
-               },1000);
-               console.log(data);
+                $('.shopping-cart.nav-item').append(flyNumber);
+                setTimeout(function () {
+                    $('.number').text(itemCount + 1);
+                    flyNumber.remove();
+                }, 1000);
+                console.log(data);
             },
             error: function (data) {
                 console.log(data);
@@ -1239,6 +1376,91 @@
         });
 
     }
+</script>
+<script>
+    $('.carousel.carousel-multi-item.v-2 .carousel-item').each(function () {
+        var next = $(this).next();
+        if (!next.length) {
+            next = $(this).siblings(':first');
+        }
+        next.children(':first-child').clone().appendTo($(this));
+        for (var i = 0; i < 4; i++) {
+            next = next.next();
+            if (!next.length) {
+                next = $(this).siblings(':first');
+            }
+            next.children(':first-child').clone().appendTo($(this));
+        }
+    });
+</script>
+<script>
+    function loadRecord(pageNumber, recordsPerpage) {
+        $.ajax({
+            url: "/api/pagination",
+            method: "GET",
+            data: {page: pageNumber, recordsPerPage: recordsPerpage},
+            success: function (response) {
+                var data = JSON.parse(response);
+                var html = "";
+                for (var i = 0; i < data.length; i++) {
+                    html += '<div class="col-lg-4 col-md-12 mb-4">' +
+                        '<div class="card card-ecommerce">' +
+                        '<div class="view overlay">' +
+                        '<img src="' + data[i].image + '" class="img-fluid" alt="">' +
+                        '<a><div class="mask rgba-white-slight"></div></a>' +
+                        '</div>' +
+                        '<div class="card-body">' +
+                        '<h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">' + data[i].name + '</a></strong></h5>' +
+                        '<span class="badge badge-danger mb-2">bestseller</span>' +
+                        '<ul class="rating">' +
+                        '<li><i class="fas fa-star blue-text"></i></li>' +
+                        '<li><i class="fas fa-star blue-text"></i></li>' +
+                        '<li><i class="fas fa-star blue-text"></i></li>' +
+                        '<li><i class="fas fa-star blue-text"></i></li>' +
+                        '<li><i class="fas fa-star blue-text"></i></li>' +
+                        '</ul>' +
+                        '<div class="card-footer pb-0">' +
+                        '<div class="row mb-0">' +
+                        '<span class="float-left"><strong>' + data[i].price + '</strong></span>' +
+                        '<span class="float-right">' +
+                        '<a class="addToCart" role="button" data-toggle="tooltip" data-placement="top" title="Add to Cart">' +
+                        '<i class="fas fa-shopping-cart ml-3" onclick="addTocart(' + data[i].productId + ')"></i></a>' +
+                        '</span></div></div></div></div></div>';
+                }
+                $(".productList").empty().html(html);
+            },
+            error: function (xhr, status, error) {
+                console.log(xhr);
+                console.log(status);
+                console.log(error);
+            }
+        });
+    }
+
+    // pagination with 10 records per page
+    $(document).on('click', '.page-link', function (event) {
+        event.preventDefault();
+        // get page number
+        var page = $(this).text();
+        if (page === "First") {
+            page = 1;
+        }
+        if (page === "Last") {
+            let totalPage = parseInt($(".page-item").length) - 4;
+            page = totalPage;
+        }
+        if (page === "«") {
+            let currentPage = parseInt($(".page-item.active").text());
+            page = currentPage - 1;
+        }
+        if (page === "»") {
+            let currentPage = parseInt($(".page-item.active").text());
+            page = currentPage + 1;
+        }
+        var recordsPerpage = 9;
+        loadRecord(page, recordsPerpage);
+
+    });
 </script>
 <script src="/mdb/js/default.js"></script>
 </body>

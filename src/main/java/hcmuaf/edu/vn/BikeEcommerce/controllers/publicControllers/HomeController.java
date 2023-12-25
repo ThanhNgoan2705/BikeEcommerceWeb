@@ -19,13 +19,37 @@ public class HomeController extends HttpServlet {
         CategoryService categoryService = CategoryService.getInstance();
         request.setAttribute("categories", categoryService.getAll());
         ProductService productService = ProductService.getInstance();
-
+        List<Product> productList = productService.getAllProduct();
         Map<Category,Integer> quantityByCategory = new HashMap<>();
         for (Category category : categoryService.getAll()) {
             List<Product> products = productService.getProductByCategoryId(category.getCategoryId());
             quantityByCategory.put(category,products.size() );
         }
+        // pagination
+        int rowCount = 9; // number of rows per page
+        String page = request.getParameter("page");
+        int currentPage = 1;
+        if (page != null) {
+           currentPage= Integer.parseInt(page); // start from the first page
+        }
+        System.out.println("currentPage"+currentPage);
+        int totalRows = productList.size();
+        System.out.println("totalRows"+totalRows);
+        int totalPage = totalRows / rowCount;
+        if (totalRows % rowCount > 0) {
+            totalPage++;
+        }
+        System.out.println("totalPage"+totalPage);
+        // Calculate the start row of the current page
+        int startRow = (currentPage - 1) * rowCount;
+        List<Product> data = productService.loadProductByPage(startRow, rowCount);
+        // Set the current page as a request attribute
+        request.setAttribute("data", data);
+        request.setAttribute("currentPage", currentPage);
+        request.setAttribute("totalPage", totalPage);
+
         request.setAttribute("quantityByCategory", quantityByCategory);
+        request.setAttribute("products", productList);
 
         List<Product> top1Products = productService.getTop1Product();
         request.setAttribute("top1Products", top1Products);
@@ -43,8 +67,10 @@ public class HomeController extends HttpServlet {
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doPost(req, resp);
     }
+
 }
