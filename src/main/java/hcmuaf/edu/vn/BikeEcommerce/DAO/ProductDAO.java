@@ -11,6 +11,8 @@ import java.util.List;
 
 @RegisterBeanMapper(Product.class)
 public interface ProductDAO {
+
+
     @SqlQuery(ScirptSQL.getAllProduct)
     List<Product> getAllProduct();
 
@@ -59,6 +61,9 @@ public interface ProductDAO {
 
     @SqlQuery(ScirptSQL.getInventory)
     Integer getInventory(@Bind("productId") String productId);
-
-
+    // get Product by filter
+    @SqlQuery(ScirptSQL.getProductByFilter)
+    List<Product> getProductByFilter(String categoryId, String brandId, String supplierId, String discountId, String status, int minPrice, int maxPrice, String wheelSize);
+    @SqlQuery(ScirptSQL.loadProductByPage)
+    List<Product> loadProductByPage(@Bind("startRow") int startRow, @Bind("rowCount") int rowCount);
 }
