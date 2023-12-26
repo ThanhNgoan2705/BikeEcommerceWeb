@@ -43,6 +43,7 @@ public class HomeController extends HttpServlet {
         // Calculate the start row of the current page
         int startRow = (currentPage - 1) * rowCount;
         List<Product> data = productService.loadProductByPage(startRow, rowCount);
+        System.out.println("data"+data);
         // Set the current page as a request attribute
         request.setAttribute("data", data);
         request.setAttribute("currentPage", currentPage);

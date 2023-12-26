@@ -176,10 +176,10 @@
                     <div class="col-12">
 
                         <!-- Grid row -->
-                        <div class="row">
+                        <div class="row productList">
                             <c:forEach items="${data}" var="prod">
                                 <!-- Grid column -->
-                                <div class="productList col-lg-4 col-md-12 mb-4">
+                                <div class=" col-lg-4 col-md-12 mb-4">
 
                                     <!-- Card -->
                                     <div class="card card-ecommerce">
@@ -1394,16 +1394,18 @@
     });
 </script>
 <script>
-    function loadRecord(pageNumber, recordsPerpage) {
+    function loadRecord(pageNumber) {
         $.ajax({
             url: "/api/pagination",
             method: "GET",
-            data: {page: pageNumber, recordsPerPage: recordsPerpage},
+            data: {page: pageNumber},
             success: function (response) {
                 var data = JSON.parse(response);
+                console.log(data.length);
+                console.log(data);
                 var html = "";
                 for (var i = 0; i < data.length; i++) {
-                    html += '<div class="col-lg-4 col-md-12 mb-4">' +
+                    html += '<div class="col-lg-4 col-md-12 mb-4">'+
                         '<div class="card card-ecommerce">' +
                         '<div class="view overlay">' +
                         '<img src="' + data[i].image + '" class="img-fluid" alt="">' +
@@ -1425,9 +1427,11 @@
                         '<span class="float-right">' +
                         '<a class="addToCart" role="button" data-toggle="tooltip" data-placement="top" title="Add to Cart">' +
                         '<i class="fas fa-shopping-cart ml-3" onclick="addTocart(' + data[i].productId + ')"></i></a>' +
-                        '</span></div></div></div></div></div>';
+                        '</span>' +
+                        '</div></div></div></div></div>';
                 }
                 $(".productList").empty().html(html);
+
             },
             error: function (xhr, status, error) {
                 console.log(xhr);
@@ -1442,6 +1446,9 @@
         event.preventDefault();
         // get page number
         var page = $(this).text();
+        // active page link
+        $(this).parent().siblings().removeClass("active");
+        $(this).parent().addClass("active");
         if (page === "First") {
             page = 1;
         }
@@ -1458,7 +1465,7 @@
             page = currentPage + 1;
         }
         var recordsPerpage = 9;
-        loadRecord(page, recordsPerpage);
+        loadRecord(page);
 
     });
 </script>
