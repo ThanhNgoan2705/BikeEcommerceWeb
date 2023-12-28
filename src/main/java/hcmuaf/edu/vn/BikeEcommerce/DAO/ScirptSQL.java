@@ -159,6 +159,8 @@ public class ScirptSQL {
             "FROM product JOIN sub_product_color ON product.product_id =sub_product_color.product_id\n" +
             "WHERE product.product_id = :productId\n" +
             "GROUP BY  product.product_id,product.name;";
+    public static final String getAllWheelSize = "select distinct wheelSize from product";
+    public static final String getAllStatus = "select distinct status from product";
 
 
     //    Slider  da test va fix by Hoang Hai 21-8-23
@@ -199,4 +201,5 @@ public class ScirptSQL {
 
 
     public static final  String loadProductByPage= "select * from product limit :startRow, :rowCount";
+
 }

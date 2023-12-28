@@ -160,11 +160,19 @@ public class ProductService {
 //        productService.update(product, "1", null);
 //        List<Color> colors = ColorService.getInstance().allColor();
 //        System.out.println(colors);
-        List<Product> list = productService.loadProductByPage(0, 9);
-        System.out.println(list);
+//        List<Product> list = productService.loadProductByPage(0, 9);
+//        System.out.println(list);
+        System.out.println(productService.getAllStatus());
+        System.out.println(productService.getAllWheelSize());
 
     }
 
 
+    public List<String> getAllWheelSize() {
+        return jdbi.withExtension(ProductDAO.class, dao -> dao.getAllWheelSize());
+    }
 
+    public List<Integer> getAllStatus() {
+        return jdbi.withExtension(ProductDAO.class, dao -> dao.getAllStatus());
+    }
 }
