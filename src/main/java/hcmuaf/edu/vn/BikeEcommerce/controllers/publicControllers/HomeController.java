@@ -32,18 +32,14 @@ public class HomeController extends HttpServlet {
         if (page != null) {
            currentPage= Integer.parseInt(page); // start from the first page
         }
-        System.out.println("currentPage"+currentPage);
         int totalRows = productList.size();
-        System.out.println("totalRows"+totalRows);
         int totalPage = totalRows / rowCount;
         if (totalRows % rowCount > 0) {
             totalPage++;
         }
-        System.out.println("totalPage"+totalPage);
         // Calculate the start row of the current page
         int startRow = (currentPage - 1) * rowCount;
         List<Product> data = productService.loadProductByPage(startRow, rowCount);
-        System.out.println("data"+data);
         // Set the current page as a request attribute
         request.setAttribute("data", data);
         request.setAttribute("currentPage", currentPage);
