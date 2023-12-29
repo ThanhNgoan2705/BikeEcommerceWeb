@@ -22,14 +22,14 @@ public class PaginationAPI extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String recordsPerPage = req.getParameter("recordsPerPage");
+
         String page = req.getParameter("page");
         List<Product> list = ProductService.getInstance().getAllProduct();
         int currentPage = 1;
         if (page != null) {
             currentPage= Integer.parseInt(page); // start from the first page
         }
-        int rowCount = Integer.parseInt(recordsPerPage);
+        int rowCount = 9;
         System.out.println("rowCount"+rowCount);
         System.out.println("currentPage"+currentPage);
         // Calculate the total number of pages
@@ -46,6 +46,7 @@ public class PaginationAPI extends HttpServlet {
         // Get data of the current page
         list = productService.loadProductByPage(startRow, rowCount);
         System.out.println("list"+list);
+        System.out.println("list"+list.size());
         // Set the data as a request attribute
         resp.getWriter().write(gson.toJson(list));
         // Create a request attribute for page information

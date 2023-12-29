@@ -66,4 +66,8 @@ public interface ProductDAO {
     List<Product> getProductByFilter(String categoryId, String brandId, String supplierId, String discountId, String status, int minPrice, int maxPrice, String wheelSize);
     @SqlQuery(ScirptSQL.loadProductByPage)
     List<Product> loadProductByPage(@Bind("startRow") int startRow, @Bind("rowCount") int rowCount);
+    @SqlQuery(ScirptSQL.getAllWheelSize)
+    List<String> getAllWheelSize();
+    @SqlQuery(ScirptSQL.getAllStatus)
+    List<Integer> getAllStatus();
 }
