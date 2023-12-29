@@ -24,7 +24,7 @@ public class OrderController extends HttpServlet {
 
 
         try {
-          Hash  hash = new Hash("SHA-256");
+          Hash hash = new Hash("SHA-256");
             hashCode = hash.hash(code);
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
