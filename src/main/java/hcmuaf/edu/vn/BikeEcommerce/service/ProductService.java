@@ -21,7 +21,6 @@ public class ProductService {
 
     public ProductService() {
     }
-
     public List<Product> getAllProduct() {
         List<Product> products = jdbi.withExtension(ProductDAO.class, ProductDAO::getAllProduct);
         return products.stream().map(this::mapOtherBean).collect(Collectors.toList());
@@ -52,7 +51,7 @@ public class ProductService {
         List<Favorite> favorites = FavoriteService.getInstance().getFavoriteByProductId(product.getProductId());
         if (!colors.isEmpty()) {
             product.setPrice(SubProduct_colorService.getInstance().getPriceByProductIdAndColorId(product.getProductId(), colors.get(0).getColorId()));
-            product.setInventory(ProductService.getInstance().getInventory(product.getProductId(), colors.get(0).getColorId()));
+            product.setInventory(ProductService.getInstance().getInventory(product.getProductId()));
         }
         product.setComments(comments);
         product.setFavorites(favorites);
@@ -136,8 +135,8 @@ public class ProductService {
     }
 
 
-    public int getInventory(String productId,String colorId) {
-        return SubProduct_colorService.getInstance().getInventoryByProductIdAndColorId(productId, colorId);
+    public int getInventory(String productId) {
+        return jdbi.withExtension(ProductDAO.class, dao -> dao.getInventory(productId));
     }
 
     public double getPrice(String productId, String colorId) {

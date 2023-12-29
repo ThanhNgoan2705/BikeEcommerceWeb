@@ -31,7 +31,7 @@ public class LoginController extends HttpServlet {
                 }
             }
             if (cookie == null) {
-                request.getRequestDispatcher("logIn.jsp").forward(request, response);
+                request.getRequestDispatcher("/logIn.jsp").forward(request, response);
                 return;
             }
             System.out.println(cookie.getValue() + " filter cookies");
@@ -43,13 +43,10 @@ public class LoginController extends HttpServlet {
         }
         if (token != null) {
             HttpSession session = request.getSession(true);
-//            session.setAttribute("user", user);
+            session.setAttribute("user", token);
             session.setAttribute("userId", token.getUserId());
             session.setAttribute("haveUser", true);
             session.setAttribute("userName", token.getUserName());
-            System.out.println("Login success");
-            response.sendRedirect("home");
-            return;
         }
         request.getRequestDispatcher("logIn.jsp").forward(request, response);
     }
@@ -61,7 +58,6 @@ public class LoginController extends HttpServlet {
         printWriter = resp.getWriter();
         String email = (String) req.getParameter("email");
         String pass = (String) req.getParameter("pass");
-        System.out.println("abc");
         System.out.println(email + " ------- " + pass);
         User user = UserService.getInstance().loginByUserNameOrEmail(email, pass);
         System.out.println(user + " user login controller");
@@ -78,8 +74,15 @@ public class LoginController extends HttpServlet {
                 session.setAttribute("userName", user.getUserName());
                 System.out.println("Login success");
                 System.out.println("user: " + user);
-                resp.sendRedirect("home");
-
+                System.out.println("role: " + user.getRole());
+                if (user.getRole() == 1) {
+                    resp.sendRedirect("/home");
+                } else if (user.getRole() == 2) {
+                    System.out.println("admin");
+                    resp.sendRedirect("/admin/dashboard");
+                } else {
+                    resp.sendRedirect("/login");
+                }
             } catch (NoSuchAlgorithmException e) {
                 printWriter.println("<script>\n" + "    alert(\"Login failed\");\n" + "</script>");
                 System.out.println("a");
@@ -87,8 +90,7 @@ public class LoginController extends HttpServlet {
                 System.out.println("b");
                 throw new RuntimeException(e);
             }
-        }
-        else {
+        } else {
             System.out.println("c");
             req.setAttribute("emailUser", email);
             req.setAttribute("mess", "wrong info");
