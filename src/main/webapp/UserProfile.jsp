@@ -41,90 +41,8 @@
     <link href="/mdb/css/addons/compiled-addons-4.20.0.min.css">
     <link href="/mdb/css/style.css" rel="stylesheet">
     <link href="/mdb/css/default.css" rel="stylesheet">
-    <style>
-        /* CSS nền hiển thị Modal */
-        .nenmodal .nenmodal2 {
-            position:fixed;
-            top:0px;
-            left:0px;
-            width:100vw;
-            height:100vh;
-            background:rgba(0,0,0,0.7);
-            z-index:1;
-            display:none;
-        }
-        /* CSS bảng nội dung Modal */
-        .nenmodal .ndmodal {
-            position:absolute;
-            top:50%;
-            left:50%;
-            transform:translate(-50%,-50%) scale(0);
-            background:#fff;
-            width:600px;
-            z-index:2;
-            text-align:center;
-            padding:20px;
-            box-sizing:border-box;
-            font-family:"Open Sans",sans-serif;
-            border-radius:20px;
-            display: block;
-            position: fixed;
-            box-shadow:0px 0px 10px #111;
-        }
-        @media (max-width: 700px) {
-            .nenmodal .ndmodal {width:90%;}
-        }
-        /* CSS bao bọc của nút tắt Modal */
-        .nenmodal .closemodal {
-            text-align:center;
-            margin-top:-40px;
-            margin-bottom:10px;
-        }
-        /* CSS tieu de của Modal */
-        .titlemodal{
-            font-weight:bold;
-            font-size:20px;
-            margin-bottom:10px;
-        }
-        /* CSS nút tắt modal */
-        .closemodal button{
-            width:40px;
-            height:40px;
-            font-size:30px;
-            padding:0px;
-            border-radius:100%;
-            background:#333;
-            color:#fff;
-            border:none;
-        }
-        .nenmodal.active .nenmodal2 {
-            display:block;
-        }
-        /* CSS hiệu ứng hiển thị Modal */
-        .nenmodal.active .ndmodal {
-            transition:all 300ms ease-in-out;
-            transform:translate(-50%,-50%) scale(1);
-        }
-        .col {
-            position: relative;
-            width: 150px;
-            padding-right: 15px;
-            padding-left: 15px; }
-        .group {
-            margin-bottom: 5px;
-        }
-        .contactForm .label1 {
-            color: #000;
-            text-transform: uppercase;
-            font-size: 12px;
-            font-weight: 600; }
-        .btnblock{
-            width: 200px;
-            height: 35px;
-            background-color: #0d0d0d;
-            color: #f1f1f1;
-        }
-    </style>
+    <link href="/mdb/css/styleKey.css" rel="stylesheet">
+
 </head>
 
 <body class="homepage-v1 hidden-sn white-skin animated">
@@ -714,9 +632,12 @@
                     </div>
                     <!--Key Management-->
                     <div class="tab-pane fade" id="tabKeyManagement" role="tabpanel">
-                        <%--                        Form Change Password--%>
-
-                                <button class="btn btn-primary btn-lg btn-block" onclick="momodal()"  >Create Key</button>
+                        <div>
+                            <button class="btn createk" onclick="momodal()"  >Create Key</button>
+                        </div>
+                       <div>
+                           <button class="btn importk" onclick="momodal2()"  >Import Key</button>
+                       </div>
                                 <hr class="mb-4">
                                 <div class="row">
                                     <div class="col-md-12">
@@ -754,7 +675,7 @@
                                                 <div class="group">
                                                     <label class="label1" >Private Key</label>
                                                     <input type="text" class="form-control" id="privateKey" >
-                                                    <i class="fa fa-download" aria-hidden="true"></i>
+                                                    <i  class="fa fa-download" aria-hidden="true"></i>
                                                 </div>
                                             </div>
                                             <div class="col">
@@ -766,14 +687,48 @@
                                             </div>
                                             <div class="col">
                                                 <div class="group">
-                                                    <label class="label1" >Seri</label>
-                                                    <input type="text" class="form-control" >
+                                                    <label class="label1" >Certificate</label>
+                                                    <input type="text" class="form-control" id="certificate">
+                                                    <i  class="fa fa-download" aria-hidden="true"></i>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- màn hình import key -->
+<%--                            <div class="nenmodal" id="nenmodal-2">--%>
+<%--                                <div class="nenmodal2"></div>--%>
+<%--                                <div class="ndmodal">--%>
+<%--                                    <div class="closemodal"><button onclick="momodal2()">×</button></div>--%>
+<%--                                    <div method="POST" id="contactForm2" name="contactForm" class="contactForm">--%>
+<%--                                        <button class="btnblock" type="submit" onclick="createKey()">Create Key</button>--%>
+<%--                                        <div class="row">--%>
+<%--                                            <div class="col">--%>
+<%--                                                <div class="group">--%>
+<%--                                                    <label class="label1" >Private Key</label>--%>
+<%--                                                    <input type="text" class="form-control" id="privateKey2" >--%>
+<%--                                                    <i id="downloadIcon2" class="fa fa-download" aria-hidden="true"></i>--%>
+<%--                                                </div>--%>
+<%--                                            </div>--%>
+<%--                                            <div class="col">--%>
+<%--                                                <div class="group">--%>
+<%--                                                    <label class="label1">Public Key</label>--%>
+<%--                                                    <input type="text" class="form-control" id="publicKey2">--%>
+<%--                                                    <i class="fa fa-download" aria-hidden="true"></i>--%>
+<%--                                                </div>--%>
+<%--                                            </div>--%>
+<%--                                            <div class="col">--%>
+<%--                                                <div class="group">--%>
+<%--                                                    <label class="label1" >Certificate</label>--%>
+<%--                                                    <input type="text" class="form-control" id="certificate2">--%>
+<%--                                                </div>--%>
+<%--                                            </div>--%>
+<%--                                        </div>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+
                     </div>
 
 
@@ -869,23 +824,63 @@
         document.getElementById("nenmodal-1").classList.toggle("active");
     }
 </script>
+<%--<script>--%>
+<%--    function momodal2(){--%>
+<%--        document.getElementById("nenmodal-2").classList.toggle("active");--%>
+<%--    }--%>
+<%--</script>--%>
+//tao khoa
 <script type="text/javascript">
     function createKey() {
         $.ajax({
-            type: "GET",
             url: "/user/userKey",
-            dataType: "json",
+            method: "GET",
+            dataType : "json",
+            contentType:"application/json",
             success: function (data) {
+                console.log("data"+data);
                 // Hiển thị thông tin khóa trên giao diện
-                $("#publicKey").text("Public Key: " + data.publicKey);
-                $("#privateKey").text("Private Key: " + data.privateKey);
-                $("#seri").text("Seri: " + data.privateKey);
+                $("#publicKey").val(data.pubKey);
+                $("#privateKey").val(data.priKey);
+                $("#certificate").val(data.cer);
+
+
             },
             error: function () {
                 alert("Error creating RSA key pair.");
             }
         });
     }
+</script>
+// tai ve
+<script>
+    $(document).ready(function () {
+        $("#downloadIcon").click(function () {
+            // Sử dụng AJAX để gửi yêu cầu POST
+            $.ajax({
+                type: "POST",
+                url: "DownloadServlet", // Đặt đường dẫn đến Servlet hoặc JSP xử lý yêu cầu ở đây
+                success: function (data) {
+                    // Xử lý phản hồi từ server
+                    // Trong trường hợp này, giả sử server trả về một đường dẫn file
+                    downloadFile(data);
+                },
+                error: function () {
+                    alert("Đã xảy ra lỗi khi tải về.");
+                }
+            });
+        });
+
+        // Hàm tải về tệp tin
+        function downloadFile(filePath) {
+            var a = document.createElement('a');
+            a.href = filePath;
+            a.download = 'downloaded_file.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    });
 </script>
 </body>
 </html>
