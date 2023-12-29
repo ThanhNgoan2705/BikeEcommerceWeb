@@ -1,6 +1,11 @@
 package hcmuaf.edu.vn.BikeEcommerce.controllers.userController;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import netscape.javascript.JSObject;
+import org.bouncycastle.operator.OperatorCreationException;
 import vn.edu.atbmmodel.key.KeyGen;
+import vn.edu.atbmmodel.publicKey.RSA;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,19 +13,31 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigInteger;
 import java.security.*;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateEncodingException;
+import java.security.cert.CertificateException;
+import java.util.Base64;
 
 @WebServlet("/user/userKey")
 public class UserKey extends HttpServlet {
+    Gson gson;
     KeyGen keyGen;
     KeyPair keyPair;
     PublicKey publicKey;
     PrivateKey privateKey;
+    Certificate certificate;
+
+    JsonObject json;
 
 
     public void init() throws ServletException {
+        gson = new Gson();
+        json = new JsonObject();
         keyGen = KeyGen.getInstance();
         try {
             keyPair = keyGen.getKeyPair(2048);
@@ -33,7 +50,8 @@ public class UserKey extends HttpServlet {
         privateKey = keyPair.getPrivate();
 
     }
-    protected void doGet( HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        String privateKey= req.getParameter("privateKey");
 //        String publicKey = req.getParameter("publicKey");
 //        String seri = req.getParameter("seri");
@@ -46,20 +64,38 @@ public class UserKey extends HttpServlet {
 //        byte[] bytes= Base64.getDecoder().decode(pubString);
 //        PublicKey publicKey1= keyGen.getPublicKeyformBytes(bytes);
 //        System.out.println(publicKey1.equals(publicKey));
-        response.setContentType("text/plain");
-        PrintWriter out = response.getWriter();
 
-        String privateKey= request.getParameter("privateKey");
-        String publicKey = request.getParameter("publicKey");
-        String seri = request.getParameter("seri");
+//        PrintWriter out = response.getWriter();
 
-
-
-        response.getWriter().write("publicKey" + publicKey + "\n");
-        response.getWriter().write("privateKey: " + privateKey);
-        response.getWriter().write("Seri: " + seri);
+//        String privateKey= request.getParameter("privateKey");
+        response.setContentType("application/json");
+        String pubKey = Base64.getEncoder().encodeToString(publicKey.getEncoded());
+        String priKey = Base64.getEncoder().encodeToString(privateKey.getEncoded());
+        String serinum = "cdksjk";
 
 
+        BigInteger serial = new BigInteger(256, new SecureRandom());
+
+        byte[] privateBytes = new FileInputStream("T:\\CKAT\\src\\main\\privateInfo\\GreenLockPrivateKey.key").readAllBytes();
+        PrivateKey privateKey1 = KeyGen.getInstance().getPrivateKeyformBytes(privateBytes);
+        String cer;
+        try {
+            certificate = KeyGen.getInstance().genCertificate(privateKey1, publicKey, "aa", serial);
+            cer = Base64.getEncoder().encodeToString(certificate.getEncoded());
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        } catch (OperatorCreationException e) {
+            throw new RuntimeException(e);
+        } catch (CertificateException e) {
+            throw new RuntimeException(e);
+        }
+
+        json.addProperty("pubKey", pubKey);
+        json.addProperty("priKey", priKey);
+        json.addProperty("cer", cer);
+
+
+        response.getWriter().write(json.toString());
 
     }
 
