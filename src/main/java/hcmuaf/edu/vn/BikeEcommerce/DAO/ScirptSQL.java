@@ -103,7 +103,7 @@ public class ScirptSQL {
     public static final String updateUser = "update User " + "set email = :getEmail " + "where user_id = :getUserId;";
     public static final String updateUserPassword = "update User " + "set pass = SHA2(:getPass,256) " + "where user_id = :getUserId;";
     public static final String deleteUserById = "delete " + "from User " + "where user_id =:id ";
-    public static final String loginByUserNameOrEmail = "select * from User where user_name=:keyLogin or email=:keyLogin and pass=SHA2(:pass,256)";
+    public static final String loginByUserNameOrEmail = "select * from User where (user_name=:keyLogin or email=:keyLogin) and pass=SHA2(:pass,256)";
     public static final String updateUserRoll = "update User set role=:role where email=:email";
     public static final String getSaltByUserNameOrEmail = "select salt from User where user_name=:key or email=:key";
 
