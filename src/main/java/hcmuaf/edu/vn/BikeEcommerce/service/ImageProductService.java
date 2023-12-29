@@ -50,14 +50,14 @@ public class ImageProductService {
     }
 
     public static void main(String[] args) {
-        ImageProductService.getInstance().getImageProductByProductId("1").forEach(System.out::println);
-        System.out.println(ImageProductService.getInstance().getImageProductById("1"));
-        ImageProductService.getInstance().insertImageProduct(new ImageProduct("6", "link", "1"));
-        System.out.println(ImageProductService.getInstance().getImageProductById("6"));
-        ImageProductService.getInstance().updateImageProduct(new ImageProduct("6", "link", "1"));
-        System.out.println(ImageProductService.getInstance().getImageProductById("6"));
-        ImageProductService.getInstance().deleteImageProduct("6");
-        System.out.println(ImageProductService.getInstance().getImageProductById("6"));
+//        ImageProductService.getInstance().getImageProductByProductId("1").forEach(System.out::println);
+//        System.out.println(ImageProductService.getInstance().getImageProductById("1"));
+//        ImageProductService.getInstance().insertImageProduct(new ImageProduct("6", "link", "1"));
+//        System.out.println(ImageProductService.getInstance().getImageProductById("6"));
+//        ImageProductService.getInstance().updateImageProduct(new ImageProduct("6", "link", "1"));
+//        System.out.println(ImageProductService.getInstance().getImageProductById("6"));
+//        ImageProductService.getInstance().deleteImageProduct("6");
+//        System.out.println(ImageProductService.getInstance().getImageProductById("6"));
 
     }
 

@@ -22,8 +22,6 @@ public interface UserDAO {
 
     @SqlUpdate(ScirptSQL.updateUser)
     void updateUser(@BindMethods User user);
-    @SqlUpdate(ScirptSQL.updateUserName)
-    void updateUserName(@BindMethods User user);
 
     @SqlUpdate(ScirptSQL.updateUserPassword)
     void updateUserPassword(@BindMethods User user);
@@ -50,7 +48,6 @@ public interface UserDAO {
     @SqlUpdate(ScirptSQL.updateUserRoll)
     void updateUser(@Bind("email") String email, @Bind("role") int role);
 
-    @SqlUpdate(ScirptSQL.updateUserEmail)
-    void updateUserEmail(@Bind("userId") String userId, @Bind("email") String email);
+
 }
 

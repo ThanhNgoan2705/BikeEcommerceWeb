@@ -9,29 +9,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a759932-6c3e-472a-96e3-72bf4ea509d1" name="Changes" comment="complete checkout order from cart to order">
-      <change afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/controllers/orderController/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/ATBMModel.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/mdb/js/addToCart.js" afterDir="false" />
+    <list default="true" id="1a759932-6c3e-472a-96e3-72bf4ea509d1" name="Changes" comment="import digital RSA helper">
+      <change afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/UploadProductImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/upload.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/showImage.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/DAO/ScirptSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/DAO/ScirptSQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/DAO/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/HelloServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/HelloServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/AddressAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/AddressAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/SubProductAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/SubProductAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/UserAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/UserAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/controllers/authController/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/controllers/authController/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/controllers/userController/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/controllers/userController/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/fakeData/FakeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/fakeData/FakeData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/service/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/service/CartService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/UserProfile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/UserProfile.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/default/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/default/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/logIn.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/logIn.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/mdb/css/default.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/mdb/css/default.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/orderDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/orderDetail.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/verifyCode.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/verifyCode.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/BrandAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/BrandAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/CategoryAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/CategoryAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/CommentAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/CommentAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/DiscountAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/DiscountAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/FavoriteAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/FavoriteAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/ProductAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/ProductAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/ProductDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/ProductDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/SubProductAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/api/GetPriceByColorAndProductId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/model/ImageProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/model/ImageProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/service/ImageProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hcmuaf/edu/vn/BikeEcommerce/service/ImageProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/test.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/test.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,9 +42,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Jsp File" />
         <option value="JavaScript File" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -58,13 +55,6 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GithubProjectSettings">
-    <option name="branchProtectionPatterns">
-      <list>
-        <option value="ThanhNgoan" />
-      </list>
-    </option>
   </component>
   <component name="JspContextManager">
     <jsp-to-context jsp-file="file://$PROJECT_DIR$/src/main/webapp/default/header.jsp" context-file="file://$PROJECT_DIR$/src/main/webapp/aboutUs.jsp" />
@@ -89,13 +79,16 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;ThanhNgoan&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/app_book&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;HoangHai&quot;,
+    &quot;last_opened_file_path&quot;: &quot;I:/bike/BikeEcommerceWeb/src/main/lib/ATBMModel.jar&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -105,7 +98,6 @@
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.45747125&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -120,13 +112,13 @@
       <recent name="hcmuaf.edu.vn.BikeEcommerce.model" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Chan Chan\BikeEcommerceWeb\src\main\webapp\WEB-INF" />
       <recent name="C:\Users\Chan Chan\BikeEcommerceWeb\src\main\webapp\admin\assert\js" />
       <recent name="C:\Users\Chan Chan\BikeEcommerceWeb\src\main\webapp\admin\assert\font-awesome" />
       <recent name="C:\Users\Chan Chan\BikeEcommerceWeb\src\main\webapp\admin\assert\css" />
       <recent name="C:\Users\Chan Chan\BikeEcommerceWeb\src\main\webapp\admin\assert\mdb" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="I:\bike\BikeEcommerceWeb\src\main\lib" />
       <recent name="C:\Users\Chan Chan\BikeEcommerceWeb\src\main\webapp\admin\assert\font-awesome" />
       <recent name="C:\Users\Chan Chan\BikeEcommerceWeb\src\main\webapp\admin\assert\js" />
       <recent name="I:\bike\BikeEcommerceWeb\src\main\webapp" />
@@ -147,8 +139,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrderService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="hcmuaf.edu.vn.BikeEcommerce.service.OrderService" />
+    <configuration name="HelloServlet" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="hcmuaf.edu.vn.BikeEcommerce.HelloServlet" />
+      <module name="BikeEcommerce" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hcmuaf.edu.vn.BikeEcommerce.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="hcmuaf.edu.vn.BikeEcommerce.service.ProductService" />
       <module name="BikeEcommerce" />
       <extension name="coverage">
         <pattern>
@@ -160,25 +165,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="hcmuaf.edu.vn.BikeEcommerce.controllers.orderController.Test" />
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="hcmuaf.edu.vn.BikeEcommerce.test" />
       <module name="BikeEcommerce" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="hcmuaf.edu.vn.BikeEcommerce.controllers.orderController.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="hcmuaf.edu.vn.BikeEcommerce.service.UserService" />
-      <module name="BikeEcommerce" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="hcmuaf.edu.vn.BikeEcommerce.service.*" />
+          <option name="PATTERN" value="hcmuaf.edu.vn.BikeEcommerce.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -189,8 +181,18 @@
     <configuration name="product.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8081/admin/product.jsp">
       <method v="2" />
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Tomcat 9.0.79" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.79" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8081/home" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="BikeEcommerce:war exploded">
@@ -279,7 +281,7 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Test" />
+      <item itemvalue="Application.ProductService" />
       <item itemvalue="Application.UserService" />
       <item itemvalue="Application.OrderService" />
       <item itemvalue="Application.CategoryService" />
@@ -288,8 +290,6 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.UserService" />
-        <item itemvalue="Application.Test" />
         <item itemvalue="JavaScript Debug.product.jsp" />
         <item itemvalue="Application.CategoryService" />
         <item itemvalue="Application.OrderService" />
@@ -323,24 +323,7 @@
       <workItem from="1701012852313" duration="5033000" />
       <workItem from="1701053836561" duration="3263000" />
       <workItem from="1701070393134" duration="1551000" />
-      <workItem from="1701097141347" duration="10344000" />
-      <workItem from="1701206146237" duration="18000" />
-      <workItem from="1701400279430" duration="3819000" />
-      <workItem from="1701443912517" duration="8716000" />
-      <workItem from="1701657320214" duration="395000" />
-      <workItem from="1701702944740" duration="8017000" />
-      <workItem from="1701742902876" duration="3754000" />
-      <workItem from="1701753995359" duration="2182000" />
-      <workItem from="1701794641666" duration="30000" />
-      <workItem from="1702001011331" duration="20798000" />
-      <workItem from="1702259411608" duration="14517000" />
-      <workItem from="1702346048894" duration="1193000" />
-      <workItem from="1702348253291" duration="13871000" />
-      <workItem from="1702442983611" duration="1577000" />
-      <workItem from="1702542786748" duration="2310000" />
-      <workItem from="1702616905665" duration="13000" />
-      <workItem from="1702866856571" duration="22331000" />
-      <workItem from="1702911493318" duration="608000" />
+      <workItem from="1701097141347" duration="10048000" />
     </task>
     <task id="LOCAL-00001" summary="update databaseHai.sql">
       <option name="closed" value="true" />
@@ -614,59 +597,18 @@
       <option name="project" value="LOCAL" />
       <updated>1700687039782</updated>
     </task>
-    <task id="LOCAL-00035" summary="update admin.productjsp and add sub_product.jsp">
-      <option name="closed" value="true" />
-      <created>1701107451682</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1701107451682</updated>
-    </task>
-    <task id="LOCAL-00036" summary="chỉnh sửa giao diện checkOut.jsp , bổ sung field cho phép người dùng copy code để ký và nhập chữ kí đã kí vào order">
-      <option name="closed" value="true" />
-      <created>1701452591766</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1701452591766</updated>
-    </task>
-    <task id="LOCAL-00037" summary="add changing for shopping cart when click button add to cart">
-      <option name="closed" value="true" />
-      <created>1701710954091</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1701710954091</updated>
-    </task>
-    <task id="LOCAL-00038" summary="chinh sua phuong thuc luu cart -&gt; order">
-      <option name="closed" value="true" />
-      <created>1702264759321</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1702264759321</updated>
-    </task>
-    <task id="LOCAL-00039" summary="update database">
-      <option name="closed" value="true" />
-      <created>1702271149368</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1702271149368</updated>
-    </task>
-    <task id="LOCAL-00040" summary="complete checkout order from cart to order">
-      <option name="closed" value="true" />
-      <created>1702370050329</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1702370050329</updated>
-    </task>
-    <option name="localTasksCounter" value="41" />
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="executable:docker" />
+    <option featureType="dependencySupport" implementationName="java:com.google.protobuf:protobuf-java" />
+    <option featureType="dependencySupport" implementationName="executable:kubectl" />
+    <option featureType="dependencySupport" implementationName="java:org.jdbi:jdbi3-core" />
+    <option featureType="dependencySupport" implementationName="maven-packaging:war" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ID_ORDER">
@@ -691,6 +633,12 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="them java doc" />
+    <MESSAGE value="sua loi cua tat ca cac lop DAO" />
+    <MESSAGE value="ide" />
+    <MESSAGE value="sua lai giao dien gui mail xac nhan order" />
+    <MESSAGE value="them cac service, DAO, thuoc tinh cua cac lop Color,ImageProduct, ImageSlider," />
+    <MESSAGE value="cap nhat them csdl" />
     <MESSAGE value="da lay duoc tat ca thong tin cho product va order , update database . tất cả thông tin đã lấy được" />
     <MESSAGE value="formart DAO" />
     <MESSAGE value="update java doc" />
@@ -710,26 +658,15 @@
     <MESSAGE value="merge main to hoanghai" />
     <MESSAGE value="auto login khi token còn hiệu lực" />
     <MESSAGE value="update datatest" />
-    <MESSAGE value="update admin.productjsp and add sub_product.jsp" />
-    <MESSAGE value="chỉnh sửa giao diện checkOut.jsp , bổ sung field cho phép người dùng copy code để ký và nhập chữ kí đã kí vào order" />
-    <MESSAGE value="add changing for shopping cart when click button add to cart" />
-    <MESSAGE value="chinh sua phuong thuc luu cart -&gt; order" />
-    <MESSAGE value="update database" />
-    <MESSAGE value="complete checkout order from cart to order" />
-    <option name="LAST_COMMIT_MESSAGE" value="complete checkout order from cart to order" />
+    <option name="LAST_COMMIT_MESSAGE" value="update datatest" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/webapp/index.jsp</url>
-          <line>161</line>
+          <line>177</line>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/webapp/default/header.jsp</url>
-          <line>38</line>
-          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
