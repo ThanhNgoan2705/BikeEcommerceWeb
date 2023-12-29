@@ -24,7 +24,7 @@ public class CheckSig {
         String data = order.toStringForHash();
         Hash hashFunc = new Hash("SHA-256");
         String hash = hashFunc.hash(data);
-        Boolean c = SignInData.verifyDetachedData(hash.getBytes(),sig);
+        boolean c = SignInData.verifyDetachedData(hash.getBytes(),sig);
         return c;
     }
     public String getSeriOfCertByCMSSigData(byte[] sig) throws GeneralSecurityException, OperatorCreationException, CMSException {

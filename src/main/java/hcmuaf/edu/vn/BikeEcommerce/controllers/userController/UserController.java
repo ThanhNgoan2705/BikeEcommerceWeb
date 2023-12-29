@@ -30,7 +30,6 @@ public class UserController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Token token = (Token) req.getAttribute("token");
         if (token != null) {
-
             User user = UserService.getInstance().getUserByKey(token.getUserId());
             List<Address> addressList = AddressService.getInstance().getAllAddressByUserId(token.getUserId());
             List<Order> orderList = OrderService.getInstance().getAllOrderByUserId(token.getUserId());
@@ -46,7 +45,7 @@ public class UserController extends HttpServlet {
             req.setAttribute("emailShow", emailShow);
             req.setAttribute("name", name);
         }
-        req.getRequestDispatcher("UserProfile.jsp").forward(req, resp);
+        req.getRequestDispatcher("/UserProfile.jsp").forward(req, resp);
     }
 
     @Override

@@ -87,11 +87,11 @@ public class UserAPI extends HttpServlet {
         Token token = (Token) req.getAttribute("token");
         String newPass = req.getParameter("newPass");
         String reNewPass = req.getParameter("reNewPass");
+        String oldPass = req.getParameter("oldPass");
         if (!newPass.equals(reNewPass)) {
             resp.getWriter().write("new pass not same repass");
             return;
         }
-        String oldPass = req.getParameter("oldPass");
         User user = userService.loginByUserNameOrEmail(token.getUserName(), oldPass);
         System.out.println("oldPass: " + oldPass);
         System.out.println("user: " + user);

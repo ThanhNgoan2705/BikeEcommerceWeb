@@ -179,7 +179,7 @@ VALUES ('1', 'image1.jpg', '1', '2023-11-22 20:51:11', '2023-11-23 03:51:11'),
 -- Dumping data for table `order`
 --
 
-INSERT INTO `order` (`order_id`, `user_id`, `address_id`, `price`, `discount`, `shipping_fee`, `total`, `send_day`,
+INSERT INTO `order` (`order_id`, `user_id`, `full_address`, `price`, `discount`, `shipping_fee`, `total`, `send_day`,
                      `receive_day`, `status`, `created_at`, `updated_at`)
 VALUES ('1', 'user1', '1', 500, 50, 20, 470, '2023-08-19 17:00:00', '2023-08-24 17:00:00', 2, '2023-11-22 20:49:49',
         '2023-11-22 20:49:49'),

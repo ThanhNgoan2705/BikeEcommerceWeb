@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
  */
 
 public class Supplier {
-    private String upplierId;
+    private String supplierId;
     private String name;
     private LocalDateTime createAt;
     private LocalDateTime updateAt;
@@ -23,13 +23,13 @@ public class Supplier {
     public Supplier() {
     }
 
-    public Supplier(String upplierId, String name) {
-        this.upplierId = upplierId;
+    public Supplier(String supplierId, String name) {
+        this.supplierId = supplierId;
         this.name = name;
     }
 
-    public Supplier(String upplierId, String name, LocalDateTime createAt, LocalDateTime updateAt) {
-        this.upplierId = upplierId;
+    public Supplier(String supplierId, String name, LocalDateTime createAt, LocalDateTime updateAt) {
+        this.supplierId = supplierId;
         this.name = name;
         this.createAt = createAt;
         this.updateAt = updateAt;
@@ -38,19 +38,19 @@ public class Supplier {
     @Override
     public String toString() {
         return "Supplier{" +
-                "upplierId='" + upplierId + '\'' +
+                "supplierId='" + supplierId + '\'' +
                 ", name='" + name + '\'' +
                 ", createAt=" + createAt +
                 ", updateAt=" + updateAt +
                 '}';
     }
 
-    public String getUpplierId() {
-        return upplierId;
+    public String getSupplierId() {
+        return supplierId;
     }
 
-    public void setUpplierId(String upplierId) {
-        this.upplierId = upplierId;
+    public void setSupplierId(String supplierId) {
+        this.supplierId = supplierId;
     }
 
     public String getName() {
