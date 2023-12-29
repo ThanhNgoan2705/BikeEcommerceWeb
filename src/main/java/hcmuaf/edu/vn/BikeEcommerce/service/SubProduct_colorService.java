@@ -76,12 +76,12 @@ public class SubProduct_colorService {
     public double getPriceByProductIdAndColorId(String productId, String colorId) {
         return jdbi.withExtension(SubProduct_colorDAO.class, dao -> dao.getPriceByProductIdAndColorId(productId, colorId));
     }
-
+    public int getInventoryByProductIdAndColorId(String productId, String colorId) {
+        return jdbi.withExtension(SubProduct_colorDAO.class, dao -> dao.getInventoryByProductIdAndColorId(productId, colorId));
+    }
     public static void main(String[] args) {
 
-
-        SubProduct_colorService subProductColorService = SubProduct_colorService.getInstance();
-        subProductColorService.deleteColorProductByProductId("6");
+        System.out.println(SubProduct_colorService.getInstance().getInventoryByProductIdAndColorId("1","1"));
 
     }
 

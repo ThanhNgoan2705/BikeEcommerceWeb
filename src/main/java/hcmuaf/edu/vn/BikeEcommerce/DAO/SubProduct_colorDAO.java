@@ -39,5 +39,8 @@ public interface SubProduct_colorDAO {
     Double getPriceByProductIdAndColorId(@Bind("productId") String productId, @Bind("colorId") String colorId);
 
     @SqlQuery(ScirptSQL.getColorProductByProductIdAndColorId)
-    SubProduct_color getColorProductByProductIdAndColorId(@Bind("productId")String productId,@Bind("colorId") String colorId);
+    SubProduct_color getColorProductByProductIdAndColorId(@Bind("productId") String productId, @Bind("colorId") String colorId);
+
+    @SqlQuery(ScirptSQL.getInventoryByProductIdAndColorId)
+    Integer getInventoryByProductIdAndColorId(@Bind("productId") String productId, @Bind("colorId") String colorId);
 }
