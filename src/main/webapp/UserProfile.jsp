@@ -659,14 +659,14 @@
                                                 <div class="group">
                                                     <label class="label1" >Private Key</label>
                                                     <input type="text" class="form-control" id="privateKey" >
-                                                    <i  class="fa fa-download" aria-hidden="true"></i>
+                                                    <i class="fa fa-clone" onclick="" aria-hidden="true"></i>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="group">
                                                     <label class="label1">Public Key</label>
                                                     <input type="text" class="form-control" id="publicKey">
-                                                    <i class="fa fa-download" aria-hidden="true"></i>
+                                                    <i class="fa fa-clone" aria-hidden="true"></i>
                                                 </div>
                                             </div>
                                             <div class="col">
