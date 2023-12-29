@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/getPriceByColorAndProductId")
-public class SubProductAPI extends HttpServlet {
+public class GetPriceByColorAndProductId extends HttpServlet {
     SubProduct_colorService subProduct_colorService;
     CartItemsService cartItemsService;
 

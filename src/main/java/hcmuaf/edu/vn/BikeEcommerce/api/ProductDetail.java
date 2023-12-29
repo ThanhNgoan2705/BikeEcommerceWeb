@@ -1,4 +1,4 @@
-package hcmuaf.edu.vn.BikeEcommerce.API;
+package hcmuaf.edu.vn.BikeEcommerce.api;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

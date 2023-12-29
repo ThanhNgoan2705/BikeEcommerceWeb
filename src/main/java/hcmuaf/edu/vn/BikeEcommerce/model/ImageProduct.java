@@ -1,7 +1,5 @@
 package hcmuaf.edu.vn.BikeEcommerce.model;
 
-import java.time.LocalDateTime;
-
 /**
  * Created by Admin on 19-8-23.<br/>
  * This class is used to store information of image product <br/>
@@ -17,16 +15,18 @@ public class ImageProduct {
     private String imageProductId;
     private String link;
     private String productId;
-    private LocalDateTime createAt;
-    private LocalDateTime updateAt;
+    private String colorId;
+    private String createAt;
+    private String updateAt;
 
     public ImageProduct() {
     }
 
-    public ImageProduct(String imageProductId, String link, String productId) {
+    public ImageProduct(String imageProductId, String link, String productId, String colorId) {
         this.imageProductId = imageProductId;
         this.link = link;
         this.productId = productId;
+        this.colorId = colorId;
     }
 
     @Override
@@ -35,8 +35,9 @@ public class ImageProduct {
                 "imageProductId='" + imageProductId + '\'' +
                 ", link='" + link + '\'' +
                 ", productId='" + productId + '\'' +
-                ", createAt=" + createAt +
-                ", updateAt=" + updateAt +
+                ", colorId='" + colorId + '\'' +
+                ", createAt='" + createAt + '\'' +
+                ", updateAt='" + updateAt + '\'' +
                 '}';
     }
 
@@ -64,19 +65,27 @@ public class ImageProduct {
         this.productId = productId;
     }
 
-    public LocalDateTime getCreateAt() {
+    public String getColorId() {
+        return colorId;
+    }
+
+    public void setColorId(String colorId) {
+        this.colorId = colorId;
+    }
+
+    public String getCreateAt() {
         return createAt;
     }
 
-    public void setCreateAt(LocalDateTime createAt) {
+    public void setCreateAt(String createAt) {
         this.createAt = createAt;
     }
 
-    public LocalDateTime getUpdateAt() {
+    public String getUpdateAt() {
         return updateAt;
     }
 
-    public void setUpdateAt(LocalDateTime updateAt) {
+    public void setUpdateAt(String updateAt) {
         this.updateAt = updateAt;
     }
 }
