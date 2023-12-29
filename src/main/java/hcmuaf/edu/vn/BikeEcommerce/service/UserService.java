@@ -59,7 +59,6 @@ public class UserService {
 
         return user;
     }
-
     public User loginByUserNameOrEmail(String keyLogin, String pass) {// da test
         return jdbi.withExtension(UserDAO.class, dao -> dao.loginByUserNameOrEmail(keyLogin, getSaltByUserNameOrEmail(keyLogin) + pass));
     }
@@ -83,11 +82,14 @@ public class UserService {
     public void updateUser(String email, int role) {
         jdbi.useExtension(UserDAO.class, dao -> dao.updateUser(email, role));
     }
-
     public static void main(String[] args) {
 //        System.out.println(UserService.getInstance().loginByUserNameOrEmail("hai", "hai"));
 //        System.out.println(UserService.getInstance().isEmailOrUserNameAlreadyExists("thanhngoan2ktd@gmail.com"));
-        System.out.println(UserService.getInstance().loginByUserNameOrEmail("admin@gmail.com","chan"));
-
+        System.out.println(UserService.getInstance().loginByUserNameOrEmail("admin@123gmail.com","111"));
     }
+
+
+//    public void updateUserEmail(User user) {
+//        jdbi.useExtension(UserDAO.class, dao -> dao.updateUserEmail(user.getUserId(),user.getEmail()));
+//    }
 }

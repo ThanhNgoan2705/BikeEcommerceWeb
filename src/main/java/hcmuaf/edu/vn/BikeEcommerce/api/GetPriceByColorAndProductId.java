@@ -1,4 +1,4 @@
-package hcmuaf.edu.vn.BikeEcommerce.api;
+package hcmuaf.edu.vn.BikeEcommerce.API;
 
 import hcmuaf.edu.vn.BikeEcommerce.model.CartItem;
 import hcmuaf.edu.vn.BikeEcommerce.service.CartItemsService;

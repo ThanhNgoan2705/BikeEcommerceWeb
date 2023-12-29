@@ -1,4 +1,3 @@
-
 <%--
   Created by IntelliJ IDEA.
   User: Chan
@@ -6,7 +5,7 @@
   Time: 10:11 AM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html; charset=UTF-8"  language="java" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="vie">
@@ -15,36 +14,116 @@
     <title>Xe Điện Long Vũ</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%--    fontAwesome--%>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
             rel="stylesheet"
     />
-    <%--    MDB CSS--%>
-    <style>INPUT:-webkit-autofill,SELECT:-webkit-autofill,TEXTAREA:-webkit-autofill{animation-name:onautofillstart}INPUT:not(:-webkit-autofill),SELECT:not(:-webkit-autofill),TEXTAREA:not(:-webkit-autofill){animation-name:onautofillcancel}@keyframes onautofillstart{}@keyframes onautofillcancel{}</style>
-    <link href="mdb/css/bootstrap.min.css" rel="stylesheet">
-    <link href="mdb/css/mdb.min.css" rel="stylesheet">
-    <link href="mdb/css/addons/compiled-addons-4.20.0.min.css">
-    <link href="mdb/css/style.css" rel="stylesheet">
-    <link href="mdb/css/default.css" rel="stylesheet">
-
+    <link href="/mdb/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/mdb/css/mdb.min.css" rel="stylesheet">
+    <link href="/mdb/css/addons/compiled-addons-4.20.0.min.css">
+    <link href="/mdb/css/style.css" rel="stylesheet">
+    <link href="/mdb/css/default.css" rel="stylesheet">
+    <style>
+        /* CSS nền hiển thị Modal */
+        .nenmodal .nenmodal2 {
+            position:fixed;
+            top:0px;
+            left:0px;
+            width:100vw;
+            height:100vh;
+            background:rgba(0,0,0,0.7);
+            z-index:1;
+            display:none;
+        }
+        /* CSS bảng nội dung Modal */
+        .nenmodal .ndmodal {
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%) scale(0);
+            background:#fff;
+            width:600px;
+            z-index:2;
+            text-align:center;
+            padding:20px;
+            box-sizing:border-box;
+            font-family:"Open Sans",sans-serif;
+            border-radius:20px;
+            display: block;
+            position: fixed;
+            box-shadow:0px 0px 10px #111;
+        }
+        @media (max-width: 700px) {
+            .nenmodal .ndmodal {width:90%;}
+        }
+        /* CSS bao bọc của nút tắt Modal */
+        .nenmodal .closemodal {
+            text-align:center;
+            margin-top:-40px;
+            margin-bottom:10px;
+        }
+        /* CSS tieu de của Modal */
+        .titlemodal{
+            font-weight:bold;
+            font-size:20px;
+            margin-bottom:10px;
+        }
+        /* CSS nút tắt modal */
+        .closemodal button{
+            width:40px;
+            height:40px;
+            font-size:30px;
+            padding:0px;
+            border-radius:100%;
+            background:#333;
+            color:#fff;
+            border:none;
+        }
+        .nenmodal.active .nenmodal2 {
+            display:block;
+        }
+        /* CSS hiệu ứng hiển thị Modal */
+        .nenmodal.active .ndmodal {
+            transition:all 300ms ease-in-out;
+            transform:translate(-50%,-50%) scale(1);
+        }
+        .col {
+            position: relative;
+            width: 150px;
+            padding-right: 15px;
+            padding-left: 15px; }
+        .group {
+            margin-bottom: 5px;
+        }
+        .contactForm .label1 {
+            color: #000;
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: 600; }
+        .btnblock{
+            width: 200px;
+            height: 35px;
+            background-color: #0d0d0d;
+            color: #f1f1f1;
+        }
+    </style>
 </head>
 
 <body class="homepage-v1 hidden-sn white-skin animated">
-
 <!--onTop-->
-<%@include file="default/ontopButton.jsp"%>
+<%@include file="default/ontopButton.jsp" %>
 <!--onTop-->
 
 <!-- Navigation -->
-<%@ include file="default/header.jsp"%>
+<%@ include file="default/header.jsp" %>
 <!-- Navigation -->
 
 <!-- Mega menu -->
-<%@include file="default/menu.jsp"%>
+<%@include file="default/menu.jsp" %>
 <!-- Mega menu -->
-
 <!-- Main Container -->
 <div class="card">
     <div class="card-body">
@@ -53,10 +132,10 @@
         <div class="row">
 
             <!--Grid column-->
-            <div class="col-lg-8 mb-4">
+            <div class="col-lg-3 mb-4">
 
                 <!-- Pills navs -->
-                <ul class="nav md-pills nav-justified pills-primary font-weight-bold">
+                <ul class="nav flex-column md-pills nav-justified pills-primary font-weight-bold">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#tabUserInfor" role="tab">Profile</a>
                     </li>
@@ -72,12 +151,16 @@
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#tabChangePassWord" role="tab">Change Password</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#tabKeyManagement" role="tab">Key Management</a>
+                    </li>
                 </ul>
-
+            </div>
+            <div class="col-lg-9">
                 <!-- Pills panels -->
                 <div class="tab-content pt-4">
 
-                    <!--Panel 1-->
+                    <!--User Profile-->
                     <div class="tab-pane fade in show active" id="tabUserInfor" role="tabpanel">
 
                         <!--Card content-->
@@ -87,113 +170,29 @@
                             <div class="row">
 
                                 <!--Grid column-->
-                                <div class="col-md-6 mb-4">
-
+                                <div class="col-md-12 mb-4">
                                     <!--firstName-->
-                                    <label for="firstName" class="">First name</label>
-                                    <input type="text" id="firstName" class="form-control">
-
+                                    <label for="fullName" class="">FullName</label>
+                                    <input type="text" id="fullName" class="form-control" value="${name}">
                                 </div>
                                 <!--Grid column-->
-
-                                <!--Grid column-->
-                                <div class="col-md-6 mb-2">
-
-                                    <!--lastName-->
-                                    <label for="lastName" class="">Last name</label>
-                                    <input type="text" id="lastName" class="form-control">
-
-                                </div>
-                                <!--Grid column-->
-
                             </div>
                             <!--Grid row-->
 
                             <!--email-->
-                            <label for="email" class="">Email </label>
-                            <input type="text" id="email" class="form-control mb-4" placeholder="youremail@example.com">
-
-                            <!--phone-->
-                            <label for="phone" class="">Phone </label>
-                            <input type="text" id="phone" class="form-control mb-4" placeholder="0123456789">
-
-                            <!--address-->
-                            <label for="address" class="">Address</label>
-                            <input type="text" id="address" class="form-control mb-4" placeholder="1234 Main St">
-
-                            <!--Grid row-->
                             <div class="row">
-
-                                <!--Grid column-->
-                                <div class="col-lg-4 col-md-12 mb-4">
-
-                                    <label for="country">Country</label>
-                                    <select class="custom-select d-block w-100" id="country" required>
-                                        <option value="">Choose...</option>
-                                        <option>United States</option>
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        Please select a valid country.
-                                    </div>
-
-                                </div>
-                                <!--Grid column-->
-
-                                <!--Grid column-->
-                                <div class="col-lg-4 col-md-6 mb-4">
-
-                                    <label for="state">State</label>
-                                    <select class="custom-select d-block w-100" id="state" required>
-                                        <option value="">Choose...</option>
-                                        <option>California</option>
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        Please provide a valid state.
-                                    </div>
-
-                                </div>
-                                <!--Grid column-->
-
-                                <!--Grid column-->
-                                <div class="col-lg-4 col-md-6 mb-4">
-
-                                    <label for="zip">Zip</label>
-                                    <input type="text" class="form-control" id="zip" placeholder="" required>
-                                    <div class="invalid-feedback">
-                                        Zip code required.
-                                    </div>
-
-                                </div>
-                                <!--Grid column-->
-
+                            <label class="ml-1">Email </label>
+                            <p class="text-default ml-4">${emailShow}</p>
+                            <a href="" class="btn btn-primary btn-sm">Change Email</a>
                             </div>
-                            <!--Grid row-->
-
                             <hr>
-
-                            <div class="mb-1">
-                                <input type="checkbox" class="form-check-input filled-in" id="chekboxRules">
-                                <label class="form-check-label" for="chekboxRules">I accept the terms and conditions</label>
-                            </div>
-                            <div class="mb-1">
-                                <input type="checkbox" class="form-check-input filled-in" id="safeTheInfo">
-                                <label class="form-check-label" for="safeTheInfo">Save this information for next time</label>
-                            </div>
-                            <div class="mb-1">
-                                <input type="checkbox" class="form-check-input filled-in" id="subscribeNewsletter">
-                                <label class="form-check-label" for="subscribeNewsletter">Subscribe to our newsletter</label>
-                            </div>
-
-                            <hr>
-
-                            <button class="btn btn-primary btn-lg btn-block" type="submit">Next step</button>
-
+                            <button class="btn btn-primary btn-lg btn-block" onclick="editInfor()">Update Information</button>
                         </form>
 
                     </div>
-                    <!--/.Panel 1-->
+                    <!--User Profile-->
 
-                    <!--Panel 2-->
+                    <!--User Addresses-->
                     <div class="tab-pane fade" id="tabAddress" role="tabpanel">
 
                         <!--Grid row-->
@@ -202,7 +201,8 @@
                             <!--Grid column-->
                             <div class="col-md-5 mb-4">
 
-                                <img src="https://mdbootstrap.com/img/Photos/Others/images/43.webp" class="img-fluid z-depth-1-half"
+                                <img src="https://mdbootstrap.com/img/Photos/Others/images/43.webp"
+                                     class="img-fluid z-depth-1-half"
                                      alt="Second sample image">
 
                             </div>
@@ -213,7 +213,8 @@
 
                                 <h5 class="mb-3 h5">Additional premium support</h5>
 
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, ea ut aperiam corrupti,
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, ea ut aperiam
+                                    corrupti,
                                     dolorem.</p>
 
                                 <!--Name-->
@@ -225,7 +226,8 @@
                                     <option value="4">+24 months: 1200$</option>
                                 </select>
 
-                                <button type="button" class="btn btn-primary btn-md">Add premium support to the cart</button>
+                                <button type="button" class="btn btn-primary btn-md">Add premium support to the cart
+                                </button>
 
                             </div>
                             <!--Grid column-->
@@ -241,7 +243,8 @@
                             <!--Grid column-->
                             <div class="col-md-5 mb-4">
 
-                                <img src="https://mdbootstrap.com/img/Photos/Others/images/44.webp" class="img-fluid z-depth-1-half"
+                                <img src="https://mdbootstrap.com/img/Photos/Others/images/44.webp"
+                                     class="img-fluid z-depth-1-half"
                                      alt="Second sample image">
 
                             </div>
@@ -252,7 +255,8 @@
 
                                 <h5 class="mb-3 h5">MDB Membership</h5>
 
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, ea ut aperiam corrupti,
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, ea ut aperiam
+                                    corrupti,
                                     dolorem.</p>
 
                                 <!--Name-->
@@ -264,7 +268,8 @@
                                     <option value="4">+24 months: 1200$</option>
                                 </select>
 
-                                <button type="button" class="btn btn-primary btn-md">Add MDB Membership to the cart</button>
+                                <button type="button" class="btn btn-primary btn-md">Add MDB Membership to the cart
+                                </button>
 
                             </div>
                             <!--Grid column-->
@@ -277,179 +282,593 @@
                         <button class="btn btn-primary btn-lg btn-block" type="submit">Next step</button>
 
                     </div>
-                    <!--/.Panel 2-->
+                    <!--User Addresses-->
 
-                    <!--Panel 3-->
+                    <!--list Order-->
                     <div class="tab-pane fade" id="tabOrderHistory" role="tabpanel">
+                        <div id="dt-select_filter" class="dataTables_filter"><label>Search:<input type="search"
+                                                                                                  class="form-control form-control-sm"
+                                                                                                  placeholder=""
+                                                                                                  aria-controls="dt-select"></label>
+                        </div>
+                        <table id="dt-select" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                                <th>OrderId</th>
+                                <th>Name Product</th>
+                                <th>Price</th>
+                                <th>Shipping_fee</th>
+                                <th>Send day</th>
+                                <th>Receive day</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                        </table>
 
-                        <div class="d-block my-3">
-                            <div class="mb-2">
-                                <input name="group2" type="radio" class="form-check-input with-gap" id="radioWithGap4" checked
-                                       required>
-                                <label class="form-check-label" for="radioWithGap4">Credit card</label>
-                            </div>
-                            <div class="mb-2">
-                                <input iname="group2" type="radio" class="form-check-input with-gap" id="radioWithGap5"
-                                       required>
-                                <label class="form-check-label" for="radioWithGap5">Debit card</label>
-                            </div>
-                            <div class="mb-2">
-                                <input name="group2" type="radio" class="form-check-input with-gap" id="radioWithGap6" required>
-                                <label class="form-check-label" for="radioWithGap6">Paypal</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="cc-name123">Name on card</label>
-                                <input type="text" class="form-control" id="cc-name123" placeholder="" required>
-                                <small class="text-muted">Full name as displayed on card</small>
-                                <div class="invalid-feedback">
-                                    Name on card is required
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="cc-number123">Credit card number</label>
-                                <input type="text" class="form-control" id="cc-number123" placeholder="" required>
-                                <div class="invalid-feedback">
-                                    Credit card number is required
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3 mb-3">
-                                <label for="cc-expiration123">Expiration</label>
-                                <input type="text" class="form-control" id="cc-expiration123" placeholder="" required>
-                                <div class="invalid-feedback">
-                                    Expiration date required
-                                </div>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <label for="cc-cvv123">CVV</label>
-                                <input type="text" class="form-control" id="cc-cvv123" placeholder="" required>
-                                <div class="invalid-feedback">
-                                    Security code required
-                                </div>
-                            </div>
-                        </div>
                         <hr class="mb-4">
 
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Place order</button>
-
                     </div>
-                    <!--/.Panel 3-->
+                    <!--list Order-->
+
+                    <!--list Favourite-->
+                    <div class="tab-pane fade" id="tabListFavourite" role="tabpanel">
+                        <!-- Grid row -->
+                        <div class="row">
+
+                            <!-- Grid column -->
+                            <div class="col-lg-3 col-md-6 mb-4">
+
+                                <!-- Card -->
+                                <div class="card card-ecommerce">
+
+                                    <!-- Card image -->
+                                    <div class="view overlay">
+
+                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg"
+                                             class="img-fluid"
+                                             alt="">
+
+                                        <a>
+
+                                            <div class="mask rgba-white-slight"></div>
+
+                                        </a>
+
+                                    </div>
+                                    <!-- Card image -->
+
+                                    <!-- Card content -->
+                                    <div class="card-body">
+
+                                        <!-- Category & Title -->
+                                        <h5 class="card-title mb-1"><strong><a href=""
+                                                                               class="dark-grey-text">Headphones</a></strong>
+                                        </h5>
+                                        <span class="badge badge-danger mb-2">bestseller</span>
+
+                                        <!-- Rating -->
+                                        <ul class="rating">
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                        </ul>
+
+                                        <!-- Card footer -->
+                                        <div class="card-footer pb-0">
+
+                                            <div class="row mb-0">
+
+                                                <span class="float-left"><strong>1439$</strong></span>
+
+                                                <span class="float-right">
+
+                        <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
+                                class="fas fa-shopping-cart ml-3"></i></a>
+
+                      </span>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- Card content -->
+
+                                </div>
+                                <!-- Card -->
+
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-lg-3 col-md-6 mb-4">
+
+                                <!-- Card -->
+                                <div class="card card-ecommerce">
+
+                                    <!-- Card image -->
+                                    <div class="view overlay">
+
+                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/16.jpg"
+                                             class="img-fluid"
+                                             alt="">
+
+                                        <a>
+
+                                            <div class="mask rgba-white-slight"></div>
+
+                                        </a>
+
+                                    </div>
+                                    <!-- Card image -->
+
+                                    <!-- Card content -->
+                                    <div class="card-body">
+
+                                        <!-- Category & Title -->
+                                        <h5 class="card-title mb-1"><strong><a href=""
+                                                                               class="dark-grey-text">Headphones</a></strong>
+                                        </h5>
+                                        <span class="badge badge-danger mb-2">bestseller</span>
+
+                                        <!-- Rating -->
+                                        <ul class="rating">
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                        </ul>
+
+                                        <!-- Card footer -->
+                                        <div class="card-footer pb-0">
+
+                                            <div class="row mb-0">
+
+                                                <span class="float-left"><strong>1439$</strong></span>
+
+                                                <span class="float-right">
+
+                        <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
+                                class="fas fa-shopping-cart ml-3"></i></a>
+
+                      </span>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- Card content -->
+
+                                </div>
+                                <!-- Card -->
+
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-lg-3 col-md-6 mb-4">
+
+                                <!-- Card -->
+                                <div class="card card-ecommerce">
+
+                                    <!-- Card image -->
+                                    <div class="view overlay">
+
+                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg"
+                                             class="img-fluid"
+                                             alt="">
+
+                                        <a>
+
+                                            <div class="mask rgba-white-slight"></div>
+
+                                        </a>
+
+                                    </div>
+                                    <!-- Card image -->
+
+                                    <!-- Card content -->
+                                    <div class="card-body">
+
+                                        <!-- Category & Title -->
+                                        <h5 class="card-title mb-1"><strong><a href=""
+                                                                               class="dark-grey-text">iPhone</a></strong>
+                                        </h5>
+                                        <span
+                                                class="badge badge-info mb-2">new</span>
+
+                                        <!-- Rating -->
+                                        <ul class="rating">
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                        </ul>
+
+                                        <!-- Card footer -->
+                                        <div class="card-footer pb-0">
+
+                                            <div class="row mb-0">
+
+                                                <span class="float-left"><strong>1439$</strong></span>
+
+                                                <span class="float-right">
+
+                        <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
+                                class="fas fa-shopping-cart ml-3"></i></a>
+
+                      </span>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- Card content -->
+
+                                </div>
+                                <!-- Card -->
+
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-lg-3 col-md-6 mb-4">
+
+                                <!-- Card -->
+                                <div class="card card-ecommerce">
+
+                                    <!-- Card image -->
+                                    <div class="view overlay">
+
+                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/3.jpg"
+                                             class="img-fluid"
+                                             alt="">
+
+                                        <a>
+
+                                            <div class="mask rgba-white-slight"></div>
+
+                                        </a>
+
+                                    </div>
+                                    <!-- Card image -->
+
+                                    <!-- Card content -->
+                                    <div class="card-body">
+
+                                        <!-- Category & Title -->
+                                        <h5 class="card-title mb-1"><strong><a href=""
+                                                                               class="dark-grey-text">iMac</a></strong>
+                                        </h5><span
+                                            class="badge badge-danger mb-2">bestseller</span>
+
+                                        <!-- Rating -->
+                                        <ul class="rating">
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star blue-text"></i></li>
+
+                                            <li><i class="fas fa-star grey-text"></i></li>
+
+                                        </ul>
+
+                                        <!-- Card footer -->
+                                        <div class="card-footer pb-0">
+
+                                            <div class="row mb-0">
+
+                                                <span class="float-left"><strong>1439$</strong></span>
+
+                                                <span class="float-right">
+
+                        <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
+                                class="fas fa-shopping-cart ml-3"></i></a>
+
+                      </span>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- Card content -->
+
+                                </div>
+                                <!-- Card -->
+
+                            </div>
+                            <!-- Grid column -->
+                        </div>
+                        <!-- Grid row -->
+
+                        <!-- Grid row -->
+                        <div class="row justify-content-center mb-4">
+
+                            <!-- Pagination -->
+                            <nav class="mb-4">
+
+                                <ul class="pagination pagination-circle pg-blue mb-0">
+
+                                    <!-- First -->
+                                    <li class="page-item disabled clearfix d-none d-md-block"><a
+                                            class="page-link waves-effect waves-effect">First</a></li>
+
+                                    <!-- Arrow left -->
+                                    <li class="page-item disabled">
+
+                                        <a class="page-link waves-effect waves-effect" aria-label="Previous">
+
+                                            <span aria-hidden="true">«</span>
+
+                                            <span class="sr-only">Previous</span>
+
+                                        </a>
+
+                                    </li>
+
+                                    <!-- Numbers -->
+                                    <li class="page-item active"><a class="page-link waves-effect waves-effect">1</a>
+                                    </li>
+
+                                    <li class="page-item"><a class="page-link waves-effect waves-effect">2</a></li>
+
+                                    <li class="page-item"><a class="page-link waves-effect waves-effect">3</a></li>
+
+                                    <li class="page-item"><a class="page-link waves-effect waves-effect">4</a></li>
+
+                                    <li class="page-item"><a class="page-link waves-effect waves-effect">5</a></li>
+
+                                    <!-- Arrow right -->
+                                    <li class="page-item">
+
+                                        <a class="page-link waves-effect waves-effect" aria-label="Next">
+
+                                            <span aria-hidden="true">»</span>
+
+                                            <span class="sr-only">Next</span>
+
+                                        </a>
+
+                                    </li>
+
+                                    <!-- First -->
+                                    <li class="page-item clearfix d-none d-md-block"><a
+                                            class="page-link waves-effect waves-effect">Last</a>
+                                    </li>
+
+                                </ul>
+
+                            </nav>
+                            <!-- Pagination -->
+
+                        </div>
+                        <!-- Grid row -->
+                    </div>
+                    <!--list Favourite-->
+                    <!--Change Password-->
+                    <div class="tab-pane fade" id="tabChangePassWord" role="tabpanel">
+                        <%--                        Form Change Password--%>
+                        <form class="text-center border border-light p-5">
+
+                            <p class="h4 mb-4">Change Password</p>
+
+                            <input type="password" id="currentPassWord" class="form-control mb-4"
+                                   placeholder="Current Password">
+
+                            <input type="password" id="newPassWord" class="form-control mb-4"
+                                   placeholder="New Password">
+
+                            <input type="password" id="confirmPassWord" class="form-control mb-4"
+                                   placeholder="Confirm Password">
+
+                            <button class="btn btn-info btn-block my-4" onclick="changePassWord()">Change Password
+                            </button>
+
+                        </form>
+                    </div>
+
+                    <!--Key Management-->
+                    <div class="tab-pane fade" id="tabKeyManagement" role="tabpanel">
+                        <%--                        Form Change Password--%>
+
+                                <button class="btn btn-primary btn-lg btn-block" onclick="momodal()"  >Create Key</button>
+                                <hr class="mb-4">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="table-wrap">
+                                            <table class="table table-dark">
+                                                <thead>
+                                                <tr class="bg-dark">
+                                                    <th>STT</th>
+                                                    <th>PublicKey</th>
+                                                    <th>Seri</th>
+                                                    <th>&nbsp;</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr class="bg-primary">
+                                                    <th scope="row">1</th>
+                                                    <td>Mark Otto</td>
+                                                    <td>cfss678</td>
+                                                    <td><a href="#"><i class="fa fa-lock" aria-hidden="true"></i></a></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            <div class="nenmodal" id="nenmodal-1">
+                                <div class="nenmodal2"></div>
+                                <div class="ndmodal">
+                                    <div class="closemodal"><button onclick="momodal()">×</button></div>
+                                    <div method="POST" id="contactForm" name="contactForm" class="contactForm">
+                                        <button class="btnblock" type="submit" onclick="createKey()">Create Key</button>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="group">
+                                                    <label class="label1" >Private Key</label>
+                                                    <input type="text" class="form-control" id="privateKey" >
+                                                    <i class="fa fa-download" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="group">
+                                                    <label class="label1">Public Key</label>
+                                                    <input type="text" class="form-control" id="publicKey">
+                                                    <i class="fa fa-download" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="group">
+                                                    <label class="label1" >Seri</label>
+                                                    <input type="text" class="form-control" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
 
                 </div>
                 <!-- Pills panels -->
-
-
             </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
-            <div class="col-lg-4 mb-4">
-
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Place order</button>
-
-                <!--Card-->
-                <div class="card">
-
-                    <!--Card content-->
-                    <div class="card-body">
-                        <h4 class="mb-4 mt-1 h5 text-center font-weight-bold">Summary</h4>
-
-                        <hr>
-
-                        <dl class="row">
-                            <dd class="col-sm-8">
-                                MDBootstrap UI KIT (jQuery version) - License 6-10 people + unlimited projects
-                            </dd>
-                            <dd class="col-sm-4">
-                                $ 2000
-                            </dd>
-                        </dl>
-
-                        <hr>
-
-                        <dl class="row">
-                            <dd class="col-sm-8">
-                                Premium support - 2 years
-                            </dd>
-                            <dd class="col-sm-4">
-                                $ 2000
-                            </dd>
-                        </dl>
-
-                        <hr>
-
-                        <dl class="row">
-                            <dd class="col-sm-8">
-                                MDB Membership - 2 years
-                            </dd>
-                            <dd class="col-sm-4">
-                                $ 2000
-                            </dd>
-                        </dl>
-
-                        <hr>
-
-                        <dl class="row">
-                            <dt class="col-sm-8">
-                                Total
-                            </dt>
-                            <dt class="col-sm-4">
-                                $ 2000
-                            </dt>
-                        </dl>
-                    </div>
-
-                </div>
-                <!--/.Card-->
-            </div>
-            <!--Grid column-->
-
         </div>
-        <!--Grid row-->
+        <!--Grid column-->
 
     </div>
+    <!--Grid row-->
 </div>
 <!-- Main Container -->
-
-
 <!-- Footer -->
-<%@include file="default/footer.jsp"%>
+<%@include file="default/footer.jsp" %>
 <!-- Footer -->
-<script src="mdb/js/jquery.min.js"></script>
-<script src="mdb/js/bootstrap.min.js"></script>
-<script src="mdb/js/mdb.min.js"></script>
-<script type="text/javascript">
-    /* WOW.js init */
-    new WOW().init();
+<script src="/mdb/js/jquery.min.js"></script>
+<script src="/mdb/js/bootstrap.min.js"></script>
+<script src="/mdb/js/mdb.min.js"></script>
+<%--<script type="text/javascript">--%>
+<%--    /* WOW.js init */--%>
+<%--    new WOW().init();--%>
 
-    // Tooltips Initialization
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    })
+<%--    // Tooltips Initialization--%>
+<%--    $(function () {--%>
+<%--        $('[data-toggle="tooltip"]').tooltip()--%>
+<%--    })--%>
 
-    // Material Select Initialization
-    $(document).ready(function () {
+<%--    // Material Select Initialization--%>
+<%--    $(document).ready(function () {--%>
 
-        $('.mdb-select').material_select();
-    });
+<%--        $('.mdb-select').material_select();--%>
+<%--    });--%>
 
-    // SideNav Initialization
-    $(".button-collapse").sideNav();
+<%--    // SideNav Initialization--%>
+<%--    $(".button-collapse").sideNav();--%>
 
-</script>
-<script src="mdb/js/default.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"></script>
+<%--</script>--%>
+<script src="/mdb/js/default.js"></script>
+
 <script>
-    var Parameter={
-        url:'./data/vietnamProvince.json',
-        method:'GET',
-        responseType:'application/json'
+    function editInfor() {
+        var fullName = document.getElementById("fullName").value;
+        console.log(fullName);
+        $.ajax({
+            url: '/user/api',
+            type: 'POST',
+            data: {
+                fullName: fullName
+            },
+            success: function (data) {
+                if (data === "changeName success") {
+                    alert("Edit Information Success");
+                } else {
+                    alert("Edit Information Fail");
+                }
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        })
     }
-    var promise=axios(Parameter);
-
+</script>
+<script>
+    function changePassWord() {
+        var currentPassWord = document.getElementById("currentPassWord").value;
+        var newPassWord = document.getElementById("newPassWord").value;
+        var confirmPassWord = document.getElementById("confirmPassWord").value;
+        $.ajax({
+            url: '/user/api',
+            type: 'POST',
+            data: {
+                oldPass: currentPassWord,
+                newPass: newPassWord,
+                reNewPass: confirmPassWord
+            },
+            success: function (data) {
+                console.log(data);
+                if (data === "changePass success") {
+                    alert("Change Password Success");
+                } else {
+                    alert("Change Password Fail");
+                }
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        })
+    }
+</script>
+<script>
+    function momodal(){
+        document.getElementById("nenmodal-1").classList.toggle("active");
+    }
+</script>
+<script type="text/javascript">
+    function createKey() {
+        $.ajax({
+            type: "GET",
+            url: "/user/userKey",
+            dataType: "json",
+            success: function (data) {
+                // Hiển thị thông tin khóa trên giao diện
+                $("#publicKey").text("Public Key: " + data.publicKey);
+                $("#privateKey").text("Private Key: " + data.privateKey);
+                $("#seri").text("Seri: " + data.privateKey);
+            },
+            error: function () {
+                alert("Error creating RSA key pair.");
+            }
+        });
+    }
 </script>
 </body>
 </html>

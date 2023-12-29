@@ -63,6 +63,7 @@ public class ScirptSQL {
     public static final String deleteColorProductByProductId = "delete from sub_product_color where product_id = :productId";
     public static final String deleteColorProductByColorId = "delete from sub_product_color where color_id = :colorId";
     public static final String getPriceByProductIdAndColorId = "select price from sub_product_color where product_id = :productId and color_id = :colorId";
+    public static final String getInventoryByProductIdAndColorId = "select inventory from sub_product_color where product_id = :productId and color_id = :colorId";
     //cmt da test va fix by Hoang hai 20-8-23
     public static final String getAllComment = "select * from comment";
     public static final String getCmtById = "select * from comment where comment_id = :commentId";
@@ -103,7 +104,7 @@ public class ScirptSQL {
     public static final String updateUser = "update User " + "set email = :getEmail " + "where user_id = :getUserId;";
     public static final String updateUserPassword = "update User " + "set pass = SHA2(:getPass,256) " + "where user_id = :getUserId;";
     public static final String deleteUserById = "delete " + "from User " + "where user_id =:id ";
-    public static final String loginByUserNameOrEmail = "select * from User where user_name=:keyLogin or email=:keyLogin and pass=SHA2(:pass,256)";
+    public static final String loginByUserNameOrEmail = "select * from User where (user_name=:keyLogin or email=:keyLogin) and pass=SHA2(:pass,256)";
     public static final String updateUserRoll = "update User set role=:role where email=:email";
     public static final String getSaltByUserNameOrEmail = "select salt from User where user_name=:key or email=:key";
 
@@ -154,11 +155,13 @@ public class ScirptSQL {
     static final String getProductByPrice = "Select * from Product where product_id in (select product_id from sub_product_color where price between :minPrice and :maxPrice)";
     static final String getProductByCategoryName = "select * from product where category_id in (select category_id from category where name like concat('%', :name, '%'))";
     static final String getProductByWheelSize = "Select * from Product where wheelSize = :wheelSize";
-
+     static final String getProductByFilter = "Select * from Product where category_id = :categoryId and brand_id = :brandId and supplier_id = :supplierId and discount_id = :discountId and status = :status and product_id in (select product_id from sub_product_color where price between :minPrice and :maxPrice) and wheelSize = :wheelSize";
     public static final String getInventory = "SELECT SUM(sub_product_color.inventory) AS total_inventory\n" +
             "FROM product JOIN sub_product_color ON product.product_id =sub_product_color.product_id\n" +
             "WHERE product.product_id = :productId\n" +
             "GROUP BY  product.product_id,product.name;";
+    public static final String getAllWheelSize = "select distinct wheelSize from product";
+    public static final String getAllStatus = "select distinct status from product";
 
 
     //    Slider  da test va fix by Hoang Hai 21-8-23
@@ -197,5 +200,7 @@ public class ScirptSQL {
     public static final String insertOrderSig = "insert into order_sig(order_id,sig) values(:orderId,:sig)";
     public static final String deleteOrderSig = "delete from order_sig where order_id = :orderId";
 
-    //
+
+    public static final  String loadProductByPage= "select * from product limit :startRow, :rowCount";
+
 }

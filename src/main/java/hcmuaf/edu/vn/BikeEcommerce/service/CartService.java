@@ -2,10 +2,7 @@ package hcmuaf.edu.vn.BikeEcommerce.service;
 
 import hcmuaf.edu.vn.BikeEcommerce.DAO.CartDao;
 import hcmuaf.edu.vn.BikeEcommerce.db.JDBIConnector;
-import hcmuaf.edu.vn.BikeEcommerce.model.Cart;
-import hcmuaf.edu.vn.BikeEcommerce.model.CartItem;
-import hcmuaf.edu.vn.BikeEcommerce.model.Order;
-import hcmuaf.edu.vn.BikeEcommerce.model.OrderItem;
+import hcmuaf.edu.vn.BikeEcommerce.model.*;
 import hcmuaf.edu.vn.BikeEcommerce.toolSecurity.GenerateId;
 import org.jdbi.v3.core.Jdbi;
 
@@ -61,18 +58,20 @@ public class CartService {
         String orderId;
         try {
             Cart cart = getCartByKey(userId);
-
+//            System.out.println("Cart: " + cart);
             Order order = new Order();
-            orderId = GenerateId.generateId();
+            orderId = GenerateId.generateOrderId();
             order.setOrderId(orderId);//tu tao
             order.setUserId(cart.getUserId());
-            order.setFullAddress(AddressService.getInstance().getAddressByAddressId(addressId).getFullAddress());
+            Address address = AddressService.getInstance().getAddressByAddressId(addressId);
+            order.setFullAddress(address.getFullAddress());
             order.setPrice(cart.total());//tong tien
             order.setDiscount(cart.totalDiscount());
             order.setShippingFee(shippingFee);
             order.setTotal(cart.total() + shippingFee - cart.totalDiscount());
 
             OrderService.getInstance().insertOrder(order);
+//            System.out.println("orderId: " + orderId);
             //set orderItem
             for (CartItem cartItem : cart.getCartItemList()) {
                 OrderItem orderItem = new OrderItem();
@@ -85,10 +84,11 @@ public class CartService {
                 orderItem.setPrice(cartItem.getPrice());
 
                 OrderItemService.getInstance().insertOrderItem(orderItem);
+//                System.out.println("orderItem: " + orderItem.getOrderItemId());
             }
 
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("error :"+e.getMessage());
             return null;
         }
         return orderId;
