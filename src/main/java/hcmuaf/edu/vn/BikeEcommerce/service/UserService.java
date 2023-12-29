@@ -40,9 +40,6 @@ public class UserService {
     public void updateUser(User user) {// da test
         jdbi.useExtension(UserDAO.class, dao -> dao.updateUser(user));
     }
-    public void updateUserName(User user) {// da test
-        jdbi.useExtension(UserDAO.class, dao -> dao.updateUserName(user));
-    }
 
     public void updateUserPassword(User user) {// da test
         jdbi.useExtension(UserDAO.class, dao -> dao.updateUserPassword(user));
@@ -62,7 +59,6 @@ public class UserService {
 
         return user;
     }
-
     public User loginByUserNameOrEmail(String keyLogin, String pass) {// da test
         return jdbi.withExtension(UserDAO.class, dao -> dao.loginByUserNameOrEmail(keyLogin, getSaltByUserNameOrEmail(keyLogin) + pass));
     }
@@ -93,7 +89,7 @@ public class UserService {
     }
 
 
-    public void updateUserEmail(User user) {
-        jdbi.useExtension(UserDAO.class, dao -> dao.updateUserEmail(user.getUserId(),user.getEmail()));
-    }
+//    public void updateUserEmail(User user) {
+//        jdbi.useExtension(UserDAO.class, dao -> dao.updateUserEmail(user.getUserId(),user.getEmail()));
+//    }
 }
