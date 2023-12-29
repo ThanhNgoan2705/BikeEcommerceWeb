@@ -21,6 +21,8 @@
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
             rel="stylesheet"
     />
+    <link rel="stylesheet prefetch" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css">
+
     <link href="/mdb/css/bootstrap.min.css" rel="stylesheet">
     <link href="/mdb/css/mdb.min.css" rel="stylesheet">
     <link href="/mdb/css/addons/compiled-addons-4.20.0.min.css">
@@ -630,9 +632,12 @@
                                                 <thead>
                                                 <tr class="bg-dark">
                                                     <th>STT</th>
-                                                    <th>PublicKey</th>
+                                                    <th>Name</th>
                                                     <th>Seri</th>
-                                                    <th>&nbsp;</th>
+                                                    <th>Start Date</th>
+                                                    <th>End Date</th>
+                                                    <th></th>
+                                                    <th>Status</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -640,7 +645,10 @@
                                                     <th scope="row">1</th>
                                                     <td>Mark Otto</td>
                                                     <td>cfss678</td>
+                                                    <td>27/12/2023</td>
+                                                    <td>01/01/2024</td>
                                                     <td><a href="#"><i class="fa fa-lock" aria-hidden="true"></i></a></td>
+                                                    <td>Expired</td>
                                                 </tr>
                                                 </tbody>
                                             </table>
@@ -653,7 +661,12 @@
                                 <div class="ndmodal">
                                     <div class="closemodal"><button onclick="momodal()">×</button></div>
                                     <div method="POST" id="contactForm" name="contactForm" class="contactForm">
-                                        <button class="btnblock" type="submit" onclick="createKey()">Create Key</button>
+                                        <div class="fname">
+                                            <label class="labelname">Name</label>
+                                            <input  class="inname" type="text" placeholder="Người dùng nhập tên để tạo cetificate">
+                                            <button class="btnblock" type="submit" onclick="createKey()">Create Key</button>
+                                        </div>
+
                                         <div class="row">
                                             <div class="col">
                                                 <div class="group">
@@ -673,45 +686,47 @@
                                                 <div class="group">
                                                     <label class="label1" >Certificate</label>
                                                     <input type="text" class="form-control" id="certificate">
-                                                    <i  class="fa fa-download" aria-hidden="true"></i>
+                                                    <i class="fa fa-clone" aria-hidden="true"></i>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- màn hình import key -->
-<%--                            <div class="nenmodal" id="nenmodal-2">--%>
-<%--                                <div class="nenmodal2"></div>--%>
-<%--                                <div class="ndmodal">--%>
-<%--                                    <div class="closemodal"><button onclick="momodal2()">×</button></div>--%>
-<%--                                    <div method="POST" id="contactForm2" name="contactForm" class="contactForm">--%>
-<%--                                        <button class="btnblock" type="submit" onclick="createKey()">Create Key</button>--%>
-<%--                                        <div class="row">--%>
-<%--                                            <div class="col">--%>
-<%--                                                <div class="group">--%>
-<%--                                                    <label class="label1" >Private Key</label>--%>
-<%--                                                    <input type="text" class="form-control" id="privateKey2" >--%>
-<%--                                                    <i id="downloadIcon2" class="fa fa-download" aria-hidden="true"></i>--%>
-<%--                                                </div>--%>
-<%--                                            </div>--%>
-<%--                                            <div class="col">--%>
-<%--                                                <div class="group">--%>
-<%--                                                    <label class="label1">Public Key</label>--%>
-<%--                                                    <input type="text" class="form-control" id="publicKey2">--%>
-<%--                                                    <i class="fa fa-download" aria-hidden="true"></i>--%>
-<%--                                                </div>--%>
-<%--                                            </div>--%>
-<%--                                            <div class="col">--%>
-<%--                                                <div class="group">--%>
-<%--                                                    <label class="label1" >Certificate</label>--%>
-<%--                                                    <input type="text" class="form-control" id="certificate2">--%>
-<%--                                                </div>--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
+                           <!-- màn hình import key -->
+                            <div class="nenmodal" id="nenmodal-2">
+                                <div class="nenmodal2"></div>
+                                <div class="ndmodal">
+                                    <div class="closemodal"><button onclick="momodal2()">×</button></div>
+                                    <div method="POST" id="contactForm2" name="contactForm" class="contactForm">
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="group">
+                                                    <label class="label1" >Name      </label>
+                                                    <input type="text" class="inpri" id="privateKey2" >
+
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="group">
+                                                    <label class="label1">Public Key</label>
+                                                    <input type="text" class="form-control" id="publicKey2">
+
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="group">
+                                                    <label class="label1" >Certificate</label>
+                                                    <input type="text" class="form-control" id="certificate2">
+                                                    <i class="fa fa-clone" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                            <button class="btnblock btncreate" type="submit" onclick="createKey()">Create</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                     </div>
 
@@ -731,6 +746,8 @@
 <script src="/mdb/js/jquery.min.js"></script>
 <script src="/mdb/js/bootstrap.min.js"></script>
 <script src="/mdb/js/mdb.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+
 <%--<script type="text/javascript">--%>
 <%--    /* WOW.js init */--%>
 <%--    new WOW().init();--%>
@@ -803,15 +820,25 @@
     }
 </script>
 <script>
-    function momodal(){
-        document.getElementById("nenmodal-1").classList.toggle("active");
+
+        function momodal() {
+            document.getElementById("nenmodal-1").classList.toggle("active");
+        }
+
+</script>
+<script>
+    function momodal2(){
+        document.getElementById("nenmodal-2").classList.toggle("active");
     }
 </script>
-<%--<script>--%>
-<%--    function momodal2(){--%>
-<%--        document.getElementById("nenmodal-2").classList.toggle("active");--%>
-<%--    }--%>
-<%--</script>--%>
+<script type="text/javascript">
+    $(function () {
+        $("#datepicker").datepicker({
+            autoclose: true,
+            todayHighlight: true
+        }).datepicker('update', new Date());
+    });
+</script>
 //tao khoa
 <script type="text/javascript">
     function createKey() {
@@ -835,36 +862,19 @@
         });
     }
 </script>
-// tai ve
 <script>
-    $(document).ready(function () {
-        $("#downloadIcon").click(function () {
-            // Sử dụng AJAX để gửi yêu cầu POST
-            $.ajax({
-                type: "POST",
-                url: "DownloadServlet", // Đặt đường dẫn đến Servlet hoặc JSP xử lý yêu cầu ở đây
-                success: function (data) {
-                    // Xử lý phản hồi từ server
-                    // Trong trường hợp này, giả sử server trả về một đường dẫn file
-                    downloadFile(data);
-                },
-                error: function () {
-                    alert("Đã xảy ra lỗi khi tải về.");
-                }
-            });
-        });
+    // step 1
+    const ipnElement = document.querySelector('input')
+    const btnElement = document.querySelector('.fa-clone')
 
-        // Hàm tải về tệp tin
-        function downloadFile(filePath) {
-            var a = document.createElement('a');
-            a.href = filePath;
-            a.download = 'downloaded_file.txt';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        }
-    });
+    // step 2
+    btnElement.addEventListener('click', function() {
+
+        ipnElement.select()              // step 4
+
+    })
 </script>
+
 </body>
 </html>
 
