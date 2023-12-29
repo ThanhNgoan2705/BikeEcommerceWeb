@@ -28,19 +28,19 @@
                 <span class="sidenav-subheading text-muted text-uppercase fw-bold">Manage Item</span>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="product.html">
+                <a class="sidenav-link" href="/product.jsp">
                     <i class="fas fa-bicycle fa-fw me-3"></i><span>Product</span></a>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="category.jsp">
+                <a class="sidenav-link" href="/category.jsp">
                     <i class="fas fa-plus fa-fw me-3"></i><span>Category</span></a>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="brand.jsp">
+                <a class="sidenav-link" href="/brand.jsp">
                     <i class="fas fa-plus fa-fw me-3"></i><span>Brand</span></a>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="supplier.jsp">
+                <a class="sidenav-link" href="/supplier.jsp">
                     <i class="fas fa-plus fa-fw me-3"></i><span>Supplier</span></a>
             </li>
             <li class="sidenav-item">
@@ -48,23 +48,23 @@
                     <i class="fas fa-plus fa-fw me-3"></i><span>Image Product</span></a>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="imageProduct.jsp">
+                <a class="sidenav-link" href="/imageProduct.jsp">
                     <i class="fas fa-plus fa-fw me-3"></i><span>Image Slider</span></a>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="color.jsp">
+                <a class="sidenav-link" href="/color.jsp">
                     <i class="fas fa-plus fa-fw me-3"></i><span>Color</span></a>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="colorProduct.jsp">
+                <a class="sidenav-link" href="/colorProduct.jsp">
                     <i class="fas fa-plus fa-fw me-3"></i><span>Color Product Image</span></a>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="discount.jsp">
+                <a class="sidenav-link" href="/discount.jsp">
                     <i class="fas fa-plus fa-fw me-3"></i><span>discount</span></a>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="slider.jsp">
+                <a class="sidenav-link" href="/slider.jsp">
                     <i class="fas fa-plus fa-fw me-3"></i><span>Slider</span></a>
             </li>
 
@@ -73,11 +73,11 @@
                 <span class="sidenav-subheading text-muted text-uppercase fw-bold">Manage Account</span>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="user.jsp">
+                <a class="sidenav-link" href="/user.jsp">
                     <i class="fas fa-plus fa-fw me-3"></i><span>User</span></a>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="address.jsp">
+                <a class="sidenav-link" href="/address.jsp">
                     <i class="fas fa-database fa-fw me-3"></i><span>Address</span></a>
             </li>
 
@@ -88,11 +88,11 @@
                 <span class="sidenav-subheading text-muted text-uppercase fw-bold">Admin</span>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="order.jsp">
+                <a class="sidenav-link" href="/order.jsp">
                     <i class="fas fa-money-bill fa-fw me-3"></i><span>Order</span></a>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="invoice.jsp">
+                <a class="sidenav-link" href="/invoice.jsp">
                     <i class="fas fa-file-contract fa-fw me-3"></i><span>invoice</span></a>
             </li>
 
@@ -178,9 +178,11 @@
                 </li>
 
                 <!-- Avatar -->
+                <c:if test="${haveUser}">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#"
                        id="dropdownUser" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                        <span class="d-none d-sm-inline mx-1 text-dark">hi,${userName}</span>
                         <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-circle" height="22"
                              alt="Avatar"
                              loading="lazy"/>
@@ -191,6 +193,7 @@
                         <li><a class="dropdown-item" href="#">Logout</a></li>
                     </ul>
                 </li>
+                </c:if>
             </ul>
         </div>
         <!-- Container wrapper -->
