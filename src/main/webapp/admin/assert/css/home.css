@@ -30,3 +30,6 @@ body {
 .form-outline {
     --mdb-form-outline-select-notch-border-color: #023589;
 }
+#categoryTable{
+    font-family: inherit;
+}

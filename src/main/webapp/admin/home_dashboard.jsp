@@ -5,48 +5,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
     <base target="_parent">
+    <%--    fontAwesome--%>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
           integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap">
-    <link rel="stylesheet"
-          href="https://mdbootstrap.com/api/snippets/static/download/MDB5-Pro-Advanced_6.4.1/css/mdb.min.css">
-    <link rel="stylesheet"
-          href="https://mdbootstrap.com/api/snippets/static/download/MDB5-Pro-Advanced_6.4.1/plugins/css/all.min.css">
-    <style>body {
-        background-color: hsl(0, 0%, 97%);
-    }
-
-    @media (min-width: 1400px) {
-        main,
-        header,
-        #main-navbar {
-            padding-left: 240px;
-        }
-    }</style>
-    <style>INPUT:-webkit-autofill, SELECT:-webkit-autofill, TEXTAREA:-webkit-autofill {
-        animation-name: onautofillstart
-    }
-
-    INPUT:not(:-webkit-autofill), SELECT:not(:-webkit-autofill), TEXTAREA:not(:-webkit-autofill) {
-        animation-name: onautofillcancel
-    }
-
-    @keyframes onautofillstart {
-    }
-
-    @keyframes onautofillcancel {
-    }</style>
-    <link rel="stylesheet" href="assert/css/home.css">
-
-</head>
+    <link rel="stylesheet" href="/admin/assert/css/all.min.css">
+    <link rel="stylesheet" href="/admin/assert/css/mdb.min.css">
+    <link rel="stylesheet" href="/admin/assert/css/home.css">
 <body>
 <!--Main Navigation-->
-<%@include file="/admin/default/header.jsp"%>
+<%@include file="/admin/default/header.jsp" %>
 <!--Main Navigation-->
 
 <!--Main layout-->
@@ -85,6 +57,16 @@
         <!--Section: Content-->
         <!-- Section: Assets  order Table-->
         <section class="">
+            <div class="card shadow-0">
+                <div class="card-header py-3">
+                    <p class="mb-0">Oder Lists</p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                       <table id="categoryTable" class="table table-hover flex-nowrap" style="width: 100%"></table>
+                    </div>
+                </div>
+            </div>
             <div class="card shadow-0">
                 <div class="card-header py-3">
                     <p class="mb-0">Oder Lists</p>
@@ -215,6 +197,9 @@
                         </table>
                     </div>
                 </div>
+                <!-- pagination -->
+
+
             </div>
             <div class="card shadow-0">
                 <div class="card-body">
@@ -532,15 +517,15 @@
                             </div>
                             <div class="card-body p-4">
                                 <div class="d-flex justify-content-sm-between ">
-                                <ul>
-                                    <h2><span><b>Mô Tả Cơ Bản</b></span></h2>
-                                    <li><span> <b>Thương Hiệu:</b> </span> <span>Brand</span></li>
-                                    <li><span> <b>Nơi Sản Xuất</b> </span> <span>Viêt Nam</span></li>
-                                    <li><span> <b>Kích Thước</b> </span> <span>24 inch</span></li>
-                                    <li><span> <b>Màu Sắc</b> </span> <span>Đen, Xanh, Trắng</span></li>
-                                    <li><span> <b>Độ Tuổi Thích Hợp</b> </span> <span>Người lớn</span></li>
-                                    <li><span> <b>Phân Loại</b> </span> <span>Xe leo núi</span></li>
-                                </ul>
+                                    <ul>
+                                        <h2><span><b>Mô Tả Cơ Bản</b></span></h2>
+                                        <li><span> <b>Thương Hiệu:</b> </span> <span>Brand</span></li>
+                                        <li><span> <b>Nơi Sản Xuất</b> </span> <span>Viêt Nam</span></li>
+                                        <li><span> <b>Kích Thước</b> </span> <span>24 inch</span></li>
+                                        <li><span> <b>Màu Sắc</b> </span> <span>Đen, Xanh, Trắng</span></li>
+                                        <li><span> <b>Độ Tuổi Thích Hợp</b> </span> <span>Người lớn</span></li>
+                                        <li><span> <b>Phân Loại</b> </span> <span>Xe leo núi</span></li>
+                                    </ul>
                                     <div class="col-md-6">
                                         <img decoding="async" title="Xe Đạp Touring Catani CA-2.1 700c Khung Nhôm"
                                              src="https://xedapgiakho.com/wp-content/uploads/2023/06/ngoai-hinh-xe-dap-touring-catani-ca-2-1-700c-khung-nhom.jpg"
@@ -575,11 +560,77 @@
 <!--Footer-->
 <footer></footer>
 <!--Footer-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+<script type="text/javascript"
+        src="/admin/assert/js/mdb.min.js"></script>
+<script src="/admin/assert/js/all.min.js"></script>
+<script src="/admin/assert/js/chart.min.js"></script>
 
-<script type="text/javascript"
-        src="https://mdbootstrap.com/api/snippets/static/download/MDB5-Pro-Advanced_6.4.1/js/mdb.min.js"></script>
-<script type="text/javascript"
-        src="https://mdbootstrap.com/api/snippets/static/download/MDB5-Pro-Advanced_6.4.1/plugins/js/all.min.js"></script>
-<script src="assert/js/chart.min.js"></script>
+<script>
+    // datatable category
+    $(document).ready(function () {
+       let table = $('#categoryTable').DataTable({
+           info: false,
+           scrollX: true,
+           "language":{
+               "url": "//cdn.datatables.net/plug-ins/1.11.3/i18n/vi.json"
+           },
+            "ajax": {
+                "url": "/api/category",
+                "type": "GET",
+                "dataType": "json",
+                "contentType": "application/json",
+                "data": function (d) {
+                    var query = $.param(d);
+                    return query;
+                },
+                "dataSrc": ""
+            },
+            "columns": [
+                {
+                    title: "ID",
+                    data: "categoryId"
+                },
+                {
+                    title: "Name",
+                    data: "name"
+                },
+                {
+                    title: "Description",
+                    data: "description"
+                },
+                {
+                    title: 'Active',
+                    data: "active",
+                    render: function (data) {
+                        if (data === true) {
+                            return '<span class="badge bg-success">Active</span>'
+                        } else {
+                            return '<span class="badge bg-danger">Inactive</span>'
+                        }
+                    }
+                },
+                {
+                    title : "level",
+                    data : "level"
+                },
+                {
+                    title: "Action",
+                    data: 'id',
+                    render: function (data) {
+                        return '<button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#seeDetailProduct"><i class="fa-solid fa-eye"></i></button>'
+                    }
+                }
+            ]
+        });
+       $('#categoryTable tbody').on('click', 'tr', function () {
+           let row = table.row($(this).closest('tr'));
+           let data = row.data();
+           console.log(data);
+       });
+    });
+</script>
 </body>
 </html>
