@@ -43,6 +43,7 @@ public class ScirptSQL {
     static final String insertCategory = "INSERT INTO category (category_id, name, description, image, parent_id, active, level, short_id) " + "VALUES (:categoryId, :name, :description, :image, :parentId, :active, :level, :shortId)";
     static final String updateCategory = "UPDATE category " + "SET name = :name, description = :description, image = :image, parent_id = :parentId, " + "active = :active, level = :level, short_id = :shortId " + "WHERE category_id = :categoryId";
     static final String deleteCategory = "DELETE FROM category WHERE category_id = :categoryId";
+    static final String getAllParent = "select * from category where level = :level";
     public final static String getAllCategoryName = "select name from category";
     // color da test by hoang hai 20-8-23
     static final String getAllColor = "select * from color";
@@ -201,5 +202,6 @@ public class ScirptSQL {
 
 
     public static final  String loadProductByPage= "select * from product limit :startRow, :rowCount";
+
 
 }

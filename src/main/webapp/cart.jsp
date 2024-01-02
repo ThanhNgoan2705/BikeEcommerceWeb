@@ -199,7 +199,7 @@
                                             data-placement="top"
                                             title="Remove item"
                                             onclick="removeItem('${item.cartItemId}','${item.cartItemId}')">
-                                        X
+
                                     </button>
 
                                 </td>
