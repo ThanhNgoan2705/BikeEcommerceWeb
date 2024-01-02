@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="/admin/assert/css/all.min.css">
     <link rel="stylesheet" href="/admin/assert/css/mdb.min.css">
     <link rel="stylesheet" href="/admin/assert/css/home.css">
-
 </head>
 <body>
 <%@include file="default/header.jsp" %>

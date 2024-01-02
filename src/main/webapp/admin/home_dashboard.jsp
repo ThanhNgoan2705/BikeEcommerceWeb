@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/admin/assert/css/all.min.css">
     <link rel="stylesheet" href="/admin/assert/css/mdb.min.css">
     <link rel="stylesheet" href="/admin/assert/css/home.css">
+</head>
 <body>
 <!--Main Navigation-->
 <%@include file="/admin/default/header.jsp" %>
@@ -567,7 +568,6 @@
         src="/admin/assert/js/mdb.min.js"></script>
 <script src="/admin/assert/js/all.min.js"></script>
 <script src="/admin/assert/js/chart.min.js"></script>
-
 <script>
     // datatable category
     $(document).ready(function () {
@@ -583,6 +583,7 @@
                 "dataType": "json",
                 "contentType": "application/json",
                 "data": function (d) {
+                    console.log(d);
                     var query = $.param(d);
                     return query;
                 },
@@ -630,6 +631,7 @@
            let data = row.data();
            console.log(data);
        });
+
     });
 </script>
 </body>

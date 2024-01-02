@@ -35,6 +35,7 @@ public class CategoryAPI extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setCharacterEncoding("UTF-8");
         String categoryId = req.getPathInfo();
         // nếu có categoryId thì trả về giá trị của category đó
         if (categoryId != null) {
@@ -72,17 +73,23 @@ public class CategoryAPI extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //check token admin
-        //
-        //
-
+//        Token token = (Token) req.getAttribute("token");
+//        int role = Integer.parseInt(token.getRole());
+//        System.out.println("role: " + role);
+//        if (role != 2) {
+//            resp.getWriter().write("you are not admin");
+//            return;
+//        }
+        req.setCharacterEncoding("UTF-8");
+        // thêm mới category
         Category category = new Category();
-
         try {
             BeanUtils.populate(category, req.getParameterMap());
             if (category.getCategoryId() == null) {
                 category.setCategoryId(GenerateId.generateId());
+                System.out.println("category: " + category);
                 categoryService.insert(category);
-                resp.getWriter().write("insert success");
+                resp.sendRedirect("/admin/categories");
             } else {
                 categoryService.update(category);
                 resp.getWriter().write("update success");
@@ -92,8 +99,6 @@ public class CategoryAPI extends HttpServlet {
         } catch (InvocationTargetException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 
     /**
@@ -111,11 +116,12 @@ public class CategoryAPI extends HttpServlet {
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String categoryId = req.getPathInfo();
+        System.out.println("categoryId: " + categoryId);
         if (categoryId != null) {
             if (categoryId.startsWith("/")) {
                 categoryId = categoryId.substring(1);
+                System.out.println("categoryId: " + categoryId);
             }
-
             try {
                 categoryService.delete(categoryId);
                 resp.getWriter().write("success");

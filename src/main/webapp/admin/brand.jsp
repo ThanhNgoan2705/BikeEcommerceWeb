@@ -5,44 +5,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
     <base target="_parent">
+    <%--    fontAwesome--%>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
           integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap">
-    <link rel="stylesheet"
-          href="https://mdbootstrap.com/api/snippets/static/download/MDB5-Pro-Advanced_6.4.1/css/mdb.min.css">
-    <link rel="stylesheet"
-          href="https://mdbootstrap.com/api/snippets/static/download/MDB5-Pro-Advanced_6.4.1/plugins/css/all.min.css">
-    <style>body {
-        background-color: hsl(0, 0%, 97%);
-    }
-
-    @media (min-width: 1400px) {
-        main,
-        header,
-        #main-navbar {
-            padding-left: 240px;
-        }
-    }</style>
-    <style>INPUT:-webkit-autofill, SELECT:-webkit-autofill, TEXTAREA:-webkit-autofill {
-        animation-name: onautofillstart
-    }
-
-    INPUT:not(:-webkit-autofill), SELECT:not(:-webkit-autofill), TEXTAREA:not(:-webkit-autofill) {
-        animation-name: onautofillcancel
-    }
-
-    @keyframes onautofillstart {
-    }
-
-    @keyframes onautofillcancel {
-    }</style>
-    <link rel="stylesheet" href="assert/css/home.css">
-
+    <link rel="stylesheet" href="/admin/assert/css/all.min.css">
+    <link rel="stylesheet" href="/admin/assert/css/mdb.min.css">
+    <link rel="stylesheet" href="/admin/assert/css/home.css">
 </head>
 <body>
 <!--Main Navigation-->
@@ -683,56 +656,12 @@
 <!--Footer-->
 <footer></footer>
 <!--Footer-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-<script>
-    var citis = document.getElementById("city");
-    var districts = document.getElementById("district");
-    var wards = document.getElementById("ward");
-    var Parameter = {
-        url: "data/vietnam.json",
-        method: "GET",
-        responseType: "application/json",
-    };
-    var promise = axios(Parameter);
-    promise.then(function (result) {
-        renderCity(result.data);
-    });
-
-    function renderCity(data) {
-        for (const x of data) {
-            citis.options[citis.options.length] = new Option(x.Name, x.Id);
-            console.log(x.Name);
-        }
-        citis.onchange = function () {
-            districts.length = 1;
-            wards.length = 1;
-            if (this.value !== "") {
-                const result = data.filter(n => n.Id === this.value);
-
-                for (const k of result[0].Districts) {
-                    districts.options[districts.options.length] = new Option(k.Name, k.Id);
-                    console.log(k.Name);
-                }
-            }
-        };
-        districts.onchange = function () {
-            wards.length = 1;
-            const dataCity = data.filter((n) => n.Id === citis.value);
-            if (this.value !== "") {
-                const dataWards = dataCity[0].Districts.filter(n => n.Id === this.value)[0].Wards;
-
-                for (const w of dataWards) {
-                    wards.options[wards.options.length] = new Option(w.Name, w.Id);
-                    console.log(w.Name);
-                }
-            }
-        };
-    }
-</script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
 <script type="text/javascript"
-        src="https://mdbootstrap.com/api/snippets/static/download/MDB5-Pro-Advanced_6.4.1/js/mdb.min.js"></script>
-<script type="text/javascript"
-        src="https://mdbootstrap.com/api/snippets/static/download/MDB5-Pro-Advanced_6.4.1/plugins/js/all.min.js"></script>
-<script src="assert/js/chart.min.js"></script>
+        src="/admin/assert/js/mdb.min.js"></script>
+<script src="/admin/assert/js/all.min.js"></script>
+<script src="/admin/assert/js/chart.min.js"></script>
 </body>
 </html>

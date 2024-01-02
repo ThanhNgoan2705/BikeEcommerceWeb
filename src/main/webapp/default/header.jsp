@@ -29,12 +29,16 @@
             </button>
             <div class="g-col-2 collapse navbar-collapse" id="navbarSupportedContent-4">
                 <c:if test='${not haveUser}'>
-                    <ul class="navbar-nav m-auto">
-                        <li class="nav-item shopping-cart ml-5 mt-5 ">
-                            <a id="cart-quantity" class="nav-link dark-grey-text font-weight-bold waves-effect waves-light" href="/login">
-                                <span class="number badge rounded-pill bg-danger">0</span>
-                                <i class="fas fa-shopping-cart blue-text"></i>
-                                Cart</a>
+                    <ul class="navbar-nav m-auto d-flex m-3">
+                        <li class="nav-item shopping-cart  ml-5 mt-5 ">
+                            <div class="dropdown">
+                                <a id="cart-quantity"
+                                   class="nav-link dark-grey-text font-weight-bold waves-effect waves-light"
+                                   href="/login">
+                                    <i class="fas fa-shopping-cart blue-text"></i>
+                                    <span class="number badge rounded-pill bg-danger">0</span>
+                                </a>
+                            </div>
                         </li>
                         <li class="nav-item dropdown ml-5 mt-5">
                             <a class="nav-link dropdown-toggle dark-grey-text font-weight-bold"
@@ -50,7 +54,9 @@
                 <c:if test='${haveUser}'>
                     <ul class="navbar-nav m-auto">
                         <li class="nav-item shopping-cart ml-5 mt-5">
-                            <a id="cart-quantity" class="nav-link dark-grey-text font-weight-bold waves-effect waves-light" href="/user/getCart">
+                            <a id="cart-quantity"
+                               class="nav-link dark-grey-text font-weight-bold waves-effect waves-light"
+                               href="/user/getCart">
                                 <span class="number badge rounded-pill bg-danger">${cartTotal}</span>
                                 <i class="fas fa-shopping-cart blue-text"></i>
                                 Cart</a>

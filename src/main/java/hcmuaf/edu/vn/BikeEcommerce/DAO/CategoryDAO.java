@@ -30,4 +30,6 @@ public interface CategoryDAO {
     void deleteCategory(@Bind("categoryId") String categoryId);
     @SqlQuery(ScirptSQL.getAllCategoryName)
     List<String> getAllCategoryName();
+    @SqlQuery(ScirptSQL.getAllParent)
+    List<Category> getAllParent(@Bind("level") int level);
 }
