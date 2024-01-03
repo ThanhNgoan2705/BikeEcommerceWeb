@@ -2,6 +2,12 @@ package hcmuaf.edu.vn.BikeEcommerce.controllers.userController;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import hcmuaf.edu.vn.BikeEcommerce.model.digitSig.Cert;
+import hcmuaf.edu.vn.BikeEcommerce.model.digitSig.UserSeri;
+import hcmuaf.edu.vn.BikeEcommerce.model.sercurity.Token;
+import hcmuaf.edu.vn.BikeEcommerce.service.digitSig.CertService;
+import hcmuaf.edu.vn.BikeEcommerce.service.digitSig.RevocationCertService;
+import hcmuaf.edu.vn.BikeEcommerce.service.digitSig.UserSeriService;
 import netscape.javascript.JSObject;
 import org.bouncycastle.operator.OperatorCreationException;
 import vn.edu.atbmmodel.key.KeyGen;
@@ -31,6 +37,8 @@ public class UserKey extends HttpServlet {
     PublicKey publicKey;
     PrivateKey privateKey;
     Certificate certificate;
+CertService certService;
+UserSeriService userSeriService;
 
     JsonObject json;
 
@@ -39,6 +47,9 @@ public class UserKey extends HttpServlet {
         gson = new Gson();
         json = new JsonObject();
         keyGen = KeyGen.getInstance();
+        userSeriService = UserSeriService.getInstance();
+        certService = CertService.getInstance();
+
         try {
             keyPair = keyGen.getKeyPair(2048);
         } catch (NoSuchAlgorithmException e) {
@@ -52,35 +63,20 @@ public class UserKey extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String privateKey= req.getParameter("privateKey");
-//        String publicKey = req.getParameter("publicKey");
-//        String seri = req.getParameter("seri");
+        Token token = (Token) request.getAttribute("token");
 
-//        resp.getWriter().write("publicKey" + publicKey + "\n");
-//        resp.getWriter().write("privateKey: " + privateKey);
-//        resp.getWriter().write("Seri: " + seri);
+        BigInteger serial1 = new BigInteger(255, new SecureRandom()).setBit(255);
+        String serial = serial1.toString(16);
 
-//        String pubString= Base64.getEncoder().encodeToString(publicKey.getEncoded());
-//        byte[] bytes= Base64.getDecoder().decode(pubString);
-//        PublicKey publicKey1= keyGen.getPublicKeyformBytes(bytes);
-//        System.out.println(publicKey1.equals(publicKey));
-
-//        PrintWriter out = response.getWriter();
-
-//        String privateKey= request.getParameter("privateKey");
-        response.setContentType("application/json");
         String pubKey = Base64.getEncoder().encodeToString(publicKey.getEncoded());
         String priKey = Base64.getEncoder().encodeToString(privateKey.getEncoded());
-        String serinum = "cdksjk";
-
-
-        BigInteger serial = new BigInteger(256, new SecureRandom());
+        String issuerName = request.getParameter("issuerName");
 
         byte[] privateBytes = new FileInputStream("T:\\CKAT\\src\\main\\privateInfo\\GreenLockPrivateKey.key").readAllBytes();
         PrivateKey privateKey1 = KeyGen.getInstance().getPrivateKeyformBytes(privateBytes);
         String cer;
         try {
-            certificate = KeyGen.getInstance().genCertificate(privateKey1, publicKey, "aa", serial);
+            certificate = KeyGen.getInstance().genCertificate(privateKey1, publicKey, issuerName, serial1);
             cer = Base64.getEncoder().encodeToString(certificate.getEncoded());
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
@@ -89,12 +85,27 @@ public class UserKey extends HttpServlet {
         } catch (CertificateException e) {
             throw new RuntimeException(e);
         }
+try {
+    Cert cert = new Cert();
+    cert.setSeri(String.valueOf(serial));
+    cert.setPublicKey(pubKey);
+    cert.setCertValue(cer);
+
+    certService.insert(cert);
+    UserSeri userSeri = new UserSeri();
+    userSeri.setUserId(token.getUserId());
+    userSeri.setSeri(String.valueOf(serial));
+
+    userSeriService.insert(userSeri);
+}catch (Exception e){
+    System.out.println(e.getMessage());
+}
 
         json.addProperty("pubKey", pubKey);
         json.addProperty("priKey", priKey);
         json.addProperty("cer", cer);
 
-
+        response.setContentType("application/json");
         response.getWriter().write(json.toString());
 
     }
