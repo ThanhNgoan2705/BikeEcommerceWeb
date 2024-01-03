@@ -21,7 +21,8 @@
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
             rel="stylesheet"
     />
-    <link rel="stylesheet prefetch" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css">
+    <link rel="stylesheet prefetch"
+          href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css">
 
     <link href="/mdb/css/bootstrap.min.css" rel="stylesheet">
     <link href="/mdb/css/mdb.min.css" rel="stylesheet">
@@ -30,6 +31,14 @@
     <link href="/mdb/css/default.css" rel="stylesheet">
     <link href="/mdb/css/styleKey.css" rel="stylesheet">
 
+    <link rel="stylesheet" href=
+            "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+
+    <style>
+
+        #datepicker{width:180px;}
+        #datepicker > span:hover{cursor: pointer;}
+    </style>
 </head>
 
 <body class="homepage-v1 hidden-sn white-skin animated">
@@ -101,12 +110,13 @@
 
                             <!--email-->
                             <div class="row">
-                            <label class="ml-1">Email </label>
-                            <p class="text-default ml-4">${emailShow}</p>
-                            <a href="" class="btn btn-primary btn-sm">Change Email</a>
+                                <label class="ml-1">Email </label>
+                                <p class="text-default ml-4">${emailShow}</p>
+                                <a href="" class="btn btn-primary btn-sm">Change Email</a>
                             </div>
                             <hr>
-                            <button class="btn btn-primary btn-lg btn-block" onclick="editInfor()">Update Information</button>
+                            <button class="btn btn-primary btn-lg btn-block" onclick="editInfor()">Update Information
+                            </button>
                         </form>
 
                     </div>
@@ -619,114 +629,131 @@
                     <!--Key Management-->
                     <div class="tab-pane fade" id="tabKeyManagement" role="tabpanel">
                         <div>
-                            <button class="btn createk" onclick="momodal()"  >Create Key</button>
+                            <button class="btn createk" onclick="momodal()">Create Key</button>
                         </div>
-                       <div>
-                           <button class="btn importk" onclick="momodal2()"  >Import Key</button>
-                       </div>
-                                <hr class="mb-4">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="table-wrap">
-                                            <table class="table table-dark">
-                                                <thead>
-                                                <tr class="bg-dark">
-                                                    <th>STT</th>
-                                                    <th>Name</th>
-                                                    <th>Seri</th>
-                                                    <th>Start Date</th>
-                                                    <th>End Date</th>
-                                                    <th></th>
-                                                    <th>Status</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr class="bg-primary">
-                                                    <th scope="row">1</th>
-                                                    <td>Mark Otto</td>
-                                                    <td>cfss678</td>
-                                                    <td>27/12/2023</td>
-                                                    <td>01/01/2024</td>
-                                                    <td><a href="#"><i class="fa fa-lock" aria-hidden="true"></i></a></td>
-                                                    <td>Expired</td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
+                        <div>
+                            <button class="btn importk" onclick="momodal2()">Import Key</button>
+                        </div>
+                        <hr class="mb-4">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="table-wrap">
+                                    <table class="table table-dark">
+                                        <thead>
+                                        <tr class="bg-dark">
+                                            <th>STT</th>
+                                            <th>Name</th>
+                                            <th>Seri</th>
+                                            <th>Start Date</th>
+                                            <th>End Date</th>
+                                            <th></th>
+                                            <th></th>
+                                            <th>Status</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr class="bg-primary">
+                                            <th scope="row">1</th>
+                                            <td>Mark Otto</td>
+                                            <td id="seri" name="seri">cfss678</td>
+                                            <td>27/12/2023</td>
+                                            <td>01/01/2024</td>
+                                            <td>
+                                                <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
+                                                    <input class="form-control" type="text" readonly />
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-calendar" aria-hidden="true" id="revokedAt" name="revokedAt"></i>
+                                                </span>
+                                                </div>
+
+                                            </td>
+                                            <td><a href="#"><i class="fa fa-lock" aria-hidden="true" onclick="revocation()"></i></a></td>
+                                            <td>Expired</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
+                            </div>
+                        </div>
 
-                            <div class="nenmodal" id="nenmodal-1">
-                                <div class="nenmodal2"></div>
-                                <div class="ndmodal">
-                                    <div class="closemodal"><button onclick="momodal()">×</button></div>
-                                    <div method="POST" id="contactForm" name="contactForm" class="contactForm">
-                                        <div class="fname">
-                                            <label class="labelname">Name</label>
-                                            <input  class="inname" type="text" placeholder="Người dùng nhập tên để tạo cetificate">
-                                            <button class="btnblock" type="submit" onclick="createKey()">Create Key</button>
+                        <div class="nenmodal" id="nenmodal-1">
+                            <div class="nenmodal2"></div>
+                            <div class="ndmodal">
+                                <div class="closemodal">
+                                    <button onclick="momodal()">×</button>
+                                </div>
+                                <div method="POST" id="contactForm" name="contactForm" class="contactForm">
+                                    <div class="fname">
+                                        <label class="labelname">Name</label>
+                                        <input class="inname" name="issuerName" type="text"
+                                               placeholder="Người dùng nhập tên để tạo cetificate">
+                                        <button class="btnblock" type="submit" onclick="createKey()">Create Key</button>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="group">
+                                                <label class="label1">Private Key</label>
+                                                <input type="text" class="form-control" id="privateKey">
+                                                <i class="fa fa-clone" onclick="" aria-hidden="true"></i>
+                                            </div>
                                         </div>
-
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="group">
-                                                    <label class="label1" >Private Key</label>
-                                                    <input type="text" class="form-control" id="privateKey" >
-                                                    <i class="fa fa-clone" onclick="" aria-hidden="true"></i>
-                                                </div>
+                                        <div class="col">
+                                            <div class="group">
+                                                <label class="label1">Public Key</label>
+                                                <input type="text" class="form-control" id="publicKey">
+                                                <i class="fa fa-clone" aria-hidden="true"></i>
                                             </div>
-                                            <div class="col">
-                                                <div class="group">
-                                                    <label class="label1">Public Key</label>
-                                                    <input type="text" class="form-control" id="publicKey">
-                                                    <i class="fa fa-clone" aria-hidden="true"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="group">
-                                                    <label class="label1" >Certificate</label>
-                                                    <input type="text" class="form-control" id="certificate">
-                                                    <i class="fa fa-clone" aria-hidden="true"></i>
-                                                </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="group">
+                                                <label class="label1">Certificate</label>
+                                                <input type="text" class="form-control" id="certificate">
+                                                <i class="fa fa-clone" aria-hidden="true"></i>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                           <!-- màn hình import key -->
-                            <div class="nenmodal" id="nenmodal-2">
-                                <div class="nenmodal2"></div>
-                                <div class="ndmodal">
-                                    <div class="closemodal"><button onclick="momodal2()">×</button></div>
-                                    <div method="POST" id="contactForm2" name="contactForm" class="contactForm">
+                        </div>
+                        <!-- màn hình import key -->
+                        <div class="nenmodal" id="nenmodal-2">
+                            <div class="nenmodal2"></div>
+                            <div class="ndmodal">
+                                <div class="closemodal">
+                                    <button onclick="momodal2()">×</button>
+                                </div>
+                                <div method="POST" id="contactForm2" name="contactForm" class="contactForm">
 
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="group">
-                                                    <label class="label1" >Name      </label>
-                                                    <input type="text" class="inpri" id="privateKey2" >
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="group">
+                                                <label class="label1">Name </label>
+                                                <input type="text" name="username" class="inpri" id="name2">
 
-                                                </div>
                                             </div>
-                                            <div class="col">
-                                                <div class="group">
-                                                    <label class="label1">Public Key</label>
-                                                    <input type="text" class="form-control" id="publicKey2">
-
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="group">
-                                                    <label class="label1" >Certificate</label>
-                                                    <input type="text" class="form-control" id="certificate2">
-                                                    <i class="fa fa-clone" aria-hidden="true"></i>
-                                                </div>
-                                            </div>
-                                            <button class="btnblock btncreate" type="submit" onclick="createKey()">Create</button>
                                         </div>
+                                        <div class="col">
+                                            <div class="group">
+                                                <label class="label1">Public Key</label>
+                                                <input type="text" name="publickey" class="form-control"
+                                                       id="publicKey2">
+
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="group">
+                                                <label class="label1">Certificate</label>
+                                                <input type="text" class="form-control" id="certificate2">
+                                                <i class="fa fa-clone" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <button class="btnblock btncreate" type="submit" onclick="ImportKey()">Create
+                                        </button>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
                     </div>
 
@@ -821,13 +848,13 @@
 </script>
 <script>
 
-        function momodal() {
-            document.getElementById("nenmodal-1").classList.toggle("active");
-        }
+    function momodal() {
+        document.getElementById("nenmodal-1").classList.toggle("active");
+    }
 
 </script>
 <script>
-    function momodal2(){
+    function momodal2() {
         document.getElementById("nenmodal-2").classList.toggle("active");
     }
 </script>
@@ -845,14 +872,75 @@
         $.ajax({
             url: "/user/userKey",
             method: "GET",
-            dataType : "json",
-            contentType:"application/json",
+            dataType: "json",
+            contentType: "application/json",
             success: function (data) {
-                console.log("data"+data);
+                console.log("data" + data);
                 // Hiển thị thông tin khóa trên giao diện
                 $("#publicKey").val(data.pubKey);
                 $("#privateKey").val(data.priKey);
                 $("#certificate").val(data.cer);
+
+
+            },
+            error: function () {
+                alert("Error creating RSA key pair.");
+            }
+        });
+    }
+</script>
+//import key
+<script type="text/javascript">
+
+    function ImportKey() {
+        var username = document.getElementById("name2").value;
+        var publickey = document.getElementById("publicKey2").value;
+        console.log("ten" +username +"pub"+ publickey );
+        $.ajax({
+            url: "/user/importKey",
+            method: "GET",
+            type: 'POST',
+            dataType: "json",
+            data:{
+                username: username,
+                publickey: publickey,
+            },
+            contentType: "application/json",
+            success: function (data) {
+                console.log("data" + data);
+                // Hiển thị thông tin khóa trên giao diện
+
+                $("#certificate2").val(data.cer);
+
+
+            },
+            error: function () {
+                alert("Error creating RSA key pair.");
+            }
+        });
+    }
+</script>
+<script type="text/javascript">
+
+    function revocation() {
+        var seri = document.getElementById("seri").value;
+        var revokedAt = document.getElementById("revokedAt").value;
+        console.log("ten" +username +"pub"+ publickey );
+        $.ajax({
+            url: "/user/importKey",
+            method: "GET",
+            type: 'POST',
+            dataType: "json",
+            data:{
+                username: seri,
+                publickey: revokedAt,
+            },
+            contentType: "application/json",
+            success: function (data) {
+                console.log("data" + data);
+                // Hiển thị thông tin khóa trên giao diện
+
+                $("#certificate2").val(data.cer);
 
 
             },
@@ -868,12 +956,14 @@
     const btnElement = document.querySelector('.fa-clone')
 
     // step 2
-    btnElement.addEventListener('click', function() {
+    btnElement.addEventListener('click', function () {
 
         ipnElement.select()              // step 4
 
     })
 </script>
+
+
 
 </body>
 </html>
