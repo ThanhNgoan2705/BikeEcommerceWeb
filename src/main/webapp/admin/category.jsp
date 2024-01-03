@@ -37,9 +37,7 @@
                     </button>
                 </div>
                 <div class="card-body">
-
                     <!-- Button trigger modal -->
-
                     <div class="table-responsive">
                         <table id="categoryTable" class="table table-hover flex-nowrap " style="width: 100%"></table>
                     </div>
@@ -48,52 +46,7 @@
         </section>
 
     </div>
-
     <!--section pagination-->
-
-    <!--seeDetailCategory-->
-    <div class="modal fade " id="seeDetail" tabindex="-1"
-         aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="container-lg modal-dialog">
-            <div class="h-100 gradient-custom">
-                <div class="container py-5 h-100">
-                    <div class="row d-flex justify-content-center align-items-center h-100">
-                        <div class="col-lg-12 col-xl-10">
-                            <div class="card" style="border-radius: 10px;">
-                                <div class="card-header px-4 py-5">
-                                    <h5 class="text-muted mb-0" style="color: #a8729a;">Name Category
-                                    </h5>
-                                </div>
-                                <div class="card-body p-4">
-                                    <div class="d-flex justify-content-sm-between ">
-                                        <ul>
-                                            <h2><span><b>Mô Tả Cơ Bản</b></span></h2>
-                                            <li><span> <b>Tên Loại</b> </span> <span>Xe đạp điện</span></li>
-                                        </ul>
-                                        <div class="col-md-6">
-                                            <img width="200" height="200"
-                                                 src="https://catani-bicycle.com/wp-content/uploads/2022/04/Header-Logo-Black-and-White.png"
-                                                 class="header_logo header-logo" alt="Catani Bicycle">
-                                        </div>
-
-                                    </div>
-                                    <h2><span><b>Mô Tả Chi Tiết</b></span></h2>
-                                    <div class="d-flex justify-content-center ">
-                                        <p class="text-muted mb-0">
-                                            Dần dần với sự phát triển của xã hội và nhu cầu ngày càng cao của người tiêu
-                                            dùng, hãng đã quyết định làm đa dạng hơn các sản phẩm của mình.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- see detail Category -->
-
     <!--    add Category form-->
     <div class="modal fade" id="addCategoryForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="container-sm modal-dialog">
@@ -169,25 +122,32 @@
             </div>
         </div>
     </div>
-    <!--    edit Category form-->
+    <!--   see and edit Category form-->
     <div class="modal fade" id="editCategoryForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="container-sm modal-dialog">
             <div class="h-100 gradient-custom">
                 <div class="container py-5 h-100">
-                    <form class="row g-3 needs-validation" novalidate accept-charset="UTF-8" novalidate>
+                    <form class="row g-3 needs-validation" accept-charset="UTF-8" novalidate action="/api/category"
+                          method="post">
                         <div class="modal-title">
-                            <h2 class="text-start text-black w-50">Add Category</h2>
+                            <h2 class="text-start text-black w-50">Edit Category</h2>
+                            <label class="text-bg-info w-50" for="categoryId">ID: </label>
+                            <input type="text" class="text-bg-info" id="categoryId" name="categoryId">
                         </div>
                         <div class="col-md-12">
                             <label for="addNameCategory" class="form-label">Category Name</label>
-                            <input type="text" class="form-control" id="editNameCategory" value="Mark" required>
+                            <input type="text" class="form-control" id="editNameCategory" name="name" required>
                             <div class="valid-feedback">
                                 Looks good!
                             </div>
                         </div>
                         <div class="col-md-6">
+                            <label for="addShortId" class="form-label">Short Id</label>
+                            <input type="text" class="form-control" id="editShortId" name="shortId" required>
+                        </div>
+                        <div class="col-md-6">
                             <label for="addLevel" class="form-label">Danh mục cấp</label>
-                            <select class="form-select" id="editLevel" required>
+                            <select class="form-select" id="editLevel" name="level" required>
                                 <option selected disabled value="">Choose...</option>
                                 <option>1</option>
                                 <option>2</option>
@@ -200,8 +160,9 @@
                             <label for="addParentName" class="form-label">Danh Mục Cha</label>
                             <select class="form-select" id="editParentName" required>
                                 <option selected disabled value="">Choose...</option>
-                                <option>xe đạp</option>
-                                <option>xe diện</option>
+                                <c:forEach items="${parentList}" var="category">
+                                    <option name="${category.categoryId}">${category.categoryId}.${category.name}</option>
+                                </c:forEach>
                             </select>
                             <div class="invalid-feedback">
                                 Please select a valid state.
@@ -209,11 +170,10 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-outline">
-                                <textarea class="form-control border-2" id="editDescription" rows="4"
+                                <textarea class="form-control border-2" name="description" id="editDescription" rows="4"
                                           style="background: white"></textarea>
                                 <label class="form-label" for="addDescription">Description</label>
                             </div>
-
                         </div>
                         <div class="col-md-6">
                             <!--Image-->
@@ -231,7 +191,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-primary w-50 h-25 m-lg-auto editCategory">Add Category
+                            <button class="btn btn-primary w-50 h-25 m-lg-auto " type="submit">Add Category
                             </button>
                         </div>
                     </form>
@@ -303,9 +263,8 @@
                     title: "Action",
                     data: 'id',
                     render: function (data) {
-                        return '<button type="button" class="btn btn-primary btn-sm " data-mdb-toggle="modal" data-mdb-target="#seeDetail"><i class="fa-solid fa-eye"></i></button>' +
-                            '<button type="button" class="btn btn-primary btn-sm" data-mdb-toggle="modal" data-mdb-target="#editCategoryForm"><i class="fa-solid fa-edit"></i></button>' +
-                            '<button type="button" class="btn btn-danger btn-sm removeBtn" " ><i class="fa-solid fa-trash"></i></button>'
+                        return '<button type="button" class="btn btn-primary btn-sm m-2 editButton" data-mdb-toggle="modal" data-mdb-target="#editCategoryForm"><i class="fa-solid fa-edit"></i></button>' +
+                            '<button type="button" class="btn btn-danger btn-sm m-2 removeBtn" " ><i class="fa-solid fa-trash"></i></button>'
                     }
                 }
             ]
@@ -339,35 +298,34 @@
             }
         })
     });
-    // add category
+    // update category
     $(document).on('click','.editCategory',function () {
+        // enable input to edit
+        $('#editNameCategory').prop('disabled', false);
+        $('#editLevel').prop('disabled', false);
+        $('#editParentName').prop('disabled', false);
+        $('#editDescription').prop('disabled', false);
+        $('#editImage').prop('disabled', false);
+        $('#editShortId').prop('disabled', false);
+        $('.submit').prop('disabled', false);
+    })
+    // see category
+    $(document).on('click','.editButton', function (){
         let id = $(this).closest('tr').find('td:eq(0)').text();
-        let name = $('#editNameCategory').val();
-        let level = $('#editLevel').val();
-        let parentId = $('#editParentName').val().substring(0, 1);
-        let description = $('#editDescription').val();
-        let image = $('#editImage').val();
-        let shortId = $('#editShortId').val();
         console.log(id);
         $.ajax({
             url: '/api/category/' + id,
-            type: 'POST',
-            data: JSON.stringify({
-                name: name,
-                level: level,
-                parentId: parentId,
-                description: description,
-                image: image,
-                shortId: shortId
-            }),
+            type: 'GET',
             success: function (result) {
-                if (result === "update success") {
-                    alert('update thành công');
-                    // edit  this row
-                    location.reload();
-                } else {
-                    alert('update thất bại');
-                }
+                console.log(result);
+                $('#editCategoryForm').modal('show');
+
+                $('#editNameCategory').text(result.name);
+                $('#editLevel').text(result.level);
+                $('#editParentName').text(result.parentId);
+                $('#editDescription').text(result.description);
+                $('#editImage').attr('src', result.image);
+                $('#editShortId').text(result.shortId);
             }
         })
     })
