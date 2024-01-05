@@ -54,7 +54,6 @@ public class ProductsFilterAPI extends HttpServlet {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode jsonNode = objectMapper.readTree(req.getReader());
-
             JsonNode categoryNode = jsonNode.get("category");
             JsonNode brandNode = jsonNode.get("brand");
             JsonNode supplierNode = jsonNode.get("supplier");
@@ -120,31 +119,31 @@ public class ProductsFilterAPI extends HttpServlet {
 
 
             Set<Product> productSet = new HashSet<>();
-            if (categoryList.size() > 0) {
+            if (!categoryList.isEmpty()) {
                 for (String categoryId : categoryList) {
                     List<Product> productsBycategory = ProductService.getInstance().getProductByCategoryId(categoryId);
                     productSet.addAll(productsBycategory);
                 }
             }
-            if (brandList.size() > 0) {
+            if (!brandList.isEmpty()) {
                 for (String brandId : brandList) {
                     List<Product> productsByBrand = ProductService.getInstance().getProductByBrandId(brandId);
                     productSet.addAll(productsByBrand);
                 }
             }
-            if (supplierList.size() > 0) {
+            if (!supplierList.isEmpty()) {
                 for (String supplierId : supplierList) {
                     List<Product> productsBySupplier = ProductService.getInstance().getProductBySupplierId(supplierId);
                     productSet.addAll(productsBySupplier);
                 }
             }
-            if (discountList.size() > 0) {
+            if (!discountList.isEmpty()) {
                 for (String discountId : discountList) {
                     List<Product> productsByDiscount = ProductService.getInstance().getProductByDiscount(discountId);
                     productSet.addAll(productsByDiscount);
                 }
             }
-            if (statusList.size() > 0) {
+            if (!statusList.isEmpty()) {
                 for (String status : statusList) {
                     List<Product> productsByStatus = ProductService.getInstance().getProductByStatus(status);
                     productSet.addAll(productsByStatus);
@@ -160,8 +159,6 @@ public class ProductsFilterAPI extends HttpServlet {
                 List<Product> productsByWheelSize = ProductService.getInstance().getProductByWheelSize(wheelSize);
                 productSet.addAll(productsByWheelSize);
             }
-
-
             Gson gson = new Gson();
             String data = gson.toJson(productSet);
             resp.getWriter().write(data);

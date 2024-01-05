@@ -6,9 +6,7 @@ import hcmuaf.edu.vn.BikeEcommerce.model.Category;
 import org.jdbi.v3.core.Jdbi;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * da test by hoang hai 20-8-23
@@ -48,29 +46,20 @@ public class CategoryService {
     }
 
     public static void main(String[] args) {
-//        CategoryService.getInstance().insert(new Category("6", "Honda", 1));
-//        System.out.println(CategoryService.getInstance().getById("6"));
-//        CategoryService.getInstance().update(new Category("6", "yamaha", 1));
-//        System.out.println(CategoryService.getInstance().getById("6"));
-//        CategoryService.getInstance().delete("6");
-//        System.out.println(CategoryService.getInstance().getById("6"));
-//        List<Category> list = CategoryService.getInstance().getAll();
+        List<Category> list = new ArrayList<>();
+       List<Category> cateName = CategoryService.getInstance().getAllParent(1);
+//        for (String s : cateName) {
+//             list.addAll(CategoryService.getInstance().getCategoryByName(s));
+//        }
 //        for (Category category : list) {
 //            System.out.println(category);
 //        }
-        List<Category> list = new ArrayList<>();
-       List<String> cateName = CategoryService.getInstance().getAllCategoryName();
-        for (String s : cateName) {
-             list.addAll(CategoryService.getInstance().getCategoryByName(s));
-        }
-        for (Category category : list) {
-            System.out.println(category);
-        }
-        Map<String,Integer> quantityByCategory = new HashMap<>();
-        for (String categoryName : CategoryService.getInstance().getAllCategoryName()) {
-            quantityByCategory.put(categoryName,ProductService.getInstance().getProductByCategoryName(categoryName).size());
-        }
-        System.out.println(quantityByCategory);
+//        Map<String,Integer> quantityByCategory = new HashMap<>();
+//        for (String categoryName : CategoryService.getInstance().getAllCategoryName()) {
+//            quantityByCategory.put(categoryName,ProductService.getInstance().getProductByCategoryName(categoryName).size());
+//        }
+
+        System.out.println(cateName);
 
 
     }
@@ -83,5 +72,10 @@ public class CategoryService {
     public List<String> getAllCategoryName() {
         List<String> list = jdbi.withExtension(CategoryDAO.class, dao -> dao.getAllCategoryName());
           return list;
+    }
+
+    public List<Category> getAllParent(int level) {
+        List<Category> list = jdbi.withExtension(CategoryDAO.class, dao -> dao.getAllParent(level));
+        return list;
     }
 }

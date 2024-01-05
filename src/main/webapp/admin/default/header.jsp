@@ -28,43 +28,43 @@
                 <span class="sidenav-subheading text-muted text-uppercase fw-bold">Manage Item</span>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="/product.jsp">
+                <a class="sidenav-link" href="/admin/product.jsp">
                     <i class="fas fa-bicycle fa-fw me-3"></i><span>Product</span></a>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="/category.jsp">
+                <a class="sidenav-link" href="/admin/categories">
                     <i class="fas fa-plus fa-fw me-3"></i><span>Category</span></a>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="/brand.jsp">
+                <a class="sidenav-link" href="/admin/brand.jsp">
                     <i class="fas fa-plus fa-fw me-3"></i><span>Brand</span></a>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="/supplier.jsp">
+                <a class="sidenav-link" href="/admin/supplier.jsp">
                     <i class="fas fa-plus fa-fw me-3"></i><span>Supplier</span></a>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="imageProduct.jsp">
+                <a class="sidenav-link" href="/admin/imageProduct.jsp">
                     <i class="fas fa-plus fa-fw me-3"></i><span>Image Product</span></a>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="/imageProduct.jsp">
+                <a class="sidenav-link" href="/admin/imageProduct.jsp">
                     <i class="fas fa-plus fa-fw me-3"></i><span>Image Slider</span></a>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="/color.jsp">
+                <a class="sidenav-link" href="/admin/color.jsp">
                     <i class="fas fa-plus fa-fw me-3"></i><span>Color</span></a>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="/colorProduct.jsp">
+                <a class="sidenav-link" href="/admin/colorProduct.jsp">
                     <i class="fas fa-plus fa-fw me-3"></i><span>Color Product Image</span></a>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="/discount.jsp">
+                <a class="sidenav-link" href="/admin/discount.jsp">
                     <i class="fas fa-plus fa-fw me-3"></i><span>discount</span></a>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="/slider.jsp">
+                <a class="sidenav-link" href="/admin/slider.jsp">
                     <i class="fas fa-plus fa-fw me-3"></i><span>Slider</span></a>
             </li>
 
@@ -73,11 +73,11 @@
                 <span class="sidenav-subheading text-muted text-uppercase fw-bold">Manage Account</span>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="/user.jsp">
+                <a class="sidenav-link" href="/admin/user.jsp">
                     <i class="fas fa-plus fa-fw me-3"></i><span>User</span></a>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="/address.jsp">
+                <a class="sidenav-link" href="/admin/address.jsp">
                     <i class="fas fa-database fa-fw me-3"></i><span>Address</span></a>
             </li>
 
@@ -88,11 +88,11 @@
                 <span class="sidenav-subheading text-muted text-uppercase fw-bold">Admin</span>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="/order.jsp">
+                <a class="sidenav-link" href="/admin/order.jsp">
                     <i class="fas fa-money-bill fa-fw me-3"></i><span>Order</span></a>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="/invoice.jsp">
+                <a class="sidenav-link" href="/admin/invoice.jsp">
                     <i class="fas fa-file-contract fa-fw me-3"></i><span>invoice</span></a>
             </li>
 
@@ -192,6 +192,13 @@
                         <li><a class="dropdown-item" href="#">Settings</a></li>
                         <li><a class="dropdown-item" href="#">Logout</a></li>
                     </ul>
+                </li>
+                </c:if>
+                <c:if test="${!haveUser}">
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">
+                        <i class="fas fa-user-circle fa-lg"></i>
+                    </a>
                 </li>
                 </c:if>
             </ul>
