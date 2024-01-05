@@ -26,7 +26,7 @@ public class CategoriesController extends HttpServlet {
         }
         // lấy danh sách category parent where level = 1
         List<Category> categoryParentList = CategoryService.getInstance().getAllParent(1);
-        System.out.println(categoryParentList);
+        System.out.println(" parent"+categoryParentList);
         req.setAttribute("parentList", categoryParentList);
         req.getRequestDispatcher("/admin/category.jsp").forward(req,resp);
     }

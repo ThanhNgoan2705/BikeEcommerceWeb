@@ -2,6 +2,7 @@ package hcmuaf.edu.vn.BikeEcommerce.api;
 
 import com.google.gson.Gson;
 import hcmuaf.edu.vn.BikeEcommerce.model.Category;
+import hcmuaf.edu.vn.BikeEcommerce.model.sercurity.Token;
 import hcmuaf.edu.vn.BikeEcommerce.service.CategoryService;
 import hcmuaf.edu.vn.BikeEcommerce.toolSecurity.GenerateId;
 import org.apache.commons.beanutils.BeanUtils;
@@ -36,7 +37,9 @@ public class CategoryAPI extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setCharacterEncoding("UTF-8");
+        System.out.println("doGet");
         String categoryId = req.getPathInfo();
+        System.out.println("categoryId: " + categoryId);
         // nếu có categoryId thì trả về giá trị của category đó
         if (categoryId != null) {
             if (categoryId.startsWith("/")) {
@@ -50,6 +53,7 @@ public class CategoryAPI extends HttpServlet {
             System.out.println("k có category id");
             List<Category> categoryList = categoryService.getAll();
             String data = gson.toJson(categoryList);
+            System.out.println("data: " + data);
             resp.getWriter().write(data);
         }
     }
@@ -73,16 +77,18 @@ public class CategoryAPI extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //check token admin
-//        Token token = (Token) req.getAttribute("token");
-//        int role = Integer.parseInt(token.getRole());
-//        System.out.println("role: " + role);
-//        if (role != 2) {
-//            resp.getWriter().write("you are not admin");
-//            return;
-//        }
+        Token token = (Token) req.getAttribute("token");
+        int role = Integer.parseInt(token.getRole());
+        System.out.println("role: " + role);
+        if (role != 2) {
+            resp.getWriter().write("you are not admin");
+            return;
+        }
         req.setCharacterEncoding("UTF-8");
         // thêm mới category
         Category category = new Category();
+        System.out.println("edit category: " );
+        System.out.println(req.getParameterMap().toString());
         try {
             BeanUtils.populate(category, req.getParameterMap());
             if (category.getCategoryId() == null) {
@@ -92,6 +98,7 @@ public class CategoryAPI extends HttpServlet {
                 resp.sendRedirect("/admin/categories");
             } else {
                 categoryService.update(category);
+                System.out.println("category: " + category);
                 resp.getWriter().write("update success");
             }
         } catch (IllegalAccessException e) {
@@ -115,6 +122,14 @@ public class CategoryAPI extends HttpServlet {
      */
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //check token admin
+        Token token = (Token) req.getAttribute("token");
+        int role = Integer.parseInt(token.getRole());
+        System.out.println("role: " + role);
+        if (role != 2) {
+            resp.getWriter().write("you are not admin");
+            return;
+        }
         String categoryId = req.getPathInfo();
         System.out.println("categoryId: " + categoryId);
         if (categoryId != null) {

@@ -11,11 +11,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
           integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap">
     <link rel="stylesheet" href="/admin/assert/css/all.min.css">
     <link rel="stylesheet" href="/admin/assert/css/mdb.min.css">
     <link rel="stylesheet" href="/admin/assert/css/home.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
 </head>
 <body>
 <!--Main Navigation-->
@@ -39,7 +39,8 @@
                 <div class="card-body">
                     <!-- Button trigger modal -->
                     <div class="table-responsive">
-                        <table id="categoryTable" class="table table-hover flex-nowrap " style="width: 100%"></table>
+                        <table id="categoryTable" class="table table-hover flex-nowrap align-middle mb-0 bg-white "
+                               style="width: 100%"></table>
                     </div>
                 </div>
             </div>
@@ -99,18 +100,18 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <!--Image-->
-                            <div>
-                                <div class="mb-4 d-flex justify-content-center">
-                                    <img src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg"
-                                         alt="example placeholder" style="width: 250px;"/>
+                            <div id="dnd-max-size" class="file-upload-wrapper">
+                                <div class="file-upload">
+                                    <div class="file-upload-message"><i
+                                            class="fas fa-cloud-upload-alt file-upload-cloud-icon"></i>
+                                        <p class="file-upload-default-message">Drag and drop a file here or click</p>
+                                        <p class="file-upload-main-error"></p></div>
+                                    <div class="file-upload-mask"></div>
+                                    <ul class="file-upload-errors"></ul>
+                                    <input type="file" name="file" class="file-upload-input" data-mdb-max-file-size="2M"
+                                           data-mdb-file-upload-init="" accept="">
                                 </div>
-                                <div class="d-flex justify-content-center">
-                                    <div class="btn btn-primary btn-rounded">
-                                        <label class="form-label text-white m-1" for="addImage">Choose file</label>
-                                        <input type="file" class="form-control d-none" id="addImage"/>
-                                    </div>
-                                </div>
+                                <div class="file-upload-previews"></div>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -184,14 +185,15 @@
                                 </div>
                                 <div class="d-flex justify-content-center">
                                     <div class="btn btn-primary btn-rounded">
-                                        <label class="form-label text-white m-1" for="addImage">Choose file</label>
+                                        <label class="form-label text-white m-1" for="editImage">Choose file</label>
                                         <input type="file" class="form-control d-none" id="editImage"/>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-primary w-50 h-25 m-lg-auto " type="submit">Add Category
+                        <div class="col-md-6 btnControl">
+                            <button class="btn btn-primary w-50 h-25 m-lg-auto editCategory" type="button">Edit
+                                Category
                             </button>
                         </div>
                     </form>
@@ -203,11 +205,10 @@
 <!--Footer-->
 <footer></footer>
 <!--Footer-->
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
-<script type="text/javascript"
-        src="/admin/assert/js/mdb.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+<script type="text/javascript" src="/admin/assert/js/mdb.min.js"></script>
 <script src="/admin/assert/js/all.min.js"></script>
 <script src="/admin/assert/js/chart.min.js"></script>
 <script>
@@ -248,7 +249,7 @@
                     title: 'Active',
                     data: "active",
                     render: function (data) {
-                        if (data === true) {
+                        if (data === 1) {
                             return '<span class="badge bg-success">Active</span>'
                         } else {
                             return '<span class="badge bg-danger">Inactive</span>'
@@ -298,8 +299,8 @@
             }
         })
     });
-    // update category
-    $(document).on('click','.editCategory',function () {
+    //update category
+    $(document).on('click', '.editCategory', function () {
         // enable input to edit
         $('#editNameCategory').prop('disabled', false);
         $('#editLevel').prop('disabled', false);
@@ -307,28 +308,102 @@
         $('#editDescription').prop('disabled', false);
         $('#editImage').prop('disabled', false);
         $('#editShortId').prop('disabled', false);
-        $('.submit').prop('disabled', false);
+        $('.btnControl').html('<button class="btn btn-primary w-50 h-25 m-lg-auto submit" type="button">Submit</button>');
+        $(document).on('click', '.submit', function () {
+            let id = $('#categoryId').val();
+            let name = $('#editNameCategory').val();
+            let level = $('#editLevel').val();
+            let parentId = $('#editParentName').val();
+            let description = $('#editDescription').val();
+            let image = $('#editImage').val();
+            let shortId = $('#editShortId').val();
+            let data = {
+                "categoryId": id,
+                "name": name,
+                "level": level,
+                "parentId": parentId,
+                "description": description,
+                "image": image,
+                "shortId": shortId
+            }
+            console.log("post:" + data);
+            $.ajax({
+                url: '/api/category',
+                type: 'POST',
+                data: data,
+                success: function (result) {
+                    if (result === "update success") {
+                        alert('Cập nhật thành công');
+                        location.reload();
+                    } else {
+                        alert('Cập nhật thất bại');
+                    }
+                }
+            })
+        })
     })
     // see category
-    $(document).on('click','.editButton', function (){
+    $(document).on('click', '.editButton', function () {
         let id = $(this).closest('tr').find('td:eq(0)').text();
         console.log(id);
         $.ajax({
             url: '/api/category/' + id,
             type: 'GET',
-            success: function (result) {
-                console.log(result);
+            dataType: 'json',
+            contentType: 'application/json',
+            success: function (data) {
+                console.log(data);
                 $('#editCategoryForm').modal('show');
-
-                $('#editNameCategory').text(result.name);
-                $('#editLevel').text(result.level);
-                $('#editParentName').text(result.parentId);
-                $('#editDescription').text(result.description);
-                $('#editImage').attr('src', result.image);
-                $('#editShortId').text(result.shortId);
+                $('#categoryId').val(data.categoryId).prop('disabled', true);
+                $('#editNameCategory').val(data.name).prop('disabled', true);
+                $('#editLevel').val(data.level).prop('disabled', true);
+                $('#editParentName').val(data.parentId).prop('disabled', true);
+                $('#editDescription').val(data.description).prop('disabled', true);
+                $('#editImage').attr('src', data.image).prop('disabled', true);
+                $('#editShortId').val(data.shortId).prop('disabled', true);
             }
         })
     })
+</script>
+
+<script>
+    document.getElementById('dnd-max-size').addEventListener('change', function (e) {
+        if (e.target.files.length > 1) {
+            alert('You can only upload a maximum of 1 files');
+            return;
+        }
+        var file = e.target.files[0];
+        if (file.size > 2 * 1024 * 1024) {
+            alert('The file size must be less than 2 MB');
+            return;
+        }
+        // check file type
+        if (file.type !== 'image/jpeg' && file.type !== 'image/png') {
+            alert('Invalid file type. Only JPEG and PNG files are allowed.');
+            return;
+        }
+
+        // Create a new URL for the file
+        var url = URL.createObjectURL(file);
+        // Create a new img element
+        var img = document.createElement('img');
+        // Set the src of the img element to the URL
+        img.src = url;
+        var previewdiv = document.createElement('div');
+        img.classList.add('img-fluid', 'img-thumbnail', 'w-50', 'h-50');
+        previewdiv.appendChild(img);
+        previewdiv.classList.add('col-md-6');
+        previewdiv.classList.add('col-sm-12');
+        var removeBtn = document.createElement('button');
+        removeBtn.classList.add('btn', 'btn-danger', 'btn-sm', 'm-2', 'image-remove-btn');
+        removeBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
+        $(document).on('click', '.image-remove-btn', function () {
+            $(this).closest('div').remove();
+        });
+        previewdiv.appendChild(removeBtn);
+        // Append the img element to the file-upload-previews div
+        document.querySelector('.file-upload-previews').appendChild(previewdiv);
+    });
 </script>
 </body>
 </html>
