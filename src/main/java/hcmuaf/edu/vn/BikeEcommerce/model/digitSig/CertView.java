@@ -30,7 +30,7 @@ public class CertView {
         this.name = name;
     }
 
-    public String getSeri(String seri) {
+    public String getSeri() {
         return this.seri;
     }
 

@@ -5,9 +5,11 @@ import hcmuaf.edu.vn.BikeEcommerce.model.digitSig.CertView;
 import hcmuaf.edu.vn.BikeEcommerce.model.digitSig.RevocationCert;
 import hcmuaf.edu.vn.BikeEcommerce.model.sercurity.Token;
 import hcmuaf.edu.vn.BikeEcommerce.service.digitSig.CertService;
+import hcmuaf.edu.vn.BikeEcommerce.service.digitSig.CertViewService;
 import hcmuaf.edu.vn.BikeEcommerce.service.digitSig.RevocationCertService;
 import hcmuaf.edu.vn.BikeEcommerce.service.digitSig.UserSeriService;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +19,7 @@ import java.io.IOException;
 import java.security.cert.X509Certificate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -36,40 +39,13 @@ public class ListCertOfUser extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<CertView> certViews = new ArrayList<>();
         Token token = (Token) req.getAttribute("token");
         String userId = token.getUserId();
-        List<Cert> certs = certService.getByUserId(userId);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-
-
-        Date dateNow = new Date();
-        for (Cert c : certs) {
-            CertView temp = new CertView();
-            temp.getSeri(c.getSeri());
-            X509Certificate certificate = (X509Certificate) c.getCertificate();
-
-            Date dateAfter= ((X509Certificate) certificate).getNotAfter();
-            Date dateBefore= ((X509Certificate) certificate).getNotBefore();
-//            Instant instant = date.toInstant();
-//            LocalDate localDate = instant.atZone(ZoneId.systemDefault()).toLocalDate();
-//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            temp.setName(String.valueOf(certificate.getSubjectDN()));
-            temp.setStartDate(String.valueOf(certificate.getNotBefore()));
-            temp.setEndDate(String.valueOf(certificate.getNotAfter()));
-            RevocationCert revocationCert = revocationCertService.getBySeri(c.getSeri());
-            if (revocationCert != null){
-                temp.setStatus("Bị khóa");
-            }else if(dateNow.after(dateAfter)){
-                temp.setStatus("Het han");
-            }else {
-                temp.setStatus("Hoat dong");
-            }
-
-
-        }
-
-
+        List<CertView> certViews = CertViewService.getCertViewFormUserId(userId);
+        req.setAttribute("certViews", certViews);
+        resp.getWriter().write(certViews.toString());
+    }
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
     }
 }

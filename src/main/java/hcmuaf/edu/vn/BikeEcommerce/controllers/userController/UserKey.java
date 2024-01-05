@@ -71,6 +71,7 @@ UserSeriService userSeriService;
         String pubKey = Base64.getEncoder().encodeToString(publicKey.getEncoded());
         String priKey = Base64.getEncoder().encodeToString(privateKey.getEncoded());
         String issuerName = request.getParameter("issuerName");
+        System.out.println(issuerName+":  userkeyy ");
 
         byte[] privateBytes = new FileInputStream("T:\\CKAT\\src\\main\\privateInfo\\GreenLockPrivateKey.key").readAllBytes();
         PrivateKey privateKey1 = KeyGen.getInstance().getPrivateKeyformBytes(privateBytes);
@@ -111,7 +112,7 @@ try {
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        doGet(req, resp);
 
     }
 

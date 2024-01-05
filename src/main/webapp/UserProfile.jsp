@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.util.List" %>
+<%@ page import="hcmuaf.edu.vn.BikeEcommerce.model.digitSig.CertView" %><%--
   Created by IntelliJ IDEA.
   User: Chan
   Date: 10/5/2023
@@ -36,8 +37,13 @@
 
     <style>
 
-        #datepicker{width:180px;}
-        #datepicker > span:hover{cursor: pointer;}
+        #datepicker {
+            width: 180px;
+        }
+
+        #datepicker > span:hover {
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -651,25 +657,33 @@
                                             <th>Status</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
-                                        <tr class="bg-primary">
-                                            <th scope="row">1</th>
-                                            <td>Mark Otto</td>
-                                            <td id="seri" name="seri">cfss678</td>
-                                            <td>27/12/2023</td>
-                                            <td>01/01/2024</td>
-                                            <td>
-                                                <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
-                                                    <input class="form-control" type="text" readonly />
-                                                    <span class="input-group-addon">
-                                                        <i class="fa fa-calendar" aria-hidden="true" id="revokedAt" name="revokedAt"></i>
-                                                </span>
-                                                </div>
+                                        <tbody id="myTable">
+                                        <c:forEach var="certView" items= "${certViews}">
+                                            <tr class="bg-primary">
 
-                                            </td>
-                                            <td><a href="#"><i class="fa fa-lock" aria-hidden="true" onclick="revocation()"></i></a></td>
-                                            <td>Expired</td>
-                                        </tr>
+
+                                                <th scope="row">1</th>
+                                                <td>${certView.getName()}</td>
+                                                <td id="seri" name="seri">${certView.getSeri()}</td>
+                                                <td>${certView.getStartDate()}</td>
+                                                <td>${certView.getEndDate()}</td>
+                                                <td>
+                                                    <div id="datepicker" class="input-group date"
+                                                         data-date-format="mm-dd-yyyy">
+                                                        <input class="form-control" type="text" readonly/>
+                                                        <span class="input-group-addon">
+    <i class="fa fa-calendar" aria-hidden="true" id="revokedAt" name="revokedAt"></i>
+    </span>
+                                                    </div>
+
+                                                </td>
+                                                <td><a href="#"><i class="fa fa-lock" aria-hidden="true"
+                                                                   onclick="disableAndColorRow(1)"></i></a></td>
+                                                <td>${certView.getStatus()}</td>
+
+                                            </tr>
+                                        </c:forEach>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -680,12 +694,12 @@
                             <div class="nenmodal2"></div>
                             <div class="ndmodal">
                                 <div class="closemodal">
-                                    <button onclick="momodal()">×</button>
+                                    <button onclick="momodal(), redirect('/user') ">×</button>
                                 </div>
                                 <div method="POST" id="contactForm" name="contactForm" class="contactForm">
                                     <div class="fname">
                                         <label class="labelname">Name</label>
-                                        <input class="inname" name="issuerName" type="text"
+                                        <input id="inname" name="issuerName" type="text"
                                                placeholder="Người dùng nhập tên để tạo cetificate">
                                         <button class="btnblock" type="submit" onclick="createKey()">Create Key</button>
                                     </div>
@@ -721,7 +735,7 @@
                             <div class="nenmodal2"></div>
                             <div class="ndmodal">
                                 <div class="closemodal">
-                                    <button onclick="momodal2()">×</button>
+                                    <button onclick="momodal2(), redirect('/user') ">×</button>
                                 </div>
                                 <div method="POST" id="contactForm2" name="contactForm" class="contactForm">
 
@@ -850,8 +864,14 @@
 
     function momodal() {
         document.getElementById("nenmodal-1").classList.toggle("active");
+
     }
 
+</script>
+<script>
+    function redirect(url){
+        window.location.href= url;
+    }
 </script>
 <script>
     function momodal2() {
@@ -869,11 +889,17 @@
 //tao khoa
 <script type="text/javascript">
     function createKey() {
+        var issuerName = document.getElementById("inname").value;
+        console.log(issuerName)
         $.ajax({
             url: "/user/userKey",
             method: "GET",
             dataType: "json",
             contentType: "application/json",
+            data: {
+                issuerName: issuerName
+            },
+
             success: function (data) {
                 console.log("data" + data);
                 // Hiển thị thông tin khóa trên giao diện
@@ -895,13 +921,13 @@
     function ImportKey() {
         var username = document.getElementById("name2").value;
         var publickey = document.getElementById("publicKey2").value;
-        console.log("ten" +username +"pub"+ publickey );
+        console.log("ten" + username + "pub" + publickey);
         $.ajax({
             url: "/user/importKey",
             method: "GET",
             type: 'POST',
             dataType: "json",
-            data:{
+            data: {
                 username: username,
                 publickey: publickey,
             },
@@ -925,13 +951,13 @@
     function revocation() {
         var seri = document.getElementById("seri").value;
         var revokedAt = document.getElementById("revokedAt").value;
-        console.log("ten" +username +"pub"+ publickey );
+        console.log("ten" + username + "pub" + publickey);
         $.ajax({
             url: "/user/importKey",
             method: "GET",
             type: 'POST',
             dataType: "json",
-            data:{
+            data: {
                 username: seri,
                 publickey: revokedAt,
             },
@@ -958,12 +984,35 @@
     // step 2
     btnElement.addEventListener('click', function () {
 
-        ipnElement.select()              // step 4
+        ipnElement.select() // step 4
 
     })
 </script>
 
+<script>
+    function disableAndColorRow(rowNumber) {
+        // Get the table element by ID
+        var table = document.getElementById("myTable");
 
+        // Calculate the index of the row (zero-based index)
+        var rowIndex = rowNumber - 1;
+
+        // Get the row by index
+        var row = table.rows[rowIndex];
+
+        // Disable the button
+        for (var i = 0; i < row.cells.length; i++) {
+            // Disable buttons or input fields within each cell
+            var button = row.cells[i].querySelector(".fa-lock");
+            if (button) {
+                button.disabled = true;
+            }
+
+            // Add a class to the entire row for styling
+            row.classList.add("disabled");
+        }
+    }
+</script>
 
 </body>
 </html>
