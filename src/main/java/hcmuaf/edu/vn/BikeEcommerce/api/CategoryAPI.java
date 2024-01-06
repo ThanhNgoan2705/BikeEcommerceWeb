@@ -2,8 +2,10 @@ package hcmuaf.edu.vn.BikeEcommerce.api;
 
 import com.google.gson.Gson;
 import hcmuaf.edu.vn.BikeEcommerce.model.Category;
+import hcmuaf.edu.vn.BikeEcommerce.model.User;
 import hcmuaf.edu.vn.BikeEcommerce.model.sercurity.Token;
 import hcmuaf.edu.vn.BikeEcommerce.service.CategoryService;
+import hcmuaf.edu.vn.BikeEcommerce.service.UserService;
 import hcmuaf.edu.vn.BikeEcommerce.toolSecurity.GenerateId;
 import org.apache.commons.beanutils.BeanUtils;
 
@@ -76,15 +78,13 @@ public class CategoryAPI extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //check token admin
-        Token token = (Token) req.getAttribute("token");
-        int role = Integer.parseInt(token.getRole());
-        System.out.println("role: " + role);
-        if (role != 2) {
-            resp.getWriter().write("you are not admin");
-            return;
-        }
         req.setCharacterEncoding("UTF-8");
+        System.out.println("update or insert category");
+        //check token admin
+//        Token token = (Token) req.getAttribute("token");
+//        String role = token.getRole();
+//        System.out.println("role: " + role);
+
         // thêm mới category
         Category category = new Category();
         System.out.println("edit category: " );
@@ -122,14 +122,6 @@ public class CategoryAPI extends HttpServlet {
      */
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //check token admin
-        Token token = (Token) req.getAttribute("token");
-        int role = Integer.parseInt(token.getRole());
-        System.out.println("role: " + role);
-        if (role != 2) {
-            resp.getWriter().write("you are not admin");
-            return;
-        }
         String categoryId = req.getPathInfo();
         System.out.println("categoryId: " + categoryId);
         if (categoryId != null) {

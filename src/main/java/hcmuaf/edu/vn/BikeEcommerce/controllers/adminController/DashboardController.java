@@ -1,6 +1,8 @@
 package hcmuaf.edu.vn.BikeEcommerce.controllers.adminController;
 
+import hcmuaf.edu.vn.BikeEcommerce.model.User;
 import hcmuaf.edu.vn.BikeEcommerce.model.sercurity.Token;
+import hcmuaf.edu.vn.BikeEcommerce.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,10 +18,11 @@ public class DashboardController extends HttpServlet {
         Token token = (Token) req.getAttribute("token");
         if (token != null) {
             System.out.println("token: " + token);
-            req.setAttribute("user", token);
-            req.setAttribute("userId", token.getUserId());
-            req.setAttribute("haveUser", true);
-            req.setAttribute("userName", token.getUserName());
+            User user = UserService.getInstance().getUserByKey(token.getUserId());
+            req.getSession().setAttribute("user", user);
+            req.getSession().setAttribute("userId", user.getUserId());
+            req.getSession().setAttribute("haveUser", true);
+            req.getSession().setAttribute("userName", user.getUserName());
         }
         req.getRequestDispatcher("/admin/home_dashboard.jsp").forward(req, resp);
     }
