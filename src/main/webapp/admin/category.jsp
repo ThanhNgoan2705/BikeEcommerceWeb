@@ -21,6 +21,7 @@
 <!--Main Navigation-->
 <%@include file="/admin/default/header.jsp" %>
 <!--Main Navigation-->
+
 <!--Main layout-->
 <main class="mb-5">
     <!-- Container for demo purpose -->
@@ -37,18 +38,18 @@
                     </button>
                 </div>
                 <div class="card-body">
-                    <!-- Button trigger modal -->
-                    <div class="table-responsive">
-                        <table id="categoryTable" class="table table-hover flex-nowrap align-middle mb-0 bg-white "
-                               style="width: 100%"></table>
-                    </div>
-                </div>
-            </div>
-        </section>
+                    <!--   table category-->
+                       <div class="table-responsive">
+                           <table id="categoryTable" class="table table-hover flex-nowrap align-middle mb-0 bg-white "
+                                  style="width: 100%"></table>
+                       </div>
+                   </div>
+               </div>
+           </section>
 
-    </div>
-    <!--section pagination-->
-    <!--    add Category form-->
+       </div>
+
+       <!--    add Category form-->
     <div class="modal fade" id="addCategoryForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="container-sm modal-dialog">
             <div class="h-100 gradient-custom">
@@ -115,14 +116,27 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-primary w-50 h-25 m-lg-auto " type="submit">Add Category
-                            </button>
+                            <c:if test='${not haveUser}'>
+                                <div class="alert alert-danger" role="alert">
+                                    <i class="fa-solid fa-exclamation-circle"></i>
+                                    <strong>Warning!</strong> You don't have any user in system. Please add user first
+                                </div>
+                                <button class="btn btn-primary float-md-end" type="button" disabled>
+                                    <i class="fa-solid fa-plus"> Add Category</i>
+                                </button>
+                            </c:if>
+                            <c:if test='${haveUser}'>
+                            <button class="btn btn-primary float-md-end" type="submit">
+                                <i class="fa-solid fa-plus"> Add Category
+                                    </c:if>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    <!--    add Category form-->
+
     <!--   see and edit Category form-->
     <div class="modal fade" id="editCategoryForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="container-sm modal-dialog">
@@ -192,16 +206,32 @@
                             </div>
                         </div>
                         <div class="col-md-6 btnControl">
-                            <button class="btn btn-primary w-50 h-25 m-lg-auto editCategory" type="button">Edit
-                                Category
-                            </button>
+
+                            <c:if test='${not haveUser}'>
+                                <div class="alert alert-danger" role="alert">
+                                    <i class="fa-solid fa-exclamation-circle"></i>
+                                    <strong>Warning!</strong> You don't have any user in system. Please add user first
+                                </div>
+                                <button class="btn btn-primary float-md-end" type="button" disabled>
+                                    <i class="fa-solid fa-plus"> Edit Category</i>
+                                </button>
+                            </c:if>
+                            <c:if test='${haveUser}'>
+                                <button class="btn btn-primary w-50 h-25 m-lg-auto editCategory" type="button">Edit
+                                    Category
+                                </button>
+                            </c:if>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    <!--   see and edit Category form-->
+
 </main>
+<!--Main layout-->
+
 <!--Footer-->
 <footer></footer>
 <!--Footer-->
