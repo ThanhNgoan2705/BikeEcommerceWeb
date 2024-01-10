@@ -25,6 +25,8 @@
     <link rel="stylesheet prefetch"
           href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css">
 
+    <link rel="stylesheet" href=
+            "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <link href="/mdb/css/bootstrap.min.css" rel="stylesheet">
     <link href="/mdb/css/mdb.min.css" rel="stylesheet">
     <link href="/mdb/css/addons/compiled-addons-4.20.0.min.css">
@@ -32,18 +34,36 @@
     <link href="/mdb/css/default.css" rel="stylesheet">
     <link href="/mdb/css/styleKey.css" rel="stylesheet">
 
-    <link rel="stylesheet" href=
-            "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+
 
     <style>
 
         #datepicker {
-            width: 180px;
+            width: 150px;
         }
 
         #datepicker > span:hover {
             cursor: pointer;
         }
+
+        .disabled {
+            background-color: #ddd;
+            color: #888;
+        }
+        #tabKeyManagement #button-container-table {
+            display: flex;  /* Sử dụng Flexbox để giữ các phần tử trong một hàng */
+        }
+
+        #tabKeyManagement #button-container-table button {
+            margin-right: 10px;  /* Khoảng cách giữa các nút (tuỳ chọn) */
+
+        }
+        .inli{
+            display: inline-block;  /* Hoặc sử dụng display: inline; */
+            margin-right: 10px;
+
+        }
+
     </style>
 </head>
 
@@ -634,151 +654,185 @@
 
                     <!--Key Management-->
                     <div class="tab-pane fade" id="tabKeyManagement" role="tabpanel">
-                        <div>
+                        <div id="button-container-table">
                             <button class="btn createk" onclick="momodal()">Create Key</button>
-                        </div>
-                        <div>
+
                             <button class="btn importk" onclick="momodal2()">Import Key</button>
+
+                            <button class="btn revok" onclick="momodal3()">Revocation Key</button>
                         </div>
-                        <hr class="mb-4">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="table-wrap">
-                                    <table class="table table-dark">
-                                        <thead>
-                                        <tr class="bg-dark">
-                                            <th>STT</th>
-                                            <th>Name</th>
-                                            <th>Seri</th>
-                                            <th>Start Date</th>
-                                            <th>End Date</th>
-                                            <th></th>
-                                            <th></th>
-                                            <th>Status</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody id="myTable">
-                                        <c:forEach var="certView" items= "${certViews}">
-                                            <tr class="bg-primary">
+                        <!-- popup thong bao -->
 
 
-                                                <th scope="row">1</th>
-                                                <td>${certView.getName()}</td>
-                                                <td id="seri" name="seri">${certView.getSeri()}</td>
-                                                <td>${certView.getStartDate()}</td>
-                                                <td>${certView.getEndDate()}</td>
-                                                <td>
-                                                    <div id="datepicker" class="input-group date"
-                                                         data-date-format="mm-dd-yyyy">
-                                                        <input class="form-control" type="text" readonly/>
-                                                        <span class="input-group-addon">
-    <i class="fa fa-calendar" aria-hidden="true" id="revokedAt" name="revokedAt"></i>
-    </span>
-                                                    </div>
+            </div>
+            <hr class="mb-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-wrap">
+                        <table class="table table-dark">
+                            <thead>
+                            <tr class="bg-dark">
+                                <th>STT</th>
+                                <th>Name</th>
+                                <th>Seri</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody id="myTable" border="1">
+                            <c:forEach var="certView" items="${certViews}">
+                                <tr class="bg-primary bug">
 
-                                                </td>
-                                                <td><a href="#"><i class="fa fa-lock" aria-hidden="true"
-                                                                   onclick="disableAndColorRow(1)"></i></a></td>
-                                                <td>${certView.getStatus()}</td>
 
-                                            </tr>
-                                        </c:forEach>
+                                    <th scope="row">1</th>
+                                    <td>${certView.getName()}</td>
+                                    <td id="seri" name="seri">${certView.getSeri()}</td>
+                                    <td>${certView.getStartDate()}</td>
+                                    <td>${certView.getEndDate()}</td>
 
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+                                    <td>${certView.getStatus()}</td>
 
-                        <div class="nenmodal" id="nenmodal-1">
-                            <div class="nenmodal2"></div>
-                            <div class="ndmodal">
-                                <div class="closemodal">
-                                    <button onclick="momodal(), redirect('/user') ">×</button>
-                                </div>
-                                <div method="POST" id="contactForm" name="contactForm" class="contactForm">
-                                    <div class="fname">
-                                        <label class="labelname">Name</label>
-                                        <input id="inname" name="issuerName" type="text"
-                                               placeholder="Người dùng nhập tên để tạo cetificate">
-                                        <button class="btnblock" type="submit" onclick="createKey()">Create Key</button>
-                                    </div>
+                                </tr>
+                            </c:forEach>
 
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="group">
-                                                <label class="label1">Private Key</label>
-                                                <input type="text" class="form-control" id="privateKey">
-                                                <i class="fa fa-clone" onclick="" aria-hidden="true"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="group">
-                                                <label class="label1">Public Key</label>
-                                                <input type="text" class="form-control" id="publicKey">
-                                                <i class="fa fa-clone" aria-hidden="true"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="group">
-                                                <label class="label1">Certificate</label>
-                                                <input type="text" class="form-control" id="certificate">
-                                                <i class="fa fa-clone" aria-hidden="true"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- màn hình import key -->
-                        <div class="nenmodal" id="nenmodal-2">
-                            <div class="nenmodal2"></div>
-                            <div class="ndmodal">
-                                <div class="closemodal">
-                                    <button onclick="momodal2(), redirect('/user') ">×</button>
-                                </div>
-                                <div method="POST" id="contactForm2" name="contactForm" class="contactForm">
-
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="group">
-                                                <label class="label1">Name </label>
-                                                <input type="text" name="username" class="inpri" id="name2">
-
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="group">
-                                                <label class="label1">Public Key</label>
-                                                <input type="text" name="publickey" class="form-control"
-                                                       id="publicKey2">
-
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="group">
-                                                <label class="label1">Certificate</label>
-                                                <input type="text" class="form-control" id="certificate2">
-                                                <i class="fa fa-clone" aria-hidden="true"></i>
-                                            </div>
-                                        </div>
-                                        <button class="btnblock btncreate" type="submit" onclick="ImportKey()">Create
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            </tbody>
+                        </table>
 
                     </div>
-
                 </div>
-                <!-- Pills panels -->
             </div>
-        </div>
-        <!--Grid column-->
+
+            <div class="nenmodal" id="nenmodal-1">
+                <div class="nenmodal2"></div>
+                <div class="ndmodal">
+                    <div class="closemodal">
+                        <button onclick="momodal(), redirect('/user') ">×</button>
+                    </div>
+                    <div method="POST" id="contactForm" name="contactForm" class="contactForm">
+                        <div class="fname">
+                            <label class="labelname">Name</label>
+                            <input id="inname" name="issuerName" type="text"
+                                   placeholder="Người dùng nhập tên để tạo cetificate">
+                            <button class="btnblock" type="submit" onclick="createKey()">Create Key</button>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="group">
+                                    <label class="label1">Private Key</label>
+                                    <input type="text" class="form-control" id="privateKey">
+                                    <i class="fa fa-clone" onclick="" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="group">
+                                    <label class="label1">Public Key</label>
+                                    <input type="text" class="form-control" id="publicKey">
+                                    <i class="fa fa-clone" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="group">
+                                    <label class="label1">Certificate</label>
+                                    <input type="text" class="form-control" id="certificate">
+                                    <i class="fa fa-clone" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- màn hình import key -->
+            <div class="nenmodal" id="nenmodal-2">
+                <div class="nenmodal2"></div>
+                <div class="ndmodal">
+                    <div class="closemodal">
+                        <button onclick="momodal2()">×</button>
+                    </div>
+                    <div method="POST" id="contactForm2" name="contactForm" class="contactForm">
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="group">
+                                    <label class="label1">Name </label>
+                                    <input type="text" name="username" class="inpri" id="name2">
+
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="group">
+                                    <label class="label1">Public Key</label>
+                                    <input type="text" name="publickey" class="form-control"
+                                           id="publicKey2">
+
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="group">
+                                    <label class="label1">Certificate</label>
+                                    <input type="text" class="form-control" id="certificate2">
+                                    <i class="fa fa-clone" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <button class="btnblock btncreate" type="submit" onclick="ImportKey()">Create
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    <!-- màn hình revocation key -->
+                    <div class="nenmodal" id="nenmodal-3">
+                        <div class="nenmodal"></div>
+                        <div class="ndmodal">
+                            <div class="closemodal">
+                                <button onclick="momodal3()">×</button>
+                            </div>
+                            <div method="POST" id="contactForm3" name="contactForm" class="contactForm">
+
+                                <div class="row inli">
+                                    <div class="col">
+                                        <div class="group ">
+
+                                            <label class="label1">Ngày khóa </label>
+                                            <div id="datepicker" class="input-group date"
+                                                 data-date-format="mm-dd-yyyy">
+                                                <input class="form-control" type="text" readonly/>
+                                                <span class="input-group-addon">
+    <i class="fa fa-calendar" aria-hidden="true" id="revokedAt" onclick="applyDatepicker() "  name="revokedAt"></i>
+    </span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="group">
+                                            <label class="label">Số Seri</label>
+                                            <input type="text" class="form-control" id="seri2">
+
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="group">
+                                            <button class="btnblock btnrevo" type="submit" onclick="disableAndColorRow()">Khóa <i class="fa fa-lock  " aria-hidden="true" onclick="disableAndColorRow(1)"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
     </div>
-    <!--Grid row-->
+    <!-- Pills panels -->
+</div>
+</div>
+<!--Grid column-->
+
+</div>
+<!--Grid row-->
 </div>
 <!-- Main Container -->
 <!-- Footer -->
@@ -869,8 +923,8 @@
 
 </script>
 <script>
-    function redirect(url){
-        window.location.href= url;
+    function redirect(url) {
+        window.location.href = url;
     }
 </script>
 <script>
@@ -878,14 +932,39 @@
         document.getElementById("nenmodal-2").classList.toggle("active");
     }
 </script>
-<script type="text/javascript">
-    $(function () {
-        $("#datepicker").datepicker({
-            autoclose: true,
-            todayHighlight: true
-        }).datepicker('update', new Date());
-    });
+<script>
+    function momodal3() {
+        document.getElementById("nenmodal-3").classList.toggle("active");
+    }
 </script>
+
+<script>
+
+</script>
+<%--<script type="text/javascript">--%>
+<%--    function applyDatepicker() {--%>
+<%--            $("#datepicker").datepicker({--%>
+<%--                // autoclose: true,--%>
+<%--                // todayHighlight: true--%>
+<%--            }).datepicker('update', new Date());--%>
+<%--        }--%>
+<%--    // $(document).ready(function () {--%>
+<%--    //     // Lặp qua mỗi phần tử có class là "input-group date"--%>
+<%--    //     $('.input-group.date').each(function (index) {--%>
+<%--    //         applyDatepicker(index);--%>
+<%--    //     });--%>
+<%--    // });--%>
+<%--</script>--%>
+<%--<script>--%>
+<%--    function updateRowNumbers() {--%>
+<%--        var table = document.getElementById("myTable").getElementsByTagName('tbody')[0];--%>
+
+<%--        // Lặp qua tất cả các dòng và cập nhật số thứ tự--%>
+<%--        for (var i = 0; i < table.rows.length; i++) {--%>
+<%--            table.rows[i].cells[0].innerHTML = i + 1;--%>
+<%--        }--%>
+<%--    }--%>
+<%--</script>--%>
 //tao khoa
 <script type="text/javascript">
     function createKey() {
@@ -913,6 +992,7 @@
                 alert("Error creating RSA key pair.");
             }
         });
+        applyDatepicker();
     }
 </script>
 //import key
@@ -944,6 +1024,7 @@
                 alert("Error creating RSA key pair.");
             }
         });
+        applyDatepicker();
     }
 </script>
 <script type="text/javascript">
@@ -965,8 +1046,6 @@
             success: function (data) {
                 console.log("data" + data);
                 // Hiển thị thông tin khóa trên giao diện
-
-                $("#certificate2").val(data.cer);
 
 
             },
@@ -1003,7 +1082,7 @@
         // Disable the button
         for (var i = 0; i < row.cells.length; i++) {
             // Disable buttons or input fields within each cell
-            var button = row.cells[i].querySelector(".fa-lock");
+            var button = row.cells[i].querySelector(".btnblock.btnrevo");
             if (button) {
                 button.disabled = true;
             }
@@ -1012,8 +1091,16 @@
             row.classList.add("disabled");
         }
     }
-</script>
 
+</script>
+<script>
+    function applyDatepicker() {
+             $("#datepicker").datepicker({
+                  autoclose: true,
+                    todayHighlight: true
+               }).datepicker('update', new Date());
+     }
+</script>
 </body>
 </html>
 

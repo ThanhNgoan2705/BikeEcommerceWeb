@@ -37,9 +37,9 @@ public class CertViewService {
             if (revocationCert != null) {
                 temp.setStatus("Bị khóa");
             } else if (dateNow.after(dateAfter)) {
-                temp.setStatus("Het han");
+                temp.setStatus("Hết hạn");
             } else {
-                temp.setStatus("Hoat dong");
+                temp.setStatus("Hoạt Động");
             }
             certViews.add(temp);
         }
