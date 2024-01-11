@@ -797,9 +797,9 @@
                                             <label class="label1">Ngày khóa </label>
                                             <div id="datepicker" class="input-group date"
                                                  data-date-format="mm-dd-yyyy">
-                                                <input class="form-control" type="text" readonly/>
+                                                <input class="form-control" id="revokedAt" name="revokedAt" type="text" readonly/>
                                                 <span class="input-group-addon">
-    <i class="fa fa-calendar" aria-hidden="true" id="revokedAt" onclick="applyDatepicker() "  name="revokedAt"></i>
+    <i class="fa fa-calendar" aria-hidden="true"  onclick="applyDatepicker() "></i>
     </span>
                                             </div>
 
@@ -808,13 +808,13 @@
                                     <div class="col">
                                         <div class="group">
                                             <label class="label">Số Seri</label>
-                                            <input type="text" class="form-control" id="seri2">
+                                            <input type="text" class="form-control" name="seri2" id="seri2">
 
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="group">
-                                            <button class="btnblock btnrevo" type="submit" onclick="disableAndColorRow()">Khóa <i class="fa fa-lock  " aria-hidden="true" onclick="disableAndColorRow(1)"></i>
+                                            <button class="btnblock btnrevo" type="submit" onclick="revocation()">Khóa <i class="fa fa-lock  " aria-hidden="true" onclick="abc()"></i>
                                             </button>
                                         </div>
                                     </div>
@@ -1030,7 +1030,7 @@
 <script type="text/javascript">
 
     function revocation() {
-        var seri = document.getElementById("seri").value;
+        var seri2 = document.getElementById("seri2").value;
         var revokedAt = document.getElementById("revokedAt").value;
         console.log("ten" + username + "pub" + publickey);
         $.ajax({
@@ -1044,8 +1044,7 @@
             },
             contentType: "application/json",
             success: function (data) {
-                console.log("data" + data);
-                // Hiển thị thông tin khóa trên giao diện
+
 
 
             },
@@ -1068,31 +1067,31 @@
     })
 </script>
 
-<script>
-    function disableAndColorRow(rowNumber) {
-        // Get the table element by ID
-        var table = document.getElementById("myTable");
+<%--<script>--%>
+<%--    function disableAndColorRow(rowNumber) {--%>
+<%--        // Get the table element by ID--%>
+<%--        var table = document.getElementById("myTable");--%>
 
-        // Calculate the index of the row (zero-based index)
-        var rowIndex = rowNumber - 1;
+<%--        // Calculate the index of the row (zero-based index)--%>
+<%--        var rowIndex = rowNumber - 1;--%>
 
-        // Get the row by index
-        var row = table.rows[rowIndex];
+<%--        // Get the row by index--%>
+<%--        var row = table.rows[rowIndex];--%>
 
-        // Disable the button
-        for (var i = 0; i < row.cells.length; i++) {
-            // Disable buttons or input fields within each cell
-            var button = row.cells[i].querySelector(".btnblock.btnrevo");
-            if (button) {
-                button.disabled = true;
-            }
+<%--        // Disable the button--%>
+<%--        for (var i = 0; i < row.cells.length; i++) {--%>
+<%--            // Disable buttons or input fields within each cell--%>
+<%--            var button = row.cells[i].querySelector(".btnblock.btnrevo");--%>
+<%--            if (button) {--%>
+<%--                button.disabled = true;--%>
+<%--            }--%>
 
-            // Add a class to the entire row for styling
-            row.classList.add("disabled");
-        }
-    }
+<%--            // Add a class to the entire row for styling--%>
+<%--            row.classList.add("disabled");--%>
+<%--        }--%>
+<%--    }--%>
 
-</script>
+<%--</script>--%>
 <script>
     function applyDatepicker() {
              $("#datepicker").datepicker({
@@ -1100,6 +1099,17 @@
                     todayHighlight: true
                }).datepicker('update', new Date());
      }
+</script>
+<script>
+    function abc(){
+        if(confirm("Bấm vào nút OK để tiếp tục") == true){
+            document.getElementById("demo").innerHTML =
+                "Bạn muốn tiếp tục";
+        }else{
+            document.getElementById("demo").innerHTML =
+                "Bạn không muốn tiếp tục";
+        }
+    }
 </script>
 </body>
 </html>
