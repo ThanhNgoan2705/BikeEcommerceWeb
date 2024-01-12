@@ -57,9 +57,9 @@
                             <a id="cart-quantity"
                                class="nav-link dark-grey-text font-weight-bold waves-effect waves-light"
                                href="/user/getCart">
-                                <span class="number badge rounded-pill bg-danger">${cartTotal}</span>
                                 <i class="fas fa-shopping-cart blue-text"></i>
-                                Cart</a>
+                                <span class="number badge rounded-pill bg-danger">${cartTotal}</span>
+                            </a>
                         </li>
                         <li class="nav-item dropdown ml-5 mt-5">
                             <a class="nav-link dropdown-toggle dark-grey-text font-weight-bold" id="userAccount"

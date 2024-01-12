@@ -19,7 +19,7 @@ public class LogoutController extends HttpServlet {
         logout(req, resp);
     }
     private void logout(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        req.getSession().invalidate();
-        resp.sendRedirect("home");
+        req.getSession().setAttribute("userId", null);
+        resp.sendRedirect("/login");
     }
 }

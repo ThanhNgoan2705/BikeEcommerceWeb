@@ -21,6 +21,12 @@ public class LoginController extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Token token = null;
+        HttpSession session = request.getSession();
+        String userId = (String) session.getAttribute("userId");
+        if (userId==null){
+            request.getRequestDispatcher("/logIn.jsp").forward(request, response);
+            return;
+        }
         try {
             Cookie[] cookieArr = request.getCookies();
             Cookie cookie = null;
@@ -41,15 +47,12 @@ public class LoginController extends HttpServlet {
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
             throw new RuntimeException(e);
         }
-        if (token != null) {
-            HttpSession session = request.getSession(true);
-            System.out.println("userId: " + token.getUserId());
-            session.setAttribute("user", token);
-            session.setAttribute("userId", token.getUserId());
-            session.setAttribute("haveUser", true);
-            session.setAttribute("userName", token.getUserName());
+        if (token != null && userId!=null) {
+            response.sendRedirect("/home");
+            return;
         }
-        request.getRequestDispatcher("logIn.jsp").forward(request, response);
+
+        request.getRequestDispatcher("/logIn.jsp").forward(request, response);
     }
 
 
@@ -69,13 +72,13 @@ public class LoginController extends HttpServlet {
                 resp.addCookie(cookie);
                 System.out.println(cookie.getValue() + " login cookies");
                 HttpSession session = req.getSession(true);
-                session.setAttribute("user", user);
+//                session.setAttribute("user", user);
                 session.setAttribute("userId", user.getUserId());
-                session.setAttribute("haveUser", true);
-                session.setAttribute("userName", user.getUserName());
-                System.out.println("Login success");
-                System.out.println("user: " + user);
-                System.out.println("role: " + user.getRole());
+//                session.setAttribute("haveUser", true);
+//                session.setAttribute("userName", user.getUserName());
+//                System.out.println("Login success");
+//                System.out.println("user: " + user);
+//                System.out.println("role: " + user.getRole());
                 if (user.getRole() == 1) {
                     resp.sendRedirect("/home");
                 } else if (user.getRole() == 2) {

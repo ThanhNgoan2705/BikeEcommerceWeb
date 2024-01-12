@@ -162,13 +162,10 @@ function showForm() {
 }
 </script>
 <script>
-    var input = document.querySelector('input#code');
     function copyCode() {
-        var text = input.value;
-        console.log(text);
-        text.select();
-        text.setSelectionRange(0, 99999)
-        document.execCommand("copy");
+        var code = document.getElementById("code").value;
+        // write code to clipboard
+        navigator.clipboard.writeText(code);
         alert("Copied successfully");
     }
 </script>

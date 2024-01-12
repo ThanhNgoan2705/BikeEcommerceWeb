@@ -27,7 +27,7 @@ public class OrderController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try {
+          resp.setCharacterEncoding("UTF-8");
             Token token = (Token) req.getAttribute("token");
             String queryString = req.getQueryString();
             System.out.println("queryString: " + queryString);
@@ -49,7 +49,6 @@ public class OrderController extends HttpServlet {
                         hashCode = hash.hash(code);
                         req.setAttribute("code", hashCode);
                         req.setAttribute("order", order);
-                        req.getRequestDispatcher("/orderVerification.jsp").forward(req, resp);
                     } catch (NoSuchAlgorithmException e) {
                         throw new RuntimeException(e);
                     } catch (NoSuchProviderException e) {
@@ -58,9 +57,6 @@ public class OrderController extends HttpServlet {
                 }
             }
             req.getRequestDispatcher("/orderVerification.jsp").forward(req, resp);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
