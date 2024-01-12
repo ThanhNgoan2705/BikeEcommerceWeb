@@ -697,22 +697,22 @@
                             <div class="col">
                                 <div class="group">
                                     <label class="label1">Private Key</label>
-                                    <input type="text" class="form-control" id="privateKey">
-                                    <i class="fa fa-clone" onclick="" aria-hidden="true"></i>
+                                    <input type="text" class="form-control" id="privateKey" value="" >
+
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="group">
                                     <label class="label1">Public Key</label>
                                     <input type="text" class="form-control" id="publicKey">
-                                    <i class="fa fa-clone" aria-hidden="true"></i>
+
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="group">
                                     <label class="label1">Certificate</label>
                                     <input type="text" class="form-control" id="certificate">
-                                    <i class="fa fa-clone" aria-hidden="true"></i>
+
                                 </div>
                             </div>
                         </div>
@@ -748,7 +748,7 @@
                                 <div class="group">
                                     <label class="label1">Certificate</label>
                                     <input type="text" class="form-control" id="certificate2">
-                                    <i class="fa fa-clone" aria-hidden="true"></i>
+
                                 </div>
                             </div>
                             <button class="btnblock btncreate" type="submit" onclick="ImportKey()">Create
@@ -914,33 +914,7 @@
     }
 </script>
 
-<script>
 
-</script>
-<%--<script type="text/javascript">--%>
-<%--    function applyDatepicker() {--%>
-<%--            $("#datepicker").datepicker({--%>
-<%--                // autoclose: true,--%>
-<%--                // todayHighlight: true--%>
-<%--            }).datepicker('update', new Date());--%>
-<%--        }--%>
-<%--    // $(document).ready(function () {--%>
-<%--    //     // Lặp qua mỗi phần tử có class là "input-group date"--%>
-<%--    //     $('.input-group.date').each(function (index) {--%>
-<%--    //         applyDatepicker(index);--%>
-<%--    //     });--%>
-<%--    // });--%>
-<%--</script>--%>
-<%--<script>--%>
-<%--    function updateRowNumbers() {--%>
-<%--        var table = document.getElementById("myTable").getElementsByTagName('tbody')[0];--%>
-
-<%--        // Lặp qua tất cả các dòng và cập nhật số thứ tự--%>
-<%--        for (var i = 0; i < table.rows.length; i++) {--%>
-<%--            table.rows[i].cells[0].innerHTML = i + 1;--%>
-<%--        }--%>
-<%--    }--%>
-<%--</script>--%>
 //tao khoa
 <script type="text/javascript">
     function createKey() {
@@ -1040,31 +1014,7 @@
     })
 </script>
 
-<%--<script>--%>
-<%--    function disableAndColorRow(rowNumber) {--%>
-<%--        // Get the table element by ID--%>
-<%--        var table = document.getElementById("myTable");--%>
 
-<%--        // Calculate the index of the row (zero-based index)--%>
-<%--        var rowIndex = rowNumber - 1;--%>
-
-<%--        // Get the row by index--%>
-<%--        var row = table.rows[rowIndex];--%>
-
-<%--        // Disable the button--%>
-<%--        for (var i = 0; i < row.cells.length; i++) {--%>
-<%--            // Disable buttons or input fields within each cell--%>
-<%--            var button = row.cells[i].querySelector(".btnblock.btnrevo");--%>
-<%--            if (button) {--%>
-<%--                button.disabled = true;--%>
-<%--            }--%>
-
-<%--            // Add a class to the entire row for styling--%>
-<%--            row.classList.add("disabled");--%>
-<%--        }--%>
-<%--    }--%>
-
-<%--</script>--%>
 <script>
     function applyDatepicker() {
              $("#datepicker").datepicker({
@@ -1084,6 +1034,7 @@
         }
     }
 </script>
+
 </body>
 </html>
 
