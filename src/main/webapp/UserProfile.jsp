@@ -30,41 +30,14 @@
     <link href="/mdb/css/bootstrap.min.css" rel="stylesheet">
     <link href="/mdb/css/mdb.min.css" rel="stylesheet">
     <link href="/mdb/css/addons/compiled-addons-4.20.0.min.css">
+    <link href="/mdb/css/manakey.css" rel="stylesheet">
     <link href="/mdb/css/style.css" rel="stylesheet">
     <link href="/mdb/css/default.css" rel="stylesheet">
-    <link href="/mdb/css/styleKey.css" rel="stylesheet">
 
 
 
-    <style>
 
-        #datepicker {
-            width: 150px;
-        }
 
-        #datepicker > span:hover {
-            cursor: pointer;
-        }
-
-        .disabled {
-            background-color: #ddd;
-            color: #888;
-        }
-        #tabKeyManagement #button-container-table {
-            display: flex;  /* Sử dụng Flexbox để giữ các phần tử trong một hàng */
-        }
-
-        #tabKeyManagement #button-container-table button {
-            margin-right: 10px;  /* Khoảng cách giữa các nút (tuỳ chọn) */
-
-        }
-        .inli{
-            display: inline-block;  /* Hoặc sử dụng display: inline; */
-            margin-right: 10px;
-
-        }
-
-    </style>
 </head>
 
 <body class="homepage-v1 hidden-sn white-skin animated">
@@ -653,8 +626,8 @@
                     </div>
 
                     <!--Key Management-->
-                    <div class="tab-pane fade" id="tabKeyManagement" role="tabpanel">
-                        <div id="button-container-table">
+                    <div class="tab-pane fade key" id="tabKeyManagement" role="tabpanel">
+                        <div id="keymana">
                             <button class="btn createk" onclick="momodal()">Create Key</button>
 
                             <button class="btn importk" onclick="momodal2()">Import Key</button>
@@ -710,14 +683,17 @@
                         <button onclick="momodal(), redirect('/user') ">×</button>
                     </div>
                     <div method="POST" id="contactForm" name="contactForm" class="contactForm">
-                        <div class="fname">
-                            <label class="labelname">Name</label>
-                            <input id="inname" name="issuerName" type="text"
-                                   placeholder="Người dùng nhập tên để tạo cetificate">
-                            <button class="btnblock" type="submit" onclick="createKey()">Create Key</button>
-                        </div>
+
 
                         <div class="row">
+                            <div class="col">
+                                <div class="group">
+                                <label class="label1">Name</label>
+                                <input  class="inputname" id="inname" name="issuerName" type="text"
+                                       placeholder="Người dùng nhập tên để tạo cetificate">
+                                <button class="btnblock" type="submit" onclick="createKey()">Create Key</button>
+                            </div>
+                            </div>
                             <div class="col">
                                 <div class="group">
                                     <label class="label1">Private Key</label>
