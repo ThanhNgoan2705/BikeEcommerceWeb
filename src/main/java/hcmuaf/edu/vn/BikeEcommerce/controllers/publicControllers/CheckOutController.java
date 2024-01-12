@@ -65,6 +65,7 @@ public class CheckOutController extends HttpServlet {
         String addressId = req.getParameter("addressId");
         double shippingFee = 100000.0;
         String orderId = cartService.saveCartItemIntoOrder(userId, addressId, shippingFee);
+        System.out.println("orderId: " + orderId);
         resp.sendRedirect(req.getContextPath() + "/user/order?orderId=" + orderId);
 
     }

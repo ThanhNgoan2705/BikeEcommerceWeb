@@ -49,12 +49,11 @@
         <div class="row">
             <!--Grid column-->
             <div class="col-lg-8 mb-4">
-                <a class="nav-link active" data-toggle="tab" href="#tabCheckoutBilling123" role="tab">1.
-                    Billing</a>
+                <a class="nav-link active" data-toggle="tab" href="#verify-order" role="tab">Order Verification</a>
                 <!-- Pills panels -->
                 <div class="tab-content pt-4">
                     <!--Panel 1-->
-                    <div class="tab-pane fade in show active" id="tabCheckoutBilling123" role="tabpanel">
+                    <div class="tab-pane fade in show active" id="verify-order" role="tabpanel">
                         <!--Card content-->
                         <hr>
                         <div class="row">
