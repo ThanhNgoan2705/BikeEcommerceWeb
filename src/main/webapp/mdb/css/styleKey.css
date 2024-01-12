@@ -1,11 +1,11 @@
 
     /* CSS nền hiển thị Modal */
-    .btn {
-        width: 150px;
-        height: 50px;
-        background-color: #0a47a9;
-        display:block;
-    }
+    /*.btn {*/
+    /*    width: 150px;*/
+    /*    height: 50px;*/
+    /*    background-color: #0a47a9;*/
+    /*    display:block;*/
+    /*}*/
 .nenmodal .nenmodal2 {
     position:fixed;
     top:0px;
@@ -87,6 +87,7 @@
     display: flex;
 
 }
+
 .contactForm .label1 {
     color: #000;
     text-transform: uppercase;
@@ -110,8 +111,9 @@
     cursor: pointer;
 }
 
+
     #datepicker{
-        width:180px;
+        width:100px;
         margin: 0 20px 20px 20px;
     }
     #datepicker > span:hover{
@@ -132,7 +134,10 @@
 
 
 }
+
     .disabled {
         background-color: #ddd;
         color: #888;
     }
+
+
