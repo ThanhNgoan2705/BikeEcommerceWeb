@@ -4,11 +4,13 @@ import hcmuaf.edu.vn.BikeEcommerce.model.Address;
 import hcmuaf.edu.vn.BikeEcommerce.model.Favorite;
 import hcmuaf.edu.vn.BikeEcommerce.model.Order;
 import hcmuaf.edu.vn.BikeEcommerce.model.User;
+import hcmuaf.edu.vn.BikeEcommerce.model.digitSig.CertView;
 import hcmuaf.edu.vn.BikeEcommerce.model.sercurity.Token;
 import hcmuaf.edu.vn.BikeEcommerce.service.AddressService;
 import hcmuaf.edu.vn.BikeEcommerce.service.FavoriteService;
 import hcmuaf.edu.vn.BikeEcommerce.service.OrderService;
 import hcmuaf.edu.vn.BikeEcommerce.service.UserService;
+import hcmuaf.edu.vn.BikeEcommerce.service.digitSig.CertViewService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,6 +36,7 @@ public class UserController extends HttpServlet {
             List<Address> addressList = AddressService.getInstance().getAllAddressByUserId(token.getUserId());
             List<Order> orderList = OrderService.getInstance().getAllOrderByUserId(token.getUserId());
             List<Favorite> favoriteList = FavoriteService.getInstance().getFavoriteByUserId(token.getUserId());
+            List<CertView> certViews = CertViewService.getCertViewFormUserId(token.getUserId());
             String email = user.getEmail();
             String[] emailSplit = email.split("@");
             String emailShow = emailSplit[0].substring(0, 3) + "****" + emailSplit[0].substring(emailSplit[0].length() - 3) + "@" + emailSplit[1];
@@ -44,6 +47,8 @@ public class UserController extends HttpServlet {
             req.setAttribute("user", user);
             req.setAttribute("emailShow", emailShow);
             req.setAttribute("name", name);
+
+            req.setAttribute("certViews",certViews);
         }
         req.getRequestDispatcher("/UserProfile.jsp").forward(req, resp);
     }

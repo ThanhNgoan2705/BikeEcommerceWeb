@@ -28,12 +28,13 @@ public class UserSeriService {
 
     public static void main(String[] args) {
         UserSeriService userSeriService=UserSeriService.getInstance();
-        UserSeri userSeri=new UserSeri();
-        userSeri.setUserId("1");
-        userSeri.setSeri("123");
-        userSeriService.insert(userSeri);
-        System.out.println(userSeriService.checkSeriAndUser("1","123"));
-        System.out.println(userSeriService.getAllSeriOfUser("1"));
+//        UserSeri userSeri=new UserSeri();
+//        userSeri.setUserId("1");
+//        userSeri.setSeri("123");
+//        userSeriService.insert(userSeri);
+//        System.out.println(userSeriService.checkSeriAndUser("1","123"));
+
+        System.out.println(userSeriService.getAllSeriOfUser("94face32-ca88-4729-b3de-b34a0e390e48").size());
     }
 
 }
