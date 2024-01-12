@@ -1,8 +1,10 @@
 package hcmuaf.edu.vn.BikeEcommerce.controllers.userController;
 
+import hcmuaf.edu.vn.BikeEcommerce.model.digitSig.CertView;
 import com.google.gson.Gson;
 import hcmuaf.edu.vn.BikeEcommerce.model.*;
 import hcmuaf.edu.vn.BikeEcommerce.model.sercurity.Token;
+import hcmuaf.edu.vn.BikeEcommerce.service.digitSig.CertViewService;
 import hcmuaf.edu.vn.BikeEcommerce.service.*;
 
 import javax.servlet.ServletException;
@@ -45,6 +47,7 @@ public class UserController extends HttpServlet {
             List<Address> addressList = addressService.getAllAddressByUserId(token.getUserId());
             List<Order> orderList = orderService.getAllOrderByUserId(token.getUserId());
             List<Favorite> favoriteList = favoriteService.getFavoriteByUserId(token.getUserId());
+            List<CertView> certViews = CertViewService.getCertViewFormUserId(token.getUserId());
             Cart cart = cartService.getCartByKey(token.getUserId());
             int cartTotal = 0;
             if (cart != null) {
@@ -56,14 +59,13 @@ public class UserController extends HttpServlet {
             String[] emailSplit = email.split("@");
             String emailShow = emailSplit[0].substring(0, 3) + "****" + emailSplit[0].substring(emailSplit[0].length() - 3) + "@" + emailSplit[1];
             String name = user.getUserName();
-            String data = gson.toJson(orderList);
-            resp.getWriter().write(data);
-            System.out.println("order" + data);
             req.setAttribute("favoriteList", favoriteList);
             req.setAttribute("addressList", addressList);
             req.setAttribute("orderList", orderList);
             req.setAttribute("user", user);
             req.setAttribute("emailShow", emailShow);
+            req.setAttribute("name", name);
+            req.setAttribute("certViews",certViews);
             req.setAttribute("userName", name);
             req.setAttribute("haveUser", true);
         }

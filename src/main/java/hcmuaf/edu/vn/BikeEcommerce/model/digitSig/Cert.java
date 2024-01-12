@@ -4,6 +4,7 @@ import vn.edu.atbmmodel.key.KeyGen;
 
 import java.security.PublicKey;
 import java.security.cert.Certificate;
+import java.util.Base64;
 
 public class Cert {
     String seri;
@@ -57,7 +58,7 @@ public class Cert {
     }
 
     public Certificate getCertificate() {
-        byte[] certBytes = certValue.getBytes();
+        byte[] certBytes = Base64.getDecoder().decode(certValue);
         certificate = KeyGen.getInstance().getCertificateFormBytes(certBytes);
         return certificate;
     }
@@ -67,7 +68,7 @@ public class Cert {
     }
 
     public PublicKey getKey() {
-        byte[] keyBytes = publicKey.getBytes();
+        byte[] keyBytes = Base64.getDecoder().decode(publicKey);
         Key = KeyGen.getInstance().getPublicKeyformBytes(keyBytes);
         return Key;
     }
