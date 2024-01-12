@@ -1032,15 +1032,14 @@
     function revocation() {
         var seri2 = document.getElementById("seri2").value;
         var revokedAt = document.getElementById("revokedAt").value;
-        console.log("ten" + username + "pub" + publickey);
+
         $.ajax({
-            url: "/user/importKey",
+            url: "/user/RevocationCert",
             method: "GET",
-            type: 'POST',
             dataType: "json",
             data: {
-                username: seri,
-                publickey: revokedAt,
+                seri2: seri2,
+                revokedAt: revokedAt,
             },
             contentType: "application/json",
             success: function (data) {
@@ -1048,9 +1047,7 @@
 
 
             },
-            error: function () {
-                alert("Error creating RSA key pair.");
-            }
+
         });
     }
 </script>
