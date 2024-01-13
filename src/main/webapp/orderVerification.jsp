@@ -13,17 +13,18 @@
     <title>Xe Điện Long Vũ</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%--    fontAwesome--%>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
             rel="stylesheet"
     />
-    <%--    MDB CSS--%>
-    <style>INPUT:-webkit-autofill,SELECT:-webkit-autofill,TEXTAREA:-webkit-autofill{animation-name:onautofillstart}INPUT:not(:-webkit-autofill),SELECT:not(:-webkit-autofill),TEXTAREA:not(:-webkit-autofill){animation-name:onautofillcancel}@keyframes onautofillstart{}@keyframes onautofillcancel{}</style>
-    <link href="/mdb/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/mdb/css/mdb.min.css" rel="stylesheet">
-    <link href="/mdb/css/addons/compiled-addons-4.20.0.min.css">
+    <link rel="stylesheet"
+          href="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/css/mdb.min.css">
+    <link rel="stylesheet"
+          href="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/docs-app/css/compiled-addons-4.20.0.min.css">
     <link href="/mdb/css/style.css" rel="stylesheet">
     <link href="/mdb/css/default.css" rel="stylesheet">
 
@@ -49,38 +50,54 @@
         <div class="row">
             <!--Grid column-->
             <div class="col-lg-8 mb-4">
-                <a class="nav-link active" data-toggle="tab" href="#verify-order" role="tab">Order Verification</a>
+                <p class="nav-link active" data-toggle="tab" href="#verify-order" role="tab">Order Verification- Order: <span class="btn-primary" id="orderId">${order.orderId}</span></p>
+                <span class="clearfix"></span>
                 <!-- Pills panels -->
                 <div class="tab-content pt-4">
                     <!--Panel 1-->
                     <div class="tab-pane fade in show active" id="verify-order" role="tabpanel">
                         <!--Card content-->
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-12 mb-3">
-                                <label for="code">Code</label>
-                                <input type="text" class="form-control" id="code" placeholder=""  value="${code}" required>
-                                <button class="btn btn-primary " onclick="copyCode()">Copy Code</button>
-                                <small class="text-muted">Get the code to sign, please </small>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 mb-3">
-                                <label for="signature">Your Signature</label>
-                                <input type="text" class="form-control" id="signature" placeholder="" required>
-                                <small class="text-muted">Input your signature to verify </small>
-                                <div class="invalid-feedback">
-                                    Signature is required
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-md-12 text-left">
+                                    <h4 class="font-weight-bold mb-4 text-muted">Get the code to sign, please</h4>
+                                    <div class="input-group mb-4">
+                                        <input type="text" class="form-control" id="code" placeholder="" value="${code}"
+                                               required aria-describedby="button-addon2">
+                                        <div class="input-group-append">
+                                            <button id="button-addon2"
+                                                    class="btn btn-md btn-outline-default m-0 px-3 py-2 z-depth-0 waves-effect"
+                                                    onclick="copyCode()">Copy
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!--/.Panel 1-->
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <form>
+                                    <div class="file-field">
+                                        <div class="btn btn-primary btn-sm float-left">
+                                            <span>Choose file</span>
+                                            <input type="file">
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                            <input class="file-path validate" id="signatureFile" type="text"
+                                                   placeholder="Upload your signature file">
+                                        </div>
+                                    </div>
+                                        <div class="col-lg-3">
+                                        <button class="btn btn-primary btn-lg btn-block" onclick="verifyFile()">Verify</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
                     </div>
-                    <!-- Pills panels -->
+                    <!--/.Panel 1-->
                 </div>
+                <!-- Pills panels -->
             </div>
             <!--Grid column-->
-
             <!--Grid column-->
             <div class="col-lg-4 mb-4">
                 <!--Card-->
@@ -143,24 +160,12 @@
         </div>
         <!--Grid row-->
     </div>
+    <!-- Main Container -->
 </div>
-<!-- Main Container -->
-
 
 <!-- Footer -->
 <%@include file="default/footer.jsp" %>
 <!-- Footer -->
-<script>// show form add new address when chose option add new address
-document.getElementById("chooseAddress").addEventListener("change", showForm);
-function showForm() {
-    var x = document.getElementById("chooseAddress").value;
-    if (x === "addNewAddress") {
-        document.getElementById("newAddress").style.display = "block";
-    } else {
-        document.getElementById("newAddress").style.display = "none";
-    }
-}
-</script>
 <script>
     function copyCode() {
         var code = document.getElementById("code").value;
@@ -169,63 +174,65 @@ function showForm() {
         alert("Copied successfully");
     }
 </script>
-<script src="/mdb/js/popper.min.js"></script>
-<script src="/mdb/js/jquery.min.js"></script>
-<script src="/mdb/js/bootstrap.min.js"></script>
-<script src="/mdb/js/mdb.min.js"></script>
-<script type="text/javascript">
-    /* WOW.js init */
-    new WOW().init();
-
-    // Tooltips Initialization
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    })
-
-    // Material Select Initialization
-    $(document).ready(function () {
-
-        $('.mdb-select').material_select();
-    });
-
-    // SideNav Initialization
-    $(".button-collapse").sideNav();
-
-</script>
+<script type="text/javascript"
+        src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/js/jquery.min.js"></script>
+<script type="text/javascript"
+        src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/js/popper.min.js"></script>
+<script type="text/javascript"
+        src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+        src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/js/mdb.min.js"></script>
+<script type="text/javascript"
+        src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/docs-app/js/bundles/4.20.0/compiled-addons.min.js"></script>
+<script src="/mdb/js/default.js"></script>
 <script>
-    function addTocart(productId) {
-        // cộng thêm 1 vào giỏ hàng
-        $.ajax({
-            url: "/user/addProductToCart",
-            type: "POST",
-            data: {
-                productId: productId,
-                quantity: 1
-            },
-            success: function (data) {
-                var itemCount = parseInt($(".number").text());
-                var flyNumber = $('<span class="fly-number">'+(itemCount+1)+'</span>');
-                // get button add position
-                var position = $('.addToCart').offset();
-                // set the animation's start position
-                flyNumber.css({
-                    top: position.top ,
-                    left: position.left
-                });
-                $('.shopping-cart').append(flyNumber);
-                setTimeout(function () {
-                    $('.number').text(itemCount+1);
-                    flyNumber.remove();
-                },1000);
-                console.log(data);
-            },
-            error: function (data) {
-                console.log(data);
+    function verifyFile() {
+        var code = document.getElementById("code").value;
+        var signatureFile = document.getElementById("signatureFile");
+        var orderId = document.getElementById("orderId").value;
+        var file = signatureFile.files[0];
+        if(file){
+            var reader = new FileReader();
+            // read file as byte array
+            reader.readAsArrayBuffer(file);
+            reader.onload = function (evt) {
+                var arrayBuffer = reader.result;
+                console.log(signature);
+                if (checkValid(code, signature)) {
+                    $.ajax({
+                        type: "POST",
+                        url: "/api/check-signature",
+                        data: {
+                            code: code,
+                            orderId: orderId,
+                            signature: arrayBuffer
+                        },
+                        success: function (data) {
+                            if (data === "true") {
+                                alert("Verify successfully");
+                            } else {
+                                alert("Verify failed");
+                            }
+                        }
+                    });
+                }
             }
-        });
-
+            reader.onerror = function (evt) {
+                alert("error reading file");
+            }
+        }
+        if (code == null || code == "") {
+            alert("Code is null");
+            return false;
+        }
+        if (signatureFile == null || signatureFile == "") {
+            alert("Please upload your signature file");
+            return false;
+        }
+        return true;
+        console.log(code);
+        console.log(signatureFile);
     }
 </script>
-<script src="/mdb/js/default.js"></script>
 </body>
 </html>
