@@ -10,8 +10,8 @@ import hcmuaf.edu.vn.BikeEcommerce.service.digitSig.RevocationCertService;
 import hcmuaf.edu.vn.BikeEcommerce.service.digitSig.UserSeriService;
 import netscape.javascript.JSObject;
 import org.bouncycastle.operator.OperatorCreationException;
-import vn.edu.atbmmodel.key.KeyGen;
-import vn.edu.atbmmodel.publicKey.RSA;
+import hcmuaf.edu.vn.BikeEcommerce.atbm.KeyGen;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.math.BigInteger;
 import java.security.*;
@@ -37,13 +38,14 @@ public class UserKey extends HttpServlet {
     PublicKey publicKey;
     PrivateKey privateKey;
     Certificate certificate;
-CertService certService;
-UserSeriService userSeriService;
+    CertService certService;
+    UserSeriService userSeriService;
 
     JsonObject json;
 
 
     public void init() throws ServletException {
+
         gson = new Gson();
         json = new JsonObject();
         keyGen = KeyGen.getInstance();
@@ -71,11 +73,14 @@ UserSeriService userSeriService;
         String pubKey = Base64.getEncoder().encodeToString(publicKey.getEncoded());
         String priKey = Base64.getEncoder().encodeToString(privateKey.getEncoded());
         String issuerName = request.getParameter("issuerName");
-        System.out.println(issuerName+":  userkeyy ");
 
-        byte[] privateBytes = new FileInputStream("T:\\CKAT\\src\\main\\privateInfo\\GreenLockPrivateKey.key").readAllBytes();
+
+        InputStream inputStream = UserKey.class.getResourceAsStream("/privateInfo/GreenLockPrivateKey.key");
+        byte[] privateBytes = inputStream.readAllBytes();
+
         PrivateKey privateKey1 = KeyGen.getInstance().getPrivateKeyformBytes(privateBytes);
         String cer;
+
         try {
             certificate = KeyGen.getInstance().genCertificate(privateKey1, publicKey, issuerName, serial1);
             cer = Base64.getEncoder().encodeToString(certificate.getEncoded());
@@ -86,21 +91,23 @@ UserSeriService userSeriService;
         } catch (CertificateException e) {
             throw new RuntimeException(e);
         }
-try {
-    Cert cert = new Cert();
-    cert.setSeri(String.valueOf(serial));
-    cert.setPublicKey(pubKey);
-    cert.setCertValue(cer);
+        try {
+            Cert cert = new Cert();
+            cert.setSeri(String.valueOf(serial));
+            cert.setPublicKey(pubKey);
+            cert.setCertValue(cer);
 
-    certService.insert(cert);
-    UserSeri userSeri = new UserSeri();
-    userSeri.setUserId(token.getUserId());
-    userSeri.setSeri(String.valueOf(serial));
+            certService.insert(cert);
+            UserSeri userSeri = new UserSeri();
+            userSeri.setUserId(token.getUserId());
+            userSeri.setSeri(String.valueOf(serial));
 
-    userSeriService.insert(userSeri);
-}catch (Exception e){
-    System.out.println(e.getMessage());
-}
+            userSeriService.insert(userSeri);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        inputStream.close();
 
         json.addProperty("pubKey", pubKey);
         json.addProperty("priKey", priKey);

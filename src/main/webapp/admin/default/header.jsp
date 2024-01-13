@@ -36,7 +36,7 @@
                     <i class="fas fa-plus fa-fw me-3"></i><span>Category</span></a>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="/admin/brand.jsp">
+                <a class="sidenav-link" href="/admin/brand">
                     <i class="fas fa-plus fa-fw me-3"></i><span>Brand</span></a>
             </li>
             <li class="sidenav-item">

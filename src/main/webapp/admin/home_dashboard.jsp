@@ -11,11 +11,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
           integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap">
     <link rel="stylesheet" href="/admin/assert/css/all.min.css">
     <link rel="stylesheet" href="/admin/assert/css/mdb.min.css">
     <link rel="stylesheet" href="/admin/assert/css/home.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
 </head>
 <body>
 <!--Main Navigation-->
@@ -64,7 +64,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                       <table id="categoryTable" class="table table-hover flex-nowrap" style="width: 100%"></table>
+                        <table id="categoryTable" class="table table-hover flex-nowrap" style="width: 100%"></table>
                     </div>
                 </div>
             </div>
@@ -74,133 +74,11 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table text-nowrap table-borderless table-striped table-hover align-middle mb-0 bg-white">
-                            <thead class="">
-                            <tr class="">
-                                <th>ID Order</th>
-                                <th>Price</th>
-                                <th>Status</th>
-                                <th>Date</th>
-                                <th>Actions</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <div class="ms-3">
-                                            <p class="fw-bold mb-1">DH001</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <p class="fw-normal mb-0">$62,456.24</p>
-                                </td>
-                                <td>
-                    <span class="text-success">
-                      <span>delivered</span></span>
-                                </td>
-                                <td>
-                                    <p class="fw-normal mb-1">27/02/2023</p>
-                                </td>
-                                <td>
-                                    <!--  orderDetail-->
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn" data-mdb-toggle="modal"
-                                            data-mdb-target="#seeDetailOrder">
-                                        <i class="fa-solid fa-eye"></i>
-                                    </button>
-                                    <!-- Modal -->
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <div class="ms-3">
-                                            <p class="fw-bold mb-1">DH001</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <p class="fw-normal mb-0">$62,456.24</p>
-                                </td>
-                                <td>
-                    <span class="text-success">
-                      <span>delivered</span></span>
-                                </td>
-                                <td>
-                                    <p class="fw-normal mb-1">27/02/2023</p>
-                                </td>
-                                <td>
-                                    <!--  orderDetail-->
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn" data-mdb-toggle="modal"
-                                            data-mdb-target="#seeDetailOrder">
-                                        <i class="fa-solid fa-eye"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <div class="ms-3">
-                                            <p class="fw-bold mb-1">DH001</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <p class="fw-normal mb-0">$62,456.24</p>
-                                </td>
-                                <td>
-                    <span class="text-success">
-                      <span>delivered</span></span>
-                                </td>
-                                <td>
-                                    <p class="fw-normal mb-1">27/02/2023</p>
-                                </td>
-                                <td>
-                                    <!--  orderDetail-->
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn" data-mdb-toggle="modal"
-                                            data-mdb-target="#seeDetailOrder">
-                                        <i class="fa-solid fa-eye"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <div class="ms-3">
-                                            <p class="fw-bold mb-1">DH001</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <p class="fw-normal mb-0">$62,456.24</p>
-                                </td>
-                                <td>
-                    <span class="text-success">
-                      <span>delivered</span></span>
-                                </td>
-                                <td>
-                                    <p class="fw-normal mb-1">27/02/2023</p>
-                                </td>
-                                <td>
-                                    <!--  orderDetail-->
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn" data-mdb-toggle="modal"
-                                            data-mdb-target="#seeDetailOrder">
-                                        <i class="fa-solid fa-eye"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            </tbody>
+                        <table id="userTable" class="table table-hover flex-nowrap" style="width: 100%">
                         </table>
                     </div>
                 </div>
                 <!-- pagination -->
-
-
             </div>
             <div class="card shadow-0">
                 <div class="card-body">
@@ -382,6 +260,7 @@
     <!-- Container for demo purpose -->
 </main>
 
+
 <!-- seeDetailOrder -->
 <div class="modal fade " id="seeDetailOrder" tabindex="-1"
      aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -561,50 +440,45 @@
 <!--Footer-->
 <footer></footer>
 <!--Footer-->
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
 <script type="text/javascript"
         src="/admin/assert/js/mdb.min.js"></script>
 <script src="/admin/assert/js/all.min.js"></script>
 <script src="/admin/assert/js/chart.min.js"></script>
-<script>
+<script type="text/javascript">
     // datatable category
     $(document).ready(function () {
-       let table = $('#categoryTable').DataTable({
-           info: false,
-           scrollX: true,
-           "language":{
-               "url": "//cdn.datatables.net/plug-ins/1.11.3/i18n/vi.json"
-           },
-            "ajax": {
-                "url": "/api/category",
-                "type": "GET",
-                "dataType": "json",
-                "contentType": "application/json",
-                "data": function (d) {
-                    console.log(d);
-                    var query = $.param(d);
-                    return query;
-                },
-                "dataSrc": ""
+        let cateTable, userTable;
+       cateTable =  $("#categoryTable").DataTable({
+            info: false,
+            scrollX: true,
+           processing: true,
+           serverSide: true,
+            ajax: {
+                url: '/api/category',
+                type: 'GET',
+                dataType: 'json',
+                contentType: 'application/json',
+                dataSrc: "",
             },
-            "columns": [
+            columns: [
                 {
-                    title: "ID",
-                    data: "categoryId"
+                    title: 'ID',
+                    data: 'categoryId'
                 },
                 {
-                    title: "Name",
-                    data: "name"
+                    title: 'Name',
+                    data: 'name'
                 },
                 {
-                    title: "Description",
-                    data: "description"
+                    title: 'Description',
+                    data: 'description'
                 },
                 {
                     title: 'Active',
-                    data: "active",
+                    data: 'active',
                     render: function (data) {
                         if (data === true) {
                             return '<span class="badge bg-success">Active</span>'
@@ -614,25 +488,78 @@
                     }
                 },
                 {
-                    title : "level",
-                    data : "level"
+                    title: 'Level',
+                    data: 'level'
                 },
                 {
-                    title: "Action",
-                    data: 'id',
+                    title: 'Action',
+                    data: 'categoryId',
                     render: function (data) {
                         return '<button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#seeDetailProduct"><i class="fa-solid fa-eye"></i></button>'
                     }
                 }
-            ]
+            ],
+            columnDefs: [
+                {"className": "text-end", "targets": 5},
+            ],
         });
-       $('#categoryTable tbody').on('click', 'tr', function () {
-           let row = table.row($(this).closest('tr'));
-           let data = row.data();
-           console.log(data);
-       });
-
+        userTable=  $("#userTable").DataTable({
+            info: false,
+            scrollX: true,
+            processing: true,
+            serverSide: true,
+            ajax: {
+                url: '/user/api',
+                type: 'GET',
+                dataType: 'json',
+                contentType: 'application/json',
+                dataSrc: "",
+            },
+            columns: [
+                {
+                    title: 'ID',
+                    data: 'userId'
+                },
+                {
+                    title: 'Name',
+                    data: 'userName'
+                },
+                {
+                    title: 'Email',
+                    data: 'email'
+                },
+                {
+                    title: 'Role',
+                    data: 'role',
+                    render: function (data) {
+                        console.log(data)
+                        if (data === 0) {
+                            return '<span class="badge bg-warning ">PENDING</span>'
+                        } else if (data === 1) {
+                            return '<span class="badge bg-black">USER</span>'
+                        }
+                        else if (data === 2) {
+                            return '<span class="badge bg-success">ADMIN</span>'
+                        }
+                        else if (data === 3) {
+                            return '<span class="badge bg-danger">BLOCKED</span>'
+                        }
+                    }
+                },
+                {
+                    title: 'Action',
+                    data: 'userId',
+                    render: function (data) {
+                        return '<button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#seeDetailProduct"><i class="fa-solid fa-eye"></i></button>'
+                    }
+                }
+            ],
+            columnDefs: [
+                {"className": "text-end", "targets": 4},
+            ],
+        });
     });
 </script>
+
 </body>
 </html>

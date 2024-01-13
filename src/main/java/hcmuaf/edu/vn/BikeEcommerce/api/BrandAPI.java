@@ -2,7 +2,10 @@ package hcmuaf.edu.vn.BikeEcommerce.api;
 
 import com.google.gson.Gson;
 import hcmuaf.edu.vn.BikeEcommerce.model.Brand;
+import hcmuaf.edu.vn.BikeEcommerce.model.User;
+import hcmuaf.edu.vn.BikeEcommerce.model.sercurity.Token;
 import hcmuaf.edu.vn.BikeEcommerce.service.BrandService;
+import hcmuaf.edu.vn.BikeEcommerce.service.UserService;
 import hcmuaf.edu.vn.BikeEcommerce.toolSecurity.GenerateId;
 import org.apache.commons.beanutils.BeanUtils;
 
@@ -39,7 +42,7 @@ public class BrandAPI extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        resp.setCharacterEncoding("UTF-8");
         String categoryId = req.getParameter("categoryId");
 
         if (categoryId != null) {
@@ -83,6 +86,22 @@ public class BrandAPI extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+        //check token admin
+        Token token = (Token) req.getAttribute("token");
+        if (token != null) {
+            System.out.println("token: " + token);
+            User user = UserService.getInstance().getUserByKey(token.getUserId());
+            req.setAttribute("user", user);
+            req.setAttribute("userId", user.getUserId());
+            req.setAttribute("haveUser", true);
+            req.setAttribute("userName", user.getUserName());
+            int role = user.getRole();
+            if (role != 2) {
+                resp.getWriter().write("Bạn không có quyền thêm thương hiệu");
+                return;
+            }
+        }
         Brand brand = new Brand();
         try {
             BeanUtils.populate(brand, req.getParameterMap());
@@ -91,6 +110,7 @@ public class BrandAPI extends HttpServlet {
                 brand.setBrandId(GenerateId.generateId());
                 brandService.insert(brand);
                 resp.getWriter().write("insert success");
+                resp.sendRedirect("/admin/brand");
             } else {
                 // nếu có id thì là update
                 brandService.update(brand);
@@ -123,7 +143,7 @@ public class BrandAPI extends HttpServlet {
                 brandId = brandId.substring(1);
             }
             try {
-                BrandService.getInstance().delete(brandId);
+                brandService.delete(brandId);
                 resp.getWriter().write("success");
             } catch (Exception e) {
                 resp.getWriter().write("fail");

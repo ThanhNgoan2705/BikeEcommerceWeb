@@ -1,6 +1,6 @@
 package hcmuaf.edu.vn.BikeEcommerce.model.digitSig;
 
-import vn.edu.atbmmodel.key.KeyGen;
+import hcmuaf.edu.vn.BikeEcommerce.atbm.KeyGen;
 
 import java.security.PublicKey;
 import java.security.cert.Certificate;

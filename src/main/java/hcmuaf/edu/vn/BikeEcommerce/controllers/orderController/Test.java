@@ -1,6 +1,6 @@
 package hcmuaf.edu.vn.BikeEcommerce.controllers.orderController;
 
-import vn.edu.atbmmodel.hash.Hash;
+import hcmuaf.edu.vn.BikeEcommerce.atbm.Hash;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;

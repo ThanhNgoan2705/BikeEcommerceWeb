@@ -43,6 +43,7 @@ public class LoginController extends HttpServlet {
         }
         if (token != null) {
             HttpSession session = request.getSession(true);
+            System.out.println("userId: " + token.getUserId());
             session.setAttribute("user", token);
             session.setAttribute("userId", token.getUserId());
             session.setAttribute("haveUser", true);
