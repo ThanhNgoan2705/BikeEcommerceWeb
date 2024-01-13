@@ -724,7 +724,7 @@
                 <div class="nenmodal2"></div>
                 <div class="ndmodal">
                     <div class="closemodal">
-                        <button onclick="momodal2()">×</button>
+                        <button onclick="momodal2(),redirect('/user')">×</button>
                     </div>
                     <div method="POST" id="contactForm2" name="contactForm" class="contactForm">
 
@@ -762,7 +762,7 @@
                         <div class="nenmodal"></div>
                         <div class="ndmodal">
                             <div class="closemodal">
-                                <button onclick="momodal3()">×</button>
+                                <button onclick="momodal3(),redirect('/user')">×</button>
                             </div>
                             <div method="POST" id="contactForm3" name="contactForm" class="contactForm">
 
