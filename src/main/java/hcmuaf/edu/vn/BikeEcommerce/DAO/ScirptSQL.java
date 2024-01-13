@@ -10,13 +10,13 @@ public class ScirptSQL {
     public static final String deleteAddressById = "delete " + "from address " + "where address_id =:addressId ";
 
     //brand da test by hoang hai 20-8-23
-    public static final String getAllBrands = "Select * from Brand";
-    public static final String getBrandById = "Select * from Brand where brand_id = :brandId";
-    public static final String getBrandsByName = "Select * from Brand where name like concat('%', :name, '%')";
-    public static final String getBrandByCategoryId = "Select * from Brand where brand_id in (select brand_id from product where category_id = :categoryId)";
-    public static final String insertBrand = "Insert into `Brand`(`brand_id`, `name`, `description`)" + " values (:brandId, :name, :description)";
-    public static final String updateBrand = "Update `Brand` set `name` = :name, `description` = :description" + " where `brand_id` = :brandId";
-    public static final String deleteBrand = "Delete from `Brand` where `brand_id` = :brandId";
+    public static final String getAllBrands = "Select * from brand";
+    public static final String getBrandById = "Select * from brand where brand_id = :brandId";
+    public static final String getBrandsByName = "Select * from brand where name like concat('%', :name, '%')";
+    public static final String getBrandByCategoryId = "Select * from brand where brand_id in (select brand_id from product where category_id = :categoryId)";
+    public static final String insertBrand = "Insert into `brand`(`brand_id`, `name`, `description`)" + " values (:brandId, :name, :description)";
+    public static final String updateBrand = "Update `brand` set `name` = :name, `description` = :description" + " where `brand_id` = :brandId";
+    public static final String deleteBrand = "Delete from `brand` where `brand_id` = :brandId";
 
 
     //  cart  da test by hoang hai 20-8-23
@@ -37,9 +37,9 @@ public class ScirptSQL {
     static final String deleteCartItem = "delete from cart_item where cart_item_id = :cartItemId ";
     static final String deleteCartItemByCartId = "delete from cart_item where cart_id = :cartId";
     // category da test by hoang hai 20-8-23
-    static final String getAllCategory = "Select * from Category";
-    static final String getCategoryById = "Select * from Category where category_id = :categoryId";
-    static final String getCategoryByName = "Select * from Category where name like concat('%', :name, '%')";
+    static final String getAllCategory = "Select * from category";
+    static final String getCategoryById = "Select * from category where category_id = :categoryId";
+    static final String getCategoryByName = "Select * from category where name like concat('%', :name, '%')";
     static final String insertCategory = "INSERT INTO category (category_id, name, description, image, parent_id, active, level, short_id) " + "VALUES (:categoryId, :name, :description, :image, :parentId, :active, :level, :shortId)";
     static final String updateCategory = "UPDATE category " + "SET name = :name, description = :description, image = :image, parent_id = :parentId, " + "active = :active, level = :level, short_id = :shortId " + "WHERE category_id = :categoryId";
     static final String deleteCategory = "DELETE FROM category WHERE category_id = :categoryId";
@@ -99,19 +99,19 @@ public class ScirptSQL {
 
 
     // user
-    public static final String getUser = "select * from User";
-    public static final String getUserByKey = "select * from User where user_id = :key or email= :key or user_name=:key";
-    public static final String insertUser = "insert into User (user_id, email, salt, pass, user_name, role) " + "values (:getUserId,:getEmail,:getSalt,SHA2(:getPass,256),:getUserName,:getRole);";
-    public static final String updateUser = "update User " + "set email = :getEmail " + "where user_id = :getUserId;";
-    public static final String updateUserPassword = "update User " + "set pass = SHA2(:getPass,256) " + "where user_id = :getUserId;";
-    public static final String deleteUserById = "delete " + "from User " + "where user_id =:id ";
-    public static final String loginByUserNameOrEmail = "select * from User where (user_name=:keyLogin or email=:keyLogin) and pass=SHA2(:pass,256)";
-    public static final String updateUserRoll = "update User set role=:role where email=:email";
+    public static final String getUser = "select * from user";
+    public static final String getUserByKey = "select * from user where user_id = :key or email= :key or user_name=:key";
+    public static final String insertUser = "insert into user (user_id, email, salt, pass, user_name, role) " + "values (:getUserId,:getEmail,:getSalt,SHA2(:getPass,256),:getUserName,:getRole);";
+    public static final String updateUser = "update user " + "set email = :getEmail " + "where user_id = :getUserId;";
+    public static final String updateUserPassword = "update user " + "set pass = SHA2(:getPass,256) " + "where user_id = :getUserId;";
+    public static final String deleteUserById = "delete " + "from user " + "where user_id =:id ";
+    public static final String loginByUserNameOrEmail = "select * from user where (user_name=:keyLogin or email=:keyLogin) and pass=SHA2(:pass,256)";
+    public static final String updateUserRoll = "update user set role=:role where email=:email";
     public static final String getSaltByUserNameOrEmail = "select salt from User where user_name=:key or email=:key";
 
     public static final String isEmailOrUserNameAlreadyExists = "select count(*) from user where email= :key or user_name=:key";
-    public static final String setAdmin = "update User set role=2 where user_id=:userId";
-    public static final String setUser = "update User set role=1 where user_id=:userId";
+    public static final String setAdmin = "update user set role=2 where user_id=:userId";
+    public static final String setUser = "update user set role=1 where user_id=:userId";
     // VerifyCode
     public static final String checkVerifyCodeForRegister = "select * from verify_code where code=:verifyCode and email=:email and function = 1 and valid = 1 and now()-create_at<300";
     public static final String checkVerifyCodeForLogin = "select * from verify_code where code=:verifyCode and email=:email and function = 2 and valid = 1 and now()-create_at<300";
@@ -134,29 +134,29 @@ public class ScirptSQL {
 
 
     // Supplier da test va fix by Hoang Hai 21-8-23
-    static final String getAllSupplier = "Select * from Supplier";
-    static final String getSupplierById = "Select * from Supplier where supplier_id = :supplierId";
-    static final String getSuppliersByName = "Select * from Supplier where name like = :name";
-    static final String insertSupplier = "Insert into `Supplier`(`supplier_id`, `name`)" + " values (:supplierId, :name)";
-    static final String updateSupplier = "Update `Supplier` set `name` = :name where `supplier_id` = :supplierId";
-    static final String deleteSupplier = "Delete from `Supplier` where `supplier_id` = :supplierId";
+    static final String getAllSupplier = "Select * from supplier";
+    static final String getSupplierById = "Select * from supplier where supplier_id = :supplierId";
+    static final String getSuppliersByName = "Select * from supplier where name like = :name";
+    static final String insertSupplier = "Insert into `supplier`(`supplier_id`, `name`)" + " values (:supplierId, :name)";
+    static final String updateSupplier = "Update `supplier` set `name` = :name where `supplier_id` = :supplierId";
+    static final String deleteSupplier = "Delete from `supplier` where `supplier_id` = :supplierId";
     // product
     // update 14/9/2023 -- update 24/9/2023-- update 26/11/2023
-    static final String getAllProduct = "Select * from Product";
-    static final String getProductById = "Select * from Product where product_id = :id";
-    static final String getProductsByName = "Select * from Product where name like CONCAT('%', :name, '%')";
-    static final String getProductByCategoryId = "Select * from Product where category_id = :categoryId";
-    static final String getProductByBrandId = "Select * from Product where brand_id = :brandId";
-    static final String getProductBySupplierId = "Select * from Product where supplier_id = :supplierId";
-    static final String getProductByDiscount = "Select * from Product where discount_id = :discountId";
-    static final String getProductByStatus = "Select * from Product where status = :status";
+    static final String getAllProduct = "Select * from product";
+    static final String getProductById = "Select * from product where product_id = :id";
+    static final String getProductsByName = "Select * from product where name like CONCAT('%', :name, '%')";
+    static final String getProductByCategoryId = "Select * from product where category_id = :categoryId";
+    static final String getProductByBrandId = "Select * from product where brand_id = :brandId";
+    static final String getProductBySupplierId = "Select * from product where supplier_id = :supplierId";
+    static final String getProductByDiscount = "Select * from product where discount_id = :discountId";
+    static final String getProductByStatus = "Select * from product where status = :status";
     static final String insertProduct = "INSERT INTO product (product_id, name,  description, wheelSize, material, warranty, discount_id, category_id, brand_id, supplier_id, status) " + "VALUES (:productId, :name, :description, :wheelSize, :material, :warranty, :discountId, :categoryId, :brandId, :supplierId, :status)";
     static final String updateProduct = "UPDATE product " + "SET name = :name,  description = :description, wheelSize = :wheelSize, " + "material = :material, warranty = :warranty, " + "discount_id = :discountId, category_id = :categoryId, brand_id = :brandId, supplier_id = :supplierId, status = :status " + "WHERE product_id = :productId";
     static final String deleteProduct = "DELETE FROM product WHERE product_id = :productId";
-    static final String getProductByPrice = "Select * from Product where product_id in (select product_id from sub_product_color where price between :minPrice and :maxPrice)";
+    static final String getProductByPrice = "Select * from product where product_id in (select product_id from sub_product_color where price between :minPrice and :maxPrice)";
     static final String getProductByCategoryName = "select * from product where category_id in (select category_id from category where name like concat('%', :name, '%'))";
-    static final String getProductByWheelSize = "Select * from Product where wheelSize = :wheelSize";
-     static final String getProductByFilter = "Select * from Product where category_id = :categoryId and brand_id = :brandId and supplier_id = :supplierId and discount_id = :discountId and status = :status and product_id in (select product_id from sub_product_color where price between :minPrice and :maxPrice) and wheelSize = :wheelSize";
+    static final String getProductByWheelSize = "Select * from product where wheelSize = :wheelSize";
+     static final String getProductByFilter = "Select * from product where category_id = :categoryId and brand_id = :brandId and supplier_id = :supplierId and discount_id = :discountId and status = :status and product_id in (select product_id from sub_product_color where price between :minPrice and :maxPrice) and wheelSize = :wheelSize";
     public static final String getInventory = "SELECT SUM(sub_product_color.inventory) AS total_inventory\n" +
             "FROM product JOIN sub_product_color ON product.product_id =sub_product_color.product_id\n" +
             "WHERE product.product_id = :productId\n" +
