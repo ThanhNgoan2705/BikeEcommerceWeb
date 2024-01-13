@@ -33,8 +33,6 @@
     <link href="/mdb/css/default.css" rel="stylesheet">
     <link href="/mdb/css/styleKey.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
-
-
 </head>
 
 <body class="homepage-v1 hidden-sn white-skin animated">
