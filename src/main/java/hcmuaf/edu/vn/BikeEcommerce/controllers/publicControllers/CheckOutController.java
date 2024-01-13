@@ -30,6 +30,7 @@ public class CheckOutController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setCharacterEncoding("UTF-8");
         Token token = (Token) req.getAttribute("token");
         if (token == null) {
             return;
@@ -55,6 +56,7 @@ public class CheckOutController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+       req.setCharacterEncoding("UTF-8");
         Token token = (Token) req.getAttribute("token");
         String userId = token.getUserId();
         Cart cart = cartService.getCartByKey(token.getUserId());
@@ -65,6 +67,7 @@ public class CheckOutController extends HttpServlet {
         String addressId = req.getParameter("addressId");
         double shippingFee = 100000.0;
         String orderId = cartService.saveCartItemIntoOrder(userId, addressId, shippingFee);
+        System.out.println("orderId: " + orderId);
         resp.sendRedirect(req.getContextPath() + "/user/order?orderId=" + orderId);
 
     }

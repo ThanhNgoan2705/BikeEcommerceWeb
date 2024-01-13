@@ -175,9 +175,6 @@ h1.title{
     display: flex;
     justify-content: space-between;
 }
-.nav-item.shopping-cart{
-    transform: translate(-50%, -50%);
-}
 .number{
     color: #ef0707;
     margin-right: 5px;

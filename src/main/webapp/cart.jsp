@@ -194,14 +194,11 @@
                                 </td>
 
                                 <td>
-
-                                    <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip"
+                                    <button type="button" class="btn btn-danger btn-sm m-2 " data-toggle="tooltip"
                                             data-placement="top"
                                             title="Remove item"
-                                            onclick="removeItem('${item.cartItemId}','${item.cartItemId}')">
-
-                                    </button>
-
+                                            onclick="removeItem('${item.cartItemId}','${item.cartItemId}')"><i
+                                            class="fa-solid fa-trash"></i></button>
                                 </td>
 
                             </tr>
@@ -1236,19 +1233,19 @@
             },
             success: function (data) {
                 var itemCount = parseInt($(".number").text());
-                var flyNumber = $('<span class="fly-number">'+(itemCount+1)+'</span>');
+                var flyNumber = $('<span class="fly-number">' + (itemCount + 1) + '</span>');
                 // get button add position
                 var position = $('.addToCart').offset();
                 // set the animation's start position
                 flyNumber.css({
-                    top: position.top ,
+                    top: position.top,
                     left: position.left
                 });
                 $('.shopping-cart').append(flyNumber);
                 setTimeout(function () {
-                    $('.number').text(itemCount+1);
+                    $('.number').text(itemCount + 1);
                     flyNumber.remove();
-                },1000);
+                }, 1000);
                 console.log(data);
             },
             error: function (data) {
@@ -1364,7 +1361,7 @@
                 rowToRemove.remove();
                 deleteItem(cartItemId, function (callback) {
                     if (callback) {
-                        $('.number').text(itemCount-1);
+                        $('.number').text(itemCount - 1);
                         console.log('delete success');
                         updateTotalAll();
                     } else {
@@ -1394,7 +1391,6 @@
         // Cập nhật nội dung của phần tử có id "total-all"
         document.getElementById('total-all').textContent = totalAll.toFixed(2);
     }
-
 
 
     window.onload = updateTotalAll;

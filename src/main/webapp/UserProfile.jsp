@@ -1,5 +1,4 @@
-<%@ page import="java.util.List" %>
-<%@ page import="hcmuaf.edu.vn.BikeEcommerce.model.digitSig.CertView" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Chan
   Date: 10/5/2023
@@ -33,38 +32,7 @@
     <link href="/mdb/css/style.css" rel="stylesheet">
     <link href="/mdb/css/default.css" rel="stylesheet">
     <link href="/mdb/css/styleKey.css" rel="stylesheet">
-
-
-
-    <style>
-
-        #datepicker {
-            width: 150px;
-        }
-
-        #datepicker > span:hover {
-            cursor: pointer;
-        }
-
-        .disabled {
-            background-color: #ddd;
-            color: #888;
-        }
-        #tabKeyManagement #button-container-table {
-            display: flex;  /* Sử dụng Flexbox để giữ các phần tử trong một hàng */
-        }
-
-        #tabKeyManagement #button-container-table button {
-            margin-right: 10px;  /* Khoảng cách giữa các nút (tuỳ chọn) */
-
-        }
-        .inli{
-            display: inline-block;  /* Hoặc sử dụng display: inline; */
-            margin-right: 10px;
-
-        }
-
-    </style>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
 </head>
 
 <body class="homepage-v1 hidden-sn white-skin animated">
@@ -242,25 +210,10 @@
 
                     <!--list Order-->
                     <div class="tab-pane fade" id="tabOrderHistory" role="tabpanel">
-                        <div id="dt-select_filter" class="dataTables_filter"><label>Search:<input type="search"
-                                                                                                  class="form-control form-control-sm"
-                                                                                                  placeholder=""
-                                                                                                  aria-controls="dt-select"></label>
+                        <div class="table-responsive">
+                            <table id="orderTable" class="table table-hover flex-nowrap" style="width: 100%">
+                            </table>
                         </div>
-                        <table id="dt-select" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                            <thead>
-                            <tr>
-                                <th>OrderId</th>
-                                <th>Name Product</th>
-                                <th>Price</th>
-                                <th>Shipping_fee</th>
-                                <th>Send day</th>
-                                <th>Receive day</th>
-                                <th>Status</th>
-                            </tr>
-                            </thead>
-                        </table>
-
                         <hr class="mb-4">
 
                     </div>
@@ -825,45 +778,81 @@
                         </div>
                     </div>
 
-    </div>
-    <!-- Pills panels -->
-</div>
-</div>
-<!--Grid column-->
+                </div>
+                <!-- Pills panels -->
+            </div>
+        </div>
+        <!--Grid column-->
 
-</div>
-<!--Grid row-->
+    </div>
+    <!--Grid row-->
 </div>
 <!-- Main Container -->
 <!-- Footer -->
 <%@include file="default/footer.jsp" %>
 <!-- Footer -->
 <script src="/mdb/js/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
 <script src="/mdb/js/bootstrap.min.js"></script>
 <script src="/mdb/js/mdb.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
-
-<%--<script type="text/javascript">--%>
-<%--    /* WOW.js init */--%>
-<%--    new WOW().init();--%>
-
-<%--    // Tooltips Initialization--%>
-<%--    $(function () {--%>
-<%--        $('[data-toggle="tooltip"]').tooltip()--%>
-<%--    })--%>
-
-<%--    // Material Select Initialization--%>
-<%--    $(document).ready(function () {--%>
-
-<%--        $('.mdb-select').material_select();--%>
-<%--    });--%>
-
-<%--    // SideNav Initialization--%>
-<%--    $(".button-collapse").sideNav();--%>
-
-<%--</script>--%>
 <script src="/mdb/js/default.js"></script>
-
+//datatables order
+<script>
+    $(document).ready(function () {
+        let table = $('#orderTable').dataTable({
+            info: false,
+            scrollX: true,
+            "ajax": {
+                "url": "/user/order-api",
+                "type": "GET",
+                "dataSrc": "",
+                "dataType": "json",
+                "contentType": "application/json",
+            },
+            "columns": [
+                {title: "Order ID", data: "orderId"},
+                {title: "Full Address", data: "fullAddress"},
+                {title: "Shipping Fee", data: "shippingFee"},
+                {title: "Total Price", data: "total"},
+                {title: "Sent Date", data: "sendDay"},
+                {title: "Received Date", data: "receiveDay"},
+                {
+                    title: "Status", data: "status",
+                    render: function (data, type, row) {
+                        if (data===0){
+                            return '<span class="badge badge-pill badge-danger">UNVERIFIED</span>'
+                        }
+                        if (data === 1) {
+                            return '<span class="badge badge-pill badge-success">PENDING</span>'
+                        } else if (data === 2) {
+                            return '<span class="badge badge-pill badge-success">CONFIRMED</span>'
+                        } else if (data === 3) {
+                            return '<span class="badge badge-pill badge-success">PROCESSING</span>'
+                        } else if (data === 4) {
+                            return '<span class="badge badge-pill badge-success">SHIPPING</span>'
+                        } else if (data === 5) {
+                            return '<span class="badge badge-pill badge-success">DELIVERED</span>'
+                        } else if (data === 6) {
+                            return '<span class="badge badge-pill badge-danger">CANCELLED</span>'
+                        } else if (data === 7) {
+                            return '<span class="badge badge-pill badge-warning">RETURNED</span>'
+                        } else if (data === 8) {
+                            return '<span class="badge badge-pill badge-dark">REFUNDED</span>'
+                        }
+                    }
+                },
+                {
+                    title: "Action", data: "orderId",
+                    render: function (data, type, row) {
+                        return '<button class="btn btn-primary btn-sm" onclick="verifyOrder(' + data + ')">Verify Order</button>'
+                    }
+                }
+            ]
+        });
+    });
+</script>
 <script>
     function editInfor() {
         var fullName = document.getElementById("fullName").value;
@@ -928,7 +917,7 @@
     }
 </script>
 <script>
-    function momodal2() {
+    function momodal2(){
         document.getElementById("nenmodal-2").classList.toggle("active");
     }
 </script>
@@ -941,46 +930,16 @@
 <script>
 
 </script>
-<%--<script type="text/javascript">--%>
-<%--    function applyDatepicker() {--%>
-<%--            $("#datepicker").datepicker({--%>
-<%--                // autoclose: true,--%>
-<%--                // todayHighlight: true--%>
-<%--            }).datepicker('update', new Date());--%>
-<%--        }--%>
-<%--    // $(document).ready(function () {--%>
-<%--    //     // Lặp qua mỗi phần tử có class là "input-group date"--%>
-<%--    //     $('.input-group.date').each(function (index) {--%>
-<%--    //         applyDatepicker(index);--%>
-<%--    //     });--%>
-<%--    // });--%>
-<%--</script>--%>
-<%--<script>--%>
-<%--    function updateRowNumbers() {--%>
-<%--        var table = document.getElementById("myTable").getElementsByTagName('tbody')[0];--%>
-
-<%--        // Lặp qua tất cả các dòng và cập nhật số thứ tự--%>
-<%--        for (var i = 0; i < table.rows.length; i++) {--%>
-<%--            table.rows[i].cells[0].innerHTML = i + 1;--%>
-<%--        }--%>
-<%--    }--%>
-<%--</script>--%>
 //tao khoa
 <script type="text/javascript">
     function createKey() {
-        var issuerName = document.getElementById("inname").value;
-        console.log(issuerName)
         $.ajax({
             url: "/user/userKey",
             method: "GET",
-            dataType: "json",
-            contentType: "application/json",
-            data: {
-                issuerName: issuerName
-            },
-
+            dataType : "json",
+            contentType:"application/json",
             success: function (data) {
-                console.log("data" + data);
+                console.log("data"+data);
                 // Hiển thị thông tin khóa trên giao diện
                 $("#publicKey").val(data.pubKey);
                 $("#privateKey").val(data.priKey);
@@ -1057,57 +1016,13 @@
     const btnElement = document.querySelector('.fa-clone')
 
     // step 2
-    btnElement.addEventListener('click', function () {
+    btnElement.addEventListener('click', function() {
 
-        ipnElement.select() // step 4
+        ipnElement.select()              // step 4
 
     })
 </script>
 
-<%--<script>--%>
-<%--    function disableAndColorRow(rowNumber) {--%>
-<%--        // Get the table element by ID--%>
-<%--        var table = document.getElementById("myTable");--%>
-
-<%--        // Calculate the index of the row (zero-based index)--%>
-<%--        var rowIndex = rowNumber - 1;--%>
-
-<%--        // Get the row by index--%>
-<%--        var row = table.rows[rowIndex];--%>
-
-<%--        // Disable the button--%>
-<%--        for (var i = 0; i < row.cells.length; i++) {--%>
-<%--            // Disable buttons or input fields within each cell--%>
-<%--            var button = row.cells[i].querySelector(".btnblock.btnrevo");--%>
-<%--            if (button) {--%>
-<%--                button.disabled = true;--%>
-<%--            }--%>
-
-<%--            // Add a class to the entire row for styling--%>
-<%--            row.classList.add("disabled");--%>
-<%--        }--%>
-<%--    }--%>
-
-<%--</script>--%>
-<script>
-    function applyDatepicker() {
-             $("#datepicker").datepicker({
-                  autoclose: true,
-                    todayHighlight: true
-               }).datepicker('update', new Date());
-     }
-</script>
-<script>
-    function abc(){
-        if(confirm("Bấm vào nút OK để tiếp tục") == true){
-            document.getElementById("demo").innerHTML =
-                "Bạn muốn tiếp tục";
-        }else{
-            document.getElementById("demo").innerHTML =
-                "Bạn không muốn tiếp tục";
-        }
-    }
-</script>
 </body>
 </html>
 

@@ -1,36 +1,54 @@
 package hcmuaf.edu.vn.BikeEcommerce.controllers.publicControllers;
 
 import hcmuaf.edu.vn.BikeEcommerce.model.*;
+import hcmuaf.edu.vn.BikeEcommerce.model.sercurity.Token;
 import hcmuaf.edu.vn.BikeEcommerce.service.*;
+import hcmuaf.edu.vn.BikeEcommerce.toolSecurity.TokenService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 @WebServlet("/home")
 public class HomeController extends HttpServlet {
+    CategoryService categoryService;
+    ProductService productService;
+    CartService cartService;
+    ImageProductService imageProductService;
+    BrandService brandService;
+    DiscountService discountService;
+
+    public void init() throws ServletException {
+        categoryService = CategoryService.getInstance();
+        productService = ProductService.getInstance();
+        cartService = CartService.getInstance();
+        imageProductService = ImageProductService.getInstance();
+        brandService = BrandService.getInstance();
+        discountService = DiscountService.getInstance();
+    }
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        CategoryService categoryService = CategoryService.getInstance();
+        System.out.println("home");
         request.setAttribute("categories", categoryService.getAll());
-        ProductService productService = ProductService.getInstance();
         List<Product> productList = productService.getAllProduct();
-        Map<Category,Integer> quantityByCategory = new HashMap<>();
+        Map<Category, Integer> quantityByCategory = new HashMap<>();
         for (Category category : categoryService.getAll()) {
             List<Product> products = productService.getProductByCategoryId(category.getCategoryId());
-            quantityByCategory.put(category,products.size() );
+            quantityByCategory.put(category, products.size());
         }
         // pagination
         int rowCount = 9; // number of rows per page
         String page = request.getParameter("page");
         int currentPage = 1;
         if (page != null) {
-           currentPage= Integer.parseInt(page); // start from the first page
+            currentPage = Integer.parseInt(page); // start from the first page
         }
         int totalRows = productList.size();
         int totalPage = totalRows / rowCount;
@@ -51,17 +69,59 @@ public class HomeController extends HttpServlet {
         List<Product> top1Products = productService.getTop1Product();
         request.setAttribute("top1Products", top1Products);
 
-        ImageProductService imageProductService = ImageProductService.getInstance();
         List<ImageProduct> imageProduct = imageProductService.getTop1ImageProductByProductId(top1Products.get(0).getProductId());
         request.setAttribute("imageProduct", imageProduct);
 
-        List<Brand> brands = BrandService.getInstance().getAll();
+        List<Brand> brands = brandService.getAll();
         request.setAttribute("brands", brands);
 
-        List<Discount> discounts = DiscountService.getInstance().getAll();
+        List<Discount> discounts = discountService.getAll();
         request.setAttribute("discounts", discounts);
 
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+
+        Token token = null;
+        try {
+            Cookie[] cookieArr = request.getCookies();
+            Cookie cookie = null;
+            for (Cookie c : cookieArr) {
+                if (c.getName().equals("token-bike")) {
+                    cookie = c;
+                }
+            }
+            if (cookie != null) {
+                try {
+                    token = TokenService.getInstance().getTokenFromHeader(cookie.getValue());// tao token tu du lieu
+                } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            if (token == null) {
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
+                return;
+            }
+            HttpSession session = request.getSession();
+            String userId = (String) session.getAttribute("userId");
+            if (userId == null) {
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
+                return;
+            }
+            User user = UserService.getInstance().getUserByKey(token.getUserId());
+            if (user != null) {
+                request.setAttribute("haveUser", true);
+                request.setAttribute("userName", user.getUserName());
+            }
+            int cartTotal = 0;
+            request.setAttribute("cartTotal", cartTotal);
+            if (user.getRole() == 2) {
+                response.sendRedirect("/admin/dashboard");
+            }
+            if (user.getRole() != 1) {
+                response.sendRedirect("/login");
+            }
+            request.getRequestDispatcher("/index.jsp").forward(request, response);
+        } catch (Exception e) {
+            request.getRequestDispatcher("/index.jsp").forward(request, response);
+        }
     }
 
 
@@ -69,5 +129,4 @@ public class HomeController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doPost(req, resp);
     }
-
 }
