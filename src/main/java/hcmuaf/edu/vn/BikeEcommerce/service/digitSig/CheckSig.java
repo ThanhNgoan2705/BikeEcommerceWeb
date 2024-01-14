@@ -31,10 +31,13 @@ public class CheckSig {
 
     public boolean checkSignature(String userId, String orderId, byte[] sig) throws GeneralSecurityException, OperatorCreationException, CMSException, IOException {
         String seri = getSeriOfCertByCMSSigData(sig);
+        System.out.println("seri: " + seri);
         if (revocationCertService.getBySeri(seri) != null) {// check cert is revoked
+            System.out.println("cert is revoked");
             return false;
         }
         if (!userSeriService.checkSeriAndUser(userId, seri)) {// check cert is belong to user
+            System.out.println("cert is not belong to user");
             return false;
         }
         Order order = orderService.getOrderById(orderId);
@@ -48,7 +51,7 @@ public class CheckSig {
     public String getSeriOfCertByCMSSigData(byte[] sig) throws GeneralSecurityException, OperatorCreationException, CMSException, IOException {
         Security.addProvider(new BouncyCastleProvider());
         CMSSignedData cmsSignedData = new CMSSignedData(sig);
-        String seri = cmsSignedData.getSignerInfos().getSigners().iterator().next().getSID().getSerialNumber().toString();
+        String seri = cmsSignedData.getSignerInfos().getSigners().iterator().next().getSID().getSerialNumber().toString(16);
 //        Collection<X509CertificateHolder> certs = cmsSignedData.getCertificates().getMatches(null);
 //        X509CertificateHolder cert = certs.iterator().next();
 //        X509Certificate certificate = new JcaX509CertificateConverter().setProvider("BC").getCertificate(cert);
@@ -68,7 +71,11 @@ public class CheckSig {
 
     public static void main(String[] args) throws IOException, GeneralSecurityException, OperatorCreationException, CMSException {
         CheckSig checkSig = new CheckSig();
-        byte[] sig = new FileInputStream("C:\\Users\\hoang hai\\Desktop\\testthuthoima.sig").readAllBytes();
-        System.out.println(checkSig.getSeriOfCertByCMSSigData(sig));
+        String userId = "634726e3-288c-412a-8d14-9a1b961fbd22";
+        String orderId = "2401159e9088";
+        byte[] sig = new FileInputStream("C:\\Users\\Chan Chan\\Documents\\hai.sig").readAllBytes();
+        System.out.println(checkSig.checkSignature(userId, orderId, sig));
+
+
     }
 }

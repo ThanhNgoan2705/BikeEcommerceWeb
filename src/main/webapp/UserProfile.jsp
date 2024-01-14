@@ -29,13 +29,10 @@
     <link href="/mdb/css/bootstrap.min.css" rel="stylesheet">
     <link href="/mdb/css/mdb.min.css" rel="stylesheet">
     <link href="/mdb/css/addons/compiled-addons-4.20.0.min.css">
-    <link href="/mdb/css/manakey.css" rel="stylesheet">
     <link href="/mdb/css/style.css" rel="stylesheet">
     <link href="/mdb/css/default.css" rel="stylesheet">
-
     <link href="/mdb/css/styleKey.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
-
 </head>
 
 <body class="homepage-v1 hidden-sn white-skin animated">
@@ -609,8 +606,8 @@
                     </div>
 
                     <!--Key Management-->
-                    <div class="tab-pane fade key" id="tabKeyManagement" role="tabpanel">
-                        <div id="keymana">
+                    <div class="tab-pane fade" id="tabKeyManagement" role="tabpanel">
+                        <div id="button-container-table">
                             <button class="btn createk" onclick="momodal()">Create Key</button>
 
                             <button class="btn importk" onclick="momodal2()">Import Key</button>
@@ -655,45 +652,6 @@
                                     </tbody>
                                 </table>
 
-
-            <div class="nenmodal" id="nenmodal-1">
-                <div class="nenmodal2"></div>
-                <div class="ndmodal">
-                    <div class="closemodal">
-                        <button onclick="momodal(), redirect('/user') ">×</button>
-                    </div>
-                    <div method="POST" id="contactForm" name="contactForm" class="contactForm">
-
-
-                        <div class="row">
-                            <div class="col">
-                                <div class="group">
-                                <label class="label1">Name</label>
-                                <input  class="inputname" id="inname" name="issuerName" type="text"
-                                       placeholder="Người dùng nhập tên để tạo cetificate">
-                                <button class="btnblock" type="submit" onclick="createKey()">Create Key</button>
-                            </div>
-                            </div>
-                            <div class="col">
-                                <div class="group">
-                                    <label class="label1">Private Key</label>
-                                    <input type="text" class="form-control" id="privateKey" value="" >
-                                    <i class="fa fa-clipboard" id="copypri" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="group">
-                                    <label class="label1">Public Key</label>
-                                    <input type="text" class="form-control" id="publicKey">
-                                    <i class="fa fa-clipboard" id="copypub"aria-hidden="true"></i>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="group">
-                                    <label class="label1">Certificate</label>
-                                    <input type="text" class="form-control" id="certificate">
-                                    <i class="fa fa-clipboard" id="copycer" aria-hidden="true"></i>
-
                             </div>
                         </div>
                     </div>
@@ -734,23 +692,10 @@
                                             <i class="fa fa-clone" aria-hidden="true"></i>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                </div>
-            </div>
-            <!-- màn hình import key -->
-            <div class="nenmodal" id="nenmodal-2">
-                <div class="nenmodal2"></div>
-                <div class="ndmodal">
-                    <div class="closemodal">
-                        <button onclick="momodal2(),redirect('/user')">×</button>
-                    </div>
-                    <div method="POST" id="contactForm2" name="contactForm" class="contactForm">
-
                     <!-- màn hình import key -->
                     <div class="nenmodal" id="nenmodal-2">
                         <div class="nenmodal2"></div>
@@ -760,34 +705,13 @@
                             </div>
                             <div method="POST" id="contactForm2" name="contactForm" class="contactForm">
 
-
                                 <div class="row">
                                     <div class="col">
                                         <div class="group">
                                             <label class="label1">Name </label>
                                             <input type="text" name="username" class="inpri" id="name2">
 
-
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="group">
-                                    <label class="label1">Public Key</label>
-                                    <input type="text" name="publickey" class="form-control"
-                                           id="publicKey2">
-                                    <i class="fa fa-clipboard" id="copypub2" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="group">
-                                    <label class="label1">Certificate</label>
-                                    <input type="text" class="form-control" id="certificate2">
-                                    <i class="fa fa-clipboard" id="copycer2" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                            <button class="btnblock btncreate" type="submit" onclick="ImportKey()">Create
-                            </button>
-                          </div>
+                                        </div>
                                     </div>
                                     <div class="col">
                                         <div class="group">
@@ -808,7 +732,6 @@
                                     </button>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <!-- màn hình revocation key -->
@@ -816,7 +739,7 @@
                         <div class="nenmodal"></div>
                         <div class="ndmodal">
                             <div class="closemodal">
-                                <button onclick="momodal3(),redirect('/user')">×</button>
+                                <button onclick="momodal3()">×</button>
                             </div>
                             <div method="POST" id="contactForm3" name="contactForm" class="contactForm">
 
@@ -840,7 +763,7 @@
                                         <div class="group">
                                             <label class="label">Số Seri</label>
                                             <input type="text" class="form-control" name="seri2" id="seri2">
-                                            <i class="fa fa-clipboard" id="copyseri2" aria-hidden="true"></i>
+
                                         </div>
                                     </div>
                                     <div class="col">
@@ -1075,8 +998,9 @@
     }
 </script>
 
+<script>
 
-
+</script>
 //tao khoa
 <script type="text/javascript">
     function createKey() {
@@ -1158,74 +1082,15 @@
 </script>
 <script>
     // step 1
-    const ipnElement = document.querySelector('#privateKey')
-    const btnElement = document.querySelector('#copypri')
-    //
-    const ipnElement1 = document.querySelector('#publicKey')
-    const btnElement1 = document.querySelector('#copypub')
-    //
-    const ipnElement2 = document.querySelector('#certificate')
-    const btnElement2 = document.querySelector('#copycer')
-    //
-    const ipnElement3 = document.querySelector('#publicKey2')
-    const btnElement3 = document.querySelector('#copypub2')
-
-    const ipnElement4 = document.querySelector('#certificate2')
-    const btnElement4 = document.querySelector('#copycer2')
-
-    const ipnElement5 = document.querySelector('#seri2')
-    const btnElement5 = document.querySelector('#copyseri2')
+    const ipnElement = document.querySelector('input')
+    const btnElement = document.querySelector('.fa-clone')
 
     // step 2
     btnElement.addEventListener('click', function () {
 
-        ipnElement.select() // step 4
-        document.execCommand('copy')
-    })
-    btnElement1.addEventListener('click', function () {
-        ipnElement1.select() // step 4
-        document.execCommand('copy')
-    })
-    btnElement2.addEventListener('click', function () {
-        ipnElement2.select() // step 4
-        document.execCommand('copy')
-    })
-    btnElement3.addEventListener('click', function () {
-        ipnElement3.select() // step 4
-        document.execCommand('copy')
-    })
-    btnElement4.addEventListener('click', function () {
-        ipnElement4.select() // step 4
-        document.execCommand('copy')
-    })
-    btnElement5.addEventListener('click', function () {
-        ipnElement5.select() // step 4
-        document.execCommand('copy')
-    })
-
-
-
-</script>
-
-
-<script>
-    function applyDatepicker() {
-             $("#datepicker").datepicker({
-                  autoclose: true,
-                    todayHighlight: true
-               }).datepicker('update', new Date());
-     }
-</script>
-<script>
-    function abc(){
-        confirm("Bấm vào nút OK để tiếp tục") == true;
-    }
-
-
         ipnElement.select()              // step 4
 
     })
-
 </script>
 
 </body>

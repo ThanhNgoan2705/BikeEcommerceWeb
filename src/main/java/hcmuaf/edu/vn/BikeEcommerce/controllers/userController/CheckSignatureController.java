@@ -51,6 +51,7 @@ public class CheckSignatureController extends HttpServlet {
                 orderSigService = OrderSigService.getInstance();
                 OrderSig orderSig = new OrderSig(orderId, sigText);
                 orderSigService.insert(orderSig);
+                resp.getWriter().write("<script>alert('gdjdj')</script>");
                 resp.sendRedirect("/user");
             }
             else {

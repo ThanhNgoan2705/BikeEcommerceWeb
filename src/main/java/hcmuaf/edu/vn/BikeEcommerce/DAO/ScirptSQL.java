@@ -107,7 +107,7 @@ public class ScirptSQL {
     public static final String deleteUserById = "delete " + "from user " + "where user_id =:id ";
     public static final String loginByUserNameOrEmail = "select * from user where (user_name=:keyLogin or email=:keyLogin) and pass=SHA2(:pass,256)";
     public static final String updateUserRoll = "update user set role=:role where email=:email";
-    public static final String getSaltByUserNameOrEmail = "select salt from User where user_name=:key or email=:key";
+    public static final String getSaltByUserNameOrEmail = "select salt from user where user_name=:key or email=:key";
 
     public static final String isEmailOrUserNameAlreadyExists = "select count(*) from user where email= :key or user_name=:key";
     public static final String setAdmin = "update user set role=2 where user_id=:userId";
