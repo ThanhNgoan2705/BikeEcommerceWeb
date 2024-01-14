@@ -25,7 +25,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-@WebServlet("/RevocationCert")
+@WebServlet("/user/RevocationCert")
 public class UserRevocationCert extends HttpServlet {
     RevocationCertService revocationCertService;
 
@@ -44,7 +44,7 @@ public class UserRevocationCert extends HttpServlet {
         String seri2 = request.getParameter("seri2");
         String revokedAt = request.getParameter("revokedAt");
 
-        System.out.println("info :aaaaaaaaaaa "+seri2+":"+revokedAt);
+        System.out.println(" chuc mung : aaaaaaaaaaa "+seri2+":bbbbb"+revokedAt);
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate localDate = LocalDate.parse(revokedAt, formatter);

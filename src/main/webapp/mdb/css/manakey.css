@@ -51,7 +51,7 @@
 }
 /* CSS nút tắt modal */
 .closemodal button{
-    width:40px;
+    width:60px;
     height:40px;
     font-size:30px;
     padding:0px;
@@ -75,10 +75,11 @@
 }
 
 .form-control{
-    width: 450px;
+    width: 400px;
     height: 30px;
     margin-left: 5px;
     margin-right: 3px;
+
 
 
 }
@@ -94,7 +95,7 @@
     font-size: 12px;
     font-weight: 600; }
 .inpri{
-    width: 450px;
+    width: 400px;
     height: 30px;
     margin-left: 45px;
 }
@@ -102,42 +103,44 @@
     margin-left: 450px;
 }
 .btnblock{
-    width: 100px;
+    width: 130px;
     height: 35px;
-    background-color: #0d0d0d;
+    background-color: black;
     color: #f1f1f1;
+}
+ #inname{
+    width: 270px;
+ height: 30px;
+     margin-left: 50px;
+     margin-right: 20px;
 }
 .fa{
     cursor: pointer;
 }
 
-
-    #datepicker{
-        width:100px;
-        margin: 0 20px 20px 20px;
+    #datepicker {
+        width: 150px;
     }
-    #datepicker > span:hover{
+
+    #datepicker > span:hover {
         cursor: pointer;
     }
-.labelname{
-    color: #000;
-    text-transform: uppercase;
-    font-size: 12px;
-    font-weight: 600;
-    padding-right: 80px;
-}
-.inname{
-    width: 320px;
-    height: 30px;
-    margin-right: 15px;
-    margin-left: -50px;
-
-
-}
 
     .disabled {
         background-color: #ddd;
         color: #888;
     }
+    #tabKeyManagement #keymana {
+        display: flex;  /* Sử dụng Flexbox để giữ các phần tử trong một hàng */
+    }
+
+    #tabKeyManagement #keymana button {
+        margin-right: 10px;  /* Khoảng cách giữa các nút (tuỳ chọn) */
+background-color: #0a47a9;
+    }
+    .inli {
+        display: inline-block; /* Hoặc sử dụng display: inline; */
+        margin-right: 10px;
 
 
+    }
