@@ -848,22 +848,23 @@
                 {
                     title: "Action", data: "orderId",
                     render: function (data, type, row) {
-                        return '<button class="btn btn-primary btn-sm" onclick="verifyOrder(' + data + ')">Verify Order</button>'
+                        return '<button class="btn btn-primary btn-sm verifyBtn">Verify Order</button>'
                     }
                 }
             ]
         });
     });
-
+</script>
+<script>
     function verifyOrder(orderId) {
         $.ajax({
-            url: '/user/verify-order',
+            url: '/api/verify-order',
             type: 'POST',
             data: {
                 orderId: orderId
             },
             success: function (data) {
-                if (data === "verify success") {
+                if (data === "true") {
                     // create popup alert success
                     var popup = document.createElement("div");
                     popup.classList.add("popup");
@@ -878,7 +879,23 @@
                     setTimeout(function () {
                         popup.remove();
                     }, 2500);
-                } else {
+                }if (data === "This certificate is revoked") {
+                    // create popup alert fail
+                    var popup = document.createElement("div");
+                    popup.classList.add("popup");
+                    popup.innerHTML = "This certificate is revoked";
+                    document.body.appendChild(popup);
+                    setTimeout(function () {
+                        popup.classList.add("active");
+                    }, 10);
+                    setTimeout(function () {
+                        popup.classList.remove("active");
+                    }, 2000);
+                    setTimeout(function () {
+                        popup.remove();
+                    }, 2500);
+                }
+                else {
                     // create popup alert fail
                     var popup = document.createElement("div");
                     popup.classList.add("popup");
@@ -900,6 +917,11 @@
             }
         })
     }
+    $(document).on('click', '.verifyBtn', function () {
+        var orderId = $(this).closest('tr').find('td:eq(0)').text();
+        console.log(orderId);
+        verifyOrder(orderId);
+    });
 </script>
 <script>
     function editInfor() {

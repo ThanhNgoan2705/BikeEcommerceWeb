@@ -20,9 +20,9 @@ public class CheckSignatureAPI extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            String orderId = objectMapper.readTree(req.getReader()).get("orderId").asText();
-            byte[] sig = objectMapper.readTree(req.getReader()).get("signature").binaryValue();
+
+            String orderId = req.getParameter("orderId");
+            byte[] sig = req.getParameter("sig").getBytes();
             CheckSig checkSig = new CheckSig();
             boolean c = checkSig.checkSignature(orderId, sig);
             String sigText = Base64.getEncoder().encodeToString(sig);

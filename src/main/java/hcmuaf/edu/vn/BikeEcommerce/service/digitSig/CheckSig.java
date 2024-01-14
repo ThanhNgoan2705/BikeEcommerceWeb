@@ -58,7 +58,6 @@ public class CheckSig {
     public static void main(String[] args) throws IOException, GeneralSecurityException, OperatorCreationException, CMSException {
         CheckSig checkSig = new CheckSig();
         byte[] sig = new FileInputStream("C:\\Users\\hoang hai\\Desktop\\testthuthoima.sig").readAllBytes();
-
         System.out.println(checkSig.getSeriOfCertByCMSSigData(sig));
     }
 }
