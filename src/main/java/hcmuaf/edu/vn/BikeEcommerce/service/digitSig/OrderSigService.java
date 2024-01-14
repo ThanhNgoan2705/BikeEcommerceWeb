@@ -26,6 +26,7 @@ public class OrderSigService {
 
     public static void main(String[] args) {
         OrderSigService orderSigService=OrderSigService.getInstance();
-        orderSigService.delete("1");
+        OrderSig orderSig=orderSigService.getSigByOrderId("231211208d6f");
+        System.out.println(orderSig);
     }
 }

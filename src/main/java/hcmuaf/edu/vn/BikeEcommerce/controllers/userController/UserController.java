@@ -1,16 +1,11 @@
 package hcmuaf.edu.vn.BikeEcommerce.controllers.userController;
 
-import hcmuaf.edu.vn.BikeEcommerce.model.Address;
-import hcmuaf.edu.vn.BikeEcommerce.model.Favorite;
-import hcmuaf.edu.vn.BikeEcommerce.model.Order;
-import hcmuaf.edu.vn.BikeEcommerce.model.User;
 import hcmuaf.edu.vn.BikeEcommerce.model.digitSig.CertView;
+import com.google.gson.Gson;
+import hcmuaf.edu.vn.BikeEcommerce.model.*;
 import hcmuaf.edu.vn.BikeEcommerce.model.sercurity.Token;
-import hcmuaf.edu.vn.BikeEcommerce.service.AddressService;
-import hcmuaf.edu.vn.BikeEcommerce.service.FavoriteService;
-import hcmuaf.edu.vn.BikeEcommerce.service.OrderService;
-import hcmuaf.edu.vn.BikeEcommerce.service.UserService;
 import hcmuaf.edu.vn.BikeEcommerce.service.digitSig.CertViewService;
+import hcmuaf.edu.vn.BikeEcommerce.service.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,15 +23,38 @@ public class UserController extends HttpServlet {
      * Method: GET
      * require: token
      */
+    Gson gson;
+    AddressService addressService;
+    OrderService orderService;
+    FavoriteService favoriteService;
+    CartService cartService;
+    UserService userService;
+
+    public void init() throws ServletException {
+        gson = new Gson();
+        addressService = AddressService.getInstance();
+        orderService = OrderService.getInstance();
+        favoriteService = FavoriteService.getInstance();
+        cartService = CartService.getInstance();
+        userService = UserService.getInstance();
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Token token = (Token) req.getAttribute("token");
         if (token != null) {
-            User user = UserService.getInstance().getUserByKey(token.getUserId());
-            List<Address> addressList = AddressService.getInstance().getAllAddressByUserId(token.getUserId());
-            List<Order> orderList = OrderService.getInstance().getAllOrderByUserId(token.getUserId());
-            List<Favorite> favoriteList = FavoriteService.getInstance().getFavoriteByUserId(token.getUserId());
+            User user = userService.getUserByKey(token.getUserId());
+            List<Address> addressList = addressService.getAllAddressByUserId(token.getUserId());
+            List<Order> orderList = orderService.getAllOrderByUserId(token.getUserId());
+            List<Favorite> favoriteList = favoriteService.getFavoriteByUserId(token.getUserId());
             List<CertView> certViews = CertViewService.getCertViewFormUserId(token.getUserId());
+            Cart cart = cartService.getCartByKey(token.getUserId());
+            int cartTotal = 0;
+            if (cart != null) {
+                List<CartItem> itemList = cart.getCartItemList();
+                cartTotal = itemList.size();
+            }
+            req.setAttribute("cartTotal", cartTotal);
             String email = user.getEmail();
             String[] emailSplit = email.split("@");
             String emailShow = emailSplit[0].substring(0, 3) + "****" + emailSplit[0].substring(emailSplit[0].length() - 3) + "@" + emailSplit[1];
@@ -47,8 +65,9 @@ public class UserController extends HttpServlet {
             req.setAttribute("user", user);
             req.setAttribute("emailShow", emailShow);
             req.setAttribute("name", name);
-
             req.setAttribute("certViews",certViews);
+            req.setAttribute("userName", name);
+            req.setAttribute("haveUser", true);
         }
         req.getRequestDispatcher("/UserProfile.jsp").forward(req, resp);
     }

@@ -1,6 +1,8 @@
 package hcmuaf.edu.vn.BikeEcommerce.service.digitSig;
 
+import hcmuaf.edu.vn.BikeEcommerce.atbm.Hash;
 import hcmuaf.edu.vn.BikeEcommerce.atbm.KeyGen;
+import hcmuaf.edu.vn.BikeEcommerce.atbm.SignInData;
 import hcmuaf.edu.vn.BikeEcommerce.model.Order;
 import hcmuaf.edu.vn.BikeEcommerce.service.OrderService;
 import org.bouncycastle.cert.X509CertificateHolder;
@@ -9,19 +11,13 @@ import org.bouncycastle.cms.CMSException;
 import org.bouncycastle.cms.CMSSignedData;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.operator.OperatorCreationException;
-import hcmuaf.edu.vn.BikeEcommerce.atbm.SignInData;
-import hcmuaf.edu.vn.BikeEcommerce.atbm.Hash;
-
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.security.PublicKey;
 import java.security.Security;
-import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
 import java.util.Collection;
-import java.util.Objects;
 
 public class CheckSig {
 
@@ -62,7 +58,6 @@ public class CheckSig {
     public static void main(String[] args) throws IOException, GeneralSecurityException, OperatorCreationException, CMSException {
         CheckSig checkSig = new CheckSig();
         byte[] sig = new FileInputStream("C:\\Users\\hoang hai\\Desktop\\testthuthoima.sig").readAllBytes();
-
         System.out.println(checkSig.getSeriOfCertByCMSSigData(sig));
     }
 }

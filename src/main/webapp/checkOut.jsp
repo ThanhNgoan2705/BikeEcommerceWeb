@@ -51,12 +51,11 @@
         <div class="row">
             <!--Grid column-->
             <div class="col-lg-6 mb-4">
-                <a class="nav-link active" data-toggle="tab" href="#tabCheckoutBilling123" role="tab">1.
-                    Billing</a>
+                <a class="nav-link active" data-toggle="tab" href="#userAddress" role="tab">Check Out </a>
                 <!-- Pills panels -->
                 <div class="tab-content pt-4">
                     <!--Panel 1-->
-                    <div class="tab-pane fade in show active" id="tabCheckoutBilling123" role="tabpanel">
+                    <div class="tab-pane fade in show active" id="userAddress" role="tabpanel">
                         <!--Card content-->
                         <form id="listAddress" method="post" action="/user/checkout">
                             <!--Grid column-->
@@ -65,14 +64,17 @@
                                     <div class="col">
                                         <label for="chooseAddress">Select Address</label>
 
-                                        <select class=" custom-select md-form  d-block w-100" id="chooseAddress" name="addressId"
+                                        <select class=" custom-select md-form  d-block w-100" id="chooseAddress"
+                                                name="addressId"
                                                 required>
+                                            <option value="" selected>Choose...</option>
                                             <c:forEach items="${addressList}" var="address">
-                                                <option value="${address.addressId}">${address.homeAddress} - ${address.district}-${address.city}</option>
+                                                <option value="${address.addressId}">${address.homeAddress}
+                                                    - ${address.district}-${address.city}</option>
                                             </c:forEach>
                                             <option value="addNewAddress">Thêm địa chỉ mới</option>
                                         </select>
-                                        <input hidden="hidden" value=  >
+                                        <input hidden="hidden" value=>
                                         <div class="invalid-feedback">
                                             Please select a valid country.
                                         </div>
@@ -81,47 +83,39 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col">
-                                        <label for="shipping-fee">Shipping fee</label>
-                                        <input type="text" id="shipping-fee" class="form-control mb-4"
-                                               placeholder="1234 Main St">
+                                        <label for="shipping-fee">Shipping fee is 35.000</label>
+                                        <input type="number" id="shipping-fee" class="form-control mb-4" disabled
+                                               placeholder="35000">
                                     </div>
                                 </div>
                                 <hr>
-                                <button id="continueButton" class="btn btn-primary" type="submit" >Continue to
+                                <button id="continueButton" class="btn btn-primary" type="submit">Continue to
                                     checkout
                                 </button>
                             </fieldset>
-
                         </form>
-                        <form style="display: none" id="newAddress" >
+                        <form style="display: none" id="newAddress">
                             <!--address-->
                             <fieldset>
                                 <div class="row">
                                     <div class="col">
-                                        <label for="city" class="">city</label>
-                                        <input type="text" id="city" class="form-control mb-4" name="city"
-                                               placeholder="1234 Main St">
+                                        <label for="city">City</label>
+                                        <input id="city" value="city" class="form-control mb-4"
+                                               placeholder="city">
                                     </div>
                                 </div>
-                                <!--Country-->
                                 <div class="row">
-                                    <!--Grid column-->
                                     <div class="col">
-
                                         <label for="district">District</label>
-                                        <input type="text" id="district" class="form-control mb-4" name="district"
-                                               placeholder="1234 Main St">
+                                        <input id="district" value="district" class="form-control mb-4"
+                                               placeholder="district">
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col">
-
-                                        <label for="homeAddress">Home address</label>
-                                        <input type="text" id="homeAddress" class="form-control mb-4" name="homeAddress"
-                                               placeholder="1234 Main St">
-                                    </div>
-                                </div>
-                                <button id="addnew" class="btn btn-primary " onclick="addNewAddress()">Add New Address</button>
+                                <label for="homeAddress">Home Address</label>
+                                <input type="text" id="homeAddress" class="form-control mb-4"
+                                       placeholder="1234 Main St">
+                                <button id="addnew" class="btn btn-primary " onclick="addNewAddress()">Add New Address
+                                </button>
                             </fieldset>
                         </form>
                     </div>
@@ -144,10 +138,10 @@
                                 <dd class="col-sm-4">
                                         ${cartItem.product.name}
                                 </dd>
-                                <dd class="col-sm-2" >
+                                <dd class="col-sm-2">
                                         ${cartItem.quantity}
                                 </dd>
-                                <dd class="col-sm-3" >${cartItem.product.price}</dd>
+                                <dd class="col-sm-3">${cartItem.product.price}</dd>
                                 <dd class="col-sm-3 price">
                                         ${cartItem.product.price * cartItem.quantity}
                                 </dd>
@@ -158,7 +152,7 @@
                                 <h6 class="mb-0">Total</h6>
                             </dd>
                             <dd class="col-sm-5">
-                                <h6 class="mb-0"> <strong id="total-all">${totalPrice}</strong></h6>
+                                <h6 class="mb-0"><strong id="total-all">${totalPrice}</strong></h6>
                             </dd>
                         </dl>
                         <hr>
@@ -184,83 +178,31 @@
 <!-- Footer -->
 <%@include file="default/footer.jsp" %>
 <!-- Footer -->
-<script>// show form add new address when chose option add new address
-document.getElementById("chooseAddress").addEventListener("change", showForm);
+<script>
+    // show form add new address when chose option add new address
+    document.getElementById("chooseAddress").addEventListener("change", showForm);
 
-function showForm() {
-    var x = document.getElementById("chooseAddress").value;
-    if (x === "addNewAddress") {
-        document.getElementById("newAddress").style.display = "block";
-        document.getElementById("continueButton").style.display = "none";
-    } else {
-        document.getElementById("newAddress").style.display = "none";
-        document.getElementById("continueButton").style.display = "block";
+    function showForm() {
+        var x = document.getElementById("chooseAddress").value;
+        if (x === "addNewAddress" || x === "") {
+            document.getElementById("newAddress").style.display = "block";
+            document.getElementById("continueButton").style.display = "none";
+        } else {
+            document.getElementById("newAddress").style.display = "none";
+            document.getElementById("continueButton").style.display = "block";
+        }
     }
-}
 </script>
 <script src="/mdb/js/popper.min.js"></script>
 <script src="/mdb/js/jquery.min.js"></script>
 <script src="/mdb/js/bootstrap.min.js"></script>
 <script src="/mdb/js/mdb.min.js"></script>
-<%--<script type="text/javascript">--%>
-<%--    /* WOW.js init */--%>
-<%--    new WOW().init();--%>
-
-<%--    // Tooltips Initialization--%>
-<%--    $(function () {--%>
-<%--        $('[data-toggle="tooltip"]').tooltip()--%>
-<%--    })--%>
-
-<%--    // Material Select Initialization--%>
-<%--    $(document).ready(function () {--%>
-
-<%--        $('.mdb-select').material_select();--%>
-<%--    });--%>
-
-<%--    // SideNav Initialization--%>
-<%--    $(".button-collapse").sideNav();--%>
-
-<%--</script>--%>
-<script>
-    function addTocart(productId) {
-        // cộng thêm 1 vào giỏ hàng
-        $.ajax({
-            url: "/user/addProductToCart",
-            type: "POST",
-            data: {
-                productId: productId,
-                quantity: 1
-            },
-            success: function (data) {
-                var itemCount = parseInt($(".number").text());
-                var flyNumber = $('<span class="fly-number">' + (itemCount + 1) + '</span>');
-                // get button add position
-                var position = $('.addToCart').offset();
-                // set the animation's start position
-                flyNumber.css({
-                    top: position.top,
-                    left: position.left
-                });
-                $('.shopping-cart').append(flyNumber);
-                setTimeout(function () {
-                    $('.number').text(itemCount + 1);
-                    flyNumber.remove();
-                }, 1000);
-                console.log(data);
-            },
-            error: function (data) {
-                console.log(data);
-            }
-        });
-
-    }
-</script>
+<script src="/mdb/js/axios.min.js"></script>
 <script>
     function addNewAddress() {
         var city = document.getElementById("city").value;
         var district = document.getElementById("district").value;
         var homeAddress = document.getElementById("homeAddress").value;
-
         $.ajax({
             url: "/user/api/address",
             type: "POST",
@@ -285,10 +227,6 @@ function showForm() {
 
     }
 </script>
-<script>
-
-</script>
-
 <script src="/mdb/js/default.js"></script>
 </body>
 </html>

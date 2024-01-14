@@ -15,11 +15,11 @@
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
             rel="stylesheet"
     />
-    <link href="/mdb/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/mdb/css/mdb.min.css" rel="stylesheet">
-    <link href="/mdb/css/addons/compiled-addons-4.20.0.min.css" rel="stylesheet">
-    <link href="/mdb/css/style.css" rel="stylesheet">
-    <link href="/mdb/css/default.css" rel="stylesheet">
+    <link href="mdb/css/bootstrap.min.css" rel="stylesheet">
+    <link href="mdb/css/mdb.min.css" rel="stylesheet">
+    <link href="mdb/css/addons/compiled-addons-4.20.0.min.css" rel="stylesheet">
+    <link href="mdb/css/style.css" rel="stylesheet">
+    <link href="mdb/css/default.css" rel="stylesheet">
 </head>
 <body class="homepage-v2 hidden-sn white-skin animated">
 <!--onTop-->
@@ -1458,6 +1458,10 @@
         var recordsPerpage = 9;
         loadRecord(page);
 
+    });
+    // auto load first page with 10 records per page on page load ready with pagination
+    $(document).ready(function () {
+        loadRecord(1);
     });
 </script>
 <script src="/mdb/js/default.js"></script>

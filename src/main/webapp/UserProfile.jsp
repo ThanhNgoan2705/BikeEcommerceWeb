@@ -1,5 +1,4 @@
-<%@ page import="java.util.List" %>
-<%@ page import="hcmuaf.edu.vn.BikeEcommerce.model.digitSig.CertView" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Chan
   Date: 10/5/2023
@@ -34,9 +33,8 @@
     <link href="/mdb/css/style.css" rel="stylesheet">
     <link href="/mdb/css/default.css" rel="stylesheet">
 
-
-
-
+    <link href="/mdb/css/styleKey.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
 
 </head>
 
@@ -215,25 +213,10 @@
 
                     <!--list Order-->
                     <div class="tab-pane fade" id="tabOrderHistory" role="tabpanel">
-                        <div id="dt-select_filter" class="dataTables_filter"><label>Search:<input type="search"
-                                                                                                  class="form-control form-control-sm"
-                                                                                                  placeholder=""
-                                                                                                  aria-controls="dt-select"></label>
+                        <div class="table-responsive">
+                            <table id="orderTable" class="table table-hover flex-nowrap" style="width: 100%">
+                            </table>
                         </div>
-                        <table id="dt-select" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                            <thead>
-                            <tr>
-                                <th>OrderId</th>
-                                <th>Name Product</th>
-                                <th>Price</th>
-                                <th>Shipping_fee</th>
-                                <th>Send day</th>
-                                <th>Receive day</th>
-                                <th>Status</th>
-                            </tr>
-                            </thead>
-                        </table>
-
                         <hr class="mb-4">
 
                     </div>
@@ -637,44 +620,41 @@
                         <!-- popup thong bao -->
 
 
-            </div>
-            <hr class="mb-4">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="table-wrap">
-                        <table class="table table-dark">
-                            <thead>
-                            <tr class="bg-dark">
-                                <th>STT</th>
-                                <th>Name</th>
-                                <th>Seri</th>
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <th>Status</th>
-                            </tr>
-                            </thead>
-                            <tbody id="myTable" border="1">
-                            <c:forEach var="certView" items="${certViews}">
-                                <tr class="bg-primary bug">
-
-
-                                    <th scope="row">1</th>
-                                    <td>${certView.getName()}</td>
-                                    <td id="seri" name="seri">${certView.getSeri()}</td>
-                                    <td>${certView.getStartDate()}</td>
-                                    <td>${certView.getEndDate()}</td>
-
-                                    <td>${certView.getStatus()}</td>
-
-                                </tr>
-                            </c:forEach>
-
-                            </tbody>
-                        </table>
-
                     </div>
-                </div>
-            </div>
+                    <hr class="mb-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-wrap">
+                                <table class="table table-dark">
+                                    <thead>
+                                    <tr class="bg-dark">
+                                        <th>STT</th>
+                                        <th>Name</th>
+                                        <th>Seri</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="myTable" border="1">
+                                    <c:forEach var="certView" items="${certViews}">
+                                        <tr class="bg-primary bug">
+
+
+                                            <th scope="row">1</th>
+                                            <td>${certView.getName()}</td>
+                                            <td id="seri" name="seri">${certView.getSeri()}</td>
+                                            <td>${certView.getStartDate()}</td>
+                                            <td>${certView.getEndDate()}</td>
+
+                                            <td>${certView.getStatus()}</td>
+
+                                        </tr>
+                                    </c:forEach>
+
+                                    </tbody>
+                                </table>
+
 
             <div class="nenmodal" id="nenmodal-1">
                 <div class="nenmodal2"></div>
@@ -713,10 +693,53 @@
                                     <label class="label1">Certificate</label>
                                     <input type="text" class="form-control" id="certificate">
                                     <i class="fa fa-clipboard" id="copycer" aria-hidden="true"></i>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nenmodal" id="nenmodal-1">
+                        <div class="nenmodal2"></div>
+                        <div class="ndmodal">
+                            <div class="closemodal">
+                                <button onclick="momodal(), redirect('/user') ">×</button>
+                            </div>
+                            <div method="POST" id="contactForm" name="contactForm" class="contactForm">
+                                <div class="fname">
+                                    <label class="labelname">Name</label>
+                                    <input id="inname" name="issuerName" type="text"
+                                           placeholder="Người dùng nhập tên để tạo cetificate">
+                                    <button class="btnblock" type="submit" onclick="createKey()">Create Key</button>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="group">
+                                            <label class="label1">Private Key</label>
+                                            <input type="text" class="form-control" id="privateKey">
+                                            <i class="fa fa-clone" onclick="" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="group">
+                                            <label class="label1">Public Key</label>
+                                            <input type="text" class="form-control" id="publicKey">
+                                            <i class="fa fa-clone" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="group">
+                                            <label class="label1">Certificate</label>
+                                            <input type="text" class="form-control" id="certificate">
+                                            <i class="fa fa-clone" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
             <!-- màn hình import key -->
@@ -728,11 +751,22 @@
                     </div>
                     <div method="POST" id="contactForm2" name="contactForm" class="contactForm">
 
-                        <div class="row">
-                            <div class="col">
-                                <div class="group">
-                                    <label class="label1">Name </label>
-                                    <input type="text" name="username" class="inpri" id="name2">
+                    <!-- màn hình import key -->
+                    <div class="nenmodal" id="nenmodal-2">
+                        <div class="nenmodal2"></div>
+                        <div class="ndmodal">
+                            <div class="closemodal">
+                                <button onclick="momodal2()">×</button>
+                            </div>
+                            <div method="POST" id="contactForm2" name="contactForm" class="contactForm">
+
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="group">
+                                            <label class="label1">Name </label>
+                                            <input type="text" name="username" class="inpri" id="name2">
+
 
                                 </div>
                             </div>
@@ -753,10 +787,30 @@
                             </div>
                             <button class="btnblock btncreate" type="submit" onclick="ImportKey()">Create
                             </button>
+                          </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="group">
+                                            <label class="label1">Public Key</label>
+                                            <input type="text" name="publickey" class="form-control"
+                                                   id="publicKey2">
+
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="group">
+                                            <label class="label1">Certificate</label>
+                                            <input type="text" class="form-control" id="certificate2">
+                                            <i class="fa fa-clone" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <button class="btnblock btncreate" type="submit" onclick="ImportKey()">Create
+                                    </button>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                </div>
-            </div>
                     <!-- màn hình revocation key -->
                     <div class="nenmodal" id="nenmodal-3">
                         <div class="nenmodal"></div>
@@ -773,9 +827,10 @@
                                             <label class="label1">Ngày khóa </label>
                                             <div id="datepicker" class="input-group date"
                                                  data-date-format="mm-dd-yyyy">
-                                                <input class="form-control" id="revokedAt" name="revokedAt" type="text" readonly/>
+                                                <input class="form-control" id="revokedAt" name="revokedAt" type="text"
+                                                       readonly/>
                                                 <span class="input-group-addon">
-    <i class="fa fa-calendar" aria-hidden="true"  onclick="applyDatepicker() "></i>
+    <i class="fa fa-calendar" aria-hidden="true" onclick="applyDatepicker() "></i>
     </span>
                                             </div>
 
@@ -790,7 +845,8 @@
                                     </div>
                                     <div class="col">
                                         <div class="group">
-                                            <button class="btnblock btnrevo" type="submit" onclick="revocation()">Khóa <i class="fa fa-lock  " aria-hidden="true" onclick="abc()"></i>
+                                            <button class="btnblock btnrevo" type="submit" onclick="revocation()">Khóa
+                                                <i class="fa fa-lock  " aria-hidden="true" onclick="abc()"></i>
                                             </button>
                                         </div>
                                     </div>
@@ -801,45 +857,149 @@
                         </div>
                     </div>
 
-    </div>
-    <!-- Pills panels -->
-</div>
-</div>
-<!--Grid column-->
+                </div>
+                <!-- Pills panels -->
+            </div>
+        </div>
+        <!--Grid column-->
 
-</div>
-<!--Grid row-->
+    </div>
+    <!--Grid row-->
 </div>
 <!-- Main Container -->
 <!-- Footer -->
 <%@include file="default/footer.jsp" %>
 <!-- Footer -->
 <script src="/mdb/js/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
 <script src="/mdb/js/bootstrap.min.js"></script>
 <script src="/mdb/js/mdb.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
-
-<%--<script type="text/javascript">--%>
-<%--    /* WOW.js init */--%>
-<%--    new WOW().init();--%>
-
-<%--    // Tooltips Initialization--%>
-<%--    $(function () {--%>
-<%--        $('[data-toggle="tooltip"]').tooltip()--%>
-<%--    })--%>
-
-<%--    // Material Select Initialization--%>
-<%--    $(document).ready(function () {--%>
-
-<%--        $('.mdb-select').material_select();--%>
-<%--    });--%>
-
-<%--    // SideNav Initialization--%>
-<%--    $(".button-collapse").sideNav();--%>
-
-<%--</script>--%>
 <script src="/mdb/js/default.js"></script>
-
+//datatables order
+<script>
+    $(document).ready(function () {
+        let table = $('#orderTable').dataTable({
+            info: false,
+            scrollX: true,
+            "ajax": {
+                "url": "/user/order-api",
+                "type": "GET",
+                "dataSrc": "",
+                "dataType": "json",
+                "contentType": "application/json",
+            },
+            "columns": [
+                {title: "Order ID", data: "orderId"},
+                {title: "Full Address", data: "fullAddress"},
+                {title: "Shipping Fee", data: "shippingFee"},
+                {title: "Total Price", data: "total"},
+                {title: "Sent Date", data: "sendDay"},
+                {title: "Received Date", data: "receiveDay"},
+                {
+                    title: "Status", data: "status",
+                    render: function (data, type, row) {
+                        if (data === 0) {
+                            return '<span class="badge badge-pill badge-danger">UNVERIFIED</span>'
+                        }
+                        if (data === 1) {
+                            return '<span class="badge badge-pill badge-success">PENDING</span>'
+                        } else if (data === 2) {
+                            return '<span class="badge badge-pill badge-success">CONFIRMED</span>'
+                        } else if (data === 3) {
+                            return '<span class="badge badge-pill badge-success">PROCESSING</span>'
+                        } else if (data === 4) {
+                            return '<span class="badge badge-pill badge-success">SHIPPING</span>'
+                        } else if (data === 5) {
+                            return '<span class="badge badge-pill badge-success">DELIVERED</span>'
+                        } else if (data === 6) {
+                            return '<span class="badge badge-pill badge-danger">CANCELLED</span>'
+                        } else if (data === 7) {
+                            return '<span class="badge badge-pill badge-warning">RETURNED</span>'
+                        } else if (data === 8) {
+                            return '<span class="badge badge-pill badge-dark">REFUNDED</span>'
+                        }
+                    }
+                },
+                {
+                    title: "Action", data: "orderId",
+                    render: function (data, type, row) {
+                        return '<button class="btn btn-primary btn-sm verifyBtn">Verify Order</button>'
+                    }
+                }
+            ]
+        });
+    });
+</script>
+<script>
+    function verifyOrder(orderId) {
+        $.ajax({
+            url: '/api/verify-order',
+            type: 'POST',
+            data: {
+                orderId: orderId
+            },
+            success: function (data) {
+                if (data === "true") {
+                    // create popup alert success
+                    var popup = document.createElement("div");
+                    popup.classList.add("popup");
+                    popup.innerHTML = "Verify Order Success";
+                    document.body.appendChild(popup);
+                    setTimeout(function () {
+                        popup.classList.add("active");
+                    }, 10);
+                    setTimeout(function () {
+                        popup.classList.remove("active");
+                    }, 2000);
+                    setTimeout(function () {
+                        popup.remove();
+                    }, 2500);
+                }if (data === "This certificate is revoked") {
+                    // create popup alert fail
+                    var popup = document.createElement("div");
+                    popup.classList.add("popup");
+                    popup.innerHTML = "This certificate is revoked";
+                    document.body.appendChild(popup);
+                    setTimeout(function () {
+                        popup.classList.add("active");
+                    }, 10);
+                    setTimeout(function () {
+                        popup.classList.remove("active");
+                    }, 2000);
+                    setTimeout(function () {
+                        popup.remove();
+                    }, 2500);
+                }
+                else {
+                    // create popup alert fail
+                    var popup = document.createElement("div");
+                    popup.classList.add("popup");
+                    popup.innerHTML = "Verify Order Fail";
+                    document.body.appendChild(popup);
+                    setTimeout(function () {
+                        popup.classList.add("active");
+                    }, 10);
+                    setTimeout(function () {
+                        popup.classList.remove("active");
+                    }, 2000);
+                    setTimeout(function () {
+                        popup.remove();
+                    }, 2500);
+                }
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        })
+    }
+    $(document).on('click', '.verifyBtn', function () {
+        var orderId = $(this).closest('tr').find('td:eq(0)').text();
+        console.log(orderId);
+        verifyOrder(orderId);
+    });
+</script>
 <script>
     function editInfor() {
         var fullName = document.getElementById("fullName").value;
@@ -915,20 +1075,15 @@
 </script>
 
 
+
 //tao khoa
 <script type="text/javascript">
     function createKey() {
-        var issuerName = document.getElementById("inname").value;
-        console.log(issuerName)
         $.ajax({
             url: "/user/userKey",
             method: "GET",
             dataType: "json",
             contentType: "application/json",
-            data: {
-                issuerName: issuerName
-            },
-
             success: function (data) {
                 console.log("data" + data);
                 // Hiển thị thông tin khóa trên giao diện
@@ -995,7 +1150,6 @@
             success: function (data) {
 
 
-
             },
 
         });
@@ -1023,6 +1177,7 @@
 
     // step 2
     btnElement.addEventListener('click', function () {
+
         ipnElement.select() // step 4
         document.execCommand('copy')
     })
@@ -1064,6 +1219,12 @@
     function abc(){
         confirm("Bấm vào nút OK để tiếp tục") == true;
     }
+
+
+        ipnElement.select()              // step 4
+
+    })
+
 </script>
 
 </body>
