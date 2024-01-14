@@ -617,123 +617,123 @@
                         <!-- popup thong bao -->
 
 
-            </div>
-            <hr class="mb-4">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="table-wrap">
-                        <table class="table table-dark">
-                            <thead>
-                            <tr class="bg-dark">
-                                <th>STT</th>
-                                <th>Name</th>
-                                <th>Seri</th>
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <th>Status</th>
-                            </tr>
-                            </thead>
-                            <tbody id="myTable" border="1">
-                            <c:forEach var="certView" items="${certViews}">
-                                <tr class="bg-primary bug">
-
-
-                                    <th scope="row">1</th>
-                                    <td>${certView.getName()}</td>
-                                    <td id="seri" name="seri">${certView.getSeri()}</td>
-                                    <td>${certView.getStartDate()}</td>
-                                    <td>${certView.getEndDate()}</td>
-
-                                    <td>${certView.getStatus()}</td>
-
-                                </tr>
-                            </c:forEach>
-
-                            </tbody>
-                        </table>
-
                     </div>
-                </div>
-            </div>
+                    <hr class="mb-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-wrap">
+                                <table class="table table-dark">
+                                    <thead>
+                                    <tr class="bg-dark">
+                                        <th>STT</th>
+                                        <th>Name</th>
+                                        <th>Seri</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="myTable" border="1">
+                                    <c:forEach var="certView" items="${certViews}">
+                                        <tr class="bg-primary bug">
 
-            <div class="nenmodal" id="nenmodal-1">
-                <div class="nenmodal2"></div>
-                <div class="ndmodal">
-                    <div class="closemodal">
-                        <button onclick="momodal(), redirect('/user') ">×</button>
-                    </div>
-                    <div method="POST" id="contactForm" name="contactForm" class="contactForm">
-                        <div class="fname">
-                            <label class="labelname">Name</label>
-                            <input id="inname" name="issuerName" type="text"
-                                   placeholder="Người dùng nhập tên để tạo cetificate">
-                            <button class="btnblock" type="submit" onclick="createKey()">Create Key</button>
-                        </div>
 
-                        <div class="row">
-                            <div class="col">
-                                <div class="group">
-                                    <label class="label1">Private Key</label>
-                                    <input type="text" class="form-control" id="privateKey">
-                                    <i class="fa fa-clone" onclick="" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="group">
-                                    <label class="label1">Public Key</label>
-                                    <input type="text" class="form-control" id="publicKey">
-                                    <i class="fa fa-clone" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="group">
-                                    <label class="label1">Certificate</label>
-                                    <input type="text" class="form-control" id="certificate">
-                                    <i class="fa fa-clone" aria-hidden="true"></i>
-                                </div>
+                                            <th scope="row">1</th>
+                                            <td>${certView.getName()}</td>
+                                            <td id="seri" name="seri">${certView.getSeri()}</td>
+                                            <td>${certView.getStartDate()}</td>
+                                            <td>${certView.getEndDate()}</td>
+
+                                            <td>${certView.getStatus()}</td>
+
+                                        </tr>
+                                    </c:forEach>
+
+                                    </tbody>
+                                </table>
+
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!-- màn hình import key -->
-            <div class="nenmodal" id="nenmodal-2">
-                <div class="nenmodal2"></div>
-                <div class="ndmodal">
-                    <div class="closemodal">
-                        <button onclick="momodal2()">×</button>
-                    </div>
-                    <div method="POST" id="contactForm2" name="contactForm" class="contactForm">
 
-                        <div class="row">
-                            <div class="col">
-                                <div class="group">
-                                    <label class="label1">Name </label>
-                                    <input type="text" name="username" class="inpri" id="name2">
+                    <div class="nenmodal" id="nenmodal-1">
+                        <div class="nenmodal2"></div>
+                        <div class="ndmodal">
+                            <div class="closemodal">
+                                <button onclick="momodal(), redirect('/user') ">×</button>
+                            </div>
+                            <div method="POST" id="contactForm" name="contactForm" class="contactForm">
+                                <div class="fname">
+                                    <label class="labelname">Name</label>
+                                    <input id="inname" name="issuerName" type="text"
+                                           placeholder="Người dùng nhập tên để tạo cetificate">
+                                    <button class="btnblock" type="submit" onclick="createKey()">Create Key</button>
+                                </div>
 
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="group">
+                                            <label class="label1">Private Key</label>
+                                            <input type="text" class="form-control" id="privateKey">
+                                            <i class="fa fa-clone" onclick="" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="group">
+                                            <label class="label1">Public Key</label>
+                                            <input type="text" class="form-control" id="publicKey">
+                                            <i class="fa fa-clone" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="group">
+                                            <label class="label1">Certificate</label>
+                                            <input type="text" class="form-control" id="certificate">
+                                            <i class="fa fa-clone" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col">
-                                <div class="group">
-                                    <label class="label1">Public Key</label>
-                                    <input type="text" name="publickey" class="form-control"
-                                           id="publicKey2">
-
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="group">
-                                    <label class="label1">Certificate</label>
-                                    <input type="text" class="form-control" id="certificate2">
-                                    <i class="fa fa-clone" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                            <button class="btnblock btncreate" type="submit" onclick="ImportKey()">Create
-                            </button>
                         </div>
                     </div>
-                </div>
-            </div>
+                    <!-- màn hình import key -->
+                    <div class="nenmodal" id="nenmodal-2">
+                        <div class="nenmodal2"></div>
+                        <div class="ndmodal">
+                            <div class="closemodal">
+                                <button onclick="momodal2()">×</button>
+                            </div>
+                            <div method="POST" id="contactForm2" name="contactForm" class="contactForm">
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="group">
+                                            <label class="label1">Name </label>
+                                            <input type="text" name="username" class="inpri" id="name2">
+
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="group">
+                                            <label class="label1">Public Key</label>
+                                            <input type="text" name="publickey" class="form-control"
+                                                   id="publicKey2">
+
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="group">
+                                            <label class="label1">Certificate</label>
+                                            <input type="text" class="form-control" id="certificate2">
+                                            <i class="fa fa-clone" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <button class="btnblock btncreate" type="submit" onclick="ImportKey()">Create
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- màn hình revocation key -->
                     <div class="nenmodal" id="nenmodal-3">
                         <div class="nenmodal"></div>
@@ -750,9 +750,10 @@
                                             <label class="label1">Ngày khóa </label>
                                             <div id="datepicker" class="input-group date"
                                                  data-date-format="mm-dd-yyyy">
-                                                <input class="form-control" id="revokedAt" name="revokedAt" type="text" readonly/>
+                                                <input class="form-control" id="revokedAt" name="revokedAt" type="text"
+                                                       readonly/>
                                                 <span class="input-group-addon">
-    <i class="fa fa-calendar" aria-hidden="true"  onclick="applyDatepicker() "></i>
+    <i class="fa fa-calendar" aria-hidden="true" onclick="applyDatepicker() "></i>
     </span>
                                             </div>
 
@@ -767,7 +768,8 @@
                                     </div>
                                     <div class="col">
                                         <div class="group">
-                                            <button class="btnblock btnrevo" type="submit" onclick="revocation()">Khóa <i class="fa fa-lock  " aria-hidden="true" onclick="abc()"></i>
+                                            <button class="btnblock btnrevo" type="submit" onclick="revocation()">Khóa
+                                                <i class="fa fa-lock  " aria-hidden="true" onclick="abc()"></i>
                                             </button>
                                         </div>
                                     </div>
@@ -821,7 +823,7 @@
                 {
                     title: "Status", data: "status",
                     render: function (data, type, row) {
-                        if (data===0){
+                        if (data === 0) {
                             return '<span class="badge badge-pill badge-danger">UNVERIFIED</span>'
                         }
                         if (data === 1) {
@@ -852,6 +854,52 @@
             ]
         });
     });
+
+    function verifyOrder(orderId) {
+        $.ajax({
+            url: '/user/verify-order',
+            type: 'POST',
+            data: {
+                orderId: orderId
+            },
+            success: function (data) {
+                if (data === "verify success") {
+                    // create popup alert success
+                    var popup = document.createElement("div");
+                    popup.classList.add("popup");
+                    popup.innerHTML = "Verify Order Success";
+                    document.body.appendChild(popup);
+                    setTimeout(function () {
+                        popup.classList.add("active");
+                    }, 10);
+                    setTimeout(function () {
+                        popup.classList.remove("active");
+                    }, 2000);
+                    setTimeout(function () {
+                        popup.remove();
+                    }, 2500);
+                } else {
+                    // create popup alert fail
+                    var popup = document.createElement("div");
+                    popup.classList.add("popup");
+                    popup.innerHTML = "Verify Order Fail";
+                    document.body.appendChild(popup);
+                    setTimeout(function () {
+                        popup.classList.add("active");
+                    }, 10);
+                    setTimeout(function () {
+                        popup.classList.remove("active");
+                    }, 2000);
+                    setTimeout(function () {
+                        popup.remove();
+                    }, 2500);
+                }
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        })
+    }
 </script>
 <script>
     function editInfor() {
@@ -917,7 +965,7 @@
     }
 </script>
 <script>
-    function momodal2(){
+    function momodal2() {
         document.getElementById("nenmodal-2").classList.toggle("active");
     }
 </script>
@@ -936,10 +984,10 @@
         $.ajax({
             url: "/user/userKey",
             method: "GET",
-            dataType : "json",
-            contentType:"application/json",
+            dataType: "json",
+            contentType: "application/json",
             success: function (data) {
-                console.log("data"+data);
+                console.log("data" + data);
                 // Hiển thị thông tin khóa trên giao diện
                 $("#publicKey").val(data.pubKey);
                 $("#privateKey").val(data.priKey);
@@ -1004,7 +1052,6 @@
             success: function (data) {
 
 
-
             },
 
         });
@@ -1016,7 +1063,7 @@
     const btnElement = document.querySelector('.fa-clone')
 
     // step 2
-    btnElement.addEventListener('click', function() {
+    btnElement.addEventListener('click', function () {
 
         ipnElement.select()              // step 4
 
