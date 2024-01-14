@@ -1,0 +1,146 @@
+
+    /* CSS nền hiển thị Modal */
+    /*.btn {*/
+    /*    width: 150px;*/
+    /*    height: 50px;*/
+    /*    background-color: #0a47a9;*/
+    /*    display:block;*/
+    /*}*/
+.nenmodal .nenmodal2 {
+    position:fixed;
+    top:0px;
+    left:0px;
+    width:100vw;
+    height:100vh;
+    background:rgba(0,0,0,0.7);
+    z-index:1;
+    display:none;
+}
+/* CSS bảng nội dung Modal */
+.nenmodal .ndmodal {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) scale(0);
+    background:#fff;
+    width:600px;
+    z-index:2;
+    text-align:center;
+    padding:20px;
+    box-sizing:border-box;
+    font-family:"Open Sans",sans-serif;
+    border-radius:20px;
+    display: block;
+    position: fixed;
+    box-shadow:0px 0px 10px #111;
+}
+@media (max-width: 700px) {
+    .nenmodal .ndmodal {width:90%;}
+}
+/* CSS bao bọc của nút tắt Modal */
+.nenmodal .closemodal {
+    text-align:center;
+    margin-top:-40px;
+    margin-bottom:10px;
+}
+/* CSS tieu de của Modal */
+.titlemodal{
+    font-weight:bold;
+    font-size:20px;
+    margin-bottom:10px;
+}
+/* CSS nút tắt modal */
+.closemodal button{
+    width:60px;
+    height:40px;
+    font-size:30px;
+    padding:0px;
+    border-radius:100%;
+    background:#333;
+    color:#fff;
+    border:none;
+}
+.nenmodal.active .nenmodal2 {
+    display:block;
+}
+/* CSS hiệu ứng hiển thị Modal */
+.nenmodal.active .ndmodal {
+    transition:all 300ms ease-in-out;
+    transform:translate(-50%,-50%) scale(1);
+}
+.col {
+   padding-left: 5px;
+    padding-right: 5px;
+
+}
+
+.form-control{
+    width: 400px;
+    height: 30px;
+    margin-left: 5px;
+    margin-right: 3px;
+
+
+
+}
+.group {
+   padding: 10px;
+    display: flex;
+
+}
+
+.contactForm .label1 {
+    color: #000;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600; }
+.inpri{
+    width: 400px;
+    height: 30px;
+    margin-left: 45px;
+}
+.btncreate{
+    margin-left: 450px;
+}
+.btnblock{
+    width: 130px;
+    height: 35px;
+    background-color: black;
+    color: #f1f1f1;
+}
+ #inname{
+    width: 270px;
+ height: 30px;
+     margin-left: 50px;
+     margin-right: 20px;
+}
+.fa{
+    cursor: pointer;
+}
+
+    #datepicker {
+        width: 150px;
+    }
+
+    #datepicker > span:hover {
+        cursor: pointer;
+    }
+
+    .disabled {
+        background-color: #ddd;
+        color: #888;
+    }
+    #tabKeyManagement #keymana {
+        display: flex;  /* Sử dụng Flexbox để giữ các phần tử trong một hàng */
+    }
+
+    #tabKeyManagement #keymana button {
+        margin-right: 10px;  /* Khoảng cách giữa các nút (tuỳ chọn) */
+background-color: #0a47a9;
+    }
+    .inli {
+        display: inline-block; /* Hoặc sử dụng display: inline; */
+        margin-right: 10px;
+
+
+    }

@@ -1,10 +1,14 @@
 package hcmuaf.edu.vn.BikeEcommerce.db;
+
 import com.mysql.cj.jdbc.MysqlDataSource;
+import hcmuaf.edu.vn.BikeEcommerce.model.Category;
+import hcmuaf.edu.vn.BikeEcommerce.service.CategoryService;
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 
 
 import java.sql.SQLException;
+import java.util.List;
 
 import static hcmuaf.edu.vn.BikeEcommerce.db.DBProperties.*;
 
@@ -39,8 +43,9 @@ public class JDBIConnector {
     }
 
     public static void main(String[] args) {
-        System.out.println(getHost());
-        System.out.println(getPort());
+        CategoryService categoryService = CategoryService.getInstance();
+        List<Category> list = categoryService.getAll();
+        System.out.println(list.size());
     }
 
 }

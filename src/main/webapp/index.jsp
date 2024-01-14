@@ -15,11 +15,11 @@
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
             rel="stylesheet"
     />
-    <link href="/mdb/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/mdb/css/mdb.min.css" rel="stylesheet">
-    <link href="/mdb/css/addons/compiled-addons-4.20.0.min.css" rel="stylesheet">
-    <link href="/mdb/css/style.css" rel="stylesheet">
-    <link href="/mdb/css/default.css" rel="stylesheet">
+    <link href="mdb/css/bootstrap.min.css" rel="stylesheet">
+    <link href="mdb/css/mdb.min.css" rel="stylesheet">
+    <link href="mdb/css/addons/compiled-addons-4.20.0.min.css" rel="stylesheet">
+    <link href="mdb/css/style.css" rel="stylesheet">
+    <link href="mdb/css/default.css" rel="stylesheet">
 </head>
 <body class="homepage-v2 hidden-sn white-skin animated">
 <!--onTop-->
@@ -318,29 +318,20 @@
                         <!-- Image -->
                         <div class="view  z-depth-1">
 
-                            <img src="https://mdbootstrap.com/img/Photos/Others/ecommerce6.jpg" class="img-fluid"
+                            <img src="https://thegioixedien.com.vn/datafiles/setone/1701509873_goglan-avt.jpg" class="img-fluid"
                                  alt="sample image">
 
                             <div class="mask rgba-stylish-slight">
 
                                 <div class="dark-grey-text text-right pt-lg-5 pt-md-1 mr-5 pr-md-4 pr-0">
-
                                     <div>
-
                                         <a>
-
                                             <span class="badge badge-primary">SALE</span>
-
                                         </a>
-
                                         <h2 class="card-title font-weight-bold pt-md-3 pt-1">
-
-                                            <strong>Sale 20% off on every smartphone!
-
+                                            <strong>Sale 20% off on every!
                                             </strong>
-
                                         </h2>
-
                                         <p class="pb-lg-3 pb-md-1 clearfix d-none d-md-block">Lorem ipsum dolor sit
                                             amet, consectetur
                                             adipisicing elit. </p>
@@ -372,7 +363,7 @@
                         <!-- Image -->
                         <div class="view zoom z-depth-1">
 
-                            <img src="https://mdbootstrap.com/img/Photos/Others/product1.jpg" class="img-fluid"
+                            <img src="https://thegioixedien.com.vn/datafiles/setone/1689219888_CLD-PU20-A45.jpg" class="img-fluid"
                                  alt="sample image">
 
                             <div class="mask rgba-white-light">
@@ -410,7 +401,7 @@
                         <!-- Image -->
                         <div class="view zoom z-depth-1 photo">
 
-                            <img src="https://mdbootstrap.com/img/Photos/Others/product3.jpg" class="img-fluid"
+                            <img src="https://thegioixedien.com.vn/datafiles/setone/1689143256_adventure-20-1_result.jpg" class="img-fluid"
                                  alt="sample image">
 
                             <div class="mask rgba-stylish-strong">
@@ -465,7 +456,7 @@
 
                             <div class="col-6">
 
-                                <a><img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/1.jpg"
+                                <a><img src="https://thegioixedien.com.vn/datafiles/setone/1689219888_CLD-PU20-A45.jpg"
                                         class="img-fluid"></a>
 
                             </div>
@@ -473,7 +464,7 @@
                             <div class="col-6">
 
                                 <!-- Title -->
-                                <a class="pt-5"><strong>iPad</strong></a>
+                                <a class="pt-5"><strong>Xe Đạp Asama</strong></a>
 
                                 <!-- Rating -->
                                 <ul class="rating inline-ul">
@@ -503,7 +494,7 @@
 
                             <div class="col-6">
 
-                                <a><img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/10.jpg"
+                                <a><img src="https://thegioixedien.com.vn/datafiles/setone/1700468346_1689244421_xd1.jpeg"
                                         class="img-fluid"></a>
 
                             </div>
@@ -511,7 +502,7 @@
                             <div class="col-6">
 
                                 <!-- Title -->
-                                <a><strong>Headphones</strong></a>
+                                <a><strong>Xe Đạp TEKKO</strong></a>
 
                                 <!-- Rating -->
                                 <ul class="rating inline-ul">
@@ -542,7 +533,7 @@
 
                             <div class="col-6">
 
-                                <a><img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/3.jpg"
+                                <a><img src="https://thegioixedien.com.vn/datafiles/setone/1687160049_LIHAZE-AVT-TG.jpg"
                                         class="img-fluid"></a>
 
                             </div>
@@ -550,7 +541,7 @@
                             <div class="col-6">
 
                                 <!-- Title -->
-                                <a><strong>iMac 27"</strong></a>
+                                <a><strong>Xe Đạp Điện Gấp Lihaze</strong></a>
 
                                 <!-- Rating -->
                                 <ul class="rating inline-ul">
@@ -593,7 +584,7 @@
 
                             <div class="col-6">
 
-                                <a><img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/4.jpg"
+                                <a><img src="https://thegioixedien.com.vn/datafiles/setone/1686824031_BURKE-AVT_result.jpg"
                                         class="img-fluid"></a>
 
                             </div>
@@ -601,7 +592,7 @@
                             <div class="col-6">
 
                                 <!-- Title -->
-                                <a><strong>Dell V-964i</strong></a>
+                                <a><strong>Xe Đạp Điện Bruke</strong></a>
 
                                 <!-- Rating -->
                                 <ul class="rating inline-ul">
@@ -632,7 +623,7 @@
 
                             <div class="col-6">
 
-                                <a><img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/5.jpg"
+                                <a><img src="https://thegioixedien.com.vn/datafiles/setone/1702270852_avt.jpg"
                                         class="img-fluid"></a>
 
                             </div>
@@ -640,7 +631,7 @@
                             <div class="col-6">
 
                                 <!-- Title -->
-                                <a><strong>Asus GT67i</strong></a>
+                                <a><strong>Xe Đạp Điện Super Soeel</strong></a>
 
                                 <!-- Rating -->
                                 <ul class="rating inline-ul">
@@ -671,7 +662,7 @@
 
                             <div class="col-6">
 
-                                <a><img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/6.jpg"
+                                <a><img src="https://thegioixedien.com.vn/datafiles/setone/1704184917_vc-avt.jpg"
                                         class="img-fluid"></a>
 
                             </div>
@@ -679,7 +670,7 @@
                             <div class="col-6">
 
                                 <!-- Title -->
-                                <a><strong>Headphones</strong></a>
+                                <a><strong>Xe Đạp Điện Hotgirl VC</strong></a>
 
                                 <!-- Rating -->
                                 <ul class="rating inline-ul">
@@ -722,7 +713,7 @@
 
                             <div class="col-6">
 
-                                <a><img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/7.jpg"
+                                <a><img src="https://thegioixedien.com.vn/datafiles/setone/1701165848_vic-ebike-avt.jpg"
                                         class="img-fluid"></a>
 
                             </div>
@@ -730,7 +721,7 @@
                             <div class="col-6">
 
                                 <!-- Title -->
-                                <a><strong>Dell 786i</strong></a>
+                                <a><strong>Xe Đạp Điện E-Bike Victoria</strong></a>
 
                                 <!-- Rating -->
                                 <ul class="rating inline-ul">
@@ -761,7 +752,7 @@
 
                             <div class="col-6">
 
-                                <a><img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/8.jpg"
+                                <a><img src="https://thegioixedien.com.vn/datafiles/setone/1686824050_m16-avtTGXD_result.jpg"
                                         class="img-fluid"></a>
 
                             </div>
@@ -769,7 +760,7 @@
                             <div class="col-6">
 
                                 <!-- Title -->
-                                <a><strong>Samsung V54</strong></a>
+                                <a><strong>Xe Đạp Điện Motkoo</strong></a>
 
                                 <!-- Rating -->
                                 <ul class="rating inline-ul">
@@ -800,7 +791,7 @@
 
                             <div class="col-6">
 
-                                <a><img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/9.jpg"
+                                <a><img src="https://thegioixedien.com.vn/datafiles/setone/1701853925_2023-ineed-latte-24-26-8-xanh-new-768x513.png"
                                         class="img-fluid"></a>
 
                             </div>
@@ -808,7 +799,7 @@
                             <div class="col-6">
 
                                 <!-- Title -->
-                                <a><strong>Canon 675-D</strong></a>
+                                <a><strong>Xe Đạp Momentum</strong></a>
 
                                 <!-- Rating -->
                                 <ul class="rating inline-ul">
@@ -882,7 +873,7 @@
                                     <!-- Card image -->
                                     <div class="view overlay">
 
-                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg"
+                                        <img src="https://thegioixedien.com.vn/datafiles/setone/1701780160_aima-avt.jpg"
                                              class="img-fluid"
                                              alt="">
 
@@ -900,7 +891,7 @@
 
                                         <!-- Category & Title -->
                                         <h5 class="card-title mb-1"><strong><a href=""
-                                                                               class="dark-grey-text">Headphones</a></strong>
+                                                                               class="dark-grey-text">Xe Đạp Điện 133 Aima Orla</a></strong>
                                         </h5>
                                         <span class="badge badge-danger mb-2">bestseller</span>
 
@@ -956,7 +947,7 @@
                                     <!-- Card image -->
                                     <div class="view overlay">
 
-                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/16.jpg"
+                                        <img src="https://thegioixedien.com.vn/datafiles/setone/1621777081_xe-dien-gap-jlbao-tg.jpg"
                                              class="img-fluid"
                                              alt="">
 
@@ -974,7 +965,7 @@
 
                                         <!-- Category & Title -->
                                         <h5 class="card-title mb-1"><strong><a href=""
-                                                                               class="dark-grey-text">Headphones</a></strong>
+                                                                               class="dark-grey-text">Xe Đạp Điện Gấp JLBAO</a></strong>
                                         </h5>
                                         <span class="badge badge-danger mb-2">bestseller</span>
 
@@ -1030,7 +1021,7 @@
                                     <!-- Card image -->
                                     <div class="view overlay">
 
-                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg"
+                                        <img src="https://thegioixedien.com.vn/datafiles/setone/1686563142_goglan2-avt.jpg"
                                              class="img-fluid"
                                              alt="">
 
@@ -1048,7 +1039,7 @@
 
                                         <!-- Category & Title -->
                                         <h5 class="card-title mb-1"><strong><a href=""
-                                                                               class="dark-grey-text">iPhone</a></strong>
+                                                                               class="dark-grey-text">Xe Đạp Điện Super Goglan </a></strong>
                                         </h5>
                                         <span
                                                 class="badge badge-info mb-2">new</span>
@@ -1106,7 +1097,7 @@
                                     <!-- Card image -->
                                     <div class="view overlay">
 
-                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/3.jpg"
+                                        <img src="https://thegioixedien.com.vn/datafiles/setone/1690628243_type2-avtg.jpg"
                                              class="img-fluid"
                                              alt="">
 
@@ -1124,7 +1115,7 @@
 
                                         <!-- Category & Title -->
                                         <h5 class="card-title mb-1"><strong><a href=""
-                                                                               class="dark-grey-text">iMac</a></strong>
+                                                                               class="dark-grey-text">Xe Đạp Điện Dreaform Type</a></strong>
                                         </h5><span
                                             class="badge badge-danger mb-2">bestseller</span>
 
@@ -1180,7 +1171,7 @@
                                     <!-- Card image -->
                                     <div class="view overlay">
 
-                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/16.jpg"
+                                        <img src="https://thegioixedien.com.vn/datafiles/setone/1689329628_RB-SL2802-B-45.jpg"
                                              class="img-fluid"
                                              alt="">
 
@@ -1198,7 +1189,7 @@
 
                                         <!-- Category & Title -->
                                         <h5 class="card-title mb-1"><strong><a href=""
-                                                                               class="dark-grey-text">Headphones</a></strong>
+                                                                               class="dark-grey-text">Xe Đạp Asama Solano Expert</a></strong>
                                         </h5>
                                         <span class="badge badge-danger mb-2">bestseller</span>
 
@@ -1254,7 +1245,7 @@
                                     <!-- Card image -->
                                     <div class="view overlay">
 
-                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg"
+                                        <img src="https://thegioixedien.com.vn/datafiles/setone/1700468249_4.jpeg"
                                              class="img-fluid"
                                              alt="">
 
@@ -1272,7 +1263,7 @@
 
                                         <!-- Category & Title -->
                                         <h5 class="card-title mb-1"><strong><a href=""
-                                                                               class="dark-grey-text">Headphones</a></strong>
+                                                                               class="dark-grey-text">Xe Đạp Thể Thao ASAMA MTB</a></strong>
                                         </h5>
                                         <span class="badge badge-danger mb-2">bestseller</span>
 
