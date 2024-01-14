@@ -11,6 +11,7 @@ import org.bouncycastle.cms.CMSException;
 import org.bouncycastle.cms.CMSSignedData;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.operator.OperatorCreationException;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -22,11 +23,20 @@ import java.util.Collection;
 public class CheckSig {
 
     OrderService orderService = OrderService.getInstance();
+    UserSeriService userSeriService = UserSeriService.getInstance();
+    RevocationCertService revocationCertService = RevocationCertService.getInstance();
 
     public CheckSig() {
     }
 
-    public boolean checkSignature(String orderId, byte[] sig) throws GeneralSecurityException, OperatorCreationException, CMSException {
+    public boolean checkSignature(String userId, String orderId, byte[] sig) throws GeneralSecurityException, OperatorCreationException, CMSException, IOException {
+        String seri = getSeriOfCertByCMSSigData(sig);
+        if (revocationCertService.getBySeri(seri) != null) {// check cert is revoked
+            return false;
+        }
+        if (!userSeriService.checkSeriAndUser(userId, seri)) {// check cert is belong to user
+            return false;
+        }
         Order order = orderService.getOrderById(orderId);
         String data = order.toStringForHash();
         Hash hashFunc = new Hash("SHA-256");
@@ -39,21 +49,22 @@ public class CheckSig {
         Security.addProvider(new BouncyCastleProvider());
         CMSSignedData cmsSignedData = new CMSSignedData(sig);
         String seri = cmsSignedData.getSignerInfos().getSigners().iterator().next().getSID().getSerialNumber().toString();
-        Collection<X509CertificateHolder> certs = cmsSignedData.getCertificates().getMatches(null);
-        X509CertificateHolder cert = certs.iterator().next();
-        X509Certificate certificate = new JcaX509CertificateConverter().setProvider("BC").getCertificate(cert);
-        FileInputStream fis = new FileInputStream("src/main/java/hcmuaf/edu/vn/BikeEcommerce/atbm/privateInfo/GreenLockPublicKey.key");
-        PublicKey publicKey = KeyGen.getInstance().getPublicKeyformBytes(fis.readAllBytes());
-        boolean b = false;
-        try {
-            certificate.verify(publicKey);
-            b = true;
-        } catch (Exception e) {
-            b = false;
-        }
-        System.out.println(b);
+//        Collection<X509CertificateHolder> certs = cmsSignedData.getCertificates().getMatches(null);
+//        X509CertificateHolder cert = certs.iterator().next();
+//        X509Certificate certificate = new JcaX509CertificateConverter().setProvider("BC").getCertificate(cert);
+//        FileInputStream fis = new FileInputStream("src/main/java/hcmuaf/edu/vn/BikeEcommerce/atbm/privateInfo/GreenLockPublicKey.key");
+//        PublicKey publicKey = KeyGen.getInstance().getPublicKeyformBytes(fis.readAllBytes());
+//        boolean b = false;
+//        try {
+//            certificate.verify(publicKey);
+//            b = true;
+//        } catch (Exception e) {
+//            b = false;
+//        }
+//        System.out.println(b);
         return seri;
     }
+
 
     public static void main(String[] args) throws IOException, GeneralSecurityException, OperatorCreationException, CMSException {
         CheckSig checkSig = new CheckSig();

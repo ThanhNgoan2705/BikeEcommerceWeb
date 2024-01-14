@@ -818,13 +818,11 @@
                 {title: "Full Address", data: "fullAddress"},
                 {title: "Shipping Fee", data: "shippingFee"},
                 {title: "Total Price", data: "total"},
-                {title: "Sent Date", data: "sendDay"},
-                {title: "Received Date", data: "receiveDay"},
                 {
                     title: "Status", data: "status",
                     render: function (data, type, row) {
                         if (data === 0) {
-                            return '<span class="badge badge-pill badge-danger">UNVERIFIED</span>'
+                            return '<a class="badge badge-pill badge-danger">UNVERIFIED</a>'
                         }
                         if (data === 1) {
                             return '<span class="badge badge-pill badge-success">PENDING</span>'
@@ -848,6 +846,9 @@
                 {
                     title: "Action", data: "orderId",
                     render: function (data, type, row) {
+                        if (row.status ===0){
+                            return '<a href="/user/order?orderId=' + data + '" class="btn btn-primary btn-sm">Check signature</a>'
+                        }
                         return '<button class="btn btn-primary btn-sm verifyBtn">Verify Order</button>'
                     }
                 }
@@ -858,7 +859,7 @@
 <script>
     function verifyOrder(orderId) {
         $.ajax({
-            url: '/api/verify-order',
+            url: '/user/verify-order',
             type: 'POST',
             data: {
                 orderId: orderId

@@ -50,47 +50,48 @@
         <div class="row">
             <!--Grid column-->
             <div class="col-lg-8 mb-4">
-                <p class="nav-link active" data-toggle="tab" href="#verify-order" role="tab">Order Verification- Order: <span class="btn-primary" id="orderId">${order.orderId}</span></p>
+                <p class="nav-link active" data-toggle="tab" href="#verify-order" role="tab">Order Verification- Order:
+                    <span class="btn-primary" id="orderId">${order.orderId}</span></p>
                 <span class="clearfix"></span>
                 <!-- Pills panels -->
                 <div class="tab-content pt-4">
                     <!--Panel 1-->
                     <div class="tab-pane fade in show active" id="verify-order" role="tabpanel">
                         <!--Card content-->
-                            <div class="row d-flex justify-content-center">
-                                <div class="col-md-12 text-left">
-                                    <h4 class="font-weight-bold mb-4 text-muted">Get the code to sign, please</h4>
-                                    <div class="input-group mb-4">
-                                        <input type="text" class="form-control" id="code" placeholder="" value="${code}"
-                                               required aria-describedby="button-addon2">
-                                        <div class="input-group-append">
-                                            <button id="button-addon2"
-                                                    class="btn btn-md btn-outline-default m-0 px-3 py-2 z-depth-0 waves-effect"
-                                                    onclick="copyCode()">Copy
-                                            </button>
-                                        </div>
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-md-12 text-left">
+                                <h4 class="font-weight-bold mb-4 text-muted">Get the code to sign, please</h4>
+                                <div class="input-group mb-4">
+                                    <input type="text" class="form-control" id="code" placeholder="" value="${code}"
+                                           required aria-describedby="button-addon2">
+                                    <div class="input-group-append">
+                                        <button id="button-addon2"
+                                                class="btn btn-md btn-outline-default m-0 px-3 py-2 z-depth-0 waves-effect"
+                                                onclick="copyCode()">Copy
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12 mb-3">
-                                    <form>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <form class="md-form" enctype="multipart/form-data" method="post" action="/user/check-signature?orderId=${order.orderId}" >
                                     <div class="file-field">
                                         <div class="btn btn-primary btn-sm float-left">
                                             <span>Choose file</span>
-                                            <input type="file">
+                                            <input type="file" name="signatureFile">
                                         </div>
                                         <div class="file-path-wrapper">
-                                            <input class="file-path validate" id="signatureFile" type="text"
-                                                   placeholder="Upload your signature file">
+                                            <input class="file-path validate" name="fileupload" id="signatureFile"
+                                                   type="text" placeholder="Upload your Signature file">
                                         </div>
                                     </div>
-                                        <div class="col-lg-3">
-                                        <button class="btn btn-primary btn-lg btn-block" onclick="verifyFile()">Verify</button>
-                                        </div>
-                                    </form>
-                                </div>
+                                    <div class="col-lg-3">
+                                        <button class="btn btn-primary btn-lg btn-block" type="submit">Verify</button>
+                                    </div>
+                                </form>
                             </div>
+                        </div>
 
                     </div>
                     <!--/.Panel 1-->
@@ -186,53 +187,49 @@
         src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/docs-app/js/bundles/4.20.0/compiled-addons.min.js"></script>
 <script src="/mdb/js/default.js"></script>
 <script>
-    function verifyFile() {
-        var code = document.getElementById("code").value;
-        var signatureFile = document.getElementById("signatureFile");
-        var orderId = document.getElementById("orderId").value;
-        var file = signatureFile.files[0];
-        if(file){
-            var reader = new FileReader();
-            // read file as byte array
-            reader.readAsArrayBuffer(file);
-            reader.onload = function (evt) {
-                var arrayBuffer = reader.result;
-                console.log(signature);
-                if (checkValid(code, signature)) {
-                    $.ajax({
-                        type: "POST",
-                        url: "/api/check-signature",
-                        data: {
-                            code: code,
-                            orderId: orderId,
-                            signature: arrayBuffer
-                        },
-                        success: function (data) {
-                            if (data === "true") {
-                                alert("Verify successfully");
-                            } else {
-                                alert("Verify failed");
-                            }
-                        }
-                    });
-                }
-            }
-            reader.onerror = function (evt) {
-                alert("error reading file");
-            }
-        }
-        if (code == null || code == "") {
-            alert("Code is null");
-            return false;
-        }
-        if (signatureFile == null || signatureFile == "") {
-            alert("Please upload your signature file");
-            return false;
-        }
-        return true;
-        console.log(code);
-        console.log(signatureFile);
-    }
+    // function verifyFile() {
+    //     var code = document.getElementById("code").value;
+    //     var orderId = document.getElementById("orderId").value;
+    //     var file = $("#signatureFile").change(function (event) {
+    //         var file=  event.target.files[0];
+    //         console.log(file.name);
+    //         return file;
+    //     });
+    //     if (signatureFile !== null && signatureFile !== undefined) {
+    //         file = signatureFile.files[0];
+    //     }
+    //     console.log(file.name);
+    //     if (file) {
+    //         var reader = new FileReader();
+    //         // read file as byte array
+    //         reader.readAsArrayBuffer(file);
+    //         reader.onload = function (evt) {
+    //             var arrayBuffer = reader.result;
+    //             $.ajax({
+    //                 type: "POST",
+    //                 url: "/api/check-signature",
+    //                 data: {
+    //                     code: code,
+    //                     orderId: orderId,
+    //                     signature: arrayBuffer
+    //                 },
+    //                 success: function (data) {
+    //                     if (data === "true") {
+    //                         alert("Verify successfully");
+    //                     } else {
+    //                         alert("Verify failed");
+    //                     }
+    //                 }
+    //             });
+    //         }
+    //         reader.onerror = function (evt) {
+    //             alert("error reading file");
+    //         }
+    //     }
+    //     else {
+    //         alert("Please choose a file");
+    //     }
+    // }
 </script>
 </body>
 </html>

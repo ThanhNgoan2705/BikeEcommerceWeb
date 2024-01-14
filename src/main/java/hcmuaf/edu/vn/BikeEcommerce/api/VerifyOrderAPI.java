@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import hcmuaf.edu.vn.BikeEcommerce.model.Order;
 import hcmuaf.edu.vn.BikeEcommerce.model.digitSig.OrderSig;
 import hcmuaf.edu.vn.BikeEcommerce.model.digitSig.RevocationCert;
+import hcmuaf.edu.vn.BikeEcommerce.model.sercurity.Token;
 import hcmuaf.edu.vn.BikeEcommerce.service.OrderService;
 import hcmuaf.edu.vn.BikeEcommerce.service.digitSig.CheckSig;
 import hcmuaf.edu.vn.BikeEcommerce.service.digitSig.OrderSigService;
@@ -16,12 +17,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/api/verify-order")
+@WebServlet("/user/verify-order")
 public class VerifyOrderAPI extends HttpServlet {
     OrderSigService orderSigService;
     OrderService orderService;
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Token token = (Token) req.getAttribute("token");
+        String userId = token.getUserId();
         try {
             String orderId = req.getParameter("orderId");
             System.out.println("orderId " +orderId);
@@ -38,7 +41,7 @@ public class VerifyOrderAPI extends HttpServlet {
                 resp.getWriter().write("This certificate is revoked");
                 return;
             }else {
-                if (checkSig.checkSignature(orderId, sig)) {
+                if (checkSig.checkSignature(userId,orderId, sig)) {
                     resp.getWriter().write("true");
                 } else {
                     resp.getWriter().write("false");
