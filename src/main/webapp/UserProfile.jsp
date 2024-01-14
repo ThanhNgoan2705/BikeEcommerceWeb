@@ -698,21 +698,21 @@
                                 <div class="group">
                                     <label class="label1">Private Key</label>
                                     <input type="text" class="form-control" id="privateKey" value="" >
-
+                                    <i class="fa fa-clipboard" id="copypri" aria-hidden="true"></i>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="group">
                                     <label class="label1">Public Key</label>
                                     <input type="text" class="form-control" id="publicKey">
-
+                                    <i class="fa fa-clipboard" id="copypub"aria-hidden="true"></i>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="group">
                                     <label class="label1">Certificate</label>
                                     <input type="text" class="form-control" id="certificate">
-
+                                    <i class="fa fa-clipboard" id="copycer" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>
@@ -741,14 +741,14 @@
                                     <label class="label1">Public Key</label>
                                     <input type="text" name="publickey" class="form-control"
                                            id="publicKey2">
-
+                                    <i class="fa fa-clipboard" id="copypub2" aria-hidden="true"></i>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="group">
                                     <label class="label1">Certificate</label>
                                     <input type="text" class="form-control" id="certificate2">
-
+                                    <i class="fa fa-clipboard" id="copycer2" aria-hidden="true"></i>
                                 </div>
                             </div>
                             <button class="btnblock btncreate" type="submit" onclick="ImportKey()">Create
@@ -785,7 +785,7 @@
                                         <div class="group">
                                             <label class="label">Số Seri</label>
                                             <input type="text" class="form-control" name="seri2" id="seri2">
-
+                                            <i class="fa fa-clipboard" id="copyseri2" aria-hidden="true"></i>
                                         </div>
                                     </div>
                                     <div class="col">
@@ -1003,15 +1003,52 @@
 </script>
 <script>
     // step 1
-    const ipnElement = document.querySelector('input')
-    const btnElement = document.querySelector('.fa-clone')
+    const ipnElement = document.querySelector('#privateKey')
+    const btnElement = document.querySelector('#copypri')
+    //
+    const ipnElement1 = document.querySelector('#publicKey')
+    const btnElement1 = document.querySelector('#copypub')
+    //
+    const ipnElement2 = document.querySelector('#certificate')
+    const btnElement2 = document.querySelector('#copycer')
+    //
+    const ipnElement3 = document.querySelector('#publicKey2')
+    const btnElement3 = document.querySelector('#copypub2')
+
+    const ipnElement4 = document.querySelector('#certificate2')
+    const btnElement4 = document.querySelector('#copycer2')
+
+    const ipnElement5 = document.querySelector('#seri2')
+    const btnElement5 = document.querySelector('#copyseri2')
 
     // step 2
     btnElement.addEventListener('click', function () {
-
         ipnElement.select() // step 4
-
+        document.execCommand('copy')
     })
+    btnElement1.addEventListener('click', function () {
+        ipnElement1.select() // step 4
+        document.execCommand('copy')
+    })
+    btnElement2.addEventListener('click', function () {
+        ipnElement2.select() // step 4
+        document.execCommand('copy')
+    })
+    btnElement3.addEventListener('click', function () {
+        ipnElement3.select() // step 4
+        document.execCommand('copy')
+    })
+    btnElement4.addEventListener('click', function () {
+        ipnElement4.select() // step 4
+        document.execCommand('copy')
+    })
+    btnElement5.addEventListener('click', function () {
+        ipnElement5.select() // step 4
+        document.execCommand('copy')
+    })
+
+
+
 </script>
 
 
@@ -1025,13 +1062,7 @@
 </script>
 <script>
     function abc(){
-        if(confirm("Bấm vào nút OK để tiếp tục") == true){
-            document.getElementById("demo").innerHTML =
-                "Bạn muốn tiếp tục";
-        }else{
-            document.getElementById("demo").innerHTML =
-                "Bạn không muốn tiếp tục";
-        }
+        confirm("Bấm vào nút OK để tiếp tục") == true;
     }
 </script>
 
