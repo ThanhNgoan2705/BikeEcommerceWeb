@@ -30,7 +30,7 @@
             <div class="g-col-2 collapse navbar-collapse" id="navbarSupportedContent-4">
                 <c:if test='${not haveUser}'>
                     <ul class="navbar-nav m-auto d-flex m-3">
-                        <li class="nav-item shopping-cart  ml-5 mt-5 ">
+                        <li class="nav-item shopping-cart ml-5 mt-5 ">
                             <div class="dropdown">
                                 <a id="cart-quantity"
                                    class="nav-link dark-grey-text font-weight-bold waves-effect waves-light"

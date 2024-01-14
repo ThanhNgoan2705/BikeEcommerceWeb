@@ -1468,6 +1468,10 @@
         loadRecord(page);
 
     });
+    // auto load first page with 10 records per page on page load ready with pagination
+    $(document).ready(function () {
+        loadRecord(1);
+    });
 </script>
 <script src="/mdb/js/default.js"></script>
 </body>
