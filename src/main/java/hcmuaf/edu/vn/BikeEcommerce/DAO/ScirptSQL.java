@@ -178,8 +178,8 @@ public class ScirptSQL {
     public static final String UPDATE_VERIFY_CODE = "UPDATE verify_code SET valid = 0 WHERE email = :email AND function = :code";
 
 
-    public static final String getTop1Product = "select * from (select * , row_number() over (partition by category_id order by category_id) as row from product) as t where row = 1";
-    public static final String getTop1ImageProductByProductId = "select * from (select * , row_number() over (partition by product_id order by product_id) as row from image_product) as t where row = 1 and product_id = :productId";
+    public static final String getTop1Product = "select * from product order by product_id desc limit 10";
+    public static final String getTop1ImageProductByProductId = "select * from image_product where product_id = :productId order by image_product_id desc limit 10";
 
     // Cert
     public static final String getAllCert = "select * from cert";
