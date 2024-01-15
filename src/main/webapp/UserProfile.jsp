@@ -29,13 +29,10 @@
     <link href="/mdb/css/bootstrap.min.css" rel="stylesheet">
     <link href="/mdb/css/mdb.min.css" rel="stylesheet">
     <link href="/mdb/css/addons/compiled-addons-4.20.0.min.css">
-    <link href="/mdb/css/manakey.css" rel="stylesheet">
     <link href="/mdb/css/style.css" rel="stylesheet">
     <link href="/mdb/css/default.css" rel="stylesheet">
-
     <link href="/mdb/css/styleKey.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
-
 </head>
 
 <body class="homepage-v1 hidden-sn white-skin animated">
@@ -56,7 +53,6 @@
 
         <!--Grid row-->
         <div class="row">
-
             <!--Grid column-->
             <div class="col-lg-3 mb-4">
 
@@ -609,8 +605,8 @@
                     </div>
 
                     <!--Key Management-->
-                    <div class="tab-pane fade key" id="tabKeyManagement" role="tabpanel">
-                        <div id="keymana">
+                    <div class="tab-pane fade" id="tabKeyManagement" role="tabpanel">
+                        <div id="button-container-table">
                             <button class="btn createk" onclick="momodal()">Create Key</button>
 
                             <button class="btn importk" onclick="momodal2()">Import Key</button>
@@ -655,45 +651,6 @@
                                     </tbody>
                                 </table>
 
-
-            <div class="nenmodal" id="nenmodal-1">
-                <div class="nenmodal2"></div>
-                <div class="ndmodal">
-                    <div class="closemodal">
-                        <button onclick="momodal(), redirect('/user') ">×</button>
-                    </div>
-                    <div method="POST" id="contactForm" name="contactForm" class="contactForm">
-
-
-                        <div class="row">
-                            <div class="col">
-                                <div class="group">
-                                <label class="label1">Name</label>
-                                <input  class="inputname" id="inname" name="issuerName" type="text"
-                                       placeholder="Người dùng nhập tên để tạo cetificate">
-                                <button class="btnblock" type="submit" onclick="createKey()">Create Key</button>
-                            </div>
-                            </div>
-                            <div class="col">
-                                <div class="group">
-                                    <label class="label1">Private Key</label>
-                                    <input type="text" class="form-control" id="privateKey" value="" >
-                                    <i class="fa fa-clipboard" id="copypri" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="group">
-                                    <label class="label1">Public Key</label>
-                                    <input type="text" class="form-control" id="publicKey">
-                                    <i class="fa fa-clipboard" id="copypub"aria-hidden="true"></i>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="group">
-                                    <label class="label1">Certificate</label>
-                                    <input type="text" class="form-control" id="certificate">
-                                    <i class="fa fa-clipboard" id="copycer" aria-hidden="true"></i>
-
                             </div>
                         </div>
                     </div>
@@ -734,23 +691,10 @@
                                             <i class="fa fa-clone" aria-hidden="true"></i>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                </div>
-            </div>
-            <!-- màn hình import key -->
-            <div class="nenmodal" id="nenmodal-2">
-                <div class="nenmodal2"></div>
-                <div class="ndmodal">
-                    <div class="closemodal">
-                        <button onclick="momodal2(),redirect('/user')">×</button>
-                    </div>
-                    <div method="POST" id="contactForm2" name="contactForm" class="contactForm">
-
                     <!-- màn hình import key -->
                     <div class="nenmodal" id="nenmodal-2">
                         <div class="nenmodal2"></div>
@@ -760,34 +704,13 @@
                             </div>
                             <div method="POST" id="contactForm2" name="contactForm" class="contactForm">
 
-
                                 <div class="row">
                                     <div class="col">
                                         <div class="group">
                                             <label class="label1">Name </label>
                                             <input type="text" name="username" class="inpri" id="name2">
 
-
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="group">
-                                    <label class="label1">Public Key</label>
-                                    <input type="text" name="publickey" class="form-control"
-                                           id="publicKey2">
-                                    <i class="fa fa-clipboard" id="copypub2" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="group">
-                                    <label class="label1">Certificate</label>
-                                    <input type="text" class="form-control" id="certificate2">
-                                    <i class="fa fa-clipboard" id="copycer2" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                            <button class="btnblock btncreate" type="submit" onclick="ImportKey()">Create
-                            </button>
-                          </div>
+                                        </div>
                                     </div>
                                     <div class="col">
                                         <div class="group">
@@ -808,7 +731,6 @@
                                     </button>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <!-- màn hình revocation key -->
@@ -816,7 +738,7 @@
                         <div class="nenmodal"></div>
                         <div class="ndmodal">
                             <div class="closemodal">
-                                <button onclick="momodal3(),redirect('/user')">×</button>
+                                <button onclick="momodal3()">×</button>
                             </div>
                             <div method="POST" id="contactForm3" name="contactForm" class="contactForm">
 
@@ -840,7 +762,7 @@
                                         <div class="group">
                                             <label class="label">Số Seri</label>
                                             <input type="text" class="form-control" name="seri2" id="seri2">
-                                            <i class="fa fa-clipboard" id="copyseri2" aria-hidden="true"></i>
+
                                         </div>
                                     </div>
                                     <div class="col">
@@ -895,13 +817,11 @@
                 {title: "Full Address", data: "fullAddress"},
                 {title: "Shipping Fee", data: "shippingFee"},
                 {title: "Total Price", data: "total"},
-                {title: "Sent Date", data: "sendDay"},
-                {title: "Received Date", data: "receiveDay"},
                 {
                     title: "Status", data: "status",
                     render: function (data, type, row) {
                         if (data === 0) {
-                            return '<span class="badge badge-pill badge-danger">UNVERIFIED</span>'
+                            return '<a class="badge badge-pill badge-danger">UNVERIFIED</a>'
                         }
                         if (data === 1) {
                             return '<span class="badge badge-pill badge-success">PENDING</span>'
@@ -925,7 +845,10 @@
                 {
                     title: "Action", data: "orderId",
                     render: function (data, type, row) {
-                        return '<button class="btn btn-primary btn-sm verifyBtn">Verify Order</button>'
+                        if (row.status ===0){
+                            return '<a href="/user/order?orderId=' + data + '" class="btn btn-primary btn-sm">Check signature</a>'
+                        }
+                        return '<button class="btn btn-primary btn-sm verifyBtn" type="button">Verify Order</button>'
                     }
                 }
             ]
@@ -934,70 +857,56 @@
 </script>
 <script>
     function verifyOrder(orderId) {
-        $.ajax({
-            url: '/api/verify-order',
-            type: 'POST',
-            data: {
-                orderId: orderId
-            },
-            success: function (data) {
-                if (data === "true") {
-                    // create popup alert success
-                    var popup = document.createElement("div");
-                    popup.classList.add("popup");
-                    popup.innerHTML = "Verify Order Success";
-                    document.body.appendChild(popup);
-                    setTimeout(function () {
-                        popup.classList.add("active");
-                    }, 10);
-                    setTimeout(function () {
-                        popup.classList.remove("active");
-                    }, 2000);
-                    setTimeout(function () {
-                        popup.remove();
-                    }, 2500);
-                }if (data === "This certificate is revoked") {
-                    // create popup alert fail
-                    var popup = document.createElement("div");
-                    popup.classList.add("popup");
-                    popup.innerHTML = "This certificate is revoked";
-                    document.body.appendChild(popup);
-                    setTimeout(function () {
-                        popup.classList.add("active");
-                    }, 10);
-                    setTimeout(function () {
-                        popup.classList.remove("active");
-                    }, 2000);
-                    setTimeout(function () {
-                        popup.remove();
-                    }, 2500);
+        return new Promise((resovle, reject) => {
+            $.ajax({
+                url: '/api/verify-order',
+                type: 'POST',
+                data: {
+                    orderId: orderId
+                },
+                success: function (data) {
+                    if (data === "true") {
+                        // create popup alert success
+                        alert("Verify Order Success");
+                        resovle(true);
+
+                    }
+                    else {
+                        // create popup alert fail
+                        alert("Verify Order Fail");
+                        resovle(false);
+                    }
+                },
+                error: function (data) {
+                    console.log(data);
                 }
-                else {
-                    // create popup alert fail
-                    var popup = document.createElement("div");
-                    popup.classList.add("popup");
-                    popup.innerHTML = "Verify Order Fail";
-                    document.body.appendChild(popup);
-                    setTimeout(function () {
-                        popup.classList.add("active");
-                    }, 10);
-                    setTimeout(function () {
-                        popup.classList.remove("active");
-                    }, 2000);
-                    setTimeout(function () {
-                        popup.remove();
-                    }, 2500);
-                }
-            },
-            error: function (data) {
-                console.log(data);
-            }
-        })
+            })
+        });
     }
     $(document).on('click', '.verifyBtn', function () {
         var orderId = $(this).closest('tr').find('td:eq(0)').text();
         console.log(orderId);
-        verifyOrder(orderId);
+           verifyOrder(orderId).then((result) => {
+                if (result) {
+                    // get row index with orderId
+                    var table = $('#orderTable').DataTable();
+                    var index = table.rows().eq(0).filter(function (rowIdx) {
+                        return table.cell(rowIdx, 0).data() === orderId ? true : false;
+                    });
+                    // change color of row
+                   table.rows(index).nodes().to$().addClass('table-success');
+
+                }
+                else {
+                    // get row index with orderId
+                    var table = $('#orderTable').DataTable();
+                    var index = table.rows().eq(0).filter(function (rowIdx) {
+                        return table.cell(rowIdx, 0).data() === orderId ? true : false;
+                    });
+                    // change color of row
+                    table.rows(index).nodes().to$().addClass('table-danger');
+                }
+            });
     });
 </script>
 <script>
@@ -1074,8 +983,9 @@
     }
 </script>
 
+<script>
 
-
+</script>
 //tao khoa
 <script type="text/javascript">
     function createKey() {
@@ -1157,74 +1067,15 @@
 </script>
 <script>
     // step 1
-    const ipnElement = document.querySelector('#privateKey')
-    const btnElement = document.querySelector('#copypri')
-    //
-    const ipnElement1 = document.querySelector('#publicKey')
-    const btnElement1 = document.querySelector('#copypub')
-    //
-    const ipnElement2 = document.querySelector('#certificate')
-    const btnElement2 = document.querySelector('#copycer')
-    //
-    const ipnElement3 = document.querySelector('#publicKey2')
-    const btnElement3 = document.querySelector('#copypub2')
-
-    const ipnElement4 = document.querySelector('#certificate2')
-    const btnElement4 = document.querySelector('#copycer2')
-
-    const ipnElement5 = document.querySelector('#seri2')
-    const btnElement5 = document.querySelector('#copyseri2')
+    const ipnElement = document.querySelector('input')
+    const btnElement = document.querySelector('.fa-clone')
 
     // step 2
     btnElement.addEventListener('click', function () {
 
-        ipnElement.select() // step 4
-        document.execCommand('copy')
-    })
-    btnElement1.addEventListener('click', function () {
-        ipnElement1.select() // step 4
-        document.execCommand('copy')
-    })
-    btnElement2.addEventListener('click', function () {
-        ipnElement2.select() // step 4
-        document.execCommand('copy')
-    })
-    btnElement3.addEventListener('click', function () {
-        ipnElement3.select() // step 4
-        document.execCommand('copy')
-    })
-    btnElement4.addEventListener('click', function () {
-        ipnElement4.select() // step 4
-        document.execCommand('copy')
-    })
-    btnElement5.addEventListener('click', function () {
-        ipnElement5.select() // step 4
-        document.execCommand('copy')
-    })
-
-
-
-</script>
-
-
-<script>
-    function applyDatepicker() {
-             $("#datepicker").datepicker({
-                  autoclose: true,
-                    todayHighlight: true
-               }).datepicker('update', new Date());
-     }
-</script>
-<script>
-    function abc(){
-        confirm("Bấm vào nút OK để tiếp tục") == true;
-    }
-
-
         ipnElement.select()              // step 4
 
     })
-
 </script>
 
 </body>
