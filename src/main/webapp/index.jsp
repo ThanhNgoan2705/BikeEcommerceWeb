@@ -318,7 +318,8 @@
                         <!-- Image -->
                         <div class="view  z-depth-1">
 
-                            <img src="https://thegioixedien.com.vn/datafiles/setone/1701509873_goglan-avt.jpg" class="img-fluid"
+                            <img src="https://thegioixedien.com.vn/datafiles/setone/1701509873_goglan-avt.jpg"
+                                 class="img-fluid"
                                  alt="sample image">
 
                             <div class="mask rgba-stylish-slight">
@@ -363,7 +364,8 @@
                         <!-- Image -->
                         <div class="view zoom z-depth-1">
 
-                            <img src="https://thegioixedien.com.vn/datafiles/setone/1689219888_CLD-PU20-A45.jpg" class="img-fluid"
+                            <img src="https://thegioixedien.com.vn/datafiles/setone/1689219888_CLD-PU20-A45.jpg"
+                                 class="img-fluid"
                                  alt="sample image">
 
                             <div class="mask rgba-white-light">
@@ -401,7 +403,8 @@
                         <!-- Image -->
                         <div class="view zoom z-depth-1 photo">
 
-                            <img src="https://thegioixedien.com.vn/datafiles/setone/1689143256_adventure-20-1_result.jpg" class="img-fluid"
+                            <img src="https://thegioixedien.com.vn/datafiles/setone/1689143256_adventure-20-1_result.jpg"
+                                 class="img-fluid"
                                  alt="sample image">
 
                             <div class="mask rgba-stylish-strong">
@@ -891,7 +894,8 @@
 
                                         <!-- Category & Title -->
                                         <h5 class="card-title mb-1"><strong><a href=""
-                                                                               class="dark-grey-text">Xe Đạp Điện 133 Aima Orla</a></strong>
+                                                                               class="dark-grey-text">Xe Đạp Điện 133
+                                            Aima Orla</a></strong>
                                         </h5>
                                         <span class="badge badge-danger mb-2">bestseller</span>
 
@@ -965,7 +969,8 @@
 
                                         <!-- Category & Title -->
                                         <h5 class="card-title mb-1"><strong><a href=""
-                                                                               class="dark-grey-text">Xe Đạp Điện Gấp JLBAO</a></strong>
+                                                                               class="dark-grey-text">Xe Đạp Điện Gấp
+                                            JLBAO</a></strong>
                                         </h5>
                                         <span class="badge badge-danger mb-2">bestseller</span>
 
@@ -1039,7 +1044,8 @@
 
                                         <!-- Category & Title -->
                                         <h5 class="card-title mb-1"><strong><a href=""
-                                                                               class="dark-grey-text">Xe Đạp Điện Super Goglan </a></strong>
+                                                                               class="dark-grey-text">Xe Đạp Điện Super
+                                            Goglan </a></strong>
                                         </h5>
                                         <span
                                                 class="badge badge-info mb-2">new</span>
@@ -1115,7 +1121,8 @@
 
                                         <!-- Category & Title -->
                                         <h5 class="card-title mb-1"><strong><a href=""
-                                                                               class="dark-grey-text">Xe Đạp Điện Dreaform Type</a></strong>
+                                                                               class="dark-grey-text">Xe Đạp Điện
+                                            Dreaform Type</a></strong>
                                         </h5><span
                                             class="badge badge-danger mb-2">bestseller</span>
 
@@ -1189,7 +1196,8 @@
 
                                         <!-- Category & Title -->
                                         <h5 class="card-title mb-1"><strong><a href=""
-                                                                               class="dark-grey-text">Xe Đạp Asama Solano Expert</a></strong>
+                                                                               class="dark-grey-text">Xe Đạp Asama
+                                            Solano Expert</a></strong>
                                         </h5>
                                         <span class="badge badge-danger mb-2">bestseller</span>
 
@@ -1263,7 +1271,8 @@
 
                                         <!-- Category & Title -->
                                         <h5 class="card-title mb-1"><strong><a href=""
-                                                                               class="dark-grey-text">Xe Đạp Thể Thao ASAMA MTB</a></strong>
+                                                                               class="dark-grey-text">Xe Đạp Thể Thao
+                                            ASAMA MTB</a></strong>
                                         </h5>
                                         <span class="badge badge-danger mb-2">bestseller</span>
 
@@ -1397,14 +1406,12 @@
                 let html = "";
                 let images;
                 for (let i = 0; i < data.length; i++) {
-                    let j = 0;
                     images = data[i].image;
-                   for(j = 0; j<images; i++)
-                       console.log(images[j].link);
-                    html += '<div class="col-lg-4 col-md-12 mb-4">'+
+                    console.log(images[0].link);
+                    html += '<div class="col-lg-4 col-md-12 mb-4">' +
                         '<div class="card card-ecommerce">' +
                         '<div class="view overlay">' +
-                        ' <img src="' + images[j].link + '" class="img-fluid" style="width: 350px;height: 265px" alt="">' +
+                        ' <img src="' + images[0].link + '" class="img-fluid" style="width: 350px;height: 265px" alt="">' +
                         '<a><div class="mask rgba-white-slight"></div></a>' +
                         '</div>' +
                         '<div class="card-body">' +
@@ -1425,9 +1432,9 @@
                         '<i class="fas fa-shopping-cart ml-3" onclick="addTocart(' + data[i].productId + ')"></i></a>' +
                         '</span>' +
                         '</div></div></div></div></div>';
+
                 }
                 $(".productList").empty().html(html);
-
             },
             error: function (xhr, status, error) {
                 console.log(xhr);

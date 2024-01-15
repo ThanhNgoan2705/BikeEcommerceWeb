@@ -391,6 +391,5 @@
 <script src="/admin/assert/js/mdb.min.js"></script>
 <script src="/admin/assert/js/all.min.js"></script>
 <script src="/admin/assert/js/chart.min.js"></script>
-
 </body>
 </html>
