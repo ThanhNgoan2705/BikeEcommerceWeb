@@ -1,7 +1,9 @@
 package hcmuaf.edu.vn.BikeEcommerce.controllers.userController;
 
+import hcmuaf.edu.vn.BikeEcommerce.model.Order;
 import hcmuaf.edu.vn.BikeEcommerce.model.digitSig.OrderSig;
 import hcmuaf.edu.vn.BikeEcommerce.model.sercurity.Token;
+import hcmuaf.edu.vn.BikeEcommerce.service.OrderService;
 import hcmuaf.edu.vn.BikeEcommerce.service.digitSig.CheckSig;
 import hcmuaf.edu.vn.BikeEcommerce.service.digitSig.OrderSigService;
 
@@ -24,10 +26,17 @@ import java.util.Collection;
 )
 public class CheckSignatureController extends HttpServlet {
     OrderSigService orderSigService;
+    OrderService orderService;
 
+    @Override
+    public void init() throws ServletException {
+        orderService = OrderService.getInstance();
+        orderSigService = OrderSigService.getInstance();
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setCharacterEncoding("UTF-8");
         Token token = (Token) req.getAttribute("token");
         String userId = token.getUserId();
         boolean c = false;
@@ -51,7 +60,14 @@ public class CheckSignatureController extends HttpServlet {
                 orderSigService = OrderSigService.getInstance();
                 OrderSig orderSig = new OrderSig(orderId, sigText);
                 orderSigService.insert(orderSig);
+                Order order = orderService.getOrderById(orderId);
+                order.setStatus(1);
+//                order.setSendDay("");
+//                order.setReceiveDay("");
+                orderService.updateOrder(order);
+
                 resp.getWriter().write("<script>alert('gdjdj')</script>");
+
                 resp.sendRedirect("/user");
             }
             else {
@@ -64,6 +80,8 @@ public class CheckSignatureController extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+
         doPost(req,resp);
     }
 }

@@ -38,6 +38,7 @@ public class OrderAPI extends HttpServlet {
                     orderId = orderId.substring(1);
                 }
                 Order order = orderService.getOrderById(orderId);
+                System.out.println("order: " + order.toStringForHash());
                 String data = gson.toJson(order);
                 resp.getWriter().write(data);
                 System.out.println("orderId: " + orderId);

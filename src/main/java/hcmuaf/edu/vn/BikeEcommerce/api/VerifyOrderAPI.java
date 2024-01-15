@@ -16,39 +16,39 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Base64;
 
-@WebServlet("/user/verify-order")
+@WebServlet("/api/verify-order")
 public class VerifyOrderAPI extends HttpServlet {
     OrderSigService orderSigService;
     OrderService orderService;
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Token token = (Token) req.getAttribute("token");
-        String userId = token.getUserId();
+        req.setCharacterEncoding("UTF-8");
+        System.out.println("verify order");
         try {
+
             String orderId = req.getParameter("orderId");
-            System.out.println("orderId " +orderId);
+            String userId = OrderService.getInstance().getOrderById(orderId).getUserId();
+            System.out.println("orderId " + orderId);
             orderSigService = OrderSigService.getInstance();
             orderService = OrderService.getInstance();
             OrderSig orderSig = orderSigService.getSigByOrderId(orderId);
             String sigText = orderSig.getSig();
-            System.out.println(sigText +" sigText");
-            byte[] sig = sigText.getBytes();
+            System.out.println(sigText + " sigText");
+            byte[] sig = Base64.getDecoder().decode(sigText);
             CheckSig checkSig = new CheckSig();
-            String seri = checkSig.getSeriOfCertByCMSSigData(sig);
-            RevocationCert revocationCert = RevocationCertService.getInstance().getBySeri(seri);
-            if (revocationCert != null) {
-                resp.getWriter().write("This certificate is revoked");
-                return;
-            }else {
-                if (checkSig.checkSignature(userId,orderId, sig)) {
-                    resp.getWriter().write("true");
-                } else {
-                    resp.getWriter().write("false");
-                }
+            Boolean b = checkSig.checkSignature(userId, orderId, sig);
+            if (b) {
+                resp.getWriter().write("true");
+                System.out.println("kiem tra dubng");
+            } else {
+                resp.getWriter().write("false");
+                System.out.println("kiem tra saiii");
             }
-        }catch (Exception e){
-            e.printStackTrace();
+        } catch (Exception e) {
+            resp.getWriter().write("false");
         }
     }
 }

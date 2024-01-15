@@ -41,6 +41,7 @@ public class UserController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setCharacterEncoding("UTF-8");
         Token token = (Token) req.getAttribute("token");
         if (token != null) {
             User user = userService.getUserByKey(token.getUserId());
@@ -74,6 +75,7 @@ public class UserController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         doGet(req, resp);
     }
 }

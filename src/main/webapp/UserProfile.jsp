@@ -53,7 +53,6 @@
 
         <!--Grid row-->
         <div class="row">
-
             <!--Grid column-->
             <div class="col-lg-3 mb-4">
 
@@ -849,7 +848,7 @@
                         if (row.status ===0){
                             return '<a href="/user/order?orderId=' + data + '" class="btn btn-primary btn-sm">Check signature</a>'
                         }
-                        return '<button class="btn btn-primary btn-sm verifyBtn">Verify Order</button>'
+                        return '<button class="btn btn-primary btn-sm verifyBtn" type="button">Verify Order</button>'
                     }
                 }
             ]
@@ -858,70 +857,56 @@
 </script>
 <script>
     function verifyOrder(orderId) {
-        $.ajax({
-            url: '/user/verify-order',
-            type: 'POST',
-            data: {
-                orderId: orderId
-            },
-            success: function (data) {
-                if (data === "true") {
-                    // create popup alert success
-                    var popup = document.createElement("div");
-                    popup.classList.add("popup");
-                    popup.innerHTML = "Verify Order Success";
-                    document.body.appendChild(popup);
-                    setTimeout(function () {
-                        popup.classList.add("active");
-                    }, 10);
-                    setTimeout(function () {
-                        popup.classList.remove("active");
-                    }, 2000);
-                    setTimeout(function () {
-                        popup.remove();
-                    }, 2500);
-                }if (data === "This certificate is revoked") {
-                    // create popup alert fail
-                    var popup = document.createElement("div");
-                    popup.classList.add("popup");
-                    popup.innerHTML = "This certificate is revoked";
-                    document.body.appendChild(popup);
-                    setTimeout(function () {
-                        popup.classList.add("active");
-                    }, 10);
-                    setTimeout(function () {
-                        popup.classList.remove("active");
-                    }, 2000);
-                    setTimeout(function () {
-                        popup.remove();
-                    }, 2500);
+        return new Promise((resovle, reject) => {
+            $.ajax({
+                url: '/api/verify-order',
+                type: 'POST',
+                data: {
+                    orderId: orderId
+                },
+                success: function (data) {
+                    if (data === "true") {
+                        // create popup alert success
+                        alert("Verify Order Success");
+                        resovle(true);
+
+                    }
+                    else {
+                        // create popup alert fail
+                        alert("Verify Order Fail");
+                        resovle(false);
+                    }
+                },
+                error: function (data) {
+                    console.log(data);
                 }
-                else {
-                    // create popup alert fail
-                    var popup = document.createElement("div");
-                    popup.classList.add("popup");
-                    popup.innerHTML = "Verify Order Fail";
-                    document.body.appendChild(popup);
-                    setTimeout(function () {
-                        popup.classList.add("active");
-                    }, 10);
-                    setTimeout(function () {
-                        popup.classList.remove("active");
-                    }, 2000);
-                    setTimeout(function () {
-                        popup.remove();
-                    }, 2500);
-                }
-            },
-            error: function (data) {
-                console.log(data);
-            }
-        })
+            })
+        });
     }
     $(document).on('click', '.verifyBtn', function () {
         var orderId = $(this).closest('tr').find('td:eq(0)').text();
         console.log(orderId);
-        verifyOrder(orderId);
+           verifyOrder(orderId).then((result) => {
+                if (result) {
+                    // get row index with orderId
+                    var table = $('#orderTable').DataTable();
+                    var index = table.rows().eq(0).filter(function (rowIdx) {
+                        return table.cell(rowIdx, 0).data() === orderId ? true : false;
+                    });
+                    // change color of row
+                   table.rows(index).nodes().to$().addClass('table-success');
+
+                }
+                else {
+                    // get row index with orderId
+                    var table = $('#orderTable').DataTable();
+                    var index = table.rows().eq(0).filter(function (rowIdx) {
+                        return table.cell(rowIdx, 0).data() === orderId ? true : false;
+                    });
+                    // change color of row
+                    table.rows(index).nodes().to$().addClass('table-danger');
+                }
+            });
     });
 </script>
 <script>

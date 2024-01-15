@@ -3,7 +3,9 @@ package hcmuaf.edu.vn.BikeEcommerce.service.digitSig;
 import hcmuaf.edu.vn.BikeEcommerce.atbm.Hash;
 import hcmuaf.edu.vn.BikeEcommerce.atbm.KeyGen;
 import hcmuaf.edu.vn.BikeEcommerce.atbm.SignInData;
+import hcmuaf.edu.vn.BikeEcommerce.model.Address;
 import hcmuaf.edu.vn.BikeEcommerce.model.Order;
+import hcmuaf.edu.vn.BikeEcommerce.service.AddressService;
 import hcmuaf.edu.vn.BikeEcommerce.service.OrderService;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.jcajce.JcaX509CertificateConverter;
@@ -18,6 +20,7 @@ import java.security.GeneralSecurityException;
 import java.security.PublicKey;
 import java.security.Security;
 import java.security.cert.X509Certificate;
+import java.util.Base64;
 import java.util.Collection;
 
 public class CheckSig {
@@ -41,9 +44,12 @@ public class CheckSig {
             return false;
         }
         Order order = orderService.getOrderById(orderId);
+        System.out.println("order: " + order);
         String data = order.toStringForHash();
+        System.out.println("data: " + data);
         Hash hashFunc = new Hash("SHA-256");
         String hash = hashFunc.hash(data);
+        System.out.println("hash: " + hash);
         boolean c = SignInData.verifyDetachedData(hash.getBytes(), sig);
         return c;
     }
@@ -72,9 +78,15 @@ public class CheckSig {
     public static void main(String[] args) throws IOException, GeneralSecurityException, OperatorCreationException, CMSException {
         CheckSig checkSig = new CheckSig();
         String userId = "634726e3-288c-412a-8d14-9a1b961fbd22";
-        String orderId = "2401159e9088";
-        byte[] sig = new FileInputStream("C:\\Users\\Chan Chan\\Documents\\hai.sig").readAllBytes();
-        System.out.println(checkSig.checkSignature(userId, orderId, sig));
+        String orderId = "240115b668d4";
+        Order order = OrderService.getInstance().getOrderById(orderId);
+        String data = order.toStringForHash();
+        Hash hashFunc = new Hash("SHA-256");
+        String hash = hashFunc.hash(data);
+        System.out.println("hash: " + hash);
+        byte[] sig = new FileInputStream("C:\\Users\\Chan Chan\\Documents\\hai1.sig").readAllBytes();
+        System.out.println(SignInData.verifyDetachedData(hash.getBytes(), sig));
+//        System.out.println(checkSig.checkSignature(userId, orderId, sig));
 
 
     }
