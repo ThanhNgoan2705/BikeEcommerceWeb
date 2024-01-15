@@ -17,14 +17,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/user/getCart")
 public class GetCartController extends HttpServlet {
     CartService cartService;
-    SubProduct_colorService subProduct_colorService ;
-    ImageProductService imageProductService ;
+    SubProduct_colorService subProduct_colorService;
+    ImageProductService imageProductService;
     Gson gson;
 
     @Override
@@ -49,11 +50,18 @@ public class GetCartController extends HttpServlet {
             List<CartItem> itemList = cart.getCartItemList();
             String imageProductId = "";
             String link = "";
-
+            double price = 0;
+            String priceString = "";
+            DecimalFormat df = new DecimalFormat("#.000");
+            SubProduct_color subProduct_color = new SubProduct_color();
             for (CartItem item : itemList) {
-                SubProduct_color subProduct_color = subProduct_colorService.getColorProductByProductIdAndColorId(item.getProductId(), item.getColorId());
+                subProduct_color = subProduct_colorService.getColorProductByProductIdAndColorId(item.getProductId(), item.getColorId());
+                price = subProduct_color.getPrice();
+                priceString = df.format(price);
+                System.out.println(subProduct_color.toString());
+                System.out.println(price);
                 imageProductId = subProduct_color.getImageProductId();
-               List<ImageProduct> imageProduct = imageProductService.getImageProductByProductId(subProduct_color.getProductId());
+                List<ImageProduct> imageProduct = imageProductService.getImageProductByProductId(subProduct_color.getProductId());
                 for (ImageProduct image : imageProduct) {
                     if (image.getImageProductId().equals(imageProductId)) {
                         link = image.getLink();
@@ -61,10 +69,11 @@ public class GetCartController extends HttpServlet {
                 }
             }
             req.setAttribute("link", link);
-             cartTotal = itemList.size();
+            req.setAttribute("price", priceString);
+            cartTotal = itemList.size();
             System.out.println(itemList.size());
             req.setAttribute("itemList", itemList);
-            req.setAttribute("cartTotal",cartTotal);
+            req.setAttribute("cartTotal", cartTotal);
         }
 
         req.getRequestDispatcher("/cart.jsp").forward(req, resp);

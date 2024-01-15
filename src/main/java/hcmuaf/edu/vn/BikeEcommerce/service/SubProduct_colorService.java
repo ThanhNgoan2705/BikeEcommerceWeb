@@ -81,8 +81,8 @@ public class SubProduct_colorService {
     }
     public static void main(String[] args) {
 
-        System.out.println(SubProduct_colorService.getInstance().getInventoryByProductIdAndColorId("1","1"));
-
+//        System.out.println(SubProduct_colorService.getInstance().getInventoryByProductIdAndColorId("1","1"));
+        System.out.println(SubProduct_colorService.getInstance().getPriceByProductIdAndColorId("product1","color1"));
     }
 
 
