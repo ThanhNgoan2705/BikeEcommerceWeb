@@ -672,7 +672,7 @@
                                         <div class="group">
                                             <label class="label1">Private Key</label>
                                             <input type="text" class="form-control" id="privateKey">
-                                            <i class="fa fa-clone"  id="copypri" aria-hidden="true"></i>
+                                            <i class="fa fa-clone" id="copypri" aria-hidden="true"></i>
                                         </div>
                                     </div>
                                     <div class="col">
@@ -748,7 +748,7 @@
                                             <div id="datepicker" class="input-group date"
                                                  data-date-format="mm-dd-yyyy">
                                                 <input class="form-control" id="revokedAt" name="revokedAt" type="text"
-                                                       readonly/>
+                                                       />
                                                 <span class="input-group-addon">
     <i class="fa fa-calendar" aria-hidden="true" onclick="applyDatepicker() "></i>
     </span>
@@ -843,7 +843,7 @@
                 {
                     title: "Action", data: "orderId",
                     render: function (data, type, row) {
-                        if (row.status ===0){
+                        if (row.status === 0) {
                             return '<a href="/user/order?orderId=' + data + '" class="btn btn-primary btn-sm">Check signature</a>'
                         }
                         return '<button class="btn btn-primary btn-sm verifyBtn" type="button">Verify Order</button>'
@@ -868,8 +868,7 @@
                         alert("Verify Order Success");
                         resovle(true);
 
-                    }
-                    else {
+                    } else {
                         // create popup alert fail
                         alert("Verify Order Fail");
                         resovle(false);
@@ -881,30 +880,30 @@
             })
         });
     }
+
     $(document).on('click', '.verifyBtn', function () {
         var orderId = $(this).closest('tr').find('td:eq(0)').text();
         console.log(orderId);
-           verifyOrder(orderId).then((result) => {
-                if (result) {
-                    // get row index with orderId
-                    var table = $('#orderTable').DataTable();
-                    var index = table.rows().eq(0).filter(function (rowIdx) {
-                        return table.cell(rowIdx, 0).data() === orderId ? true : false;
-                    });
-                    // change color of row
-                   table.rows(index).nodes().to$().addClass('table-success');
+        verifyOrder(orderId).then((result) => {
+            if (result) {
+                // get row index with orderId
+                var table = $('#orderTable').DataTable();
+                var index = table.rows().eq(0).filter(function (rowIdx) {
+                    return table.cell(rowIdx, 0).data() === orderId ? true : false;
+                });
+                // change color of row
+                table.rows(index).nodes().to$().addClass('table-success');
 
-                }
-                else {
-                    // get row index with orderId
-                    var table = $('#orderTable').DataTable();
-                    var index = table.rows().eq(0).filter(function (rowIdx) {
-                        return table.cell(rowIdx, 0).data() === orderId ? true : false;
-                    });
-                    // change color of row
-                    table.rows(index).nodes().to$().addClass('table-danger');
-                }
-            });
+            } else {
+                // get row index with orderId
+                var table = $('#orderTable').DataTable();
+                var index = table.rows().eq(0).filter(function (rowIdx) {
+                    return table.cell(rowIdx, 0).data() === orderId ? true : false;
+                });
+                // change color of row
+                table.rows(index).nodes().to$().addClass('table-danger');
+            }
+        });
     });
 </script>
 <script>
@@ -993,7 +992,7 @@
             method: "GET",
             dataType: "json",
             data: {
-                issuerName:issuerName
+                issuerName: issuerName
             },
             contentType: "application/json",
 
@@ -1141,7 +1140,6 @@
         ipnElement5.select() // step 4
         document.execCommand('copy')
     })
-
 
 
 </script>
