@@ -35,7 +35,10 @@ public class CertViewService {
             temp.setEndDate(localDateDateAfter.format(formatter));
             RevocationCert revocationCert = RevocationCertService.getInstance().getBySeri(c.getSeri());
             if (revocationCert != null) {
-                temp.setStatus("Bị khóa");
+                Date date =new Date(revocationCert.getRevokedAt());
+                Instant instant = date.toInstant();
+                LocalDate localDate = instant.atZone(ZoneId.systemDefault()).toLocalDate();
+                temp.setStatus("Bị khóa ("+localDate.format(formatter)+")");
             } else if (dateNow.after(dateAfter)) {
                 temp.setStatus("Hết hạn");
             } else {
