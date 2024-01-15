@@ -35,8 +35,10 @@ public class AddProductToCartController extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("add product to cart");
         Token token = (Token) req.getAttribute("token");
         String productId = req.getParameter("productId");
+        System.out.println(productId);
         String quantity = req.getParameter("quantity");
         System.out.println(productId + "---" + quantity);
         Product product = productService.getProductById(productId);
