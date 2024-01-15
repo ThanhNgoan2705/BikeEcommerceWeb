@@ -1430,7 +1430,7 @@
                         '<span class="float-left"><strong>' + data[i].price + '</strong></span>' +
                         '<span class="float-right">' +
                         '<a class="addToCart" role="button" data-toggle="tooltip" data-placement="top" title="Add to Cart">' +
-                        '<i class="fas fa-shopping-cart ml-3" onclick="addTocart(' + data[i].productId + ')"></i></a>' +
+                        '<i class="fas fa-shopping-cart ml-3" onclick="addTocart(\'' + data[i].productId + '\')"></i></a>' +
                         '</span>' +
                         '</div></div></div></div></div>';
 
