@@ -3,9 +3,13 @@ package hcmuaf.edu.vn.BikeEcommerce.controllers.cartController;
 import com.google.gson.Gson;
 import hcmuaf.edu.vn.BikeEcommerce.model.Cart;
 import hcmuaf.edu.vn.BikeEcommerce.model.CartItem;
+import hcmuaf.edu.vn.BikeEcommerce.model.ImageProduct;
+import hcmuaf.edu.vn.BikeEcommerce.model.SubProduct_color;
 import hcmuaf.edu.vn.BikeEcommerce.model.sercurity.Token;
 import hcmuaf.edu.vn.BikeEcommerce.service.CartService;
+import hcmuaf.edu.vn.BikeEcommerce.service.ImageProductService;
 import hcmuaf.edu.vn.BikeEcommerce.service.ProductService;
+import hcmuaf.edu.vn.BikeEcommerce.service.SubProduct_colorService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,18 +17,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/user/getCart")
 public class GetCartController extends HttpServlet {
     CartService cartService;
-    ProductService productService;
+    SubProduct_colorService subProduct_colorService ;
+    ImageProductService imageProductService ;
     Gson gson;
 
     @Override
     public void init() throws ServletException {
         cartService = CartService.getInstance();
-        productService = ProductService.getInstance();
+        subProduct_colorService = SubProduct_colorService.getInstance();
+        imageProductService = ImageProductService.getInstance();
         gson = new Gson();
     }
 
@@ -40,6 +47,20 @@ public class GetCartController extends HttpServlet {
             return;
         } else {
             List<CartItem> itemList = cart.getCartItemList();
+            String imageProductId = "";
+            String link = "";
+
+            for (CartItem item : itemList) {
+                SubProduct_color subProduct_color = subProduct_colorService.getColorProductByProductIdAndColorId(item.getProductId(), item.getColorId());
+                imageProductId = subProduct_color.getImageProductId();
+               List<ImageProduct> imageProduct = imageProductService.getImageProductByProductId(subProduct_color.getProductId());
+                for (ImageProduct image : imageProduct) {
+                    if (image.getImageProductId().equals(imageProductId)) {
+                        link = image.getLink();
+                    }
+                }
+            }
+            req.setAttribute("link", link);
              cartTotal = itemList.size();
             System.out.println(itemList.size());
             req.setAttribute("itemList", itemList);

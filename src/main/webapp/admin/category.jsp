@@ -292,7 +292,7 @@
                 },
                 {
                     title: "Action",
-                    data: 'id',
+                    data: 'categoryId',
                     render: function (data) {
                         return '<button type="button" class="btn btn-primary btn-sm m-2 editButton" data-mdb-toggle="modal" data-mdb-target="#editCategoryForm"><i class="fa-solid fa-edit"></i></button>' +
                             '<button type="button" class="btn btn-danger btn-sm m-2 removeBtn" " ><i class="fa-solid fa-trash"></i></button>'

@@ -147,7 +147,9 @@ public class ProductService {
         return jdbi.withExtension(ProductDAO.class, dao -> dao.getProductByFilter(categoryId, brandId, supplierId, discountId, status, minPrice, maxPrice, wheelSize));
     }
     public List<Product> loadProductByPage(int startRow, int rowCount) {
-        return jdbi.withExtension(ProductDAO.class, dao -> dao.loadProductByPage(startRow, rowCount));
+        List<Product> products = jdbi.withExtension(ProductDAO.class, dao -> dao.loadProductByPage(startRow, rowCount));
+        return products.stream().map(product -> mapOtherBean(product)).collect(Collectors.toList());
+
     }
 
     public static void main(String[] args) {
@@ -161,8 +163,13 @@ public class ProductService {
 //        System.out.println(colors);
 //        List<Product> list = productService.loadProductByPage(0, 9);
 //        System.out.println(list);
-        System.out.println(productService.getAllStatus());
-        System.out.println(productService.getAllWheelSize());
+        System.out.println(productService.getTop1Product());
+        for (Product product : productService.getTop1Product()) {
+           List<ImageProduct> imageProducts = product.getImage();
+           ImageProduct imageProduct = imageProducts.get(0);
+           String link = imageProduct.getLink();
+            System.out.println(imageProducts);
+        }
 
     }
 

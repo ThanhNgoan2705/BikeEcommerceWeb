@@ -73,7 +73,7 @@
                 <span class="sidenav-subheading text-muted text-uppercase fw-bold">Manage Account</span>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="/admin/user.jsp">
+                <a class="sidenav-link" href="/user/admin-user">
                     <i class="fas fa-plus fa-fw me-3"></i><span>User</span></a>
             </li>
             <li class="sidenav-item">
@@ -88,7 +88,7 @@
                 <span class="sidenav-subheading text-muted text-uppercase fw-bold">Admin</span>
             </li>
             <li class="sidenav-item">
-                <a class="sidenav-link" href="/admin/order.jsp">
+                <a class="sidenav-link" href="/user/order-admin">
                     <i class="fas fa-money-bill fa-fw me-3"></i><span>Order</span></a>
             </li>
             <li class="sidenav-item">

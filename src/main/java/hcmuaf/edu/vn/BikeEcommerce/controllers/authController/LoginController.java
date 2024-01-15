@@ -83,7 +83,7 @@ public class LoginController extends HttpServlet {
                     resp.sendRedirect("/home");
                 } else if (user.getRole() == 2) {
                     System.out.println("admin");
-                    resp.sendRedirect("/admin/dashboard");
+                    resp.sendRedirect("/user/dashboard");
                 } else {
                     resp.sendRedirect("/login");
                 }

@@ -1,6 +1,7 @@
-package hcmuaf.edu.vn.BikeEcommerce.API;
+package hcmuaf.edu.vn.BikeEcommerce.api;
 
 import com.google.gson.Gson;
+import hcmuaf.edu.vn.BikeEcommerce.model.ImageProduct;
 import hcmuaf.edu.vn.BikeEcommerce.model.Product;
 import hcmuaf.edu.vn.BikeEcommerce.service.ProductService;
 
@@ -22,7 +23,7 @@ public class PaginationAPI extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        resp.setCharacterEncoding("UTF-8");
         String page = req.getParameter("page");
         List<Product> list = ProductService.getInstance().getAllProduct();
         int currentPage = 1;

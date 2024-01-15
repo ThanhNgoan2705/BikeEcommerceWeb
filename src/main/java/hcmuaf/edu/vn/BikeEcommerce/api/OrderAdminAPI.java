@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/user/order-api/*")
-public class OrderAPI extends HttpServlet {
+@WebServlet("/user/order-api-admin/*")
+public class OrderAdminAPI extends HttpServlet {
     Gson gson;
     OrderService orderService;
 
@@ -26,27 +26,27 @@ public class OrderAPI extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       resp.setCharacterEncoding("UTF-8");
+        System.out.println("doGet admin OrderAPI");
+        String userId = req.getPathInfo();
+        if (userId != null) {
+            if (userId.startsWith("/")) {
+                userId = userId.substring(1);
+            }
+        }
+        System.out.println("userId: " + userId);
+        resp.setCharacterEncoding("UTF-8");
         System.out.println("doGet OrderAPI");
         Token token = (Token) req.getAttribute("token");
-        if (token != null) {
+        if (token != null && token.getRole().equals("2")) {
             req.setAttribute("haveUser", true);
             req.setAttribute("userName", token.getUserName());
-            String orderId = req.getPathInfo();
-            if (orderId != null) {
-                if (orderId.startsWith("/")) {
-                    orderId = orderId.substring(1);
+            List<Order> orderList = orderService.getAllOrderByUserId(userId);
+            for (Order order : orderList) {
+                if (order.getStatus() == 1) {
+                    String data = gson.toJson(orderList);
+                    System.out.println("orderList: " + data);
+                    resp.getWriter().write(data);
                 }
-                Order order = orderService.getOrderById(orderId);
-                System.out.println("order: " + order.toStringForHash());
-                String data = gson.toJson(order);
-                resp.getWriter().write(data);
-                System.out.println("orderId: " + orderId);
-            } else {
-                List<Order> orderList = orderService.getAllOrderByUserId(token.getUserId());
-                String data = gson.toJson(orderList);
-                System.out.println("orderList: " + data);
-                resp.getWriter().write(data);
             }
         }
     }
