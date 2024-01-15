@@ -18,11 +18,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.security.SecureRandom;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 @WebServlet("/user/RevocationCert")
@@ -44,11 +46,13 @@ public class UserRevocationCert extends HttpServlet {
         String seri2 = request.getParameter("seri2");
         String revokedAt = request.getParameter("revokedAt");
 
-        System.out.println(" chuc mung : aaaaaaaaaaa "+seri2+":bbbbb"+revokedAt);
+        System.out.println("reri2:"+ seri2 +"revokedAt"+ revokedAt);
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate localDate = LocalDate.parse(revokedAt, formatter);
         long revokedAtDate = localDate.toEpochDay();
+
+
 
 
         RevocationCert revocationCert= new RevocationCert();
@@ -58,7 +62,8 @@ public class UserRevocationCert extends HttpServlet {
 
 
 
-//        response.setContentType("application/json");
-        response.getWriter().write("thanh cong");
+        response.setContentType("application/json");
+        response.getWriter().write(json.toString());
+//        response.getWriter().write("thanh cong");
     }
 }
