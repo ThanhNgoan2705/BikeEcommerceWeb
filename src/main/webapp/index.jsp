@@ -1391,15 +1391,20 @@
             method: "GET",
             data: {page: pageNumber},
             success: function (response) {
-                var data = JSON.parse(response);
+                const data = JSON.parse(response);
                 console.log(data.length);
                 console.log(data);
-                var html = "";
-                for (var i = 0; i < data.length; i++) {
+                let html = "";
+                let images;
+                for (let i = 0; i < data.length; i++) {
+                    let j = 0;
+                    images = data[i].image;
+                   for(j = 0; j<images; i++)
+                       console.log(images[j].link);
                     html += '<div class="col-lg-4 col-md-12 mb-4">'+
                         '<div class="card card-ecommerce">' +
                         '<div class="view overlay">' +
-                        '<img src="' + data[i].image + '" class="img-fluid" alt="">' +
+                        ' <img src="' + images[j].link + '" class="img-fluid" style="width: 350px;height: 265px" alt="">' +
                         '<a><div class="mask rgba-white-slight"></div></a>' +
                         '</div>' +
                         '<div class="card-body">' +

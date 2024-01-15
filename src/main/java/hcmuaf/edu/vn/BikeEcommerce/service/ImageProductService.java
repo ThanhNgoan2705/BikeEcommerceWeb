@@ -58,6 +58,8 @@ public class ImageProductService {
 //        System.out.println(ImageProductService.getInstance().getImageProductById("6"));
 //        ImageProductService.getInstance().deleteImageProduct("6");
 //        System.out.println(ImageProductService.getInstance().getImageProductById("6"));
+        List<ImageProduct> imageProducts = ImageProductService.getInstance().getImageProductByProductId("product1");
+        System.out.println(imageProducts);
 
     }
 

@@ -129,7 +129,7 @@
 
                                 <th scope="row">
 
-                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg"
+                                    <img src="${link}"
                                          alt=""
                                          class="img-fluid z-depth-0">
 

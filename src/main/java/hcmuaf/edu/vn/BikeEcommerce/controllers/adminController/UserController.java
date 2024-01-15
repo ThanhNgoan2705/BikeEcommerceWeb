@@ -10,9 +10,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
-@WebServlet("/user/dashboard")
-public class DashboardController extends HttpServlet {
+@WebServlet("/user/admin-user")
+public class UserController extends HttpServlet {
+    UserService userService;
+
+    @Override
+    public void init() throws ServletException {
+        userService = UserService.getInstance();
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Token token = (Token) req.getAttribute("token");
@@ -34,11 +42,7 @@ public class DashboardController extends HttpServlet {
             req.getSession().setAttribute("haveUser", true);
             req.getSession().setAttribute("userName", user.getUserName());
         }
-        req.getRequestDispatcher("/admin/home_dashboard.jsp").forward(req, resp);
+        req.getRequestDispatcher("/admin/user.jsp").forward(req, resp);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doGet(req, resp);
-    }
 }
