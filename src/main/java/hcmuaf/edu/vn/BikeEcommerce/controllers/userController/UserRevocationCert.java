@@ -18,11 +18,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.security.SecureRandom;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 @WebServlet("/user/RevocationCert")
@@ -44,21 +47,35 @@ public class UserRevocationCert extends HttpServlet {
         String seri2 = request.getParameter("seri2");
         String revokedAt = request.getParameter("revokedAt");
 
-        System.out.println(" chuc mung : aaaaaaaaaaa "+seri2+":bbbbb"+revokedAt);
+        System.out.println("reri2:" + seri2 + "revokedAt" + revokedAt);
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        LocalDate localDate = LocalDate.parse(revokedAt, formatter);
-        long revokedAtDate = localDate.toEpochDay();
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+//        LocalDate localDate = LocalDate.parse(revokedAt, formatter);
+//        long revokedAtDate = localDate.toEpochDay();
 
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        long timestamp = 0;
+        try {
+            // Phân tích chuỗi thành đối tượng Date
+            Date date = dateFormat.parse(revokedAt);
 
-        RevocationCert revocationCert= new RevocationCert();
+            // Lấy giá trị thời gian dưới dạng long
+            timestamp = date.getTime();
+
+            System.out.println("Giá trị thời gian dưới dạng long: " + timestamp);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        RevocationCert revocationCert = new RevocationCert();
         revocationCert.setSeri(seri2);
-        revocationCert.setRevokedAt(revokedAtDate);
+        revocationCert.setRevokedAt(timestamp);
         revocationCertService.insert(revocationCert);
 
 
-
-//        response.setContentType("application/json");
-        response.getWriter().write("thanh cong");
+        response.setContentType("application/json");
+        response.getWriter().write(json.toString());
+//        response.getWriter().write("thanh cong");
     }
 }
