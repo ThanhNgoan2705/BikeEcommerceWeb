@@ -708,7 +708,7 @@
                                     <div class="colKey">
                                         <div class="groupKey">
                                             <label class="label1">Name </label>
-                                            <input type="text" name="username"  id="username">
+                                            <input type="text" class="inputframe" name="username"  id="username">
                                         </div>
                                         </div>
                                     </div>
