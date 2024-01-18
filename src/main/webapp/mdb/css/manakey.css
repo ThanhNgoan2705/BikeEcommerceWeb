@@ -107,13 +107,20 @@
     height: 35px;
     background-color: black;
     color: #f1f1f1;
+    border-radius: 3px;
 }
- #inname{
-    width: 270px;
+ #issuerName{
+    width: 300px;
  height: 30px;
-     margin-left: 50px;
-     margin-right: 20px;
+margin-right: 20px;
+     margin-left: 30px;
+
+
 }
+ #button-container-table .btn{
+     background-color: #0b51c5;
+ }
+
 .fa{
     cursor: pointer;
 }

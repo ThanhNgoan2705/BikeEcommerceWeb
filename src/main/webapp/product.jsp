@@ -444,7 +444,7 @@
 
                             <a class="addToCart" role="button" data-toggle="tooltip" data-placement="top"
                                title="Add to Cart"><i
-                                    class="fas fa-shopping-cart ml-3" onclick="addTocart(${prod.productId})"></i></a>
+                                    class="fas fa-shopping-cart ml-3" onclick="addTocart('${prod.productId}')"></i></a>
 
                           </span>
                                                 </div>

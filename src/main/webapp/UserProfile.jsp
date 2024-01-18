@@ -29,9 +29,10 @@
     <link href="/mdb/css/bootstrap.min.css" rel="stylesheet">
     <link href="/mdb/css/mdb.min.css" rel="stylesheet">
     <link href="/mdb/css/addons/compiled-addons-4.20.0.min.css">
+    <link href="/mdb/css/manakey.css" rel="stylesheet">
     <link href="/mdb/css/style.css" rel="stylesheet">
     <link href="/mdb/css/default.css" rel="stylesheet">
-    <link href="/mdb/css/styleKey.css" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
 </head>
 
@@ -624,7 +625,7 @@
                                 <table class="table table-dark">
                                     <thead>
                                     <tr class="bg-dark">
-                                        <th>STT</th>
+
                                         <th>Name</th>
                                         <th>Seri</th>
                                         <th>Start Date</th>
@@ -635,9 +636,6 @@
                                     <tbody id="myTable" border="1">
                                     <c:forEach var="certView" items="${certViews}">
                                         <tr class="bg-primary bug">
-
-
-                                            <th scope="row">1</th>
                                             <td>${certView.getName()}</td>
                                             <td id="seri" name="seri">${certView.getSeri()}</td>
                                             <td>${certView.getStartDate()}</td>
@@ -663,8 +661,8 @@
                             </div>
                             <div method="POST" id="contactForm" name="contactForm" class="contactForm">
                                 <div class="fname">
-                                    <label class="labelname">Name</label>
-                                    <input id="inname" name="issuerName" type="text"
+                                    <label class="label1">Name</label>
+                                    <input id="issuerName" name="issuerName" type="text"
                                            placeholder="Người dùng nhập tên để tạo cetificate">
                                     <button class="btnblock" type="submit" onclick="createKey()">Create Key</button>
                                 </div>
@@ -674,21 +672,21 @@
                                         <div class="group">
                                             <label class="label1">Private Key</label>
                                             <input type="text" class="form-control" id="privateKey">
-                                            <i class="fa fa-clone" onclick="" aria-hidden="true"></i>
+                                            <i class="fa fa-clone" id="copypri" aria-hidden="true"></i>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="group">
                                             <label class="label1">Public Key</label>
                                             <input type="text" class="form-control" id="publicKey">
-                                            <i class="fa fa-clone" aria-hidden="true"></i>
+                                            <i class="fa fa-clone" id="copypub" aria-hidden="true"></i>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="group">
                                             <label class="label1">Certificate</label>
                                             <input type="text" class="form-control" id="certificate">
-                                            <i class="fa fa-clone" aria-hidden="true"></i>
+                                            <i class="fa fa-clone" id="copycer" aria-hidden="true"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -700,7 +698,7 @@
                         <div class="nenmodal2"></div>
                         <div class="ndmodal">
                             <div class="closemodal">
-                                <button onclick="momodal2()">×</button>
+                                <button onclick="momodal2(), redirect('/user') ">×</button>
                             </div>
                             <div method="POST" id="contactForm2" name="contactForm" class="contactForm">
 
@@ -717,14 +715,14 @@
                                             <label class="label1">Public Key</label>
                                             <input type="text" name="publickey" class="form-control"
                                                    id="publicKey2">
-
+                                            <i class="fa fa-clone" id="copypub2" aria-hidden="true"></i>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="group">
                                             <label class="label1">Certificate</label>
                                             <input type="text" class="form-control" id="certificate2">
-                                            <i class="fa fa-clone" aria-hidden="true"></i>
+                                            <i class="fa fa-clone" id="copycer2" aria-hidden="true"></i>
                                         </div>
                                     </div>
                                     <button class="btnblock btncreate" type="submit" onclick="ImportKey()">Create
@@ -738,7 +736,7 @@
                         <div class="nenmodal"></div>
                         <div class="ndmodal">
                             <div class="closemodal">
-                                <button onclick="momodal3()">×</button>
+                                <button onclick="momodal3(), redirect('/user') ">×</button>
                             </div>
                             <div method="POST" id="contactForm3" name="contactForm" class="contactForm">
 
@@ -750,7 +748,7 @@
                                             <div id="datepicker" class="input-group date"
                                                  data-date-format="mm-dd-yyyy">
                                                 <input class="form-control" id="revokedAt" name="revokedAt" type="text"
-                                                       readonly/>
+                                                       />
                                                 <span class="input-group-addon">
     <i class="fa fa-calendar" aria-hidden="true" onclick="applyDatepicker() "></i>
     </span>
@@ -762,7 +760,7 @@
                                         <div class="group">
                                             <label class="label">Số Seri</label>
                                             <input type="text" class="form-control" name="seri2" id="seri2">
-
+                                            <i class="fa fa-clone" id="copyseri2" aria-hidden="true"></i>
                                         </div>
                                     </div>
                                     <div class="col">
@@ -845,7 +843,7 @@
                 {
                     title: "Action", data: "orderId",
                     render: function (data, type, row) {
-                        if (row.status ===0){
+                        if (row.status === 0) {
                             return '<a href="/user/order?orderId=' + data + '" class="btn btn-primary btn-sm">Check signature</a>'
                         }
                         return '<button class="btn btn-primary btn-sm verifyBtn" type="button">Verify Order</button>'
@@ -870,8 +868,7 @@
                         alert("Verify Order Success");
                         resovle(true);
 
-                    }
-                    else {
+                    } else {
                         // create popup alert fail
                         alert("Verify Order Fail");
                         resovle(false);
@@ -883,30 +880,30 @@
             })
         });
     }
+
     $(document).on('click', '.verifyBtn', function () {
         var orderId = $(this).closest('tr').find('td:eq(0)').text();
         console.log(orderId);
-           verifyOrder(orderId).then((result) => {
-                if (result) {
-                    // get row index with orderId
-                    var table = $('#orderTable').DataTable();
-                    var index = table.rows().eq(0).filter(function (rowIdx) {
-                        return table.cell(rowIdx, 0).data() === orderId ? true : false;
-                    });
-                    // change color of row
-                   table.rows(index).nodes().to$().addClass('table-success');
+        verifyOrder(orderId).then((result) => {
+            if (result) {
+                // get row index with orderId
+                var table = $('#orderTable').DataTable();
+                var index = table.rows().eq(0).filter(function (rowIdx) {
+                    return table.cell(rowIdx, 0).data() === orderId ? true : false;
+                });
+                // change color of row
+                table.rows(index).nodes().to$().addClass('table-success');
 
-                }
-                else {
-                    // get row index with orderId
-                    var table = $('#orderTable').DataTable();
-                    var index = table.rows().eq(0).filter(function (rowIdx) {
-                        return table.cell(rowIdx, 0).data() === orderId ? true : false;
-                    });
-                    // change color of row
-                    table.rows(index).nodes().to$().addClass('table-danger');
-                }
-            });
+            } else {
+                // get row index with orderId
+                var table = $('#orderTable').DataTable();
+                var index = table.rows().eq(0).filter(function (rowIdx) {
+                    return table.cell(rowIdx, 0).data() === orderId ? true : false;
+                });
+                // change color of row
+                table.rows(index).nodes().to$().addClass('table-danger');
+            }
+        });
     });
 </script>
 <script>
@@ -989,11 +986,16 @@
 //tao khoa
 <script type="text/javascript">
     function createKey() {
+        var issuerName = document.getElementById("issuerName").value;
         $.ajax({
             url: "/user/userKey",
             method: "GET",
             dataType: "json",
+            data: {
+                issuerName: issuerName
+            },
             contentType: "application/json",
+
             success: function (data) {
                 console.log("data" + data);
                 // Hiển thị thông tin khóa trên giao diện
@@ -1007,7 +1009,7 @@
                 alert("Error creating RSA key pair.");
             }
         });
-        applyDatepicker();
+
     }
 </script>
 //import key
@@ -1039,7 +1041,7 @@
                 alert("Error creating RSA key pair.");
             }
         });
-        applyDatepicker();
+
     }
 </script>
 <script type="text/javascript">
@@ -1065,19 +1067,90 @@
         });
     }
 </script>
+<%--<script>--%>
+<%--    // step 1--%>
+<%--    const ipnElement = document.querySelector('input')--%>
+<%--    const btnElement = document.querySelector('.fa-clone')--%>
+
+<%--    // step 2--%>
+<%--    btnElement.addEventListener('click', function () {--%>
+
+<%--        ipnElement.select()              // step 4--%>
+
+<%--    })--%>
+<%--</script>--%>
+<script>
+    function abc() {
+
+        var userConfirmed = confirm("Bấm vào nút OK để tiếp tục");
+
+        if (userConfirmed) {
+
+            ipnElement.select(); // Step 4
+
+        } else {
+
+        }
+    }
+
+</script>
 <script>
     // step 1
-    const ipnElement = document.querySelector('input')
-    const btnElement = document.querySelector('.fa-clone')
+    const ipnElement = document.querySelector('#privateKey')
+    const btnElement = document.querySelector('#copypri')
+    //
+    const ipnElement1 = document.querySelector('#publicKey')
+    const btnElement1 = document.querySelector('#copypub')
+    //
+    const ipnElement2 = document.querySelector('#certificate')
+    const btnElement2 = document.querySelector('#copycer')
+    //
+    const ipnElement3 = document.querySelector('#publicKey2')
+    const btnElement3 = document.querySelector('#copypub2')
+
+    const ipnElement4 = document.querySelector('#certificate2')
+    const btnElement4 = document.querySelector('#copycer2')
+
+    const ipnElement5 = document.querySelector('#seri2')
+    const btnElement5 = document.querySelector('#copyseri2')
 
     // step 2
     btnElement.addEventListener('click', function () {
 
-        ipnElement.select()              // step 4
-
+        ipnElement.select() // step 4
+        document.execCommand('copy')
     })
-</script>
+    btnElement1.addEventListener('click', function () {
+        ipnElement1.select() // step 4
+        document.execCommand('copy')
+    })
+    btnElement2.addEventListener('click', function () {
+        ipnElement2.select() // step 4
+        document.execCommand('copy')
+    })
+    btnElement3.addEventListener('click', function () {
+        ipnElement3.select() // step 4
+        document.execCommand('copy')
+    })
+    btnElement4.addEventListener('click', function () {
+        ipnElement4.select() // step 4
+        document.execCommand('copy')
+    })
+    btnElement5.addEventListener('click', function () {
+        ipnElement5.select() // step 4
+        document.execCommand('copy')
+    })
 
+
+</script>
+<script>
+    function applyDatepicker() {
+        $("#datepicker").datepicker({
+            autoclose: true,
+            todayHighlight: true
+        }).datepicker('update', new Date());
+    }
+</script>
 </body>
 </html>
 
