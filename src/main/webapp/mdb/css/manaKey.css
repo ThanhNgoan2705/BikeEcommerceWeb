@@ -79,6 +79,7 @@
     display: flex;
 
 }
+.
 
 .contactForm .label1 {
     color: #000;
@@ -94,17 +95,17 @@
     margin-left: 450px;
 }
 .btnblock{
-    width: 130px;
+    width: 100px;
     height: 35px;
     background-color: black;
     color: #f1f1f1;
     border-radius: 3px;
 }
- #issuerName{
-    width: 300px;
- height: 30px;
-margin-right: 20px;
-     margin-left: 30px;
+    #issuerName {
+    width: 350px;
+        height: 30px;
+
+
 
 
 }
@@ -126,4 +127,30 @@ margin-right: 20px;
         color: #888;
     }
 
+    .rowKey {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column; /* Mỗi row là một cột dọc */
+    }
+
+    .colKey {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 5px; /* Thêm padding theo ý muốn */
+
+        margin-bottom: 5px; /* Thêm khoảng cách giữa các group nếu cần */
+    }
+
+    .label1 {
+
+        margin-bottom: 5px;
+    }
+
+    .inputframe {
+        width: 430px;
+        height: 30px;
+        box-sizing: border-box;
+        padding: 5px; /* Thêm padding theo ý muốn */
+        margin-bottom: 5px;
+    }
 

@@ -46,36 +46,37 @@ public class ImportKey extends HttpServlet {
         Token token = (Token) request.getAttribute("token");
 
         String username = request.getParameter("username");
-        String publickey = request.getParameter("publickey");
+        String pubKey2 = request.getParameter("pubKey2");
 
-        response.setContentType("application/json");
+
 
         BigInteger serial1 = new BigInteger(255, new SecureRandom()).setBit(255);
         String serial = serial1.toString(16);
 
-        System.out.println("info : " + username + ":" + publickey);
+        System.out.println("info : " + username + ":" + pubKey2);
         InputStream inputStream = UserKey.class.getResourceAsStream("/privateInfo/GreenLockPrivateKey.key");
         byte[] privateBytes = inputStream.readAllBytes();
 
         PrivateKey privateKey1 = KeyGen.getInstance().getPrivateKeyformBytes(privateBytes);
         System.out.println("private : " + privateKey1.getAlgorithm());
 
-        byte[] publicBytes = Base64.getDecoder().decode(publickey);
+        byte[] publicBytes = Base64.getDecoder().decode(pubKey2);
         System.out.println(publicBytes.length + " size");
 
         String cer;
         try {
-            PublicKey pubkey = KeyGen.getInstance().getPublicKeyformBytes(publicBytes);
-            certificate = KeyGen.getInstance().genCertificate(privateKey1, pubkey, username, serial1);
+            PublicKey userPub = KeyGen.getInstance().getPublicKeyformBytes(publicBytes);
+            certificate = KeyGen.getInstance().genCertificate(privateKey1, userPub, username, serial1);
             cer = Base64.getEncoder().encodeToString(certificate.getEncoded());
+
         } catch (NoSuchAlgorithmException | OperatorCreationException | CertificateException e) {
             System.out.println(e.getMessage());
             throw new RuntimeException(e);
         }
 
-        Cert cert = new Cert();
+        Cert cert= new Cert();
         cert.setSeri(String.valueOf(serial));
-        cert.setPublicKey(publickey);
+        cert.setPublicKey(pubKey2);
         cert.setCertValue(cer);
 
         certService.insert(cert);
@@ -89,6 +90,7 @@ public class ImportKey extends HttpServlet {
         inputStream.close();
 
         json.addProperty("cer", cer);
+        response.setContentType("application/json");
         response.getWriter().write(json.toString());
 
     }

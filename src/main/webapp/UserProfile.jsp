@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/css/mdb.min.css">
     <link href="/mdb/css/addons/compiled-addons-4.20.0.min.css">
-    <link href="/mdb/css/manakey.css" rel="stylesheet">
+    <link href="./mdb/css/manaKey.css" rel="stylesheet">
     <link href="/mdb/css/style.css" rel="stylesheet">
     <link href="/mdb/css/default.css" rel="stylesheet">
 
@@ -652,11 +652,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="md-form md-outline input-with-post-icon datepicker" id="customDays" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="customDays_root">
-                        <input placeholder="Select date" type="text" id="Customization" class="form-control picker__input">
-                        <label for="Customization" class="active">Ngày khóa</label>
-                        <i class="fas fa-calendar input-prefix active" tabindex="0"></i>
-                    </div>
+
                     <div class="nenmodal" id="nenmodal-1">
 
                         <div class="ndmodal">
@@ -666,33 +662,35 @@
                             <div method="POST" id="contactForm" name="contactForm" class="contactForm">
                                 <div class="fname">
                                     <label class="label1">Name</label>
-                                    <input id="issuerName" name="issuerName" type="text"
+                                    <input id="issuerName"  name="issuerName" type="text"
                                            placeholder="Người dùng nhập tên để tạo cetificate">
                                     <button class="btnblock" type="submit" onclick="createKey()">Create Key</button>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="group">
+                                <div class="rowKey">
+                                    <div class="colKey">
+                                        <div class="groupKey">
                                             <label class="label1">Private Key</label>
-                                            <input type="text" class="form-control" id="privateKey">
+                                            <input  class="inputframe" type="text"  id="privateKey">
                                             <i class="fa fa-clone"  id="copypri" aria-hidden="true"></i>
-                                        </div>
+                                </div>
                                     </div>
-                                    <div class="col">
-                                        <div class="group">
+
+                                    <div class="colKey">
+                                        <div class="groupKey">
                                             <label class="label1">Public Key</label>
-                                            <input type="text" class="form-control" id="publicKey">
-                                            <i class="fa fa-clone" id="copypub" aria-hidden="true"></i>
-                                        </div>
+                                            <input class="inputframe"  type="text"  id="publicKey">
+                                            <i class="fa fa-clone"  id="copypub" aria-hidden="true"></i>
+                                </div>
                                     </div>
-                                    <div class="col">
-                                        <div class="group">
+                                    <div class="colKey">
+                                        <div class="groupKey">
                                             <label class="label1">Certificate</label>
-                                            <input type="text" class="form-control" id="certificate">
+                                            <input class="inputframe" type="text"  id="certificate">
                                             <i class="fa fa-clone" id="copycer" aria-hidden="true"></i>
-                                        </div>
+                                </div>
                                     </div>
+                                </div>
                                 </div>
                             </div>
                         </div>
@@ -706,31 +704,34 @@
                             </div>
                             <div method="POST" id="contactForm2" name="contactForm" class="contactForm">
 
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="group">
+                                <div class="rowKey">
+                                    <div class="colKey">
+                                        <div class="groupKey">
                                             <label class="label1">Name </label>
-                                            <input type="text" name="username" class="inpri" id="name2">
-
+                                            <input type="text" name="username"  id="username">
+                                        </div>
                                         </div>
                                     </div>
-                                    <div class="col">
-                                        <div class="group">
+                                <div class="colKey">
+                                    <div class="groupKey">
                                             <label class="label1">Public Key</label>
-                                            <input type="text" name="publickey" class="form-control"
-                                                   id="publicKey2">
+                                            <input type="text" name="pubKey2" class="inputframe"
+                                                   id="pubKey2">
                                             <i class="fa fa-clone" id="copypub2" aria-hidden="true"></i>
                                         </div>
+                                </div>
                                     </div>
-                                    <div class="col">
-                                        <div class="group">
+                            <div class="colKey">
+                                <div class="groupKey">
                                             <label class="label1">Certificate</label>
-                                            <input type="text" class="form-control" id="certificate2">
+                                            <input type="text" class="inputframe" id="certificate2">
                                             <i class="fa fa-clone" id="copycer2" aria-hidden="true"></i>
+                                    <button class="btnblock btncreate" type="submit" onclick="ImportKey()">Create</button>
                                         </div>
+
                                     </div>
-                                    <button class="btnblock btncreate" type="submit" onclick="ImportKey()">Create
-                                    </button>
+
+                        </div>
                                 </div>
                             </div>
                         </div>
@@ -745,14 +746,19 @@
 
                             <div method="POST" id="contactForm3" name="contactForm" class="contactForm">
 
+                                <div class="md-form md-outline input-with-post-icon datepicker"  data-date-format="dd-mm-yyyy" id="customDays" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="customDays_root">
+                                    <input placeholder="Select date" type="text" id="Customization" name="revokedAt" class="form-control picker__input">
+                                    <label for="Customization" class="active">Ngày khóa</label>
+                                    <i class="fas fa-calendar input-prefix active" tabindex="0"></i>
+                                </div>
 
-
-                                <div class="col">
-                                    <div class="group">
+                                <div class="colKey">
+                                    <div class="groupKey">
                                         <label class="label">Số Seri</label>
-                                        <input type="text" class="form-control" name="seri2" id="seri2">
+                                        <input type="text" class="inputframe" name="Number" id="Number">
                                         <i class="fa fa-clone" id="copyseri2" aria-hidden="true"></i>
                                     </div>
+                                </div>
                                 </div>
                                 <div class="col">
                                     <div class="group">
@@ -792,6 +798,7 @@
 
 <script>
     $('.datepicker').datepicker({
+format:"dd-mm-yyyy",
         weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
         showMonthsShort: true,
 
@@ -1016,17 +1023,16 @@
 <script type="text/javascript">
 
     function ImportKey() {
-        var username = document.getElementById("name2").value;
-        var publickey = document.getElementById("publicKey2").value;
-        console.log("ten" + username + "pub" + publickey);
+        var username = document.getElementById("username").value;
+        var pubKey2 = document.getElementById("pubKey2").value;
+        console.log("ten" + username + "pub" + pubKey2);
         $.ajax({
             url: "/user/importKey",
             method: "GET",
-            type: 'POST',
             dataType: "json",
             data: {
                 username: username,
-                publickey: publickey,
+                pubKey2: pubKey2,
             },
             contentType: "application/json",
             success: function (data) {
@@ -1047,16 +1053,16 @@
 <script type="text/javascript">
 
     function revocation() {
-        var seri2 = document.getElementById("seri2").value;
-        var revokedAt = document.getElementById("revokedAt").value;
+        var Number = document.getElementById("Number").value;
+        var Customization = document.getElementById("Customization").value;
 
         $.ajax({
             url: "/user/RevocationCert",
             method: "GET",
             dataType: "json",
             data: {
-                seri2: seri2,
-                revokedAt: revokedAt,
+                Number: Number,
+                Customization: Customization,
             },
             contentType: "application/json",
             success: function (data) {
@@ -1067,18 +1073,7 @@
         });
     }
 </script>
-<%--<script>--%>
-<%--    // step 1--%>
-<%--    const ipnElement = document.querySelector('input')--%>
-<%--    const btnElement = document.querySelector('.fa-clone')--%>
 
-<%--    // step 2--%>
-<%--    btnElement.addEventListener('click', function () {--%>
-
-<%--        ipnElement.select()              // step 4--%>
-
-<%--    })--%>
-<%--</script>--%>
 <script>
     function abc() {
 
@@ -1087,7 +1082,7 @@
         if (userConfirmed) {
 
             ipnElement.select(); // Step 4
-
+            location.reload();
         } else {
 
         }
@@ -1105,7 +1100,7 @@
     const ipnElement2 = document.querySelector('#certificate')
     const btnElement2 = document.querySelector('#copycer')
     //
-    const ipnElement3 = document.querySelector('#publicKey2')
+    const ipnElement3 = document.querySelector('#pubKey2')
     const btnElement3 = document.querySelector('#copypub2')
 
     const ipnElement4 = document.querySelector('#certificate2')
