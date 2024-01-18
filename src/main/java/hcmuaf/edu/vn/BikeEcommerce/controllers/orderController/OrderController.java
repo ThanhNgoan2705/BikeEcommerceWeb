@@ -56,7 +56,7 @@ public class OrderController extends HttpServlet {
                 double totalPrice = 0;
                 String totalPriceStr = "";
                 for (OrderItem item : itemList) {
-                    DecimalFormat df = new DecimalFormat("#,##");
+                    DecimalFormat df = new DecimalFormat("###,###,###.##");
                    String priceItem = df.format(item.getPrice());
                    String totalPriceItem = df.format(item.getPrice() * item.getQuantity());
                     double price = item.getPrice() * item.getQuantity();
