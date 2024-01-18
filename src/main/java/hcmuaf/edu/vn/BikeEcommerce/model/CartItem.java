@@ -60,6 +60,11 @@ public class CartItem {
         this.price = price;
     }
 
+    public String getPriceString(String ProductId) {
+        Product product = this.getProduct();
+        return String.format("%,.0f", product.getPrice())+"đ";
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

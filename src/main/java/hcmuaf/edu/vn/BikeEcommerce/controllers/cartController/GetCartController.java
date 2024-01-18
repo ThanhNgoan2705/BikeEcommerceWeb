@@ -48,31 +48,28 @@ public class GetCartController extends HttpServlet {
             return;
         } else {
             List<CartItem> itemList = cart.getCartItemList();
-            String imageProductId = "";
-            String link = "";
-            double price = 0;
-            String priceString = "";
-            DecimalFormat df = new DecimalFormat("#.000");
-            SubProduct_color subProduct_color = new SubProduct_color();
-            for (CartItem item : itemList) {
-                subProduct_color = subProduct_colorService.getColorProductByProductIdAndColorId(item.getProductId(), item.getColorId());
-                price = subProduct_color.getPrice();
-                priceString = df.format(price);
-                System.out.println(subProduct_color.toString());
-                System.out.println(price);
-                imageProductId = subProduct_color.getImageProductId();
-                List<ImageProduct> imageProduct = imageProductService.getImageProductByProductId(subProduct_color.getProductId());
-                for (ImageProduct image : imageProduct) {
-                    if (image.getImageProductId().equals(imageProductId)) {
-                        link = image.getLink();
-                    }
-                }
-            }
-            req.setAttribute("link", link);
-            req.setAttribute("price", priceString);
-            cartTotal = itemList.size();
-            System.out.println(itemList.size());
             req.setAttribute("itemList", itemList);
+            cartTotal = itemList.size();
+            double totalPrice = 0;
+            String totalPriceStr = "";
+            String linkImage = "";
+            DecimalFormat df = new DecimalFormat("###,###,###.##");
+            for (CartItem item : itemList) {
+                String priceItem = df.format(item.getPrice())+" VND";
+                String totalPriceItem = df.format(item.getPrice() * item.getQuantity())+" VND";
+                SubProduct_color subProduct_color = subProduct_colorService.getColorProductByProductIdAndColorId(item.getProduct().getProductId(), item.getColorId());
+                String imageId = subProduct_color.getImageProductId();
+                ImageProduct imageProduct = imageProductService.getImageProductByImageId(imageId);
+                linkImage = imageProduct.getLink();
+                double price = item.getPrice() * item.getQuantity();
+                totalPrice += price;
+                totalPriceStr = df.format(totalPrice)+" VND";
+                req.setAttribute("link", linkImage);
+                req.setAttribute("priceItem", priceItem);
+                req.setAttribute("totalPriceItem", totalPriceItem);
+                req.setAttribute("totalPrice", totalPriceStr);
+            }
+
             req.setAttribute("cartTotal", cartTotal);
         }
 

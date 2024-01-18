@@ -77,28 +77,31 @@ public class HomeController extends HttpServlet {
 
         List<Discount> discounts = discountService.getAll();
         request.setAttribute("discounts", discounts);
-
-
         Token token = null;
+        int cartTotal = 0;
         try {
             Cookie[] cookieArr = request.getCookies();
             Cookie cookie = null;
             for (Cookie c : cookieArr) {
                 if (c.getName().equals("token-bike")) {
-                    cookie = c;
+                    if (c.getValue() == null) {
+                        request.getRequestDispatcher("/logIn.jsp").forward(request, response);
+                        return;
+                    } else {
+                        cookie = c;
+                        try {
+                            token = TokenService.getInstance().getTokenFromHeader(cookie.getValue());// tao token tu du lieu
+                            if (token == null) {
+                                request.getRequestDispatcher("/index.jsp").forward(request, response);
+                                return;
+                            }
+                        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
                 }
             }
-            if (cookie != null) {
-                try {
-                    token = TokenService.getInstance().getTokenFromHeader(cookie.getValue());// tao token tu du lieu
-                } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-            if (token == null) {
-                request.getRequestDispatcher("/index.jsp").forward(request, response);
-                return;
-            }
+
             HttpSession session = request.getSession();
             String userId = (String) session.getAttribute("userId");
             if (userId == null) {
@@ -107,23 +110,28 @@ public class HomeController extends HttpServlet {
             }
             User user = UserService.getInstance().getUserByKey(token.getUserId());
             if (user != null) {
-                request.setAttribute("haveUser", true);
-                request.setAttribute("userName", user.getUserName());
-            }
-            int cartTotal = 0;
-            request.setAttribute("cartTotal", cartTotal);
-            if (user.getRole() == 2) {
-                response.sendRedirect("/admin/dashboard");
-            }
-            if (user.getRole() != 1) {
-                response.sendRedirect("/login");
+                if (user.getRole() == 2) {
+                    response.sendRedirect("/admin/dashboard");
+                }
+                if (user.getRole() == 1) {
+                    request.setAttribute("haveUser", true);
+                    request.setAttribute("userName", user.getUserName());
+                    Cart cart = cartService.getCartByKey(token.getUserId());
+                    if (cart != null) {
+                        List<CartItem> itemList = cart.getCartItemList();
+                        cartTotal = itemList.size();
+                        request.setAttribute("cartTotal", cartTotal);
+                    }
+                } else {
+                    request.getRequestDispatcher("/index.jsp").forward(request, response);
+                }
+
             }
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         } catch (Exception e) {
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
     }
-
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

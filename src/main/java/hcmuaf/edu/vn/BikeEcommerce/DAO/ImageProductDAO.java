@@ -35,4 +35,6 @@ public interface ImageProductDAO {
     List<ImageProduct> getTop1ImageProductByProductId(@Bind("productId")String productId);
     @SqlQuery(ScirptSQL.getImageProductById)
     List<ImageProduct> getListImageProductById(@Bind("productId")String productId);
+    @SqlQuery(ScirptSQL.getImageProductByImageId)
+    ImageProduct getImageProductByImageId(@Bind("imageProductId") String id);
 }

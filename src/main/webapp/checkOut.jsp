@@ -123,7 +123,6 @@
                 </div>
             </div>
             <!--Grid column-->
-
             <!--Grid column-->
             <div class="col-lg-6 mb-4">
                 <!--Card-->
@@ -133,20 +132,34 @@
                     <div class="card-body">
                         <h4 class="mb-4 mt-1 h5 text-center font-weight-bold">Summary</h4>
                         <hr>
-                        <c:forEach items="${itemList}" var="cartItem">
-                            <dl class="row">
+                        <dl class="row">
+                            <dt class="col-sm-4">
+                                Product Name
+                            </dt>
+                            <dt class="col-sm-2">
+                                Quantity
+                            </dt>
+                            <dt class="col-sm-3">
+                                ItemPrice
+                            </dt>
+                            <dt class="col-sm-3">
+                                Total Item price
+                            </dt>
+                            <c:forEach items="${itemList}" var="cartItem">
+
                                 <dd class="col-sm-4">
                                         ${cartItem.product.name}
                                 </dd>
                                 <dd class="col-sm-2">
                                         ${cartItem.quantity}
                                 </dd>
-                                <dd class="col-sm-3">${cartItem.product.price}</dd>
+                                <dd class="col-sm-3">${priceItem}</dd>
                                 <dd class="col-sm-3 price">
-                                        ${cartItem.product.price * cartItem.quantity}
+                                        ${totalPriceItem}
                                 </dd>
-                            </dl>
-                        </c:forEach>
+                            </c:forEach>
+
+                        </dl>
                         <dl class="row">
                             <dd class="col-sm-7">
                                 <h6 class="mb-0">Total</h6>

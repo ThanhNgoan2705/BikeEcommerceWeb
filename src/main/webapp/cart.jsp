@@ -163,7 +163,7 @@
                                 <td></td>
 
 
-                                <td id="price-${item.cartItemId}">${price}</td>
+                                <td id="price-${item.cartItemId}">${priceItem}</td>
 
 
                                 <td class="text-center text-md-left">
@@ -172,12 +172,12 @@
 
                                     <div class="def-number-input number-input safari_only">
 
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown();updateQuantityAndTotal('${item.cartItemId}',this.parentNode.querySelector('input[type=number]').value,document.getElementById('colors-${item.cartItemId}').value ) "
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown();updateColorAndQuantity('${item.cartItemId}',this.parentNode.querySelector('input[type=number]').value,document.getElementById('colors-${item.cartItemId}').value ) "
                                                 class="minus"></button>
                                         <input class="quantity" min="1" name="quantity" value="${item.quantity}"
                                                id="quantity-${item.cartItemId}"
                                                type="number"
-                                               oninput="updateQuantityAndTotal('${item.cartItemId}',this.value,document.getElementById('colors-${item.cartItemId}').value)">
+                                               oninput="updateColorAndQuantity('${item.cartItemId}',this.value,document.getElementById('colors-${item.cartItemId}').value)">
                                         <button onclick="this.parentNode.querySelector('input[type=number]').stepUp();updateColorAndQuantity('${item.cartItemId}',this.parentNode.querySelector('input[type=number]').value,document.getElementById('colors-${item.cartItemId}').value )"
 
                                                 class="plus"></button>
@@ -188,7 +188,7 @@
                                 <td class="font-weight-bold item">
 
 
-                                    <strong id="total-for-one-item-${item.cartItemId}">${price * item.quantity} </strong>
+                                    <strong id="total-for-one-item-${item.cartItemId}">${totalPriceItem} </strong>
 
 
                                 </td>
@@ -255,492 +255,6 @@
         </section>
         <!-- Section cart -->
 
-        <!-- Section products -->
-        <section>
-
-            <h4 class="font-weight-bold mt-4 title-1">
-
-                <strong>YOU MAY BE INTERESTED IN</strong>
-            </h4>
-            <hr class="blue mb-5">
-            <div id="carousel-example-multi" class="carousel slide carousel-multi-item v-2" data-ride="carousel">
-
-                <!--Controls-->
-                <div class="controls-top justify-content-between">
-                    <a class="btn-floating float-left" href="#carousel-example-multi" data-slide="prev"><i
-                            class="fas fa-chevron-left"></i></a>
-                    <a class="btn-floating float-right" href="#carousel-example-multi" data-slide="next"><i
-                            class="fas fa-chevron-right"></i></a>
-                </div>
-                <!--/.Controls-->
-
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel-example-multi" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-example-multi" data-slide-to="1"></li>
-                    <li data-target="#carousel-example-multi" data-slide-to="2"></li>
-                    <li data-target="#carousel-example-multi" data-slide-to="3"></li>
-                    <li data-target="#carousel-example-multi" data-slide-to="4"></li>
-                    <li data-target="#carousel-example-multi" data-slide-to="5"></li>
-                </ol>
-                <!--/.Indicators-->
-
-                <div class="carousel-inner v-2" role="listbox">
-
-                    <div class="carousel-item active">
-                        <!-- Grid column -->
-                        <div class="col-12 col-md-4">
-
-                            <!-- Card -->
-                            <div class="card card-ecommerce">
-
-                                <!-- Card image -->
-                                <div class="view overlay">
-
-                                    <img src="https://thegioixedien.com.vn/datafiles/setone/1701780160_aima-avt.jpg"
-                                         class="img-fluid"
-                                         alt="">
-
-                                    <a>
-
-                                        <div class="mask rgba-white-slight"></div>
-
-                                    </a>
-
-                                </div>
-                                <!-- Card image -->
-
-                                <!-- Card content -->
-                                <div class="card-body">
-
-                                    <!-- Category & Title -->
-                                    <h5 class="card-title mb-1"><strong><a href=""
-                                                                           class="dark-grey-text">Xe Đạp Điện 133 Aima Orla</a></strong>
-                                    </h5>
-                                    <span class="badge badge-danger mb-2">bestseller</span>
-
-                                    <!-- Rating -->
-                                    <ul class="rating">
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                    </ul>
-
-                                    <!-- Card footer -->
-                                    <div class="card-footer pb-0">
-
-                                        <div class="row mb-0">
-
-                                            <span class="float-left"><strong>1439$</strong></span>
-
-                                            <span class="float-right">
-
-                        <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
-                                class="fas fa-shopping-cart ml-3"></i></a>
-
-                      </span>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                                <!-- Card content -->
-
-                            </div>
-                            <!-- Card -->
-
-                        </div>
-                        <!-- Grid column -->
-                    </div>
-                    <div class="carousel-item">
-                        <!-- Grid column -->
-                        <div class="col-12 col-md-4">
-
-                            <!-- Card -->
-                            <div class="card card-ecommerce">
-
-                                <!-- Card image -->
-                                <div class="view overlay">
-
-                                    <img src="https://thegioixedien.com.vn/datafiles/setone/1621777081_xe-dien-gap-jlbao-tg.jpg"
-                                         class="img-fluid"
-                                         alt="">
-
-                                    <a>
-
-                                        <div class="mask rgba-white-slight"></div>
-
-                                    </a>
-
-                                </div>
-                                <!-- Card image -->
-
-                                <!-- Card content -->
-                                <div class="card-body">
-
-                                    <!-- Category & Title -->
-                                    <h5 class="card-title mb-1"><strong><a href=""
-                                                                           class="dark-grey-text">Xe Đạp Điện Gấp JLBAO</a></strong>
-                                    </h5>
-                                    <span class="badge badge-danger mb-2">bestseller</span>
-
-                                    <!-- Rating -->
-                                    <ul class="rating">
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                    </ul>
-
-                                    <!-- Card footer -->
-                                    <div class="card-footer pb-0">
-
-                                        <div class="row mb-0">
-
-                                            <span class="float-left"><strong>1439$</strong></span>
-
-                                            <span class="float-right">
-
-                        <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
-                                class="fas fa-shopping-cart ml-3"></i></a>
-
-                      </span>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                                <!-- Card content -->
-
-                            </div>
-                            <!-- Card -->
-
-                        </div>
-                        <!-- Grid column -->
-                    </div>
-                    <div class="carousel-item">
-                        <!-- Grid column -->
-                        <div class="col-12 col-md-4">
-
-                            <!-- Card -->
-                            <div class="card card-ecommerce">
-
-                                <!-- Card image -->
-                                <div class="view overlay">
-
-                                    <img src="https://thegioixedien.com.vn/datafiles/setone/1686563142_goglan2-avt.jpg"
-                                         class="img-fluid"
-                                         alt="">
-
-                                    <a>
-
-                                        <div class="mask rgba-white-slight"></div>
-
-                                    </a>
-
-                                </div>
-                                <!-- Card image -->
-
-                                <!-- Card content -->
-                                <div class="card-body">
-
-                                    <!-- Category & Title -->
-                                    <h5 class="card-title mb-1"><strong><a href=""
-                                                                           class="dark-grey-text">Xe Đạp Điện Super Goglan </a></strong>
-                                    </h5>
-                                    <span
-                                            class="badge badge-info mb-2">new</span>
-
-                                    <!-- Rating -->
-                                    <ul class="rating">
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                    </ul>
-
-                                    <!-- Card footer -->
-                                    <div class="card-footer pb-0">
-
-                                        <div class="row mb-0">
-
-                                            <span class="float-left"><strong>1439$</strong></span>
-
-                                            <span class="float-right">
-
-                        <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
-                                class="fas fa-shopping-cart ml-3"></i></a>
-
-                      </span>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                                <!-- Card content -->
-
-                            </div>
-                            <!-- Card -->
-
-                        </div>
-                        <!-- Grid column -->
-
-                    </div>
-                    <div class="carousel-item">
-                        <!-- Grid column -->
-                        <div class="col-12 col-md-4">
-
-                            <!-- Card -->
-                            <div class="card card-ecommerce">
-
-                                <!-- Card image -->
-                                <div class="view overlay">
-
-                                    <img src="https://thegioixedien.com.vn/datafiles/setone/1690628243_type2-avtg.jpg"
-                                         class="img-fluid"
-                                         alt="">
-
-                                    <a>
-
-                                        <div class="mask rgba-white-slight"></div>
-
-                                    </a>
-
-                                </div>
-                                <!-- Card image -->
-
-                                <!-- Card content -->
-                                <div class="card-body">
-
-                                    <!-- Category & Title -->
-                                    <h5 class="card-title mb-1"><strong><a href=""
-                                                                           class="dark-grey-text">Xe Đạp Điện Dreaform Type</a></strong>
-                                    </h5><span
-                                        class="badge badge-danger mb-2">bestseller</span>
-
-                                    <!-- Rating -->
-                                    <ul class="rating">
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                        <li><i class="fas fa-star grey-text"></i></li>
-
-                                    </ul>
-
-                                    <!-- Card footer -->
-                                    <div class="card-footer pb-0">
-
-                                        <div class="row mb-0">
-
-                                            <span class="float-left"><strong>1439$</strong></span>
-
-                                            <span class="float-right">
-
-                        <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
-                                class="fas fa-shopping-cart ml-3"></i></a>
-
-                      </span>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                                <!-- Card content -->
-
-                            </div>
-                            <!-- Card -->
-
-                        </div>
-                        <!-- Grid column -->
-                    </div>
-                    <div class="carousel-item">
-                        <!-- Grid column -->
-                        <div class="col-12 col-md-4  ">
-
-                            <!-- Card -->
-                            <div class="card card-ecommerce mb-2">
-
-                                <!-- Card image -->
-                                <div class="view overlay">
-
-                                    <img src="https://thegioixedien.com.vn/datafiles/setone/1689329628_RB-SL2802-B-45.jpg"
-                                         class="img-fluid"
-                                         alt="">
-
-                                    <a>
-
-                                        <div class="mask rgba-white-slight"></div>
-
-                                    </a>
-
-                                </div>
-                                <!-- Card image -->
-
-                                <!-- Card content -->
-                                <div class="card-body">
-
-                                    <!-- Category & Title -->
-                                    <h5 class="card-title mb-1"><strong><a href=""
-                                                                           class="dark-grey-text">Xe Đạp Asama Solano Expert</a></strong>
-                                    </h5>
-                                    <span class="badge badge-danger mb-2">bestseller</span>
-
-                                    <!-- Rating -->
-                                    <ul class="rating">
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                    </ul>
-
-                                    <!-- Card footer -->
-                                    <div class="card-footer pb-0">
-
-                                        <div class="row mb-0">
-
-                                            <span class="float-left"><strong>1439$</strong></span>
-
-                                            <span class="float-right">
-
-                        <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
-                                class="fas fa-shopping-cart ml-3"></i></a>
-
-                      </span>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                                <!-- Card content -->
-
-                            </div>
-                            <!-- Card -->
-
-                        </div>
-                        <!-- Grid column -->
-                    </div>
-                    <div class="carousel-item">
-                        <!-- Grid column -->
-                        <div class="col-12 col-md-4">
-
-                            <!-- Card -->
-                            <div class="card card-ecommerce mb-2">
-
-                                <!-- Card image -->
-                                <div class="view overlay">
-
-                                    <img src="https://thegioixedien.com.vn/datafiles/setone/1700468249_4.jpeg"
-                                         class="img-fluid"
-                                         alt="">
-
-                                    <a>
-
-                                        <div class="mask rgba-white-slight"></div>
-
-                                    </a>
-
-                                </div>
-                                <!-- Card image -->
-
-                                <!-- Card content -->
-                                <div class="card-body">
-
-                                    <!-- Category & Title -->
-                                    <h5 class="card-title mb-1"><strong><a href=""
-                                                                           class="dark-grey-text">Xe Đạp Thể Thao ASAMA MTB</a></strong>
-                                    </h5>
-                                    <span class="badge badge-danger mb-2">bestseller</span>
-
-                                    <!-- Rating -->
-                                    <ul class="rating">
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                        <li><i class="fas fa-star blue-text"></i></li>
-
-                                    </ul>
-
-                                    <!-- Card footer -->
-                                    <div class="card-footer pb-0">
-
-                                        <div class="row mb-0">
-
-                                            <span class="float-left"><strong>1439$</strong></span>
-
-                                            <span class="float-right">
-
-                        <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
-                                class="fas fa-shopping-cart ml-3"></i></a>
-
-                      </span>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                                <!-- Card content -->
-
-                            </div>
-                            <!-- Card -->
-
-                        </div>
-                        <!-- Grid column -->
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-        <!-- Section products -->
-
     </div>
     <!-- Main Container -->
 
@@ -784,18 +298,23 @@
             }
         });
     }
-
     function updateTotal(cartItemId, quantity, price) {
+        let priceItem;
         if (price == null) {
             price = 0;
         } else {
-            price = parseFloat(price);
+            priceItem = price.replace(' VND', '');
+            priceItem = priceItem.replaceAll(',', '');
+            price = parseFloat(priceItem);
+            console.log(price);
         }
         var total = quantity * price;
-        document.querySelector(`#total-for-one-item-` + cartItemId).textContent = total.toFixed(2);
+        document.querySelector(`#total-for-one-item-` + cartItemId).textContent = writeToCurrencyString(total) + " VND";
         updateTotalAll();
     }
-
+    function writeToCurrencyString(price){
+        return  price.toLocaleString('en-US');
+    }
     function updatePriceByColorOnItemId(cartItemId, colorId) {
         var servletUrl = '/getPriceByColorAndProductId';
         var data = {
@@ -812,8 +331,6 @@
                 var priceElement = document.getElementById(`price-` + cartItemId);
                 console.log(priceElement);
                 priceElement.textContent = response;
-
-
             },
             error: function (xhr, status, error) {
                 console.error('Request failed:', status, error);
@@ -881,20 +398,19 @@
         // Lặp qua tất cả các phần tử có class "font-weight-bold" trong tbody
         var itemTotalElements = document.querySelectorAll('tbody .item');
         itemTotalElements.forEach(function (element) {
+            var itemTotalPrice = element.textContent.replace(' VND', '');
             // Trích xuất giá trị tổng từ phần tử và chuyển đổi thành số
-            var itemTotal = parseFloat(element.textContent.trim());
+            var itemTotal = parseFloat(itemTotalPrice.replaceAll(',', ''));
             // Thêm giá trị tổng của sản phẩm vào tổng chung
             totalAll += itemTotal;
             console.log(itemTotal);
         });
 
         // Cập nhật nội dung của phần tử có id "total-all"
-        document.getElementById('total-all').textContent = totalAll.toFixed(2);
+
+        document.getElementById('total-all').textContent = writeToCurrencyString(totalAll) + " VND";
     }
-
-
     window.onload = updateTotalAll;
-
 </script>
 
 </body>

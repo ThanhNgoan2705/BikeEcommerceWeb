@@ -96,6 +96,7 @@ public class ScirptSQL {
     static final String updateImageProduct = "update image_product set link = :link, product_id = :productId ,color_id =:colorId where image_product_id = :imageProductId";
     static final String deleteImageProduct = "delete from image_product where image_product_id = :imageProductId";
     public static final String deleteImageProductByProductId = "delete from image_product where product_id = :productId";
+    public static final String getImageProductByImageId = "select * from image_product where image_product_id = :imageProductId";
 
 
     // user

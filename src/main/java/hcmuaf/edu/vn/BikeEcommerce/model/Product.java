@@ -125,6 +125,7 @@ public class Product {
         return Objects.equals(productId, product.productId);
     }
 
+
     @Override
     public String toString() {
         return "Product{" +
