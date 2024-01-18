@@ -177,76 +177,76 @@
 
                         <!-- Grid row -->
                         <div class="row productList">
-                            <c:forEach items="${data}" var="prod">
-                                <!-- Grid column -->
-                                <div class=" col-lg-4 col-md-12 mb-4">
+<%--                            <c:forEach items="${data}" var="prod">--%>
+<%--                                <!-- Grid column -->--%>
+<%--                                <div class=" col-lg-4 col-md-12 mb-4">--%>
 
-                                    <!-- Card -->
-                                    <div class="card card-ecommerce">
+<%--                                    <!-- Card -->--%>
+<%--                                    <div class="card card-ecommerce">--%>
 
-                                        <!-- Card image -->
-                                        <div class="view overlay">
+<%--                                        <!-- Card image -->--%>
+<%--                                        <div class="view overlay">--%>
 
-                                            <img src="" class="img-fluid" alt="">
-                                            <a>
-                                                <div class="mask rgba-white-slight"></div>
-                                            </a>
+<%--                                            <img src="" class="img-fluid" alt="">--%>
+<%--                                            <a>--%>
+<%--                                                <div class="mask rgba-white-slight"></div>--%>
+<%--                                            </a>--%>
 
-                                        </div>
-                                        <!-- Card image -->
+<%--                                        </div>--%>
+<%--                                        <!-- Card image -->--%>
 
-                                        <!-- Card content -->
-                                        <div class="card-body">
+<%--                                        <!-- Card content -->--%>
+<%--                                        <div class="card-body">--%>
 
-                                            <!-- Category & Title -->
-                                            <h5 class="card-title mb-1"><strong><a href=""
-                                                                                   class="dark-grey-text">${prod.name}</a></strong>
-                                            </h5>
+<%--                                            <!-- Category & Title -->--%>
+<%--                                            <h5 class="card-title mb-1"><strong><a href=""--%>
+<%--                                                                                   class="dark-grey-text">${prod.name}</a></strong>--%>
+<%--                                            </h5>--%>
 
-                                            <span class="badge badge-danger mb-2">bestseller</span>
+<%--                                            <span class="badge badge-danger mb-2">bestseller</span>--%>
 
-                                            <!-- Rating -->
-                                            <ul class="rating">
+<%--                                            <!-- Rating -->--%>
+<%--                                            <ul class="rating">--%>
 
-                                                <li><i class="fas fa-star blue-text"></i></li>
+<%--                                                <li><i class="fas fa-star blue-text"></i></li>--%>
 
-                                                <li><i class="fas fa-star blue-text"></i></li>
+<%--                                                <li><i class="fas fa-star blue-text"></i></li>--%>
 
-                                                <li><i class="fas fa-star blue-text"></i></li>
+<%--                                                <li><i class="fas fa-star blue-text"></i></li>--%>
 
-                                                <li><i class="fas fa-star blue-text"></i></li>
+<%--                                                <li><i class="fas fa-star blue-text"></i></li>--%>
 
-                                                <li><i class="fas fa-star blue-text"></i></li>
+<%--                                                <li><i class="fas fa-star blue-text"></i></li>--%>
 
-                                            </ul>
+<%--                                            </ul>--%>
 
-                                            <!-- Card footer -->
-                                            <div class="card-footer pb-0">
+<%--                                            <!-- Card footer -->--%>
+<%--                                            <div class="card-footer pb-0">--%>
 
-                                                <div class="row mb-0">
+<%--                                                <div class="row mb-0">--%>
 
-                                                    <span class="float-left"><strong>  ${prod.price} </strong></span>
+<%--                                                    <span class="float-left"><strong>  ${prod.price} </strong></span>--%>
 
-                                                    <span class="float-right">
+<%--                                                    <span class="float-right">--%>
 
-                            <a class="addToCart" role="button" data-toggle="tooltip" data-placement="top"
-                               title="Add to Cart ${prod.productId}"><i
-                                    class="fas fa-shopping-cart ml-3" onclick="addTocart('${prod.productId}')"></i></a>
+<%--                            <a class="addToCart" role="button" data-toggle="tooltip" data-placement="top"--%>
+<%--                               title="Add to Cart ${prod.productId}"><i--%>
+<%--                                    class="fas fa-shopping-cart ml-3" onclick="addTocart('${prod.productId}')"></i></a>--%>
 
-                          </span>
-                                                </div>
+<%--                          </span>--%>
+<%--                                                </div>--%>
 
-                                            </div>
+<%--                                            </div>--%>
 
-                                        </div>
-                                        <!-- Card content -->
+<%--                                        </div>--%>
+<%--                                        <!-- Card content -->--%>
 
-                                    </div>
-                                    <!-- Card -->
+<%--                                    </div>--%>
+<%--                                    <!-- Card -->--%>
 
-                                </div>
-                                <!-- Grid column -->
-                            </c:forEach>
+<%--                                </div>--%>
+<%--                                <!-- Grid column -->--%>
+<%--                            </c:forEach>--%>
                         </div>
                         <!-- Grid row -->
                         <!-- Grid row -->

@@ -24,7 +24,7 @@ public class BrandController extends HttpServlet {
             req.getSession().setAttribute("haveUser", true);
             req.getSession().setAttribute("userName", user.getUserName());
         }
-        req.getRequestDispatcher("admin/brand.jsp").forward(req, resp);
+        req.getRequestDispatcher("/admin/brand.jsp").forward(req, resp);
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
