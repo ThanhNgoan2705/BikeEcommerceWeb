@@ -34,7 +34,7 @@ public class DashboardController extends HttpServlet {
             req.getSession().setAttribute("haveUser", true);
             req.getSession().setAttribute("userName", user.getUserName());
         }
-        req.getRequestDispatcher("/admin/home_dashboard.jsp").forward(req, resp);
+        req.getRequestDispatcher("admin/home_dashboard.jsp").forward(req, resp);
     }
 
     @Override

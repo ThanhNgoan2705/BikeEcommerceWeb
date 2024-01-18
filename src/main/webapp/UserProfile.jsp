@@ -21,19 +21,19 @@
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
             rel="stylesheet"
     />
-    <link rel="stylesheet prefetch"
-          href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css">
 
-    <link rel="stylesheet" href=
-            "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-    <link href="/mdb/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/mdb/css/mdb.min.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/css/mdb.min.css">
     <link href="/mdb/css/addons/compiled-addons-4.20.0.min.css">
     <link href="/mdb/css/manakey.css" rel="stylesheet">
     <link href="/mdb/css/style.css" rel="stylesheet">
     <link href="/mdb/css/default.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
+
+
 </head>
 
 <body class="homepage-v1 hidden-sn white-skin animated">
@@ -652,9 +652,13 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="md-form md-outline input-with-post-icon datepicker" id="customDays" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="customDays_root">
+                        <input placeholder="Select date" type="text" id="Customization" class="form-control picker__input">
+                        <label for="Customization" class="active">Ngày khóa</label>
+                        <i class="fas fa-calendar input-prefix active" tabindex="0"></i>
+                    </div>
                     <div class="nenmodal" id="nenmodal-1">
-                        <div class="nenmodal2"></div>
+
                         <div class="ndmodal">
                             <div class="closemodal">
                                 <button onclick="momodal(), redirect('/user') ">×</button>
@@ -672,7 +676,7 @@
                                         <div class="group">
                                             <label class="label1">Private Key</label>
                                             <input type="text" class="form-control" id="privateKey">
-                                            <i class="fa fa-clone" id="copypri" aria-hidden="true"></i>
+                                            <i class="fa fa-clone"  id="copypri" aria-hidden="true"></i>
                                         </div>
                                     </div>
                                     <div class="col">
@@ -695,7 +699,7 @@
                     </div>
                     <!-- màn hình import key -->
                     <div class="nenmodal" id="nenmodal-2">
-                        <div class="nenmodal2"></div>
+
                         <div class="ndmodal">
                             <div class="closemodal">
                                 <button onclick="momodal2(), redirect('/user') ">×</button>
@@ -733,70 +737,66 @@
                     </div>
                     <!-- màn hình revocation key -->
                     <div class="nenmodal" id="nenmodal-3">
-                        <div class="nenmodal"></div>
+
                         <div class="ndmodal">
                             <div class="closemodal">
                                 <button onclick="momodal3(), redirect('/user') ">×</button>
                             </div>
+
                             <div method="POST" id="contactForm3" name="contactForm" class="contactForm">
 
-                                <div class="row inli">
-                                    <div class="col">
-                                        <div class="group ">
 
-                                            <label class="label1">Ngày khóa </label>
-                                            <div id="datepicker" class="input-group date"
-                                                 data-date-format="mm-dd-yyyy">
-                                                <input class="form-control" id="revokedAt" name="revokedAt" type="text"
-                                                       />
-                                                <span class="input-group-addon">
-    <i class="fa fa-calendar" aria-hidden="true" onclick="applyDatepicker() "></i>
-    </span>
-                                            </div>
 
-                                        </div>
+                                <div class="col">
+                                    <div class="group">
+                                        <label class="label">Số Seri</label>
+                                        <input type="text" class="form-control" name="seri2" id="seri2">
+                                        <i class="fa fa-clone" id="copyseri2" aria-hidden="true"></i>
                                     </div>
-                                    <div class="col">
-                                        <div class="group">
-                                            <label class="label">Số Seri</label>
-                                            <input type="text" class="form-control" name="seri2" id="seri2">
-                                            <i class="fa fa-clone" id="copyseri2" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="group">
-                                            <button class="btnblock btnrevo" type="submit" onclick="revocation()">Khóa
-                                                <i class="fa fa-lock  " aria-hidden="true" onclick="abc()"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-
-
                                 </div>
+                                <div class="col">
+                                    <div class="group">
+                                        <button class="btnblock btnrevo" type="submit" onclick="revocation()">Khóa
+                                            <i class="fa fa-lock  " aria-hidden="true" onclick="abc()"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <!-- Pills panels -->
-            </div>
-        </div>
-        <!--Grid column-->
 
+            </div>
+            <!-- Pills panels -->
+        </div>
     </div>
-    <!--Grid row-->
+    <!--Grid column-->
+
+</div>
+<!--Grid row-->
 </div>
 <!-- Main Container -->
 <!-- Footer -->
 <%@include file="default/footer.jsp" %>
 <!-- Footer -->
-<script src="/mdb/js/jquery.min.js"></script>
+<%--<script src="/mdb/js/jquery.min.js"></script>--%>
+<script type="text/javascript" src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/js/jquery.min.js"></script>
+<script type="text/javascript" src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/js/popper.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
-<script src="/mdb/js/bootstrap.min.js"></script>
-<script src="/mdb/js/mdb.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/js/mdb.min.js"></script>
 <script src="/mdb/js/default.js"></script>
+
+<script>
+    $('.datepicker').datepicker({
+        weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+        showMonthsShort: true,
+
+    })
+</script>
 //datatables order
 <script>
     $(document).ready(function () {
@@ -868,7 +868,8 @@
                         alert("Verify Order Success");
                         resovle(true);
 
-                    } else {
+                    }
+                    else {
                         // create popup alert fail
                         alert("Verify Order Fail");
                         resovle(false);
@@ -880,7 +881,6 @@
             })
         });
     }
-
     $(document).on('click', '.verifyBtn', function () {
         var orderId = $(this).closest('tr').find('td:eq(0)').text();
         console.log(orderId);
@@ -992,7 +992,7 @@
             method: "GET",
             dataType: "json",
             data: {
-                issuerName: issuerName
+                issuerName:issuerName
             },
             contentType: "application/json",
 
@@ -1143,14 +1143,7 @@
 
 
 </script>
-<script>
-    function applyDatepicker() {
-        $("#datepicker").datepicker({
-            autoclose: true,
-            todayHighlight: true
-        }).datepicker('update', new Date());
-    }
-</script>
+
 </body>
 </html>
 

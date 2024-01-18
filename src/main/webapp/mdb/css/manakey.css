@@ -6,19 +6,10 @@
     /*    background-color: #0a47a9;*/
     /*    display:block;*/
     /*}*/
-.nenmodal .nenmodal2 {
-    position:fixed;
-    top:0px;
-    left:0px;
-    width:100vw;
-    height:100vh;
-    background:rgba(0,0,0,0.7);
-    z-index:1;
-    display:none;
-}
+
 /* CSS bảng nội dung Modal */
 .nenmodal .ndmodal {
-    position:absolute;
+     position:absolute;
     top:50%;
     left:50%;
     transform:translate(-50%,-50%) scale(0);
@@ -74,7 +65,7 @@
 
 }
 
-.form-control{
+.inputDate{
     width: 400px;
     height: 30px;
     margin-left: 5px;
@@ -124,30 +115,15 @@ margin-right: 20px;
 .fa{
     cursor: pointer;
 }
-
-    #datepicker {
-        width: 150px;
+    .labelDate {margin-left: 20px;
     }
+    #datepicker{width:150px;}
+    #datepicker > span:hover{cursor: pointer;}
 
-    #datepicker > span:hover {
-        cursor: pointer;
-    }
 
     .disabled {
         background-color: #ddd;
         color: #888;
     }
-    #tabKeyManagement #keymana {
-        display: flex;  /* Sử dụng Flexbox để giữ các phần tử trong một hàng */
-    }
-
-    #tabKeyManagement #keymana button {
-        margin-right: 10px;  /* Khoảng cách giữa các nút (tuỳ chọn) */
-background-color: #0a47a9;
-    }
-    .inli {
-        display: inline-block; /* Hoặc sử dụng display: inline; */
-        margin-right: 10px;
 
 
-    }

@@ -32,7 +32,7 @@ public class CategoriesController extends HttpServlet {
         List<Category> categoryParentList = CategoryService.getInstance().getAllParent(1);
         System.out.println(" parent"+categoryParentList);
         req.setAttribute("parentList", categoryParentList);
-        req.getRequestDispatcher("/admin/category.jsp").forward(req,resp);
+        req.getRequestDispatcher("admin/category.jsp").forward(req,resp);
     }
 
     @Override
