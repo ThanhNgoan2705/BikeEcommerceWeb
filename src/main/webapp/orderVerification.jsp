@@ -49,7 +49,7 @@
         <!--Grid row-->
         <div class="row">
             <!--Grid column-->
-            <div class="col-lg-8 mb-4">
+            <div class="col-lg-6 mb-4">
                 <p class="nav-link active" data-toggle="tab" href="#verify-order" role="tab">Order Verification- Order:
                     <span class="btn-primary" id="orderId">${order.orderId}</span></p>
                 <span class="clearfix"></span>
@@ -75,7 +75,8 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 mb-3">
-                                <form class="md-form" enctype="multipart/form-data" method="post" action="/user/check-signature?orderId=${order.orderId}" >
+                                <form class="md-form" enctype="multipart/form-data" method="post"
+                                      action="/user/check-signature?orderId=${order.orderId}">
                                     <div class="file-field">
                                         <div class="btn btn-primary btn-sm float-left">
                                             <span>Choose file</span>
@@ -86,7 +87,7 @@
                                                    type="text" placeholder="Upload your Signature file">
                                         </div>
                                     </div>
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-4">
                                         <button class="btn btn-primary btn-lg btn-block" type="submit">Verify</button>
                                     </div>
                                 </form>
@@ -100,62 +101,61 @@
             </div>
             <!--Grid column-->
             <!--Grid column-->
-            <div class="col-lg-4 mb-4">
+            <div class="col-lg-6 mb-4">
                 <!--Card-->
                 <div class="card">
 
                     <!--Card content-->
                     <div class="card-body">
                         <h4 class="mb-4 mt-1 h5 text-center font-weight-bold">Summary</h4>
-
                         <hr>
-
                         <dl class="row">
-                            <dd class="col-sm-8">
-                                MDBootstrap UI KIT (jQuery version) - License 6-10 people + unlimited projects
-                            </dd>
-                            <dd class="col-sm-4">
-                                $ 2000
-                            </dd>
-                        </dl>
-
-                        <hr>
-
-                        <dl class="row">
-                            <dd class="col-sm-8">
-                                Premium support - 2 years
-                            </dd>
-                            <dd class="col-sm-4">
-                                $ 2000
-                            </dd>
-                        </dl>
-
-                        <hr>
-
-                        <dl class="row">
-                            <dd class="col-sm-8">
-                                MDB Membership - 2 years
-                            </dd>
-                            <dd class="col-sm-4">
-                                $ 2000
-                            </dd>
-                        </dl>
-
-                        <hr>
-
-                        <dl class="row">
-                            <dt class="col-sm-8">
-                                Total
-                            </dt>
                             <dt class="col-sm-4">
-                                $ 2000
+                                Product Name
                             </dt>
+                            <dt class="col-sm-2">
+                                Quantity
+                            </dt>
+                            <dt class="col-sm-3">
+                                ItemPrice
+                            </dt>
+                            <dt class="col-sm-3">
+                                Total Item price
+                            </dt>
+                            <c:forEach items="${itemList}" var="cartItem">
+
+                                <dd class="col-sm-4">
+                                        ${cartItem.product.name}
+                                </dd>
+                                <dd class="col-sm-2">
+                                        ${cartItem.quantity}
+                                </dd>
+                                <dd class="col-sm-3">${priceItem}</dd>
+                                <dd class="col-sm-3 price">
+                                        ${totalPriceItem}
+                                </dd>
+                            </c:forEach>
+
                         </dl>
+                        <dl class="row">
+                            <dd class="col-sm-7">
+                                <h6 class="mb-0">Total</h6>
+                            </dd>
+                            <dd class="col-sm-5">
+                                <h6 class="mb-0"><strong id="total-all">${totalPrice}</strong></h6>
+                            </dd>
+                        </dl>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label>Cash on Delivery</label>
+                            </div>
+                        </div>
+                        <hr>
                     </div>
 
                 </div>
                 <!--/.Card-->
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Place order</button>
             </div>
             <!--Grid column-->
         </div>

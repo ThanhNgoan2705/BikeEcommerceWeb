@@ -118,6 +118,10 @@ public class OrderItem {
         this.price = price;
     }
 
+    public String getPriceString(double price) {
+        return String.format("%,.0f", price);
+    }
+
     public String getCreatedAt() {
         return createdAt;
     }
@@ -151,6 +155,6 @@ public class OrderItem {
     }
 
     public String forToBytesOfOrder() {
-        return orderItemId + "," + orderId + "," + productId + "," + quantity + "," + colorId + "," + price ;
+        return orderItemId + "," + orderId + "," + productId + "," + quantity + "," + colorId + "," + price;
     }
 }

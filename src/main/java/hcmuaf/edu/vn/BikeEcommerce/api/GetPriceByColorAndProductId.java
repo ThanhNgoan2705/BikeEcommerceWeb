@@ -1,4 +1,4 @@
-package hcmuaf.edu.vn.BikeEcommerce.API;
+package hcmuaf.edu.vn.BikeEcommerce.api;
 
 import hcmuaf.edu.vn.BikeEcommerce.model.CartItem;
 import hcmuaf.edu.vn.BikeEcommerce.service.CartItemsService;
@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 @WebServlet("/getPriceByColorAndProductId")
 public class GetPriceByColorAndProductId extends HttpServlet {
@@ -37,12 +38,12 @@ public class GetPriceByColorAndProductId extends HttpServlet {
         String colorId = req.getParameter("colorId");
         CartItem cartItem = cartItemsService.getCartItemByCartItemId(cartItemId);
         double price = 0;
+        DecimalFormat formatter = new DecimalFormat("###,###,###.##");
         if (productId == null) {
             price = subProduct_colorService.getPriceByProductIdAndColorId(cartItem.getProductId(), colorId);
         } else {
             price = subProduct_colorService.getPriceByProductIdAndColorId(productId, colorId);
         }
-        resp.getWriter().write(price + "");
-
+        resp.getWriter().write(formatter.format(price)+" VND");
     }
 }

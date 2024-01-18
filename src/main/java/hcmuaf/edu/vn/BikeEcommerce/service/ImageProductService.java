@@ -20,7 +20,9 @@ public class ImageProductService {
         }
         return instance;
     }
-
+    public ImageProduct getImageProductByImageId(String id) {
+        return jdbi.withExtension(ImageProductDAO.class, dao -> dao.getImageProductByImageId(id));
+    }
     List<ImageProduct> getAllImageProduct() {
         return jdbi.withExtension(ImageProductDAO.class, dao -> dao.getAll());
     }
