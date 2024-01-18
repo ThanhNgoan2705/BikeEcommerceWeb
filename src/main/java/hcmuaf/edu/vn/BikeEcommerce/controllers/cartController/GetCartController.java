@@ -48,7 +48,7 @@ public class GetCartController extends HttpServlet {
             return;
         } else {
             List<CartItem> itemList = cart.getCartItemList();
-            req.setAttribute("itemList", itemList);
+
             cartTotal = itemList.size();
             double totalPrice = 0;
             String totalPriceStr = "";
@@ -69,7 +69,7 @@ public class GetCartController extends HttpServlet {
                 req.setAttribute("totalPriceItem", totalPriceItem);
                 req.setAttribute("totalPrice", totalPriceStr);
             }
-
+            req.setAttribute("itemList", itemList);
             req.setAttribute("cartTotal", cartTotal);
         }
 

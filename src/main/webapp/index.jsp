@@ -1356,6 +1356,9 @@
             },
             success: function (data) {
                 var itemCount = parseInt($(".number").text());
+                if (isNaN(itemCount)) {
+                    itemCount = 0;
+                }
                 var flyNumber = $('<span class="fly-number">' + (itemCount + 1) + '</span>');
                 // get button add position
                 var position = $('.addToCart').offset();

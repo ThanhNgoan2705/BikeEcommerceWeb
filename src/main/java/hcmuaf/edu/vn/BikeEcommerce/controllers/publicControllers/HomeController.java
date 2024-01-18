@@ -105,7 +105,7 @@ public class HomeController extends HttpServlet {
             HttpSession session = request.getSession();
             String userId = (String) session.getAttribute("userId");
             if (userId == null) {
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
                 return;
             }
             User user = UserService.getInstance().getUserByKey(token.getUserId());
