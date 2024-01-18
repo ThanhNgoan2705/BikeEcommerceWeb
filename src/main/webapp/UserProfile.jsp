@@ -23,8 +23,8 @@
     />
 
 
-
-    <link rel="stylesheet" href="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/css/mdb.min.css">
     <link href="/mdb/css/addons/compiled-addons-4.20.0.min.css">
     <link href="./mdb/css/manaKey.css" rel="stylesheet">
@@ -662,7 +662,7 @@
                             <div method="POST" id="contactForm" name="contactForm" class="contactForm">
                                 <div class="fname">
                                     <label class="label1">Name</label>
-                                    <input id="issuerName"  name="issuerName" type="text"
+                                    <input id="issuerName" name="issuerName" type="text"
                                            placeholder="Người dùng nhập tên để tạo cetificate">
                                     <button class="btnblock" type="submit" onclick="createKey()">Create Key</button>
                                 </div>
@@ -671,114 +671,117 @@
                                     <div class="colKey">
                                         <div class="groupKey">
                                             <label class="label1">Private Key</label>
-                                            <input  class="inputframe" type="text"  id="privateKey">
-                                            <i class="fa fa-clone"  id="copypri" aria-hidden="true"></i>
-                                </div>
+                                            <input class="inputframe" type="text" id="privateKey">
+                                            <i class="fa fa-clone" id="copypri" aria-hidden="true"></i>
+                                        </div>
                                     </div>
 
                                     <div class="colKey">
                                         <div class="groupKey">
                                             <label class="label1">Public Key</label>
-                                            <input class="inputframe"  type="text"  id="publicKey">
-                                            <i class="fa fa-clone"  id="copypub" aria-hidden="true"></i>
-                                </div>
+                                            <input class="inputframe" type="text" id="publicKey">
+                                            <i class="fa fa-clone" id="copypub" aria-hidden="true"></i>
+                                        </div>
                                     </div>
                                     <div class="colKey">
                                         <div class="groupKey">
                                             <label class="label1">Certificate</label>
-                                            <input class="inputframe" type="text"  id="certificate">
+                                            <input class="inputframe" type="text" id="certificate">
                                             <i class="fa fa-clone" id="copycer" aria-hidden="true"></i>
-                                </div>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- màn hình import key -->
-                    <div class="nenmodal" id="nenmodal-2">
-
-                        <div class="ndmodal">
-                            <div class="closemodal">
-                                <button onclick="momodal2(), redirect('/user') ">×</button>
-                            </div>
-                            <div method="POST" id="contactForm2" name="contactForm" class="contactForm">
-
-                                <div class="rowKey">
-                                    <div class="colKey">
-                                        <div class="groupKey">
-                                            <label class="label1">Name </label>
-                                            <input type="text" class="inputframe" name="username"  id="username">
-                                        </div>
                                         </div>
                                     </div>
-                                <div class="colKey">
-                                    <div class="groupKey">
-                                            <label class="label1">Public Key</label>
-                                            <input type="text" name="pubKey2" class="inputframe"
-                                                   id="pubKey2">
-                                            <i class="fa fa-clone" id="copypub2" aria-hidden="true"></i>
-                                        </div>
                                 </div>
-                                    </div>
-                            <div class="colKey">
-                                <div class="groupKey">
-                                            <label class="label1">Certificate</label>
-                                            <input type="text" class="inputframe" id="certificate2">
-                                            <i class="fa fa-clone" id="copycer2" aria-hidden="true"></i>
-                                    <button class="btnblock btncreate" type="submit" onclick="ImportKey()">Create</button>
-                                        </div>
-
-                                    </div>
-
-                        </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- màn hình revocation key -->
-                    <div class="nenmodal" id="nenmodal-3">
-
-                        <div class="ndmodal">
-                            <div class="closemodal">
-                                <button onclick="momodal3(), redirect('/user') ">×</button>
-                            </div>
-
-                            <div method="POST" id="contactForm3" name="contactForm" class="contactForm">
-
-                                <div class="md-form md-outline input-with-post-icon datepicker"  data-date-format="dd-mm-yyyy" id="customDays" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="customDays_root">
-                                    <input placeholder="Select date" type="text" id="Customization" name="revokedAt" class="form-control picker__input">
-                                    <label for="Customization" class="active">Ngày khóa</label>
-                                    <i class="fas fa-calendar input-prefix active" tabindex="0"></i>
-                                </div>
-
-                                <div class="colKey">
-                                    <div class="groupKey">
-                                        <label class="label">Số Seri</label>
-                                        <input type="text" class="inputframe" name="Number" id="Number">
-                                        <i class="fa fa-clone" id="copyseri2" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                                </div>
-                                <div class="col">
-                                    <div class="group">
-                                        <button class="btnblock btnrevo" type="submit" onclick="revocation()">Khóa
-                                            <i class="fa fa-lock  " aria-hidden="true" onclick="abc()"></i>
-                                        </button>
-                                    </div>
-                                </div>
-
-
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- màn hình import key -->
+                <div class="nenmodal" id="nenmodal-2">
 
+                    <div class="ndmodal">
+                        <div class="closemodal">
+                            <button onclick="momodal2(), redirect('/user') ">×</button>
+                        </div>
+                        <div method="POST" id="contactForm2" name="contactForm" class="contactForm">
+
+                            <div class="rowKey">
+                                <div class="colKey">
+                                    <div class="groupKey">
+                                        <label class="label1">Name </label>
+                                        <input type="text" class="inputframe" name="username" id="username">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="colKey">
+                                <div class="groupKey">
+                                    <label class="label1">Public Key</label>
+                                    <input type="text" name="pubKey2" class="inputframe"
+                                           id="pubKey2">
+                                    <i class="fa fa-clone" id="copypub2" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="colKey">
+                            <div class="groupKey">
+                                <label class="label1">Certificate</label>
+                                <input type="text" class="inputframe" id="certificate2">
+                                <i class="fa fa-clone" id="copycer2" aria-hidden="true"></i>
+                                <button class="btnblock btncreate" type="submit" onclick="ImportKey()">Create</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
             </div>
-            <!-- Pills panels -->
         </div>
     </div>
-    <!--Grid column-->
+    <!-- màn hình revocation key -->
+    <div class="nenmodal" id="nenmodal-3">
+
+        <div class="ndmodal">
+            <div class="closemodal">
+                <button onclick="momodal3(), redirect('/user') ">×</button>
+            </div>
+
+            <div method="POST" id="contactForm3" name="contactForm" class="contactForm">
+
+                <div class="md-form md-outline input-with-post-icon datepicker" data-date-format="dd-mm-yyyy"
+                     id="customDays" aria-haspopup="true" aria-expanded="false" aria-readonly="false"
+                     aria-owns="customDays_root">
+                    <input placeholder="Select date" type="text" id="Customization" name="revokedAt"
+                           class="form-control picker__input">
+                    <label for="Customization" class="active">Ngày khóa</label>
+                    <i class="fas fa-calendar input-prefix active" tabindex="0"></i>
+                </div>
+
+                <div class="colKey">
+                    <div class="groupKey">
+                        <label class="label">Số Seri</label>
+                        <input type="text" class="inputframe" name="Number" id="Number">
+                        <i class="fa fa-clone" id="copyseri2" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="group">
+                    <button class="btnblock btnrevo" type="submit" onclick="revocation()">Khóa
+                        <i class="fa fa-lock  " aria-hidden="true" onclick="abc()"></i>
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+</div>
+
+</div>
+<!-- Pills panels -->
+</div>
+</div>
+<!--Grid column-->
 
 </div>
 <!--Grid row-->
@@ -788,17 +791,21 @@
 <%@include file="default/footer.jsp" %>
 <!-- Footer -->
 <%--<script src="/mdb/js/jquery.min.js"></script>--%>
-<script type="text/javascript" src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/js/jquery.min.js"></script>
-<script type="text/javascript" src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/js/popper.min.js"></script>
+<script type="text/javascript"
+        src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/js/jquery.min.js"></script>
+<script type="text/javascript"
+        src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/js/popper.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
-<script type="text/javascript" src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/js/mdb.min.js"></script>
+<script type="text/javascript"
+        src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+        src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/js/mdb.min.js"></script>
 <script src="/mdb/js/default.js"></script>
 
 <script>
     $('.datepicker').datepicker({
-format:"dd-mm-yyyy",
+        format: "dd-mm-yyyy",
         weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
         showMonthsShort: true,
 
@@ -820,8 +827,15 @@ format:"dd-mm-yyyy",
             "columns": [
                 {title: "Order ID", data: "orderId"},
                 {title: "Full Address", data: "fullAddress"},
-                {title: "Shipping Fee", data: "shippingFee"},
-                {title: "Total Price", data: "total"},
+                {
+                    title: "Shipping Fee", data: "shippingFee", render: function (data) {
+                        return writeToCurrencyString(data);
+
+                    }
+                },
+                {title: "Total Price", data: "total", render: function (data) {
+                        return writeToCurrencyString(data);
+                    }},
                 {
                     title: "Status", data: "status",
                     render: function (data, type, row) {
@@ -859,6 +873,10 @@ format:"dd-mm-yyyy",
             ]
         });
     });
+
+    function writeToCurrencyString(price) {
+        return price.toLocaleString('en-US') + ' VND';
+    }
 </script>
 <script>
     function verifyOrder(orderId) {
@@ -875,8 +893,7 @@ format:"dd-mm-yyyy",
                         alert("Verify Order Success");
                         resovle(true);
 
-                    }
-                    else {
+                    } else {
                         // create popup alert fail
                         alert("Verify Order Fail");
                         resovle(false);
@@ -888,6 +905,7 @@ format:"dd-mm-yyyy",
             })
         });
     }
+
     $(document).on('click', '.verifyBtn', function () {
         var orderId = $(this).closest('tr').find('td:eq(0)').text();
         console.log(orderId);
@@ -999,7 +1017,7 @@ format:"dd-mm-yyyy",
             method: "GET",
             dataType: "json",
             data: {
-                issuerName:issuerName
+                issuerName: issuerName
             },
             contentType: "application/json",
 

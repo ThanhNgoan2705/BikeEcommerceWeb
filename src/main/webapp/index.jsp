@@ -225,7 +225,7 @@
 
                                                 <div class="row mb-0">
 
-                                                    <span class="float-left"><strong>${prod.price}</strong></span>
+                                                    <span class="float-left"><strong>  ${prod.price} </strong></span>
 
                                                     <span class="float-right">
 
@@ -1427,7 +1427,7 @@
                         '</ul>' +
                         '<div class="card-footer pb-0">' +
                         '<div class="row mb-0">' +
-                        '<span class="float-left"><strong>' + data[i].price + '</strong></span>' +
+                        '<span class="float-left"><strong>' + writeToCurrencyString(data[i].price) + '</strong></span>' +
                         '<span class="float-right">' +
                         '<a class="addToCart" role="button" data-toggle="tooltip" data-placement="top" title="Add to Cart">' +
                         '<i class="fas fa-shopping-cart ml-3" onclick="addTocart(\'' + data[i].productId +'\')"></i></a>' +
@@ -1444,7 +1444,9 @@
             }
         });
     }
-
+    function writeToCurrencyString(price) {
+        return price.toLocaleString('en-US') + ' VND';
+    }
     // pagination with 10 records per page
     $(document).on('click', '.page-link', function (event) {
         event.preventDefault();
