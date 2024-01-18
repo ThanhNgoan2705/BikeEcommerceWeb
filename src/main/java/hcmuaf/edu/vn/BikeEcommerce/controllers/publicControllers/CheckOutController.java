@@ -61,7 +61,7 @@ public class CheckOutController extends HttpServlet {
             req.setAttribute("cartTotal", cartTotal);
         }
 //        System.out.println(gson.toJson(itemList));
-        req.getRequestDispatcher("/checkOut.jsp").forward(req, resp);
+        req.getRequestDispatcher("checkOut.jsp").forward(req, resp);
     }
 
     @Override
@@ -78,6 +78,6 @@ public class CheckOutController extends HttpServlet {
         double shippingFee = 100000.0;
         String orderId = cartService.saveCartItemIntoOrder(userId, addressId, shippingFee);
         System.out.println("orderId: " + orderId);
-        resp.sendRedirect(req.getContextPath() + "/user/order?orderId=" + orderId);
+        resp.sendRedirect(req.getContextPath() + "user/order?orderId=" + orderId);
     }
 }

@@ -44,10 +44,10 @@ public class UserRevocationCert extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String seri2 = request.getParameter("seri2");
-        String revokedAt = request.getParameter("revokedAt");
-
-        System.out.println("reri2:" + seri2 + "revokedAt" + revokedAt);
+        String Number = request.getParameter("Number");
+        String Customization = request.getParameter("Customization");
+        System.out.println("nguyenlethuthao");
+        System.out.println("reri2:" + Number + "revokedAt" + Customization);
 
 //        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 //        LocalDate localDate = LocalDate.parse(revokedAt, formatter);
@@ -57,7 +57,7 @@ public class UserRevocationCert extends HttpServlet {
         long timestamp = 0;
         try {
             // Phân tích chuỗi thành đối tượng Date
-            Date date = dateFormat.parse(revokedAt);
+            Date date = dateFormat.parse(Customization);
 
             // Lấy giá trị thời gian dưới dạng long
             timestamp = date.getTime();
@@ -69,7 +69,7 @@ public class UserRevocationCert extends HttpServlet {
         }
 
         RevocationCert revocationCert = new RevocationCert();
-        revocationCert.setSeri(seri2);
+        revocationCert.setSeri(Number);
         revocationCert.setRevokedAt(timestamp);
         revocationCertService.insert(revocationCert);
 

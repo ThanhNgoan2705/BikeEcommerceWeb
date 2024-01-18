@@ -1,32 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th1 15, 2024 lúc 06:28 PM
--- Phiên bản máy phục vụ: 10.4.32-MariaDB
--- Phiên bản PHP: 8.2.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Cơ sở dữ liệu: `bike_ecommerce`
---
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `address`
---
-
 CREATE TABLE `address` (
                            `address_id` varchar(64) NOT NULL,
                            `user_id` varchar(64) DEFAULT NULL,
@@ -36,12 +7,9 @@ CREATE TABLE `address` (
                            `created_at` timestamp NULL DEFAULT current_timestamp(),
                            `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
--- Đang đổ dữ liệu cho bảng `address`
---
 
-INSERT INTO `address` (`address_id`, `user_id`, `home_address`, `district`, `city`, `created_at`, `updated_at`) VALUES
-    ('f9a971ee-11e4-479b-a1ec-95c2b4b11a69', '634726e3-288c-412a-8d14-9a1b961fbd22', '123 le van viet', 'b', 'a', '2024-01-15 03:36:05', '2024-01-15 03:36:05');
 -- --------------------------------------------------------
+
 --
 -- Cấu trúc bảng cho bảng `brand`
 --
@@ -89,13 +57,6 @@ CREATE TABLE `cart` (
                         `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Đang đổ dữ liệu cho bảng `cart`
---
-
-INSERT INTO `cart` (`cart_id`, `user_id`, `ss_id`, `created_at`, `updated_at`) VALUES
-    ('5116b615-d837-434d-973c-5469ba70fc0b', '634726e3-288c-412a-8d14-9a1b961fbd22', NULL, '2024-01-06 09:36:48', '2024-01-06 09:36:48');
-
 -- --------------------------------------------------------
 
 --
@@ -111,15 +72,6 @@ CREATE TABLE `cart_item` (
                              `created_at` timestamp NULL DEFAULT current_timestamp(),
                              `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Đang đổ dữ liệu cho bảng `cart_item`
---
-
-INSERT INTO `cart_item` (`cart_item_id`, `cart_id`, `product_id`, `color_id`, `quantity`, `created_at`, `updated_at`) VALUES
-                                                                                                                          ('97362e50-428a-43be-9e43-135e0e9db7e5', '5116b615-d837-434d-973c-5469ba70fc0b', 'product1', 'color1', 1, '2024-01-14 07:39:44', '2024-01-14 07:39:44'),
-                                                                                                                          ('bbb162ae-ed56-421b-928b-6c898b1e86cb', '5116b615-d837-434d-973c-5469ba70fc0b', 'product2', 'color2', 1, '2024-01-06 10:38:02', '2024-01-06 10:38:02'),
-                                                                                                                          ('d8d839bc-648d-4aa2-82f3-d57e04732ec4', '5116b615-d837-434d-973c-5469ba70fc0b', 'product3', 'color3', 1, '2024-01-06 10:07:25', '2024-01-06 10:07:25');
 
 -- --------------------------------------------------------
 
@@ -649,7 +601,12 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `email`, `salt`, `pass`, `user_name`, `created_at`, `updated_at`, `role`) VALUES
                                                                                                              ('634726e3-288c-412a-8d14-9a1b961fbd22', 'chanchan@gmail.com', '8759a7bde65e5886299ae8e6a7ee00f1', 'f0a18fb56fa1613ba583816aa5464df9d62e780012fd700b00dd6803e305c2f1', 'chan', '2024-01-06 16:36:33', '2024-01-06 16:36:48', 1),
-                                                                                                             ('94face32-ca88-4729-b3de-b34a0e390e48', 'admin@gmail.com', '8a316e582ae2898b941eb2f82d3ef209', 'f72633c729b73b342cfb5da6910fa7800599d0a52ab211e11bc575f328fc5cff', 'hai', '2023-11-21 23:52:14', '2024-01-04 05:20:36', 2);
+                                                                                                             ('94face32-ca88-4729-b3de-b34a0e390e48', 'admin@gmail.com', '8a316e582ae2898b941eb2f82d3ef209', 'f72633c729b73b342cfb5da6910fa7800599d0a52ab211e11bc575f328fc5cff', 'hai', '2023-11-21 23:52:14', '2024-01-04 05:20:36', 2),
+                                                                                                             ('user1', 'user1@example.com', 'salt1', 'hashed_pass1', 'User 1', '2023-11-21 23:49:49', '2023-11-21 23:49:49', 1),
+                                                                                                             ('user2', 'user2@example.com', 'salt2', 'hashed_pass2', 'User 2', '2023-11-21 23:49:49', '2023-11-21 23:49:49', 1),
+                                                                                                             ('user3', 'user3@example.com', 'salt3', 'hashed_pass3', 'User 3', '2023-11-21 23:49:49', '2023-11-21 23:49:49', 1),
+                                                                                                             ('user4', 'user4@example.com', 'salt4', 'hashed_pass4', 'User 4', '2023-11-21 23:49:49', '2023-11-21 23:49:49', 1),
+                                                                                                             ('user5', 'user5@example.com', 'salt5', 'hashed_pass5', 'User 5', '2023-11-21 23:49:49', '2023-11-21 23:49:49', 1);
 
 -- --------------------------------------------------------
 
@@ -948,7 +905,3 @@ ALTER TABLE `sub_product_color`
 ALTER TABLE `user_seri`
     ADD CONSTRAINT `user_seri_cert_seri_fk` FOREIGN KEY (`seri`) REFERENCES `cert` (`seri`);
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

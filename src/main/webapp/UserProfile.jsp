@@ -21,19 +21,19 @@
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
             rel="stylesheet"
     />
-    <link rel="stylesheet prefetch"
-          href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css">
 
-    <link rel="stylesheet" href=
-            "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-    <link href="/mdb/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/mdb/css/mdb.min.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/css/mdb.min.css">
     <link href="/mdb/css/addons/compiled-addons-4.20.0.min.css">
-    <link href="/mdb/css/manakey.css" rel="stylesheet">
+    <link href="./mdb/css/manaKey.css" rel="stylesheet">
     <link href="/mdb/css/style.css" rel="stylesheet">
     <link href="/mdb/css/default.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
+
+
 </head>
 
 <body class="homepage-v1 hidden-sn white-skin animated">
@@ -654,7 +654,7 @@
                     </div>
 
                     <div class="nenmodal" id="nenmodal-1">
-                        <div class="nenmodal2"></div>
+
                         <div class="ndmodal">
                             <div class="closemodal">
                                 <button onclick="momodal(), redirect('/user') ">×</button>
@@ -662,141 +662,148 @@
                             <div method="POST" id="contactForm" name="contactForm" class="contactForm">
                                 <div class="fname">
                                     <label class="label1">Name</label>
-                                    <input id="issuerName" name="issuerName" type="text"
+                                    <input id="issuerName"  name="issuerName" type="text"
                                            placeholder="Người dùng nhập tên để tạo cetificate">
                                     <button class="btnblock" type="submit" onclick="createKey()">Create Key</button>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="group">
+                                <div class="rowKey">
+                                    <div class="colKey">
+                                        <div class="groupKey">
                                             <label class="label1">Private Key</label>
-                                            <input type="text" class="form-control" id="privateKey">
-                                            <i class="fa fa-clone" id="copypri" aria-hidden="true"></i>
-                                        </div>
+                                            <input  class="inputframe" type="text"  id="privateKey">
+                                            <i class="fa fa-clone"  id="copypri" aria-hidden="true"></i>
+                                </div>
                                     </div>
-                                    <div class="col">
-                                        <div class="group">
+
+                                    <div class="colKey">
+                                        <div class="groupKey">
                                             <label class="label1">Public Key</label>
-                                            <input type="text" class="form-control" id="publicKey">
-                                            <i class="fa fa-clone" id="copypub" aria-hidden="true"></i>
-                                        </div>
+                                            <input class="inputframe"  type="text"  id="publicKey">
+                                            <i class="fa fa-clone"  id="copypub" aria-hidden="true"></i>
+                                </div>
                                     </div>
-                                    <div class="col">
-                                        <div class="group">
+                                    <div class="colKey">
+                                        <div class="groupKey">
                                             <label class="label1">Certificate</label>
-                                            <input type="text" class="form-control" id="certificate">
+                                            <input class="inputframe" type="text"  id="certificate">
                                             <i class="fa fa-clone" id="copycer" aria-hidden="true"></i>
-                                        </div>
+                                </div>
                                     </div>
+                                </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- màn hình import key -->
                     <div class="nenmodal" id="nenmodal-2">
-                        <div class="nenmodal2"></div>
+
                         <div class="ndmodal">
                             <div class="closemodal">
                                 <button onclick="momodal2(), redirect('/user') ">×</button>
                             </div>
                             <div method="POST" id="contactForm2" name="contactForm" class="contactForm">
 
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="group">
+                                <div class="rowKey">
+                                    <div class="colKey">
+                                        <div class="groupKey">
                                             <label class="label1">Name </label>
-                                            <input type="text" name="username" class="inpri" id="name2">
-
+                                            <input type="text" name="username"  id="username">
+                                        </div>
                                         </div>
                                     </div>
-                                    <div class="col">
-                                        <div class="group">
+                                <div class="colKey">
+                                    <div class="groupKey">
                                             <label class="label1">Public Key</label>
-                                            <input type="text" name="publickey" class="form-control"
-                                                   id="publicKey2">
+                                            <input type="text" name="pubKey2" class="inputframe"
+                                                   id="pubKey2">
                                             <i class="fa fa-clone" id="copypub2" aria-hidden="true"></i>
                                         </div>
+                                </div>
                                     </div>
-                                    <div class="col">
-                                        <div class="group">
+                            <div class="colKey">
+                                <div class="groupKey">
                                             <label class="label1">Certificate</label>
-                                            <input type="text" class="form-control" id="certificate2">
+                                            <input type="text" class="inputframe" id="certificate2">
                                             <i class="fa fa-clone" id="copycer2" aria-hidden="true"></i>
+                                    <button class="btnblock btncreate" type="submit" onclick="ImportKey()">Create</button>
                                         </div>
+
                                     </div>
-                                    <button class="btnblock btncreate" type="submit" onclick="ImportKey()">Create
-                                    </button>
+
+                        </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- màn hình revocation key -->
                     <div class="nenmodal" id="nenmodal-3">
-                        <div class="nenmodal"></div>
+
                         <div class="ndmodal">
                             <div class="closemodal">
                                 <button onclick="momodal3(), redirect('/user') ">×</button>
                             </div>
+
                             <div method="POST" id="contactForm3" name="contactForm" class="contactForm">
 
-                                <div class="row inli">
-                                    <div class="col">
-                                        <div class="group ">
-
-                                            <label class="label1">Ngày khóa </label>
-                                            <div id="datepicker" class="input-group date"
-                                                 data-date-format="mm-dd-yyyy">
-                                                <input class="form-control" id="revokedAt" name="revokedAt" type="text"
-                                                       />
-                                                <span class="input-group-addon">
-    <i class="fa fa-calendar" aria-hidden="true" onclick="applyDatepicker() "></i>
-    </span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="group">
-                                            <label class="label">Số Seri</label>
-                                            <input type="text" class="form-control" name="seri2" id="seri2">
-                                            <i class="fa fa-clone" id="copyseri2" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="group">
-                                            <button class="btnblock btnrevo" type="submit" onclick="revocation()">Khóa
-                                                <i class="fa fa-lock  " aria-hidden="true" onclick="abc()"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-
-
+                                <div class="md-form md-outline input-with-post-icon datepicker"  data-date-format="dd-mm-yyyy" id="customDays" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="customDays_root">
+                                    <input placeholder="Select date" type="text" id="Customization" name="revokedAt" class="form-control picker__input">
+                                    <label for="Customization" class="active">Ngày khóa</label>
+                                    <i class="fas fa-calendar input-prefix active" tabindex="0"></i>
                                 </div>
+
+                                <div class="colKey">
+                                    <div class="groupKey">
+                                        <label class="label">Số Seri</label>
+                                        <input type="text" class="inputframe" name="Number" id="Number">
+                                        <i class="fa fa-clone" id="copyseri2" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="col">
+                                    <div class="group">
+                                        <button class="btnblock btnrevo" type="submit" onclick="revocation()">Khóa
+                                            <i class="fa fa-lock  " aria-hidden="true" onclick="abc()"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <!-- Pills panels -->
-            </div>
-        </div>
-        <!--Grid column-->
 
+            </div>
+            <!-- Pills panels -->
+        </div>
     </div>
-    <!--Grid row-->
+    <!--Grid column-->
+
+</div>
+<!--Grid row-->
 </div>
 <!-- Main Container -->
 <!-- Footer -->
 <%@include file="default/footer.jsp" %>
 <!-- Footer -->
-<script src="/mdb/js/jquery.min.js"></script>
+<%--<script src="/mdb/js/jquery.min.js"></script>--%>
+<script type="text/javascript" src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/js/jquery.min.js"></script>
+<script type="text/javascript" src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/js/popper.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
-<script src="/mdb/js/bootstrap.min.js"></script>
-<script src="/mdb/js/mdb.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.20.0/js/mdb.min.js"></script>
 <script src="/mdb/js/default.js"></script>
+
+<script>
+    $('.datepicker').datepicker({
+format:"dd-mm-yyyy",
+        weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+        showMonthsShort: true,
+
+    })
+</script>
 //datatables order
 <script>
     $(document).ready(function () {
@@ -868,7 +875,8 @@
                         alert("Verify Order Success");
                         resovle(true);
 
-                    } else {
+                    }
+                    else {
                         // create popup alert fail
                         alert("Verify Order Fail");
                         resovle(false);
@@ -880,7 +888,6 @@
             })
         });
     }
-
     $(document).on('click', '.verifyBtn', function () {
         var orderId = $(this).closest('tr').find('td:eq(0)').text();
         console.log(orderId);
@@ -992,7 +999,7 @@
             method: "GET",
             dataType: "json",
             data: {
-                issuerName: issuerName
+                issuerName:issuerName
             },
             contentType: "application/json",
 
@@ -1016,17 +1023,16 @@
 <script type="text/javascript">
 
     function ImportKey() {
-        var username = document.getElementById("name2").value;
-        var publickey = document.getElementById("publicKey2").value;
-        console.log("ten" + username + "pub" + publickey);
+        var username = document.getElementById("username").value;
+        var pubKey2 = document.getElementById("pubKey2").value;
+        console.log("ten" + username + "pub" + pubKey2);
         $.ajax({
             url: "/user/importKey",
             method: "GET",
-            type: 'POST',
             dataType: "json",
             data: {
                 username: username,
-                publickey: publickey,
+                pubKey2: pubKey2,
             },
             contentType: "application/json",
             success: function (data) {
@@ -1047,16 +1053,16 @@
 <script type="text/javascript">
 
     function revocation() {
-        var seri2 = document.getElementById("seri2").value;
-        var revokedAt = document.getElementById("revokedAt").value;
+        var Number = document.getElementById("Number").value;
+        var Customization = document.getElementById("Customization").value;
 
         $.ajax({
             url: "/user/RevocationCert",
             method: "GET",
             dataType: "json",
             data: {
-                seri2: seri2,
-                revokedAt: revokedAt,
+                Number: Number,
+                Customization: Customization,
             },
             contentType: "application/json",
             success: function (data) {
@@ -1067,18 +1073,7 @@
         });
     }
 </script>
-<%--<script>--%>
-<%--    // step 1--%>
-<%--    const ipnElement = document.querySelector('input')--%>
-<%--    const btnElement = document.querySelector('.fa-clone')--%>
 
-<%--    // step 2--%>
-<%--    btnElement.addEventListener('click', function () {--%>
-
-<%--        ipnElement.select()              // step 4--%>
-
-<%--    })--%>
-<%--</script>--%>
 <script>
     function abc() {
 
@@ -1087,7 +1082,7 @@
         if (userConfirmed) {
 
             ipnElement.select(); // Step 4
-
+            location.reload();
         } else {
 
         }
@@ -1105,7 +1100,7 @@
     const ipnElement2 = document.querySelector('#certificate')
     const btnElement2 = document.querySelector('#copycer')
     //
-    const ipnElement3 = document.querySelector('#publicKey2')
+    const ipnElement3 = document.querySelector('#pubKey2')
     const btnElement3 = document.querySelector('#copypub2')
 
     const ipnElement4 = document.querySelector('#certificate2')
@@ -1143,14 +1138,7 @@
 
 
 </script>
-<script>
-    function applyDatepicker() {
-        $("#datepicker").datepicker({
-            autoclose: true,
-            todayHighlight: true
-        }).datepicker('update', new Date());
-    }
-</script>
+
 </body>
 </html>
 

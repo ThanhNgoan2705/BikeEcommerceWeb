@@ -20,6 +20,6 @@ public class LogoutController extends HttpServlet {
     }
     private void logout(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         req.getSession().setAttribute("userId", null);
-        resp.sendRedirect("/login");
+        resp.sendRedirect("login");
     }
 }
