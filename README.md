@@ -5,7 +5,7 @@ This is a website that sells electric bicycles, but if you want to create an ord
 
 ## Documentation
 
-https://docs.google.com/document/d/1WNH2GuJyQry5wioMd6DTTCudWCQL9h2YuMmnjngcL2Q/edit?usp=sharing
+https://drive.google.com/file/d/1hokRMOGAhrdm1154QIPfR3HE7Ik-T5eA/view?usp=sharing
 
 ## Authors
 
